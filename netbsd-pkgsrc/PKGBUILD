@@ -1,0 +1,37 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Matt Raspberry <nixalot at nixalot dot com>
+
+pkgname=netbsd-pkgsrc
+_pkgname=pkgsrc
+pkgver=2015Q1
+pkgrel=3
+pkgdesc="The NetBSD Packages Collection (pkgsrc)"
+arch=('i686' 'x86_64')
+url="http://www.netbsd.org/docs/software/packages.html"
+license=('BSD')
+install='bootstrap.install'
+provides=('bmake' 'pkgsrc')
+source=(
+    "ftp://ftp.netbsd.org/pub/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}.tar.xz"
+    "LICENSE"
+    )
+options=('!strip' 'emptydirs')
+md5sums=('c2a7bacd019e4cab0dd539faec86cd22'
+         '96cf102f05b1dde8f8700c984d091e37')
+sha256sums=('a131ba7a7283c1315bdff042e9a0af69bf7a9900d6e7c98f0790cf917664d649'
+            'dce81b98a6ca0365f9d2713d138dad90b71078ecd9e64114e2f20618c6e2975b')
+
+package() {
+
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  msg "copying files to the package directory"
+  mkdir -p "${pkgdir}/usr"
+  cp -ar "${srcdir}/pkgsrc" "${pkgdir}/usr/pkgsrc"
+
+  msg "generation of profile settings"
+  mkdir -p "${pkgdir}/etc/profile.d"
+  echo "export PATH=/usr/pkg/bin:/usr/pkg/sbin:${PATH}" > "${pkgdir}/etc/profile.d/pkgsrc.sh"
+  echo "export MANPATH=/usr/pkg/man:${MANPATH}" >> "${pkgdir}/etc/profile.d/pkgsrc.sh"
+
+}
