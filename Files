@@ -1,0 +1,27 @@
+
+├── Files
+├── README.md
+├── arch-aurora-search
+│   ├── PKGBUILD
+│   ├── arch-bugs-fs.xml
+│   ├── arch-bugs-t.xml
+│   ├── arch-forum-a.xml
+│   ├── arch-forum-c.xml
+│   ├── arch-pkgs.xml
+│   ├── arch-wiki.xml
+│   └── aur.xml
+├── mdm-display-manager
+│   ├── PKGBUILD
+│   ├── defaults.conf
+│   ├── mdm-autologin.pam
+│   ├── mdm-display-manager.install
+│   ├── mdm-plymouth.service
+│   ├── mdm.pam
+│   ├── mdm.service
+│   └── org.cinnamon.pkexec.mdmsetup.policy
+└── netbsd-pkgsrc
+    ├── LICENSE
+    ├── PKGBUILD
+    └── bootstrap.install
+
+3 directories, 21 files
