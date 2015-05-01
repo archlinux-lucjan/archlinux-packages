@@ -4,7 +4,7 @@
 pkgname=netbsd-pkgsrc
 _pkgname=pkgsrc
 pkgver=2015Q1
-pkgrel=3
+pkgrel=4
 pkgdesc="The NetBSD Packages Collection (pkgsrc)"
 arch=('i686' 'x86_64')
 url="http://www.netbsd.org/docs/software/packages.html"
@@ -16,10 +16,11 @@ source=(
     "LICENSE"
     )
 options=('!strip' 'emptydirs')
-md5sums=('c2a7bacd019e4cab0dd539faec86cd22'
+md5sums=('047d548e5397503f9a9791d069a038e1'
          '96cf102f05b1dde8f8700c984d091e37')
-sha256sums=('a131ba7a7283c1315bdff042e9a0af69bf7a9900d6e7c98f0790cf917664d649'
+sha256sums=('bd6073a0d4c6a1e549a011e3c1ed15ad397dbfd980facae837fa8c30cbec4d48'
             'dce81b98a6ca0365f9d2713d138dad90b71078ecd9e64114e2f20618c6e2975b')
+
 
 package() {
 
