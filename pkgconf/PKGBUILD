@@ -16,7 +16,7 @@ source=("https://github.com/pkgconf/pkgconf/archive/$pkgname-$pkgver.tar.gz")
 sha256sums=('6649762eee0d222e1d231e6b4ab2e4596a23788f3341b040eea404d4c85731c1')
 
 build() {                                                                       
-    cd "$srcdir/$pkgname-$pkgname-$pkgver" # WTF github?
+    cd "$srcdir/$pkgname-$pkgname-$pkgver" 
 	./autogen.sh
     ./configure --prefix=/usr
     make
