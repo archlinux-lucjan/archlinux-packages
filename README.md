@@ -8,3 +8,4 @@ Collection of PKGBUILDS for Achlinux:
 
 - pkgconf
 
+- pkgconf-git
