@@ -1,4 +1,4 @@
-
+.
 ├── Files
 ├── README.md
 ├── arch-aurora-search
@@ -19,9 +19,11 @@
 │   ├── mdm.pam
 │   ├── mdm.service
 │   └── org.cinnamon.pkexec.mdmsetup.policy
-└── netbsd-pkgsrc
-    ├── LICENSE
-    ├── PKGBUILD
-    └── bootstrap.install
+├── netbsd-pkgsrc
+│   ├── LICENSE
+│   ├── PKGBUILD
+│   └── bootstrap.install
+└── pkgconf
+    └── PKGBUILD
 
-3 directories, 21 files
+4 directories, 22 files

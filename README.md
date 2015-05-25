@@ -6,3 +6,5 @@ Collection of PKGBUILDS for Achlinux:
 
 - netbsd-pkgsrc
 
+- pkgconf
+
