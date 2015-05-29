@@ -10,6 +10,8 @@
 │   ├── arch-pkgs.xml
 │   ├── arch-wiki.xml
 │   └── aur.xml
+├── freebsd-manpages
+│   └── PKGBUILD
 ├── mdm-display-manager
 │   ├── PKGBUILD
 │   ├── defaults.conf
@@ -28,4 +30,4 @@
 └── pkgconf-git
     └── PKGBUILD
 
-5 directories, 23 files
+6 directories, 24 files
