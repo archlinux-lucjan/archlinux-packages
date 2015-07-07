@@ -4,8 +4,6 @@ Collection of PKGBUILDS for Achlinux:
 
 - freebsd-manpages
 
-- mdm-display-manager
-
 - netbsd-pkgsrc
 
 - pkgconf

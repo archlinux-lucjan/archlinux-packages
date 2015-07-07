@@ -12,15 +12,6 @@
 │   └── aur.xml
 ├── freebsd-manpages
 │   └── PKGBUILD
-├── mdm-display-manager
-│   ├── PKGBUILD
-│   ├── defaults.conf
-│   ├── mdm-autologin.pam
-│   ├── mdm-display-manager.install
-│   ├── mdm-plymouth.service
-│   ├── mdm.pam
-│   ├── mdm.service
-│   └── org.cinnamon.pkexec.mdmsetup.policy
 ├── netbsd-pkgsrc
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -30,4 +21,4 @@
 └── pkgconf-git
     └── PKGBUILD
 
-6 directories, 24 files
+5 directories, 16 files
