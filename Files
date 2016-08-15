@@ -16,9 +16,7 @@
 │   ├── LICENSE
 │   ├── PKGBUILD
 │   └── bootstrap.install
-├── pkgconf
-│   └── PKGBUILD
 └── pkgconf-git
     └── PKGBUILD
 
-5 directories, 16 files
+4 directories, 15 files
