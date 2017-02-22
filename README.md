@@ -4,8 +4,8 @@
 
 - freebsd-manpages
 
-- netbsd-pkgsrc
+- krusader-git
 
-- pkgconf
+- netbsd-pkgsrc
 
 - pkgconf-git

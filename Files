@@ -12,6 +12,8 @@
 │   └── aur.xml
 ├── freebsd-manpages
 │   └── PKGBUILD
+├── krusader-git
+│   └── PKGBUILD
 ├── netbsd-pkgsrc
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -19,4 +21,4 @@
 └── pkgconf-git
     └── PKGBUILD
 
-4 directories, 15 files
+5 directories, 16 files
