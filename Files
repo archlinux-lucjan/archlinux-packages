@@ -18,7 +18,11 @@
 │   ├── LICENSE
 │   ├── PKGBUILD
 │   └── bootstrap.install
-└── pkgconf-git
-    └── PKGBUILD
+├── pkgconf-git
+│   └── PKGBUILD
+└── sddm-git
+    ├── PKGBUILD
+    ├── sddm.sysusers
+    └── sddm.tmpfiles
 
-5 directories, 16 files
+6 directories, 19 files
