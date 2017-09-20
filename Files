@@ -1,15 +1,6 @@
 .
 ├── Files
 ├── README.md
-├── arch-aurora-search
-│   ├── PKGBUILD
-│   ├── arch-bugs-fs.xml
-│   ├── arch-bugs-t.xml
-│   ├── arch-forum-a.xml
-│   ├── arch-forum-c.xml
-│   ├── arch-pkgs.xml
-│   ├── arch-wiki.xml
-│   └── aur.xml
 ├── freebsd-manpages
 │   └── PKGBUILD
 ├── krusader-git
@@ -25,4 +16,4 @@
     ├── sddm.sysusers
     └── sddm.tmpfiles
 
-6 directories, 19 files
+5 directories, 11 files
