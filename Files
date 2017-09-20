@@ -3,7 +3,14 @@
 ├── README.md
 ├── freebsd-manpages
 │   └── PKGBUILD
+├── git-git
+│   ├── PKGBUILD
+│   ├── git-daemon.socket
+│   ├── git-daemon@.service
+│   └── git-git.install
 ├── krusader-git
+│   └── PKGBUILD
+├── linux-firmware-git
 │   └── PKGBUILD
 ├── netbsd-pkgsrc
 │   ├── LICENSE
@@ -16,4 +23,4 @@
     ├── sddm.sysusers
     └── sddm.tmpfiles
 
-5 directories, 11 files
+7 directories, 16 files
