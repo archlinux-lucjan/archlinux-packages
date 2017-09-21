@@ -1,0 +1,54 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+
+pkgname=konversation-git
+pkgver=1.7.2.24.gde5d6dc5
+pkgrel=1
+pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
+arch=('x86_64' 'i686')
+url='http://konversation.kde.org'
+license=('GPL2' 'FDL')
+makedepends=('git'
+             'extra-cmake-modules'
+             'kdoctools'
+             'python'
+             )
+depends=('knotifyconfig'
+         'kemoticons'
+         'kparts'
+         'kidletime'
+         'qca-qt5'
+         'hicolor-icon-theme'
+         )
+optdepends=('python: python scripting support')
+conflicts=('konversation')
+provides=('konversation')
+source=('git://anongit.kde.org/konversation')
+sha1sums=('SKIP')
+
+pkgver() {
+  cd konversation
+  #_ver="$(cat src/version.h | grep "#define KONVI_VERSION" | cut -d '"' -f2 | tr - .).$(cat src/commit.h | grep "#define COMMIT" | cut -d ' ' -f3)"
+  #echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe  --long | sed 's/^v//;s/-/./g'
+}
+
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../konversation \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}
