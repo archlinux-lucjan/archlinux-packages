@@ -1,0 +1,42 @@
+# $Id: PKGBUILD 260143 2016-02-22 12:24:21Z allan $
+# Maintainer: Allan McRae <allan@archlinux.org>
+
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
+
+pkgname=linux-api-headers-experimental-git
+_srcname=linux-stable
+pkgver=4.13.r0.g569dbb88e80d
+pkgrel=1
+pkgdesc="Kernel headers sanitized for use in userspace"
+arch=('i686' 'x86_64')
+url="http://www.gnu.org/software/libc"
+license=('GPL2')
+provides=('linux-api-headers=$pkgver')
+conflicts=('linux-api-headers')
+source=('git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#branch=linux-4.13.y')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${_srcname}"
+
+  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+}
+   
+
+build() {
+  cd "${_srcname}"
+
+  make mrproper
+  make headers_check
+}
+
+package() {
+  cd "${_srcname}"
+  make INSTALL_HDR_PATH=${pkgdir}/usr headers_install
+
+  # use headers from libdrm
+  rm -r ${pkgdir}/usr/include/drm
+  
+  # clean-up unnecessary files generated during install
+  find ${pkgdir} \( -name .install -o -name ..install.cmd \) -delete
+}

@@ -3,15 +3,50 @@
 ├── README.md
 ├── freebsd-manpages
 │   └── PKGBUILD
+├── gcc-dev-git
+│   ├── PKGBUILD
+│   ├── c89
+│   └── c99
+├── gcc-git
+│   ├── PKGBUILD
+│   ├── c89
+│   └── c99
+├── git-dev-git
+│   ├── PKGBUILD
+│   ├── git-daemon.socket
+│   ├── git-daemon@.service
+│   └── git-git.install
 ├── git-git
+│   ├── PKGBUILD
+│   ├── git-daemon.socket
+│   ├── git-daemon@.service
+│   └── git-git.install
+├── git-main-git
+│   ├── PKGBUILD
+│   ├── git-daemon.socket
+│   ├── git-daemon@.service
+│   └── git-git.install
+├── git-test-git
 │   ├── PKGBUILD
 │   ├── git-daemon.socket
 │   ├── git-daemon@.service
 │   └── git-git.install
 ├── krusader-git
 │   └── PKGBUILD
+├── linux-api-headers-experimental-git
+│   └── PKGBUILD
+├── linux-api-headers-trunk-git
+│   └── PKGBUILD
 ├── linux-firmware-git
 │   └── PKGBUILD
+├── llvm-git
+│   ├── PKGBUILD
+│   ├── llvm-Config-llvm-config.h
+│   └── llvm.patch
+├── llvm-svn
+│   ├── PKGBUILD
+│   ├── llvm-Config-llvm-config.h
+│   └── llvm.patch
 ├── netbsd-pkgsrc
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -23,4 +58,4 @@
     ├── sddm.sysusers
     └── sddm.tmpfiles
 
-7 directories, 16 files
+16 directories, 42 files
