@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
