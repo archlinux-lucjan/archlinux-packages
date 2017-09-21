@@ -1,0 +1,215 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+
+pkgbase=mesa-rc-git
+pkgname=('opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-headers-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
+pkgdesc="an open-source implementation of the OpenGL specification, git version"
+pkgver=17.2.1.94573.bd903d4ee1
+pkgrel=1
+groups=('mesagit')
+arch=('i686' 'x86_64')
+makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto'
+	     'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm' 'systemd'
+	     'libomxil-bellagio' 'libglvnd' 'libunwind' 'lm_sensors' 'libclc-git' 'clang' 'git')
+url="http://mesa3d.sourceforge.net"
+license=('custom')
+source=(LICENSE
+        'mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=17.2'
+        '0002-glvnd-fix-gl-dot-pc.patch')
+options=('!libtool')
+md5sums=('5c65a0fe315dd347e09b1f2826a1df5a'
+         'SKIP'
+         'a6d619d733133655fab1478df9a9f741')
+
+pkgver() {
+    cd mesa
+    read -r _ver <VERSION
+    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd ${srcdir}/mesa
+
+  # libglvnd patches
+  patch -Np1 -i ../0002-glvnd-fix-gl-dot-pc.patch
+  
+}
+
+build() {
+  cd ${srcdir}/mesa
+
+  ./autogen.sh --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-dri-driverdir=/usr/lib/xorg/modules/dri \
+    --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,swr \
+    --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
+    --with-platforms=x11,drm,wayland \
+    --with-vulkan-drivers=intel,radeon \
+    --disable-xvmc \
+    --enable-llvm \
+    --enable-llvm-shared-libs \
+    --enable-shared-glapi \
+    --enable-libglvnd \
+    --enable-libunwind \
+    --enable-lmsensors \
+    --enable-egl \
+    --enable-glx \
+    --enable-glx-tls \
+    --enable-gles1 \
+    --enable-gles2 \
+    --enable-gbm \
+    --enable-dri \
+    --enable-gallium-osmesa \
+    --enable-gallium-extra-hud \
+    --enable-texture-float \
+    --enable-xa \
+    --enable-vdpau \
+    --enable-omx \
+    --enable-nine \
+    --enable-opencl \
+    --enable-opencl-icd \
+    --with-clang-libdir=/usr/lib
+
+  make
+
+  # fake installation
+  mkdir $srcdir/fakeinstall
+  make DESTDIR=${srcdir}/fakeinstall install
+}
+
+package_opencl-mesa-rc-git() {
+  pkgdesc="OpenCL support for mesa drivers (git version)"
+  depends=("mesa-rc-git=${pkgver}" 'expat' 'libdrm' 'libelf' 'lm_sensors'
+           'libunwind' 'libclc-git' 'clang-svn')
+  optdepends=('opencl-headers: headers necessary for OpenCL rcelopment')
+  provides=('opencl-mesa' 'opencl-driver')
+  conflicts=('opencl-mesa')
+  
+  install -m755 -d ${pkgdir}/etc
+  cp -rv ${srcdir}/fakeinstall/etc/OpenCL ${pkgdir}/etc/
+  
+  install -m755 -d ${pkgdir}/usr/lib/gallium-pipe
+  cp -rv ${srcdir}/fakeinstall/usr/lib/lib*OpenCL* ${pkgdir}/usr/lib/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/gallium-pipe/pipe_{r600,radeonsi}.so ${pkgdir}/usr/lib/gallium-pipe/
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/opencl-mesa"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/opencl-mesa/"
+}
+
+package_mesa-vulkan-intel-rc-git() {
+  pkgdesc="Intel's Vulkan mesa driver (git version)"
+  depends=('wayland' 'libx11' 'libxshmfence')
+  provides=('vulkan-intel' 'vulkan-driver')
+  conflicts=('vulkan-intel')
+  
+   install -m755 -d ${pkgdir}/usr/share/vulkan/icd.d
+   mv -v ${srcdir}/fakeinstall/usr/share/vulkan/icd.d/intel_icd*.json ${pkgdir}/usr/share/vulkan/icd.d/
+
+  install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
+  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
+  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/vulkan-intel"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/vulkan-intel/"
+}
+
+package_mesa-vulkan-headers-rc-git() {
+  pkgdesc="Vulkan header files"
+  provides=('vulkan-headers')
+  conflicts=('vulkan-hesders')
+  
+  install -dm755 ${pkgdir}/usr/include/vulkan
+  mv -v ${srcdir}/mesa/include/vulkan/vk_platform.h ${pkgdir}/usr/include/vulkan/
+  mv -v ${srcdir}/mesa/include/vulkan/vulkan.h ${pkgdir}/usr/include/vulkan
+
+  #install -D -m644 doc/specs/vulkan/copyright.txt ${pkgdir}/usr/share/licenses/${pkgname}/copyright.txt
+}
+
+package_mesa-vulkan-radeon-rc-git() {
+  pkgdesc="Radeon's Vulkan mesa driver (git version)"
+  depends=('wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs-svn')
+  provides=('vulkan-radeon' 'vulkan-driver')
+  conflicts=('vulkan-radeon')
+  
+  install -m755 -d ${pkgdir}/usr/share/vulkan/icd.d
+  mv -v ${srcdir}/fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json ${pkgdir}/usr/share/vulkan/icd.d/
+
+  install -m755 -d ${pkgdir}/usr/lib
+  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_radeon.so ${pkgdir}/usr/lib/
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/vulkan-radeon"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/vulkan-radeon/"
+}
+
+package_libva-mesa-driver-rc-git() {
+  pkgdesc="VA-API implementation for gallium"
+  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence' 'lm_sensors' 'libunwind')
+  provides=('libva-mesa-driver')
+  conflicts=('libva-mesa-driver')
+
+  install -m755 -d ${pkgdir}/usr/lib
+  cp -rv ${srcdir}/fakeinstall/usr/lib/dri ${pkgdir}/usr/lib
+   
+  install -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver/"
+}
+
+package_mesa-vdpau-rc-git() {
+  pkgdesc="Mesa VDPAU drivers"
+  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence' 'lm_sensors' 'libunwind')
+  provides=('mesa-vdpau')
+  conflicts=('mesa-vdpau')
+
+  install -m755 -d ${pkgdir}/usr/lib
+  cp -rv ${srcdir}/fakeinstall/usr/lib/vdpau ${pkgdir}/usr/lib
+   
+  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-vdpau"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vdpau/"
+}
+
+package_mesa-rc-git() {
+  pkgdesc="an open-source implementation of the OpenGL specification (git version)"
+  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libsystemd' 'libelf'
+           'libomxil-bellagio' 'libtxc_dxtn' 'libunwind' 'llvm-libs-svn' 'lm_sensors' 'libglvnd')
+  optdepends=('opengl-man-pages: for the OpenGL API man pages')
+  provides=('mesa' 'mesa-dri' 'mesa-libgl'
+            'mesa-dri-git' 'mesa-libgl-git')
+  conflicts=('mesa'  'mesa-dri' 'mesa-libgl'
+             'mesa-dri-git' 'mesa-libgl-git')
+  replaces=('mesa-libgl-rc-git')
+
+  install -m755 -d ${pkgdir}/etc
+  cp -rv ${srcdir}/fakeinstall/etc/drirc ${pkgdir}/etc
+  
+  install -m755 -d ${pkgdir}/usr/share/glvnd/egl_vendor.d
+  cp -rv ${srcdir}/fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json ${pkgdir}/usr/share/glvnd/egl_vendor.d/
+
+  install -m755 -d ${pkgdir}/usr/lib/xorg/modules/dri
+  # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
+  cp -av ${srcdir}/fakeinstall/usr/lib/xorg/modules/dri/* ${pkgdir}/usr/lib/xorg/modules/dri
+   
+  cp -rv ${srcdir}/fakeinstall/usr/lib/bellagio  ${pkgdir}/usr/lib
+  cp -rv ${srcdir}/fakeinstall/usr/lib/d3d  ${pkgdir}/usr/lib
+  cp -rv ${srcdir}/fakeinstall/usr/lib/lib{gbm,glapi}.so* ${pkgdir}/usr/lib/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libOSMesa.so* ${pkgdir}/usr/lib/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libwayland*.so* ${pkgdir}/usr/lib/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libxatracker.so* ${pkgdir}/usr/lib/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libswrAVX*.so* ${pkgdir}/usr/lib/
+
+  cp -rv ${srcdir}/fakeinstall/usr/include ${pkgdir}/usr
+  cp -rv ${srcdir}/fakeinstall/usr/lib/pkgconfig ${pkgdir}/usr/lib/
+  
+  # remove vulkan headers
+  rm -rf ${pkgdir}/usr/include/vulkan
+
+  # libglvnd support
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libGLX_mesa.so* ${pkgdir}/usr/lib/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libEGL_mesa.so* ${pkgdir}/usr/lib/
+  # indirect rendering
+  ln -s /usr/lib/libGLX_mesa.so.0 ${pkgdir}/usr/lib/libGLX_indirect.so.0
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/mesa"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa/"
+}

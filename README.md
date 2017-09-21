@@ -30,6 +30,10 @@
 
 - llvm-svn
 
+- mesa-dev-git
+
+- mesa-rc-git
+
 - netbsd-pkgsrc
 
 - pkgconf-git

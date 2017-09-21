@@ -51,6 +51,14 @@
 │   ├── PKGBUILD
 │   ├── llvm-Config-llvm-config.h
 │   └── llvm.patch
+├── mesa-dev-git
+│   ├── 0002-glvnd-fix-gl-dot-pc.patch
+│   ├── LICENSE
+│   └── PKGBUILD
+├── mesa-rc-git
+│   ├── 0002-glvnd-fix-gl-dot-pc.patch
+│   ├── LICENSE
+│   └── PKGBUILD
 ├── netbsd-pkgsrc
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -64,4 +72,4 @@
     ├── sddm.sysusers
     └── sddm.tmpfiles
 
-19 directories, 45 files
+21 directories, 51 files
