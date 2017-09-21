@@ -2,15 +2,39 @@
 
 - freebsd-manpages
 
+- gcc-dev-git
+
+- gcc-git
+
+- git-dev-git
+
 - git-git
+
+- git-main-git
+
+- git-test-git
+
+- konversation-git
+
+- konversation-stable-git
 
 - krusader-git
 
+- linux-api-headers-experimental-git
+
+- linux-api-headers-trunk-git
+
 - linux-firmware-git
+
+- llvm-git
+
+- llvm-svn
 
 - netbsd-pkgsrc
 
 - pkgconf-git
+
+- qtox-git
 
 - sddm-git
 
