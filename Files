@@ -11,6 +11,10 @@
 │   ├── PKGBUILD
 │   ├── c89
 │   └── c99
+├── gdb-git
+│   └── PKGBUILD
+├── gdb-stable-git
+│   └── PKGBUILD
 ├── git-dev-git
 │   ├── PKGBUILD
 │   ├── git-daemon.socket
@@ -59,6 +63,12 @@
 │   ├── 0002-glvnd-fix-gl-dot-pc.patch
 │   ├── LICENSE
 │   └── PKGBUILD
+├── modemmanager-git
+│   └── PKGBUILD
+├── modemmanager-stable-git
+│   └── PKGBUILD
+├── modemmanager-test-git
+│   └── PKGBUILD
 ├── netbsd-pkgsrc
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -72,4 +82,4 @@
     ├── sddm.sysusers
     └── sddm.tmpfiles
 
-21 directories, 51 files
+26 directories, 56 files

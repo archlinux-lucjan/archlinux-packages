@@ -6,6 +6,10 @@
 
 - gcc-git
 
+- gdb-git
+
+- gdb-stable-git
+
 - git-dev-git
 
 - git-git
@@ -33,6 +37,12 @@
 - mesa-dev-git
 
 - mesa-rc-git
+
+- modemmanager-git
+
+- modemmanager-stable-git
+
+- modemmanager-test-git
 
 - netbsd-pkgsrc
 
