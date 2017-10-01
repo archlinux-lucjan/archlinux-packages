@@ -50,6 +50,12 @@
 
 - psi-plus-git
 
+- psi-plus-l10n-git
+
+- psi-plus-plugins-git
+
+- psi-plus-resources-git
+
 - qconf-git
 
 - qtox-git

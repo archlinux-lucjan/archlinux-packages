@@ -79,6 +79,13 @@
 │   ├── PKGBUILD
 │   ├── conf.diff
 │   └── join.patch
+├── psi-plus-l10n-git
+│   └── PKGBUILD
+├── psi-plus-plugins-git
+│   ├── PKGBUILD
+│   └── psiplugin.pri
+├── psi-plus-resources-git
+│   └── PKGBUILD
 ├── qconf-git
 │   └── PKGBUILD
 ├── qtox-git
@@ -88,4 +95,4 @@
     ├── sddm.sysusers
     └── sddm.tmpfiles
 
-28 directories, 60 files
+31 directories, 64 files
