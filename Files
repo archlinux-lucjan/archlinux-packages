@@ -75,6 +75,12 @@
 │   └── bootstrap.install
 ├── pkgconf-git
 │   └── PKGBUILD
+├── psi-plus-git
+│   ├── PKGBUILD
+│   ├── conf.diff
+│   └── join.patch
+├── qconf-git
+│   └── PKGBUILD
 ├── qtox-git
 │   └── PKGBUILD
 └── sddm-git
@@ -82,4 +88,4 @@
     ├── sddm.sysusers
     └── sddm.tmpfiles
 
-26 directories, 56 files
+28 directories, 60 files

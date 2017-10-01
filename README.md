@@ -48,6 +48,10 @@
 
 - pkgconf-git
 
+- psi-plus-git
+
+- qconf-git
+
 - qtox-git
 
 - sddm-git
