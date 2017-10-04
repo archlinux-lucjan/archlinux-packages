@@ -5,7 +5,7 @@
 _pkgbase=git
 pkgbase=git-git
 pkgname=('git-git')
-pkgver=v2.14.0.r0.g4384e3cde2
+pkgver=2.14.2.746.g8fb8a945bc
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('i686' 'x86_64')
@@ -37,8 +37,8 @@ _gitname=git
 
 pkgver() {
   cd "$_gitname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+  git describe --long --tags | sed 's/^v//;s/-/./g'
+} 
 
 prepare() {
 	cd "$_gitname"
