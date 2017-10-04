@@ -49,7 +49,7 @@ build() {
   cd "$_gitname"
   make prefix=/usr gitexecdir=/usr/lib/git-core \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
-    USE_LIBPCRE=2 \
+    USE_LIBPCRE2=1 \
     NO_CROSS_DIRECTORY_HARDLINKS=1 \
     MAN_BOLD_LITERAL=1 \
     all doc
@@ -74,7 +74,7 @@ check() {
   SHELL=/bin/sh \
   make prefix=/usr gitexecdir=/usr/lib/git-core \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
-    USE_LIBPCRE=2 \
+    USE_LIBPCRE2=1 \
     NO_CROSS_DIRECTORY_HARDLINKS=1 \
     MAN_BOLD_LITERAL=1 \
     NO_SVN_TESTS=y \
@@ -89,7 +89,7 @@ package() {
   cd "$_gitname"
   make prefix=/usr gitexecdir=/usr/lib/git-core \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
-    USE_LIBPCRE=2 \
+    USE_LIBPCRE2=1 \
     NO_CROSS_DIRECTORY_HARDLINKS=1 \
     MAN_BOLD_LITERAL=1 \
     INSTALLDIRS=vendor DESTDIR="$pkgdir" install install-doc
