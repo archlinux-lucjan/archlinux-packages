@@ -1,10 +1,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
-
-_pkgbase=git
-pkgbase=git-test-git
-pkgname=('git-test-git')
+pkgname=git-test-git
 pkgver=2.14.2.942.g3005cb5b1f
 pkgrel=1
 pkgdesc="A fast distributed version control system"

@@ -1,10 +1,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
-
-_pkgbase=git
-pkgbase=git-dev-git
-pkgname=('git-dev-git')
+pkgname=git-dev-git
 pkgver=2.14.2.959.g6663358d34
 pkgrel=1
 pkgdesc="A fast distributed version control system"
