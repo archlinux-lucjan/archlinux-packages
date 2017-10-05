@@ -1,0 +1,72 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Roman Kyrylych <roman@archlinux.org>
+# Contributor: Sarah Hay <sarah@archlinux.org>
+
+pkgbase=gpgme-git
+_pkgbase=gpgme
+pkgname=(gpgme-git qgpgme-git python-gpgme-git)
+pkgver=1.9.0.r78.g4632adf4
+pkgrel=1
+pkgdesc="A C wrapper library for GnuPG"
+arch=('i686' 'x86_64')
+url="http://www.gnupg.org/related_software/gpgme/"
+license=('LGPL')
+makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'swig' 'git')
+source=(git://git.gnupg.org/gpgme.git)
+sha1sums=('SKIP')
+#validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
+
+
+pkgver() {
+  cd gpgme
+  git describe --long --tags | sed 's/^gpgme.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd gpgme
+  ./autogen.sh
+  ./configure --prefix=/usr --disable-fd-passing --disable-static \
+              --disable-gpgsm-test
+  make
+}
+
+#check() {
+#  cd gpgme
+#  make check
+#}
+
+package_gpgme-git() {
+  depends=('libgpg-error' 'gnupg>=2')
+  options=('!emptydirs')
+  conflicts=('gpgme')
+  provides=('gpgme')
+
+  cd gpgme
+  make DESTDIR="${pkgdir}" install
+
+  # split qgpgme
+  rm -r "${pkgdir}"/usr/include/{qgpgme,QGpgME}/
+  rm -r "${pkgdir}"/usr/lib/{cmake/QGpgme/,libqgpgme.*}
+  rm -r "${pkgdir}"/usr/lib/python*
+}
+
+package_qgpgme-git() {
+  pkgdesc="Qt bindings for GPGme"
+  depends=('gpgme' 'qt5-base')
+  conflicts=('qgpgme')
+  provides=('qgpgme')
+
+  cd gpgme/lang/qt
+  make DESTDIR="${pkgdir}" install
+}
+
+package_python-gpgme-git() {
+  pkgdesc="Python bindings for GPGme"
+  depends=('gpgme' 'python')
+  conflicts=('python-gpgme')
+  provides=('python-gpgme')
+
+  cd gpgme/lang/python
+  make DESTDIR="${pkgdir}" install
+}

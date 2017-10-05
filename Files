@@ -35,11 +35,22 @@
 │   ├── git-daemon.socket
 │   ├── git-daemon@.service
 │   └── git-git.install
+├── gnupg-git
+│   ├── PKGBUILD
+│   └── install
+├── gpgme-git
+│   └── PKGBUILD
 ├── konversation-git
 │   └── PKGBUILD
 ├── konversation-stable-git
 │   └── PKGBUILD
 ├── krusader-git
+│   └── PKGBUILD
+├── libassuan-git
+│   └── PKGBUILD
+├── libgcrypt-git
+│   └── PKGBUILD
+├── libgpg-error-git
 │   └── PKGBUILD
 ├── linux-api-headers-experimental-git
 │   └── PKGBUILD
@@ -95,4 +106,4 @@
     ├── sddm.sysusers
     └── sddm.tmpfiles
 
-31 directories, 64 files
+36 directories, 70 files

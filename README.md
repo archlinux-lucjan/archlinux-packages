@@ -18,11 +18,21 @@
 
 - git-test-git
 
+- gnupg-git
+
+- gpgme-git
+
 - konversation-git
 
 - konversation-stable-git
 
 - krusader-git
+
+- libassuan-git
+
+- libgcrypt-git
+
+- libgpg-error-git
 
 - linux-api-headers-experimental-git
 

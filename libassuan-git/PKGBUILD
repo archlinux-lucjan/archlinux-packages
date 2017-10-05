@@ -1,0 +1,40 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+
+pkgname=libassuan-git
+pkgver=2.4.3.r7.g87c2bb5
+pkgrel=1
+pkgdesc="A IPC library used by some GnuPG related software"
+arch=('i686' 'x86_64')
+license=('GPL')
+url="http://www.gnupg.org/related_software/libassuan"
+depends=('libgpg-error')
+conflicts=('libassuan')
+provides=('libassuan')
+source=(git://git.gnupg.org/libassuan.git)
+sha1sums=('SKIP')
+#validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
+
+pkgver() {
+  cd libassuan
+  git describe --long --tags | sed 's/^libassuan.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+
+build() {
+  cd libassuan
+  ./autogen.sh
+  ./configure --prefix=/usr \
+  --enable-maintainer-mode
+  make
+}
+
+#check() {
+#  cd libassuan
+#  make check
+#}
+
+package() {
+  cd libassuan
+  make DESTDIR=${pkgdir} install
+}
