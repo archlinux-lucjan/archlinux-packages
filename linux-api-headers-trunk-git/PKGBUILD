@@ -5,7 +5,7 @@
 
 pkgname=linux-api-headers-trunk-git
 _srcname=linux-stable-rc
-pkgver=4.13.3.r0.g56b9b16136e2
+pkgver=4.13.5.0.g06b0d88bfe61
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ pkgver() {
   cd "${_srcname}"
   
 
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  git describe --long | sed -E 's/^v//;s/([^-]*-g)/\1/;s/-/./g;s/\.rc/rc/'
 }
    
 
