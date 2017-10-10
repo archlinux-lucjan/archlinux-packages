@@ -72,6 +72,8 @@
 
 - sddm-git
 
+- toxcore-git
+
 # Download:
 
 ```

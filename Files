@@ -101,9 +101,13 @@
 │   └── PKGBUILD
 ├── qtox-git
 │   └── PKGBUILD
-└── sddm-git
+├── sddm-git
+│   ├── PKGBUILD
+│   ├── sddm.sysusers
+│   └── sddm.tmpfiles
+└── toxcore-git
     ├── PKGBUILD
-    ├── sddm.sysusers
-    └── sddm.tmpfiles
+    ├── toxcore.conf
+    └── toxcore.install
 
-36 directories, 70 files
+37 directories, 73 files
