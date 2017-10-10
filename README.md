@@ -78,6 +78,13 @@
 git clone https://github.com/sirlucjan/archlinux-packages.git
 
 ```
+or
+
+```
+git clone https://gitlab.com/sirlucjan/archlinux-packages.git
+
+```
+
 # Install:
 
 ```
