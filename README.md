@@ -70,6 +70,8 @@
 
 - qtox-git
 
+- sddm-dev-git
+
 - sddm-git
 
 - toxcore-git

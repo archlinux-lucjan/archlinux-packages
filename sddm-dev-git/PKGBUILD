@@ -2,8 +2,8 @@
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgbase="sddm"
-pkgname="$_pkgbase-git"
-pkgver=0.16.0.1.gd19d874
+pkgname="$_pkgbase-dev-git"
+pkgver=0.16.0.123.g30cfd02
 pkgrel=1
 pkgdesc="The Simple Desktop Display Manager"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ conflicts=("$_pkgbase")
 backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm'
         'etc/sddm.conf')
-source=("git://github.com/sddm/sddm.git#branch=master"
+source=("git://github.com/sddm/sddm.git#branch=develop"
 sddm.sysusers sddm.tmpfiles)
 sha256sums=('SKIP'
             '421d6d137a32b7a749427f4ab770e5adeef7dac66b138ab6e216ddc0cf4e2cb6'
@@ -44,9 +44,9 @@ build() {
 }
 
 package() {
-        cd build
-        make DESTDIR="${pkgdir}" install
+  cd build
+  make DESTDIR="${pkgdir}" install
 
-        install -Dm644 "$srcdir"/sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
-        install -Dm644 "$srcdir"/sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
+  install -Dm644 "$srcdir"/sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
+  install -Dm644 "$srcdir"/sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
 }
