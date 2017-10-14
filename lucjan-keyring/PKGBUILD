@@ -1,0 +1,28 @@
+# Based on the file created for Arch Linux by:
+# Pierre Schmitz <pierre@archlinux.de>
+
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+
+pkgname=lucjan-keyring
+pkgver=20171014.0.g5869cf1
+pkgrel=1
+pkgdesc="Lucjan's PGP keyring"
+arch=('any')
+license=('GPL')
+install="${pkgname}.install"
+source=(
+        "git://github.com/archlinux-lucjan/lucjan-keyring.git"
+        #"git://gitlab.com/archlinux-lucjan/lucjan-keyring.git"
+        )
+sha256sums=('SKIP')
+
+pkgver() {
+        cd "${pkgname}"
+        git describe --long | sed 's/^v//;s/-/./g'
+
+}
+            
+package() {
+	cd "${pkgname}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+} 

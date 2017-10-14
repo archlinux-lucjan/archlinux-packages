@@ -44,6 +44,8 @@
 
 - llvm-svn
 
+- lucjan-keyring
+
 - mesa-dev-git
 
 - mesa-rc-git
