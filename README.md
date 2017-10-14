@@ -46,6 +46,8 @@
 
 - lucjan-keyring
 
+- lucjan-keyring-git
+
 - mesa-dev-git
 
 - mesa-rc-git

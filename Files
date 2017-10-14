@@ -69,6 +69,9 @@
 ├── lucjan-keyring
 │   ├── PKGBUILD
 │   └── lucjan-keyring.install
+├── lucjan-keyring-git
+│   ├── PKGBUILD
+│   └── lucjan-keyring.install
 ├── mesa-dev-git
 │   ├── 0002-glvnd-fix-gl-dot-pc.patch
 │   ├── LICENSE
@@ -117,4 +120,4 @@
     ├── toxcore.conf
     └── toxcore.install
 
-39 directories, 78 files
+40 directories, 80 files
