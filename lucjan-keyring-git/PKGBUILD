@@ -5,7 +5,7 @@
 
 pkgname=lucjan-keyring-git
 _pkgname=lucjan-keyring
-pkgver=20171014.0.g5869cf1
+pkgver=20171014.0.gf127370
 pkgrel=1
 pkgdesc="Lucjan's PGP keyring"
 arch=('any')
