@@ -21,8 +21,10 @@ sha256sums=('SKIP')
 
 pkgver() {
         cd "${_pkgname}"
+        ### use git describe
         git describe --long | sed 's/^v//;s/-/./g'
-
+        ### use another method
+        # echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
             
 package() {
