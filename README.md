@@ -1,5 +1,9 @@
 # Collection of PKGBUILDS for Achlinux:
 
+- cmake-git
+
+- cmake-release-git
+
 - freebsd-manpages
 
 - gcc-dev-git
