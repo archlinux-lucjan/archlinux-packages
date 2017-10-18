@@ -13,10 +13,11 @@ optdepends=('qca-gnupg: encrypted client-to-client connection')
 provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver" "psi-plus-git=$pkgver")
 replaces=('psi-plus' 'psi-plus-git')
 conflicts=('psi-plus' 'psi-plus-git')
-source=('git://github.com/psi-plus/psi-plus-snapshots' 'git://github.com/psi-plus/main.git' 'conf.diff')
+source=('git://github.com/psi-plus/psi-plus-snapshots' 'git://github.com/psi-plus/main.git' 'conf.diff' 'join.patch')
 md5sums=('SKIP'
          'SKIP'
-         '238c14567b9b74670de4df84a3b6cdab')
+         '238c14567b9b74670de4df84a3b6cdab'
+         '52af0da67fbd783ac80ccfb544a04aee')
 pkgver() {
   cd psi-plus-snapshots
   git describe --long --tags | sed 's/^v//;s/-/./g'
