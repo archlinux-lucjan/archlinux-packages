@@ -11,7 +11,6 @@ depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5' 'lib
 makedepends=('git' 'patch' 'qconf-git')
 optdepends=('qca-gnupg: encrypted client-to-client connection')
 provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver" "psi-plus-git=$pkgver")
-replaces=('psi-plus' 'psi-plus-git')
 conflicts=('psi-plus' 'psi-plus-git')
 source=('git://github.com/psi-plus/psi-plus-snapshots' 'git://github.com/psi-plus/main.git' 'conf.diff' 'join.patch')
 md5sums=('SKIP'
