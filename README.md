@@ -70,6 +70,8 @@
 
 - psi-plus-resources-git
 
+- psi-plus-webkit-git
+
 - qconf-git
 
 - qtox-git

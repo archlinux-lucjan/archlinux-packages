@@ -103,6 +103,9 @@
 │   └── psiplugin.pri
 ├── psi-plus-resources-git
 │   └── PKGBUILD
+├── psi-plus-webkit-git
+│   ├── PKGBUILD
+│   └── conf.diff
 ├── qconf-git
 │   └── PKGBUILD
 ├── qtox-git
@@ -120,4 +123,4 @@
     ├── toxcore.conf
     └── toxcore.install
 
-40 directories, 80 files
+41 directories, 82 files
