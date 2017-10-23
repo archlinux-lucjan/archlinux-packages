@@ -52,6 +52,8 @@
 │   └── PKGBUILD
 ├── libassuan-git
 │   └── PKGBUILD
+├── libclc-git
+│   └── PKGBUILD
 ├── libgcrypt-git
 │   └── PKGBUILD
 ├── libgpg-error-git
@@ -128,4 +130,4 @@
     ├── toxcore.conf
     └── toxcore.install
 
-43 directories, 85 files
+44 directories, 86 files

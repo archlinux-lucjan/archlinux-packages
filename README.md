@@ -34,6 +34,8 @@
 
 - libassuan-git
 
+- libclc-git
+
 - libgcrypt-git
 
 - libgpg-error-git
