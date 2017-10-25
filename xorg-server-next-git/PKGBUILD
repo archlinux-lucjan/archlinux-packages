@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
 url="http://cgit.freedesktop.org/xorg/xserver/"
-makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
+makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
              'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont2' 'renderproto' 'libpciaccess' 'libxv'
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
@@ -110,7 +110,7 @@ package_xorg-server-common-next-git() {
 
 package_xorg-server-next-git() {
   pkgdesc="Xorg X server - Git"
-  depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind dbus libgl xf86-input-libinput
+  ddepends=(libepoxy libxfont2 pixman xorg-server-common-next-git libunwind dbus libgl xf86-input-libinput
            libpciaccess libdrm libxshmfence) # FS#52949
 
   # see src/xserver/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
@@ -119,7 +119,7 @@ package_xorg-server-next-git() {
     provides+=("X-ABI-${VAR}_VERSION=$(grep -Po "${VAR}_V.*\(\K[^)]*" xserver/hw/xfree86/common/xf86Module.h |& sed 's/, /./')")
   done
   provides+=("xorg-server=$pkgver" 'x-server')
-  conflicts=('xorg-server' 'nvidia-utils<375.26-3' 'glamor-egl' 'xf86-video-modesetting')
+  conflicts=('xorg-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
 
@@ -150,7 +150,7 @@ package_xorg-server-next-git() {
 
 package_xorg-server-xephyr-next-git() {
   pkgdesc="A nested X server that runs as an X application - Git"
-  depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common-git xcb-util-image
+  depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common xcb-util-image
            xcb-util-renderutil xcb-util-wm xcb-util-keysyms)
   provides=(xorg-server-xephyr=$pkgver)
   conflicts=(xorg-server-xephyr)
