@@ -66,6 +66,14 @@
 
 - netbsd-pkgsrc
 
+- pacman-contrib-git
+
+- pacman-dev-git
+
+- pacman-git
+
+- pacman-stable-git
+
 - pkgconf-git
 
 - psi-plus-git
@@ -85,6 +93,10 @@
 - sddm-dev-git
 
 - sddm-git
+
+- systemd-git
+
+- systemd-stable-git
 
 - toxcore-git
 

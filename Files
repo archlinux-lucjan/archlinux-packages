@@ -96,6 +96,17 @@
 │   ├── LICENSE
 │   ├── PKGBUILD
 │   └── bootstrap.install
+├── pacman-contrib-git
+│   └── PKGBUILD
+├── pacman-dev-git
+│   └── PKGBUILD
+├── pacman-git
+│   └── PKGBUILD
+├── pacman-stable-git
+│   ├── PKGBUILD
+│   ├── makepkg.conf
+│   ├── pacman.conf.i686
+│   └── pacman.conf.x86_64
 ├── pkgconf-git
 │   └── PKGBUILD
 ├── psi-plus-git
@@ -125,9 +136,35 @@
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
+├── systemd-git
+│   ├── PKGBUILD
+│   ├── arch.conf
+│   ├── initcpio-hook-udev
+│   ├── initcpio-install-systemd
+│   ├── initcpio-install-udev
+│   ├── loader.conf
+│   ├── systemd-git.install
+│   ├── systemd-hwdb.hook
+│   ├── systemd-sysusers.hook
+│   ├── systemd-tmpfiles.hook
+│   ├── systemd-update.hook
+│   └── systemd-user.pam
+├── systemd-stable-git
+│   ├── PKGBUILD
+│   ├── arch.conf
+│   ├── initcpio-hook-udev
+│   ├── initcpio-install-systemd
+│   ├── initcpio-install-udev
+│   ├── loader.conf
+│   ├── systemd-git.install
+│   ├── systemd-hwdb.hook
+│   ├── systemd-sysusers.hook
+│   ├── systemd-tmpfiles.hook
+│   ├── systemd-update.hook
+│   └── systemd-user.pam
 └── toxcore-git
     ├── PKGBUILD
     ├── toxcore.conf
     └── toxcore.install
 
-44 directories, 86 files
+50 directories, 117 files
