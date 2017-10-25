@@ -1,0 +1,48 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Joel Teichroeb <joel@teichroeb.net>
+# Contributor: Sébastien Luttringer
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+
+pkgname=weston-git
+pkgver=3.0.0.63.g323d4b37
+pkgrel=1
+pkgdesc='Reference implementation of a Wayland compositor'
+arch=('i686' 'x86_64' 'armv7h')
+url='http://wayland.freedesktop.org'
+license=('MIT')
+makedepends=('git')
+depends=('libxkbcommon' 'wayland' 'wayland-protocols' 'mesa'
+         'poppler-glib' 'mtdev' 'libva' 'libinput' 'libxcursor' 'glu' 'cairo'
+         'pixman' 'libunwind' 'pango' 'colord' 'libwebp')
+conflicts=('weston')
+provides=('weston')
+
+source=('git://anongit.freedesktop.org/wayland/weston')
+sha1sums=('SKIP')
+
+pkgver() {
+    cd weston
+
+    git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+build() {
+    cd weston
+    ./autogen.sh 
+    ./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/weston \
+    --enable-libinput-backend \
+    --enable-systemd-login \
+    --enable-systemd-notify \
+    --enable-xwayland \
+    --enable-demo-clients-install
+  make
+}
+
+package() {
+  cd weston
+  make DESTDIR="$pkgdir" install
+  # license
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}

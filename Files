@@ -54,9 +54,16 @@
 │   └── PKGBUILD
 ├── libclc-git
 │   └── PKGBUILD
+├── libdrm-git
+│   ├── COPYING
+│   └── PKGBUILD
 ├── libgcrypt-git
 │   └── PKGBUILD
 ├── libgpg-error-git
+│   └── PKGBUILD
+├── libinput-git
+│   └── PKGBUILD
+├── libinput-stable-git
 │   └── PKGBUILD
 ├── linux-api-headers-experimental-git
 │   └── PKGBUILD
@@ -162,9 +169,29 @@
 │   ├── systemd-tmpfiles.hook
 │   ├── systemd-update.hook
 │   └── systemd-user.pam
-└── toxcore-git
+├── toxcore-git
+│   ├── PKGBUILD
+│   ├── toxcore.conf
+│   └── toxcore.install
+├── wayland-git
+│   └── PKGBUILD
+├── wayland-protocols-git
+│   └── PKGBUILD
+├── wayland-stable-git
+│   └── PKGBUILD
+├── weston-git
+│   └── PKGBUILD
+├── weston-stable-git
+│   └── PKGBUILD
+├── xorg-server-git
+│   ├── PKGBUILD
+│   ├── xorg-server-git.install
+│   ├── xvfb-run
+│   └── xvfb-run.1
+└── xorg-server-next-git
     ├── PKGBUILD
-    ├── toxcore.conf
-    └── toxcore.install
+    ├── xorg-server-git.install
+    ├── xvfb-run
+    └── xvfb-run.1
 
-50 directories, 117 files
+60 directories, 134 files

@@ -1,0 +1,34 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Joel Teichroeb <joel@teichroeb.net>
+
+pkgname=libinput-stable-git
+pkgver=1.8.3.0.g04287cb
+pkgrel=1
+pkgdesc='A library to handle input devices in Wayland compositors'
+arch=(i686 x86_64)
+url='http://freedesktop.org/wiki/Software/libinput/'
+provides=("libinput=${pkgver}")
+license=('MIT')
+depends=('mtdev' 'systemd' 'libevdev')
+makedepends=('git' 'doxygen' 'graphviz' 'check')
+conflicts=('libinput')
+provides=('libinput')
+source=(git://anongit.freedesktop.org/wayland/libinput#branch=1.8-branch)
+sha1sums=('SKIP')
+
+pkgver() {
+	cd libinput
+	git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+build() {
+	cd libinput
+
+	./autogen.sh --prefix=/usr
+	make
+}
+
+package() {
+	cd libinput
+	make DESTDIR="${pkgdir}" install
+}

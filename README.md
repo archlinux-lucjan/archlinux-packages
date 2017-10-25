@@ -36,9 +36,15 @@
 
 - libclc-git
 
+- libdrm-git
+
 - libgcrypt-git
 
 - libgpg-error-git
+
+- libinput-git
+
+- libinput-stable-git
 
 - linux-api-headers-experimental-git
 
@@ -99,6 +105,22 @@
 - systemd-stable-git
 
 - toxcore-git
+
+- wayland-git
+
+- wayland-protocols-git
+
+- wayland-stable-git
+
+- weston-git
+
+- weston-stable-git
+
+- xf86-video-intel-git
+
+- xorg-server-git
+
+- xorg-server-next-git
 
 # Download:
 
