@@ -183,6 +183,9 @@
 │   └── PKGBUILD
 ├── weston-stable-git
 │   └── PKGBUILD
+├── xf86-video-intel-git
+│   ├── PKGBUILD
+│   └── xf86-video-intel-git.install
 ├── xorg-server-git
 │   ├── PKGBUILD
 │   ├── xorg-server-git.install
@@ -194,4 +197,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-60 directories, 134 files
+61 directories, 136 files
