@@ -23,12 +23,11 @@ optdepends=('libxrandr: for intel-virtual-output'
             'libxtst: for intel-virtual-output'
             'libxss: for intel-virtual-output')
 replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna')
-provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna')
+provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna' 'xf86-video-intel')
 conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24'
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy' 
-           'xf86-video-intel-legacy')
-groups=('xorg-drivers' 'xorg')
-#source=(${url}/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
+           'xf86-video-intel-legacy' 'xf86-video-intel')
+groups=('xorg-drivers')
 source=('git://anongit.freedesktop.org/xorg/driver/xf86-video-intel')
 sha256sums=('SKIP')
 
