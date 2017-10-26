@@ -135,6 +135,8 @@
 │   ├── PKGBUILD
 │   ├── conf.diff
 │   └── join.patch
+├── psi-resources-git
+│   └── PKGBUILD
 ├── psi-webkit-git
 │   └── PKGBUILD
 ├── qconf-git
@@ -203,4 +205,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-64 directories, 139 files
+65 directories, 140 files

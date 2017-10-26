@@ -96,6 +96,8 @@
 
 - psi-plus-webkit-git
 
+- psi-resources-git
+
 - psi-webkit-git
 
 - qconf-git

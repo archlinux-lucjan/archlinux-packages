@@ -1,0 +1,31 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Alexey D. <lq07829icatm@rambler.ru>
+
+pkgname=psi-resources-git
+pkgver=17.06.02.0.gb261bbc
+pkgrel=1
+pkgdesc="Additional iconsets, themes and sounds for Psi (Qt5 build)"
+arch=('any')
+url="http://psi-im.com"
+license=('GPL2')
+depends=('psi-git')
+provides=("psi-resources=$pkgver" "psi-resources-qt5=$pkgver")
+conflicts=("psi-resources" "psi-resources-qt5-git")
+options=('!strip' '!zipman')
+source=('psi-resources::git://github.com/psi-plus/resources.git')
+md5sums=('SKIP')
+
+pkgver() {
+	cd psi-resources
+
+	git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+package() {
+	cd psi-resources
+	install -v -dm755 "$pkgdir/usr/share/psi/"
+	cp -rv * "$pkgdir/usr/share/psi/"
+	# Next files are alreay present in psi base package
+	rm -rf "$pkgdir"/usr/share/psi/sound
+	rm -rf "$pkgdir"/usr/share/psi/themes/chatview
+}
