@@ -116,6 +116,10 @@
 │   └── pacman.conf.x86_64
 ├── pkgconf-git
 │   └── PKGBUILD
+├── psi-git
+│   └── PKGBUILD
+├── psi-l10n-git
+│   └── PKGBUILD
 ├── psi-plus-git
 │   ├── PKGBUILD
 │   ├── conf.diff
@@ -131,6 +135,8 @@
 │   ├── PKGBUILD
 │   ├── conf.diff
 │   └── join.patch
+├── psi-webkit-git
+│   └── PKGBUILD
 ├── qconf-git
 │   └── PKGBUILD
 ├── qtox-git
@@ -197,4 +203,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-61 directories, 136 files
+64 directories, 139 files
