@@ -72,6 +72,8 @@
 
 - netbsd-pkgsrc
 
+- otter-browser-git
+
 - pacman-contrib-git
 
 - pacman-dev-git

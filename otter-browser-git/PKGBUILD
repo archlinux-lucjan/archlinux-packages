@@ -1,0 +1,44 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
+
+pkgname=otter-browser-git
+pkgver=0.9.91.209.gf899acce
+pkgrel=1
+pkgdesc='Otter Browser, project aiming to recreate classic Opera (12.x) UI using Qt5 - git checkout'
+arch=('x86_64' 'i686')
+url='http://otter-browser.org/'
+license=('GPL3')
+provides=('otter-browser')
+conflicts=('otter-browser-weekly' 'otter-browser-beta' 'otter-browser-rc' 'otter-browser' )
+depends=('qt5-webengine' 'qt5-multimedia' 'hicolor-icon-theme' 'desktop-file-utils' 'qt5-webkit' 'qt5-script')
+makedepends=('cmake' 'qt5-tools' 'git')
+optdepends=('hunspell')
+source=('git://github.com/OtterBrowser/otter-browser.git')
+sha256sums=('SKIP')
+
+pkgver() {
+	cd otter-browser/
+
+	git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+build() {
+       cd otter-browser
+
+	#lrelease resources/translations/*.ts
+        cmake -DCMAKE_INSTALL_PREFIX="/usr" 
+        #-DENABLE_QTWEBKIT=OFF
+        #-DENABLE_QTWEBENGINE=OFF
+        make
+}
+
+package() {
+	cd otter-browser/
+
+	install -D -m0644 COPYING ${pkgdir}/usr/share/licenses/otter-browser/COPYING
+
+        make DESTDIR=${pkgdir} install
+
+}
+
+

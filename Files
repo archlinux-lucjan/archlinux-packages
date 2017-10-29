@@ -103,6 +103,8 @@
 │   ├── LICENSE
 │   ├── PKGBUILD
 │   └── bootstrap.install
+├── otter-browser-git
+│   └── PKGBUILD
 ├── pacman-contrib-git
 │   └── PKGBUILD
 ├── pacman-dev-git
@@ -205,4 +207,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-65 directories, 140 files
+66 directories, 141 files
