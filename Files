@@ -1,6 +1,8 @@
 .
 ├── Files
 ├── README.md
+├── clementine-qt5-git
+│   └── PKGBUILD
 ├── cmake-git
 │   └── PKGBUILD
 ├── cmake-release-git
@@ -207,4 +209,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-66 directories, 141 files
+67 directories, 142 files

@@ -1,5 +1,7 @@
 # Collection of PKGBUILDS for Achlinux:
 
+- clementine-qt5-git
+
 - cmake-git
 
 - cmake-release-git
