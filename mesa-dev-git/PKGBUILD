@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-headers-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.3.0_devel.95974.7567e3ece8
+pkgver=17.4.0.devel.r97243.g8d8b9d11c9
 pkgrel=1
 groups=('mesagit')
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ md5sums=('5c65a0fe315dd347e09b1f2826a1df5a'
 pkgver() {
     cd mesa
     read -r _ver <VERSION
-    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    echo ${_ver/-/.}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
 }
 
 prepare() {
@@ -149,8 +149,8 @@ package_libva-mesa-driver-dev-git() {
   provides=('libva-mesa-driver')
   conflicts=('libva-mesa-driver')
 
-  install -m755 -d ${pkgdir}/usr/lib
-  cp -rv ${srcdir}/fakeinstall/usr/lib/dri ${pkgdir}/usr/lib
+  install -m755 -d ${pkgdir}/usr/lib/dri
+  cp -av ${srcdir}/fakeinstall/usr/lib/dri/* ${pkgdir}/usr/lib/dri
    
   install -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver/"
@@ -162,8 +162,8 @@ package_mesa-vdpau-dev-git() {
   provides=('mesa-vdpau')
   conflicts=('mesa-vdpau')
 
-  install -m755 -d ${pkgdir}/usr/lib
-  cp -rv ${srcdir}/fakeinstall/usr/lib/vdpau ${pkgdir}/usr/lib
+  install -m755 -d ${pkgdir}/usr/lib/vdpau
+  cp -av ${srcdir}/fakeinstall/usr/lib/vdpau/* ${pkgdir}/usr/lib/vdpau
    
   install -m755 -d "${pkgdir}/usr/share/licenses/mesa-vdpau"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vdpau/"
