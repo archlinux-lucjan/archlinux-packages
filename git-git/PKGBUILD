@@ -2,7 +2,7 @@
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=git-git
-pkgver=2.15.0.rc2.11.gc52ca88430
+pkgver=2.15.0.0.gcb5918aa0d
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('i686' 'x86_64')
@@ -22,7 +22,6 @@ optdepends=('tk: gitk and git gui'
             'perl-cgi: gitweb (web interface) support'
             'python2: various helper scripts'
             'subversion: git svn'
-            'cvsps2: git cvsimport'
             'gnome-keyring: GNOME keyring credential helper')
 conflicts=('git' 'git-dev-git' 'git-test-git' 'git-main-git')
 provides=('git')
