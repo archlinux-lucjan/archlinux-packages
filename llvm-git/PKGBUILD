@@ -4,7 +4,7 @@
 pkgbase=llvm-git
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git' 'clang-git' 'clang-tools-extra-git')
 pkgdesc='Low Level Virtual Machine (git version)'
-pkgver=5.0.0.r151382.g8b755a3a21e
+pkgver=6.0.0.r156320.g2452271635f
 pkgrel=1
 groups=('mesagit')
 arch=('i686' 'x86_64')
@@ -50,6 +50,11 @@ prepare() {
 
 build() {
   cd "$srcdir/llvm/build"
+  
+  # this will fix libclc-git that doesn't buit with clang-6.0 and -fno-plt (exposed through llvm-config)
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
 
   #  -DLLVM_BUILD_DOCS=ON \
   cmake \

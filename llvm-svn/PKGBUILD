@@ -4,7 +4,7 @@
 pkgbase=llvm-svn
 pkgname=('llvm-svn' 'llvm-libs-svn' 'llvm-ocaml-svn' 'clang-svn' 'clang-tools-extra-svn')
 pkgdesc='Low Level Virtual Machine (svn version)'
-pkgver=5.0.0svn_r305462
+pkgver=6.0.0svn.r317099
 pkgrel=1
 groups=('mesagit')
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ pkgver() {
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
              END { print "\n" }' \
-        CMakeLists.txt)_r$(svnversion | tr -d [A-z])
+        CMakeLists.txt).r$(svnversion | tr -d [A-z])
 }
 
 prepare() {
@@ -50,6 +50,11 @@ prepare() {
 
 build() {
   cd "$srcdir/llvm/build"
+  
+  # this will fix libclc-git that doesn't buit with clang-6.0 and -fno-plt (exposed through llvm-config)
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
 
   #  -DLLVM_BUILD_DOCS=ON \
   cmake \
