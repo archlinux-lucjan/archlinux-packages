@@ -28,6 +28,10 @@
 
 - gpgme-git
 
+- kdevelop-dev-git
+
+- kdevelop-next-git
+
 - konversation-git
 
 - konversation-stable-git

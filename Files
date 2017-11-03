@@ -46,6 +46,10 @@
 │   └── install
 ├── gpgme-git
 │   └── PKGBUILD
+├── kdevelop-dev-git
+│   └── PKGBUILD
+├── kdevelop-next-git
+│   └── PKGBUILD
 ├── konversation-git
 │   └── PKGBUILD
 ├── konversation-stable-git
@@ -209,4 +213,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-67 directories, 142 files
+69 directories, 144 files
