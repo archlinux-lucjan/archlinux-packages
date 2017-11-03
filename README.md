@@ -28,6 +28,10 @@
 
 - gpgme-git
 
+- kdesvn-git
+
+- kdesvn-stable-git
+
 - kdevelop-dev-git
 
 - kdevelop-next-git

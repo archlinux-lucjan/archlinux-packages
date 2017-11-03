@@ -46,6 +46,10 @@
 │   └── install
 ├── gpgme-git
 │   └── PKGBUILD
+├── kdesvn-git
+│   └── PKGBUILD
+├── kdesvn-stable-git
+│   └── PKGBUILD
 ├── kdevelop-dev-git
 │   └── PKGBUILD
 ├── kdevelop-next-git
@@ -213,4 +217,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-69 directories, 144 files
+71 directories, 146 files
