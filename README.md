@@ -126,6 +126,10 @@
 
 - toxcore-git
 
+- utox-dev-git
+
+- utox-git
+
 - wayland-git
 
 - wayland-protocols-git
