@@ -1,5 +1,7 @@
 # Collection of PKGBUILDS for Achlinux:
 
+- cantata-git
+
 - clementine-qt5-git
 
 - cmake-git
