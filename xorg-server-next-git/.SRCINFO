@@ -4,7 +4,6 @@ pkgbase = xorg-server-next-git
 	pkgver = 1.19.5.0.gb96e982e3
 	pkgrel = 1
 	url = http://cgit.freedesktop.org/xorg/xserver/
-	arch = i686
 	arch = x86_64
 	groups = xorg
 	license = custom

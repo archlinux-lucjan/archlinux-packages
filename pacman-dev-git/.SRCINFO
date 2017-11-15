@@ -5,7 +5,6 @@ pkgbase = pacman-dev-git
 	pkgver = 5.0.1.185.gb4a197a6
 	pkgrel = 1
 	url = http://www.archlinux.org/pacman/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	checkdepends = python2

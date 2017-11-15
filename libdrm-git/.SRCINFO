@@ -5,7 +5,6 @@ pkgbase = libdrm-git
 	pkgver = 2.4.85.2.g61ff9779
 	pkgrel = 1
 	url = http://dri.freedesktop.org/
-	arch = i686
 	arch = x86_64
 	license = custom
 	checkdepends = cairo

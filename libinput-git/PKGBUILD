@@ -6,7 +6,7 @@ _pkgname=libinput
 pkgver=1.9.0.4.g3e9e0e2
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='http://freedesktop.org/wiki/Software/libinput/'
 provides=("libinput=${pkgver}")
 license=('MIT')

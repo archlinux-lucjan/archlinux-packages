@@ -9,7 +9,7 @@ pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=17.4.0.devel.r97243.g8d8b9d11c9
 pkgrel=1
 groups=('mesagit')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto'
 	     'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn' 'systemd'
 	     'libomxil-bellagio' 'libglvnd' 'libunwind' 'lm_sensors' 'libclc-git' 'clang-svn' 'git')

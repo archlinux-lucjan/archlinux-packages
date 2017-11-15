@@ -4,7 +4,6 @@ pkgbase = xorg-server-git
 	pkgver = 1.19.0.462.g68d95e759
 	pkgrel = 1
 	url = http://cgit.freedesktop.org/xorg/xserver/
-	arch = i686
 	arch = x86_64
 	groups = xorg
 	license = custom

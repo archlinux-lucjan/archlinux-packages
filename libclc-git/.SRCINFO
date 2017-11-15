@@ -5,7 +5,6 @@ pkgbase = libclc-git
 	pkgver = 20171022.r399.gfabea1e
 	pkgrel = 1
 	url = http://libclc.llvm.org/
-	arch = i686
 	arch = x86_64
 	groups = mesagit
 	license = MIT

@@ -5,7 +5,6 @@ pkgbase = utox-git
 	pkgver = 0.15.0.r204.g257029d8
 	pkgrel = 1
 	url = https://github.com/uTox/uTox
-	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = armv6h

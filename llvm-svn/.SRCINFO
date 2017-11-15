@@ -5,7 +5,6 @@ pkgbase = llvm-svn
 	pkgver = 6.0.0svn.r317099
 	pkgrel = 1
 	url = http://llvm.org
-	arch = i686
 	arch = x86_64
 	groups = mesagit
 	license = custom:University of Illinois

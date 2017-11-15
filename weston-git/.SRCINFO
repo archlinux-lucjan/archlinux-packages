@@ -5,7 +5,6 @@ pkgbase = weston-git
 	pkgver = 3.0.0.63.g323d4b37
 	pkgrel = 1
 	url = http://wayland.freedesktop.org
-	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT

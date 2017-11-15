@@ -5,7 +5,6 @@ pkgbase = libassuan-git
 	pkgver = 2.4.3.r7.g87c2bb5
 	pkgrel = 1
 	url = http://www.gnupg.org/related_software/libassuan
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libgpg-error

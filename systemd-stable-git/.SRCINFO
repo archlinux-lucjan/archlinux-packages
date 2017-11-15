@@ -4,7 +4,6 @@ pkgbase = systemd-stable-git
 	pkgver = 235.8.g7ba74d5f9
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
-	arch = i686
 	arch = x86_64
 	makedepends = acl
 	makedepends = cryptsetup

@@ -5,7 +5,6 @@ pkgbase = kdesvn-git
 	pkgver = 2.0.0.78.g7635d9ad
 	pkgrel = 1
 	url = http://projects.kde.org/kdesvn
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git

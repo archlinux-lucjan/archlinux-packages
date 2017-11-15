@@ -7,7 +7,6 @@ pkgbase = xf86-video-intel-git
 	epoch = 1
 	url = https://01.org/linuxgraphics
 	install = xf86-video-intel-git.install
-	arch = i686
 	arch = x86_64
 	groups = xorg-drivers
 	license = custom

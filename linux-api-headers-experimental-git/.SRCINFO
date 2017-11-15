@@ -5,7 +5,6 @@ pkgbase = linux-api-headers-experimental-git
 	pkgver = 4.13.5.0.g06b0d88bfe61
 	pkgrel = 1
 	url = http://www.gnu.org/software/libc
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	provides = linux-api-headers=$pkgver

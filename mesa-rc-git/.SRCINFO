@@ -5,7 +5,6 @@ pkgbase = mesa-rc-git
 	pkgver = 17.3.0.rc2.r96974.g3eb187f376
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
-	arch = i686
 	arch = x86_64
 	groups = mesagit
 	license = custom

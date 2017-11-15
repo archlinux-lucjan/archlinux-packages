@@ -5,7 +5,6 @@ pkgbase = gcc-git
 	pkgver = 7.2.1.r153884.8e839bc5767
 	pkgrel = 1
 	url = http://gcc.gnu.org
-	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL

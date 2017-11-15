@@ -8,7 +8,7 @@ _srcname=linux-stable
 pkgver=4.13.5.0.g06b0d88bfe61
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
 provides=('linux-api-headers=$pkgver')

@@ -5,7 +5,6 @@ pkgbase = gpgme-git
 	pkgver = 1.9.0.r78.g4632adf4
 	pkgrel = 1
 	url = http://www.gnupg.org/related_software/gpgme/
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = libgpg-error

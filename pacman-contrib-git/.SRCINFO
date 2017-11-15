@@ -5,7 +5,6 @@ pkgbase = pacman-contrib-git
 	pkgver = 0.0.1.15.gb61b9b2
 	pkgrel = 1
 	url = https://git.archlinux.org/pacman-contrib.git
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = asciidoc

@@ -5,7 +5,6 @@ pkgbase = llvm-git
 	pkgver = 6.0.0.r156320.g2452271635f
 	pkgrel = 1
 	url = http://llvm.org
-	arch = i686
 	arch = x86_64
 	groups = mesagit
 	license = custom:University of Illinois
