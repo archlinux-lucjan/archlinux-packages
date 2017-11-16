@@ -123,11 +123,6 @@
 │   └── PKGBUILD
 ├── pacman-git
 │   └── PKGBUILD
-├── pacman-stable-git
-│   ├── PKGBUILD
-│   ├── makepkg.conf
-│   ├── pacman.conf.i686
-│   └── pacman.conf.x86_64
 ├── pkgconf-git
 │   └── PKGBUILD
 ├── psi-git
@@ -223,4 +218,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-74 directories, 149 files
+73 directories, 145 files

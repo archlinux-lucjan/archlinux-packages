@@ -92,8 +92,6 @@
 
 - pacman-git
 
-- pacman-stable-git
-
 - pkgconf-git
 
 - psi-git
