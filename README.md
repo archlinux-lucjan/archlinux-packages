@@ -84,6 +84,12 @@
 
 - netbsd-pkgsrc
 
+- networkmanager-git
+
+- networkmanager-stable-git
+
+- networkmanager-test-git
+
 - otter-browser-git
 
 - pacman-contrib-git

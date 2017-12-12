@@ -115,6 +115,18 @@
 │   ├── LICENSE
 │   ├── PKGBUILD
 │   └── bootstrap.install
+├── networkmanager-git
+│   ├── 20-connectivity.conf
+│   ├── NetworkManager.conf
+│   └── PKGBUILD
+├── networkmanager-stable-git
+│   ├── 20-connectivity.conf
+│   ├── NetworkManager.conf
+│   └── PKGBUILD
+├── networkmanager-test-git
+│   ├── 20-connectivity.conf
+│   ├── NetworkManager.conf
+│   └── PKGBUILD
 ├── otter-browser-git
 │   └── PKGBUILD
 ├── pacman-contrib-git
@@ -218,4 +230,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-73 directories, 145 files
+76 directories, 154 files
