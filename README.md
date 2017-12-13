@@ -44,6 +44,10 @@
 
 - krusader-git
 
+- ktorrent-git
+
+- ktorrent-stable-git
+
 - libassuan-git
 
 - libclc-git

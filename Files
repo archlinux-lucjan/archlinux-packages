@@ -62,6 +62,10 @@
 │   └── PKGBUILD
 ├── krusader-git
 │   └── PKGBUILD
+├── ktorrent-git
+│   └── PKGBUILD
+├── ktorrent-stable-git
+│   └── PKGBUILD
 ├── libassuan-git
 │   └── PKGBUILD
 ├── libclc-git
@@ -230,4 +234,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-76 directories, 154 files
+78 directories, 156 files
