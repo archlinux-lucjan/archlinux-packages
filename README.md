@@ -62,6 +62,10 @@
 
 - libinput-stable-git
 
+- libktorrent-git
+
+- libktorrent-stable-git
+
 - linux-api-headers-experimental-git
 
 - linux-api-headers-trunk-git

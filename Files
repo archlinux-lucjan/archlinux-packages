@@ -81,6 +81,10 @@
 │   └── PKGBUILD
 ├── libinput-stable-git
 │   └── PKGBUILD
+├── libktorrent-git
+│   └── PKGBUILD
+├── libktorrent-stable-git
+│   └── PKGBUILD
 ├── linux-api-headers-experimental-git
 │   └── PKGBUILD
 ├── linux-api-headers-trunk-git
@@ -234,4 +238,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-78 directories, 156 files
+80 directories, 158 files

@@ -1,0 +1,43 @@
+# $Id$
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=libktorrent-stable-git
+_pkgname=libktorrent
+pkgver=2.1.0.1.gbcb17b6
+pkgrel=1
+pkgdesc="A BitTorrent protocol implementation"
+arch=(x86_64)
+url="https://www.kde.org/applications/internet/ktorrent/"
+license=(GPL2)
+depends=(kio qca-qt5)
+makedepends=(extra-cmake-modules python boost doxygen)
+conflicts=('libktorrent')
+provides=('libktorrent')
+source=('git://anongit.kde.org/libktorrent#branch=2.1')
+sha1sums=('SKIP')
+
+prepare() {
+  mkdir -p build
+}
+
+pkgver() {
+  cd $_pkgname
+  git describe  --long | sed 's/^v//;s/-/./g'
+}
+
+build() {
+  cd build
+  cmake ../$_pkgname \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_LIBDIR=lib
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}
