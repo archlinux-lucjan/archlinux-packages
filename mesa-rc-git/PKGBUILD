@@ -6,7 +6,7 @@
 pkgbase=mesa-rc-git
 pkgname=('opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-headers-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.3.0.rc2.r96974.g3eb187f376
+pkgver=17.3.1.r97134.gf66496d291
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -42,7 +42,6 @@ build() {
 
   ./autogen.sh --prefix=/usr \
     --sysconfdir=/etc \
-    --with-dri-driverdir=/usr/lib/xorg/modules/dri \
     --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,swr \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
     --with-platforms=x11,drm,wayland \
@@ -150,7 +149,7 @@ package_libva-mesa-driver-rc-git() {
   conflicts=('libva-mesa-driver')
 
   install -m755 -d ${pkgdir}/usr/lib/dri
-  cp -av ${srcdir}/fakeinstall/usr/lib/dri/* ${pkgdir}/usr/lib/dri
+  cp -av ${srcdir}/fakeinstall/usr/lib/dri/*_drv_video.so ${pkgdir}/usr/lib/dri
    
   install -m755 -d "${pkgdir}/usr/share/licenses/libva-mesa-driver"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/libva-mesa-driver/"
@@ -186,9 +185,9 @@ package_mesa-rc-git() {
   install -m755 -d ${pkgdir}/usr/share/glvnd/egl_vendor.d
   cp -rv ${srcdir}/fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json ${pkgdir}/usr/share/glvnd/egl_vendor.d/
 
-  install -m755 -d ${pkgdir}/usr/lib/xorg/modules/dri
+  install -m755 -d ${pkgdir}/usr/lib/dri
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
-  cp -av ${srcdir}/fakeinstall/usr/lib/xorg/modules/dri/* ${pkgdir}/usr/lib/xorg/modules/dri
+  cp -av ${srcdir}/fakeinstall/usr/lib/dri/*_dri.so ${pkgdir}/usr/lib/dri
    
   cp -rv ${srcdir}/fakeinstall/usr/lib/bellagio  ${pkgdir}/usr/lib
   cp -rv ${srcdir}/fakeinstall/usr/lib/d3d  ${pkgdir}/usr/lib
