@@ -5,10 +5,10 @@
 
 pkgname=linux-api-headers-experimental-git
 _srcname=linux-stable
-pkgver=4.14.0.gbebc6082da0a
-pkgrel=1
+pkgver=4.14.10.0.gb8ce8232fcc3
+pkgrel=2
 pkgdesc="Kernel headers sanitized for use in userspace"
-arch=('x86_64')
+arch=('any')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
 provides=('linux-api-headers=$pkgver')
@@ -17,26 +17,25 @@ source=('git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#b
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_srcname}"
+  cd ${_srcname}
 
   git describe --long --tags | sed 's/^v//;s/-/./g'
 }
    
-
 build() {
-  cd "${_srcname}"
+  cd ${_srcname}
 
   make mrproper
   make headers_check
 }
 
 package() {
-  cd "${_srcname}"
-  make INSTALL_HDR_PATH=${pkgdir}/usr headers_install
+  cd ${_srcname}
+  make INSTALL_HDR_PATH="$pkgdir/usr" headers_install
 
   # use headers from libdrm
-  rm -r ${pkgdir}/usr/include/drm
+  rm -r "$pkgdir/usr/include/drm"
   
   # clean-up unnecessary files generated during install
-  find ${pkgdir} \( -name .install -o -name ..install.cmd \) -delete
+  find "$pkgdir" \( -name .install -o -name ..install.cmd \) -delete
 }
