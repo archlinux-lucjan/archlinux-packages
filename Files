@@ -1,6 +1,4 @@
 .
-├── Files
-├── README.md
 ├── cantata-git
 │   └── PKGBUILD
 ├── clementine-qt5-git
@@ -9,47 +7,48 @@
 │   └── PKGBUILD
 ├── cmake-release-git
 │   └── PKGBUILD
+├── Files
 ├── freebsd-manpages
 │   └── PKGBUILD
 ├── gcc-dev-git
-│   ├── PKGBUILD
 │   ├── c89
-│   └── c99
+│   ├── c99
+│   └── PKGBUILD
 ├── gcc-git
-│   ├── PKGBUILD
 │   ├── c89
-│   └── c99
+│   ├── c99
+│   └── PKGBUILD
 ├── gdb-git
 │   └── PKGBUILD
 ├── gdb-stable-git
 │   └── PKGBUILD
 ├── git-dev-git
-│   ├── PKGBUILD
-│   ├── git-daemon.socket
 │   ├── git-daemon@.service
+│   ├── git-daemon.socket
 │   ├── git-git.install
-│   └── git-sysusers.conf
+│   ├── git-sysusers.conf
+│   └── PKGBUILD
 ├── git-git
-│   ├── PKGBUILD
-│   ├── git-daemon.socket
 │   ├── git-daemon@.service
+│   ├── git-daemon.socket
 │   ├── git-git.install
-│   └── git-sysusers.conf
+│   ├── git-sysusers.conf
+│   └── PKGBUILD
 ├── git-main-git
-│   ├── PKGBUILD
-│   ├── git-daemon.socket
 │   ├── git-daemon@.service
+│   ├── git-daemon.socket
 │   ├── git-git.install
-│   └── git-sysusers.conf
+│   ├── git-sysusers.conf
+│   └── PKGBUILD
 ├── git-test-git
-│   ├── PKGBUILD
-│   ├── git-daemon.socket
 │   ├── git-daemon@.service
+│   ├── git-daemon.socket
 │   ├── git-git.install
-│   └── git-sysusers.conf
+│   ├── git-sysusers.conf
+│   └── PKGBUILD
 ├── gnupg-git
-│   ├── PKGBUILD
-│   └── install
+│   ├── install
+│   └── PKGBUILD
 ├── gpgme-git
 │   └── PKGBUILD
 ├── kdesvn-git
@@ -96,19 +95,19 @@
 ├── linux-firmware-git
 │   └── PKGBUILD
 ├── llvm-git
-│   ├── PKGBUILD
 │   ├── llvm-Config-llvm-config.h
-│   └── llvm.patch
+│   ├── llvm.patch
+│   └── PKGBUILD
 ├── llvm-svn
-│   ├── PKGBUILD
 │   ├── llvm-Config-llvm-config.h
-│   └── llvm.patch
+│   ├── llvm.patch
+│   └── PKGBUILD
 ├── lucjan-keyring
-│   ├── PKGBUILD
-│   └── lucjan-keyring.install
+│   ├── lucjan-keyring.install
+│   └── PKGBUILD
 ├── lucjan-keyring-git
-│   ├── PKGBUILD
-│   └── lucjan-keyring.install
+│   ├── lucjan-keyring.install
+│   └── PKGBUILD
 ├── mesa-dev-git
 │   ├── 0002-glvnd-fix-gl-dot-pc.patch
 │   ├── LICENSE
@@ -124,9 +123,9 @@
 ├── modemmanager-test-git
 │   └── PKGBUILD
 ├── netbsd-pkgsrc
+│   ├── bootstrap.install
 │   ├── LICENSE
-│   ├── PKGBUILD
-│   └── bootstrap.install
+│   └── PKGBUILD
 ├── networkmanager-git
 │   ├── 20-connectivity.conf
 │   ├── NetworkManager.conf
@@ -149,14 +148,10 @@
 │   └── PKGBUILD
 ├── pkgconf-git
 │   └── PKGBUILD
-├── psi-git
-│   └── PKGBUILD
-├── psi-l10n-git
-│   └── PKGBUILD
 ├── psi-plus-git
-│   ├── PKGBUILD
 │   ├── conf.diff
-│   └── join.patch
+│   ├── join.patch
+│   └── PKGBUILD
 ├── psi-plus-l10n-git
 │   └── PKGBUILD
 ├── psi-plus-plugins-git
@@ -164,18 +159,11 @@
 │   └── psiplugin.pri
 ├── psi-plus-resources-git
 │   └── PKGBUILD
-├── psi-plus-webkit-git
-│   ├── PKGBUILD
-│   ├── conf.diff
-│   └── join.patch
-├── psi-resources-git
-│   └── PKGBUILD
-├── psi-webkit-git
-│   └── PKGBUILD
 ├── qconf-git
 │   └── PKGBUILD
 ├── qtox-git
 │   └── PKGBUILD
+├── README.md
 ├── sddm-dev-git
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
@@ -185,12 +173,12 @@
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
 ├── systemd-git
-│   ├── PKGBUILD
 │   ├── arch.conf
 │   ├── initcpio-hook-udev
 │   ├── initcpio-install-systemd
 │   ├── initcpio-install-udev
 │   ├── loader.conf
+│   ├── PKGBUILD
 │   ├── systemd-git.install
 │   ├── systemd-hwdb.hook
 │   ├── systemd-sysusers.hook
@@ -198,12 +186,12 @@
 │   ├── systemd-update.hook
 │   └── systemd-user.pam
 ├── systemd-stable-git
-│   ├── PKGBUILD
 │   ├── arch.conf
 │   ├── initcpio-hook-udev
 │   ├── initcpio-install-systemd
 │   ├── initcpio-install-udev
 │   ├── loader.conf
+│   ├── PKGBUILD
 │   ├── systemd-git.install
 │   ├── systemd-hwdb.hook
 │   ├── systemd-sysusers.hook
@@ -242,4 +230,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-80 directories, 162 files
+75 directories, 155 files

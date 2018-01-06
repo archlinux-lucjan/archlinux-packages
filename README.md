@@ -108,10 +108,6 @@
 
 - pkgconf-git
 
-- psi-git
-
-- psi-l10n-git
-
 - psi-plus-git
 
 - psi-plus-l10n-git
@@ -119,12 +115,6 @@
 - psi-plus-plugins-git
 
 - psi-plus-resources-git
-
-- psi-plus-webkit-git
-
-- psi-resources-git
-
-- psi-webkit-git
 
 - qconf-git
 
