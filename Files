@@ -150,13 +150,11 @@
 │   └── PKGBUILD
 ├── psi-plus-git
 │   ├── join.patch
-│   ├── no-qca-qt4.patch
 │   └── PKGBUILD
 ├── psi-plus-l10n-git
 │   └── PKGBUILD
 ├── psi-plus-plugins-git
-│   ├── PKGBUILD
-│   └── psiplugin.pri
+│   └── PKGBUILD
 ├── psi-plus-resources-git
 │   └── PKGBUILD
 ├── qconf-git
@@ -230,4 +228,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-75 directories, 155 files
+75 directories, 153 files
