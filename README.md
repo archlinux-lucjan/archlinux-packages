@@ -134,6 +134,8 @@
 
 - utox-git
 
+- vault-git
+
 - wayland-git
 
 - wayland-protocols-git

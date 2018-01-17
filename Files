@@ -204,6 +204,13 @@
 │   └── PKGBUILD
 ├── utox-git
 │   └── PKGBUILD
+├── vault-git
+│   ├── PKGBUILD
+│   ├── vault.hcl
+│   ├── vault.install
+│   ├── vault.service
+│   ├── vault.sysusers
+│   └── vault.tmpfiles
 ├── wayland-git
 │   └── PKGBUILD
 ├── wayland-protocols-git
@@ -228,4 +235,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-75 directories, 153 files
+76 directories, 159 files
