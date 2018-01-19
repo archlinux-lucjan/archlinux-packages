@@ -229,10 +229,12 @@
 │   ├── xorg-server-git.install
 │   ├── xvfb-run
 │   └── xvfb-run.1
-└── xorg-server-next-git
-    ├── PKGBUILD
-    ├── xorg-server-git.install
-    ├── xvfb-run
-    └── xvfb-run.1
+├── xorg-server-next-git
+│   ├── PKGBUILD
+│   ├── xorg-server-git.install
+│   ├── xvfb-run
+│   └── xvfb-run.1
+└── yakuake-git
+    └── PKGBUILD
 
-76 directories, 159 files
+77 directories, 160 files

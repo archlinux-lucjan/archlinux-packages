@@ -152,6 +152,8 @@
 
 - xorg-server-next-git
 
+- yakuake-git
+
 # Download:
 
 ```
