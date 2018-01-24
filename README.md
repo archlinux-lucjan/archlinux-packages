@@ -30,6 +30,8 @@
 
 - gpgme-git
 
+- kaffeine-git
+
 - kdesvn-git
 
 - kdesvn-stable-git
