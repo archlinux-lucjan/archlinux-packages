@@ -6,7 +6,7 @@
 pkgbase=mesa-rc-git
 pkgname=('opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-headers-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.3.1.r97134.gf66496d291
+pkgver=18.0.0.rc2.r99378.g99a48002a2
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'd
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(LICENSE
-        'mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=17.3'
+        'mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=18.0'
         '0002-glvnd-fix-gl-dot-pc.patch')
 options=('!libtool')
 md5sums=('5c65a0fe315dd347e09b1f2826a1df5a'

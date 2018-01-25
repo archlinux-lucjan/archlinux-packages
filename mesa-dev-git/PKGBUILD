@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-headers-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.4.0.devel.r98800.gab957243e1
+pkgver=18.1.0.devel.r99467.g785d9a4ed8
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
