@@ -110,6 +110,8 @@
 
 - pkgconf-git
 
+- psi-plus-full-git
+
 - psi-plus-git
 
 - psi-plus-l10n-git
