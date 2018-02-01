@@ -5,15 +5,15 @@
 
 pkgname=linux-api-headers-experimental-git
 _srcname=linux-stable
-pkgver=4.14.10.0.gb8ce8232fcc3
-pkgrel=2
+pkgver=4.15.0.gd8a5b80568a9
+pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
 provides=('linux-api-headers=$pkgver')
 conflicts=('linux-api-headers')
-source=('git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#branch=linux-4.14.y')
+source=('git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#branch=linux-4.15.y')
 md5sums=('SKIP')
 
 pkgver() {
