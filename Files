@@ -129,16 +129,10 @@
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── networkmanager-git
-│   ├── 20-connectivity.conf
-│   ├── NetworkManager.conf
 │   └── PKGBUILD
 ├── networkmanager-stable-git
-│   ├── 20-connectivity.conf
-│   ├── NetworkManager.conf
 │   └── PKGBUILD
 ├── networkmanager-test-git
-│   ├── 20-connectivity.conf
-│   ├── NetworkManager.conf
 │   └── PKGBUILD
 ├── otter-browser-git
 │   └── PKGBUILD
@@ -248,4 +242,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-81 directories, 167 files
+81 directories, 161 files

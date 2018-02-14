@@ -9,23 +9,20 @@
 
 pkgbase=networkmanager-git
 pkgname=(networkmanager-git libnm-git libnm-glib-git)
-pkgver=1.11.1dev.309.gda4388502
+pkgver=1.11.1dev.674.ge27963d17
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://www.gnome.org/projects/NetworkManager/"
 _pppver=2.4.7
-makedepends=(intltool dhclient iptables gobject-introspection gtk-doc
-             "ppp=$_pppver" modemmanager dbus-glib iproute2 nss polkit
-             wpa_supplicant libsoup systemd libgudev libmm-glib rp-pppoe
-             libnewt libndp libteam vala perl-yaml python-gobject git)
+makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
+             dbus-glib iproute2 nss polkit wpa_supplicant libsoup systemd libgudev libmm-glib
+             libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
+             glib2-docs dhcpcd)
 checkdepends=(libx11 python-dbus)
-source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager"
-        NetworkManager.conf 20-connectivity.conf)
-sha256sums=('SKIP'
-            'dd2d3a9c8a08ce961e263e1847453890f1b24c72a806d8c83a5b69b227a5ccec'
-            '1961f50c8ed2668052bb543a29a11ccf8a5a1226473234a915aa139ceb32d472')
+source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager")
+sha256sums=('SKIP')
 
 prepare() {
   mkdir -p libnm{,-glib}/usr/{include,lib/{girepository-1.0,pkgconfig},share/{gir-1.0,gtk-doc/html,vala/vapi}}
@@ -53,6 +50,7 @@ build() {
     --disable-ifnet \
     --disable-ifupdown \
     --disable-lto \
+    --disable-more-logging \
     --disable-more-warnings \
     --disable-static \
     --enable-bluez5-dun \
@@ -68,12 +66,14 @@ build() {
     --enable-teamdctl \
     --enable-wifi \
     --with-config-dhcp-default=internal \
-    --with-config-dns-rc-manager-default=resolvconf \
+    --with-config-dns-rc-manager-default=symlink \
     --with-config-logging-backend-default=journal \
     --with-config-plugins-default=keyfile,ibft \
     --with-crypto=nss \
     --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
     --with-dhclient=/usr/bin/dhclient \
+    --with-dhcpcd-supports-ipv6 \
+    --with-dhcpcd=/usr/bin/dhcpcd \
     --with-dist-version="$pkgver-$pkgrel, Arch Linux" \
     --with-dnsmasq=/usr/bin/dnsmasq \
     --with-dnssec-trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
@@ -96,8 +96,8 @@ build() {
     --with-udev-dir=/usr/lib/udev \
     --with-wext \
     --without-consolekit \
-    --without-dhcpcd \
     --without-libaudit \
+    --without-more-asserts \
     --without-netconfig \
     --without-ofono \
     --without-selinux
@@ -117,10 +117,7 @@ package_networkmanager-git() {
            libnewt libndp libteam)
   optdepends=('dnsmasq: connection sharing'
               'bluez: Bluetooth support'
-              'openresolv: resolvconf support'
               'ppp: dialup connection support'
-              'rp-pppoe: ADSL support'
-              'dhclient: External DHCP client'
               'modemmanager: cellular network support')
   backup=('etc/NetworkManager/NetworkManager.conf')
   conflicts=('networkmanager')
@@ -129,10 +126,19 @@ package_networkmanager-git() {
   cd NetworkManager
   make DESTDIR="$pkgdir" install
 
+  # packaged configuration
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf" <<END
+[connectivity]
+uri=http://www.archlinux.org/check_network_status.txt
+END
+
+  # /etc/NetworkManager
   install -d "$pkgdir"/etc/NetworkManager/{conf,dnsmasq}.d
-  install -m644 ../NetworkManager.conf "$pkgdir/etc/NetworkManager/"
-  install -Dm644 ../20-connectivity.conf \
-    "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf"
+  install -dm700 "$pkgdir/etc/NetworkManager/system-connections"
+  install -m644 /dev/stdin "$pkgdir/etc/NetworkManager/NetworkManager.conf" <<END
+# Configuration file for NetworkManager.
+# See "man 5 NetworkManager.conf" for details.
+END
 
 ### Split libnm
 
