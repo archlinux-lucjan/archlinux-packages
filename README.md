@@ -110,6 +110,8 @@
 
 - pkgconf-git
 
+- psi-plus-clean-full-git
+
 - psi-plus-full-git
 
 - psi-plus-git
