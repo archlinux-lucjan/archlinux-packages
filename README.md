@@ -112,6 +112,8 @@
 
 - psi-plus-clean-full-git
 
+- psi-plus-clean-git
+
 - psi-plus-full-git
 
 - psi-plus-git

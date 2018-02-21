@@ -147,6 +147,9 @@
 ├── psi-plus-clean-full-git
 │   ├── join.patch
 │   └── PKGBUILD
+├── psi-plus-clean-git
+│   ├── join.patch
+│   └── PKGBUILD
 ├── psi-plus-full-git
 │   ├── join.patch
 │   └── PKGBUILD
@@ -245,4 +248,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-82 directories, 163 files
+83 directories, 165 files
