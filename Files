@@ -2,7 +2,9 @@
 ├── cantata-git
 │   └── PKGBUILD
 ├── clementine-qt5-git
-│   └── PKGBUILD
+│   ├── PKGBUILD
+│   ├── spotify_blob.patch
+│   └── spotify_install.patch
 ├── cmake-git
 │   └── PKGBUILD
 ├── cmake-release-git
@@ -248,4 +250,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-83 directories, 165 files
+83 directories, 167 files
