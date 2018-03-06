@@ -110,6 +110,8 @@
 
 - pkgconf-git
 
+- psi-clean-git
+
 - psi-plus-clean-full-git
 
 - psi-plus-clean-git
@@ -127,6 +129,8 @@
 - psi-plus-webkit-full-git
 
 - psi-plus-webkit-git
+
+- psi-webkit-git
 
 - qconf-git
 
