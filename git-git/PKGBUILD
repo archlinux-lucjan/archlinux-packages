@@ -2,8 +2,8 @@
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=git-git
-pkgver=2.15.1.354.g95ec6b1b33
-pkgrel=2
+pkgver=2.16.2.440.gc6284da4ff
+pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('x86_64')
 url='http://git-scm.com/'
@@ -35,13 +35,13 @@ source=("git://github.com/git/git.git#branch=master"
 sha512sums=('SKIP'
             '1cfed9796391a5339db75e6a2ca4c83760da3445d52cc5b3dcf0ccf1fe33bddf7ab7e74f49011b9543bce330517200513bd442c59767e5de65d37bc9d4a686d0'
             'bd4aff421e547044a2a91b8a77c86ce14f05321008aa2e28aab35154b297803ca716ccba3e0fca3805033d4adb455adb41086ceeca98200b8006582c13f2c7d3'
-            '3ab2dcf2a5e6d7a589e54b89539378853d4e44b6df826b56ea5fe9a918204f756fd51448bef8f6a6b54ab3a975f2be2a115e0f8ce8327153833eb22bf31a6ce8')
+            '4d4b434c2c317388ed6d3bdd87b1e8acb6c845b58be7bd1466e73a210cc824d53185fad302c5fffc1328f0c25300050843f343f37d36700a981e3c11322ea0cc')
 _gitname=git
 
 pkgver() {
   cd "$_gitname"
   git describe --long --tags | sed 's/^v//;s/-/./g'
-} 
+}            
 
 prepare() {
 	cd "$_gitname"
@@ -50,7 +50,9 @@ prepare() {
 build() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$_gitname"
-  make prefix=/usr gitexecdir=/usr/lib/git-core \
+  make prefix=/usr \
+    gitexecdir=/usr/lib/git-core \
+    perllibdir=/usr/share/perl5/vendor_perl \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
     USE_LIBPCRE2=1 \
     NO_CROSS_DIRECTORY_HARDLINKS=1 \
@@ -90,7 +92,9 @@ check() {
 package() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$_gitname"
-  make prefix=/usr gitexecdir=/usr/lib/git-core \
+  make prefix=/usr \
+    gitexecdir=/usr/lib/git-core \
+    perllibdir=/usr/share/perl5/vendor_perl \
     CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
     USE_LIBPCRE2=1 \
     NO_CROSS_DIRECTORY_HARDLINKS=1 \
@@ -116,7 +120,7 @@ package() {
   # subtree installation
   make -C contrib/subtree prefix=/usr gitexecdir=/usr/lib/git-core DESTDIR="$pkgdir" install install-doc
   # mediawiki installation
-  make -C contrib/mw-to-git prefix=/usr gitexecdir=/usr/lib/git-core DESTDIR="$pkgdir" install
+  make -C contrib/mw-to-git prefix=/usr gitexecdir=/usr/lib/git-core DESTDIR="$pkgdir" INSTLIBDIR=/usr/share/perl5/vendor_perl install
   # the rest of the contrib stuff
   find contrib/ -name '.gitignore' -delete
   cp -a ./contrib/* $pkgdir/usr/share/git/
@@ -128,12 +132,6 @@ package() {
     "$pkgdir"/usr/share/git/remote-helpers/git-remote-hg
   sed -i 's|#![ ]*/usr/bin/python$|#!/usr/bin/python2|' \
     "$pkgdir"/usr/share/git/svn-fe/svnrdump_sim.py
-
-  # perl modules from contrib/ install to site dir... move to vendor
-  mv "$pkgdir"/usr/share/perl5/site_perl/Git/* "$pkgdir"/usr/share/perl5/vendor_perl/Git/
-  rm -rf "$pkgdir"/usr/share/perl5/site_perl
-  # remove perllocal.pod, .packlist, and empty directories.
-  rm -rf "$pkgdir"/usr/lib/perl5
 
   # git-daemon via systemd socket activation
   install -D -m 0644 "$srcdir"/git-daemon@.service "$pkgdir"/usr/lib/systemd/system/git-daemon@.service
