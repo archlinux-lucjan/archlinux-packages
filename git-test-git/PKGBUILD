@@ -2,7 +2,7 @@
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=git-test-git
-pkgver=2.16.2.887.g00f91deaa8
+pkgver=2.16.2.877.g30726e91cd
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='http://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat>=2.0' 'perl-error' 'perl>=5.14.0' 'openssl' 'pcre2'
          'grep' 'shadow')
-makedepends=('python2' 'emacs' 'libgnome-keyring' 'xmlto' 'asciidoc' 'tk')
+makedepends=('python2' 'emacs' 'libgnome-keyring' 'xmlto' 'asciidoc')
 optdepends=('tk: gitk and git gui'
             'perl-libwww: git svn'
             'perl-term-readkey: git svn'
