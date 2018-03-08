@@ -148,8 +148,6 @@
 │   └── PKGBUILD
 ├── psi-clean-git
 │   └── PKGBUILD
-├── psi-git
-│   └── PKGBUILD
 ├── psi-plus-clean-full-git
 │   ├── join.patch
 │   └── PKGBUILD
@@ -173,6 +171,8 @@
 │   └── PKGBUILD
 ├── psi-plus-webkit-git
 │   ├── join.patch
+│   └── PKGBUILD
+├── psi-webengine-git
 │   └── PKGBUILD
 ├── psi-webkit-git
 │   └── PKGBUILD

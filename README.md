@@ -130,6 +130,8 @@
 
 - psi-plus-webkit-git
 
+- psi-webengine-git
+
 - psi-webkit-git
 
 - qconf-git
