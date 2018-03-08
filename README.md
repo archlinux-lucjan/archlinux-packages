@@ -116,15 +116,15 @@
 
 - psi-plus-clean-git
 
-- psi-plus-full-git
-
-- psi-plus-git
-
 - psi-plus-l10n-git
 
 - psi-plus-plugins-git
 
 - psi-plus-resources-git
+
+- psi-plus-webengine-full-git
+
+- psi-plus-webengine-git
 
 - psi-plus-webkit-full-git
 

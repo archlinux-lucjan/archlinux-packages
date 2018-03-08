@@ -156,17 +156,17 @@
 ├── psi-plus-clean-git
 │   ├── join.patch
 │   └── PKGBUILD
-├── psi-plus-full-git
-│   ├── join.patch
-│   └── PKGBUILD
-├── psi-plus-git
-│   ├── join.patch
-│   └── PKGBUILD
 ├── psi-plus-l10n-git
 │   └── PKGBUILD
 ├── psi-plus-plugins-git
 │   └── PKGBUILD
 ├── psi-plus-resources-git
+│   └── PKGBUILD
+├── psi-plus-webengine-full-git
+│   ├── join.patch
+│   └── PKGBUILD
+├── psi-plus-webengine-git
+│   ├── join.patch
 │   └── PKGBUILD
 ├── psi-plus-webkit-full-git
 │   ├── join.patch
