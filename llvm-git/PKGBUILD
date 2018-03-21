@@ -8,15 +8,15 @@ pkgver=6.0.0.r156320.g2452271635f
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
-url="https://llvm.org"
+url="http://llvm.org"
 license=('custom:University of Illinois')
 makedepends=('cmake' 'libffi' 'python2' 'python2-sphinx' 'ocaml-findlib' 'ocaml-ctypes'
              'git')
 options=('staticlibs' '!strip')
-source=('llvm::git+httpss://github.com/llvm-mirror/llvm'
-        'clang::git+httpss://github.com/llvm-mirror/clang'
-        'clang-tools-extra::git+httpss://github.com/llvm-mirror/clang-tools-extra'
-        'compiler-rt::git+httpss://github.com/llvm-mirror/compiler-rt'
+source=('llvm::git+https://github.com/llvm-mirror/llvm'
+        'clang::git+https://github.com/llvm-mirror/clang'
+        'clang-tools-extra::git+https://github.com/llvm-mirror/clang-tools-extra'
+        'compiler-rt::git+https://github.com/llvm-mirror/compiler-rt'
         llvm-Config-llvm-config.h llvm.patch)
 md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP)
 
@@ -37,7 +37,7 @@ prepare() {
   cd llvm
   
   # At the present, clang must reside inside the LLVM source code tree to build
-  # See https://llvm.org/bugs/show_bug.cgi?id=4840
+  # See http://llvm.org/bugs/show_bug.cgi?id=4840
   rm -rf tools/clang projects/compiler-rt
   mv "$srcdir/clang" tools/clang
   mv "$srcdir/clang-tools-extra" tools/clang/tools/extra
@@ -142,7 +142,7 @@ package_llvm-ocaml-git() {
 
 package_clang-git() {
   pkgdesc="C language family frontend for LLVM (git version)"
-  url="https://clang.llvm.org/"
+  url="http://clang.llvm.org/"
   depends=("llvm-git=$pkgver-$pkgrel" 'gcc')
   optdepends=('llvm-libs: for compiling with -flto')
   provides=('clang' 'clang-analyzer')
@@ -180,7 +180,7 @@ package_clang-git() {
 
 package_clang-tools-extra-git() {
   pkgdesc="Extra tools built using Clang's tooling APIs (git version)"
-  url="https://clang.llvm.org/"
+  url="http://clang.llvm.org/"
   depends=("clang-git=$pkgver-$pkgrel")
   provides=('clang-tools-extra')
   conflicts=('clang-tools-extra')

@@ -13,7 +13,7 @@ pkgver=0.1.10.15.g020e77fb
 pkgrel=1
 pkgdesc='Secure, configuration-free, P2P Skype replacement backend'
 arch=('x86_64')
-url='httpss://tox.chat'
+url='https://tox.chat'
 license=('GPL3')
 depends=('systemd' 'libconfig' 'libsodium' 'libvpx' 'opus')
 makedepends=('git' 'check')
@@ -21,7 +21,7 @@ conflicts=("tox" "toxcore")
 provides=("tox" "toxcore")
 backup=('etc/tox-bootstrapd.conf')
 install=$__pkgname.install
-source=("git+httpss://github.com/TokTok/c-toxcore.git"
+source=("git+https://github.com/TokTok/c-toxcore.git"
         'toxcore.conf')
 sha512sums=('SKIP'
             'aa1dcfbdf9b613f5d89e238ff5d01e0ea150ad3162792acb806f51ce07fd9ade1270b310b1285a828dcdf578549b95a89fd9bd198fb205c83f5a5be2c969ea63')

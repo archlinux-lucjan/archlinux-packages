@@ -9,7 +9,7 @@ pkgver=0.15.0.r204.g257029d8
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
-url='httpss://github.com/uTox/uTox'
+url='https://github.com/uTox/uTox'
 license=('GPL3')
 depends=('fontconfig'
          'libfilteraudio-git'

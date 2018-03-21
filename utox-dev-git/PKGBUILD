@@ -10,7 +10,7 @@ pkgver=0.16.1.137.g9f8486e3
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
-url='httpss://github.com/uTox/uTox'
+url='https://github.com/uTox/uTox'
 license=('GPL3')
 depends=('fontconfig'
          'libfilteraudio-git'
@@ -25,7 +25,7 @@ makedepends=('check' 'git')
 optdepends=('gtk3: GTK file picker')
 provides=("utox")
 conflicts=("utox")
-source=("$_pkgname::git+httpss://github.com/uTox/uTox#branch=$_branch")
+source=("$_pkgname::git+https://github.com/uTox/uTox#branch=$_branch")
 md5sums=('SKIP')
 
 pkgver() {

@@ -11,7 +11,7 @@ pkgver=5.1.80.150.ga6d3450603
 pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('x86_64')
-url='https://www.kdevelop.org'
+url='http://www.kdevelop.org'
 license=('GPL')
 depends=(
     'clang'

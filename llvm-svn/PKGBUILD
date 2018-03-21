@@ -8,15 +8,15 @@ pkgver=6.0.0svn.r317099
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
-url="https://llvm.org"
+url="http://llvm.org"
 license=('custom:University of Illinois')
 makedepends=('cmake' 'libffi' 'python2' 'python2-sphinx' 'ocaml-findlib' 'ocaml-ctypes'
              'subversion')
 options=('staticlibs' '!strip')
-source=('llvm::svn+https://llvm.org/svn/llvm-project/llvm/trunk'
-        'clang::svn+https://llvm.org/svn/llvm-project/cfe/trunk'
-        'clang-tools-extra::svn+https://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
-        'compiler-rt::svn+https://llvm.org/svn/llvm-project/compiler-rt/trunk'
+source=('llvm::svn+http://llvm.org/svn/llvm-project/llvm/trunk'
+        'clang::svn+http://llvm.org/svn/llvm-project/cfe/trunk'
+        'clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
+        'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
         llvm-Config-llvm-config.h llvm.patch)
 md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP)
 
@@ -37,7 +37,7 @@ prepare() {
   cd llvm
   
   # At the present, clang must reside inside the LLVM source code tree to build
-  # See https://llvm.org/bugs/show_bug.cgi?id=4840
+  # See http://llvm.org/bugs/show_bug.cgi?id=4840
   rm -rf tools/clang projects/compiler-rt
   mv "$srcdir/clang" tools/clang
   mv "$srcdir/clang-tools-extra" tools/clang/tools/extra
@@ -142,7 +142,7 @@ package_llvm-ocaml-svn() {
 
 package_clang-svn() {
   pkgdesc="C language family frontend for LLVM (svn version)"
-  url="https://clang.llvm.org/"
+  url="http://clang.llvm.org/"
   depends=("llvm-svn=$pkgver-$pkgrel" 'gcc')
   optdepends=('llvm-libs: for compiling with -flto')
   provides=('clang' 'clang-analyzer')
@@ -180,7 +180,7 @@ package_clang-svn() {
 
 package_clang-tools-extra-svn() {
   pkgdesc="Extra tools built using Clang's tooling APIs (svn version)"
-  url="https://clang.llvm.org/"
+  url="http://clang.llvm.org/"
   depends=("clang-svn=$pkgver-$pkgrel")
   provides=('clang-tools-extra')
   conflicts=('clang-tools-extra')

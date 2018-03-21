@@ -8,7 +8,7 @@ pkgver=2.99.917+797+g4798e18b
 pkgrel=1
 epoch=1
 arch=(x86_64)
-url="httpss://01.org/linuxgraphics"
+url="https://01.org/linuxgraphics"
 license=('custom')
 install=$pkgname.install
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
@@ -46,7 +46,7 @@ build() {
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
-  # See httpss://bugs.archlinux.org/task/55102 / httpss://bugs.archlinux.org/task/54845
+  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/,-z,now}

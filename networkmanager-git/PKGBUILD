@@ -14,7 +14,7 @@ pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
-url="https://www.gnome.org/projects/NetworkManager/"
+url="http://www.gnome.org/projects/NetworkManager/"
 _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
              dbus-glib iproute2 nss polkit wpa_supplicant libsoup systemd libgudev libmm-glib
@@ -129,7 +129,7 @@ package_networkmanager-git() {
   # packaged configuration
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf" <<END
 [connectivity]
-uri=https://www.archlinux.org/check_network_status.txt
+uri=http://www.archlinux.org/check_network_status.txt
 END
 
   # /etc/NetworkManager

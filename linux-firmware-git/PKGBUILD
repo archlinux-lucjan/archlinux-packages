@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Firmware files for Linux"
 makedepends=('git')
 arch=('any')
-url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
+url="http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
 conflicts=('linux-firmware'
            'linux-firmware-i915-git'
@@ -43,7 +43,7 @@ replaces=('linux-firmware'
           'amd-ucode')
 provides=("linux-firmware")
 options=(!strip)
-source=("$pkgname::git+httpss://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git")
+source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git")
 md5sums=('SKIP')
 
 pkgver() {

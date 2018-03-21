@@ -7,7 +7,7 @@ pkgver=1.14.0.0.g989cf03
 pkgrel=1
 pkgdesc='A computer display server protocol.'
 arch=(x86_64)
-url='https://wayland.freedesktop.org'
+url='http://wayland.freedesktop.org'
 provides=("wayland=${pkgver}")
 license=('MIT')
 depends=('libffi')

@@ -7,7 +7,7 @@ pkgver=1.27.r16.g0f5c3f6
 pkgrel=1
 pkgdesc="Support library for libgcrypt"
 arch=(x86_64)
-url="https://www.gnupg.org"
+url="http://www.gnupg.org"
 license=('LGPL')
 depends=('glibc' 'sh')
 makedepends=('transfig')
@@ -15,7 +15,7 @@ conflicts=('libgpg-error')
 provides=('libgpg-error')
 source=(git://git.gnupg.org/libgpg-error.git)
 	#ftp://ftp.franken.de/pub/crypt/mirror/ftp.gnupg.org/gcrypt/libgpg-error/${pkgname}-${pkgver}.tar.bz2)
-# httpss://www.gnupg.org/download/integrity_check.html
+# https://www.gnupg.org/download/integrity_check.html
 sha1sums=('SKIP')
 #validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
 

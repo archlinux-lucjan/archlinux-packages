@@ -9,7 +9,7 @@ pkgver=4.15.0.gd8a5b80568a9
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
-url="https://www.gnu.org/software/libc"
+url="http://www.gnu.org/software/libc"
 license=('GPL2')
 provides=('linux-api-headers=$pkgver')
 conflicts=('linux-api-headers')

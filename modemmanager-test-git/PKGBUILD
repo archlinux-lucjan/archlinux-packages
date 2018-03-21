@@ -8,7 +8,7 @@ pkgver=1.6.8.22.g7b778db5
 pkgrel=1
 pkgdesc="Mobile broadband modem management service"
 arch=(x86_64)
-url="https://www.freedesktop.org/wiki/Software/ModemManager/"
+url="http://www.freedesktop.org/wiki/Software/ModemManager/"
 license=(GPL2 LGPL2.1)
 depends=(systemd libgudev polkit ppp libqmi libmbim)
 makedepends=(intltool gtk-doc gobject-introspection vala)
@@ -42,7 +42,7 @@ build() {
         --enable-gtk-doc \
         --disable-static
 
-  # httpss://bugzilla.gnome.org/show_bug.cgi?id=655517
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
   make
