@@ -6,7 +6,7 @@ pkgver=1.7.2.24.gde5d6dc5
 pkgrel=1
 pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
 arch=('x86_64' 'i686')
-url='http://konversation.kde.org'
+url='https://konversation.kde.org'
 license=('GPL2' 'FDL')
 makedepends=('git'
              'extra-cmake-modules'

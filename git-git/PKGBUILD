@@ -6,7 +6,7 @@ pkgver=2.16.2.440.gc6284da4ff
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('x86_64')
-url='http://git-scm.com/'
+url='https://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat>=2.0' 'perl-error' 'perl>=5.14.0' 'openssl' 'pcre2'
          'grep' 'shadow')
@@ -19,7 +19,7 @@ optdepends=('tk: gitk and git gui'
             'perl-authen-sasl: git send-email TLS support'
             'perl-mediawiki-api: git mediawiki support'
             'perl-datetime-format-iso8601: git mediawiki support'
-            'perl-lwp-protocol-https: git mediawiki https support'
+            'perl-lwp-protocol-httpss: git mediawiki httpss support'
             'perl-cgi: gitweb (web interface) support'
             'python2: various helper scripts'
             'subversion: git svn'

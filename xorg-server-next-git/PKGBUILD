@@ -1,7 +1,7 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Det <nimetonmaili g-mail>
 # Contributors: SpeedVin, FoxBuru, Federico Cinelli
-# Based on xorg-server-dev: https://aur.archlinux.org/packages/xorg-server-dev/
+# Based on xorg-server-dev: httpss://aur.archlinux.org/packages/xorg-server-dev/
 
 pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xdmx-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-xwayland-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
 pkgver=1.19.5.0.gb96e982e3
@@ -9,7 +9,7 @@ pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
-url="http://cgit.freedesktop.org/xorg/xserver/"
+url="https://cgit.freedesktop.org/xorg/xserver/"
 makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
              'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont2' 'renderproto' 'libpciaccess' 'libxv'
@@ -42,7 +42,7 @@ build() {
   
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
-  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
+  # See httpss://bugs.archlinux.org/task/55102 / httpss://bugs.archlinux.org/task/54845
   export CFLAGS=${CFLAGS/-fno-plt}
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/,-z,now}

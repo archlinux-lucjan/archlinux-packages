@@ -7,7 +7,7 @@ pkgver=0.17.0.0.ga15888b
 pkgrel=4
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
-url="https://github.com/sddm/sddm"
+url="httpss://github.com/sddm/sddm"
 license=("GPL")
 depends=('qt5-declarative' 'xorg-xauth' 'xorg-server')
 makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools' 'git')
@@ -51,12 +51,12 @@ package() {
   install -Dm644 "$srcdir"/sddm.sysusers "$pkgdir"/usr/lib/sysusers.d/sddm.conf
   install -Dm644 "$srcdir"/sddm.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/sddm.conf
 
-  # Move sddm.conf to /usr/lib https://bugs.archlinux.org/task/56609
+  # Move sddm.conf to /usr/lib httpss://bugs.archlinux.org/task/56609
   mkdir "$pkgdir"/usr/lib/sddm/sddm.conf.d
   mv "$pkgdir"/{etc/sddm.conf,usr/lib/sddm/sddm.conf.d}
 
   # Don't set PATH in sddm.conf
   sed -r 's|DefaultPath=.*|DefaultPath=/usr/local/sbin:/usr/local/bin:/usr/bin|g' -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
-  # Unset InputMethod https://github.com/sddm/sddm/issues/952
+  # Unset InputMethod httpss://github.com/sddm/sddm/issues/952
   sed -e "/^InputMethod/s/qtvirtualkeyboard//" -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/sddm.conf
 }

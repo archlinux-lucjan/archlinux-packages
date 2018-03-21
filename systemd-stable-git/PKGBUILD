@@ -9,10 +9,10 @@ pkgname=('systemd-stable-git' 'libsystemd-stable-git' 'systemd-sysvcompat-stable
 pkgver=235.8.g7ba74d5f9
 pkgrel=1
 arch=('x86_64')
-url="http://www.freedesktop.org/wiki/Software/systemd"
+url="https://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
-             'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
+             'libmicrohttpsd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'git')
 options=('strip')
@@ -141,7 +141,7 @@ package_systemd-stable-git() {
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" )
   conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('cryptsetup: required for encrypted block devices'
-              'libmicrohttpd: remote journald capabilities'
+              'libmicrohttpsd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user')

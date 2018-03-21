@@ -13,7 +13,7 @@ pkgver=3.10.0.rc2.91.g6dec363028
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
-url="http://www.cmake.org/"
+url="https://www.cmake.org/"
 license=('custom')
 conflicts=('cmake')
 provides=('cmake')
@@ -21,7 +21,7 @@ depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'rhash')
 makedepends=('qt5-base' 'python-sphinx' 'git' 'ncurses' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
-source=('git+https://cmake.org/cmake.git')
+source=('git+httpss://cmake.org/cmake.git')
 md5sums=('SKIP')
 shortver=$(printf "${pkgver}" | sed 's/\([0-9]\+\.[0-9]\+\)\..*/\1/')
 

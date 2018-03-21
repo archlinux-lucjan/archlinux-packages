@@ -12,7 +12,7 @@ license=('custom')
 depends=('glibc' 'libpciaccess')
 makedepends=('valgrind' 'xorg-util-macros')
 checkdepends=('cairo' 'cunit')
-url="http://dri.freedesktop.org/"
+url="https://dri.freedesktop.org/"
 provides=('libdrm')
 conflicts=('libdrm')
 

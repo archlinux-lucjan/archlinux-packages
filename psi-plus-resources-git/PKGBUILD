@@ -6,7 +6,7 @@ pkgver=17.06.02.0.gb261bbc
 pkgrel=1
 pkgdesc="Additional iconsets, themes and sounds for Psi+ (Qt5 build)"
 arch=('any')
-url="https://psi-plus.com"
+url="httpss://psi-plus.com"
 license=('GPL2')
 depends=('psi-plus-git')
 provides=("psi-plus-resources=$pkgver" "psi-plus-resources-qt5=$pkgver")

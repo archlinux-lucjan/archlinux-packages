@@ -10,7 +10,7 @@ pkgdesc="Lucjan's PGP keyring"
 arch=('any')
 license=('GPL')
 install="${pkgname}.install"
-source=("https://github.com/archlinux-lucjan/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("httpss://github.com/archlinux-lucjan/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('5a8c581b8e1c8842287280f4fb59bb5556d6f21e3c228fc9f8cdd242ed1d6090')
 
 

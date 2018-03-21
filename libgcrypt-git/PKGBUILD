@@ -10,12 +10,12 @@ pkgver=1.8.1.r14.ge4dc458b
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG"
 arch=(x86_64)
-url="http://www.gnupg.org"
+url="https://www.gnupg.org"
 license=('LGPL')
 depends=('libgpg-error>=1.10-2')
 makedepends=('transfig')
 options=('!emptydirs')
-# https://www.gnupg.org/download/integrity_check.html
+# httpss://www.gnupg.org/download/integrity_check.html
 conflicts=('libgcrypt')
 provides=('libgcrypt')
 source=(git://git.gnupg.org/libgcrypt.git)

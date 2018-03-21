@@ -5,13 +5,13 @@ pkgver=2.2.8.gbbc6581
 pkgrel=1
 pkgdesc="Qt5 compatible qconf - Qt configuration tool"
 arch=('x86_64')
-url="https://github.com/psi-plus/qconf"
+url="httpss://github.com/psi-plus/qconf"
 license=('GPL2')
 depends=('qt5-base')
 makedepends=('git')
 conflicts=(qconf)
 provides=(qconf)
-source=(git+https://github.com/psi-plus/qconf.git)
+source=(git+httpss://github.com/psi-plus/qconf.git)
 md5sums=('SKIP')
 
 pkgver() {

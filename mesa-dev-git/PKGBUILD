@@ -13,10 +13,10 @@ arch=('x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto'
 	     'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn' 'systemd'
 	     'libomxil-bellagio' 'libglvnd' 'libunwind' 'lm_sensors' 'libclc-git' 'clang-svn' 'git')
-url="http://mesa3d.sourceforge.net"
+url="https://mesa3d.sourceforge.net"
 license=('custom')
 source=(LICENSE
-        'mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git'
+        'mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git'
         '0002-glvnd-fix-gl-dot-pc.patch')
 options=('!libtool')
 md5sums=('5c65a0fe315dd347e09b1f2826a1df5a'

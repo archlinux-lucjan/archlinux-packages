@@ -6,7 +6,7 @@ pkgver=2.6.1.beta.r5714.ga55ed0de
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
-url='http://www.krusader.org'
+url='https://www.krusader.org'
 license=('GPL')
 depends=('karchive' 'kbookmarks' 'kcodecs' 'kcompletion' 'kcoreaddons' 'kconfig'
          'kdoctools' 'ki18n' 'kiconthemes' 'kitemviews' 'kio' 'knotifications'

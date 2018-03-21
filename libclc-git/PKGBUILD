@@ -7,14 +7,14 @@ pkgrel=1
 groups=('mesagit')
 pkgdesc="Library requirements of the OpenCL C programming language (git version)"
 arch=('x86_64')
-url="http://libclc.llvm.org/"
+url="https://libclc.llvm.org/"
 license=('MIT')
 provides=('libclc')
 replaces=('libclc-amdgpu-git')
 conflicts=('libclc-amdgpu-git' 'libclc')
 makedepends=('clang' 'llvm' 'git' 'python2')
 options=('staticlibs')
-source=('libclc::git+http://llvm.org/git/libclc.git')
+source=('libclc::git+https://llvm.org/git/libclc.git')
 md5sums=(SKIP)
 
 pkgver() {
