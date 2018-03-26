@@ -1,5 +1,7 @@
 # Collection of PKGBUILDS for Achlinux:
 
+- antimicro-git
+
 - cantata-git
 
 - clementine-qt5-git
