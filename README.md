@@ -76,13 +76,9 @@
 
 - linux-firmware-git
 
-- linux-usermode
-
 - linux-usermode-git
 
-- linux-usermode-rc
-
-- linux-usermode-git
+- linux-usermode-rc-git
 
 - llvm-git
 
