@@ -100,12 +100,12 @@
 │   └── PKGBUILD
 ├── linux-firmware-git
 │   └── PKGBUILD
-├── linux-usermode-git
+├── linux-usermode
 │   ├── 0001-ucontext-fix-incomplete-type-ucontext.patch
 │   ├── config
 │   ├── modules.install
 │   └── PKGBUILD
-├── linux-usermode-rc-git
+├── linux-usermode-rc
 │   ├── 0001-ucontext-fix-incomplete-type-ucontext.patch
 │   ├── config
 │   ├── modules.install
