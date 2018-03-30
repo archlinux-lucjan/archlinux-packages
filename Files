@@ -102,13 +102,13 @@
 │   └── PKGBUILD
 ├── linux-usermode
 │   ├── 0001-ucontext-fix-incomplete-type-ucontext.patch
+│   ├── 70-linux-usermode.hook
 │   ├── config
-│   ├── modules.install
 │   └── PKGBUILD
 ├── linux-usermode-rc
 │   ├── 0001-ucontext-fix-incomplete-type-ucontext.patch
+│   ├── 70-linux-usermode.hook
 │   ├── config
-│   ├── modules.install
 │   └── PKGBUILD
 ├── llvm-git
 │   ├── llvm-Config-llvm-config.h
