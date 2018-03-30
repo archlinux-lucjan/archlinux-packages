@@ -107,7 +107,7 @@
 │   └── PKGBUILD
 ├── linux-usermode-rc
 │   ├── 0001-ucontext-fix-incomplete-type-ucontext.patch
-│   ├── 70-linux-usermode.hook
+│   ├── 70-linux-usermode-rc.hook
 │   ├── config
 │   └── PKGBUILD
 ├── llvm-git
