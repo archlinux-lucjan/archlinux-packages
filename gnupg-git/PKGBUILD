@@ -5,7 +5,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-git
-pkgver=2.2.1.r21.g98c260e05
+pkgver=2.2.5.147.gd4dc4245b
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
@@ -13,7 +13,7 @@ license=('GPL')
 arch=('x86_64')
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon')
-makedepends=('libldap' 'libusb-compat' 'git')
+makedepends=('libldap' 'libusb-compat' 'git' 'fig2dev')
 checkdepends=('openssh')
 depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
          'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
@@ -32,7 +32,7 @@ replaces=('dirmngr' 'gnupg2')
 
 pkgver() {
   cd gnupg
-  git describe --tags --long | sed 's/^gnupg.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^gnupg.//;s/-/./g'
 }
 
 
