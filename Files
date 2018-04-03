@@ -233,6 +233,10 @@
 │   ├── PKGBUILD
 │   ├── toxcore.conf
 │   └── toxcore.install
+├── toxcore-stable-git
+│   ├── PKGBUILD
+│   ├── toxcore.conf
+│   └── toxcore.install
 ├── utox-dev-git
 │   └── PKGBUILD
 ├── utox-git
@@ -270,4 +274,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-90 directories, 180 files
+91 directories, 183 files

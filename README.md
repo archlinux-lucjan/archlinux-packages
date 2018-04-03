@@ -156,6 +156,8 @@
 
 - toxcore-git
 
+- toxcore-stable-git
+
 - utox-dev-git
 
 - utox-git
