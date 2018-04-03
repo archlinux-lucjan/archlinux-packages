@@ -6,7 +6,7 @@
 # then cp /usr/lib/libgcrypt.so.11 /var/lib/archbuild/staging-x86_64/root/usr/lib/ and do staging-x86_64-build
 
 pkgname=libgcrypt-git
-pkgver=1.8.1.r14.ge4dc458b
+pkgver=1.8.1.59.g9b58e4a0
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG"
 arch=(x86_64)
@@ -26,7 +26,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd libgcrypt
-  git describe --long --tags | sed 's/^libgcrypt.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^libgcrypt.//;s/-/./g'
 }
 
 #prepare() {
