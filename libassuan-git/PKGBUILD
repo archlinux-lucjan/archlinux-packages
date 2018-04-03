@@ -2,7 +2,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=libassuan-git
-pkgver=2.4.3.r7.g87c2bb5
+pkgver=2.5.1.5.gb270f2e
 pkgrel=1
 pkgdesc="A IPC library used by some GnuPG related software"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd libassuan
-  git describe --long --tags | sed 's/^libassuan.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^libassuan.//;s/-/./g'
 }
 
 
