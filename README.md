@@ -66,6 +66,8 @@
 
 - libinput-stable-git
 
+- libksba-git
+
 - libktorrent-git
 
 - libktorrent-stable-git

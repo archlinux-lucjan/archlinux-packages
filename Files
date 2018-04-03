@@ -90,6 +90,8 @@
 │   └── PKGBUILD
 ├── libinput-stable-git
 │   └── PKGBUILD
+├── libksba-git
+│   └── PKGBUILD
 ├── libktorrent-git
 │   └── PKGBUILD
 ├── libktorrent-stable-git
@@ -268,4 +270,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-89 directories, 179 files
+90 directories, 180 files
