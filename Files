@@ -129,11 +129,15 @@
 │   ├── lucjan-keyring.install
 │   └── PKGBUILD
 ├── mesa-dev-git
-│   ├── 0002-glvnd-fix-gl-dot-pc.patch
+│   ├── 0001-glvnd-fix-gl-dot-pc.patch
+│   ├── fix-install.diff
+│   ├── fix-versions.diff
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── mesa-rc-git
-│   ├── 0002-glvnd-fix-gl-dot-pc.patch
+│   ├── 0001-glvnd-fix-gl-dot-pc.patch
+│   ├── fix-install.diff
+│   ├── fix-versions.diff
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── modemmanager-git
@@ -276,4 +280,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-92 directories, 184 files
+92 directories, 188 files
