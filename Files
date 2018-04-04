@@ -210,29 +210,45 @@
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
 ├── systemd-git
+│   ├── 0001-Use-Arch-Linux-device-access-groups.patch
 │   ├── arch.conf
 │   ├── initcpio-hook-udev
 │   ├── initcpio-install-systemd
 │   ├── initcpio-install-udev
 │   ├── loader.conf
 │   ├── PKGBUILD
+│   ├── splash-arch.bmp
+│   ├── systemd-binfmt.hook
+│   ├── systemd-catalog.hook
+│   ├── systemd-daemon-reload.hook
 │   ├── systemd-git.install
+│   ├── systemd-hook
 │   ├── systemd-hwdb.hook
+│   ├── systemd-sysctl.hook
 │   ├── systemd-sysusers.hook
 │   ├── systemd-tmpfiles.hook
+│   ├── systemd-udev-reload.hook
 │   ├── systemd-update.hook
 │   └── systemd-user.pam
 ├── systemd-stable-git
+│   ├── 0001-Use-Arch-Linux-device-access-groups.patch
 │   ├── arch.conf
 │   ├── initcpio-hook-udev
 │   ├── initcpio-install-systemd
 │   ├── initcpio-install-udev
 │   ├── loader.conf
 │   ├── PKGBUILD
+│   ├── splash-arch.bmp
+│   ├── systemd-binfmt.hook
+│   ├── systemd-catalog.hook
+│   ├── systemd-daemon-reload.hook
 │   ├── systemd-git.install
+│   ├── systemd-hook
 │   ├── systemd-hwdb.hook
+│   ├── systemd-sysctl.hook
 │   ├── systemd-sysusers.hook
 │   ├── systemd-tmpfiles.hook
+│   ├── systemd-udev-reload.hook
 │   ├── systemd-update.hook
 │   └── systemd-user.pam
 ├── toxcore-git
@@ -280,4 +296,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-92 directories, 188 files
+92 directories, 204 files
