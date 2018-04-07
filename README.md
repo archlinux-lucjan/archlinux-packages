@@ -152,6 +152,8 @@
 
 - sddm-git
 
+- smplayer-svn
+
 - systemd-git
 
 - systemd-stable-git

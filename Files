@@ -209,6 +209,8 @@
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
+├── smplayer-svn
+│   └── PKGBUILD
 ├── systemd-git
 │   ├── 0001-Use-Arch-Linux-device-access-groups.patch
 │   ├── arch.conf
@@ -296,4 +298,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-92 directories, 204 files
+93 directories, 205 files
