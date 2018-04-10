@@ -59,7 +59,7 @@ build() {
 }
 
 _package() {
-  conflicts=('linux-usermode' 'linux-usermode-git')
+  conflicts=('linux-usermode' 'linux-usermode-git' 'linux-usermode-rc')
   
   cd "${srcdir}/${_srcname}"
   mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/kernel-usermode"
@@ -68,7 +68,8 @@ _package() {
 }
 
 _package-modules() {
-  conflicts=('linux-usermode-modules' 'linux-usermode-git-modules')
+  conflicts=('linux-usermode-modules' 'linux-usermode-git-modules'
+             'linux-usermode-rc-modules')
   
   cd "${srcdir}/${_srcname}"
   # get kernel version
