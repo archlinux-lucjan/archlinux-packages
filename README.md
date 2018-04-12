@@ -74,9 +74,9 @@
 
 - libktorrent-stable-git
 
-- linux-api-headers-experimental-git
+- linux-api-headers-git
 
-- linux-api-headers-trunk-git
+- linux-api-headers-rc-git
 
 - linux-firmware-git
 
