@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.1.0.devel.r101351.g922cd38172
+pkgver=18.1.0.devel.r101589.ge961824ba8
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -28,7 +28,7 @@ md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
          'a6d619d733133655fab1478df9a9f741'
          '1d4e0ca3d11e6e3d6f80c530a638f165'
-         '20ee4f524ef7d24b66211351f0875c44')
+         '451e97a6e9b1175ea75d412abd3dcdf3')
 
 pkgver() {
     cd mesa
@@ -45,11 +45,11 @@ prepare() {
 
   # fix symlinks created for vdpau drivers to be relative
   # this is upstreamable
-  patch -Np1 -i ../fix-install.diff
+  #patch -Np1 -i ../fix-install.diff
 
   # fix library versioning
   # this is upstreamable
-  patch -Np1 -i ../fix-versions.diff
+  #patch -Np1 -i ../fix-versions.diff
 
   # file missing from tarball
   cp ../meson_get_version.py bin/
