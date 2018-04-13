@@ -69,8 +69,6 @@
 │   └── PKGBUILD
 ├── konversation-stable-git
 │   └── PKGBUILD
-├── krusader-dev-git
-│   └── PKGBUILD
 ├── krusader-git
 │   └── PKGBUILD
 ├── ktorrent-git
@@ -308,4 +306,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-95 directories, 213 files
+94 directories, 212 files
