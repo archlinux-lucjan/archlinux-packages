@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=konversation-git
-pkgver=1.7.2.24.gde5d6dc5
+pkgver=1.7.4.58.g7e740681
 pkgrel=1
 pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
 arch=('x86_64' 'i686')
@@ -11,7 +11,6 @@ license=('GPL2' 'FDL')
 makedepends=('git'
              'extra-cmake-modules'
              'kdoctools'
-             'python'
              )
 depends=('knotifyconfig'
          'kemoticons'
@@ -43,7 +42,7 @@ build() {
   cmake ../konversation \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
