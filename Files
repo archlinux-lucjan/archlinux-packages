@@ -113,7 +113,6 @@
 │   ├── config
 │   └── PKGBUILD
 ├── linux-usermode-rc
-│   ├── 0001-ucontext-fix-incomplete-type-ucontext.patch
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
@@ -308,4 +307,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-94 directories, 214 files
+94 directories, 213 files
