@@ -1,0 +1,49 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=pacutils-git
+_pkgname=pacutils
+pkgdesc='alpm front-end tools'
+url='https://github.com/andrewgregory/pacutils'
+pkgver=0.6.2.0.gdb60ff5
+pkgrel=1
+arch=('x86_64')
+depends=('pacman>=5.0')
+makedepends=('git')
+conflicts=('pacutils')
+provides=("pacutils=$pkgver")
+license=('MIT')
+source=("git+https://github.com/andrewgregory/pacutils.git"
+        "git+https://github.com/andrewgregory/mINI.c.git"
+        "git+https://github.com/andrewgregory/tap.c.git")
+sha1sums=('SKIP'
+          'SKIP'
+          'SKIP')
+
+pkgver() {
+  cd pacutils
+  git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+prepare() {
+  cd pacutils
+  git submodule init
+  git config submodule.ext/mini.c.url "$srcdir/mINI.c"
+  git config submodule.t/tap.c.url "$srcdir/tap.c"
+  git submodule update
+}
+
+build() {
+  cd pacutils
+  make SYSCONFDIR=/etc LOCALSTATEDIR=/var
+}
+
+check() {
+  cd pacutils
+  make check
+}
+
+package() {
+  cd pacutils
+  make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/"$_pkgname"/COPYING
+}

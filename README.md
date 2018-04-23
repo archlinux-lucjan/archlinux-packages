@@ -120,6 +120,8 @@
 
 - pacman-git
 
+- pacutils-git
+
 - pkgconf-git
 
 - psi-clean-git
