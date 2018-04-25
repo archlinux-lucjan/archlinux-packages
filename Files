@@ -33,12 +33,14 @@
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
 ├── git-git
+│   ├── 0001-perl-fix-installing-modules-from-contrib.patch
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
 │   ├── git-git.install
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
 ├── git-main-git
+│   ├── 0001-perl-fix-installing-modules-from-contrib.patch
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
 │   ├── git-git.install
@@ -306,4 +308,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-95 directories, 211 files
+95 directories, 213 files
