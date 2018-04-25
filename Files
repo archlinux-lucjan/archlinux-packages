@@ -136,16 +136,10 @@
 │   └── PKGBUILD
 ├── mesa-dev-git
 │   ├── 0001-glvnd-fix-gl-dot-pc.patch
-│   ├── 0003-meson-Define-NDEBUG-for-non-debug-builds.patch
-│   ├── 0004-meson-Add-library-versions-to-swr-drivers.patch
-│   ├── 0005-meson-Version-libMesaOpenCL-like-autotools-does.patch
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── mesa-rc-git
 │   ├── 0001-glvnd-fix-gl-dot-pc.patch
-│   ├── 0003-meson-Define-NDEBUG-for-non-debug-builds.patch
-│   ├── 0004-meson-Add-library-versions-to-swr-drivers.patch
-│   ├── 0005-meson-Version-libMesaOpenCL-like-autotools-does.patch
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── modemmanager-git
@@ -308,4 +302,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-95 directories, 213 files
+95 directories, 207 files

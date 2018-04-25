@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.1.0.devel.r101626.g6a519a157b
+pkgver=18.2.0.devel.r101867.g069c409f43
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -19,18 +19,12 @@ license=('custom')
 source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git'
         "meson_get_version.py::https://cgit.freedesktop.org/mesa/mesa/plain/bin/meson_get_version.py?h=mesa-18.0.0"
         "LICENSE"
-        "0001-glvnd-fix-gl-dot-pc.patch"
-        "0003-meson-Define-NDEBUG-for-non-debug-builds.patch"
-        "0004-meson-Add-library-versions-to-swr-drivers.patch"
-        "0005-meson-Version-libMesaOpenCL-like-autotools-does.patch")
+        "0001-glvnd-fix-gl-dot-pc.patch")
 options=('!libtool')
 md5sums=('SKIP'
          '9a0773181a6a6d9a4bdb2ded2456a327'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         'a6d619d733133655fab1478df9a9f741'
-         '440c5de11c61f980a87e3b17d7d6427f'
-         '547282966a301809d7fe44ec0ff6fcef'
-         'e7d060cd5121f821866097ad4467f735')
+         'a6d619d733133655fab1478df9a9f741')
 
 pkgver() {
     cd mesa
@@ -45,11 +39,6 @@ prepare() {
   # non-upstreamed ones
   patch -Np1 -i ../0001-glvnd-fix-gl-dot-pc.patch
 
-  # Upstreamed meson fixes
-  patch -Np1 -i ../0003-meson-Define-NDEBUG-for-non-debug-builds.patch
-  patch -Np1 -i ../0004-meson-Add-library-versions-to-swr-drivers.patch
-  patch -Np1 -i ../0005-meson-Version-libMesaOpenCL-like-autotools-does.patch
-
   # file missing from tarball
   cp ../meson_get_version.py bin/
 }
@@ -57,6 +46,7 @@ prepare() {
 build() {
     arch-meson mesa build \
     -D b_lto=false \
+    -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr \
