@@ -202,6 +202,10 @@
 │   └── PKGBUILD
 ├── qconf-git
 │   └── PKGBUILD
+├── qtcreator-dev-git
+│   └── PKGBUILD
+├── qtcreator-git
+│   └── PKGBUILD
 ├── qtox-git
 │   └── PKGBUILD
 ├── README.md
@@ -302,4 +306,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-95 directories, 207 files
+97 directories, 209 files

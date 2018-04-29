@@ -150,6 +150,10 @@
 
 - qconf-git
 
+- qtcreator-dev-git
+
+- qtcreator-git
+
 - qtox-git
 
 - sddm-dev-git

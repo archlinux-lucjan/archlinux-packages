@@ -1,0 +1,70 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Imanol Celaya <ornitorrincos@archlinux-es.org>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Contributor: Dan Vratil <progdan@progdansoft.com>
+# Contributor: thotypous <matiasΘarchlinux-br·org>
+# Contributor: delor <bartekpiech gmail com>
+
+pkgname=qtcreator-dev-git
+pkgver=4.6.0.76.ga657ff4a2a
+pkgrel=1
+pkgdesc='Lightweight, cross-platform integrated development environment'
+arch=('x86_64')
+url='http://qt-project.org'
+license=('LGPL')
+depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-webkit')
+makedepends=('git' 'mesa' 'clang' 'llvm')
+options=('docs')    
+optdepends=('qt5-doc: integrated Qt documentation'
+            'qt5-examples: welcome page examples'
+            'gdb: debugger'
+            'cmake: cmake project support'
+            'openssh-askpass: ssh support'
+            'git: git support'
+            'mercurial: mercurial support'
+            'bzr: bazaar support'
+            'clang: Clang code model'
+            'valgrind: analyze support')
+conflicts=('qtcreator')
+provides=('qtcreator')
+source=("git://code.qt.io/qt-creator/qt-creator.git#branch=4.6"
+        "git://code.qt.io/qbs/qbs.git")
+md5sums=('SKIP'
+         'SKIP')
+
+pkgver() {
+  cd qt-creator
+  git describe --tags | sed 's/^v//;s/-/./g'
+}
+        
+prepare() {
+    [[ -d build ]] && rm -r build
+    mkdir build
+
+    # fix hardcoded libexec path
+    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qt-creator/qtcreator.pri
+
+    # Do *NOT* use system Qbs: qt creator master is *NOT* compatible with any released Qbs!
+    ( cd qt-creator/src/shared && rm -rf qbs && ln -s ../../../qbs qbs )
+}
+
+build() {
+    cd build
+
+    QTC_FORCE_CLANG_LIBTOOLING=1 \
+        qmake LLVM_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
+            "$srcdir"/qt-creator/qtcreator.pro
+    make
+    make docs
+}
+
+package() {
+    cd build
+
+    make INSTALL_ROOT="${pkgdir}/usr/" install
+    make INSTALL_ROOT="${pkgdir}/usr/" install_docs
+
+    install -Dm644 "${srcdir}/qt-creator/LICENSE.GPL3-EXCEPT" \
+        "${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT"
+}
