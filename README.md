@@ -86,6 +86,8 @@
 
 - linux-usermode-rc-git
 
+- liquidshell-git
+
 - llvm-git
 
 - llvm-svn

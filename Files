@@ -120,6 +120,8 @@
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
+├── liquidshell-git
+│   └── PKGBUILD
 ├── llvm-git
 │   ├── llvm-Config-llvm-config.h
 │   ├── llvm.patch
@@ -306,4 +308,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-97 directories, 209 files
+98 directories, 210 files
