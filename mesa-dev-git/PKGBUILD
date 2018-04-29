@@ -17,12 +17,10 @@ makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'd
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git'
-        "meson_get_version.py::https://cgit.freedesktop.org/mesa/mesa/plain/bin/meson_get_version.py?h=mesa-18.0.0"
         "LICENSE"
         "0001-glvnd-fix-gl-dot-pc.patch")
 options=('!libtool')
 md5sums=('SKIP'
-         '9a0773181a6a6d9a4bdb2ded2456a327'
          '5c65a0fe315dd347e09b1f2826a1df5a'
          'a6d619d733133655fab1478df9a9f741')
 
@@ -38,9 +36,6 @@ prepare() {
   # glvnd support patches - from Fedora
   # non-upstreamed ones
   patch -Np1 -i ../0001-glvnd-fix-gl-dot-pc.patch
-
-  # file missing from tarball
-  cp ../meson_get_version.py bin/
 }
   
 build() {
