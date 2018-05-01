@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.6.1.beta.r5815.g706b9f78
+pkgver=2.7.0.r5899.ga95b1a32
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
@@ -42,8 +42,9 @@ source=('git://anongit.kde.org/krusader')
 sha1sums=('SKIP')
 
 pkgver() {
-  cd krusader
-  _ver="$(cat CMakeLists.txt | grep -m1 'set(VERSION' | cut -d '"' -f2 | tr - .)"
+  cd krusader/doc
+  #_ver="$(cat CMakeLists.txt | grep -m1 'set(VERSION' | cut -d '"' -f2 | tr - .)"
+  _ver="$(cat index.docbook| grep -m1 '<releaseinfo>' | grep -o "[[:digit:]]*"| paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
