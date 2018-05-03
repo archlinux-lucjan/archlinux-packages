@@ -4,8 +4,9 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers-git
+_major=4.16
 _srcname=linux-stable
-pkgver=4.16.2.0.g216f33936eaa
+pkgver=4.16.7.0.g9dc30ff9a115
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
@@ -13,7 +14,7 @@ url="http://www.gnu.org/software/libc"
 license=('GPL2')
 provides=('linux-api-headers=$pkgver')
 conflicts=('linux-api-headers')
-source=('git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#branch=linux-4.16.y')
+source=("git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git#branch=linux-${_major}.y")
 md5sums=('SKIP')
 
 pkgver() {
