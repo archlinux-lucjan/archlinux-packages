@@ -3,6 +3,9 @@
 │   └── PKGBUILD
 ├── cantata-git
 │   └── PKGBUILD
+├── clean-chroot-manager-git
+│   ├── ccm.install
+│   └── PKGBUILD
 ├── clementine-qt5-git
 │   ├── PKGBUILD
 │   ├── spotify_blob.patch
@@ -129,6 +132,8 @@
 │   ├── llvm-Config-llvm-config.h
 │   ├── llvm.patch
 │   └── PKGBUILD
+├── lostfiles-git
+│   └── PKGBUILD
 ├── lucjan-keyring
 │   ├── lucjan-keyring.install
 │   └── PKGBUILD
@@ -149,6 +154,9 @@
 │   └── PKGBUILD
 ├── modemmanager-test-git
 │   └── PKGBUILD
+├── modprobed-db-git
+│   ├── PKGBUILD
+│   └── readme.install
 ├── netbsd-pkgsrc
 │   ├── bootstrap.install
 │   ├── LICENSE
@@ -307,4 +315,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-98 directories, 209 files
+101 directories, 214 files

@@ -4,6 +4,8 @@
 
 - cantata-git
 
+- clean-chroot-manager-git
+
 - clementine-qt5-git
 
 - cmake-git
@@ -92,6 +94,8 @@
 
 - llvm-svn
 
+- lostfiles-git
+
 - lucjan-keyring
 
 - lucjan-keyring-git
@@ -105,6 +109,8 @@
 - modemmanager-stable-git
 
 - modemmanager-test-git
+
+- modprobedb-git
 
 - netbsd-pkgsrc
 

@@ -1,0 +1,31 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Maintainer: Contributor <graysky AT archlinux dot us>
+
+pkgname=lostfiles-git
+_pkgname=lostfiles
+pkgver=4.02.0.gb5847a7
+pkgrel=1
+pkgdesc='Find orphaned files not owned by any Arch packages'
+arch=('any')
+makedepends=('git')
+conflicts=('lostfiles')
+provides=('lostfiles')
+license=('GPL2')
+url="https://github.com/graysky2/lostfiles"
+source=("git://github.com/graysky2/lostfiles")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/-/./g'
+} 
+
+build() {
+  cd "$_pkgname"
+  make 
+}
+
+package() {
+  cd "$_pkgname"
+  make DESTDIR="$pkgdir" install
+}
