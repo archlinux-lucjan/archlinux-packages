@@ -110,7 +110,7 @@
 
 - modemmanager-test-git
 
-- modprobedb-git
+- modprobed-db-git
 
 - netbsd-pkgsrc
 
