@@ -12,7 +12,6 @@ conflicts=('mupen64plus-qt')
 provides=('mupen64plus-qt')
 depends=('quazip' 'mupen64plus' 'hicolor-icon-theme')
 makedepends=('git')
-install=mupen64plus-qt.install
 source=("git://github.com/dh4/${_pkgname}.git")
 md5sums=('SKIP')
 
