@@ -110,7 +110,9 @@
 
 - modemmanager-test-git
 
-- modprobed-db-git
+- modprobed-db-
+
+- mupen64plus-qt-git
 
 - netbsd-pkgsrc
 
