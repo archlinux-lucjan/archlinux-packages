@@ -304,17 +304,14 @@
 ├── xf86-video-intel-git
 │   ├── PKGBUILD
 │   └── xf86-video-intel-git.install
-├── xorg-server-git
+├── xorg-xserver-git
 │   ├── PKGBUILD
 │   ├── xorg-server-git.install
+│   ├── xserver-autobind-hotplug.patch
 │   ├── xvfb-run
-│   └── xvfb-run.1
-├── xorg-server-next-git
-│   ├── PKGBUILD
-│   ├── xorg-server-git.install
-│   ├── xvfb-run
-│   └── xvfb-run.1
+│   ├── xvfb-run.1
+│   └── xwayland-config.h.meson.in
 └── yakuake-git
     └── PKGBUILD
 
-102 directories, 215 files
+101 directories, 213 files
