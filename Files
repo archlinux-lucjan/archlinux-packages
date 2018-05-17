@@ -141,11 +141,11 @@
 │   ├── lucjan-keyring.install
 │   └── PKGBUILD
 ├── mesa-dev-git
-│   ├── 0001-glvnd-fix-gl-dot-pc.patch
+│   ├── 0001-glvnd-fix-gl.pc.patch
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── mesa-rc-git
-│   ├── 0001-glvnd-fix-gl-dot-pc.patch
+│   ├── 0001-glvnd-fix-gl.pc.patch
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── modemmanager-git
