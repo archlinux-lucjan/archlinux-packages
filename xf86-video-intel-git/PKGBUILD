@@ -4,7 +4,7 @@
 
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
-pkgver=2.99.917+797+g4798e18b
+pkgver=2.99.917.832.g35947721
 pkgrel=1
 epoch=1
 arch=(x86_64)
@@ -12,11 +12,11 @@ url="https://01.org/linuxgraphics"
 license=('custom')
 install=$pkgname.install
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23' 'libx11' 'libxrender'
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'libx11' 'libxrender'
              # additional deps for intel-virtual-output
              'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss'
              # additional for git snapshot
-             'git')
+             'git') # 
 optdepends=('libxrandr: for intel-virtual-output'
             'libxinerama: for intel-virtual-output'
             'libxcursor: for intel-virtual-output'
@@ -24,7 +24,7 @@ optdepends=('libxrandr: for intel-virtual-output'
             'libxss: for intel-virtual-output')
 replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna')
 provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna' 'xf86-video-intel')
-conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24'
+conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25'
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy' 
            'xf86-video-intel-legacy' 'xf86-video-intel')
 groups=('xorg-drivers')
@@ -33,7 +33,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long | sed 's/-/+/g'
+  git describe --long | sed 's/-/./g'
 }
 
 prepare() {
