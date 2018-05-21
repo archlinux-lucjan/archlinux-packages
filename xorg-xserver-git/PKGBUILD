@@ -6,7 +6,7 @@
 pkgbase=xorg-xserver-git
 _pkgbase=xserver
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xdmx-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
-pkgver=1.20.0.6.g7437b6dbd
+pkgver=1.20.0.10.g315c63c41
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -17,12 +17,12 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
-             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'meson' 'git')
-source=(git://anongit.freedesktop.org/xorg/xserver
-        xwayland-config.h.meson.in # missing from tarball
-        xserver-autobind-hotplug.patch
-        xvfb-run # with updates from FC master
-        xvfb-run.1)
+             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
+source=('git://anongit.freedesktop.org/xorg/xserver'
+        'xwayland-config.h.meson.in::https://cgit.freedesktop.org/xorg/xserver/plain/include/xwayland-config.h.meson.in?id=xorg-server-1.20.0'
+        'xserver-autobind-hotplug.patch'
+        'xvfb-run' # with updates from FC master
+        'xvfb-run.1')
 sha256sums=('SKIP'
             'f584f14969b7d30a0d55dcd35ad22ed17f2802c619230f9a88fa81325ec2032b'
             'cae1b7f296c18177de38f9b1215a4f916da2288b85f1fcb9e80373a42e2892b8'
@@ -36,6 +36,7 @@ pkgver() {
 }
 
 prepare() {
+  # missing from tarball
   cp xwayland-config.h.meson.in ${_pkgbase}/include/
 
   #cd xserver
@@ -63,14 +64,13 @@ build() {
     -D xorg=true \
     -D xephyr=true \
     -D xwayland=true \
+    -D xwayland_eglstream=true \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
     -D suid_wrapper=true \
     -D xkb_dir=/usr/share/X11/xkb \
     -D xkb_output_dir=/var/lib/xkb
-     
-#     -D xwayland_eglstream=true \ # requires weston-eglstream from AUR
 
   # Print config
   meson configure build

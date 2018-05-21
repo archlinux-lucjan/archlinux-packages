@@ -309,9 +309,8 @@
 │   ├── xorg-server-git.install
 │   ├── xserver-autobind-hotplug.patch
 │   ├── xvfb-run
-│   ├── xvfb-run.1
-│   └── xwayland-config.h.meson.in
+│   └── xvfb-run.1
 └── yakuake-git
     └── PKGBUILD
 
-101 directories, 213 files
+101 directories, 212 files
