@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.7.0.r5899.ga95b1a32
+pkgver=2.8.0.dev.r5907.gff58e5c0
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('karchive' 'kbookmarks' 'kcodecs' 'kcompletion' 'kcoreaddons' 'kconfig'
          'kdoctools' 'ki18n' 'kiconthemes' 'kitemviews' 'kio' 'knotifications'
          'kparts' 'solid' 'ktextwidgets' 'kwallet' 'kwidgetsaddons' 'kwindowsystem'
          'kxmlgui' 'kguiaddons' 'hicolor-icon-theme')
-makedepends=('cmake' 'extra-cmake-modules' 'python' 'git')
+makedepends=('cmake' 'extra-cmake-modules' 'git')
 optdepends=(
             # archive formats
             # look for KrServices::cmdExist calls
@@ -42,9 +42,8 @@ source=('git://anongit.kde.org/krusader')
 sha1sums=('SKIP')
 
 pkgver() {
-  cd krusader/doc
-  #_ver="$(cat CMakeLists.txt | grep -m1 'set(VERSION' | cut -d '"' -f2 | tr - .)"
-  _ver="$(cat index.docbook| grep -m1 '<releaseinfo>' | grep -o "[[:digit:]]*"| paste -sd'.')"
+  cd krusader
+  _ver="$(cat CMakeLists.txt | grep -m1 'set(VERSION' | cut -d '"' -f2 | tr - .)"
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
