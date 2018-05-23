@@ -75,6 +75,8 @@
 │   └── PKGBUILD
 ├── krusader-git
 │   └── PKGBUILD
+├── krusader-stable-git
+│   └── PKGBUILD
 ├── ktorrent-git
 │   └── PKGBUILD
 ├── ktorrent-stable-git
@@ -313,4 +315,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-101 directories, 212 files
+102 directories, 213 files

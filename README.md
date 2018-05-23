@@ -50,6 +50,8 @@
 
 - krusader-git
 
+- krusader-stable-git
+
 - ktorrent-git
 
 - ktorrent-stable-git
