@@ -185,6 +185,10 @@
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   └── PKGBUILD
+├── pacman-stable-git
+│   ├── makepkg.conf
+│   ├── pacman.conf
+│   └── PKGBUILD
 ├── pacutils-git
 │   └── PKGBUILD
 ├── pkgconf-git
@@ -321,4 +325,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-103 directories, 218 files
+104 directories, 221 files

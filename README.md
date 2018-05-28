@@ -134,6 +134,8 @@
 
 - pacman-git
 
+- pacman-stable-git
+
 - pacutils-git
 
 - pkgconf-git
