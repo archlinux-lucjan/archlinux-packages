@@ -4,13 +4,15 @@
 
 pkgname=pacman-contrib-git
 _gitname=pacman-contrib
-pkgver=0.0.1.15.gb61b9b2
+pkgver=1.0.0.rc1.0.g80eb727
 pkgrel=1
 pkgdesc='pacman contributions (Git version)'
 url=https://git.archlinux.org/$_gitname.git
 arch=('x86_64')
 license=('GPL')
-depends=('bash' 'pacman-git' 'perl') # Change to 'pacman' after release 5.1
+depends=('pacman' 'fakeroot')
+optdepends=('mlocate: pacdiff'
+            'findutils: pacdiff')
 makedepends=('asciidoc' 'git')
 provides=("pacman-contrib")
 replaces=("pacman-contrib")
@@ -25,10 +27,11 @@ pkgver() {
 build() {
   cd $_gitname
   ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc \
-    --localstatedir=/var --enable-git-version \
-    --with-vim-dir=/usr/share/vim/vimfiles
-  make V=1
+  ./configure \
+      --prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var
+  make
 }
 
 check() {
