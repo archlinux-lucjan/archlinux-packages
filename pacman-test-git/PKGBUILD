@@ -1,0 +1,69 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Dave Reisner <d@falconindy.com>
+# Contributor: Thomas Dziedzic < gostrc at gmail >
+# Contributor: godane <slaxemulator@gmail.com.com>
+# Contributor: Andres Perera <aepd87@gmail.com>
+
+pkgname=pacman-test-git
+pkgver=5.0.1.281.gbe4c491c
+pkgrel=1
+pkgdesc="A library-based package manager with dependency support. git version."
+arch=('x86_64')
+url="http://www.archlinux.org/pacman/"
+license=('GPL')
+depends=('bash' 'glibc' 'libarchive' 'curl'
+         'gpgme' 'pacman-mirrorlist' 'archlinux-keyring')
+makedepends=('asciidoc' 'git')
+checkdepends=('python2' 'fakechroot')
+backup=(etc/pacman.conf etc/makepkg.conf)
+provides=("pacman=$pkgver")
+conflicts=('pacman')
+options=('!libtool' '!strip')
+backup=(etc/pacman.conf
+        etc/makepkg.conf)
+source=(git://git.archlinux.org/users/eschwartz/pacman
+        pacman.conf
+        makepkg.conf)
+sha1sums=('SKIP'
+          'fde4ac4e24405b15157382b59cee80c58b02c95b'
+          'ba815c26185ed186f872ea65f71676ba1683e60d')
+
+pkgver() {
+  cd pacman
+  git describe --long | sed 's/^v//;s/-/./g'
+}
+
+build() {
+  cd "pacman"
+
+  ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc \
+    --localstatedir=/var --enable-doc \
+    --with-scriptlet-shell=/usr/bin/bash \
+    --with-ldconfig=/usr/bin/ldconfig
+  make V=1
+}
+
+check() {
+  make -C "pacman" check
+}
+
+package() {
+  cd "pacman"
+
+  make DESTDIR="$pkgdir" install
+
+  # install Arch specific stuff
+  install -dm755 "$pkgdir/etc"
+  install -m644 "$srcdir/pacman.conf" "$pkgdir/etc"
+  install -m644 "$srcdir/makepkg.conf" "$pkgdir/etc"
+
+  # put bash_completion in the right location
+  install -dm755 "$pkgdir/usr/share/bash-completion/completions"
+  mv "$pkgdir/etc/bash_completion.d/pacman" "$pkgdir/usr/share/bash-completion/completions"
+  rmdir "$pkgdir/etc/bash_completion.d"
+
+  for f in makepkg pacman-key; do
+    ln -s pacman "$pkgdir/usr/share/bash-completion/completions/$f"
+  done
+}
