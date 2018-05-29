@@ -10,7 +10,7 @@ pkgdesc="Libalpm bindings for Python 3 (Git version)"
 arch=('x86_64')
 url="https://projects.archlinux.org/git/pyalpm.git"
 license=('GPL')
-depends=('python>=3.2' 'pacman>=5')
+depends=('python>=3.6' 'pacman>=5.0')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 makedepends=('git')
