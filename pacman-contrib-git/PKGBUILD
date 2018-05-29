@@ -14,8 +14,8 @@ depends=('pacman' 'fakeroot')
 optdepends=('mlocate: pacdiff'
             'findutils: pacdiff')
 makedepends=('asciidoc' 'git')
-provides=("pacman-contrib")
-conflitcs=("pacman-contrib")
+provides=('pacman-contrib')
+conflicts=('pacman-contrib')
 source=("git+https://git.archlinux.org/pacman-contrib.git")
 sha512sums=('SKIP')
 
