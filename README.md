@@ -166,6 +166,8 @@
 
 - psi-webkit-git
 
+- pyalpm-git
+
 - qconf-git
 
 - qtcreator-dev-git

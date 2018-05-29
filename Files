@@ -227,6 +227,8 @@
 │   └── PKGBUILD
 ├── psi-webkit-git
 │   └── PKGBUILD
+├── pyalpm-git
+│   └── PKGBUILD
 ├── qconf-git
 │   └── PKGBUILD
 ├── qtcreator-dev-git
@@ -329,4 +331,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-105 directories, 224 files
+106 directories, 225 files
