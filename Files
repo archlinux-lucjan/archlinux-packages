@@ -196,7 +196,8 @@
 ├── pacutils-git
 │   └── PKGBUILD
 ├── pkgconf-git
-│   └── PKGBUILD
+│   ├── PKGBUILD
+│   └── platform-pkg-config.in
 ├── psi-clean-git
 │   └── PKGBUILD
 ├── psi-plus-clean-full-git
@@ -331,4 +332,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-106 directories, 225 files
+106 directories, 226 files
