@@ -6,7 +6,7 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
-pkgver=238.406.gb667d50d3
+pkgver=238.1353.gb5cbe199c
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -64,39 +64,14 @@ _backports=(
 _reverts=(
 )
 
-_validate_tag() (
-  local success fingerprint trusted status tag=v${pkgver%.*}
-
-  cd "$srcdir/$_pkgbase"
-  parse_gpg_statusfile /dev/stdin < <(git verify-tag --raw "$tag" 2>&1)
-
-  if (( ! success )); then
-    error 'failed to validate tag %s\n' "$tag"
-    return 1
-  fi
-
-  if ! in_array "$fingerprint" "${validpgpkeys[@]}" && (( ! trusted )); then
-    error 'unknown or untrusted public key: %s\n' "$fingerprint"
-    return 1
-  fi
-
-  case $status in
-    'expired')
-      warning 'the signature has expired'
-      ;;
-    'expiredkey')
-      warning 'the key has expired'
-      ;;
-  esac
-
-  return 0
-)
 
 prepare() {
   cd "$_pkgbase"
 
-  git remote add -f upstream ../systemd
-  #git checkout "$_commit"
+  # add upstream repository for cherry-picking
+   git remote add -f upstream ../systemd
+  # checkout the latest stable commit
+  # git checkout "$_commit"
 
   local c
   for c in "${_backports[@]}"; do
@@ -116,7 +91,6 @@ pkgver() {
 }
 
 build() {
-  #_validate_tag || return
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
