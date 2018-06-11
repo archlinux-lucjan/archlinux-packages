@@ -84,6 +84,8 @@
 
 - linux-firmware-git
 
+- linux-next-git
+
 - linux-usermode
 
 - linux-usermode-git
