@@ -104,6 +104,8 @@
 │   └── PKGBUILD
 ├── libktorrent-stable-git
 │   └── PKGBUILD
+├── libsignal-protocol-c-git
+│   └── PKGBUILD
 ├── linux-api-headers-git
 │   └── PKGBUILD
 ├── linux-api-headers-rc-git
@@ -340,4 +342,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-107 directories, 233 files
+108 directories, 234 files

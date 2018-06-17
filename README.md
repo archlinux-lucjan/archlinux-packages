@@ -78,6 +78,8 @@
 
 - libktorrent-stable-git
 
+- libsignal-protocol-c-git
+
 - linux-api-headers-git
 
 - linux-api-headers-rc-git
