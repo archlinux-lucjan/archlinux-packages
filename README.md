@@ -152,9 +152,7 @@
 
 - psi-plus-clean-git
 
-- psi-plus-l10n-git
-
-- psi-plus-plugins-dev-git 
+- psi-plus-l10n-git 
 
 - psi-plus-plugins-git
 

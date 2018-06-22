@@ -2,6 +2,11 @@
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
+### BUILD OPTIONS
+# Set these variables to ANYTHING that is not null to enable them
+_dev_plugins=
+### Do not edit below this line unless you know what you're doing
+
 pkgname=psi-plus-plugins-git
 pkgver=1.1.103.gb3702f2
 pkgrel=1
@@ -12,7 +17,7 @@ license=('GPL2')
 depends=('qt5-base' 'qt5-multimedia' 'psi-plus-git' 'qt5-webengine')
 conflicts=('psi-plus-plugins' 'psi-plus-plugins-qt5-git')
 provides=("psi-plus-plugins=$pkgver" "psi-plus-plugins-qt5-git=$pkgver")
-makedepends=('git' 'cmake' 'libotr' 'tidy' 'libsignal-protocol-c')
+makedepends=('libotr' 'tidy' 'git' 'cmake' 'libsignal-protocol-c')
 optdepends=('libotr: for OTR plugin'
             'tidy: for OTR plugin'
             'libsignal-protocol-c: for omemoplugin')
@@ -54,7 +59,11 @@ prepare() {
     
 build() {
   cd $srcdir/psi
+  if [ -n "$_dev_plugins" ]; then
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DBUILD_DEV_PLUGINS=ON -DIS_PSIPLUS=ON..
+  else
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DIS_PSIPLUS=ON..
+  fi
   make
 }
 

@@ -216,8 +216,6 @@
 │   └── PKGBUILD
 ├── psi-plus-l10n-git
 │   └── PKGBUILD
-├── psi-plus-plugins-dev-git
-│   └── PKGBUILD
 ├── psi-plus-plugins-git
 │   └── PKGBUILD
 ├── psi-plus-resources-git
@@ -338,4 +336,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-109 directories, 229 files
+108 directories, 228 files
