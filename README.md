@@ -146,6 +146,8 @@
 
 - pkgconf-git
 
+- psi-clean-full-git
+
 - psi-clean-git
 
 - psi-plus-clean-full-git
@@ -166,7 +168,11 @@
 
 - psi-plus-webkit-git
 
+- psi-webengine-full-git
+
 - psi-webengine-git
+
+- psi-webkit-full-git
 
 - psi-webkit-git
 

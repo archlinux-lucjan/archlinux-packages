@@ -208,6 +208,8 @@
 ├── pkgconf-git
 │   ├── PKGBUILD
 │   └── platform-pkg-config.in
+├── psi-clean-full-git
+│   └── PKGBUILD
 ├── psi-clean-git
 │   └── PKGBUILD
 ├── psi-plus-clean-full-git
@@ -228,7 +230,11 @@
 │   └── PKGBUILD
 ├── psi-plus-webkit-git
 │   └── PKGBUILD
+├── psi-webengine-full-git
+│   └── PKGBUILD
 ├── psi-webengine-git
+│   └── PKGBUILD
+├── psi-webkit-full-git
 │   └── PKGBUILD
 ├── psi-webkit-git
 │   └── PKGBUILD
@@ -336,4 +342,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-108 directories, 228 files
+111 directories, 231 files
