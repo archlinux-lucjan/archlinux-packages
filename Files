@@ -211,10 +211,8 @@
 ├── psi-clean-git
 │   └── PKGBUILD
 ├── psi-plus-clean-full-git
-│   ├── join.patch
 │   └── PKGBUILD
 ├── psi-plus-clean-git
-│   ├── join.patch
 │   └── PKGBUILD
 ├── psi-plus-l10n-git
 │   └── PKGBUILD
@@ -225,16 +223,12 @@
 ├── psi-plus-resources-git
 │   └── PKGBUILD
 ├── psi-plus-webengine-full-git
-│   ├── join.patch
 │   └── PKGBUILD
 ├── psi-plus-webengine-git
-│   ├── join.patch
 │   └── PKGBUILD
 ├── psi-plus-webkit-full-git
-│   ├── join.patch
 │   └── PKGBUILD
 ├── psi-plus-webkit-git
-│   ├── join.patch
 │   └── PKGBUILD
 ├── psi-webengine-git
 │   └── PKGBUILD
@@ -344,4 +338,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-109 directories, 235 files
+109 directories, 229 files
