@@ -150,6 +150,8 @@
 
 - psi-clean-git
 
+- psi-l10n-git
+
 - psi-plugins-git
 
 - psi-plus-clean-full-git
