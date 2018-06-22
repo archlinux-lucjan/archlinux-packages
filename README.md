@@ -172,6 +172,8 @@
 
 - psi-plus-webkit-git
 
+- psi-resources-git
+
 - psi-webengine-full-git
 
 - psi-webengine-git

@@ -234,6 +234,8 @@
 │   └── PKGBUILD
 ├── psi-plus-webkit-git
 │   └── PKGBUILD
+├── psi-resources-git
+│   └── PKGBUILD
 ├── psi-webengine-full-git
 │   └── PKGBUILD
 ├── psi-webengine-git
@@ -346,4 +348,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-113 directories, 233 files
+114 directories, 234 files
