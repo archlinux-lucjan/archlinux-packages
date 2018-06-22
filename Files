@@ -212,6 +212,8 @@
 │   └── PKGBUILD
 ├── psi-clean-git
 │   └── PKGBUILD
+├── psi-plugins-git
+│   └── PKGBUILD
 ├── psi-plus-clean-full-git
 │   └── PKGBUILD
 ├── psi-plus-clean-git
@@ -342,4 +344,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-111 directories, 231 files
+112 directories, 232 files
