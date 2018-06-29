@@ -2,7 +2,7 @@
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=git-main-git
-pkgver=2.17.0.0.g468165c1d8
+pkgver=2.17.1.0.gfc54c1af3e
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('x86_64')
@@ -45,13 +45,13 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/./g'
 }            
 
-make_paths=(
+_make_paths=(
   prefix='/usr'
   gitexecdir='/usr/lib/git-core'
   perllibdir="$(/usr/bin/perl -MConfig -wle 'print $Config{installvendorlib}')"
 )
 
-make_options=(
+_make_options=(
   CFLAGS="$CFLAGS"
   LDFLAGS="$LDFLAGS"
   USE_LIBPCRE2=1
@@ -67,21 +67,23 @@ build() {
   patch -Np1 < ../0001-perl-fix-installing-modules-from-contrib.patch
   
   make \
-    "${make_paths[@]}" \
-    "${make_options[@]}" \
+    "${_make_paths[@]}" \
+    "${_make_options[@]}" \
     all doc
 
-  make -C contrib/emacs "${make_paths[@]}"
+  make -C contrib/emacs "${_make_paths[@]}"
   make -C contrib/credential/gnome-keyring
   make -C contrib/credential/libsecret
-  make -C contrib/subtree "${make_paths[@]}" all doc
-  make -C contrib/mw-to-git "${make_paths[@]}" all
-  make -C contrib/diff-highlight "${make_paths[@]}"
+  make -C contrib/subtree "${_make_paths[@]}" all doc
+  make -C contrib/mw-to-git "${_make_paths[@]}" all
+  make -C contrib/diff-highlight "${_make_paths[@]}"
 }
+
 
 check() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$_gitname"
+  
   local jobs
   jobs=$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*') || true
   mkdir -p /dev/shm/git-test
@@ -90,8 +92,8 @@ check() {
   # build chroot (i.e.: /usr/bin/nologin)
   SHELL=/bin/sh \
   make \
-    "${make_paths[@]}" \
-    "${make_options[@]}" \
+    "${_make_paths[@]}" \
+    "${_make_options[@]}" \
     NO_SVN_TESTS=y \
     DEFAULT_TEST_TARGET=prove \
     GIT_PROVE_OPTS="$jobs -Q" \
@@ -102,9 +104,10 @@ check() {
 package() {
   export PYTHON_PATH='/usr/bin/python2'
   cd "$_gitname"
+  
   make \
-    "${make_paths[@]}" \
-    "${make_options[@]}" \
+    "${_make_paths[@]}" \
+    "${_make_options[@]}" \
     DESTDIR="$pkgdir" \
     install install-doc
 
@@ -115,7 +118,7 @@ package() {
   mkdir -p "$pkgdir"/usr/share/git/
   install -m 0644 ./contrib/completion/git-prompt.sh "$pkgdir"/usr/share/git/git-prompt.sh
   # emacs
-  make -C contrib/emacs "${make_paths[@]}" DESTDIR="$pkgdir" install
+  make -C contrib/emacs "${_make_paths[@]}" DESTDIR="$pkgdir" install
   # gnome credentials helper
   install -m 0755 contrib/credential/gnome-keyring/git-credential-gnome-keyring \
       "$pkgdir"/usr/lib/git-core/git-credential-gnome-keyring
@@ -125,9 +128,9 @@ package() {
       "$pkgdir"/usr/lib/git-core/git-credential-libsecret
   make -C contrib/credential/libsecret clean
   # subtree installation
-  make -C contrib/subtree "${make_paths[@]}" DESTDIR="$pkgdir" install install-doc
+  make -C contrib/subtree "${_make_paths[@]}" DESTDIR="$pkgdir" install install-doc
   # mediawiki installation
-  make -C contrib/mw-to-git "${make_paths[@]}" DESTDIR="$pkgdir" install
+  make -C contrib/mw-to-git "${_make_paths[@]}" DESTDIR="$pkgdir" install
   # the rest of the contrib stuff
   find contrib/ -name '.gitignore' -delete
   cp -a ./contrib/* $pkgdir/usr/share/git/
