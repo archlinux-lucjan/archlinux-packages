@@ -206,7 +206,7 @@ package_systemd-resolvconf-stable-git() {
   pkgdesc='systemd resolvconf replacement'
   license=('GPL2')
   depends=('systemd')
-  provides=('openresolv' 'systemd-resolvconf')
+  provides=('openresolv' 'resolvconf' 'systemd-resolvconf')
   conflicts=('openresolv' 'systemd-resolvconf')
 
   install -d -m0755 "$pkgdir"/usr/bin
