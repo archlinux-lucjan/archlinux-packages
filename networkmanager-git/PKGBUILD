@@ -9,7 +9,7 @@
 pkgbase=networkmanager-git
 pkgname=(networkmanager-git libnm-git libnm-glib-git)
 pkgver=1.13.1dev.100.g6ea0cd130
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -131,7 +131,7 @@ package_networkmanager-git() {
               'iwd: wpa_supplicant alternative')
   backup=('etc/NetworkManager/NetworkManager.conf')
   conflicts=('networkmanager')
-  provides=('networmanager')
+  provides=('networkmanager')
 
   DESTDIR="$pkgdir" make -C NetworkManager install
 

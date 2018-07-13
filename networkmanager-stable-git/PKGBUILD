@@ -9,7 +9,7 @@
 pkgbase=networkmanager-stable-git
 pkgname=(networkmanager-stable-git libnm-stable-git libnm-glib-stable-git)
 pkgver=1.10.11dev.2.gcd6c17cb2
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -121,7 +121,7 @@ package_networkmanager-stable-git() {
               'modemmanager: cellular network support')
   backup=('etc/NetworkManager/NetworkManager.conf')
   conflicts=('networkmanager')
-  provides=('networmanager')
+  provides=('networkmanager')
 
   cd NetworkManager
   make DESTDIR="$pkgdir" install
