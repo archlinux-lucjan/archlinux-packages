@@ -6,6 +6,8 @@
 ├── clean-chroot-manager-git
 │   ├── ccm.install
 │   └── PKGBUILD
+├── clementine-lite-qt5-git
+│   └── PKGBUILD
 ├── clementine-qt5-git
 │   ├── PKGBUILD
 │   ├── spotify_blob.patch
@@ -349,4 +351,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-114 directories, 235 files
+115 directories, 236 files

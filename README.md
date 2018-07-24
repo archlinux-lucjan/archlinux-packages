@@ -1,10 +1,12 @@
-# Collection of PKGBUILDS for Achlinux:
+# Collection of PKGBUILDS for Ach Linux:
 
 - antimicro-git
 
 - cantata-git
 
 - clean-chroot-manager-git
+
+- clementine-lite-qt5-git 
 
 - clementine-qt5-git
 
