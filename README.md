@@ -208,6 +208,8 @@
 
 - toxcore-stable-git
 
+- uksmstat-git
+
 - utox-dev-git
 
 - utox-git
