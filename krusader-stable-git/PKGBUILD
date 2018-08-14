@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-stable-git
-pkgver=2.7.1.dev.r5903.gec5284ea
+pkgver=2.7.2.dev.r5928.gdb4bed8a
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
 )
 provides=('krusader')
 conflicts=('krusader')
-source=('git://anongit.kde.org/krusader#branch=2.7')
+source=('git://anongit.kde.org/krusader#branch=stable')
 sha1sums=('SKIP')
 
 pkgver() {
