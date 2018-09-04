@@ -200,6 +200,8 @@
 
 - smplayer-svn
 
+- strawberry-git
+
 - systemd-git
 
 - systemd-stable-git

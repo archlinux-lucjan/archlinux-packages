@@ -1,0 +1,44 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+
+pkgname=strawberry-git
+_pkgname=strawberry
+pkgver=0.2.1.60.gb9788ef
+pkgrel=1
+pkgdesc="Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer engine only"
+arch=('x86_64')
+url="http://www.strawbs.org/"
+license=(GPL3)
+depends=('chromaprint' 'protobuf' 'gst-plugins-base' 'boost-libs' 'qt5-base' 'qt5-x11extras'
+         'sqlite3' 'dbus' 'alsa-lib' 'libcdio' 'taglib')
+#depends+=(xine-lib vlc libmtp phonon-qt5 libgpod libusbmuxd libplist libimobiledevice)
+makedepends=('git' 'cmake' 'boost')
+optdepends=('gst-plugins-good'
+            'gst-plugins-bad'
+            'gst-plugins-ugly')
+provides=('strawberry')
+conflicts=('strawberry' 'strawberry-full-git')
+source=("git://github.com/jonaski/strawberry.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  install -d strawberry-build
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}/strawberry-build"
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}/strawberry-build"
+  make DESTDIR="${pkgdir}" install
+}
