@@ -268,6 +268,8 @@
 │   └── sddm.tmpfiles
 ├── smplayer-svn
 │   └── PKGBUILD
+├── strawberry-full-git
+│   └── PKGBUILD
 ├── strawberry-git
 │   └── PKGBUILD
 ├── systemd-git
@@ -355,4 +357,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-117 directories, 238 files
+118 directories, 239 files
