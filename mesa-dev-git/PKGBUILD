@@ -6,23 +6,21 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.0.devel.r102310.g8fde9429c3
+pkgver=18.3.0.devel.r104757.g1a263b377c
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
-makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
+makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols'
              'elfutils' 'llvm-svn' 'libomxil-bellagio' 'libclc-git' 'clang-svn' 'libglvnd' 'libunwind' 'lm_sensors'
-             'meson' 'git')
+             'meson' 'libxrandr' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git'
-        "LICENSE"
-        "0001-glvnd-fix-gl.pc.patch")
+        "LICENSE")
 options=('!libtool')
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a'
-         'b9a79df3d2d15ca7637e97f6288f6d8f')
+         '5c65a0fe315dd347e09b1f2826a1df5a')
 
 pkgver() {
     cd mesa
@@ -35,7 +33,7 @@ prepare() {
 
   # glvnd support patches - from Fedora
   # non-upstreamed ones
-  patch -Np1 -i ../0001-glvnd-fix-gl.pc.patch
+  # patch -Np1 -i ../0001-glvnd-fix-gl.pc.patch
 }
   
 build() {
@@ -44,7 +42,7 @@ build() {
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
-    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast \
     -D vulkan-drivers=amd,intel \
     -D swr-arches=avx,avx2 \
     -D dri3=true \
@@ -175,17 +173,13 @@ package_mesa-dev-git() {
   _install fakeinstall/usr/lib/lib{gbm,glapi}.so*
   _install fakeinstall/usr/lib/libOSMesa.so*
   _install fakeinstall/usr/lib/libxatracker.so*
-  _install fakeinstall/usr/lib/libswrAVX*.so*
+  # _install fakeinstall/usr/lib/libswrAVX*.so*
 
   # in libglvnd
   rm -v fakeinstall/usr/lib/libGLESv{1_CM,2}.so*
   
   # in vulkan-headers
   rm -rv fakeinstall/usr/include/vulkan
-
-  # in wayland
-  rm -v fakeinstall/usr/lib/libwayland-egl.so*
-  rm -v fakeinstall/usr/lib/pkgconfig/wayland-egl.pc
   
   _install fakeinstall/usr/include
   _install fakeinstall/usr/lib/pkgconfig
