@@ -7,14 +7,15 @@ pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'libsystemd-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
 pkgver=239.0.gde7436b02
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
-             'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
+             'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
-             'meson' 'git')
+             'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
+             'bash-completion')
 options=('strip')
 source=('git+https://github.com/systemd/systemd-stable#tag=v239'
         'git+https://github.com/systemd/systemd'
@@ -108,9 +109,9 @@ build() {
 )
 
   local _meson_options=(
-    -Daudit=false
-    -Dgnuefi=true
+    -Dgnu-efi=true
     -Dima=false
+    -Dlibidn2=true
     -Dlz4=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
@@ -133,16 +134,16 @@ build() {
 package_systemd-stable-git() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
-           'util-linux' 'xz')
+  depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+           'libgcrypt' 'libsystemd' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
+           'util-linux' 'xz' 'pcre2' 'audit')
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" )
   conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
-  optdepends=('cryptsetup: required for encrypted block devices'
-              'libmicrohttpd: remote journald capabilities'
+  optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
-              'polkit: allow administration as unprivileged user')
+              'polkit: allow administration as unprivileged user'
+              'curl: machinectl pull-tar and pull-raw')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/journald.conf
@@ -156,7 +157,7 @@ package_systemd-stable-git() {
           etc/udev/udev.conf)
   install="systemd-git.install"
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.

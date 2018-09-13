@@ -8,8 +8,8 @@
 
 pkgbase=networkmanager-test-git
 pkgname=(networkmanager-test-git libnm-test-git libnm-glib-test-git)
-pkgver=1.12.1dev.10.g87cd30c7d
-pkgrel=2
+pkgver=1.14.rc1.43.g5713acfe7
+pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -18,16 +18,16 @@ _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
              dbus-glib iproute2 nss polkit wpa_supplicant curl systemd libmm-glib
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
-             glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf libpsl)
+             glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf libpsl audit)
 checkdepends=(libx11 python-dbus)
-source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager#branch=nm-1-12")
+source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager#branch=nm-1-14")
 sha256sums=('SKIP')
 
 prepare() {
+  mkdir build
   cd NetworkManager
   NOCONFIGURE=1 ./autogen.sh
 }
-
 
 pkgver() {
   cd NetworkManager
@@ -35,8 +35,9 @@ pkgver() {
 }
 
 build() {
-  cd NetworkManager
-  ./configure --prefix=/usr \
+  cd build
+  ../NetworkManager/configure \
+    --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     runstatedir=/run \
@@ -77,6 +78,7 @@ build() {
     --with-iptables=/usr/bin/iptables \
     --with-iwd \
     --with-kernel-firmware-dir=/usr/lib/firmware \
+    --with-libaudit=yes \
     --with-libnm-glib \
     --with-libpsl \
     --with-modem-manager-1 \
@@ -95,20 +97,16 @@ build() {
     --with-wext \
     --without-consolekit \
     --without-dhcpcanon \
-    --without-libaudit \
     --without-more-asserts \
     --without-netconfig \
     --without-ofono \
     --without-selinux
-
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
   make
 }
 
 check() {
-  cd NetworkManager
-  make -C NetworkManager -k check || :
+  make check -C build
 }
 
 _pick() {
@@ -122,8 +120,8 @@ _pick() {
 }
 
 package_networkmanager-test-git() {
-  depends=(libnm-glib-test-git iproute2 polkit wpa_supplicant libmm-glib libnewt libndp libteam curl
-           bluez-libs libpsl)
+  depends=(libnm libnm-glib iproute2 polkit wpa_supplicant libmm-glib libnewt libndp libteam curl
+           bluez-libs libpsl audit)
   optdepends=('dnsmasq: connection sharing'
               'bluez: Bluetooth support'
               'ppp: dialup connection support'
@@ -133,7 +131,7 @@ package_networkmanager-test-git() {
   conflicts=('networkmanager')
   provides=('networkmanager')
 
-  DESTDIR="$pkgdir" make -C NetworkManager install
+  DESTDIR="$pkgdir" make install -C build
 
   # packaged configuration
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf" <<END
