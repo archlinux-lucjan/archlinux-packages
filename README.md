@@ -32,6 +32,8 @@
 
 - git-test-git
 
+- gitless-git
+
 - gnupg-git
 
 - gpgme-git

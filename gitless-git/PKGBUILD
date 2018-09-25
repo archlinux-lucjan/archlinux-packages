@@ -1,0 +1,31 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+
+pkgname=gitless-git
+_pkgname=gitless
+pkgver=0.8.6.21.g4eb3a97
+pkgrel=1
+pkgdesc="A scientifically proven easier-to-use git interface"
+arch=("any")
+url="http://gitless.com/"
+license=("GPL")
+depends=('python' 'git' 'python-sh' 'python-clint' 'python-pygit2' 'python-setuptools')
+makedepends=('git')
+conflits=('gitless')
+provides=('gitless')
+source=(
+  "git://github.com/sdg-mit/gitless/"
+  "versionless-deps.patch"
+)
+sha256sums=('SKIP'
+            '8837f140b111caf2c1a8bbb589c83ae5801a6bca8977ccdafc6de40dfe7700fe')
+
+pkgver() {
+    cd ${srcdir}/${_pkgname}
+    git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+package() {
+  cd ${srcdir}/${_pkgname}
+  # patch -p1 < ${srcdir}/versionless-deps.patch
+  python setup.py install --root=${pkgdir} --optimize=1
+}

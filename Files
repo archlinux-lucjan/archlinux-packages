@@ -43,6 +43,9 @@
 │   ├── git-git.install
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
+├── gitless-git
+│   ├── PKGBUILD
+│   └── versionless-deps.patch
 ├── git-main-git
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
@@ -355,4 +358,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-118 directories, 237 files
+119 directories, 239 files
