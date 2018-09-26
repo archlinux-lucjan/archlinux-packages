@@ -14,6 +14,8 @@
 
 - cmake-release-git
 
+- fetchmirrors-git
+
 - freebsd-manpages
 
 - gcc-dev-git
