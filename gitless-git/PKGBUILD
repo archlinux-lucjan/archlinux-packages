@@ -12,12 +12,8 @@ depends=('python' 'git' 'python-sh' 'python-clint' 'python-pygit2' 'python-setup
 makedepends=('git')
 conflits=('gitless')
 provides=('gitless')
-source=(
-  "git://github.com/sdg-mit/gitless/"
-  "versionless-deps.patch"
-)
-sha256sums=('SKIP'
-            '8837f140b111caf2c1a8bbb589c83ae5801a6bca8977ccdafc6de40dfe7700fe')
+source=("git://github.com/sdg-mit/gitless/")
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${_pkgname}
@@ -26,6 +22,5 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${_pkgname}
-  # patch -p1 < ${srcdir}/versionless-deps.patch
   python setup.py install --root=${pkgdir} --optimize=1
 }
