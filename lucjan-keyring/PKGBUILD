@@ -4,14 +4,14 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 
 pkgname=lucjan-keyring
-pkgver=20171014
+pkgver=20180929
 pkgrel=1
 pkgdesc="Lucjan's PGP keyring"
 arch=('any')
 license=('GPL')
 install="${pkgname}.install"
 source=("https://github.com/archlinux-lucjan/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5a8c581b8e1c8842287280f4fb59bb5556d6f21e3c228fc9f8cdd242ed1d6090')
+sha256sums=('f6bf10eda36889015e390638b38b21d45beaebf3abbe7461330ad7152c02e8df')
 
 
 package() {
