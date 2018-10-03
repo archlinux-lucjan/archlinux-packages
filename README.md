@@ -116,6 +116,8 @@
 
 - mercurial-hg
 
+- mercurial-stable-hg
+
 - mesa-dev-git
 
 - mesa-rc-git
