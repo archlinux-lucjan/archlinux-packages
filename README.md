@@ -114,6 +114,8 @@
 
 - lucjan-keyring-git
 
+- mercurial-hg
+
 - mesa-dev-git
 
 - mesa-rc-git

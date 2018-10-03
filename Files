@@ -159,6 +159,9 @@
 ├── lucjan-keyring-git
 │   ├── lucjan-keyring.install
 │   └── PKGBUILD
+├── mercurial-hg
+│   ├── mercurial.profile
+│   └── PKGBUILD
 ├── mesa-dev-git
 │   ├── LICENSE
 │   └── PKGBUILD
@@ -359,4 +362,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-120 directories, 239 files
+121 directories, 241 files
