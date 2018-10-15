@@ -115,6 +115,8 @@
 │   └── PKGBUILD
 ├── libva-intel-driver-git
 │   └── PKGBUILD
+├── libva-utils-git
+│   └── PKGBUILD
 ├── linux-api-headers-git
 │   └── PKGBUILD
 ├── linux-api-headers-rc-git
@@ -369,4 +371,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-124 directories, 245 files
+125 directories, 246 files
