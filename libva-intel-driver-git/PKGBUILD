@@ -1,0 +1,44 @@
+# $Id: PKGBUILD 257304 2015-12-27 18:53:03Z bpiotrowski $
+# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+
+pkgname=libva-intel-driver-git
+_pkgname=libva-intel-driver
+pkgver=2.2.0.2018.r2631.gdc20b640
+pkgrel=1
+pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
+arch=('x86_64')
+url='http://freedesktop.org/wiki/Software/vaapi'
+license=('MIT')
+depends=('libva' 'libdrm')
+makedepends=('git' 'meson')
+provides=('libva-intel-driver')
+conflicts=('libva-intel-driver')
+replaces=('libva-driver-intel')
+source=('git+https://github.com/01org/intel-vaapi-driver.git')
+md5sums=('SKIP')
+
+pkgver() {
+    cd intel-vaapi-driver
+    _ver="$(cat NEWS | grep -m1 Version | grep -o "[[:digit:]]*" | paste -sd'.')"
+    echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+
+}
+
+prepare() {
+  # Only relevant if intel-gpu-tools is installed,
+  # since then the shaders will be recompiled
+  sed -i '1s/python$/&2/' intel-vaapi-driver/src/shaders/gpp.py
+  # Fix undefined variable in src/meson.build
+  sed -i 's/2.2.0/2.2.0.0/' intel-vaapi-driver/meson.build
+}
+
+build() {
+  arch-meson intel-vaapi-driver build
+  ninja -C build
+}
+
+package() {
+  DESTDIR="${pkgdir}" ninja -C build install
+  install -Dm 644 intel-vaapi-driver/COPYING -t "${pkgdir}"/usr/share/licenses/libva-intel-driver
+}

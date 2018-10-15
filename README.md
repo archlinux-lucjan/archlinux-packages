@@ -88,6 +88,8 @@
 
 - libva-git
 
+- libva-intel-driver-git
+
 - linux-api-headers-git
 
 - linux-api-headers-rc-git
