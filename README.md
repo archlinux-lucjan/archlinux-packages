@@ -86,6 +86,8 @@
 
 - libsignal-protocol-c-git
 
+- libva-git
+
 - linux-api-headers-git
 
 - linux-api-headers-rc-git
