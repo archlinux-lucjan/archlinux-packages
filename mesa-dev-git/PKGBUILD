@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0.devel.r104757.g1a263b377c
+pkgver=18.3.0.devel.r105161.g322a919a41
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -30,14 +30,12 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/mesa
-
-  # glvnd support patches - from Fedora
-  # non-upstreamed ones
-  # patch -Np1 -i ../0001-glvnd-fix-gl.pc.patch
 }
   
 build() {
-    arch-meson mesa build \
+  #  -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr ### swr doesn't build https://bugs.freedesktop.org/show_bug.cgi?id=107865
+
+  arch-meson mesa build \
     -D b_lto=false \
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
@@ -49,7 +47,7 @@ build() {
     -D egl=true \
     -D gallium-extra-hud=true \
     -D gallium-nine=true \
-    -D gallium-omx=auto \
+    -D gallium-omx=bellagio \
     -D gallium-opencl=icd \
     -D gallium-va=true \
     -D gallium-vdpau=true \
@@ -162,7 +160,6 @@ package_mesa-dev-git() {
              'mesa-dri-git' 'mesa-libgl-git')
   replaces=('mesa-libgl-dev-git')
 
-  _install fakeinstall/etc/drirc
   _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
