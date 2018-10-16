@@ -248,6 +248,8 @@
 
 - xorg-server-git
 
+- xorg-server-next-git
+
 - yakuake-git
 
 # Download:

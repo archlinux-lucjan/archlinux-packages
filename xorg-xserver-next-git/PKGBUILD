@@ -1,0 +1,224 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Det <nimetonmaili g-mail>
+# Contributors: SpeedVin, FoxBuru, Federico Cinelli
+# Based on xorg-server-dev: https://aur.archlinux.org/packages/xorg-server-dev/
+
+pkgbase=xorg-xserver-next-git
+_pkgbase=xserver
+pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xdmx-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-xwayland-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
+pkgver=1.20.2.0.g2a0c6c15c
+pkgrel=1
+arch=('x86_64')
+license=('custom')
+groups=('xorg')
+url="http://cgit.freedesktop.org/xorg/xserver/"
+makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
+             'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
+             'libxmu' 'libxrender' 'libxi' 'libxaw' 'libdmx' 'libxtst' 'libxres'
+             'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
+             'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
+             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
+source=('git://anongit.freedesktop.org/xorg/xserver#branch=server-1.20-branch'
+        'xwayland-config.h.meson.in::https://cgit.freedesktop.org/xorg/xserver/plain/include/xwayland-config.h.meson.in?id=xorg-server-1.20.0'
+        'xserver-autobind-hotplug.patch'
+        'xvfb-run' # with updates from FC master
+        'xvfb-run.1')
+sha256sums=('SKIP'
+            '49c85b75c8229647969fd4dfcca8e8251bdeb772cd1672a0507868fa6e55cf3e'
+            'cae1b7f296c18177de38f9b1215a4f916da2288b85f1fcb9e80373a42e2892b8'
+            '2198b9e635bb4e52bf986e678a702ec74f781b5b10c5713e1eeaa16cc9af078c'
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
+
+pkgver() {
+  cd xserver
+
+  git describe --long | sed 's/^xorg.server-//;s/-/./g'
+}
+
+prepare() {
+  # missing from tarball
+  cp xwayland-config.h.meson.in ${_pkgbase}/include/
+
+  #cd xserver
+  cd "${_pkgbase}"
+
+  # patch from Fedora, not yet merged
+  patch -Np1 -i ../xserver-autobind-hotplug.patch
+}
+
+build() {
+  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
+  # With them, module fail to load with undefined symbol.
+  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
+
+  arch-meson ${_pkgbase} build \
+    -D os_vendor="Arch Linux" \
+    -D ipv6=true \
+    -D dmx=true \
+    -D xvfb=true \
+    -D xnest=true \
+    -D xcsecurity=true \
+    -D xorg=true \
+    -D xephyr=true \
+    -D xwayland=true \
+    -D xwayland_eglstream=true \
+    -D glamor=true \
+    -D udev=true \
+    -D systemd_logind=true \
+    -D suid_wrapper=true \
+    -D xkb_dir=/usr/share/X11/xkb \
+    -D xkb_output_dir=/var/lib/xkb
+
+  # Print config
+  meson configure build
+  ninja -C build
+ 
+  # fake installation to be seperated into packages
+  DESTDIR="${srcdir}/fakeinstall" ninja -C build install
+}
+
+_install() {
+  local src f dir
+  for src; do
+    f="${src#fakeinstall/}"
+    dir="${pkgdir}/${f%/*}"
+    install -m755 -d "${dir}"
+    mv -v "${src}" "${dir}/"
+  done
+}
+
+package_xorg-server-common-next-git() {
+  pkgdesc="Xorg server common files - Git"
+  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
+  provides=(xorg-server-common=$pkgver)
+  conflicts=(xorg-server-common)
+
+  _install fakeinstall/usr/lib/xorg/protocol.txt
+  _install fakeinstall/usr/share/man/man1/Xserver.1.gz
+
+  install -m644 -Dt "${pkgdir}/var/lib/xkb/" "${_pkgbase}"/xkb/README.compiled
+  # license
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
+}
+
+package_xorg-server-next-git() {
+  pkgdesc="Xorg X server - Git"
+  depends=(libepoxy libxfont2 pixman xorg-server-common libunwind
+           dbus libgl xf86-input-libinput nettle
+           libpciaccess libdrm libxshmfence) # FS#52949
+
+  # see src/xserver/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
+  # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-git pkg
+  provides=('X-ABI-VIDEODRV_VERSION=24.0' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
+  conflicts=('xorg-server' 'nvidia-utils<375.26-3' 'glamor-egl' 'xf86-video-modesetting')
+  replaces=('glamor-egl' 'xf86-video-modesetting')
+  install=xorg-server-git.install
+
+  _install fakeinstall/usr/bin/{Xorg,cvt,gtf}
+  ln -s /usr/bin/Xorg "${pkgdir}/usr/bin/X"
+  _install fakeinstall/usr/lib/Xorg{,.wrap}
+  _install fakeinstall/usr/lib/xorg/modules/*
+  _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
+  _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,cvt,gtf}.1.gz
+  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4.gz
+  _install fakeinstall/usr/share/man/man5/{Xwrapper.config,xorg.conf,xorg.conf.d}.5.gz
+
+  # distro specific files must be installed in /usr/share/X11/xorg.conf.d
+  install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
+
+  # license
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
+}
+
+package_xorg-server-xephyr-next-git() {
+  pkgdesc="A nested X server that runs as an X application - Git"
+  depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common
+           xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
+           nettle libtirpc)
+  provides=(xorg-server-xephyr=$pkgver)
+  conflicts=(xorg-server-xephyr)
+
+  _install fakeinstall/usr/bin/Xephyr
+  _install fakeinstall/usr/share/man/man1/Xephyr.1.gz
+
+  # license
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
+}
+
+package_xorg-server-xvfb-next-git() {
+  pkgdesc="Virtual framebuffer X server - Git"
+  depends=(libxfont2 libunwind pixman xorg-server-common xorg-xauth libgl nettle)
+  provides=(xorg-server-xvfb=$pkgver)
+  conflicts=(xorg-server-xvfb)
+
+  _install fakeinstall/usr/bin/Xvfb
+  _install fakeinstall/usr/share/man/man1/Xvfb.1.gz
+
+  install -m755 "${srcdir}/xvfb-run" "${pkgdir}/usr/bin/"
+  install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
+
+  # license
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
+}
+
+package_xorg-server-xnest-next-git() {
+  pkgdesc="A nested X server that runs as an X application - Git"
+  depends=(libxfont2 libxext pixman xorg-server-common nettle libtirpc)
+  provides=(xorg-server-xnest=$pkgver)
+  conflicts=(xorg-server-xnest)
+
+  _install fakeinstall/usr/bin/Xnest
+  _install fakeinstall/usr/share/man/man1/Xnest.1.gz
+
+  # license
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
+}
+
+package_xorg-server-xdmx-next-git() {
+  pkgdesc="Distributed Multihead X Server and utilities - Git"
+  depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes
+           pixman xorg-server-common nettle)
+  provides=(xorg-server-xdmx=$pkgver)
+  conflicts=(xorg-server-xdmx)
+
+  _install fakeinstall/usr/bin/{Xdmx,dmx*,vdltodmx,xdmxconfig}
+  _install fakeinstall/usr/share/man/man1/{Xdmx,dmxtodmx,vdltodmx,xdmxconfig}.1.gz
+
+  # license
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
+}
+
+package_xorg-server-xwayland-next-git() {
+  pkgdesc="Run X clients under Wayland - Git"
+  depends=(libxfont2 libepoxy libunwind libsystemd libgl pixman xorg-server-common
+           nettle libtirpc)
+  provides=(xorg-server-xwayland=$pkgver)
+  conflicts=(xorg-server-xwayland)
+
+  _install fakeinstall/usr/bin/Xwayland
+
+  # license
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
+}
+
+package_xorg-server-devel-next-git() {
+  pkgdesc="Development files for the X.Org X server - Git"
+  depends=('xorgproto' 'mesa' 'libpciaccess'
+           # not technically required but almost every Xorg pkg needs it to build
+           'xorg-util-macros')
+  provides=(xorg-server-devel=$pkgver)
+  conflicts=(xorg-server-devel)
+
+  _install fakeinstall/usr/include/xorg/*
+  _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
+  _install fakeinstall/usr/share/aclocal/xorg-server.m4
+
+  # license
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
+
+  # make sure there are no files left to install
+  find fakeinstall -depth -print0 | xargs -0 rmdir
+}
