@@ -6,7 +6,7 @@
 pkgbase=xorg-xserver-git
 _pkgbase=xserver
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xdmx-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
-pkgver=1.20.0.10.g315c63c41
+pkgver=1.20.0.154.g7c25439f0
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -24,7 +24,7 @@ source=('git://anongit.freedesktop.org/xorg/xserver'
         'xvfb-run' # with updates from FC master
         'xvfb-run.1')
 sha256sums=('SKIP'
-            'f584f14969b7d30a0d55dcd35ad22ed17f2802c619230f9a88fa81325ec2032b'
+            '49c85b75c8229647969fd4dfcca8e8251bdeb772cd1672a0507868fa6e55cf3e'
             'cae1b7f296c18177de38f9b1215a4f916da2288b85f1fcb9e80373a42e2892b8'
             '2198b9e635bb4e52bf986e678a702ec74f781b5b10c5713e1eeaa16cc9af078c'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
@@ -92,7 +92,7 @@ _install() {
 
 package_xorg-server-common-git() {
   pkgdesc="Xorg server common files - Git"
-  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap xorg-fonts-misc)
+  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
   provides=(xorg-server-common=$pkgver)
   conflicts=(xorg-server-common)
 
@@ -106,7 +106,8 @@ package_xorg-server-common-git() {
 
 package_xorg-server-git() {
   pkgdesc="Xorg X server - Git"
-  depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind dbus libgl xf86-input-libinput
+  depends=(libepoxy libxfont2 pixman xorg-server-common libunwind
+           dbus libgl xf86-input-libinput nettle
            libpciaccess libdrm libxshmfence) # FS#52949
 
   # see src/xserver/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
@@ -134,8 +135,9 @@ package_xorg-server-git() {
 
 package_xorg-server-xephyr-git() {
   pkgdesc="A nested X server that runs as an X application - Git"
-  depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common-git xcb-util-image
-           xcb-util-renderutil xcb-util-wm xcb-util-keysyms)
+  depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common
+           xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
+           nettle libtirpc)
   provides=(xorg-server-xephyr=$pkgver)
   conflicts=(xorg-server-xephyr)
 
@@ -148,7 +150,7 @@ package_xorg-server-xephyr-git() {
 
 package_xorg-server-xvfb-git() {
   pkgdesc="Virtual framebuffer X server - Git"
-  depends=(libxfont2 libunwind libsystemd pixman xorg-server-common-git xorg-xauth libgl)
+  depends=(libxfont2 libunwind pixman xorg-server-common xorg-xauth libgl nettle)
   provides=(xorg-server-xvfb=$pkgver)
   conflicts=(xorg-server-xvfb)
 
@@ -164,7 +166,7 @@ package_xorg-server-xvfb-git() {
 
 package_xorg-server-xnest-git() {
   pkgdesc="A nested X server that runs as an X application - Git"
-  depends=(libxfont2 libxext libunwind pixman xorg-server-common-git libsystemd)
+  depends=(libxfont2 libxext pixman xorg-server-common nettle libtirpc)
   provides=(xorg-server-xnest=$pkgver)
   conflicts=(xorg-server-xnest)
 
@@ -177,7 +179,8 @@ package_xorg-server-xnest-git() {
 
 package_xorg-server-xdmx-git() {
   pkgdesc="Distributed Multihead X Server and utilities - Git"
-  depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes libunwind pixman xorg-server-common-git)
+  depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes
+           pixman xorg-server-common nettle)
   provides=(xorg-server-xdmx=$pkgver)
   conflicts=(xorg-server-xdmx)
 
@@ -190,7 +193,8 @@ package_xorg-server-xdmx-git() {
 
 package_xorg-server-xwayland-git() {
   pkgdesc="Run X clients under Wayland - Git"
-  depends=(libxfont libepoxy libgl pixman xorg-server-common-git)
+  depends=(libxfont2 libepoxy libunwind libsystemd libgl pixman xorg-server-common
+           nettle libtirpc)
   provides=(xorg-server-xwayland=$pkgver)
   conflicts=(xorg-server-xwayland)
 
@@ -202,13 +206,9 @@ package_xorg-server-xwayland-git() {
 
 package_xorg-server-devel-git() {
   pkgdesc="Development files for the X.Org X server - Git"
-  depends=(# see pkgdir/usr/lib/pkgconfig/xorg-server.pc
-           xproto randrproto renderproto xextproto inputproto kbproto 
-           fontsproto pixman videoproto xf86driproto glproto 
-           mesa dri2proto dri3proto xineramaproto libpciaccess
-           resourceproto scrnsaverproto presentproto
+  depends=('xorgproto' 'mesa' 'libpciaccess'
            # not technically required but almost every Xorg pkg needs it to build
-           xorg-util-macros)
+           'xorg-util-macros')
   provides=(xorg-server-devel=$pkgver)
   conflicts=(xorg-server-devel)
 
