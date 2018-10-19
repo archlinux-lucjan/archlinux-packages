@@ -59,6 +59,13 @@
 │   ├── git-git.install
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
+├── glibc-dev-git
+│   ├── bz20338.patch
+│   ├── glibc.install
+│   ├── lib32-glibc.conf
+│   ├── locale-gen
+│   ├── locale.gen.txt
+│   └── PKGBUILD
 ├── gnupg-git
 │   ├── install
 │   └── PKGBUILD
@@ -377,4 +384,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-126 directories, 251 files
+127 directories, 257 files

@@ -36,6 +36,8 @@
 
 - gitless-git
 
+- glibc-dev-git
+
 - gnupg-git
 
 - gpgme-git
