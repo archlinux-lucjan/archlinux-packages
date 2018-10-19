@@ -38,6 +38,8 @@
 
 - glibc-dev-git
 
+- glibc-git
+
 - gnupg-git
 
 - gpgme-git

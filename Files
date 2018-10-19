@@ -66,6 +66,13 @@
 │   ├── locale-gen
 │   ├── locale.gen.txt
 │   └── PKGBUILD
+├── glibc-git
+│   ├── bz20338.patch
+│   ├── glibc.install
+│   ├── lib32-glibc.conf
+│   ├── locale-gen
+│   ├── locale.gen.txt
+│   └── PKGBUILD
 ├── gnupg-git
 │   ├── install
 │   └── PKGBUILD
@@ -384,4 +391,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-127 directories, 257 files
+128 directories, 263 files
