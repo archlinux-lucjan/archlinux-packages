@@ -11,11 +11,11 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git)
-pkgver=8.2.1.r161953.95b6d2e6bc3
+pkgver=8.2.1.r161957.b07d8be1701
 _majorver=${pkgver:0:1}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
-_islver=0.19
+_islver=0.20
 pkgrel=1
 pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
@@ -31,7 +31,7 @@ source=(
         c89 c99
         )
 sha256sums=('SKIP'
-            'd59726f34f7852a081fbd3defd1ab2136f174110fc2e0c8d10bb122173fa9ed8'
+            'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
 
