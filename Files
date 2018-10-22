@@ -22,6 +22,7 @@
 ├── freebsd-manpages
 │   └── PKGBUILD
 ├── gcc-dev-git
+│   ├── bz87672.patch
 │   ├── c89
 │   ├── c99
 │   └── PKGBUILD
@@ -391,4 +392,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-128 directories, 263 files
+128 directories, 264 files
