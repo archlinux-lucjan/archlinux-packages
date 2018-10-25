@@ -132,6 +132,8 @@
 
 - mesa-rc-git
 
+- meson-git
+
 - modemmanager-git
 
 - modemmanager-stable-git
