@@ -218,6 +218,8 @@
 │   └── PKGBUILD
 ├── networkmanager-test-git
 │   └── PKGBUILD
+├── ninja-git
+│   └── PKGBUILD
 ├── otter-browser-git
 │   └── PKGBUILD
 ├── pacman-contrib-git
@@ -395,4 +397,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-129 directories, 266 files
+130 directories, 267 files

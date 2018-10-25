@@ -152,6 +152,8 @@
 
 - networkmanager-test-git
 
+- ninja-git
+
 - otter-browser-git
 
 - pacman-contrib-git
