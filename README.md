@@ -2,6 +2,8 @@
 
 - antimicro-git
 
+- binutils-git
+
 - cantata-git
 
 - clean-chroot-manager-git

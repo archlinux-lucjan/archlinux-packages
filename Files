@@ -1,6 +1,8 @@
 .
 ├── antimicro-git
 │   └── PKGBUILD
+├── binutils-git
+│   └── PKGBUILD
 ├── cantata-git
 │   └── PKGBUILD
 ├── clean-chroot-manager-git
@@ -397,4 +399,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-130 directories, 267 files
+131 directories, 268 files
