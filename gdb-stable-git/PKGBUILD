@@ -7,16 +7,15 @@ pkgbase=gdb-stable-git
 # of gdb (for arm/avr/...)
 pkgname=(gdb-stable-git gdb-common-stable-git)
 _pkgname=binutils-gdb
-pkgver=8.0.r90338.cd33a03d18
+pkgver=8.2.r94845.592af8a6bb
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
-makedepends=(texinfo python guile ncurses expat xz)
-source=(git://sourceware.org/git/binutils-gdb.git#branch=gdb-8.0-branch)
+makedepends=(texinfo python guile ncurses expat xz git)
+source=(git://sourceware.org/git/binutils-gdb.git#branch=gdb-8.2-branch)
 sha1sums=('SKIP')
-# validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
@@ -48,14 +47,7 @@ package_gdb-common-stable-git() {
   conflicts=(gdb-common)
 
   cd ${srcdir}/${_pkgname}
-  make DESTDIR=$pkgdir install
-
-  # resolve conflicts with binutils
-  rm $pkgdir/usr/include/{ansidecl,bfd,bfdlink,dis-asm,plugin-api,symcat}.h
-  rm $pkgdir/usr/share/info/bfd.info
-  rm $pkgdir/usr/lib/{libbfd,libopcodes}.a
-
-  rm -r $pkgdir/usr/{bin,include,lib,share/info,share/man}
+  make -C gdb/data-directory DESTDIR=$pkgdir install
 }
 
 package_gdb-stable-git() {
@@ -67,14 +59,12 @@ package_gdb-stable-git() {
   cd ${srcdir}/${_pkgname}
   make DESTDIR=$pkgdir install
 
+  cd ${srcdir}/${_pkgname}
+  make DESTDIR=$pkgdir install
+
   # install "custom" system gdbinit
   install -dm755 $pkgdir/etc/gdb
   touch $pkgdir/etc/gdb/gdbinit
-
-  # resolve conflicts with binutils
-  rm $pkgdir/usr/include/{ansidecl,bfd,bfdlink,dis-asm,plugin-api,symcat}.h
-  rm $pkgdir/usr/share/info/bfd.info
-  rm $pkgdir/usr/lib/{libbfd,libopcodes}.a
 
   # comes from gdb-common
   rm -r $pkgdir/usr/share/gdb/
