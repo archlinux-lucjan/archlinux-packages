@@ -4,6 +4,8 @@
 
 - binutils-git
 
+- binutils-test-git
+
 - cantata-git
 
 - clean-chroot-manager-git
