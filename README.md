@@ -58,6 +58,8 @@
 
 - kdevelop-next-git
 
+- kdiff3-git
+
 - konversation-git
 
 - konversation-stable-git
