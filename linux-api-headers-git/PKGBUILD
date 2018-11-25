@@ -6,7 +6,7 @@
 pkgname=linux-api-headers-git
 _major=4.19
 _srcname=linux
-pkgver=4.19.r0.g84df9525b0c2
+pkgver=4.19.4.r0.g98a661ea85a8
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
 
   git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
 }
-   
+
 build() {
   cd ${_srcname}
 
@@ -36,7 +36,7 @@ package() {
 
   # use headers from libdrm
   rm -r "$pkgdir/usr/include/drm"
-  
+
   # clean-up unnecessary files generated during install
   find "$pkgdir" \( -name .install -o -name ..install.cmd \) -delete
 }
