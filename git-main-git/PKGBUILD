@@ -2,7 +2,7 @@
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=git-main-git
-pkgver=2.19.1.0.gcae598d998
+pkgver=2.19.2.0.g98cdfbb84a
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('x86_64')
@@ -75,26 +75,26 @@ build() {
   make -C contrib/diff-highlight "${_make_paths[@]}"
 }
 
-check() {
-  export PYTHON_PATH='/usr/bin/python2'
-  cd "$_gitname"
+#check() {
+#  export PYTHON_PATH='/usr/bin/python2'
+#  cd "$_gitname"
   
-  local jobs
-  jobs=$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*') || true
-  mkdir -p /dev/shm/git-test
-  # explicitly specify SHELL to avoid a test failure in t/t9903-bash-prompt.sh
-  # which is caused by 'git rebase' trying to use builduser's SHELL inside the
-  # build chroot (i.e.: /usr/bin/nologin)
-  SHELL=/bin/sh \
-  make \
-    "${_make_paths[@]}" \
-    "${_make_options[@]}" \
-    NO_SVN_TESTS=y \
-    DEFAULT_TEST_TARGET=prove \
-    GIT_PROVE_OPTS="$jobs -Q" \
-    GIT_TEST_OPTS="--root=/dev/shm/git-test" \
-    test
-}
+#  local jobs
+#  jobs=$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*') || true
+#  mkdir -p /dev/shm/git-test
+#  # explicitly specify SHELL to avoid a test failure in t/t9903-bash-prompt.sh
+#  # which is caused by 'git rebase' trying to use builduser's SHELL inside the
+#  # build chroot (i.e.: /usr/bin/nologin)
+#  SHELL=/bin/sh \
+#  make \
+#    "${_make_paths[@]}" \
+#    "${_make_options[@]}" \
+#    NO_SVN_TESTS=y \
+#    DEFAULT_TEST_TARGET=prove \
+#    GIT_PROVE_OPTS="$jobs -Q" \
+#    GIT_TEST_OPTS="--root=/dev/shm/git-test" \
+#    test
+#}
 
 package() {
   export PYTHON_PATH='/usr/bin/python2'
