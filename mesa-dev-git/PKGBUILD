@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.0.devel.r105161.g322a919a41
+pkgver=19.0.0.devel.r106208.g9ebc00f32e
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -147,7 +147,6 @@ package_mesa-vdpau-dev-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-
 package_mesa-dev-git() {
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf' 
            'libomxil-bellagio' 'libunwind' 'llvm-libs-svn' 'lm_sensors' 'libglvnd')
@@ -160,6 +159,7 @@ package_mesa-dev-git() {
              'mesa-dri-git' 'mesa-libgl-git')
   replaces=('mesa-libgl-dev-git')
 
+  _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
   _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast

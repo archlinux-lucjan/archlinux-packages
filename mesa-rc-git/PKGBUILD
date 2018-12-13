@@ -6,7 +6,7 @@
 pkgbase=mesa-rc-git
 pkgname=('opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.2.2.r104140.gcb63a4e114
+pkgver=18.3.1.r105647.gd92c9ba789
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'd
              'meson' 'libxrandr' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=18.2'
+source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=18.3'
         "LICENSE")
 options=('!libtool')
 md5sums=('SKIP'
@@ -147,7 +147,6 @@ package_mesa-vdpau-rc-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-
 package_mesa-rc-git() {
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf' 
            'libomxil-bellagio' 'libunwind' 'llvm-libs' 'lm_sensors' 'libglvnd')
@@ -160,7 +159,7 @@ package_mesa-rc-git() {
              'mesa-dri-git' 'mesa-libgl-git')
   replaces=('mesa-libgl-rc-git')
 
-  _install fakeinstall/etc/drirc
+  _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
   _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
