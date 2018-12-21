@@ -303,6 +303,13 @@
 │   └── PKGBUILD
 ├── strawberry-git
 │   └── PKGBUILD
+├── syslinux-git
+│   ├── PKGBUILD
+│   ├── single-load-segment.patch
+│   ├── strip_note_section.patch
+│   ├── syslinux.cfg
+│   ├── syslinux.install
+│   └── syslinux-install_update
 ├── systemd-git
 │   ├── 0001-Use-Arch-Linux-device-access-groups.patch
 │   ├── arch.conf
@@ -394,4 +401,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-132 directories, 262 files
+133 directories, 268 files

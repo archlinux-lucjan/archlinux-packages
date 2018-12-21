@@ -230,6 +230,8 @@
 
 - strawberry-git
 
+- syslinux-git
+
 - systemd-git
 
 - systemd-stable-git
