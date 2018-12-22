@@ -82,6 +82,12 @@
 │   └── PKGBUILD
 ├── gpgme-git
 │   └── PKGBUILD
+├── grub-git
+│   ├── 0003-10_linux-detect-archlinux-initramfs.patch
+│   ├── 0004-add-GRUB_COLOR_variables.patch
+│   ├── grub.default
+│   ├── grub.install
+│   └── PKGBUILD
 ├── kaffeine-git
 │   └── PKGBUILD
 ├── kdesvn-git
@@ -401,4 +407,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-133 directories, 268 files
+134 directories, 273 files

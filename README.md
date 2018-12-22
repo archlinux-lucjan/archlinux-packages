@@ -48,6 +48,8 @@
 
 - gpgme-git
 
+- grub-git
+
 - kaffeine-git
 
 - kdesvn-git
