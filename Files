@@ -13,9 +13,7 @@
 ├── clementine-lite-qt5-git
 │   └── PKGBUILD
 ├── clementine-qt5-git
-│   ├── PKGBUILD
-│   ├── spotify_blob.patch
-│   └── spotify_install.patch
+│   └── PKGBUILD
 ├── cmake-git
 │   └── PKGBUILD
 ├── cmake-release-git
@@ -407,4 +405,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-134 directories, 273 files
+134 directories, 271 files
