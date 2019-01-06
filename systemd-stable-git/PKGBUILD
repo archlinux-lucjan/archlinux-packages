@@ -6,8 +6,8 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'libsystemd-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=239.0.gde7436b02
-pkgrel=3
+pkgver=240.0.g1742aae2aa
+pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -17,7 +17,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
 options=('strip')
-source=('git+https://github.com/systemd/systemd-stable#tag=v239'
+source=('git+https://github.com/systemd/systemd-stable#tag=v240'
         'git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -217,8 +217,8 @@ package_systemd-stable-git() {
 }
 
 package_systemd-resolvconf-stable-git() {
-  pkgdesc='systemd resolvconf replacement'
-  license=('GPL2')
+  pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
+  license=('LGPL2.1')
   depends=('systemd')
   provides=('openresolv' 'resolvconf' 'systemd-resolvconf')
   conflicts=('openresolv' 'systemd-resolvconf')
@@ -233,7 +233,7 @@ package_systemd-resolvconf-stable-git() {
 package_libsystemd-stable-git() {
   pkgdesc="systemd client libraries"
   depends=('glibc' 'libgcrypt' 'lz4' 'xz')
-  license=('GPL2')
+  license=('LGPL2.1')
   provides=('libsystemd.so' 'libudev.so' 'libsystemd')
   conflicts=('libsystemd')
   

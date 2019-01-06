@@ -6,7 +6,7 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=239.762.g8c1f04352b
+pkgver=240.90.g4a2c3dc318
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -218,8 +218,8 @@ package_systemd-git() {
 }
 
 package_systemd-resolvconf-git() {
-  pkgdesc='systemd resolvconf replacement'
-  license=('GPL2')
+  pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
+  license=('LGPL2.1')
   depends=('systemd')
   provides=('openresolv' 'resolvconf' 'systemd-resolvconf')
   conflicts=('openresolv' 'systemd-resolvconf')
@@ -234,7 +234,7 @@ package_systemd-resolvconf-git() {
 package_libsystemd-git() {
   pkgdesc="systemd client libraries"
   depends=('glibc' 'libgcrypt' 'lz4' 'xz')
-  license=('GPL2')
+  license=('LGPL2.1')
   provides=('libsystemd.so' 'libudev.so' 'libsystemd')
   conflicts=('libsystemd')
   
