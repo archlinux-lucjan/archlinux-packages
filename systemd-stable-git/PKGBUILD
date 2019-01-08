@@ -7,7 +7,7 @@ pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'libsystemd-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
 pkgver=240.0.g1742aae2aa
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -115,8 +115,8 @@ build() {
     -Dlz4=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
-    # TODO(dreisner): consider changing this to unified
     -Ddefault-hierarchy=hybrid
+    -Ddefault-locale=C
     -Ddefault-kill-user-processes=false
     -Dfallback-hostname='archlinux'
     -Dntp-servers="${_timeservers[*]}"
