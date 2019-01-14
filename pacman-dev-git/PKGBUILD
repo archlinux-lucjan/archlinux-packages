@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-dev-git
-pkgver=5.0.1.281.gbe4c491c
+pkgver=5.1.1.115.g10bcf66d
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('x86_64')
@@ -15,18 +15,19 @@ depends=('bash' 'glibc' 'libarchive' 'curl'
          'gpgme' 'pacman-mirrorlist' 'archlinux-keyring')
 makedepends=('asciidoc' 'git')
 checkdepends=('python2' 'fakechroot')
-backup=(etc/pacman.conf etc/makepkg.conf)
+optdepends=('perl-locale-gettext: translation support in makepkg-template'
+            'xdelta3: delta support in repo-add')
+backup=(etc/pacman.conf
+        etc/makepkg.conf)
 provides=("pacman=$pkgver")
 conflicts=('pacman')
 options=('!libtool' '!strip')
-backup=(etc/pacman.conf
-        etc/makepkg.conf)
 source=(git://git.archlinux.org/users/allan/pacman.git
         pacman.conf
         makepkg.conf)
 sha1sums=('SKIP'
           'fde4ac4e24405b15157382b59cee80c58b02c95b'
-          'ba815c26185ed186f872ea65f71676ba1683e60d')
+          'b29a926a56b9758d4116b8a8588b597d3ad074ed')
 
 pkgver() {
   cd pacman
@@ -57,13 +58,4 @@ package() {
   install -dm755 "$pkgdir/etc"
   install -m644 "$srcdir/pacman.conf" "$pkgdir/etc"
   install -m644 "$srcdir/makepkg.conf" "$pkgdir/etc"
-
-  # put bash_completion in the right location
-  install -dm755 "$pkgdir/usr/share/bash-completion/completions"
-  mv "$pkgdir/etc/bash_completion.d/pacman" "$pkgdir/usr/share/bash-completion/completions"
-  rmdir "$pkgdir/etc/bash_completion.d"
-
-  for f in makepkg pacman-key; do
-    ln -s pacman "$pkgdir/usr/share/bash-completion/completions/$f"
-  done
 }
