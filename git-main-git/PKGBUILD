@@ -2,7 +2,7 @@
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=git-main-git
-pkgver=2.19.2.0.g98cdfbb84a
+pkgver=2.20.1.0.g0d0ac3826a
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('x86_64')
@@ -70,7 +70,7 @@ build() {
 
   make -C contrib/credential/gnome-keyring
   make -C contrib/credential/libsecret
-  make -C contrib/subtree "${_make_paths[@]}" all doc
+  make -C contrib/subtree "${_make_paths[@]}" all man
   make -C contrib/mw-to-git "${_make_paths[@]}" all
   make -C contrib/diff-highlight "${_make_paths[@]}"
 }
@@ -122,7 +122,7 @@ package() {
       "$pkgdir"/usr/lib/git-core/git-credential-libsecret
   make -C contrib/credential/libsecret clean
   # subtree installation
-  make -C contrib/subtree "${_make_paths[@]}" DESTDIR="$pkgdir" install install-doc
+  make -C contrib/subtree "${_make_paths[@]}" DESTDIR="$pkgdir" install install-man
   # mediawiki installation
   make -C contrib/mw-to-git "${_make_paths[@]}" DESTDIR="$pkgdir" install
   # the rest of the contrib stuff
