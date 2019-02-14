@@ -7,7 +7,7 @@ pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgver=241.1.g93e4163e91
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -110,8 +110,9 @@ build() {
 )
 
   local _meson_options=(
-    # TODO: enable for v241
-    #-Dversion-tag="${pkgver}-${pkgrel}-arch"
+
+    -Dversion-tag="${pkgver}-${pkgrel}-arch"
+
     -Dgnu-efi=true
     -Dima=false
     -Dlibidn2=true
