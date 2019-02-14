@@ -5,8 +5,8 @@
 
 pkgbase=systemd-git
 _pkgbase=systemd
-pkgname=('systemd-git' 'libsystemd-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=240.126.g82d9ac23fd
+pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
+pkgver=241.1.g93e4163e91
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -110,6 +110,8 @@ build() {
 )
 
   local _meson_options=(
+    # TODO: enable for v241
+    #-Dversion-tag="${pkgver}-${pkgrel}-arch"
     -Dgnu-efi=true
     -Dima=false
     -Dlibidn2=true
@@ -136,7 +138,7 @@ package_systemd-git() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
+           'libgcrypt' 'systemd-libs' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz' 'pcre2' 'audit')
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" )
   conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
@@ -167,9 +169,9 @@ package_systemd-git() {
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
 
-  # runtime libraries shipped with libsystemd
-  install -d -m0755 libsystemd
-  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* libsystemd
+  # runtime libraries shipped with systemd-libs
+  install -d -m0755 systemd-libs
+  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
@@ -231,15 +233,15 @@ package_systemd-resolvconf-git() {
   ln -s resolvectl.1.gz "$pkgdir"/usr/share/man/man1/resolvconf.1.gz
 }
 
-package_libsystemd-git() {
+package_systemd-libs-git() {
   pkgdesc="systemd client libraries"
   depends=('glibc' 'libgcrypt' 'lz4' 'xz')
   license=('LGPL2.1')
-  provides=('libsystemd.so' 'libudev.so' 'libsystemd')
-  conflicts=('libsystemd')
+  provides=('libsystemd.so' 'libudev.so' 'libsystemd' 'systemd-libs')
+  conflicts=('libsystemd' 'systemd-libs')
   
   install -d -m0755 "$pkgdir"/usr
-  mv libsystemd "$pkgdir"/usr/lib
+  mv systemd-libs "$pkgdir"/usr/lib
 }
 
 package_systemd-sysvcompat-git() {
