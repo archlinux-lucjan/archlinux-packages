@@ -86,6 +86,8 @@
 │   ├── grub.default
 │   ├── grub.install
 │   └── PKGBUILD
+├── hub-git
+│   └── PKGBUILD
 ├── kaffeine-git
 │   └── PKGBUILD
 ├── kdesvn-git
@@ -409,4 +411,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-136 directories, 273 files
+137 directories, 274 files

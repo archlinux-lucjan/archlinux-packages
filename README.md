@@ -50,6 +50,8 @@
 
 - grub-git
 
+- hub-git
+
 - kaffeine-git
 
 - kdesvn-git
