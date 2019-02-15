@@ -78,6 +78,8 @@
 
 - ktorrent-stable-git
 
+- lab-git
+
 - libassuan-git
 
 - libclc-git

@@ -114,6 +114,8 @@
 │   └── PKGBUILD
 ├── ktorrent-stable-git
 │   └── PKGBUILD
+├── lab-git
+│   └── PKGBUILD
 ├── libassuan-git
 │   └── PKGBUILD
 ├── libclc-git
@@ -411,4 +413,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-137 directories, 274 files
+138 directories, 275 files
