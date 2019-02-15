@@ -84,6 +84,8 @@
 
 - libgcrypt-git
 
+- libgit2-git
+
 - libgpg-error-git
 
 - libinput-git

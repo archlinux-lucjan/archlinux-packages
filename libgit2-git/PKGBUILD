@@ -1,0 +1,41 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
+# Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
+# Contributor: Dave Reisner <d@falconindy.com>
+
+pkgname=libgit2-git
+_pkgname=libgit2
+pkgver=0.28.0.r19.gbda083973
+pkgrel=1
+pkgdesc='A linkable library for Git'
+arch=('x86_64')
+url='https://libgit2.github.com/'
+depends=(zlib openssl libssh2 curl)
+makedepends=(cmake python git)
+provides=(libgit2)
+conficts=(libgit2)
+license=('GPL2')
+source=("git://github.com/libgit2/libgit2")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$_pkgname"
+  export LANG=en_US.UTF-8
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTHREADSAFE=ON .
+  make
+}
+
+check() {
+  cd "$_pkgname"
+  make test
+}
+
+package() {
+  cd "$_pkgname"
+  make DESTDIR="$pkgdir" install
+}
