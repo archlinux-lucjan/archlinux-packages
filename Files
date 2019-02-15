@@ -284,6 +284,8 @@
 │   └── PKGBUILD
 ├── pyalpm-git
 │   └── PKGBUILD
+├── python-pygit2
+│   └── PKGBUILD
 ├── qconf-git
 │   └── PKGBUILD
 ├── qtcreator-dev-git
@@ -405,4 +407,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-134 directories, 271 files
+135 directories, 272 files

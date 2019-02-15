@@ -214,6 +214,8 @@
 
 - pyalpm-git
 
+- python-pygit2-git
+
 - qconf-git
 
 - qtcreator-dev-git
