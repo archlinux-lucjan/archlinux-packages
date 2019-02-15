@@ -36,6 +36,12 @@ build() {
   make -j1 man-pages
 }
 
+check() {
+  cd "$srcdir/src/github.com/github/hub"
+
+  GOPATH="$srcdir" make test
+}
+
 package() {
   cd "$srcdir/src/github.com/github/hub"
 
