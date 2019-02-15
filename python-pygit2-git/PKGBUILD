@@ -3,7 +3,7 @@
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
-pkgbase=python-pygit2
+pkgbase=python-pygit2-git
 pkgname=('python-pygit2-git' 'python2-pygit2-git')
 pkgver=0.27.4.r0.gda7ebb5
 pkgrel=1
