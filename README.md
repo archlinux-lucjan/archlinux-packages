@@ -40,6 +40,8 @@
 
 - gitless-git
 
+- gitolite-git
+
 - glibc-dev-git
 
 - glibc-git

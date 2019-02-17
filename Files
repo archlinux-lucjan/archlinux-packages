@@ -55,6 +55,10 @@
 │   ├── git-git.install
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
+├── gitolite-git
+│   ├── gitolite-sysusers.conf
+│   ├── gitolite-tmpfiles.conf
+│   └── PKGBUILD
 ├── git-test-git
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
@@ -413,4 +417,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-138 directories, 275 files
+139 directories, 278 files
