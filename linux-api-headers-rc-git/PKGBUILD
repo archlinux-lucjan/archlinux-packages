@@ -6,7 +6,7 @@
 pkgname=linux-api-headers-rc-git
 _major=4.20
 _srcname=linux-stable-rc
-pkgver=4.20.r0.g8fe28cb58bcb
+pkgver=4.20.10.r0.g7f600870eca5
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 pkgver() {
   cd ${_srcname}
 
-  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
