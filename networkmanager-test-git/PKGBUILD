@@ -8,7 +8,7 @@
 
 pkgbase=networkmanager-test-git
 pkgname=(networkmanager-test-git libnm-test-git libnm-glib-test-git)
-pkgver=1.14.5dev.0.g5e8d7bfbd
+pkgver=1.14.5dev.189.g4c694e46e
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
@@ -126,7 +126,7 @@ END
 
 package_libnm-test-git() {
   pkgdesc="NetworkManager client library"
-  depends=(glib2 libgudev nss libutil-linux jansson)
+  depends=(glib2 nss libutil-linux jansson systemd-libs)
   conflicts=('libnm')
   provides=('libnm')
   mv libnm/* "$pkgdir"
@@ -134,7 +134,7 @@ package_libnm-test-git() {
 
 package_libnm-glib-test-git() {
   pkgdesc="NetworkManager library"
-  depends=(libgudev nss dbus-glib libutil-linux jansson)
+  depends=(libnm dbus-glib)
   conflicts=('libnm-glib')
   provides=('libnm-glib')
   mv libnm-glib/* "$pkgdir"
