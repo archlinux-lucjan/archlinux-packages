@@ -8,7 +8,7 @@
 
 pkgbase=networkmanager-git
 pkgname=(networkmanager-git libnm-git libnm-glib-git)
-pkgver=1.15.1dev.305.gb1571e687
+pkgver=1.15.2dev.263.g83c1a189f
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
@@ -126,7 +126,7 @@ END
 
 package_libnm-git() {
   pkgdesc="NetworkManager client library"
-  depends=(glib2 libgudev nss libutil-linux jansson)
+  depends=(glib2 nss libutil-linux jansson systemd-libs)
   conflicts=('libnm')
   provides=('libnm')
   mv libnm/* "$pkgdir"
@@ -134,7 +134,7 @@ package_libnm-git() {
 
 package_libnm-glib-git() {
   pkgdesc="NetworkManager library"
-  depends=(libgudev nss dbus-glib libutil-linux jansson)
+  depends=(libnm dbus-glib)
   conflicts=('libnm-glib')
   provides=('libnm-glib')
   mv libnm-glib/* "$pkgdir"
