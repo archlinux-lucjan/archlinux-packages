@@ -7,7 +7,7 @@ pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
 pkgver=241.0.ge62a7fea75
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -153,9 +153,11 @@ package_systemd-stable-git() {
           etc/systemd/journal-remote.conf
           etc/systemd/journal-upload.conf
           etc/systemd/logind.conf
+          etc/systemd/networkd.conf
+          etc/systemd/resolved.conf
+          etc/systemd/sleep.conf
           etc/systemd/system.conf
           etc/systemd/timesyncd.conf
-          etc/systemd/resolved.conf
           etc/systemd/user.conf
           etc/udev/udev.conf)
   install="systemd-git.install"
