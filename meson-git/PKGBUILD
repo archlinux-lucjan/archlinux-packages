@@ -2,7 +2,7 @@
 # Contributor: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.48.0.152.g4a9fd0e7
+pkgver=0.49.0.412.g76db7532
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -20,7 +20,7 @@ conflicts=('meson')
 source=('git+https://github.com/mesonbuild/meson'
         'arch-meson')
 md5sums=('SKIP'
-         'ba1208acb2175003c0e39e9b217da626')
+         'b85d62ecca0729f0c5168f759a2ff37d')
 
 prepare() {
         cd meson
