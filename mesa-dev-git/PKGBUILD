@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0.devel.r108704.gf1122f78b76
+pkgver=19.1.0.devel.r109355.gb3aa37046bf
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -63,7 +63,6 @@ build() {
     -D lmsensors=true \
     -D osmesa=gallium \
     -D shared-glapi=true \
-    -D texture-float=true \
     -D valgrind=false
 
   # Print config
