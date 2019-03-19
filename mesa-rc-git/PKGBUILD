@@ -6,7 +6,7 @@
 pkgbase=mesa-rc-git
 pkgname=('opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=18.3.1.r105647.gd92c9ba789
+pkgver=19.0.0.r107335.g142e37ab349
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'd
              'meson' 'libxrandr' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=18.3'
+source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=19.0'
         "LICENSE")
 options=('!libtool')
 md5sums=('SKIP'
@@ -63,7 +63,6 @@ build() {
     -D lmsensors=true \
     -D osmesa=gallium \
     -D shared-glapi=true \
-    -D texture-float=true \
     -D valgrind=false
 
   # Print config
