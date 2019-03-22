@@ -4,7 +4,7 @@
 
 pkgbase=modemmanager-test-git
 pkgname=(modemmanager-test-git libmm-glib-test-git)
-pkgver=1.8.0.1.g458663cb
+pkgver=1.10.0.2.g802b0b00
 pkgrel=1
 pkgdesc="Mobile broadband modem management service"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ url="http://www.freedesktop.org/wiki/Software/ModemManager/"
 license=(GPL2 LGPL2.1)
 depends=(systemd libgudev polkit ppp libqmi libmbim)
 makedepends=(intltool gtk-doc gobject-introspection vala)
-source=(git://anongit.freedesktop.org/ModemManager/ModemManager#branch=mm-1-8
+source=(git://anongit.freedesktop.org/ModemManager/ModemManager#branch=mm-1-10
         strict-filter.diff)
 sha256sums=('SKIP'
             '0602cc5088b193426c3af3d6ce14a7fd6502b06f77982dc56291d834280f311e')
