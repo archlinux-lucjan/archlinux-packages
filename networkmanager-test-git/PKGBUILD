@@ -8,7 +8,7 @@
 
 pkgbase=networkmanager-test-git
 pkgname=(networkmanager-test-git libnm-test-git libnm-glib-test-git)
-pkgver=1.14.5dev.189.g4c694e46e
+pkgver=1.16.1dev.1.g5e66dcc6e
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf 
              libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-14")
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-16")
 sha256sums=('SKIP')
 
 prepare() {
@@ -35,9 +35,6 @@ pkgver() {
 
 build() {
   local meson_args=(
-    # LTO breaks NM_BACKPORT_SYMBOL
-    # https://gitlab.freedesktop.org/NetworkManager/NetworkManager/issues/63
-    -D b_lto=false
 
     -D dbus_conf_dir=/usr/share/dbus-1/system.d
     -D dist_version="$pkgver-$pkgrel"
@@ -51,8 +48,10 @@ build() {
     -D teamdctl=true
     -D libnm_glib=true
     -D bluez5_dun=true
+    -D ebpf=true
     -D config_plugins_default=keyfile,ibft
     -D ibft=true
+    -D vapi=true
     -D docs=true
     -D more_asserts=no
     -D more_logging=false
@@ -64,7 +63,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 _pick() {
