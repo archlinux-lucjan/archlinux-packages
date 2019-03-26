@@ -54,6 +54,10 @@
 
 - hub-git
 
+- intel-ucode-git
+
+- iucode-tool-git
+
 - kaffeine-git
 
 - kdesvn-git
