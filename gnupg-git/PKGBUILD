@@ -5,7 +5,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-git
-pkgver=2.2.5.147.gd4dc4245b
+pkgver=2.2.7.450.gaa58d2a49
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
@@ -13,22 +13,18 @@ license=('GPL')
 arch=('x86_64')
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon')
-makedepends=('libldap' 'libusb-compat' 'git' 'fig2dev')
+makedepends=('libldap' 'libusb-compat' 'pcsclite' 'git' 'fig2dev')
 checkdepends=('openssh')
 depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
          'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
-#validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
-#              '46CC730865BB5C78EBABADCF04376F3EE0856959'
-#              '031EC2536E580D8EA286A9F22071B08A33BD3F06'
-#              'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
 source=(git://git.gnupg.org/gnupg.git)
 sha1sums=('SKIP')
 
 install=install
 
-conflicts=('dirmngr' 'gnupg2' 'gnupg')
-provides=('dirmngr' "gnupg2=${pkgver}" 'gnupg')
-replaces=('dirmngr' 'gnupg2')
+conflicts=('gnupg')
+provides=('gnupg')
+replaces=('gnupg2')
 
 pkgver() {
   cd gnupg
