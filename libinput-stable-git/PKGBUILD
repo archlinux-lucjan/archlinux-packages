@@ -2,33 +2,40 @@
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=libinput-stable-git
-pkgver=1.8.3.0.g04287cb
+_pkgname=libinput
+pkgver=1.13.1.0.g424e27ff
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
 arch=(x86_64)
 url='http://freedesktop.org/wiki/Software/libinput/'
-provides=("libinput=${pkgver}")
 license=('MIT')
-depends=('mtdev' 'systemd' 'libevdev')
-makedepends=('git' 'doxygen' 'graphviz' 'check')
+depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
+# upstream doesn't recommend building docs
+makedepends=('gtk3' 'meson' 'git') # 'doxygen' 'graphviz' 'python-sphinx' 'python-recommonmark'
+optdepends=('gtk3: libinput debug-gui'
+            'python-pyudev: libinput measure'
+            'python-evdev: libinput measure')
 conflicts=('libinput')
-provides=('libinput')
-source=(git://anongit.freedesktop.org/wayland/libinput#branch=1.8-branch)
+provides=("libinput=${pkgver}")
+source=(git://anongit.freedesktop.org/wayland/libinput#branch=1.13-branch)
 sha1sums=('SKIP')
 
 pkgver() {
-	cd libinput
-	git describe --long --tags | sed 's/^v//;s/-/./g'
+  cd libinput
+  git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 build() {
-	cd libinput
-
-	./autogen.sh --prefix=/usr
-	make
+  arch-meson $_pkgname build \
+    -Dudev-dir=/usr/lib/udev \
+    -Dtests=false \
+    -Ddocumentation=false
+  ninja -C build
 }
 
 package() {
-	cd libinput
-	make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" ninja -C build install
+
+  install -Dvm644 $_pkgname/COPYING \
+    "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
