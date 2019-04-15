@@ -3,33 +3,33 @@
 
 pkgname=libinput-git
 _pkgname=libinput
-pkgver=1.9.0.4.g3e9e0e2
+pkgver=1.13.0.39.g65784209
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
 arch=(x86_64)
 url='http://freedesktop.org/wiki/Software/libinput/'
-provides=("libinput=${pkgver}")
 license=('MIT')
-depends=('mtdev' 'systemd' 'libevdev')
-makedepends=('doxygen' 'graphviz' 'gtk3' 'meson' 'git')
+depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
+# upstream doesn't recommend building docs
+makedepends=('gtk3' 'meson' 'git') # 'doxygen' 'graphviz' 'python-sphinx' 'python-recommonmark'
+optdepends=('gtk3: libinput debug-gui'
+            'python-pyudev: libinput measure'
+            'python-evdev: libinput measure')
 conflicts=('libinput')
-provides=('libinput')
+provides=("libinput=${pkgver}")
 source=(git://anongit.freedesktop.org/wayland/libinput)
 sha1sums=('SKIP')
 
 pkgver() {
-	cd libinput
-	git describe --long --tags | sed 's/^v//;s/-/./g'
-}
-
-prepare() {
   cd libinput
-  printf '%s\n' >>doc/libinput.doxygen.in \
-    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
+  git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 build() {
-  arch-meson $_pkgname build -Dtests=false
+  arch-meson $_pkgname build \
+    -Dudev-dir=/usr/lib/udev \
+    -Dtests=false \
+    -Ddocumentation=false
   ninja -C build
 }
 
@@ -38,8 +38,4 @@ package() {
 
   install -Dvm644 $_pkgname/COPYING \
     "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-
-  # install doc - no Makefile target
-  install -d "$pkgdir/usr/share/doc"
-  cp -av build/html "$pkgdir/usr/share/doc/libinput"
 }
