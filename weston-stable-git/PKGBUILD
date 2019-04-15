@@ -4,45 +4,50 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=weston-stable-git
-pkgver=3.0.0.0.g2a528187
+_pkgname=weston
+pkgver=6.0.0.0.gea5ea00d
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
-arch=('x86_64' 'armv7h')
+arch=('x86_64')
 url='http://wayland.freedesktop.org'
 license=('MIT')
-makedepends=('git')
-depends=('libxkbcommon' 'wayland' 'wayland-protocols' 'mesa'
-         'poppler-glib' 'mtdev' 'libva' 'libinput' 'libxcursor' 'glu' 'cairo'
-         'pixman' 'libunwind' 'pango' 'colord' 'libwebp')
+depends=('glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
+         'libdrm' 'pam' 'systemd-libs' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
+         'mesa' 'libegl' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
+         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'freerdp')
+makedepends=('wayland-protocols' 'meson' 'ninja' 'git')
 conflicts=('weston')
 provides=('weston')
-
-source=('git://anongit.freedesktop.org/wayland/weston#branch=3.0')
+source=('git://anongit.freedesktop.org/wayland/weston#branch=6.0')
 sha1sums=('SKIP')
 
 pkgver() {
-    cd weston
+   cd $_pkgname
 
-    git describe --long --tags | sed 's/^v//;s/-/./g'
+   git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+  # apply patch from the source array (should be a pacman feature)
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 }
 
 build() {
-    cd weston
-    ./autogen.sh 
-    ./configure \
-    --prefix=/usr \
-    --libexecdir=/usr/lib/weston \
-    --enable-libinput-backend \
-    --enable-systemd-login \
-    --enable-systemd-notify \
-    --enable-xwayland \
-    --enable-demo-clients-install
-  make
+  meson $_pkgname build \
+    --prefix=/usr --libexec=lib/weston -Dsimple-dmabuf-drm=auto
+  ninja -C build
 }
 
 package() {
-  cd weston
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
   # license
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 $_pkgname/COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
 }
