@@ -3,37 +3,54 @@
 # Contributor: Scimmia
 
 pkgname=wayland-git
-pkgver=1.14.0.8.g2420056
+pkgname=(wayland-git wayland-git-docs)
+pkgver=1.17.0.5.gde64489
 pkgrel=1
 pkgdesc='A computer display server protocol.'
 arch=(x86_64)
 url='http://wayland.freedesktop.org'
-provides=("wayland=${pkgver}")
 license=('MIT')
-depends=('libffi')
-makedepends=('git' 'expat')
-conflicts=('wayland')
+depends=('glibc' 'libffi' 'expat' 'libxml2')
+makedepends=('libxslt' 'doxygen' 'xmlto' 'graphviz' 'docbook-xsl' 'git')
 source=(git://anongit.freedesktop.org/wayland/wayland)
 sha1sums=('SKIP')
 
 pkgver() {
-	cd wayland
+  cd wayland
 
-	git describe --long --tags | sed 's/^v//;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 
 build() {
-    cd wayland
+  cd wayland
 
-    ./autogen.sh --prefix=/usr \
-				 --disable-documentation \
-				 --disable-static
-    make
+  ./autogen.sh --prefix=/usr \
+               --disable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
-package() {
-    cd wayland
-    make DESTDIR="${pkgdir}" install
-    install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+package_wayland-git() {
+  conflicts=('wayland')
+  provides=('wayland')
+  cd wayland
+
+  make DESTDIR="$pkgdir" install
+
+  mkdir -p "$srcdir/docs/share"
+  mv "$pkgdir"/usr/share/{doc,man} "$srcdir/docs/share"
+
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+package_wayland-git-docs() {
+  pkgdesc+=" (documentation)"
+  depends=()
+
+  cd wayland
+
+  mv "$srcdir/docs" "$pkgdir/usr"
+
+  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
