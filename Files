@@ -179,10 +179,6 @@
 │   └── PKGBUILD
 ├── liquidshell-git
 │   └── PKGBUILD
-├── llvm-svn
-│   ├── llvm-Config-llvm-config.h
-│   ├── llvm.patch
-│   └── PKGBUILD
 ├── lostfiles-git
 │   └── PKGBUILD
 ├── lucjan-keyring
@@ -417,4 +413,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-140 directories, 277 files
+139 directories, 274 files
