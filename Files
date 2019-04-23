@@ -7,6 +7,9 @@
 │   └── PKGBUILD
 ├── cantata-git
 │   └── PKGBUILD
+├── clang-git
+│   ├── enable-SSP-and-PIE-by-default.patch
+│   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
 │   └── PKGBUILD
@@ -413,4 +416,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-139 directories, 274 files
+140 directories, 276 files
