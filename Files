@@ -179,10 +179,6 @@
 │   └── PKGBUILD
 ├── liquidshell-git
 │   └── PKGBUILD
-├── llvm-git
-│   ├── llvm-Config-llvm-config.h
-│   ├── llvm.patch
-│   └── PKGBUILD
 ├── llvm-svn
 │   ├── llvm-Config-llvm-config.h
 │   ├── llvm.patch
@@ -421,4 +417,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-141 directories, 280 files
+140 directories, 277 files
