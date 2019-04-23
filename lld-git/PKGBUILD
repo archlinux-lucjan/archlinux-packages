@@ -1,0 +1,75 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+
+pkgname=lld-git
+_pkgname=lld
+pkgver=9.0.0_r314795.5c3117b0a98
+pkgrel=1
+pkgdesc="Linker from the LLVM project"
+arch=('x86_64')
+url="https://lld.llvm.org/"
+license=('custom:University of Illinois/NCSA Open Source License')
+depends=('llvm-libs-git')
+makedepends=('llvm-git' 'cmake' 'ninja')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/llvm-project/llvm"
+
+    # This will almost match the output of `llvm-config --version` when the
+    # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
+    # dash being replaced with underscore because of Pacman requirements.
+    local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
+            'BEGIN { ORS="." ; i=0 } \
+             /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
+             END { print "\n" }' \
+             CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    echo "${_pkgver}"
+}
+
+prepare() {
+  cd "${srcdir}/llvm-project/lld"
+  mkdir build
+}
+
+build() {
+  cd "${srcdir}/llvm-project/lld/build"
+
+  cmake .. -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPYTHON_EXECUTABLE=/usr/bin/python \
+    -DBUILD_SHARED_LIBS=ON \
+    -DLLVM_LINK_LLVM_DYLIB=ON \
+    -DLLVM_INCLUDE_TESTS=ON \
+    -DLLVM_BUILD_TESTS=ON \
+    -DLLVM_BUILD_DOCS=OFF \
+    -DLLVM_ENABLE_SPHINX=OFF \
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
+    -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-project/lld"
+  ninja
+}
+
+#check() {
+#  cd "$srcdir/llvm-project/lld/build"
+#  if [[ -e /usr/bin/lld ]]; then
+#    # TODO(foutrelis): tests use system lld if it exists; check if it's fixable
+#    error "Cannot run the tests while lld is installed to the system"
+#    return 1
+#  fi
+#  ninja check-lld
+#}
+
+package() {
+  cd "$srcdir/llvm-project/lld/build"
+
+  DESTDIR="$pkgdir" ninja install
+  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
+  # Remove documentation sources
+  # rm -r "$pkgdir"/usr/share/doc/$_pkgname/html/{_sources,.buildinfo}
+}
+
+# vim:set ts=2 sw=2 et:
