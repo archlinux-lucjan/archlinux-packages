@@ -184,6 +184,8 @@
 │   └── PKGBUILD
 ├── liquidshell-git
 │   └── PKGBUILD
+├── lldb-git
+│   └── PKGBUILD
 ├── lld-git
 │   └── PKGBUILD
 ├── lostfiles-git
@@ -420,4 +422,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-142 directories, 278 files
+143 directories, 279 files

@@ -1,0 +1,73 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+
+pkgname=lldb-git
+_pkgname=lldb
+pkgver=9.0.0_r314794.2f51176223f
+pkgrel=1
+pkgdesc="Next generation, high-performance debugger"
+arch=('x86_64')
+url="https://lldb.llvm.org/"
+license=('custom:University of Illinois/NCSA Open Source License')
+depends=('llvm-libs-git' 'clang-git' 'python2' 'python2-six')
+makedepends=('llvm-git' 'cmake' 'ninja' 'swig')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/llvm-project/llvm"
+
+    # This will almost match the output of `llvm-config --version` when the
+    # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
+    # dash being replaced with underscore because of Pacman requirements.
+    local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
+            'BEGIN { ORS="." ; i=0 } \
+             /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
+             END { print "\n" }' \
+             CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    echo "${_pkgver}"
+}
+
+prepare() {
+  cd "${srcdir}/llvm-project/lldb"
+  mkdir build
+}
+
+build() {
+  cd "$srcdir/llvm-project/lldb/build"
+
+  cmake .. -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+    -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+    -DLLVM_LINK_LLVM_DYLIB=ON \
+    -DLLDB_USE_SYSTEM_SIX=1
+  ninja
+}
+
+package() {
+  cd "$srcdir/llvm-project/lldb/build"
+
+  DESTDIR="$pkgdir" ninja install
+  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
+  # Install possibly outdated man page; better than nothing!
+  install -Dm644 ../docs/lldb.1 "$pkgdir/usr/share/man/man1/lldb.1"
+
+  # Remove static libraries
+  rm "$pkgdir"/usr/lib/*.a
+
+  # Relocate custom readline.so module which links agaisnt libedit
+  # mv "$pkgdir"/usr/lib/python2.7/site-packages/{,lldb/}readline.so
+  # sed -i '2isys.path.insert(1, "/usr/lib/python2.7/site-packages/lldb")' \
+  #  "$pkgdir/usr/lib/python2.7/site-packages/lldb/embedded_interpreter.py"
+
+  # Compile Python scripts
+  python2 -m compileall "$pkgdir"
+  python2 -O -m compileall "$pkgdir"
+}
+
+# vim:set ts=2 sw=2 et:
