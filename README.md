@@ -132,10 +132,6 @@
 
 - liquidshell-git
 
-- llvm-git
-
-- llvm-svn
-
 - lostfiles-git
 
 - lucjan-keyring
