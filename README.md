@@ -8,6 +8,8 @@
 
 - cantata-git
 
+- clang-git
+
 - clean-chroot-manager-git
 
 - clementine-lite-qt5-git 
@@ -17,6 +19,8 @@
 - cmake-git
 
 - cmake-release-git
+
+- compiler-rt-git
 
 - fetchmirrors-git
 
@@ -131,6 +135,12 @@
 - linux-usermode-rc-git
 
 - liquidshell-git
+
+- lld-git
+
+- lldb-git
+
+- llvm-git
 
 - lostfiles-git
 
