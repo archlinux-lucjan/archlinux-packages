@@ -4,14 +4,14 @@
 
 pkgname=lld-git
 _pkgname=lld
-pkgver=9.0.0_r314795.5c3117b0a98
+pkgver=9.0.0_r314850.039a563e6a2
 pkgrel=1
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
 url="https://lld.llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('llvm-libs-git')
-makedepends=('llvm-git' 'cmake' 'ninja')
+makedepends=('llvm-git' 'cmake' 'ninja' 'gtest')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 sha256sums=('SKIP')
 
