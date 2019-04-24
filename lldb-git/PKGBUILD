@@ -4,7 +4,7 @@
 
 pkgname=lldb-git
 _pkgname=lldb
-pkgver=9.0.0_r314794.2f51176223f
+pkgver=9.0.0.r314856.gd30745b2a04
 pkgrel=1
 pkgdesc="Next generation, high-performance debugger"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
              END { print "\n" }' \
-             CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+             CMakeLists.txt).r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
     echo "${_pkgver}"
 }
 
