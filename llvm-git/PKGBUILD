@@ -7,7 +7,7 @@ pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
 _pkgname1=llvm
 _pkgname2=llvm-libs
 _pkgname3=llvm-ocaml
-pkgver=9.0.0_r314850.039a563e6a2
+pkgver=9.0.0.r314856.gd30745b2a04
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -34,7 +34,7 @@ pkgver() {
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
              END { print "\n" }' \
-             CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+             CMakeLists.txt).r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
     echo "$_pkgver"
 }
 
