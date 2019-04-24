@@ -4,23 +4,20 @@
 
 pkgname=lld-git
 _pkgname=lld
-pkgver=9.0.0.r314856.gd30745b2a04
+pkgver=9.0.0.r314889.g882ca6d4848
 pkgrel=1
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
 url="https://lld.llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('llvm-libs-git')
-makedepends=('llvm-git' 'cmake' 'ninja' 'gtest')
+makedepends=('llvm-git' 'cmake' 'ninja' 'gtest' 'git')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/llvm-project/llvm"
 
-    # This will almost match the output of `llvm-config --version` when the
-    # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
-    # dash being replaced with underscore because of Pacman requirements.
     local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \

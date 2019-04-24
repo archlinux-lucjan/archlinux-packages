@@ -3,14 +3,14 @@
 
 pkgname=openmp-git
 _pkgname=openmp
-pkgver=9.0.0.r314873.gb1ba4d8a8a3
+pkgver=9.0.0.r314889.g882ca6d4848
 pkgrel=1
 pkgdesc="LLVM OpenMP Runtime Library"
 arch=('x86_64')
 url="https://openmp.llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('glibc' 'libelf' 'libffi')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'git')
 conflicts=('openmp')
 provides=('openmp')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
@@ -19,9 +19,6 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/llvm-project/llvm"
 
-    # This will almost match the output of `llvm-config --version` when the
-    # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
-    # dash being replaced with underscore because of Pacman requirements.
     local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
