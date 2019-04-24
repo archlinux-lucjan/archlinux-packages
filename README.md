@@ -178,6 +178,8 @@
 
 - ninja-git
 
+- openmp-git
+
 - otter-browser-git
 
 - pacman-contrib-git
