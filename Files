@@ -239,6 +239,8 @@
 │   └── PKGBUILD
 ├── ninja-git
 │   └── PKGBUILD
+├── openmp-git
+│   └── PKGBUILD
 ├── otter-browser-git
 │   └── PKGBUILD
 ├── pacman-contrib-git
@@ -425,4 +427,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-144 directories, 281 files
+145 directories, 282 files
