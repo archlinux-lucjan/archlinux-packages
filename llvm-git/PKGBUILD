@@ -3,10 +3,11 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgbase=llvm-git
-_pkgbase=llvm
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-_pkgname=('llvm' 'llvm-libs' 'llvm-ocaml')
-pkgver=9.0.0_r314762.df3cb477a31
+_pkgname1=llvm
+_pkgname2=llvm-libs
+_pkgname3=llvm-ocaml
+pkgver=9.0.0_r314850.039a563e6a2
 pkgrel=1
 _ocaml_ver=4.07.1
 arch=('x86_64')
@@ -86,7 +87,7 @@ package_llvm-git() {
   popd
 
   # Remove documentation sources
-  rm -r "$pkgdir"/usr/share/doc/$_pkgname/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"/usr/share/doc/$_pkgname1/html/{_sources,.buildinfo}
 
   # The runtime libraries go into llvm-libs
   mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so* "$srcdir"
@@ -95,7 +96,7 @@ package_llvm-git() {
   # OCaml bindings go to a separate package
   rm -rf "$srcdir"/ocaml.{lib,doc}
   mv "$pkgdir/usr/lib/ocaml" "$srcdir/ocaml.lib"
-  mv "$pkgdir/usr/share/doc/$_pkgname/ocaml-html" "$srcdir/ocaml.doc"
+  mv "$pkgdir/usr/share/doc/$_pkgname1/ocaml-html" "$srcdir/ocaml.doc"
 
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
@@ -104,7 +105,7 @@ package_llvm-git() {
     cp "$srcdir/llvm-config.h" "$pkgdir/usr/include/llvm/Config/llvm-config.h"
   fi
 
-  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$_pkgname1/LICENSE"
 }
 
 package_llvm-libs-git() {
@@ -125,7 +126,7 @@ package_llvm-libs-git() {
   ln -s ../LLVMgold.so "$pkgdir/usr/lib/bfd-plugins/LLVMgold.so"
 
   install -Dm644 "$srcdir/llvm-project/llvm/LICENSE.TXT" \
-    "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/$_pkgname2/LICENSE"
 }
 
 package_llvm-ocaml-git() {
@@ -134,12 +135,12 @@ package_llvm-ocaml-git() {
   provides=('llvm-ocaml-svn' 'llvm-ocaml-svn')
   conflicts=('llvm-ocaml' 'llvm-ocaml-svn')
 
-  install -d "$pkgdir"/{usr/lib,usr/share/doc/$_pkgname}
+  install -d "$pkgdir"/{usr/lib,usr/share/doc/$_pkgname3}
   cp -a "$srcdir/ocaml.lib" "$pkgdir/usr/lib/ocaml"
-  cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$_pkgname/html"
+  cp -a "$srcdir/ocaml.doc" "$pkgdir/usr/share/doc/$_pkgname3/html"
 
   install -Dm644 "$srcdir/llvm-project/llvm/LICENSE.TXT" \
-    "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/$_pkgname3/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
