@@ -6,7 +6,7 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=241.7.ga09c170122
+pkgver=242.0.g1e5d2d6564
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -17,7 +17,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
 options=('strip')
-source=('git+https://github.com/systemd/systemd-stable#branch=v241-stable'
+source=('git+https://github.com/systemd/systemd-stable#branch=v242-stable'
         'git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -77,9 +77,11 @@ prepare() {
   local _c
   for _c in "${_backports[@]}"; do
     git cherry-pick -n "${_c}"
+    git log --oneline -1 "${_c}"
   done
   for _c in "${_reverts[@]}"; do
     git revert -n "${_c}"
+    git log --oneline -1 "${_c}"
   done
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
