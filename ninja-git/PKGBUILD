@@ -4,7 +4,7 @@
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 
 pkgname=ninja-git
-pkgver=1.8.2.r2384.gfccab740
+pkgver=1.9.0.r2488.g2e646457
 pkgrel=1
 pkgdesc='Small build system with a focus on speed'
 arch=('i686' 'x86_64')
@@ -37,7 +37,6 @@ build() {
 #  
 #        python2 ./configure.py
 #        ./ninja ninja_test
-#        ./ninja_test --gtest_filter=-SubprocessTest.SetWithLots
 #}
 
 package() {
