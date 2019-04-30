@@ -12,8 +12,8 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-dev-git gcc-libs-dev-git gcc-fortran-dev-git gcc-objc-dev-git gcc-ada-dev-git gcc-go-dev-git lib32-gcc-libs-dev-git)
-pkgver=9.0.1.r168055.8699435d8b8
-_majorver=${pkgver:0:1}
+pkgver=10.0.0.r168515.5f915e9ab02
+_majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
 _islver=0.21
@@ -304,8 +304,10 @@ package_gcc-ada-dev-git() {
   install -m755 gnat1 "$pkgdir/${_libdir}"
 
   cd "$srcdir"/gcc-build/$CHOST/32/libada
+  #Revision 267034 renamed install-gnatlib to install-libada
+  #https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=267034
   make DESTDIR=${pkgdir} INSTALL="install" \
-    INSTALL_DATA="install -m644" install-gnatlib
+    INSTALL_DATA="install -m644" install-libada
 
   ln -s gcc "$pkgdir/usr/bin/gnatgcc"
 
