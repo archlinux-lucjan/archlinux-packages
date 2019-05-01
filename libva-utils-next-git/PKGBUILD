@@ -1,0 +1,33 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Daniel Bermond < yahoo-com: danielbermond >
+
+pkgname=libva-utils-next-git
+_pkgname=libva-utils
+pkgver=2.4.0.1.2019.r220.gbb6a0bd
+pkgrel=1
+pkgdesc='Intel VA-API Media Applications and Scripts for libva (git version)'
+arch=('i686' 'x86_64')
+url='https://github.com/intel/libva-utils'
+license=('custom')
+depends=('libva')
+makedepends=('git' 'libglvnd' 'mesa' 'meson')
+provides=('libva-utils')
+conflicts=('libva-utils')
+source=('git+https://github.com/intel/libva-utils.git#branch=v2.4-branch')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd libva-utils
+    _ver="$(cat NEWS | grep -m1 ersion | grep -o "[[:digit:]]*" | paste -sd'.')"
+    echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+build() {
+  arch-meson libva-utils build
+  ninja -C build
+}
+
+package() {
+  DESTDIR="${pkgdir}" ninja -C build install
+  install -Dm 644 libva-utils/COPYING -t "${pkgdir}"/usr/share/licenses/libva-utils
+} 
