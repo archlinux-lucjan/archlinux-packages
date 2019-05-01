@@ -118,7 +118,13 @@
 
 - libva-intel-driver-git
 
+- libva-intel-driver-next-git
+
+- libva-next-git
+
 - libva-utils-git
+
+- libva-utils-next-git
 
 - linux-api-headers-git
 
