@@ -100,6 +100,8 @@
 
 - libgit2-git
 
+- libgit2-stable-git
+
 - libgpg-error-git
 
 - libinput-git

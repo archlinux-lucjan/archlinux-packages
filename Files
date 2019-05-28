@@ -141,6 +141,8 @@
 │   └── PKGBUILD
 ├── libgit2-git
 │   └── PKGBUILD
+├── libgit2-stable-git
+│   └── PKGBUILD
 ├── libgpg-error-git
 │   └── PKGBUILD
 ├── libinput-git
@@ -434,4 +436,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-148 directories, 286 files
+149 directories, 287 files
