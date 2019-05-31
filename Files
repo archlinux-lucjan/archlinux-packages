@@ -175,12 +175,10 @@
 ├── linux-firmware-git
 │   └── PKGBUILD
 ├── linux-usermode
-│   ├── 001-hide_the_int3_emulate_call_jmp_functions_from_uml.patch
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
 ├── linux-usermode-git
-│   ├── 001-hide_the_int3_emulate_call_jmp_functions_from_uml.patch
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
@@ -437,4 +435,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-149 directories, 288 files
+149 directories, 286 files
