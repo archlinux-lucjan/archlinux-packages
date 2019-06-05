@@ -338,9 +338,13 @@
 ├── strawberry-git
 │   └── PKGBUILD
 ├── syslinux-git
+│   ├── 0002-gfxboot-menu-label.patch
+│   ├── 0004-gnu-efi-from-arch.patch
+│   ├── 0005-gnu-efi-version-compatibility.patch
+│   ├── 0016-strip-gnu-property.patch
+│   ├── 0017-single-load-segment.patch
+│   ├── 0018-prevent-pow-optimization.patch
 │   ├── PKGBUILD
-│   ├── single-load-segment.patch
-│   ├── strip_note_section.patch
 │   ├── syslinux.cfg
 │   ├── syslinux.install
 │   └── syslinux-install_update
@@ -435,4 +439,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-149 directories, 286 files
+149 directories, 290 files
