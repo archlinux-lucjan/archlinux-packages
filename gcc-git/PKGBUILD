@@ -12,7 +12,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git)
-pkgver=9.0.1.r168482.3b82f6b1fc5
+pkgver=9.1.1.r168650.bac4093c5ea
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -74,10 +74,6 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  #Revsion 261304 removed libmpx
-  #https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=261304
-  #https://gcc.gnu.org/wiki/Intel%20MPX%20support%20in%20the%20GCC%20compiler
-  #https://www.phoronix.com/scan.php?page=news_item&px=MPX-Removed-From-GCC9
   "$srcdir/gcc/configure" --prefix=/usr \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
