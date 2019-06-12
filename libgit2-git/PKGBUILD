@@ -5,14 +5,14 @@
 
 pkgname=libgit2-git
 _pkgname=libgit2
-pkgver=0.28.0.r19.gbda083973
+pkgver=0.28.0.r269.gff7652c15
 pkgrel=1
 epoch=1
 pkgdesc='A linkable library for Git'
 arch=('x86_64')
 url='https://libgit2.github.com/'
-depends=(zlib openssl libssh2 curl)
-makedepends=(cmake python git)
+depends=('curl' 'http-parser' 'libssh2' 'openssl' 'zlib')
+makedepends=('cmake' 'python' 'git')
 provides=('libgit2')
 conflicts=('libgit2')
 license=('GPL2')
@@ -24,19 +24,26 @@ pkgver() {
   git describe --long --tags | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "$_pkgname"
-  export LANG=en_US.UTF-8
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTHREADSAFE=ON .
-  make
+  mkdir -p build
+}
+
+build() {
+  cd "$_pkgname/build"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DTHREADSAFE=ON \
+        ..
+  make VERBOSE=1
 }
 
 check() {
-  cd "$_pkgname"
-  make test
+  cd "$_pkgname/build"
+  make test VERBOSE=1
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$_pkgname/build"
   make DESTDIR="$pkgdir" install
 }
