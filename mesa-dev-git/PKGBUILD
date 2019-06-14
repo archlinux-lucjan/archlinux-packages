@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0.devel.r110244.g0fb0058f18b
+pkgver=19.2.0.devel.r111817.g83829abe034
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -17,10 +17,12 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dr
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git'
-        "LICENSE")
+        "LICENSE"
+        'glesv2.pc')
 options=('!libtool')
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
+         '5c65a0fe315dd347e09b1f2826a1df5a'
+         '62eb883f3564474dbd2b68d398ebc37a')
 
 pkgver() {
     cd mesa
@@ -33,14 +35,13 @@ prepare() {
 }
   
 build() {
-  #  -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr ### swr doesn't build https://bugs.freedesktop.org/show_bug.cgi?id=107865
 
   arch-meson mesa build \
     -D b_lto=false \
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
-    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris \
     -D vulkan-drivers=amd,intel \
     -D swr-arches=avx,avx2 \
     -D dri3=true \
@@ -54,7 +55,7 @@ build() {
     -D gallium-xa=true \
     -D gallium-xvmc=false \
     -D gbm=true \
-    -D gles1=true \
+    -D gles1=false \
     -D gles2=true \
     -D glvnd=true \
     -D glx=dri \
@@ -162,7 +163,7 @@ package_mesa-dev-git() {
   _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
   _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
-  # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
+  # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
   _install fakeinstall/usr/lib/dri/*_dri.so
    
   _install fakeinstall/usr/lib/bellagio
@@ -170,14 +171,11 @@ package_mesa-dev-git() {
   _install fakeinstall/usr/lib/lib{gbm,glapi}.so*
   _install fakeinstall/usr/lib/libOSMesa.so*
   _install fakeinstall/usr/lib/libxatracker.so*
-  # _install fakeinstall/usr/lib/libswrAVX*.so*
+  _install fakeinstall/usr/lib/libswrAVX*.so*
 
-  # in libglvnd
-  rm -v fakeinstall/usr/lib/libGLESv{1_CM,2}.so*
-  
   # in vulkan-headers
   rm -rv fakeinstall/usr/include/vulkan
-  
+
   _install fakeinstall/usr/include
   _install fakeinstall/usr/lib/pkgconfig
 
@@ -190,6 +188,9 @@ package_mesa-dev-git() {
 
   # make sure there are no files left to install
   find fakeinstall -depth -print0 | xargs -0 rmdir
+
+  # bring back missing glesv2.pc
+  install -m644 -Dt ${pkgdir}/usr/lib/pkgconfig ${srcdir}/glesv2.pc
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
