@@ -13,7 +13,7 @@ arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols'
              'elfutils' 'llvm' 'libomxil-bellagio' 'libclc-git' 'clang' 'libglvnd' 'libunwind' 'lm_sensors'
-             'meson' 'libxrandr' 'git')
+             'meson' 'libxrandr' 'valgrind' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=19.1'
@@ -64,7 +64,7 @@ build() {
     -D lmsensors=true \
     -D osmesa=gallium \
     -D shared-glapi=true \
-    -D valgrind=false
+    -D valgrind=true
 
   # Print config
   meson configure build
