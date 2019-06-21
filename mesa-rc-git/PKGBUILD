@@ -4,19 +4,19 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa-rc-git
-pkgname=('opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
+pkgname=('vulkan-mesa-layer-rc-git' 'opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0.r110866.g2a5b4e2b9ff
+pkgver=19.1.0.r110893.gebd90fc7e00
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols'
              'elfutils' 'llvm' 'libomxil-bellagio' 'libclc-git' 'clang' 'libglvnd' 'libunwind' 'lm_sensors'
-             'meson' 'libxrandr' 'valgrind' 'git')
+             'meson' 'libxrandr' 'valgrind' 'glslang' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=19.1'
+source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=staging/19.1'
         "LICENSE"
         'glesv2.pc')
 options=('!libtool')
@@ -43,6 +43,7 @@ build() {
     -D dri-drivers=i915,i965,r100,r200,nouveau \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris \
     -D vulkan-drivers=amd,intel \
+    -D vulkan-overlay-layer=true \
     -D swr-arches=avx,avx2 \
     -D dri3=true \
     -D egl=true \
@@ -86,6 +87,17 @@ _install() {
   done
 }
 
+package_vulkan-mesa-layer-rc-git() {
+  pkgdesc="Vulkan overlay layer to display information about the application"
+  provides=('vulkan-mesa-layer')
+  conflicts=('vulkan-mesa-layer')
+  
+  _install fakeinstall/usr/share/vulkan/explicit_layer.d
+  _install fakeinstall/usr/lib/libVkLayer_MESA_overlay.so
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
 package_opencl-mesa-rc-git() {
   pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers. Git version"
   depends=('expat' 'libdrm' 'libelf' 'libclc' 'clang')
@@ -103,6 +115,7 @@ package_opencl-mesa-rc-git() {
 package_mesa-vulkan-intel-rc-git() {
   pkgdesc="Intel's Vulkan mesa driver. Git version"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm')
+  optdepends=('vulkan-mesa-layer-rc-git: a vulkan layer to display information using an overlay')
   provides=('vulkan-intel' 'vulkan-driver')
   conflicts=('vulkan-intel')
   
@@ -116,6 +129,7 @@ package_mesa-vulkan-intel-rc-git() {
 package_mesa-vulkan-radeon-rc-git() {
   pkgdesc="Radeon's Vulkan mesa driver. Git version"
   depends=('wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs')
+  optdepends=('vulkan-mesa-layer-rc-git: a vulkan layer to display information using an overlay')
   provides=('vulkan-radeon' 'vulkan-driver')
   conflicts=('vulkan-radeon')
   
