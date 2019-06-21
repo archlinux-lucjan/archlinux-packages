@@ -4,16 +4,16 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa-dev-git
-pkgname=('opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
+pkgname=('vulkan-mesa-layer-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0.devel.r111984.g81e51b412e9
+pkgver=19.2.0.devel.r112065.g1cbe2ad3944
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols'
              'elfutils' 'llvm-git' 'libomxil-bellagio' 'libclc-git' 'clang-git' 'libglvnd' 'libunwind' 'lm_sensors'
-             'meson' 'libxrandr' 'valgrind' 'git')
+             'meson' 'libxrandr' 'valgrind' 'glslang' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git'
@@ -43,6 +43,7 @@ build() {
     -D dri-drivers=i915,i965,r100,r200,nouveau \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris \
     -D vulkan-drivers=amd,intel \
+    -D vulkan-overlay-layer=true \
     -D swr-arches=avx,avx2 \
     -D dri3=true \
     -D egl=true \
@@ -87,9 +88,20 @@ _install() {
   done
 }
 
+package_vulkan-mesa-layer-dev-git() {
+  pkgdesc="Vulkan overlay layer to display information about the application"
+  provides=('vulkan-mesa-layer')
+  conflicts=('vulkan-mesa-layer')
+  
+  _install fakeinstall/usr/share/vulkan/explicit_layer.d
+  _install fakeinstall/usr/lib/libVkLayer_MESA_overlay.so
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
 package_opencl-mesa-dev-git() {
   pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers. Git version"
-  depends=('expat' 'libdrm' 'libelf' 'libclc' 'clang-svn')
+  depends=('expat' 'libdrm' 'libelf' 'libclc' 'clang-git')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=('opencl-mesa' 'opencl-driver')
   conflicts=('opencl-mesa')
@@ -104,6 +116,7 @@ package_opencl-mesa-dev-git() {
 package_mesa-vulkan-intel-dev-git() {
   pkgdesc="Intel's Vulkan mesa driver. Git version"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm')
+  optdepends=('vulkan-mesa-layer-dev-git: a vulkan layer to display information using an overlay')
   provides=('vulkan-intel' 'vulkan-driver')
   conflicts=('vulkan-intel')
   
@@ -116,7 +129,8 @@ package_mesa-vulkan-intel-dev-git() {
 
 package_mesa-vulkan-radeon-dev-git() {
   pkgdesc="Radeon's Vulkan mesa driver. Git version"
-  depends=('wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs-svn')
+  depends=('wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs-git')
+  optdepends=('vulkan-mesa-layer-dev-git: a vulkan layer to display information using an overlay')
   provides=('vulkan-radeon' 'vulkan-driver')
   conflicts=('vulkan-radeon')
   
@@ -128,7 +142,7 @@ package_mesa-vulkan-radeon-dev-git() {
 
 package_libva-mesa-driver-dev-git() {
   pkgdesc="VA-API implementation for gallium. Git version"
-  depends=('libdrm' 'libx11' 'llvm-libs-svn' 'expat' 'libelf' 'libxshmfence')
+  depends=('libdrm' 'libx11' 'llvm-libs-git' 'expat' 'libelf' 'libxshmfence')
   provides=('libva-mesa-driver')
   conflicts=('libva-mesa-driver')
 
@@ -139,7 +153,7 @@ package_libva-mesa-driver-dev-git() {
 
 package_mesa-vdpau-dev-git() {
   pkgdesc="Mesa VDPAU drivers. Git version"
-  depends=('libdrm' 'libx11' 'llvm-libs-svn' 'expat' 'libelf' 'libxshmfence')
+  depends=('libdrm' 'libx11' 'llvm-libs-git' 'expat' 'libelf' 'libxshmfence')
   provides=('mesa-vdpau')
   conflicts=('mesa-vdpau')
 
@@ -150,7 +164,7 @@ package_mesa-vdpau-dev-git() {
 
 package_mesa-dev-git() {
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf' 
-           'libomxil-bellagio' 'libunwind' 'llvm-libs-svn' 'lm_sensors' 'libglvnd')
+           'libomxil-bellagio' 'libunwind' 'llvm-libs-git' 'lm_sensors' 'libglvnd')
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau: for accelerated video playback'
               'libva-mesa-driver: for accelerated video playback')
