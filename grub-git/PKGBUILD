@@ -10,7 +10,7 @@ _IA32_EFI_IN_ARCH_X64="1"
 ## "1" to enable EMU build, "0" to disable
 _GRUB_EMU_BUILD="0"
 
-_UNIFONT_VER="11.0.02"
+_UNIFONT_VER="12.0.01"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -21,7 +21,7 @@ _UNIFONT_VER="11.0.02"
 pkgname='grub-git'
 _pkgname='grub'
 pkgdesc='GNU GRand Unified Bootloader (2)'
-pkgver=2.02.238.ga791dc0e3
+pkgver=2.04.1.g26094f524
 pkgrel=1
 epoch=2
 url='https://www.gnu.org/software/grub/'
@@ -57,16 +57,18 @@ source=("grub::git+git://git.sv.gnu.org/grub.git#branch=master"
         "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#branch=master"
         "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"
         #"https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
+        "git+https://git.savannah.gnu.org/git/gnulib.git"
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
         'grub.default')
 
 sha256sums=('SKIP'
             'SKIP'
-            'a7ea9ca4f6dcb59377d978194835ede669457069256184f86d46ab5b863c56e6'
-            'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
+            'f48450d3ca0ae0ca9f1c6e81cf1af60e5b0dfa87cc3a72520ce2ef15d54de6dd'
+            'SKIP'
+            '15132f80bfb85014f35dc065243f7037439d9d7ebd3ed9cc2b34891aea24ec7f'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            '74e5dd2090a153c10a7b9599b73bb09e70fddc6a019dd41641b0f10b9d773d82')
+            'fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa')
 		
 _configure_options=(
 	FREETYPE="pkg-config freetype2"
@@ -124,10 +126,12 @@ prepare() {
 
 	echo "Avoid problem with unifont during compile of grub..."
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
-	cp "${srcdir}/unifont-${_UNIFONT_VER}.bdf" "unifont.bdf"
+	gzip -cd "${srcdir}/unifont-${_UNIFONT_VER}.bdf.gz" > "unifont.bdf"
 	
-	echo "Run autogen.sh..."
-	./autogen.sh
+	echo "Run bootstrap..."
+	./bootstrap \
+		--gnulib-srcdir="${srcdir}/gnulib/" \
+		--no-git
 }
 
 _build_grub-common_and_bios() {
