@@ -252,6 +252,8 @@
 
 - qtox-git
 
+- s-git
+
 - sddm-dev-git
 
 - sddm-git
@@ -271,6 +273,8 @@
 - toxcore-git
 
 - toxcore-stable-git
+
+- uksmd-git
 
 - uksmstat-git
 
