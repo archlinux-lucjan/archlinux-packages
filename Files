@@ -333,6 +333,8 @@
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
+├── s-git
+│   └── PKGBUILD
 ├── smplayer-svn
 │   └── PKGBUILD
 ├── strawberry-full-git
@@ -441,4 +443,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-149 directories, 292 files
+150 directories, 293 files
