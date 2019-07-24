@@ -402,6 +402,8 @@
 │   ├── PKGBUILD
 │   ├── toxcore.conf
 │   └── toxcore.install
+├── uksmd-git
+│   └── PKGBUILD
 ├── uksmstat-git
 │   └── PKGBUILD
 ├── utox-dev-git
@@ -443,4 +445,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-150 directories, 293 files
+151 directories, 294 files
