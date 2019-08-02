@@ -21,7 +21,7 @@ _UNIFONT_VER="12.0.01"
 pkgname='grub-git'
 _pkgname='grub'
 pkgdesc='GNU GRand Unified Bootloader (2)'
-pkgver=2.04.1.g26094f524
+pkgver=2.04.10.g4e75b2ae3
 pkgrel=1
 epoch=2
 url='https://www.gnu.org/software/grub/'
@@ -68,7 +68,7 @@ sha256sums=('SKIP'
             'SKIP'
             '15132f80bfb85014f35dc065243f7037439d9d7ebd3ed9cc2b34891aea24ec7f'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            'fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa')
+            '3c9eae171728176e83e5c578e25adf1fd923f924f6893c2678827ba687875349')
 		
 _configure_options=(
 	FREETYPE="pkg-config freetype2"
