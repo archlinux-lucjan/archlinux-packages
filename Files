@@ -273,6 +273,8 @@
 │   └── PKGBUILD
 ├── pacutils-git
 │   └── PKGBUILD
+├── pkgbuild-introspection-lucjan-git
+│   └── PKGBUILD
 ├── pkgconf-git
 │   ├── PKGBUILD
 │   └── platform-pkg-config.in
@@ -445,4 +447,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-151 directories, 294 files
+152 directories, 295 files

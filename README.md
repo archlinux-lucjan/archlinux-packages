@@ -202,6 +202,8 @@
 
 - pacutils-git
 
+- pkgbuild-introspection-lucjan-git
+
 - pkgconf-git
 
 - psi-clean-full-git
