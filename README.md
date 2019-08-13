@@ -22,6 +22,10 @@
 
 - compiler-rt-git
 
+- dbus-git
+
+- dbus-stable-git
+
 - fetchmirrors-git
 
 - freebsd-manpages
