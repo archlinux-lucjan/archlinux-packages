@@ -23,6 +23,9 @@
 │   └── PKGBUILD
 ├── compiler-rt-git
 │   └── PKGBUILD
+├── dbus-stable-git
+│   ├── dbus-reload.hook
+│   └── PKGBUILD
 ├── fetchmirrors-git
 │   └── PKGBUILD
 ├── Files
@@ -448,4 +451,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-152 directories, 296 files
+153 directories, 298 files
