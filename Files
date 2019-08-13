@@ -377,6 +377,7 @@
 │   └── systemd-user.pam
 ├── systemd-stable-git
 │   ├── 0001-Use-Arch-Linux-device-access-groups.patch
+│   ├── 20-systemd-sysusers.hook
 │   ├── arch.conf
 │   ├── initcpio-hook-udev
 │   ├── initcpio-install-systemd
@@ -391,7 +392,6 @@
 │   ├── systemd-hook
 │   ├── systemd-hwdb.hook
 │   ├── systemd-sysctl.hook
-│   ├── systemd-sysusers.hook
 │   ├── systemd-tmpfiles.hook
 │   ├── systemd-udev-reload.hook
 │   ├── systemd-update.hook
