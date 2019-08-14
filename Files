@@ -59,6 +59,7 @@
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
 ├── gitless-git
+│   ├── 0001-Bump-libgit2.patch
 │   └── PKGBUILD
 ├── git-main-git
 │   ├── git-daemon@.service
@@ -454,4 +455,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-154 directories, 300 files
+154 directories, 301 files
