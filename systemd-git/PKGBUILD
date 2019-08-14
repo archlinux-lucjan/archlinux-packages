@@ -6,7 +6,7 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=243.rc1.68.g9ef3376bc9
+pkgver=243.rc1.78.gb208cbe5b4
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -191,6 +191,9 @@ package_systemd-git() {
   rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
   sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
+  # avoid a conflict with [core]/filesystem
+  rm -f "$pkgdir"/usr/share/factory/etc/issue
+  
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
   install -m0644 $_pkgbase/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
 
