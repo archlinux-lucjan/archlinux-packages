@@ -6,7 +6,7 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=243.rc1.78.gb208cbe5b4
+pkgver=243.rc1.80.g8c21fba875
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -169,7 +169,7 @@ package_systemd-git() {
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
-  # rm -rv "$pkgdir"/etc/systemd/system/*
+  rm -rvf "$pkgdir"/etc/systemd/system/*
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
@@ -179,13 +179,13 @@ package_systemd-git() {
   mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
-  # rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
+  rm -f "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
 
   # executable (symlinks) shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
 
   # files shipped with systemd-resolvconf
-  # rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+  rm -f "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
   # avoid a potential conflict with [core]/filesystem
   rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
