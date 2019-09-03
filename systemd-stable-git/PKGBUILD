@@ -6,7 +6,7 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=242.85.g07f0549ffe
+pkgver=243.0.gefb536d0cb
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -17,7 +17,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
 options=('strip')
-source=('git+https://github.com/systemd/systemd-stable#branch=v242-stable'
+source=('git+https://github.com/systemd/systemd-stable#branch=v243-stable'
         'git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -29,14 +29,14 @@ source=('git+https://github.com/systemd/systemd-stable#branch=v242-stable'
         'systemd-user.pam'
         'systemd-hook'
         '20-systemd-sysusers.hook'
-        'systemd-binfmt.hook'
-        'systemd-catalog.hook'
-        'systemd-daemon-reload.hook'
-        'systemd-hwdb.hook'
-        'systemd-sysctl.hook'
-        'systemd-tmpfiles.hook'
-        'systemd-udev-reload.hook'
-        'systemd-update.hook')
+        '30-systemd-binfmt.hook'
+        '30-systemd-catalog.hook'
+        '30-systemd-daemon-reload.hook'
+        '30-systemd-hwdb.hook'
+        '30-systemd-sysctl.hook'
+        '30-systemd-tmpfiles.hook'
+        '30-systemd-udev-reload.hook'
+        '30-systemd-update.hook')
 
 sha512sums=('SKIP'
             'SKIP'
@@ -118,6 +118,7 @@ build() {
     -Dima=false
     -Dlibidn2=true
     -Dlz4=true
+    -Dman=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-hierarchy=hybrid
@@ -165,11 +166,7 @@ package_systemd-stable-git() {
   install="systemd-git.install"
 
   DESTDIR="$pkgdir" meson install -C build
-
-  # don't write units to /etc by default. some of these will be re-enabled on
-  # post_install.
-  rm -rv "$pkgdir"/etc/systemd/system/*
-
+  
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
 
@@ -187,8 +184,9 @@ package_systemd-stable-git() {
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
   # avoid a potential conflict with [core]/filesystem
-  rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
-  sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
+    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
   install -m0644 $_pkgbase-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
