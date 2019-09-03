@@ -6,7 +6,7 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=243.rc1.80.g8c21fba875
+pkgver=243.0.gefb536d0cb
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -29,14 +29,14 @@ source=('git+https://github.com/systemd/systemd-stable'
         'systemd-user.pam'
         'systemd-hook'
         '20-systemd-sysusers.hook'
-        'systemd-binfmt.hook'
-        'systemd-catalog.hook'
-        'systemd-daemon-reload.hook'
-        'systemd-hwdb.hook'
-        'systemd-sysctl.hook'
-        'systemd-tmpfiles.hook'
-        'systemd-udev-reload.hook'
-        'systemd-update.hook')
+        '30-systemd-binfmt.hook'
+        '30-systemd-catalog.hook'
+        '30-systemd-daemon-reload.hook'
+        '30-systemd-hwdb.hook'
+        '30-systemd-sysctl.hook'
+        '30-systemd-tmpfiles.hook'
+        '30-systemd-udev-reload.hook'
+        '30-systemd-update.hook')
     
 sha512sums=('SKIP'
             'SKIP'
@@ -119,6 +119,7 @@ build() {
     -Dima=false
     -Dlibidn2=true
     -Dlz4=true
+    -Dman=true
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-hierarchy=hybrid
@@ -166,11 +167,7 @@ package_systemd-git() {
   install="systemd-git.install"
 
   DESTDIR="$pkgdir" meson install -C build
-
-  # don't write units to /etc by default. some of these will be re-enabled on
-  # post_install.
-  rm -rvf "$pkgdir"/etc/systemd/system/*
-
+  
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
 
@@ -188,8 +185,9 @@ package_systemd-git() {
   rm -f "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
   # avoid a potential conflict with [core]/filesystem
-  rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
-  sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
+    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # avoid a conflict with [core]/filesystem
   rm -f "$pkgdir"/usr/share/factory/etc/issue
@@ -260,8 +258,8 @@ package_systemd-sysvcompat-git() {
   depends=('systemd-git')
   conflicts=('systemd-sysvcompat')
 
-  # install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
-    # build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
+  install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
+    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
