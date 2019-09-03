@@ -22,6 +22,8 @@
 
 - compiler-rt-git
 
+- cpio-git
+
 - dbus-git
 
 - dbus-stable-git
