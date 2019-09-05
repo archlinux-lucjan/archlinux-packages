@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('vulkan-mesa-layer-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0.devel.r112065.g1cbe2ad3944
+pkgver=19.3.0.devel.r115005.g538820ff5ff
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git'
 options=('!libtool')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '62eb883f3564474dbd2b68d398ebc37a')
+         '39df3f22fb0c110c7bd82e8e8ea4aff4')
 
 pkgver() {
     cd mesa
@@ -65,7 +65,6 @@ build() {
     -D lmsensors=true \
     -D osmesa=gallium \
     -D shared-glapi=true \
-    -D vulkan-overlay-layer=true \
     -D valgrind=true
 
   # Print config
