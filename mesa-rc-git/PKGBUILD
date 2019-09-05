@@ -6,7 +6,7 @@
 pkgbase=mesa-rc-git
 pkgname=('vulkan-mesa-layer-rc-git' 'opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.1.0.r110893.gebd90fc7e00
+pkgver=19.2.0.rc2.r114655.g3ef013f0e98
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -16,13 +16,13 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dr
              'meson' 'libxrandr' 'valgrind' 'glslang' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=staging/19.1'
+source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=staging/19.2'
         "LICENSE"
         'glesv2.pc')
 options=('!libtool')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '62eb883f3564474dbd2b68d398ebc37a')
+         '39df3f22fb0c110c7bd82e8e8ea4aff4')
 
 pkgver() {
     cd mesa
