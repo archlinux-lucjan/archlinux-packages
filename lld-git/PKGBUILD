@@ -4,7 +4,7 @@
 
 pkgname=lld-git
 _pkgname=lld
-pkgver=9.0.0.r314889.g882ca6d4848
+pkgver=10.0.0.r326144.gd2574d79b64
 pkgrel=1
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
@@ -51,11 +51,6 @@ build() {
 
 #check() {
 #  cd "$srcdir/llvm-project/lld/build"
-#  if [[ -e /usr/bin/lld ]]; then
-#    # TODO(foutrelis): tests use system lld if it exists; check if it's fixable
-#    error "Cannot run the tests while lld is installed to the system"
-#    return 1
-#  fi
 #  ninja check-lld
 #}
 
