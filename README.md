@@ -2,6 +2,8 @@
 
 - antimicro-git
 
+- bat-polaur-git
+
 - binutils-git
 
 - binutils-test-git
