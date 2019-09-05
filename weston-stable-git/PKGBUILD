@@ -5,7 +5,7 @@
 
 pkgname=weston-stable-git
 _pkgname=weston
-pkgver=6.0.0.0.gea5ea00d
+pkgver=6.0.1.0.g8757261c
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=('x86_64')
@@ -14,8 +14,9 @@ license=('MIT')
 depends=('glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
          'libdrm' 'pam' 'systemd-libs' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
          'mesa' 'libegl' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
-         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'freerdp')
-makedepends=('wayland-protocols' 'meson' 'ninja' 'git')
+         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'pipewire')
+makedepends=('wayland-protocols' 'meson' 'ninja' 'freerdp' 'git')
+optdepends=('freerdp: support rdp backend')
 conflicts=('weston')
 provides=('weston')
 source=('git://anongit.freedesktop.org/wayland/weston#branch=6.0')
