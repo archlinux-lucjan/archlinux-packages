@@ -287,8 +287,9 @@
 ├── pkgbuild-introspection-lucjan-git
 │   └── PKGBUILD
 ├── pkgconf-git
+│   ├── i686-pc-linux-gnu.personality
 │   ├── PKGBUILD
-│   └── platform-pkg-config.in
+│   └── x86_64-pc-linux-gnu.personality
 ├── psi-clean-full-git
 │   └── PKGBUILD
 ├── psi-clean-git
@@ -458,4 +459,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-156 directories, 302 files
+156 directories, 303 files
