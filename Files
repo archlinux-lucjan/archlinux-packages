@@ -441,6 +441,8 @@
 │   └── PKGBUILD
 ├── weston-stable-git
 │   └── PKGBUILD
+├── wireguard-git
+│   └── PKGBUILD
 ├── xf86-video-intel-git
 │   ├── PKGBUILD
 │   └── xf86-video-intel-git.install
@@ -459,4 +461,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-156 directories, 303 files
+157 directories, 304 files
