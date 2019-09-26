@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('vulkan-mesa-layer-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.3.0.devel.r115005.g538820ff5ff
+pkgver=19.3.0.devel.r115682.g3c966fd688c
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -17,12 +17,10 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dr
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git'
-        "LICENSE"
-        'glesv2.pc')
+        "LICENSE")
 options=('!libtool')
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a'
-         '39df3f22fb0c110c7bd82e8e8ea4aff4')
+         '5c65a0fe315dd347e09b1f2826a1df5a')
 
 pkgver() {
     cd mesa
@@ -201,9 +199,6 @@ package_mesa-dev-git() {
 
   # make sure there are no files left to install
   find fakeinstall -depth -print0 | xargs -0 rmdir
-
-  # bring back missing glesv2.pc
-  install -m644 -Dt ${pkgdir}/usr/lib/pkgconfig ${srcdir}/glesv2.pc
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
