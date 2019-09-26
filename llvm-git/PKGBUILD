@@ -7,12 +7,12 @@ pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
 _pkgname1=llvm
 _pkgname2=llvm-libs
 _pkgname3=llvm-ocaml
-pkgver=9.0.0.r314889.g882ca6d4848
+pkgver=10.0.0.r327865.ga0686015106
 pkgrel=1
-_ocaml_ver=4.07.1
+_ocaml_ver=4.08.1
 arch=('x86_64')
 url="https://llvm.org/"
-license=('custom:University of Illinois/NCSA Open Source License')
+license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              "ocaml=$_ocaml_ver" 'ocaml-ctypes' 'ocaml-findlib'
              'python-sphinx' 'python-recommonmark' 'git')
@@ -52,6 +52,7 @@ build() {
     -DLLVM_INSTALL_UTILS=ON \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
+    -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=AVR \
     -DLLVM_BUILD_TESTS=ON \
     -DLLVM_BUILD_DOCS=ON \
     -DLLVM_ENABLE_SPHINX=ON \
@@ -129,7 +130,7 @@ package_llvm-libs-git() {
 package_llvm-ocaml-git() {
   pkgdesc="OCaml bindings for LLVM"
   depends=('llvm-git' "ocaml=$_ocaml_ver" 'ocaml-ctypes')
-  provides=('llvm-ocaml-svn' 'llvm-ocaml-svn')
+  provides=('llvm-ocaml' 'llvm-ocaml-svn')
   conflicts=('llvm-ocaml' 'llvm-ocaml-svn')
 
   install -d "$pkgdir"/{usr/lib,usr/share/doc/$_pkgname3}
