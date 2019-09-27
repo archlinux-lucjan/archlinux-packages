@@ -208,6 +208,8 @@
 
 - pacman-test-git
 
+- pacman-trunk-git
+
 - pacutils-git
 
 - pkgbuild-introspection-lucjan-git
