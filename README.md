@@ -144,6 +144,8 @@
 
 - linux-usermode
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/linux-usermode.svg)](https://repology.org/project/linux-usermode/versions)
+
 [![latest packaged version(s)](https://repology.org/badge/latest-versions/linux-usermode.svg)](https://repology.org/project/linux-usermode/versions)
 
 - linux-usermode-git
