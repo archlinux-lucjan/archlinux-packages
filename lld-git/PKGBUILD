@@ -4,7 +4,7 @@
 
 pkgname=lld-git
 _pkgname=lld
-pkgver=10.0.0.r327980.g9431b72ce9e
+pkgver=10.0.0.r327985.g2319eb65473
 pkgrel=1
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
@@ -12,8 +12,10 @@ url="https://lld.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm-libs-git')
 makedepends=('llvm-git' 'cmake' 'ninja' 'gtest' 'git')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
-sha256sums=('SKIP')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
+        'sphinx2.patch')
+sha256sums=('SKIP'
+            '7f7cca66a16c5a4aca132bfa1d86a7a2ff33612ec47d3422dc91ad4cc1810646')
 
 pkgver() {
     cd "${srcdir}/llvm-project/llvm"
@@ -28,6 +30,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/llvm-project/lld"
+  patch -Np1 -i "${srcdir}/sphinx2.patch"
   mkdir build
 }
 
