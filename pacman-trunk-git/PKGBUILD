@@ -13,7 +13,7 @@ url="http://www.archlinux.org/pacman/"
 license=('GPL')
 depends=('bash' 'glibc' 'libarchive' 'curl'
          'gpgme' 'pacman-mirrorlist' 'archlinux-keyring')
-makedepends=('asciidoc' 'git' 'ninja' 'meson')
+makedepends=('asciidoc' 'git' 'meson')
 checkdepends=('python2' 'fakechroot')
 optdepends=('perl-locale-gettext: translation support in makepkg-template'
             'xdelta3: delta support in repo-add')
@@ -42,7 +42,7 @@ local _meson_options=(
 )
 
 build() {
-  arch-meson pacman build "${_meson_options[@]}"
+  arch-meson pacman build  "${_meson_options[@]}"
     
   ninja -C build
 }
