@@ -144,6 +144,8 @@
 
 - linux-usermode
 
+[![latest packaged version(s)](https://repology.org/badge/latest-versions/linux-usermode.svg)](https://repology.org/project/linux-usermode/versions)
+
 - linux-usermode-git
 
 - linux-usermode-rc
