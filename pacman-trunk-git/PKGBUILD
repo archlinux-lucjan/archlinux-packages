@@ -47,7 +47,6 @@ build() {
   ninja -C build
 }
 
-
 check() {
   meson test -C build
 }
