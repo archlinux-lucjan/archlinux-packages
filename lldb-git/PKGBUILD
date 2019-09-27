@@ -4,13 +4,13 @@
 
 pkgname=lldb-git
 _pkgname=lldb
-pkgver=9.0.0.r314889.g882ca6d4848
+pkgver=10.0.0.r327983.g171c12bb1db
 pkgrel=1
 pkgdesc="Next generation, high-performance debugger"
 arch=('x86_64')
 url="https://lldb.llvm.org/"
-license=('custom:University of Illinois/NCSA Open Source License')
-depends=('llvm-libs-git' 'clang-git' 'python2' 'python2-six')
+icense=('custom:Apache 2.0 with LLVM Exception')
+depends=('llvm-libs' 'clang' 'python' 'python-six')
 makedepends=('llvm-git' 'cmake' 'ninja' 'swig' 'git')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 sha256sums=('SKIP')
@@ -37,9 +37,6 @@ build() {
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-    -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLDB_USE_SYSTEM_SIX=1
   ninja
@@ -54,17 +51,10 @@ package() {
   # Install possibly outdated man page; better than nothing!
   install -Dm644 ../docs/lldb.1 "$pkgdir/usr/share/man/man1/lldb.1"
 
-  # Remove static libraries
-  rm "$pkgdir"/usr/lib/*.a
-
-  # Relocate custom readline.so module which links agaisnt libedit
-  # mv "$pkgdir"/usr/lib/python2.7/site-packages/{,lldb/}readline.so
-  # sed -i '2isys.path.insert(1, "/usr/lib/python2.7/site-packages/lldb")' \
-  #  "$pkgdir/usr/lib/python2.7/site-packages/lldb/embedded_interpreter.py"
-
   # Compile Python scripts
-  python2 -m compileall "$pkgdir"
-  python2 -O -m compileall "$pkgdir"
+  python3 -m compileall "$pkgdir"
+  python3 -O -m compileall "$pkgdir"
+  python3 -OO -m compileall "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
