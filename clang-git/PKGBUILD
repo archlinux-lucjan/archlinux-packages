@@ -4,12 +4,12 @@
 
 pkgname=clang-git
 _pkgname=clang
-pkgver=9.0.0.r314889.g882ca6d4848
+pkgver=10.0.0.r327961.g756f5cfc2a9
 pkgrel=1
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
-license=('custom:University of Illinois/NCSA Open Source License')
+license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm-libs-git' 'gcc' 'compiler-rt-git')
 makedepends=('llvm-git' 'cmake' 'ninja' 'python-sphinx' 'python2' 'git')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
@@ -45,12 +45,17 @@ prepare() {
 build() {
   cd "$srcdir/llvm-project/clang/build"
 
+   # Upstream strongly recommends against BUILD_SHARED_LIBS=ON for distro
+   # builds but CLANG_LINK_CLANG_DYLIB=ON is not yet supported by clang's
+   # extra tools. Keep building all libraries as shared and revisit this.
+  
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DBUILD_SHARED_LIBS=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
+    -DCLANG_LINK_CLANG_DYLIB=ON \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_BUILD_TESTS=ON \
     -DLLVM_INCLUDE_DOCS=ON \
