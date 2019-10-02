@@ -30,6 +30,8 @@
 
 - dbus-stable-git
 
+- dracut-git
+
 - fetchmirrors-git
 
 - freebsd-manpages
