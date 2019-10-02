@@ -12,7 +12,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-dev-git gcc-libs-dev-git gcc-fortran-dev-git gcc-objc-dev-git gcc-ada-dev-git gcc-go-dev-git lib32-gcc-libs-dev-git)
-pkgver=10.0.0.r169412.9fafffe8f34
+pkgver=10.0.0.r172034.190c11dc2e2
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -328,7 +328,7 @@ package_gcc-ada-dev-git() {
 package_gcc-go-dev-git() {
   pkgdesc='Go front-end for GCC (git version)'
   depends=("gcc=$pkgver-$pkgrel")
-  provides=("go=1.10.1" gcc-go-multilib gcc-go=${pkgver}-${pkgrel})
+  provides=("go=1.12.2" gcc-go-multilib gcc-go=${pkgver}-${pkgrel})
   conflicts=(go gcc-go)
 
   cd gcc-build
