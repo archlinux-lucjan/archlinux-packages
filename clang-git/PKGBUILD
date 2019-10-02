@@ -4,7 +4,7 @@
 
 pkgname=clang-git
 _pkgname=clang
-pkgver=10.0.0.r327985.g2319eb65473
+pkgver=10.0.0.r328352.g45297645aab
 pkgrel=1
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
@@ -19,10 +19,8 @@ provides=("clang-analyzer=$pkgver" "clang-tools-extra=$pkgver" "clang")
 conflicts=('clang-analyzer' 'clang-tools-extra' 'clang' )
 replaces=('clang-analyzer' 'clang-tools-extra')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-        "0001-Fix-Driver-modules.cpp-test-to-work-when-build-direc.patch"
         "enable-SSP-and-PIE-by-default.patch")
 sha256sums=('SKIP'
-            '2e47e305a5d79713160c560c7617411815b1a93d73a7f9d182c96e848fdd011b'
             '58f86da25eb230ed6d423b5b61870cbf3bef88f38103ca676a2c7f34b2372171')
 
 pkgver() {
@@ -42,9 +40,6 @@ prepare() {
   mv "$srcdir/llvm-project/clang-tools-extra" tools/extra
   sed -i "s/add_clang_executable/add_clang_tool/g" tools/extra/clangd/indexer/CMakeLists.txt
   patch -Np1 -i ../../enable-SSP-and-PIE-by-default.patch
-  
-  # https://reviews.llvm.org/D66176
-  patch -Np2 -i ../../0001-Fix-Driver-modules.cpp-test-to-work-when-build-direc.patch
 }
 
 build() {

@@ -10,7 +10,6 @@
 ├── cantata-git
 │   └── PKGBUILD
 ├── clang-git
-│   ├── 0001-Fix-Driver-modules.cpp-test-to-work-when-build-direc.patch
 │   ├── enable-SSP-and-PIE-by-default.patch
 │   └── PKGBUILD
 ├── clean-chroot-manager-git
@@ -465,4 +464,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-158 directories, 307 files
+158 directories, 306 files
