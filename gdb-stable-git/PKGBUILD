@@ -7,14 +7,14 @@ pkgbase=gdb-stable-git
 # of gdb (for arm/avr/...)
 pkgname=(gdb-stable-git gdb-common-stable-git)
 _pkgname=binutils-gdb
-pkgver=8.2.r94845.592af8a6bb
+pkgver=8.3.1.r97029.b24d807109
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
 makedepends=(texinfo python guile ncurses expat xz git)
-source=(git://sourceware.org/git/binutils-gdb.git#branch=gdb-8.2-branch)
+source=(git://sourceware.org/git/binutils-gdb.git#branch=gdb-8.3-branch)
 sha1sums=('SKIP')
 
 pkgver() {
