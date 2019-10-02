@@ -229,7 +229,6 @@
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── mesa-rc-git
-│   ├── glvnd.patch
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── meson-git
@@ -466,4 +465,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-158 directories, 308 files
+158 directories, 307 files
