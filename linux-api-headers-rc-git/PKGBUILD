@@ -36,5 +36,5 @@ package() {
   make INSTALL_HDR_PATH="$pkgdir/usr" headers_install
 
   # use headers from libdrm
-  rm -r "$pkgdir/usr/include/drm"  
+  rm -r "$pkgdir/usr/include/drm"
 }
