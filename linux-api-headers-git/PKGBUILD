@@ -6,12 +6,13 @@
 pkgname=linux-api-headers-git
 _major=5.3
 _srcname=linux
-pkgver=5.3.r0.g4d856f72c10e
-pkgrel=1
+pkgver=5.3.2.r1.g9c30694424ee
+pkgrel=2
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
+makedepends=('rsync')
 provides=('linux-api-headers=$pkgver')
 conflicts=('linux-api-headers')
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#branch=linux-${_major}.y")
@@ -36,7 +37,4 @@ package() {
 
   # use headers from libdrm
   rm -r "$pkgdir/usr/include/drm"
-
-  # clean-up unnecessary files generated during install
-  find "$pkgdir" \( -name .install -o -name ..install.cmd \) -delete
 }
