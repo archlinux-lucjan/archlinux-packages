@@ -2,7 +2,7 @@
 # Contributor: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.51.0.459.g48a5d1783
+pkgver=0.52.0.1.gba1367b58
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -10,12 +10,12 @@ url="http://mesonbuild.com/"
 license=('Apache')
 depends=('python-setuptools' 'ninja')
 makedepends=('git')
-checkdepends=('gcc-objc' 'vala' 'rust' 'gcc-fortran' 'mono' 'boost' 'qt4' 'qt5-base' 'git' 'cython'
+checkdepends=('gcc-objc' 'vala' 'rust' 'gcc-fortran' 'mono' 'boost' 'qt5-base' 'git' 'cython'
               'gtkmm3' 'gtest' 'gmock' 'protobuf' 'wxgtk' 'python-gobject' 'gobject-introspection'
               'itstool' 'gtk3' 'java-environment=8' 'gtk-doc' 'llvm' 'clang' 'sdl2' 'graphviz'
               'doxygen' 'vulkan-validation-layers' 'openssh' 'mercurial' 'gtk-sharp-2' 'qt5-tools'
-              'libwmf' 'dmd' 'valgrind' 'cmake' 'netcdf-fortran' 'openmpi' 'cuda' 'ldc' 'nasm'
-              'gnustep-base' 'libelf' 'python-pytest-xdist')
+              'libwmf' 'valgrind' 'cmake' 'netcdf-fortran' 'openmpi' 'cuda' 'nasm' 'gnustep-base'
+              'libelf' 'python-pytest-xdist')
 provides=('meson')
 conflicts=('meson')
 source=('git+https://github.com/mesonbuild/meson'
