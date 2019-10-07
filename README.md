@@ -180,6 +180,8 @@
 
 - meson-git
 
+- mkinitcpio-git
+
 - modemmanager-git
 
 - modemmanager-stable-git

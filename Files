@@ -236,6 +236,8 @@
 │   ├── arch-meson
 │   ├── PKGBUILD
 │   └── skip-test.diff
+├── mkinitcpio-git
+│   └── PKGBUILD
 ├── modemmanager-git
 │   ├── PKGBUILD
 │   └── strict-filter.diff
@@ -466,4 +468,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-159 directories, 307 files
+160 directories, 308 files
