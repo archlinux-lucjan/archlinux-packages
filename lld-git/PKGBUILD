@@ -4,7 +4,7 @@
 
 pkgname=lld-git
 _pkgname=lld
-pkgver=10.0.0.r327985.g2319eb65473
+pkgver=10.0.0.r328904.ged5d1c12dc4
 pkgrel=1
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
@@ -45,8 +45,8 @@ build() {
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_INCLUDE_TESTS=ON \
     -DLLVM_BUILD_TESTS=ON \
-    -DLLVM_BUILD_DOCS=OFF \
-    -DLLVM_ENABLE_SPHINX=OFF \
+    -DLLVM_BUILD_DOCS=ON \
+    -DLLVM_ENABLE_SPHINX=ON \
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-project/lld"
   ninja
