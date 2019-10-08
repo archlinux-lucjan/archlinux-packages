@@ -4,7 +4,7 @@
 
 pkgname=clang-git
 _pkgname=clang
-pkgver=10.0.0.r328352.g45297645aab
+pkgver=10.0.0.r328903.g5d566c5a46a
 pkgrel=1
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
@@ -38,8 +38,10 @@ prepare() {
   cd "${srcdir}/llvm-project/clang"
   mkdir build
   mv "$srcdir/llvm-project/clang-tools-extra" tools/extra
-  sed -i "s/add_clang_executable/add_clang_tool/g" tools/extra/clangd/indexer/CMakeLists.txt
   patch -Np1 -i ../../enable-SSP-and-PIE-by-default.patch
+  
+  # Avoid shipping libclang-cpp before removing BUILD_SHARED_LIBS=ON
+  sed -i '/add_clang_subdirectory(clang-shlib)/d' tools/CMakeLists.txt
 }
 
 build() {
@@ -55,7 +57,7 @@ build() {
     -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DBUILD_SHARED_LIBS=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DCLANG_LINK_CLANG_DYLIB=ON \
+    -DCLANG_LINK_CLANG_DYLIB=OFF \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_BUILD_TESTS=ON \
     -DLLVM_INCLUDE_DOCS=ON \
