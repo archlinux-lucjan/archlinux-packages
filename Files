@@ -226,6 +226,9 @@
 ├── mercurial-stable-hg
 │   ├── mercurial.profile
 │   └── PKGBUILD
+├── mesa-demos-git
+│   ├── LICENSE
+│   └── PKGBUILD
 ├── mesa-dev-git
 │   ├── LICENSE
 │   └── PKGBUILD
@@ -468,4 +471,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-160 directories, 308 files
+161 directories, 310 files

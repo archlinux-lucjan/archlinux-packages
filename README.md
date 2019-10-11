@@ -174,6 +174,8 @@
 
 - mercurial-stable-hg
 
+- mesa-demos-git
+
 - mesa-dev-git
 
 - mesa-rc-git
