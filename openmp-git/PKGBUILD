@@ -3,12 +3,12 @@
 
 pkgname=openmp-git
 _pkgname=openmp
-pkgver=9.0.0.r314889.g882ca6d4848
+pkgver=10.0.0.r329318.g30c2441a326
 pkgrel=1
 pkgdesc="LLVM OpenMP Runtime Library"
 arch=('x86_64')
 url="https://openmp.llvm.org/"
-license=('custom:University of Illinois/NCSA Open Source License')
+license=('custom:Apache 2.0 with LLVM Exception')
 depends=('glibc' 'libelf' 'libffi')
 makedepends=('cmake' 'ninja' 'git')
 conflicts=('openmp')
