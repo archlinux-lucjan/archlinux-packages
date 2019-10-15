@@ -6,16 +6,16 @@
 
 pkgname=ktorrent-stable-git
 _pkgname=ktorrent
-pkgver=5.1.0.20.g3c940225
+pkgver=5.1.2.1.gb819ef6a
 pkgrel=1
 pkgdesc="A powerful BitTorrent client for KDE"
-arch=(x86_64)
+arch=('x86_64')
 url='https://www.kde.org/applications/internet/ktorrent/'
-license=(GPL2)
-depends=(libktorrent kcmutils knotifyconfig kross)
-makedepends=(extra-cmake-modules python kdoctools boost plasma-workspace kdnssd taglib kde-syndication kplotting kdewebkit)
-optdepends=('plasma-workspace: shutdown plugin' 'kdnssd: zeroconf plugin' 'taglib: mediaplayer plugin'
-            'kde-syndication: syndication plugin' 'kdewebkit: search plugin, syndication plugin' 'kplotting: statistics plugin')
+license=('GPL2')
+depends=('libktorrent' 'kcmutils' 'knotifyconfig' 'kross')
+makedepends=('extra-cmake-modules' 'kdoctools' 'boost' 'plasma-workspace' 'kdnssd' 'taglib' 'syndication' 'kplotting' 'kdewebkit' 'geoip' 'git')
+optdepends=('plasma-workspace: shutdown plugin' 'kdnssd: zeroconf plugin' 'taglib: mediaplayer plugin' 'geoip: info widget plugin'
+            'syndication: syndication plugin' 'kdewebkit: search plugin, syndication plugin' 'kplotting: statistics plugin')
 conflicts=('ktorrent')
 provides=('ktorrent')
 source=('git://anongit.kde.org/ktorrent#branch=5.1')
@@ -32,15 +32,13 @@ pkgver() {
 
 
 build() {
-	cd build
-	cmake ../$_pkgname \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-          -DKDE_INSTALL_LIBDIR=lib
-	make
+  cd build
+  cmake ../$_pkgname \
+	 -DWITH_SYSTEM_GEOIP=ON
+  make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
