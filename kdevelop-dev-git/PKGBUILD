@@ -7,57 +7,29 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-dev-git
-pkgver=5.1.80.150.ga6d3450603
+pkgver=5.4.2.109.gad0cbbb82d
 pkgrel=1
+_clangver=9.0.0
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
 license=('GPL')
-depends=(
-    'clang'
-    'libksysguard'
-    'grantlee'
-    'kcmutils'
-    'threadweaver'
-    'kitemmodels'
-    'ktexteditor'
-    'knotifyconfig'
-    'knewstuff'
-    'libkomparediff2'
-    'qt5-webengine'
-)
-optdepends=(
-    'konsole: embedded terminal'
-    'git: Git support'
-    'subversion: SVN support'
-    'cvs: CVS support'
-    'gdb: GNU Debugger support'
-    'lldb: LLDB Debugger support'
-    'cmake: CMake integration'
-    'qt4-doc: qt4 documentation integration'
-    'qt5-doc: qt5 documentation integration'
-    'qt5-tools: qthelp plugin'
-    'purpose: patch review plugin'
-    'okteta: hex editor integration'
-    'krunner: for enabling the KDevelop runner'
-    'plasma-framework: for enabling the plasma addons'
-    'cppcheck: code analyzer'
-    'heaptrack: heap memory profiler plugin'
-)
-makedepends=(
-    'extra-cmake-modules'
-    'git'
-    'subversion'
-    'okteta'
-    'krunner'
-    'boost'
-    'llvm'
-    'qt5-tools'
-    'plasma-framework'
-    'kdevelop-pg-qt'
-    'purpose'
-    'clang'
-)
+depends=("clang=$_clangver" 'libksysguard' 'kitemmodels' 'knotifyconfig' 'ktexteditor' 'grantlee' 'libkomparediff2'
+         'kcmutils' 'threadweaver' 'knewstuff')
+makedepends=('extra-cmake-modules' 'kdoctools' 'kdevelop-pg-qt' 'llvm' 'qt5-tools' 'plasma-framework' 'krunner' 'okteta' 'boost' 'purpose' 'subversion' 'astyle')
+optdepends=('konsole: embedded terminal'
+            'git: Git support' 'subversion: SVN support'
+            'gdb: GNU debugger support' 'lldb: LLDB debugger support'
+            'qt5-doc: Qt documentation integration'
+            'cmake: cmake integration'
+            'meson: meson integration'
+            'qt5-tools: qthelp plugin'
+            'okteta: GNU debugger support'
+            'plasma-framework: for the plasma addons'
+            'purpose: patch review plugin'
+            'astyle: astyle plugin'
+            'cppcheck: code analyzer' 'heaptrack: memory profiler'
+            'clazy: clazy analyzer plugin')
 conflicts=('kdevelop' 'kdevplatform')
 provides=('kdevelop' 'kdevplatform' 'kdevplatform-git')
 replaces=('kdevplatform-git')
@@ -75,15 +47,11 @@ prepare() {
 
 build() {
   cd build
-  cmake ../kdevelop \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
+  cmake ../kdevelop
   make
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  cd build
+  make DESTDIR="${pkgdir}" install
 }
