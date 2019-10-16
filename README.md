@@ -226,6 +226,8 @@
 
 - pkgconf-git
 
+- pkgfile-git
+
 - psi-clean-full-git
 
 - psi-clean-git
