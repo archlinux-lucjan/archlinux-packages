@@ -199,7 +199,6 @@
 │   ├── config
 │   └── PKGBUILD
 ├── linux-usermode-rc-git
-│   ├── 0001-Revert-io_uring-only-flush-workqueues-on-fileset-rem.patch
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
@@ -475,4 +474,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-162 directories, 313 files
+162 directories, 312 files
