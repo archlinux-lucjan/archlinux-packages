@@ -4,14 +4,14 @@
 # Contributor: buddabrod < buddabrod at gmail dot com >
 
 pkgname=kaffeine-git
-pkgver=2.0.14.4.g3ab91ca
+pkgver=2.0.18.19.g4e9c817
 pkgrel=1
 pkgdesc='KDE media player'
-license=(GPL)
-arch=(i686 x86_64)
+license=('GPL')
+arch=('x86_64')
 url="http://kaffeine.kde.org"
-depends=(kio libxss vlc)
-makedepends=(git extra-cmake-modules kidletime kdoctools)
+depends=('kio' 'libxss' 'vlc')
+makedepends=('git' 'extra-cmake-modules' 'kidletime' 'kdoctools')
 provides=('kaffeine')
 conflicts=('kaffeine')
 source=('git://anongit.kde.org/kaffeine.git')
@@ -29,7 +29,6 @@ prepare() {
 build() {
   cd build
   cmake ../kaffeine \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF
   make
