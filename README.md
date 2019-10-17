@@ -32,6 +32,8 @@
 
 - dracut-git
 
+- falcon-git
+
 - fetchmirrors-git
 
 - freebsd-manpages

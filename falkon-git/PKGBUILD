@@ -1,0 +1,39 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Solomon Choina <shlomochoina@gmail.com>
+
+pkgname=falkon-git
+_pkgname=falkon
+pkgver=3.1.0.107.gfcfdc340
+pkgrel=1
+pkgdesc="Cross-platform Qt Web Browser"
+arch=('x86_64')
+url="http://www.qupzilla.com"
+license=('GPL')
+depends=('qt5-webengine' 'qt5-x11extras' 'qt5-svg')
+makedepends=('extra-cmake-modules' 'qt5-tools' 'kio' 'purpose' 'libgnome-keyring') # pyside2 shiboken2
+optdepends=('kio: KDE integration' 'purpose: KDE integration' 'libgnome-keyring: gnome keyring integration')
+conflicts=('qupzilla' 'qupzilla-git' 'falkon')
+source=("git://anongit.kde.org/falkon.git")
+sha256sums=(SKIP)
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/^v//;s/-/./g'
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../$_pkgname \
+    -DBUILD_TESTING=OFF
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}

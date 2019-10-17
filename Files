@@ -35,6 +35,8 @@
 │   └── PKGBUILD
 ├── dracut-git
 │   └── PKGBUILD
+├── falkon-git
+│   └── PKGBUILD
 ├── fetchmirrors-git
 │   └── PKGBUILD
 ├── Files
@@ -474,4 +476,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-162 directories, 312 files
+163 directories, 313 files
