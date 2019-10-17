@@ -4,14 +4,14 @@
 
 pkgname=libdrm-git
 _pkgname=libdrm
-pkgver=2.4.85.2.g61ff9779
+pkgver=2.4.100.0.g0190f49a
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(x86_64)
 license=('custom')
-depends=('glibc' 'libpciaccess')
-makedepends=('valgrind' 'xorg-util-macros')
-checkdepends=('cairo' 'cunit')
+depends=('libpciaccess')
+makedepends=('valgrind' 'libxslt' 'docbook-xsl' 'meson')
+checkdepends=('cairo')
 url="http://dri.freedesktop.org/"
 provides=('libdrm')
 conflicts=('libdrm')
@@ -22,25 +22,26 @@ sha256sums=('SKIP'
             '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
 
 pkgver() {
-  cd ${_pkgname}
+  cd $_pkgname
   git describe --long | sed 's/^libdrm-//;s/-/./g'
 }
 
 prepare() {
-  cd ${_pkgname}
+  cd $_pkgname
 }
 
 build() {
-  cd ${_pkgname}
-  ./autogen.sh --prefix=/usr --enable-udev
-  make
+  arch-meson $_pkgname build \
+    -Dudev=false \
+    -Dvalgrind=false
+  ninja -C build
 }
 
-
+check() {
+  meson test -C build
+}
 
 package() {
-  cd ${_pkgname}
-  make DESTDIR="$pkgdir" install
-  install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 ${srcdir}/COPYING "$pkgdir/usr/share/licenses/$pkgname/"
+  DESTDIR="$pkgdir" meson install -C build
+  install -Dt "$pkgdir/usr/share/licenses/$_pkgname" -m644 COPYING
 }
