@@ -5,7 +5,6 @@ pkgbase = modemmanager-git
 	pkgver = 1.8.0.70.gd3bc0467
 	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/ModemManager/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1

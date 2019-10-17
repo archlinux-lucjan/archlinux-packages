@@ -11,7 +11,7 @@ pkgver=5.4.2.109.gad0cbbb82d
 pkgrel=1
 _clangver=9.0.0
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.kdevelop.org'
 license=('GPL')
 depends=("clang=$_clangver" 'libksysguard' 'kitemmodels' 'knotifyconfig' 'ktexteditor' 'grantlee' 'libkomparediff2'

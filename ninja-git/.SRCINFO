@@ -5,7 +5,6 @@ pkgbase = ninja-git
 	pkgver = 1.9.0.r2488.g2e646457
 	pkgrel = 1
 	url = https://ninja-build.org/
-	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = asciidoc

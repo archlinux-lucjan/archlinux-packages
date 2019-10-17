@@ -6,7 +6,6 @@ pkgbase = toxcore-stable-git
 	pkgrel = 1
 	url = https://tox.chat
 	install = toxcore.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git

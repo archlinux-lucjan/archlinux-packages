@@ -5,7 +5,6 @@ pkgbase = dbus-git
 	pkgver = 1.13.12.r28.gb9e3c80d
 	pkgrel = 1
 	url = http://www.freedesktop.org/Software/dbus
-	arch = i686
 	arch = x86_64
 	license = GPL
 	license = custom

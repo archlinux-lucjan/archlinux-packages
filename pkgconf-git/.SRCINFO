@@ -5,7 +5,6 @@ pkgbase = pkgconf-git
 	pkgver = 1.6.3.0.gc862e03
 	pkgrel = 1
 	url = https://github.com/pkgconf/pkgconf
-	arch = i686
 	arch = x86_64
 	license = ISC
 	makedepends = git

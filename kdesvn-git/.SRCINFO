@@ -5,7 +5,6 @@ pkgbase = kdesvn-git
 	pkgver = 2.0.0.226.g6230f6bd
 	pkgrel = 1
 	url = http://projects.kde.org/kdesvn
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules

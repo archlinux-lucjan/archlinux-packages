@@ -5,7 +5,6 @@ pkgbase = s-git
 	pkgver = 0.5.14.r4.gbce10d1
 	pkgrel = 1
 	url = http://github.com/zquestz/s
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go

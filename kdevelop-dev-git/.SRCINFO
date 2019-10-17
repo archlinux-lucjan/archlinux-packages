@@ -5,7 +5,6 @@ pkgbase = kdevelop-dev-git
 	pkgver = 5.4.2.109.gad0cbbb82d
 	pkgrel = 1
 	url = http://www.kdevelop.org
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
