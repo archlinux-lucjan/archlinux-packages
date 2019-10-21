@@ -14,7 +14,6 @@
 │   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
-│   ├── clean-chroot-manager-git-2.101.0.g9b6b19e-1.src.tar.gz
 │   └── PKGBUILD
 ├── clementine-lite-qt5-git
 │   └── PKGBUILD
@@ -477,4 +476,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-163 directories, 314 files
+163 directories, 313 files
