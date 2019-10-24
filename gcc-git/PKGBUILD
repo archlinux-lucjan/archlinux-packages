@@ -401,7 +401,7 @@ package_gcc-d-git() {
   pkgdesc="D frontend for GCC"
   depends=("gcc-git=$pkgver-$pkgrel")
   provides=(gdc gcc-d)
-  replaces=(gdc gcc-d)
+  replaces=(gdc)
   options=('staticlibs')
 
   cd gcc-build
