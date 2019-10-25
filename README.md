@@ -30,6 +30,8 @@
 
 - dbus-stable-git
 
+- devtools-git
+
 - dracut-git
 
 - falcon-git
