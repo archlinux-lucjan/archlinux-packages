@@ -6,7 +6,7 @@
 pkgbase=xorg-xserver-git
 _pkgbase=xserver
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xdmx-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
-pkgver=1.20.0.154.g7c25439f0
+pkgver=1.20.0.484.g0cf15714e
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -19,13 +19,9 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
 source=('git://anongit.freedesktop.org/xorg/xserver'
-        'xwayland-config.h.meson.in::https://cgit.freedesktop.org/xorg/xserver/plain/include/xwayland-config.h.meson.in?id=xorg-server-1.20.0'
-        'xserver-autobind-hotplug.patch'
         'xvfb-run' # with updates from FC master
         'xvfb-run.1')
 sha256sums=('SKIP'
-            '49c85b75c8229647969fd4dfcca8e8251bdeb772cd1672a0507868fa6e55cf3e'
-            'cae1b7f296c18177de38f9b1215a4f916da2288b85f1fcb9e80373a42e2892b8'
             '2198b9e635bb4e52bf986e678a702ec74f781b5b10c5713e1eeaa16cc9af078c'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -36,14 +32,7 @@ pkgver() {
 }
 
 prepare() {
-  # missing from tarball
-  cp xwayland-config.h.meson.in ${_pkgbase}/include/
-
-  #cd xserver
   cd "${_pkgbase}"
-
-  # patch from Fedora, not yet merged
-  patch -Np1 -i ../xserver-autobind-hotplug.patch
 }
 
 build() {
