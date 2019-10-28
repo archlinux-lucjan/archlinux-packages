@@ -2,7 +2,7 @@
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=git-main-git
-pkgver=2.22.1.0.g75b2f01a0f
+pkgver=2.23.0.0.g5fa0f5238b
 pkgrel=1
 pkgdesc="A fast distributed version control system"
 arch=('x86_64')
@@ -127,7 +127,7 @@ package() {
   make -C contrib/mw-to-git "${_make_paths[@]}" DESTDIR="$pkgdir" install
   # the rest of the contrib stuff
   find contrib/ -name '.gitignore' -delete
-  cp -a ./contrib/* $pkgdir/usr/share/git/
+  cp -a ./contrib/* "$pkgdir"/usr/share/git/
 
   # scripts are for python 2.x
   sed -i 's|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|' \
