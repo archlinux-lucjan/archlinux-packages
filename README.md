@@ -88,6 +88,8 @@
 
 - kdiff3-git
 
+- kmod-git
+
 - konversation-git
 
 - konversation-stable-git

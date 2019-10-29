@@ -131,6 +131,11 @@
 │   └── PKGBUILD
 ├── kdiff3-git
 │   └── PKGBUILD
+├── kmod-git
+│   ├── depmod.hook
+│   ├── depmod.script
+│   ├── depmod-search.conf
+│   └── PKGBUILD
 ├── konversation-git
 │   └── PKGBUILD
 ├── konversation-stable-git
@@ -480,4 +485,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-164 directories, 316 files
+165 directories, 320 files
