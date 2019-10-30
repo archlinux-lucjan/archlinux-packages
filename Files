@@ -265,6 +265,8 @@
 │   └── readme.install
 ├── mupen64plus-qt-qit
 │   └── PKGBUILD
+├── namcap-git
+│   └── PKGBUILD
 ├── netbsd-pkgsrc
 │   ├── bootstrap.install
 │   ├── LICENSE
@@ -485,4 +487,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-165 directories, 320 files
+166 directories, 321 files

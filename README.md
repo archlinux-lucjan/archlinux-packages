@@ -200,6 +200,8 @@
 
 - mupen64plus-qt-git
 
+- namcap-git
+
 - netbsd-pkgsrc
 
 - networkmanager-git
