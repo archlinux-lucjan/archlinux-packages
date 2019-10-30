@@ -47,7 +47,9 @@
 ├── gcc-dev-git
 │   ├── c89
 │   ├── c99
-│   ├── phobos_path.patch
+│   ├── gdc_artificial_decl.patch
+│   ├── gdc_phobos_path.patch
+│   ├── gdc_thunk_weak_ref.patch
 │   └── PKGBUILD
 ├── gcc-git
 │   ├── c89
@@ -487,4 +489,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-166 directories, 321 files
+166 directories, 323 files

@@ -12,7 +12,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-dev-git gcc-libs-dev-git gcc-fortran-dev-git gcc-objc-dev-git gcc-ada-dev-git gcc-go-dev-git lib32-gcc-libs-dev-git gcc-d-dev-git)
-pkgver=10.0.0.r172581.df2f0d60e6b
+pkgver=10.0.0.r172710.46eb91c4a4e
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -29,12 +29,16 @@ source=(
         # git://gcc.gnu.org/git/gcc.git
         git://github.com/gcc-mirror/gcc.git
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        phobos_path.patch
+        gdc_phobos_path.patch
+        gdc_artificial_decl.patch
+        gdc_thunk_weak_ref.patch
         c89 c99
         )
 sha256sums=('SKIP'
             'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859'
             'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
+            '3862757491160700ac2fb723096f6f636f30320cccc6efd9537149ed348b57d1'
+            '9699d7105375754f0dcf6abff87d09b270565bfc6578a13641770f3fc62d678a'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
             
@@ -66,7 +70,9 @@ prepare() {
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
   
   # D hacks
-  patch -p1 -i "$srcdir/phobos_path.patch"
+  patch -p1 -i "$srcdir/gdc_phobos_path.patch"
+  patch -p1 -i "$srcdir/gdc_artificial_decl.patch"
+  patch -p1 -i "$srcdir/gdc_thunk_weak_ref.patch"
   #sed -i "/GDCFLAGSX=/s/-Wall/-shared-libphobos -Wall/" libphobos/configure
 
   mkdir -p "$srcdir/gcc-build"
@@ -411,8 +417,8 @@ package_gcc-d-dev-git() {
   install -Dm755 gcc/d21 "$pkgdir"/"$_libdir"/d21
 
   make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-  rm -f "$pkgdir/usr/lib/"lib{gphobos,gdruntime}.{so,a}*
-  rm -f "$pkgdir/usr/lib32/"lib{gphobos,gdruntime}.{so,a}*
+  rm -f "$pkgdir/usr/lib/"lib{gphobos,gdruntime}.so*
+  rm -f "$pkgdir/usr/lib32/"lib{gphobos,gdruntime}.so*
 
   install -d "$pkgdir"/usr/include/dlang
   ln -s /"${_libdir}"/include/d "$pkgdir"/usr/include/dlang/gdc
