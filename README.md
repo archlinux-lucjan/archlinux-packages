@@ -32,6 +32,8 @@
 
 - devtools-git
 
+- dkms-git
+
 - dracut-git
 
 - falcon-git

@@ -35,6 +35,12 @@
 │   └── PKGBUILD
 ├── devtools-git
 │   └── PKGBUILD
+├── dkms-git
+│   ├── dkms.install
+│   ├── hook.install
+│   ├── hook.remove
+│   ├── hook.sh
+│   └── PKGBUILD
 ├── dracut-git
 │   └── PKGBUILD
 ├── falkon-git
@@ -491,4 +497,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-166 directories, 325 files
+167 directories, 330 files
