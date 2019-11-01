@@ -52,6 +52,8 @@
 
 - git-dev-git
 
+- git-extras-git
+
 - git-git
 
 - git-main-git
