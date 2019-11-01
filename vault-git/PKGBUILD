@@ -4,12 +4,12 @@
 pkgname=vault-git
 _pkgname=vault
 pkgdesc='A tool for managing secrets'
-pkgver=0.9.1.229.gbb45c0637
+pkgver=1.2.0.419.g403d1a48b
 pkgrel=1
 url='https://vaultproject.io/'
 license=('MPL')
 arch=('x86_64')
-makedepends=('go-pie' 'git')
+makedepends=('go-pie' 'git' 'yarn' 'python2' 'bower' 'nodejs-lts-dubnium' 'npm' 'zip')
 depends=('glibc')
 provides=('vault')
 conflicts=('vault')
@@ -35,23 +35,50 @@ prepare () {
   export GOPATH="${srcdir}"
   export PATH="$PATH:$GOPATH/bin"
   mkdir -p src/github.com/hashicorp/
-  mv ${_pkgname} src/github.com/hashicorp/
+  mv "${_pkgname}" "src/github.com/hashicorp/${_pkgname}"
+  # this is temporary
+  go get github.com/kardianos/govendor
+  export PACKAGE_ROOT="${GOPATH}/src/github.com/hashicorp/${_pkgname}"
 }
 
 build () {
-  cd src/github.com/hashicorp/${_pkgname}
-  go build -o vault-binary
+  cd $PACKAGE_ROOT
+
+  # We will provide these packages in the future ourself
+  govendor fetch github.com/mitchellh/gox
+  govendor fetch github.com/elazarl/go-bindata-assetfs/go-bindata-assetfs
+  govendor fetch github.com/hashicorp/go-bindata/go-bindata
+  govendor fetch golang.org/x/tools/cmd/goimports
+
+  cd $PACKAGE_ROOT/vendor/github.com/hashicorp/go-bindata/go-bindata
+  go build
+  go install
+
+  cd $PACKAGE_ROOT/vendor/github.com/elazarl/go-bindata-assetfs/go-bindata-assetfs
+  go build
+  go install
+
+  cd $PACKAGE_ROOT/vendor/github.com/mitchellh/gox
+  go build
+  go install
+
+  cd $PACKAGE_ROOT/vendor/golang.org/x/tools/cmd/goimports
+  go build
+  go install
+
+  cd $PACKAGE_ROOT
+  XC_OSARCH='linux/amd64' make static-dist bin
 }
 
 package () {
-  cd src/github.com/hashicorp/${_pkgname}
-	install -Dm755 vault-binary "${pkgdir}/usr/bin/vault"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "${srcdir}/vault.hcl" "${pkgdir}/etc/vault.hcl"
-	install -Dm644 "${srcdir}/vault.service" "${pkgdir}/usr/lib/systemd/system/vault.service"
-	install -Dm644 "${srcdir}/vault.sysusers" "${pkgdir}/usr/lib/sysusers.d/vault.conf"
-	install -Dm644 "${srcdir}/vault.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/vault.conf"
-	for file in README.md CHANGELOG.md ; do
-		install -Dm644 "${file}" "${pkgdir}/usr/share/doc/${pkgname}/${file}"
-	done
+  cd ${PACKAGE_ROOT}
+  install -Dm755 bin/vault "${pkgdir}/usr/bin/vault"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/vault.hcl" "${pkgdir}/etc/vault.hcl"
+  install -Dm644 "${srcdir}/vault.service" "${pkgdir}/usr/lib/systemd/system/vault.service"
+  install -Dm644 "${srcdir}/vault.sysusers" "${pkgdir}/usr/lib/sysusers.d/vault.conf"
+  install -Dm644 "${srcdir}/vault.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/vault.conf"
+  for file in README.md CHANGELOG.md ; do
+    install -Dm644 "${file}" "${pkgdir}/usr/share/doc/${_pkgname}/${file}"
+  done
 }
