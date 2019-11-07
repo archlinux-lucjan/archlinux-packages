@@ -8,7 +8,7 @@
 
 pkgbase=networkmanager-git
 pkgname=(networkmanager-git libnm-git)
-pkgver=1.21.0dev.61.g377a775a2
+pkgver=1.21.3dev.12.g303fc1745
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
@@ -59,9 +59,9 @@ build() {
   ninja -C build
 }
 
-check() {
-  meson test -C build --print-errorlogs
-}
+#check() {
+#  meson test -C build --print-errorlogs
+#}
 
 _pick() {
   local p="$1" f d; shift
