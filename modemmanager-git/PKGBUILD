@@ -4,7 +4,7 @@
 
 pkgbase=modemmanager-git
 pkgname=(modemmanager-git libmm-glib-git)
-pkgver=1.8.0.70.gd3bc0467
+pkgver=1.12.0.1.g0c554aec
 pkgrel=1
 pkgdesc="Mobile broadband modem management service"
 arch=(x86_64)
@@ -19,6 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ModemManager
+
   git describe --tags | sed 's/-rc/rc/;s/-/./g'
 }
 
@@ -26,7 +27,7 @@ prepare() {
   cd ModemManager
 
   # Recommended by upstream
-  patch -Np1 -i ../strict-filter.diff
+  git apply -3 ../strict-filter.diff
 
   NOCONFIGURE=1 ./autogen.sh
 
@@ -53,10 +54,10 @@ build() {
   make
 }
 
-check() {
-  cd ModemManager
-  make -k check
-}
+#check() {
+#  cd ModemManager
+#  make -k check
+#}
 
 package_modemmanager-git() {
   depends+=(libmm-glib)
