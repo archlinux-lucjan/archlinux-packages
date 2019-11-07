@@ -268,7 +268,8 @@
 │   ├── PKGBUILD
 │   └── strict-filter.diff
 ├── modemmanager-stable-git
-│   └── PKGBUILD
+│   ├── PKGBUILD
+│   └── strict-filter.diff
 ├── modemmanager-test-git
 │   ├── PKGBUILD
 │   └── strict-filter.diff
@@ -499,4 +500,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-168 directories, 331 files
+168 directories, 332 files
