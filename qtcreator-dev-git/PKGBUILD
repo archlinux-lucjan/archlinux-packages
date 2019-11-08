@@ -61,7 +61,7 @@ build() {
     "$srcdir"/qt-creator/qtcreator.pro
     make
     make docs
-}    
+}
 
 package() {
     cd build
