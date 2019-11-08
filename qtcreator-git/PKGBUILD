@@ -7,54 +7,58 @@
 # Contributor: delor <bartekpiech gmail com>
 
 pkgname=qtcreator-git
-pkgver=4.6.0.838.gd3851d64ba
+pkgver=4.11.0.beta2.136.ge0c073a1bf
+_clangver=9.0.0
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='http://qt-project.org'
 license=('LGPL')
-depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-webkit')
-makedepends=('git' 'mesa' 'clang' 'llvm')
+depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' "clang=$_clangver" 'qbs' 'clazy' 'syntax-highlighting' 'desktop-file-utils')
+makedepends=('llvm' 'python' 'patchelf')
 options=('docs')
 optdepends=('qt5-doc: integrated Qt documentation'
             'qt5-examples: welcome page examples'
+            'qt5-translations: for other languages'
             'gdb: debugger'
             'cmake: cmake project support'
-            'openssh-askpass: ssh support'
+            'x11-ssh-askpass: ssh support'
             'git: git support'
             'mercurial: mercurial support'
             'bzr: bazaar support'
-            'clang: Clang code model'
-            'valgrind: analyze support')
+            'valgrind: analyze support'
+            'perf: performer analyzer')
 conflicts=('qtcreator')
 provides=('qtcreator')
-source=("git://code.qt.io/qt-creator/qt-creator.git"
-        "git://code.qt.io/qbs/qbs.git")
-md5sums=('SKIP'
-         'SKIP')
+source=("git://code.qt.io/qt-creator/qt-creator.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd qt-creator
-  git describe --tags | sed 's/^v//;s/-/./g'
+    cd qt-creator
+    git describe --tags | sed 's/^v//;s/-/./g'
 }
         
 prepare() {
+    cd qt-creator
+
     [[ -d build ]] && rm -r build
     mkdir build
 
     # fix hardcoded libexec path
-    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qt-creator/qtcreator.pri
-
-    # Do *NOT* use system Qbs: qt creator master is *NOT* compatible with any released Qbs!
-    ( cd qt-creator/src/shared && rm -rf qbs && ln -s ../../../qbs qbs )
+    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
+    sed -e 's|libexec|lib|g' -i src/tools/tools.pro
+    # use system qbs
+    rm -r src/shared/qbs
 }
 
 build() {
     cd build
 
-    QTC_FORCE_CLANG_LIBTOOLING=1 \
-        qmake LLVM_INSTALL_DIR=/usr CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
-            "$srcdir"/qt-creator/qtcreator.pro
+    qmake LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr \
+    KSYNTAXHIGHLIGHTING_LIB_DIR=/usr/lib KSYNTAXHIGHLIGHTING_INCLUDE_DIR=/usr/include/KF5/KSyntaxHighlighting \
+    CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
+    DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES \
+    "$srcdir"/qt-creator/qtcreator.pro
     make
     make docs
 }
@@ -62,9 +66,11 @@ build() {
 package() {
     cd build
 
-    make INSTALL_ROOT="${pkgdir}/usr/" install
-    make INSTALL_ROOT="${pkgdir}/usr/" install_docs
+    make INSTALL_ROOT="$pkgdir/usr/" install
+    make INSTALL_ROOT="$pkgdir/usr/" install_docs
 
-    install -Dm644 "${srcdir}/qt-creator/LICENSE.GPL3-EXCEPT" \
-        "${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT"
+    install -Dm644 "$srcdir"/qt-creator/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+
+    # Link clazy plugin explicitely
+    patchelf --add-needed ClazyPlugin.so "$pkgdir"/usr/lib/qtcreator/clangbackend
 }
