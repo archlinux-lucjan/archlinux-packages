@@ -4,10 +4,10 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers-rc-git
-_major=5.3
+_major=5.4
 _srcname=linux-stable-rc
-pkgver=5.3.2.r346.gc9adc631ac5f
-pkgrel=2
+pkgver=5.4.r0.g219d54332a09
+pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
 url="http://www.gnu.org/software/libc"
