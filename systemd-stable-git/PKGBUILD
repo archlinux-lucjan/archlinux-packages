@@ -6,7 +6,7 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=243.51.gfab6f010ac
+pkgver=243.4.0.ge51d9bf9e5
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -94,7 +94,7 @@ pkgver() {
 }
 
 build() {
-  
+
   local _timeservers=({0..3}.arch.pool.ntp.org)
   local _nameservers=(
     # We use these public name services, ordered by their
@@ -122,9 +122,10 @@ build() {
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-hierarchy=hybrid
-    -Ddefault-locale=C
     -Ddefault-kill-user-processes=false
+    -Ddefault-locale=C
     -Dfallback-hostname='archlinux'
+    -Dnologin-path=/usr/bin/nologin
     -Dntp-servers="${_timeservers[*]}"
     -Ddns-servers="${_nameservers[*]}"
     -Drpmmacrosdir=no
@@ -252,7 +253,7 @@ package_systemd-sysvcompat-stable-git() {
   conflicts=('sysvinit' 'systemd-sysvcompat')
   depends=('systemd-git')
   conflicts=('systemd-sysvcompat')
-  
+
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
 
