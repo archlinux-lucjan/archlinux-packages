@@ -6,7 +6,7 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=243.238.g0490b44031
+pkgver=243.4.0.ge51d9bf9e5
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -37,7 +37,7 @@ source=('git+https://github.com/systemd/systemd-stable'
         '30-systemd-tmpfiles.hook'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
-    
+
 sha512sums=('SKIP'
             'SKIP'
             '9348683829190628e25b7b3300fd880c426d555bde330d5fc5150a9a54b3ad9d4d1f2e69ea1dc6d6f086693dacc53c5af30f1fa7ad9b479791fd77bcdafa430e'
@@ -65,7 +65,6 @@ _backports=(
 _reverts=(
 )
 
-
 prepare() {
   cd "$_pkgbase"
 
@@ -75,8 +74,8 @@ prepare() {
   # the verified tag is in)
   # git merge --ff-only "${_commit}"
 
-   local _c
-   for _c in "${_backports[@]}"; do
+  local _c
+  for _c in "${_backports[@]}"; do
     git cherry-pick -n "${_c}"
     git log --oneline -1 "${_c}"
   done
@@ -123,9 +122,10 @@ build() {
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-hierarchy=hybrid
-    -Ddefault-locale=C
     -Ddefault-kill-user-processes=false
+    -Ddefault-locale=C
     -Dfallback-hostname='archlinux'
+    -Dnologin-path=/usr/bin/nologin
     -Dntp-servers="${_timeservers[*]}"
     -Ddns-servers="${_nameservers[*]}"
     -Drpmmacrosdir=no
@@ -176,22 +176,19 @@ package_systemd-git() {
   mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
-  rm -f "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
+  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
 
   # executable (symlinks) shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
 
   # files shipped with systemd-resolvconf
-  rm -f "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+  rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
   # avoid a potential conflict with [core]/filesystem
   rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
   sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
     -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
-  # avoid a conflict with [core]/filesystem
-  rm -f "$pkgdir"/usr/share/factory/etc/issue
-  
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
   install -m0644 $_pkgbase/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
 
