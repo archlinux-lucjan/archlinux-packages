@@ -492,7 +492,6 @@
 │   ├── xvfb-run
 │   └── xvfb-run.1
 ├── xorg-xserver-next-git
-│   ├── glvnd.patch
 │   ├── PKGBUILD
 │   ├── xorg-server-git.install
 │   ├── xserver-autobind-hotplug.patch
@@ -501,4 +500,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-168 directories, 333 files
+168 directories, 332 files
