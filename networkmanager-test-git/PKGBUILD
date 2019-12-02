@@ -7,8 +7,8 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgbase=networkmanager-test-git
-pkgname=(networkmanager-test-git libnm-test-git)
-pkgver=1.20.rc1.53.g79660f1f5
+pkgname=(networkmanager-test-git libnm-test-git nm-cloud-setup-test-git)
+pkgver=1.22.rc1.0.g9b8c4c1cf
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
@@ -21,11 +21,16 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf 
              libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-20")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-22"
+        'build.diff')
+sha256sums=('SKIP'
+            'e69f7da243a87fab9128032f0243e36162d53a1b18228593ed577845a5cb8d45')
 
 prepare() {
   cd NetworkManager
+  
+  # Fix building nm-bt-test
+  git apply -3 ../build.diff
 }
 
 pkgver() {
@@ -45,6 +50,7 @@ build() {
     -D iwd=true
     -D pppd_plugin_dir=/usr/lib/pppd/$_pppver
     -D teamdctl=true
+    -D nm_cloud_setup=true
     -D bluez5_dun=true
     -D ebpf=true
     -D config_plugins_default=keyfile
@@ -75,7 +81,7 @@ _pick() {
 
 package_networkmanager-test-git() {
   depends=(libnm iproute2 polkit wpa_supplicant libmm-glib libnewt libndp libteam curl
-           bluez-libs libpsl audit)
+           bluez-libs libpsl audit mobile-broadband-provider-info)
   optdepends=('dnsmasq: connection sharing'
               'bluez: Bluetooth support'
               'ppp: dialup connection support'
@@ -101,7 +107,8 @@ END
 uri=http://www.archlinux.org/check_network_status.txt
 END
 
-### Split libnm
+  shopt -s globstar
+  
   _pick libnm "$pkgdir"/usr/include/libnm
   _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
   _pick libnm "$pkgdir"/usr/lib/libnm.*
@@ -109,6 +116,11 @@ END
   _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-*
   _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm
   _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
+  
+  _pick nm-cloud-setup "$pkgdir"/usr/lib/**/*nm-cloud-setup*
+
+  # Restore empty dir
+  mkdir "$pkgdir/usr/lib/NetworkManager/dispatcher.d/no-wait.d"
 }
 
 package_libnm-test-git() {
@@ -117,4 +129,12 @@ package_libnm-test-git() {
   conflicts=('libnm')
   provides=('libnm')
   mv libnm/* "$pkgdir"
+}
+
+package_nm-cloud-setup-test-git() {
+  pkgdesc="Automatically configure NetworkManager in cloud"
+  depends=(networkmanager)
+  conflicts=('nm-cloud-setup')
+  provides=('nm-cloud-setup')
+  mv nm-cloud-setup/* "$pkgdir"
 }

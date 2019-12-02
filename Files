@@ -290,6 +290,7 @@
 ├── networkmanager-stable-git
 │   └── PKGBUILD
 ├── networkmanager-test-git
+│   ├── build.diff
 │   └── PKGBUILD
 ├── ninja-git
 │   └── PKGBUILD
@@ -500,4 +501,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-168 directories, 332 files
+168 directories, 333 files
