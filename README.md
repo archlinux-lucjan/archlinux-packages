@@ -240,6 +240,8 @@
 
 - pkgfile-git
 
+- poppler-git
+
 - psi-clean-full-git
 
 - psi-clean-git

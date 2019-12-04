@@ -332,6 +332,8 @@
 ├── pkgfile-git
 │   ├── PKGBUILD
 │   └── pkgfile.install
+├── poppler-git
+│   └── PKGBUILD
 ├── psi-clean-full-git
 │   └── PKGBUILD
 ├── psi-clean-git
@@ -502,4 +504,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-168 directories, 334 files
+169 directories, 335 files
