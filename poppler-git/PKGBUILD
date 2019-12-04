@@ -13,8 +13,10 @@ makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgco
              'cmake' 'python' 'boost')
 options=('!emptydirs')
 url="http://poppler.freedesktop.org/"
-source=('git://git.freedesktop.org/git/poppler/poppler')
-sha256sums=('SKIP')
+source=('git://git.freedesktop.org/git/poppler/poppler'
+        'git://git.freedesktop.org/git/poppler/test')
+sha256sums=('SKIP'
+            'SKIP')
 _standdardversion=$(echo $pkgver | cut -c -6)
 
 pkgver() {
@@ -36,6 +38,11 @@ build() {
     -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
     -DENABLE_GTK_DOC=ON
   make
+}
+
+check() {
+  cd build
+  LANG=en_US.UTF8 make test
 }
 
 package_poppler-git() {
