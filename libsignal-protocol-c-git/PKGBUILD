@@ -2,67 +2,39 @@
 
 pkgname=libsignal-protocol-c-git
 _pkgname=libsignal-protocol-c
-pkgver=2.3.2.0.g4a137ea
+pkgver=2.3.2.4.g71954c5
 pkgrel=1
 pkgdesc="Signal Protocol C Library"
-arch=('x86_64')
-url="https://github.com/signalapp/libsignal-protocol-c"
+arch=('i686' 'x86_64')
+url="https://github.com/WhisperSystems/libsignal-protocol-c"
 license=('GPL3')
-makedepends=('cmake' 'git')
-checkdepends=('check' 'openssl>=1.0')
+makedepends=('cmake')
 conflicts=('libsignal-protocol-c')
 provides=('libsignal-protocol-c')
-source=(git://github.com/signalapp/$_pkgname)
+source=("git://github.com/WhisperSystems/$_pkgname")
 md5sums=('SKIP')
 
-
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/-/./g'
-} 
+}
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  mkdir -p build
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  mkdir -p build && cd build
+  cd build
 
-  cmake \
+  cmake ../$_pkgname \
     -DCMAKE_POSITION_INDEPENDENT_CODE=True \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTING=0 \
-    ..
-
+    -DBUILD_TESTING=0
   make
-}
-
-check() {
-  cd "$srcdir/$_pkgname"
-  mkdir -p build && cd build
-
-  # Build with tests
-  cmake \
-    -DCMAKE_POSITION_INDEPENDENT_CODE=True \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTING=1 \
-    ..
-
-  make
-
-  # Build tests
-  cd tests
-  make
-  cd ..
-
-  # Run tests
-  ctest
 }
 
 package() {
- cd "$srcdir/$_pkgname/build"
+  cd build
   make DESTDIR="$pkgdir/" install
 }
