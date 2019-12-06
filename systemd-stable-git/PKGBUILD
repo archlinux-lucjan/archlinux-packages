@@ -73,12 +73,12 @@ prepare() {
 
   local _c
   for _c in "${_backports[@]}"; do
-    git cherry-pick -n "${_c}"
     git log --oneline -1 "${_c}"
+    git cherry-pick -n "${_c}"
   done
   for _c in "${_reverts[@]}"; do
-    git revert -n "${_c}"
     git log --oneline -1 "${_c}"
+    git revert -n "${_c}"
   done
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
@@ -139,8 +139,8 @@ package_systemd-stable-git() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'systemd-libs' 'libidn2' 'lz4' 'pam' 'libelf' 'libseccomp'
-           'util-linux' 'xz' 'pcre2' 'audit')
+           'libgcrypt' 'systemd-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
+           'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit')
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" )
   conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
@@ -164,7 +164,7 @@ package_systemd-stable-git() {
   install="systemd-git.install"
 
   DESTDIR="$pkgdir" meson install -C build
-  
+
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
 
@@ -219,10 +219,21 @@ package_systemd-stable-git() {
   install -D -m0644 systemd-user.pam "$pkgdir"/etc/pam.d/systemd-user
 }
 
+package_systemd-libs-stable-git() {
+  pkgdesc="systemd client libraries"
+  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
+  license=('LGPL2.1')
+  provides=('libsystemd.so' 'libudev.so' 'libsystemd' 'systemd-libs')
+  conflicts=('libsystemd' 'systemd-libs')
+  
+  install -d -m0755 "$pkgdir"/usr
+  mv systemd-libs "$pkgdir"/usr/lib
+}
+
 package_systemd-resolvconf-stable-git() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
   license=('LGPL2.1')
-  depends=('systemd')
+  depends=('systemd-stable-git')
   provides=('openresolv' 'resolvconf' 'systemd-resolvconf')
   conflicts=('openresolv' 'systemd-resolvconf')
 
@@ -233,22 +244,11 @@ package_systemd-resolvconf-stable-git() {
   ln -s resolvectl.1.gz "$pkgdir"/usr/share/man/man1/resolvconf.1.gz
 }
 
-package_systemd-libs-stable-git() {
-  pkgdesc="systemd client libraries"
-  depends=('glibc' 'libgcrypt' 'lz4' 'xz')
-  license=('LGPL2.1')
-  provides=('libsystemd.so' 'libudev.so' 'libsystemd' 'systemd-libs')
-  conflicts=('libsystemd' 'systemd-libs')
-  
-  install -d -m0755 "$pkgdir"/usr
-  mv systemd-libs "$pkgdir"/usr/lib
-}
-
 package_systemd-sysvcompat-stable-git() {
   pkgdesc="sysvinit compat for systemd"
   license=('GPL2')
   conflicts=('sysvinit' 'systemd-sysvcompat')
-  depends=('systemd-git')
+  depends=('systemd-stable-git')
   conflicts=('systemd-sysvcompat')
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
