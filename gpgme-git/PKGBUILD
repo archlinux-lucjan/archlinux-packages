@@ -5,29 +5,30 @@
 
 pkgbase=gpgme-git
 _pkgbase=gpgme
-pkgname=(gpgme-git qgpgme-git python-gpgme-git python2-gpgme-git)
-pkgver=1.10.0.182.gfed024ef
+pkgname=(gpgme-git qgpgme-git python-gpgme-git)
+pkgver=1.14.33.gae4d7761
 pkgrel=1
 pkgdesc="A C wrapper library for GnuPG"
 arch=('x86_64')
 url="http://www.gnupg.org/related_software/gpgme/"
 license=('LGPL')
-makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'python2' 'swig' 'git')
+makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'swig' 'git')
 source=(git://git.gnupg.org/gpgme.git)
 sha1sums=('SKIP')
-#validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
-
 
 pkgver() {
   cd gpgme
-  git describe --long --tags | sed 's/^gpgme.//;s/-/./g'
+  git describe --long --tags | sed 's/^gpgme.//;s/.base//;s/-/./g'
 }
 
 build() {
   cd gpgme
   ./autogen.sh
-  ./configure --prefix=/usr --disable-fd-passing --disable-static \
-              --disable-gpgsm-test
+  ./configure \
+    --prefix=/usr \
+    --disable-fd-passing \
+    --disable-static \
+    --disable-gpgsm-test
   make
 }
 
@@ -69,16 +70,5 @@ package_python-gpgme-git() {
 
   cd gpgme/lang/python
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/lib"/python2*/
 }
 
-package_python2-gpgme-git() {
-  pkgdesc="Python2 bindings for GPGme"
-  depends=('gpgme' 'python2')
-  conflicts=('python2-gpgme')
-  provides=('python2-gpgme')
-
-  cd gpgme/lang/python
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/lib"/python3*/
-}
