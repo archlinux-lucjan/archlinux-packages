@@ -4,14 +4,14 @@
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 
 pkgname=ninja-git
-pkgver=1.9.0.r2488.g2e646457
+pkgver=1.9.0.r2558.g0c84b0eb
 pkgrel=1
 pkgdesc='Small build system with a focus on speed'
 arch=('x86_64')
 url='https://ninja-build.org/'
 license=(Apache)
 depends=('gcc-libs')
-makedepends=('asciidoc' 'python2' 're2c' 'emacs-nox' 'git')
+makedepends=('python' 're2c' 'emacs-nox' 'git')
 provides=('ninja')
 conflicts=('ninja')
 
@@ -28,14 +28,14 @@ pkgver() {
 build() {
 	cd ninja
 
-	python2 configure.py --bootstrap
+	python configure.py --bootstrap
         emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
 }
 
 #check() {
 #        cd ninja
 #  
-#        python2 ./configure.py
+#        python ./configure.py
 #        ./ninja ninja_test
 #}
 
