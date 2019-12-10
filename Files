@@ -116,7 +116,8 @@
 │   └── PKGBUILD
 ├── gnupg-git
 │   ├── install
-│   └── PKGBUILD
+│   ├── PKGBUILD
+│   └── self-sigs-only.patch
 ├── gpgme-git
 │   └── PKGBUILD
 ├── grub-git
@@ -504,4 +505,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-169 directories, 335 files
+169 directories, 336 files

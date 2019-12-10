@@ -5,20 +5,23 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-git
-pkgver=2.2.7.450.gaa58d2a49
+pkgver=2.2.7.766.g70cb02c05
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
 license=('GPL')
 arch=('x86_64')
-optdepends=('libldap: gpg2keys_ldap'
-            'libusb-compat: scdaemon')
-makedepends=('libldap' 'libusb-compat' 'pcsclite' 'git' 'fig2dev')
 checkdepends=('openssh')
+makedepends=('libldap' 'libusb-compat' 'pcsclite' 'git' 'fig2dev')
 depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
          'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
-source=(git://git.gnupg.org/gnupg.git)
-sha1sums=('SKIP')
+optdepends=('libldap: gpg2keys_ldap'
+            'libusb-compat: scdaemon'
+            'pcsclite: scdaemon')
+source=('git://git.gnupg.org/gnupg.git'
+        'self-sigs-only.patch')
+sha1sums=('SKIP'
+          '1c161b370a8e2e30fae35eb06a1360168231d962')
 
 install=install
 
@@ -26,15 +29,16 @@ conflicts=('gnupg')
 provides=('gnupg')
 
 pkgver() {
-  cd gnupg
-  git describe --long --tags | sed 's/^gnupg.//;s/-/./g'
+        cd gnupg
+        git describe --long --tags | sed 's/^gnupg.//;s/-/./g'
 }
 
 
 prepare() {
 	cd gnupg
-	./autogen.sh
-	sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
+        ./autogen.sh
+        sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
+	patch -R -p1 -i ../self-sigs-only.patch
 }
 
 build() {
