@@ -108,6 +108,8 @@
 
 - ktorrent-stable-git
 
+- kvantum-qt5-git
+
 - lab-git
 
 - libassuan-git

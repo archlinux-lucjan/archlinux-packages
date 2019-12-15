@@ -163,6 +163,8 @@
 │   └── PKGBUILD
 ├── ktorrent-stable-git
 │   └── PKGBUILD
+├── kvantum-qt5-git
+│   └── PKGBUILD
 ├── lab-git
 │   └── PKGBUILD
 ├── libassuan-git
@@ -505,4 +507,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-169 directories, 336 files
+170 directories, 337 files
