@@ -289,7 +289,6 @@
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── networkmanager-git
-│   ├── build.diff
 │   └── PKGBUILD
 ├── networkmanager-stable-git
 │   └── PKGBUILD
@@ -507,4 +506,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-170 directories, 337 files
+170 directories, 336 files
