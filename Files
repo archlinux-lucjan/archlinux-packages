@@ -491,6 +491,8 @@
 ├── xf86-video-intel-git
 │   ├── PKGBUILD
 │   └── xf86-video-intel-git.install
+├── xorgproto-git
+│   └── PKGBUILD
 ├── xorg-xserver-git
 │   ├── PKGBUILD
 │   ├── xorg-server-git.install
@@ -505,4 +507,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-170 directories, 335 files
+171 directories, 336 files

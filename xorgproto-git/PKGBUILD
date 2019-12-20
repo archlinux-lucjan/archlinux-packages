@@ -1,0 +1,54 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: AndyRTR <andyrtr@archlinux.org>
+
+pkgname=xorgproto-git
+_pkgname=xorgproto
+pkgver=2019.2.0.gf61f9a3
+pkgrel=1
+pkgdesc="combined X.Org X11 Protocol headers"
+arch=('any')
+url="https://xorg.freedesktop.org/"
+license=('custom')
+makedepends=('xorg-util-macros' 'meson' 'git')
+source=(git://anongit.freedesktop.org/xorg/proto/xorgproto)
+sha512sums=('SKIP')
+
+prepare() {
+  mkdir build
+}
+
+pkgver() {
+  cd $_pkgname
+  git describe --long | sed 's/^xorgproto.//;s/-/./g'
+}
+
+build() {
+  arch-meson $_pkgname build
+
+  ninja -C build
+}
+
+check() {
+  meson test -C build
+}
+
+package() {
+  DESTDIR="$pkgdir" ninja -C build install
+
+  # missing docs
+  install -m755 -d "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -m644 "$_pkgname"/*.txt "${pkgdir}/usr/share/doc/${_pkgname}/"
+  install -m644 "$_pkgname"/PM_spec "${pkgdir}/usr/share/doc/${_pkgname}/"
+  rm "${pkgdir}"/usr/share/doc/${_pkgname}/meson_options.txt
+
+  # licenses
+  install -m755 -d "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -m644 "$_pkgname"/COPYING* "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  # remove licences of legacy stuff we don't ship anymore
+  rm -f "${pkgdir}"/usr/share/licenses/${_pkgname}/COPYING-{evieproto,fontcacheproto,lg3dproto,printproto,xcalibrateproto,xf86rushproto}
+
+  # cleanup
+  rm -f "${pkgdir}"/usr/include/X11/extensions/apple*
+  rm -f "${pkgdir}"/usr/share/licenses/${_pkgname}/COPYING-{apple,windows}wmproto
+  rm -f "${pkgdir}"/usr/share/pkgconfig/applewmproto.pc
+}

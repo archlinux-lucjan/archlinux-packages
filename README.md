@@ -342,6 +342,8 @@
 
 - xorg-server-next-git
 
+- xorgproto-git
+
 - yakuake-git
 
 # Download:
