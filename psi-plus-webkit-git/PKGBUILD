@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-webkit-git
-pkgver=1.3.388.r1068.gff32f79
+pkgver=1.4.983.r1143.ga6c79a5
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x and Webkit)"
 url="https://psi-plus.com"
@@ -60,7 +60,7 @@ build() {
   cd psi
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DUSE_WEBKIT=ON ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCHAT_TYPE=WEBKIT ..
   make
 }
 
