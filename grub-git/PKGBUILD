@@ -10,7 +10,7 @@ _IA32_EFI_IN_ARCH_X64="1"
 ## "1" to enable EMU build, "0" to disable
 _GRUB_EMU_BUILD="0"
 
-_UNIFONT_VER="12.0.01"
+_UNIFONT_VER="12.1.03"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -21,7 +21,7 @@ _UNIFONT_VER="12.0.01"
 pkgname='grub-git'
 _pkgname='grub'
 pkgdesc='GNU GRand Unified Bootloader (2)'
-pkgver=2.04.10.g4e75b2ae3
+pkgver=2.04.29.g0f3f5b7c1
 pkgrel=1
 epoch=2
 url='https://www.gnu.org/software/grub/'
@@ -64,11 +64,11 @@ source=("grub::git+git://git.sv.gnu.org/grub.git#branch=master"
 
 sha256sums=('SKIP'
             'SKIP'
-            'f48450d3ca0ae0ca9f1c6e81cf1af60e5b0dfa87cc3a72520ce2ef15d54de6dd'
+            '6067bda8daa1f3c49d8876107992e19fc9ab905ad54c01c3131b9649977c3746'
             'SKIP'
             '15132f80bfb85014f35dc065243f7037439d9d7ebd3ed9cc2b34891aea24ec7f'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            '3c9eae171728176e83e5c578e25adf1fd923f924f6893c2678827ba687875349')
+            '690adb7943ee9fedff578a9d482233925ca3ad3e5a50fffddd27cf33300a89e3')
 		
 _configure_options=(
 	FREETYPE="pkg-config freetype2"
@@ -167,6 +167,11 @@ _build_grub-common_and_bios() {
 		--enable-boot-time \
 		"${_configure_options[@]}"
 
+	if [ ! -z "${SOURCE_DATE_EPOCH}" ]; then
+		echo "Make the build reproducible..."
+		touch -d "@${SOURCE_DATE_EPOCH}" $(find -name '*.texi')
+	fi
+	
 	echo "Run make for bios build..."
 	make
 }
