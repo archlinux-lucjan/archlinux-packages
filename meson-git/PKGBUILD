@@ -2,7 +2,7 @@
 # Contributor: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.52.0.1.gba1367b58
+pkgver=0.52.0.344.ge1dd31033
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -27,16 +27,20 @@ md5sums=('SKIP'
 
 prepare() {
         cd meson
+        
+        # Our containers do not allow sanitizers to run
         patch -Np1 -i ../skip-test.diff
 }
 
 pkgver() {
 	cd meson
-	git describe --long --tags | sed 's/^v//;s/-/./g'
+	
+	git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 build() {
         cd meson
+        
         python setup.py build
 }
 
@@ -49,6 +53,7 @@ build() {
 
 package() {
 	cd meson
+	
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
         install -d "${pkgdir}/usr/share/vim/vimfiles"
