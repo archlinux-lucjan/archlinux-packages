@@ -338,6 +338,8 @@
 
 - wireguard-dkms-git
 
+- wireguard-tools-git
+
 - xf86-video-intel-git
 
 - xorg-server-git

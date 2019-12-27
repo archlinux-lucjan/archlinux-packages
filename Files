@@ -493,6 +493,8 @@
 │   └── PKGBUILD
 ├── wireguard-dkms-git
 │   └── PKGBUILD
+├── wireguard-tools-git
+│   └── PKGBUILD
 ├── xf86-video-intel-git
 │   ├── PKGBUILD
 │   └── xf86-video-intel-git.install
@@ -512,4 +514,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-172 directories, 340 files
+173 directories, 341 files
