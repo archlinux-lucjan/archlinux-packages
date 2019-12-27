@@ -336,6 +336,8 @@
 
 - weston-stable-git
 
+- wireguard-dkms-git
+
 - xf86-video-intel-git
 
 - xorg-server-git
