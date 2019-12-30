@@ -7,9 +7,9 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-next-git
-pkgver=5.4.2.18.gf03745f6e1
+pkgver=5.4.5.10.g4f3f10452e
 pkgrel=1
-_clangver=9.0.0
+_clangver=9.0.1
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('x86_64')
 url='http://www.kdevelop.org'
