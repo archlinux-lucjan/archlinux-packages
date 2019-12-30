@@ -7,8 +7,8 @@
 # Contributor: delor <bartekpiech gmail com>
 
 pkgname=qtcreator-git
-pkgver=4.11.0.beta2.136.ge0c073a1bf
-_clangver=9.0.0
+pkgver=4.11.0.412.gd2d05c584e
+_clangver=9.0.1
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
@@ -35,14 +35,13 @@ md5sums=('SKIP')
 
 pkgver() {
     cd qt-creator
-    git describe --tags | sed 's/^v//;s/-/./g'
+    git describe --long --match v* | sed 's/^v//;s/-/./g'
 }
         
 prepare() {
+    mkdir -p build
+    
     cd qt-creator
-
-    [[ -d build ]] && rm -r build
-    mkdir build
 
     # fix hardcoded libexec path
     sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
