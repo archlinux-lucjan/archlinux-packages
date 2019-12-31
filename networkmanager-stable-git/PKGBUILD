@@ -8,7 +8,7 @@
 
 pkgbase=networkmanager-stable-git
 pkgname=(networkmanager-stable-git libnm-stable-git)
-pkgver=1.18.5dev.3.g5798b1b81
+pkgver=1.20.9dev.19.gcbb1ad1ba
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf 
              libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-18")
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-20")
 sha256sums=('SKIP')
 
 prepare() {
