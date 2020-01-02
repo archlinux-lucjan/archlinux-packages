@@ -93,7 +93,6 @@ _configure_options=(
 	--disable-werror
 )
 
-
 pkgver() {
 	cd "${srcdir}/grub/"
 	echo "$(git describe --tags)" | sed -e 's|grub.||g' -e 's|-|\.|g'
@@ -124,13 +123,13 @@ prepare() {
 	echo "Avoid problem with unifont during compile of grub..."
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
 	gzip -cd "${srcdir}/unifont-${_UNIFONT_VER}.bdf.gz" > "unifont.bdf"
-	
+
 	echo "Run bootstrap..."
 	./bootstrap \
 		--gnulib-srcdir="${srcdir}/gnulib/" \
 		--no-git
 
-        echo "Make translations reproducible..."
+	echo "Make translations reproducible..."
 	sed -i '1i /^PO-Revision-Date:/ d' po/*.sed
 }
 
@@ -143,7 +142,7 @@ _build_grub-common_and_bios() {
 	fi
 
 	echo "Copy the source for building the bios part..."
-	cp -r "${srcdir}/grub" "${srcdir}/grub-bios"
+	cp -r "${srcdir}/grub/" "${srcdir}/grub-bios/"
 	cd "${srcdir}/grub-bios/"
 
 	echo "Add the grub-extra sources for bios build..."
@@ -171,14 +170,14 @@ _build_grub-common_and_bios() {
 		echo "Make info pages reproducible..."
 		touch -d "@${SOURCE_DATE_EPOCH}" $(find -name '*.texi')
 	fi
-	
+
 	echo "Run make for bios build..."
 	make
 }
 
 _build_grub-efi() {
 	echo "Copy the source for building the ${_EFI_ARCH} efi part..."
-	cp -r "${srcdir}/grub/" "${srcdir}/grub-efi-${_EFI_ARCH}"
+	cp -r "${srcdir}/grub/" "${srcdir}/grub-efi-${_EFI_ARCH}/"
 	cd "${srcdir}/grub-efi-${_EFI_ARCH}/"
 
 	echo "Unset all compiler FLAGS for ${_EFI_ARCH} efi build..."
