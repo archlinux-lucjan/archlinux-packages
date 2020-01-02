@@ -2,7 +2,7 @@
 # Contributor: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.52.0.344.ge1dd31033
+pkgver=0.52.999.r8559.g6e7d5a0c6
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -35,7 +35,12 @@ prepare() {
 pkgver() {
 	cd meson
 	
-	git describe --tags --long | sed 's/^v//;s/-/./g'
+	# git describe
+	# git describe --tags --long | sed 's/^v//;s/-/./g'
+	
+	# other
+        _ver="$(cat mesonbuild/coredata.py | grep -m1 version | cut -d "'" -f2 | sed 's/-/./g')"
+        echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
