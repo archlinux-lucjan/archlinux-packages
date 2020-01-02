@@ -224,6 +224,8 @@
 
 - openvpn-git
 
+- openvpn-stable-git
+
 - otter-browser-git
 
 - pacman-contrib-git
