@@ -4,7 +4,7 @@
 pkgname=openvpn-git
 _pkgname=openvpn
 pkgver=2.5.r2482.geebce22b
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=('x86_64')
 url='http://openvpn.net/index.php/open-source.html'
@@ -35,7 +35,8 @@ build() {
   mkdir "${srcdir}"/build
   cd "${srcdir}"/build
 
-  "${srcdir}"/${_pkgname}/configure \
+  CONFIG_SHELL=/bin/bash "${srcdir}"/${_pkgname}/configure \
+    CONFIG_SHELL=/bin/bash \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --enable-iproute2 \
