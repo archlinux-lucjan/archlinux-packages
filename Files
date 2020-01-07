@@ -1,6 +1,4 @@
 .
-├── antimicro-git
-│   └── PKGBUILD
 ├── auracle-git
 │   └── PKGBUILD
 ├── bat-polaur-git
@@ -518,4 +516,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-175 directories, 343 files
+174 directories, 342 files
