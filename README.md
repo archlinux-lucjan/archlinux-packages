@@ -1,6 +1,6 @@
 # Collection of PKGBUILDS for Ach Linux:
 
-- antimicro-git
+- antimicrox-git
 
 - auracle-git
 
