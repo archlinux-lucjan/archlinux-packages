@@ -267,6 +267,7 @@
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── meson-git
+│   ├── 0001-Fix-CUDA-test-without-devices.patch
 │   ├── arch-meson
 │   ├── PKGBUILD
 │   └── skip-test.diff
@@ -519,4 +520,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-175 directories, 344 files
+175 directories, 345 files
