@@ -88,6 +88,7 @@
 │   ├── 0001-Bump-to-pygit-1.0.0.patch
 │   └── PKGBUILD
 ├── git-main-git
+│   ├── 0001-git-p4-python.patch
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
 │   ├── git-git.install
@@ -518,4 +519,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-175 directories, 343 files
+175 directories, 344 files
