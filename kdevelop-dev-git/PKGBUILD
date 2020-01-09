@@ -7,7 +7,7 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-dev-git
-pkgver=5.4.5.169.gc109a789ff
+pkgver=5.4.6.166.g301b74c482
 pkgrel=1
 _clangver=9.0.1
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
@@ -47,7 +47,8 @@ prepare() {
 
 build() {
   cd build
-  cmake ../kdevelop
+  cmake ../kdevelop \
+        -DBUILD_TESTING=OFF
   make
 }
 
