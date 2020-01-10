@@ -328,10 +328,6 @@
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   └── PKGBUILD
-├── pacman-trunk-git
-│   ├── makepkg.conf
-│   ├── pacman.conf
-│   └── PKGBUILD
 ├── pacutils-git
 │   └── PKGBUILD
 ├── pkgbuild-introspection-lucjan-git
@@ -520,4 +516,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-175 directories, 345 files
+174 directories, 342 files
