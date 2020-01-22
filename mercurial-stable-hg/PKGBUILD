@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mercurial-stable-hg
-pkgver=5.3rc0.r2.m3246cd5310b0
+pkgver=5.0rc0.r3.m84b5ad5fc2aa
 pkgrel=1
 pkgdesc="Distributed source control management tool"
 arch=('x86_64')
@@ -30,13 +30,12 @@ build() {
 
   make all
   make -C "contrib/chg"
-  python setup.py build
-  }
+}
 
 package() {
   cd "hg"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1
 
   install -d "$pkgdir/usr/share/man/"{man1,man5}
   install -m644 doc/hg.1 "$pkgdir/usr/share/man/man1"
