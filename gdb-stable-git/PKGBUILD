@@ -7,14 +7,14 @@ pkgbase=gdb-stable-git
 # of gdb (for arm/avr/...)
 pkgname=(gdb-stable-git gdb-common-stable-git)
 _pkgname=binutils-gdb
-pkgver=8.3.1.r97029.b24d807109
+pkgver=9.1.r99729.242198bf679
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
 makedepends=(texinfo python guile ncurses expat xz git)
-source=(git://sourceware.org/git/binutils-gdb.git#branch=gdb-8.3-branch)
+source=(git://sourceware.org/git/binutils-gdb.git#branch=gdb-9-branch)
 sha1sums=('SKIP')
 
 pkgver() {
@@ -33,9 +33,10 @@ prepare() {
 build() {
   cd ${srcdir}/${_pkgname}
   
-  ./configure --prefix=/usr --disable-nls \
+  mkdir -p build && cd build
+  ../configure --prefix=/usr --disable-nls \
     --with-system-readline \
-    --with-python=/usr/bin/python3 \
+    --with-python=/usr/bin/python \
     --with-guile=guile-2.0 \
     --with-system-gdbinit=/etc/gdb/gdbinit
   make
@@ -46,20 +47,17 @@ package_gdb-common-stable-git() {
   provides=(gdb-common)
   conflicts=(gdb-common)
 
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${_pkgname}/build
   make -C gdb/data-directory DESTDIR=$pkgdir install
 }
 
 package_gdb-stable-git() {
-  depends=(ncurses expat xz gdb-common=$pkgver)
+  depends=(ncurses expat xz gdb-common-stable-git=$pkgver)
   backup=(etc/gdb/gdbinit)
   provides=(gdb)
   conflicts=(gdb)
 
-  cd ${srcdir}/${_pkgname}
-  make DESTDIR=$pkgdir install
-
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${_pkgname}/build
   make DESTDIR=$pkgdir install
 
   # install "custom" system gdbinit
