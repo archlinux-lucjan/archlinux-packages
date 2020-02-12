@@ -7,7 +7,7 @@ pkgbase=gdb-git
 # of gdb (for arm/avr/...)
 pkgname=(gdb-git gdb-common-git)
 _pkgname=binutils-gdb
-pkgver=8.2.r95911.30a7953dbf
+pkgver=9.1.r100375.f20e3e823d5
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
@@ -33,9 +33,10 @@ prepare() {
 build() {
   cd ${srcdir}/${_pkgname}
   
-  ./configure --prefix=/usr --disable-nls \
+  mkdir -p build && cd build
+  ../configure --prefix=/usr --disable-nls \
     --with-system-readline \
-    --with-python=/usr/bin/python3 \
+    --with-python=/usr/bin/python \
     --with-guile=guile-2.0 \
     --with-system-gdbinit=/etc/gdb/gdbinit
   make
@@ -46,17 +47,17 @@ package_gdb-common-git() {
   provides=(gdb-common)
   conflicts=(gdb-common)
 
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${_pkgname}/build
   make -C gdb/data-directory DESTDIR=$pkgdir install
 }
 
 package_gdb-git() {
-  depends=(ncurses expat xz gdb-common=$pkgver)
+  depends=(ncurses expat xz gdb-git-common=$pkgver)
   backup=(etc/gdb/gdbinit)
   provides=(gdb)
   conflicts=(gdb)
 
-  cd ${srcdir}/${_pkgname}
+  cd ${srcdir}/${_pkgname}/build
   make DESTDIR=$pkgdir install
 
   # install "custom" system gdbinit
