@@ -100,6 +100,10 @@
 
 - konversation-stable-git
 
+- krename-git
+
+- krename-stable-git
+
 - krusader-dev-git
 
 - krusader-git
