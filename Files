@@ -160,6 +160,8 @@
 │   └── PKGBUILD
 ├── krename-git
 │   └── PKGBUILD
+├── krename-stable-git
+│   └── PKGBUILD
 ├── krusader-dev-git
 │   └── PKGBUILD
 ├── krusader-git
@@ -518,4 +520,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-175 directories, 343 files
+176 directories, 344 files
