@@ -6,17 +6,17 @@
 pkgbase=mesa-rc-git
 pkgname=('vulkan-mesa-layer-rc-git' 'opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.2.0.r114762.g0b97377f584
+pkgver=20.0.0.r119903.g16c364aaf00
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
-makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
-             'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols'
-             'elfutils' 'llvm' 'libomxil-bellagio' 'libclc-git' 'clang' 'libglvnd' 'libunwind' 'lm_sensors'
-             'meson' 'libxrandr' 'valgrind' 'glslang' 'git')
+makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
+             'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd'
+             'elfutils' 'llvm' 'libomxil-bellagio' 'libclc' 'clang' 'libglvnd' 'libunwind' 'lm_sensors'
+             'libxrandr' 'valgrind' 'glslang' 'meson' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=staging/19.2'
+source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=20.0'
         "LICENSE")
 options=('!libtool')
 md5sums=('SKIP'
@@ -30,6 +30,7 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/mesa
+
 }
   
 build() {
@@ -92,6 +93,7 @@ package_vulkan-mesa-layer-rc-git() {
   
   _install fakeinstall/usr/share/vulkan/explicit_layer.d
   _install fakeinstall/usr/lib/libVkLayer_MESA_overlay.so
+  _install fakeinstall/usr/bin/mesa-overlay-control.py
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
