@@ -3,7 +3,7 @@
 
 _pkgbase="sddm"
 pkgname="$_pkgbase-dev-git"
-pkgver=0.18.0.23.gcd4e1fa
+pkgver=0.18.0.48.gc675273
 pkgrel=1
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
@@ -14,7 +14,10 @@ makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools' 'git')
 provides=("$_pkgbase" 'display-manager')
 conflicts=("$_pkgbase")
 backup=('usr/share/sddm/scripts/Xsetup'
-        'etc/pam.d/sddm')
+        'usr/share/sddm/scripts/Xstop'
+        'etc/pam.d/sddm'
+        'etc/pam.d/sddm-autologin'
+        'etc/pam.d/sddm-greeter')
 source=("git://github.com/sddm/sddm.git#branch=develop"
 sddm.sysusers sddm.tmpfiles)
 sha256sums=('SKIP'
