@@ -8,7 +8,7 @@
 
 pkgbase=networkmanager-test-git
 pkgname=(networkmanager-test-git libnm-test-git nm-cloud-setup-test-git)
-pkgver=1.22.3dev.0.g202c556d9
+pkgver=1.22.9dev.20.g4045608ca
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
@@ -132,7 +132,8 @@ package_libnm-test-git() {
   pkgdesc="NetworkManager client library"
   depends=(glib2 nss libutil-linux jansson systemd-libs)
   conflicts=('libnm')
-  provides=('libnm')
+  provides=('libnm' 'libnm.so')
+
   mv libnm/* "$pkgdir"
 }
 
@@ -141,5 +142,6 @@ package_nm-cloud-setup-test-git() {
   depends=(networkmanager)
   conflicts=('nm-cloud-setup')
   provides=('nm-cloud-setup')
+
   mv nm-cloud-setup/* "$pkgdir"
 }
