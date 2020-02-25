@@ -71,6 +71,7 @@
 ├── gdb-stable-git
 │   └── PKGBUILD
 ├── git-dev-git
+│   ├── 0001-git-p4-python.patch
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
 │   ├── git-git.install
@@ -524,4 +525,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-177 directories, 347 files
+177 directories, 348 files
