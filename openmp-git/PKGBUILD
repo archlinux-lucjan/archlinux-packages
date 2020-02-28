@@ -3,7 +3,7 @@
 
 pkgname=openmp-git
 _pkgname=openmp
-pkgver=10.0.0.r329318.g30c2441a326
+pkgver=11.0.0.r343907.g0a3117832c0
 pkgrel=1
 pkgdesc="LLVM OpenMP Runtime Library"
 arch=('x86_64')
@@ -37,7 +37,8 @@ build() {
 
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIBOMP_INSTALL_ALIASES=OFF
   ninja
 }
 
@@ -46,9 +47,6 @@ package() {
 
   DESTDIR="$pkgdir" ninja install
   install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-
-  # libgomp.so is also provided by gcc-libs; remove it to fix the conflict
-  rm "$pkgdir/usr/lib/libgomp.so"
 
 }
 
