@@ -223,7 +223,6 @@
 ├── linux-api-headers-rc-git
 │   └── PKGBUILD
 ├── linux-firmware-git
-│   ├── 0001-Update-iwlwifi-firmware.patch
 │   └── PKGBUILD
 ├── linux-usermode
 │   ├── 70-uml.hook
@@ -527,4 +526,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-177 directories, 350 files
+177 directories, 349 files
