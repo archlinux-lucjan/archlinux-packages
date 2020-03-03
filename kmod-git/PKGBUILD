@@ -3,7 +3,7 @@
 
 pkgname=kmod-git
 _pkgname=kmod
-pkgver=26.5.g1d14ef8
+pkgver=27.1.g9b003b6
 pkgrel=1
 pkgdesc="interface to kernel module operations"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=('git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
         'depmod.hook' 'depmod.script')
 md5sums=('SKIP'
          'dd62cbf62bd8f212f51ef8c43bec9a77'
-         '72ce5e14ee3ad8bc06945e0ad4c642ce'
+         'e179ace75721e92b04b2e145b69dab29'
          '18fb3d1f6024a5a84514c8276cb3ebff')
 
 pkgver() {
