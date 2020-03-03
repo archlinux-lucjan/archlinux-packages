@@ -281,6 +281,7 @@
 ├── mkinitcpio-git
 │   ├── 0001-mkinitcpio-remove-preset-pacsave.patch
 │   ├── 0002-mkinitcpio-fix-builtin.patch
+│   ├── 0003-alpm-hooks-should-use-Type-Path-not-File.patch
 │   └── PKGBUILD
 ├── modemmanager-git
 │   ├── PKGBUILD
@@ -526,4 +527,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-177 directories, 349 files
+177 directories, 350 files
