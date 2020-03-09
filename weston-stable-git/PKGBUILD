@@ -6,7 +6,7 @@
 pkgname=weston-stable-git
 _pkgname=weston
 pkgver=6.0.1.0.g8757261c
-pkgrel=1
+pkgrel=2
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=('x86_64')
 url='http://wayland.freedesktop.org'
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
          'libdrm' 'pam' 'systemd-libs' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
          'mesa' 'libegl' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
-         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'pipewire')
+         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord' 'libpipewire02')
 makedepends=('wayland-protocols' 'meson' 'ninja' 'freerdp' 'git')
 optdepends=('freerdp: support rdp backend')
 conflicts=('weston')
@@ -43,12 +43,12 @@ prepare() {
 
 build() {
   meson $_pkgname build \
-    --prefix=/usr --libexec=lib/weston -Dsimple-dmabuf-drm=auto
+    --libexec=lib/weston -D b_lto=false -D simple-dmabuf-drm=auto
   ninja -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
   # license
   install -Dm644 $_pkgname/COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
 }
