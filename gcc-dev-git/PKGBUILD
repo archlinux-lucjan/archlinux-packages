@@ -12,7 +12,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-dev-git gcc-libs-dev-git gcc-fortran-dev-git gcc-objc-dev-git gcc-ada-dev-git gcc-go-dev-git lib32-gcc-libs-dev-git gcc-d-dev-git)
-pkgver=10.0.1.r174530.efe0e5cd64b
+pkgver=10.0.1.r175235.9ae8bc02774
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -68,12 +68,11 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-  
+
   # D hacks
   patch -p1 -i "$srcdir/gdc_phobos_path.patch"
   patch -p1 -i "$srcdir/gdc_artificial_decl.patch"
   patch -p1 -i "$srcdir/gdc_thunk_weak_ref.patch"
-  #sed -i "/GDCFLAGSX=/s/-Wall/-shared-libphobos -Wall/" libphobos/configure
 
   mkdir -p "$srcdir/gcc-build"
 }
