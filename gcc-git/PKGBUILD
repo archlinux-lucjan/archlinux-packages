@@ -12,7 +12,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git gcc-d-git)
-pkgver=9.2.1.r169114.533d051f6d1
+pkgver=9.3.1.r169286.db358455287
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -33,6 +33,7 @@ source=(
         gdc_artificial_decl.patch
         gdc_thunk_weak_ref.patch
         c89 c99
+        fs64270.patch
         )
 sha256sums=('SKIP'
             'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859'
@@ -40,7 +41,8 @@ sha256sums=('SKIP'
             '3862757491160700ac2fb723096f6f636f30320cccc6efd9537149ed348b57d1'
             '9699d7105375754f0dcf6abff87d09b270565bfc6578a13641770f3fc62d678a'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
-            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
+            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
+            'f45160f699501568ae9e81127562395dd95b5b4a8e4d55a1615fbb00f9e4deb2')
 
 # also set after pkgver() runs!
 _libdir=usr/lib/gcc/$CHOST/${_basever}
@@ -68,12 +70,15 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-  
+
   # D hacks
   patch -p1 -i "$srcdir/gdc_phobos_path.patch"
   patch -p1 -i "$srcdir/gdc_artificial_decl.patch"
   patch -p1 -i "$srcdir/gdc_thunk_weak_ref.patch"
-  #sed -i "/GDCFLAGSX=/s/-Wall/-shared-libphobos -Wall/" libphobos/configure
+
+  # Turn off SSP for nostdlib|nodefaultlibs|ffreestanding
+  # https://bugs.archlinux.org/task/64270
+  patch -p1 -i "$srcdir/fs64270.patch"
 
   mkdir -p "$srcdir/gcc-build"
 }
