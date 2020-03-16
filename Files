@@ -275,7 +275,6 @@
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── meson-git
-│   ├── 0001-environment-Fix-construction-of-CudaLinker.patch
 │   ├── arch-meson
 │   ├── PKGBUILD
 │   └── skip-test.diff
@@ -528,4 +527,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-177 directories, 351 files
+177 directories, 350 files
