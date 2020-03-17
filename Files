@@ -278,6 +278,10 @@
 │   ├── arch-meson
 │   ├── PKGBUILD
 │   └── skip-test.diff
+├── meson-stable-git
+│   ├── arch-meson
+│   ├── PKGBUILD
+│   └── skip-test.diff
 ├── mkinitcpio-git
 │   ├── 0001-mkinitcpio-remove-preset-pacsave.patch
 │   ├── 0002-mkinitcpio-fix-builtin.patch
@@ -527,4 +531,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-177 directories, 350 files
+178 directories, 353 files
