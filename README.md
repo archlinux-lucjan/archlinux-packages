@@ -200,6 +200,8 @@
 
 - meson-git
 
+- meson-stable-git
+
 - mkinitcpio-git
 
 - modemmanager-git
