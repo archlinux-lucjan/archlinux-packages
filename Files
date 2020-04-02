@@ -273,7 +273,6 @@
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── meson-git
-│   ├── 0001-Fix-meson_jar_template-so-test-suite-passes.patch
 │   ├── arch-meson
 │   ├── PKGBUILD
 │   └── skip-test.diff
@@ -531,4 +530,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-178 directories, 353 files
+178 directories, 352 files
