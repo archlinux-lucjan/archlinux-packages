@@ -141,6 +141,8 @@
 │   └── PKGBUILD
 ├── kaidan-git
 │   └── PKGBUILD
+├── kaidan-stable-git
+│   └── PKGBUILD
 ├── kdesvn-git
 │   └── PKGBUILD
 ├── kdesvn-stable-git
@@ -533,4 +535,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-179 directories, 354 files
+180 directories, 355 files
