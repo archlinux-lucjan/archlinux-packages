@@ -82,6 +82,10 @@
 
 - iucode-tool-git
 
+- kaidan-git
+
+- kaidan-stable-git
+
 - kaffeine-git
 
 - kdesvn-git
