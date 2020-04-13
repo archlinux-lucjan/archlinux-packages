@@ -308,6 +308,8 @@
 
 - qtox-git
 
+- rebuild-detector-git
+
 - s-git
 
 - sddm-dev-git
