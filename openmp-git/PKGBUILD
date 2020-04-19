@@ -3,7 +3,7 @@
 
 pkgname=openmp-git
 _pkgname=openmp
-pkgver=11.0.0.r343907.g0a3117832c0
+pkgver=11.0.0.r351819.g73c33fcf563
 pkgrel=1
 pkgdesc="LLVM OpenMP Runtime Library"
 arch=('x86_64')
@@ -47,6 +47,8 @@ package() {
 
   DESTDIR="$pkgdir" ninja install
   install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
+  rm "$pkgdir/usr/lib/libarcher_static.a"
 
 }
 
