@@ -7,7 +7,7 @@ pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
 _pkgname1=llvm
 _pkgname2=llvm-libs
 _pkgname3=llvm-ocaml
-pkgver=11.0.0.r346284.g172456c7750
+pkgver=11.0.0.r351802.ge71dd7c011a
 pkgrel=1
 _ocaml_ver=4.09.1
 arch=('x86_64')
@@ -21,8 +21,6 @@ source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
         llvm-config.h)
 sha256sums=('SKIP'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48')
-validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
-validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 pkgver() {
     cd "llvm-project/llvm"
@@ -58,7 +56,6 @@ build() {
     -DLLVM_ENABLE_SPHINX=ON \
     -DLLVM_ENABLE_DOXYGEN=OFF \
     -DSPHINX_WARNINGS_AS_ERRORS=OFF \
-    -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include
   ninja all ocaml_doc
 }
@@ -88,7 +85,7 @@ package_llvm-git() {
   rm -r "$pkgdir"/usr/share/doc/$_pkgname1/html/{_sources,.buildinfo}
 
   # The runtime libraries go into llvm-libs
-  mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so* "$srcdir"
+  mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
   mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
 
   # OCaml bindings go to a separate package
@@ -114,7 +111,7 @@ package_llvm-libs-git() {
 
   install -d "$pkgdir/usr/lib"
   cp -P \
-    "$srcdir"/lib{LLVM,LTO}*.so* \
+    "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
     "$srcdir"/LLVMgold.so \
     "$pkgdir/usr/lib/"
 
