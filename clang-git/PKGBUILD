@@ -59,7 +59,7 @@ prepare() {
   mkdir build
   mv "$srcdir/llvm-project/clang-tools-extra" tools/extra
   
- if [[ $pkgver != 10.* ]]; then
+ if [[ $pkgver != 11.* ]]; then
     echo "Remove libclangHandleLLVM hack!"
     return 1
   fi
