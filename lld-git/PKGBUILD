@@ -4,7 +4,7 @@
 
 pkgname=lld-git
 _pkgname=lld
-pkgver=10.0.0.r328904.ged5d1c12dc4
+pkgver=11.0.0.r351819.g73c33fcf563
 pkgrel=1
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
@@ -41,7 +41,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPYTHON_EXECUTABLE=/usr/bin/python \
-    -DBUILD_SHARED_LIBS=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_INCLUDE_TESTS=ON \
     -DLLVM_BUILD_TESTS=ON \
