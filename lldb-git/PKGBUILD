@@ -4,7 +4,7 @@
 
 pkgname=lldb-git
 _pkgname=lldb
-pkgver=10.0.0.r327986.geb4c98ca3d2
+pkgver=11.0.0.r351819.g73c33fcf563
 pkgrel=1
 pkgdesc="Next generation, high-performance debugger"
 arch=('x86_64')
@@ -38,8 +38,10 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_LINK_LLVM_DYLIB=ON \
+    -DCLANG_LINK_CLANG_DYLIB=ON \
+    -DLLVM_ENABLE_SPHINX=ON \
     -DLLDB_USE_SYSTEM_SIX=1
-  ninja
+  ninja all docs-lldb-man
 }
 
 package() {
@@ -48,8 +50,7 @@ package() {
   DESTDIR="$pkgdir" ninja install
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
-  # Install possibly outdated man page; better than nothing!
-  install -Dm644 ../docs/lldb.1 "$pkgdir/usr/share/man/man1/lldb.1"
+  install -Dm644 docs/man/lldb.1 "$pkgdir/usr/share/man/man1/lldb.1"
 
   # Compile Python scripts
   python3 -m compileall "$pkgdir"
