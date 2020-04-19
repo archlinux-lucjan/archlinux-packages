@@ -4,7 +4,7 @@
 
 pkgname=clang-git
 _pkgname=clang
-pkgver=10.0.0.r328903.g5d566c5a46a
+pkgver=11.0.0.r351810.ga2eb55de998
 pkgrel=1
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
@@ -21,7 +21,7 @@ replaces=('clang-analyzer' 'clang-tools-extra')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
         "enable-SSP-and-PIE-by-default.patch")
 sha256sums=('SKIP'
-            '58f86da25eb230ed6d423b5b61870cbf3bef88f38103ca676a2c7f34b2372171')
+            '9e557a18f3ca96cc5cc9b62d2e308b993025523b2aca0735248118a928c8c3ff')
 
 pkgver() {
     cd "${srcdir}/llvm-project/llvm"
@@ -34,40 +34,66 @@ pkgver() {
     echo "${_pkgver}"
 }
 
+# Utilizing LLVM_DISTRIBUTION_COMPONENTS to avoid
+# installing static libraries; inspired by Gentoo
+_get_distribution_components() {
+  local target
+  ninja -t targets | grep -Po 'install-\K.*(?=-stripped:)' | while read -r target; do
+    case $target in
+      clang-libraries|distribution)
+        continue
+        ;;
+      clang|clangd|clang-*)
+        ;;
+      clang*|findAllSymbols)
+        continue
+        ;;
+    esac
+    echo $target
+  done
+}
+
 prepare() {
   cd "${srcdir}/llvm-project/clang"
+  patch -Np2 -i ../../enable-SSP-and-PIE-by-default.patch
   mkdir build
   mv "$srcdir/llvm-project/clang-tools-extra" tools/extra
-  patch -Np1 -i ../../enable-SSP-and-PIE-by-default.patch
   
-  # Avoid shipping libclang-cpp before removing BUILD_SHARED_LIBS=ON
-  sed -i '/add_clang_subdirectory(clang-shlib)/d' tools/CMakeLists.txt
+ if [[ $pkgver != 10.* ]]; then
+    echo "Remove libclangHandleLLVM hack!"
+    return 1
+  fi
+  # Remove libclangHandleLLVM; breaks zig (https://reviews.llvm.org/D75579)
+  sed -i '/add_clang_subdirectory(handle-llvm)/d' \
+    tools/clang-fuzzer/CMakeLists.txt
 }
 
 build() {
   cd "$srcdir/llvm-project/clang/build"
 
-   # Upstream strongly recommends against BUILD_SHARED_LIBS=ON for distro
-   # builds but CLANG_LINK_CLANG_DYLIB=ON is not yet supported by clang's
-   # extra tools. Keep building all libraries as shared and revisit this.
-  
-  cmake .. -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_EXECUTABLE=/usr/bin/python \
-    -DBUILD_SHARED_LIBS=ON \
-    -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DCLANG_LINK_CLANG_DYLIB=OFF \
-    -DLLVM_ENABLE_RTTI=ON \
-    -DLLVM_BUILD_TESTS=ON \
-    -DLLVM_INCLUDE_DOCS=ON \
-    -DLLVM_BUILD_DOCS=ON \
-    -DLLVM_ENABLE_SPHINX=ON \
-    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
-    -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
-    -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-project/llvm" \
-    -DLLVM_VERSION_SUFFIX=""
+   local cmake_args=(
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DPYTHON_EXECUTABLE=/usr/bin/python
+    -DLLVM_LINK_LLVM_DYLIB=ON
+    -DCLANG_LINK_CLANG_DYLIB=ON
+    -DLLVM_ENABLE_RTTI=ON
+    -DLLVM_BUILD_TESTS=ON
+    -DLLVM_INCLUDE_DOCS=ON
+    -DLLVM_BUILD_DOCS=ON
+    -DLLVM_ENABLE_SPHINX=ON
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit
+    -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-project/llvm"
+  )
 
+  cmake .. "${cmake_args[@]}"
+  local distribution_components=$(_get_distribution_components | paste -sd\;)
+  test -n "$distribution_components"
+  cmake_args+=(-DLLVM_DISTRIBUTION_COMPONENTS="$distribution_components")
+
+  cmake .. "${cmake_args[@]}"
   ninja
 }
 
@@ -90,7 +116,7 @@ _python3_optimize() {
 package() {
   cd "$srcdir/llvm-project/clang/build"
 
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" ninja install-distribution
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
   # Remove documentation sources
