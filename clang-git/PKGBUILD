@@ -12,7 +12,7 @@ url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm-libs-git' 'gcc' 'compiler-rt-git')
 makedepends=('llvm-git' 'cmake' 'ninja' 'python-sphinx' 'python2' 'git')
-optdepends=('openmp: OpenMP support in clang with -fopenmp'
+optdepends=('openmp-git: OpenMP support in clang with -fopenmp'
             'python: for scan-view and git-clang-format'
             'llvm-git: referenced by some clang headers')
 provides=("clang-analyzer=$pkgver" "clang-tools-extra=$pkgver" "clang")
