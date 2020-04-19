@@ -4,7 +4,7 @@
 
 pkgname=compiler-rt-git
 _pkgname=compiler-rt
-pkgver=10.0.0.r327879.gc15cd009ac1
+pkgver=11.0.0.r351810.ga2eb55de998
 pkgrel=1
 pkgdesc="Compiler runtime libraries for clang"
 arch=('x86_64')
