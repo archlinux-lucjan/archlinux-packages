@@ -7,8 +7,8 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgbase=networkmanager-stable-git
-pkgname=(networkmanager-stable-git libnm-stable-git)
-pkgver=1.20.11dev.6.gee8ae9ae4
+pkgname=(networkmanager-stable-git libnm-stable-git nm-cloud-setup-stable-git)
+pkgver=1.22.11dev.36.g6abf71f05
 pkgrel=1
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
@@ -18,14 +18,14 @@ _pppver=2.4.7
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
              iproute2 nss polkit wpa_supplicant curl systemd libmm-glib
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
-             glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf 
-             libpsl audit meson)
+             glib2-docs iwd dnsmasq openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-20")
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=nm-1-22")
 sha256sums=('SKIP')
 
 prepare() {
   cd NetworkManager
+
 }
 
 pkgver() {
@@ -35,19 +35,32 @@ pkgver() {
 
 build() {
   local meson_args=(
+    # system paths
     -D dbus_conf_dir=/usr/share/dbus-1/system.d
+
+    # platform
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
     -D suspend_resume=systemd
     -D modify_system=true
     -D polkit_agent=true
     -D selinux=false
+
+    # features
     -D iwd=true
     -D pppd_plugin_dir=/usr/lib/pppd/$_pppver
     -D teamdctl=true
+    -D nm_cloud_setup=true
     -D bluez5_dun=true
     -D ebpf=true
+
+    # configuration plugins
     -D config_plugins_default=keyfile
+    
+    # dhcp clients
+    -D dhcpcd=no
+
+    # miscellaneous
     -D vapi=true
     -D docs=true
     -D more_asserts=no
@@ -75,12 +88,14 @@ _pick() {
 
 package_networkmanager-stable-git() {
   depends=(libnm iproute2 polkit wpa_supplicant libmm-glib libnewt libndp libteam curl
-           bluez-libs libpsl audit)
+           bluez-libs libpsl audit mobile-broadband-provider-info)
   optdepends=('dnsmasq: connection sharing'
               'bluez: Bluetooth support'
               'ppp: dialup connection support'
               'modemmanager: cellular network support'
-              'iwd: wpa_supplicant alternative')
+              'iwd: wpa_supplicant alternative'
+              'dhclient: alternative DHCP client'
+              'openresolv: alternative resolv.conf manager')
   backup=('etc/NetworkManager/NetworkManager.conf')
   conflicts=('networkmanager')
   provides=('networkmanager')
@@ -101,7 +116,8 @@ END
 uri=http://www.archlinux.org/check_network_status.txt
 END
 
-### Split libnm
+  shopt -s globstar
+  
   _pick libnm "$pkgdir"/usr/include/libnm
   _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
   _pick libnm "$pkgdir"/usr/lib/libnm.*
@@ -109,6 +125,11 @@ END
   _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-*
   _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm
   _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
+  
+  _pick nm-cloud-setup "$pkgdir"/usr/lib/**/*nm-cloud-setup*
+
+  # Restore empty dir
+  mkdir "$pkgdir/usr/lib/NetworkManager/dispatcher.d/no-wait.d"
 }
 
 package_libnm-stable-git() {
@@ -118,4 +139,13 @@ package_libnm-stable-git() {
   provides=('libnm' 'libnm.so')
 
   mv libnm/* "$pkgdir"
+}
+
+package_nm-cloud-setup-stable-git() {
+  pkgdesc="Automatically configure NetworkManager in cloud"
+  depends=(networkmanager)
+  conflicts=('nm-cloud-setup')
+  provides=('nm-cloud-setup')
+
+  mv nm-cloud-setup/* "$pkgdir"
 }
