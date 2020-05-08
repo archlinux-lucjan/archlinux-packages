@@ -12,7 +12,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-dev-git gcc-libs-dev-git gcc-fortran-dev-git gcc-objc-dev-git gcc-ada-dev-git gcc-go-dev-git lib32-gcc-libs-dev-git gcc-d-dev-git)
-pkgver=10.0.1.r175235.9ae8bc02774
+pkgver=11.0.0.r176363.9e20d0f0ce9
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -30,18 +30,16 @@ source=(
         git://github.com/gcc-mirror/gcc.git
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         gdc_phobos_path.patch
-        gdc_artificial_decl.patch
-        gdc_thunk_weak_ref.patch
         c89 c99
+        fs64270.patch
         )
 sha256sums=('SKIP'
             'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859'
             'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
-            '3862757491160700ac2fb723096f6f636f30320cccc6efd9537149ed348b57d1'
-            '9699d7105375754f0dcf6abff87d09b270565bfc6578a13641770f3fc62d678a'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
-            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
-            
+            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
+            '1ef190ed4562c4db8c1196952616cd201cfdd788b65f302ac2cc4dabb4d72cee')
+
 # also set after pkgver() runs!
 _libdir=usr/lib/gcc/$CHOST/${_basever}
 
@@ -71,8 +69,10 @@ prepare() {
 
   # D hacks
   patch -p1 -i "$srcdir/gdc_phobos_path.patch"
-  patch -p1 -i "$srcdir/gdc_artificial_decl.patch"
-  patch -p1 -i "$srcdir/gdc_thunk_weak_ref.patch"
+
+  # Turn off SSP for nostdlib|nodefaultlibs|ffreestanding
+  # https://bugs.archlinux.org/task/64270
+  patch -p1 -i "$srcdir/fs64270.patch"
 
   mkdir -p "$srcdir/gcc-build"
 }
@@ -92,28 +92,28 @@ build() {
       --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
       --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \
-      --enable-shared \
-      --enable-threads=posix \
-      --with-system-zlib \
       --with-isl \
-      --enable-__cxa_atexit \
-      --disable-libunwind-exceptions \
-      --enable-clocale=gnu \
-      --disable-libstdcxx-pch \
-      --disable-libssp \
-      --enable-gnu-unique-object \
-      --enable-linker-build-id \
-      --enable-lto \
-      --enable-plugin \
-      --enable-install-libiberty \
       --with-linker-hash-style=gnu \
-      --enable-gnu-indirect-function \
-      --enable-multilib \
-      --disable-werror \
+      --with-system-zlib \
+      --enable-__cxa_atexit \
+      --enable-cet=auto \
       --enable-checking=release \
+      --enable-clocale=gnu \
       --enable-default-pie \
       --enable-default-ssp \
-      --enable-cet=auto \
+      --enable-gnu-indirect-function \
+      --enable-gnu-unique-object \
+      --enable-install-libiberty \
+      --enable-linker-build-id \
+      --enable-lto \
+      --enable-multilib \
+      --enable-plugin \
+      --enable-shared \
+      --enable-threads=posix \
+      --disable-libssp \
+      --disable-libstdcxx-pch \
+      --disable-libunwind-exceptions \
+      --disable-werror \
       gdc_include_dir=/usr/include/dlang/gdc
 
   make
@@ -317,9 +317,11 @@ package_gcc-ada-dev-git() {
   make DESTDIR="$pkgdir" ada.install-{common,info}
   install -m755 gnat1 "$pkgdir/${_libdir}"
 
+  cd "$srcdir"/gcc-build/$CHOST/libada
+  make DESTDIR=${pkgdir} INSTALL="install" \
+    INSTALL_DATA="install -m644" install-libada
+
   cd "$srcdir"/gcc-build/$CHOST/32/libada
-  #Revision 267034 renamed install-gnatlib to install-libada
-  #https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=267034
   make DESTDIR=${pkgdir} INSTALL="install" \
     INSTALL_DATA="install -m644" install-libada
 
