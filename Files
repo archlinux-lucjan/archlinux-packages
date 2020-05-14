@@ -9,6 +9,8 @@
 │   └── PKGBUILD
 ├── binutils-test-git
 │   └── PKGBUILD
+├── blktrace-git
+│   └── PKGBUILD
 ├── cantata-git
 │   └── PKGBUILD
 ├── clang-git
@@ -534,4 +536,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-181 directories, 353 files
+182 directories, 354 files

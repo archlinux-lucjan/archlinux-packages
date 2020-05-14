@@ -10,6 +10,8 @@
 
 - binutils-test-git
 
+- blktrace-git
+
 - cantata-git
 
 - clang-git
