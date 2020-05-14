@@ -15,7 +15,7 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.31.r95911.30a7953dbf
+pkgver=2.34.50.r101639.7813437494a
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -52,6 +52,7 @@ build() {
     --prefix=/usr \
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
+    --enable-cet \
     --enable-deterministic-archives \
     --enable-gold \
     --enable-ld=default \
