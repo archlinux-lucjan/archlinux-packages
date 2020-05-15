@@ -6,7 +6,7 @@
 pkgbase=mesa-rc-git
 pkgname=('vulkan-mesa-layer-rc-git' 'opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.0.0.r119903.g16c364aaf00
+pkgver=20.1.0.rc3.r123177.gc49fbacd944
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence
              'libxrandr' 'valgrind' 'glslang' 'meson' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=20.0'
+source=('mesa::git+http://anongit.freedesktop.org/git/mesa/mesa.git#branch=20.1'
         "LICENSE")
 options=('!libtool')
 md5sums=('SKIP'
@@ -36,7 +36,7 @@ prepare() {
 build() {
 
   arch-meson mesa build \
-    -D b_lto=false \
+    -D b_lto=true \
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
@@ -69,6 +69,7 @@ build() {
   # Print config
   meson configure build
 
+  ninja -C build xmlpool-pot xmlpool-update-po xmlpool-gmo
   ninja -C build
 
   # fake installation to be seperated into packages
