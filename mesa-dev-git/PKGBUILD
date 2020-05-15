@@ -6,7 +6,7 @@
 pkgbase=mesa-dev-git
 pkgname=('vulkan-mesa-layer-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.1.0.devel.r120333.g8291d728dc9
+pkgver=20.2.0.devel.r123785.gbb3545a6ee4
 pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
@@ -36,7 +36,7 @@ prepare() {
 build() {
 
   arch-meson mesa build \
-    -D b_lto=false \
+    -D b_lto=true \
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
@@ -69,6 +69,7 @@ build() {
   # Print config
   meson configure build
 
+  ninja -C build xmlpool-pot xmlpool-update-po xmlpool-gmo
   ninja -C build
 
   # fake installation to be seperated into packages
