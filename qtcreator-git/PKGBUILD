@@ -8,8 +8,8 @@
 
 pkgname=qtcreator-git
 pkgver=4.11.0.412.gd2d05c584e
-_clangver=9.0.1
-pkgrel=1
+_clangver=10.0.0
+pkgrel=2
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='http://qt-project.org'
