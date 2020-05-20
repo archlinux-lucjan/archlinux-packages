@@ -10,9 +10,6 @@
 ├── binutils-test-git
 │   └── PKGBUILD
 ├── blktrace-git
-│   ├── 0001-blkparse-Handle-cgroup-information.patch
-│   ├── 0002-iowatcher-Use-blktrace_api.h.patch
-│   ├── 0003-iowatcher-Handle-cgroup-information.patch
 │   └── PKGBUILD
 ├── cantata-git
 │   └── PKGBUILD
@@ -538,4 +535,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-182 directories, 356 files
+182 directories, 353 files

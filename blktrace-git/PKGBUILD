@@ -3,8 +3,8 @@
 
 pkgname=blktrace-git
 _pkgname=blktrace
-pkgver=1.2.0.r33.ge81829a
-pkgrel=3
+pkgver=1.2.0.r37.ga021a33
+pkgrel=1
 pkgdesc="Userspace utilities for tracing Linux block layer I/O"
 arch=('x86_64')
 license=('GPL2')
@@ -13,14 +13,8 @@ depends=('libaio')
 makedepends=('git')
 conflicts=('blktrace')
 provides=('blktrace')
-source=("git://git.kernel.org/pub/scm/linux/kernel/git/axboe/blktrace.git"
-        '0001-blkparse-Handle-cgroup-information.patch'
-        '0002-iowatcher-Use-blktrace_api.h.patch'
-        '0003-iowatcher-Handle-cgroup-information.patch')
-sha256sums=('SKIP'
-            '1628685d191e76b130c691e5801708466e6e2393859fad32cff4dff76b788489'
-            'b31a9a1c3b7d9a6c56412218148576888b5ce996e8d7323fd5ea5d274533e978'
-            '397b334b310fb1c964da2e6f1a9d52343039023f0da2f42a380da0137f9227a8')
+source=("git://git.kernel.org/pub/scm/linux/kernel/git/axboe/blktrace.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -29,9 +23,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  patch -p1 -i ../0001-blkparse-Handle-cgroup-information.patch
-  patch -p1 -i ../0002-iowatcher-Use-blktrace_api.h.patch
-  patch -p1 -i ../0003-iowatcher-Handle-cgroup-information.patch
 }
 
 build() {
