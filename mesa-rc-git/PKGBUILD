@@ -6,8 +6,8 @@
 pkgbase=mesa-rc-git
 pkgname=('vulkan-mesa-layer-rc-git' 'opencl-mesa-rc-git' 'mesa-vulkan-intel-rc-git' 'mesa-vulkan-radeon-rc-git' 'libva-mesa-driver-rc-git' 'mesa-vdpau-rc-git' 'mesa-rc-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.1.0.rc3.r123177.gc49fbacd944
-pkgrel=2
+pkgver=20.1.0.rc4.r123200.gd41ccffb63c
+pkgrel=1
 groups=('mesagit')
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -36,7 +36,7 @@ prepare() {
 build() {
 
   arch-meson mesa build \
-    -D b_lto=false \
+    -D b_lto=true \
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
