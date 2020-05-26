@@ -119,7 +119,9 @@
 │   ├── lib32-glibc.conf
 │   ├── locale-gen
 │   ├── locale.gen.txt
-│   └── PKGBUILD
+│   ├── PKGBUILD
+│   ├── sdt-config.h
+│   └── sdt.h
 ├── gnupg-git
 │   ├── install
 │   ├── PKGBUILD
@@ -537,4 +539,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-182 directories, 355 files
+182 directories, 357 files

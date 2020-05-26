@@ -7,41 +7,43 @@
 
 pkgbase=glibc-git
 pkgname=(glibc-git lib32-glibc-git)
-pkgver=2.28.203.gd0a7415979
+pkgver=2.31.44.g3a44844c97
 pkgrel=1
 arch=(x86_64)
-url='http://www.gnu.org/software/libc'
+url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
-makedepends=(git gd lib32-gcc-libs)
+makedepends=(git gd lib32-gcc-libs python)
 options=(!strip staticlibs)
-#source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
-source=(git://sourceware.org/git/glibc.git#branch=release/2.28/master
+source=(git+https://sourceware.org/git/glibc.git#branch=release/2.31/master
         locale.gen.txt
         locale-gen
         lib32-glibc.conf
+        sdt.h sdt-config.h
         bz20338.patch)
 md5sums=('SKIP'
          '07ac979b6ab5eeb778d55f041529d623'
          '476e9113489f93b348b21e144b6a8fcf'
          '6e052f1cb693d5d3203f50f9d4e8c33b'
-         'dc0d3ad59aeaaf591b085a77de6e03e9')
+         '91fec3b7e75510ae2ac42533aa2e695e'
+         '680df504c683640b02ed4a805797c0b2'
+         '430673eccc78e52c249aa4b0f1786450')
 
 pkgver() {
   cd glibc
 
   git describe --long --tags --exclude '*.*.9000' | sed 's/^glibc.//;s/-/./g'
 }
-         
+
 prepare() {
   mkdir -p glibc-build lib32-glibc-build
 
-  [[ -d glibc ]] && ln -s glibc glibc 
+  [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc 
   cd glibc
 
   local i; for i in ${source[@]}; do
     case ${i%::*} in
       *.patch)
-        msg2 "Applying ${i}"
+        echo "  -> Applying ${i}"
         patch -p1 -i "$srcdir/${i}"
         ;;
     esac
@@ -55,11 +57,13 @@ build() {
       --with-bugurl=https://bugs.archlinux.org/
       --enable-add-ons
       --enable-bind-now
+      --enable-cet
       --enable-lock-elision
       --enable-multi-arch
       --enable-stack-protector=strong
       --enable-stackguard-randomization
       --enable-static-pie
+      --enable-systemtap
       --disable-profile
       --disable-werror
   )
@@ -74,10 +78,14 @@ build() {
   # remove fortify for building libraries
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
+  #
+  CFLAGS=${CFLAGS/-fno-plt/}
+  CXXFLAGS=${CXXFLAGS/-fno-plt/}
+  LDFLAGS=${LDFLAGS/,-z,now/}
+
   "$srcdir/glibc/configure" \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
-      --enable-cet \
       ${_configure_flags[@]}
 
   # build libraries with fortify disabled
@@ -90,6 +98,9 @@ build() {
   echo "CC += -D_FORTIFY_SOURCE=2" >> configparms
   echo "CXX += -D_FORTIFY_SOURCE=2" >> configparms
   make
+
+  # build info pages manually for reprducibility
+  make info
 
   cd "$srcdir/lib32-glibc-build"
   export CC="gcc -m32 -mstackrealign"
@@ -124,15 +135,15 @@ build() {
 
 }
 
-# check() {
+#check() {
 #  cd glibc-build
-#
-#  # remove fortify in preparation to run test-suite
-#  sed -i '/FORTIFY/d' configparms
-#
-#  # some failures are "expected"
-#  make check || true
-# }
+
+  # remove fortify in preparation to run test-suite
+  # sed -i '/FORTIFY/d' configparms
+
+  # some failures are "expected"
+  # make check || true
+#}
 
 package_glibc-git() {
   pkgdesc='GNU C Library'
@@ -144,7 +155,6 @@ package_glibc-git() {
   backup=(etc/gai.conf
           etc/locale.gen
           etc/nscd.conf)
-  groups=(base)
 
   install -dm755 "$pkgdir/etc"
   touch "$pkgdir/etc/ld.so.conf"
@@ -184,11 +194,16 @@ package_glibc-git() {
       -not -name 'libthread_db-*.so' \
       -name '*-*.so' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
   fi
+
+  # Provide tracing probes to libstdc++ for exceptions, possibly for other
+  # libraries too. Useful for gdb's catch command.
+  install -Dm644 "$srcdir/sdt.h" "$pkgdir/usr/include/sys/sdt.h"
+  install -Dm644 "$srcdir/sdt-config.h" "$pkgdir/usr/include/sys/sdt-config.h"
 }
 
 package_lib32-glibc-git() {
   pkgdesc='GNU C Library (32-bit)'
-  depends=("glibc=$pkgver")
+  depends=("glibc-git=$pkgver")
   conflicts=('lib32-glibc')
   provides=('lib32-glibc')
 
