@@ -110,7 +110,9 @@
 │   ├── lib32-glibc.conf
 │   ├── locale-gen
 │   ├── locale.gen.txt
-│   └── PKGBUILD
+│   ├── PKGBUILD
+│   ├── sdt-config.h
+│   └── sdt.h
 ├── glibc-git
 │   ├── bz20338.patch
 │   ├── glibc.install
@@ -535,4 +537,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-182 directories, 353 files
+182 directories, 355 files
