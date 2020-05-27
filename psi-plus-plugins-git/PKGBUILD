@@ -8,7 +8,7 @@ _dev_plugins=
 ### Do not edit below this line unless you know what you're doing
 
 pkgname=psi-plus-plugins-git
-pkgver=1.1.219.gd39789c
+pkgver=1.1.315.gd391ffa
 pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('x86_64')
@@ -48,7 +48,7 @@ prepare() {
   git submodule update
 
   # copy to proper path
-  cp -r $srcdir/plugins $srcdir/psi/src/
+  cp -r $srcdir/plugins $srcdir/psi
 }
     
 build() {
