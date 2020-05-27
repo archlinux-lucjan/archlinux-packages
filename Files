@@ -40,6 +40,7 @@
 ├── devtools-git
 │   └── PKGBUILD
 ├── dkms-git
+│   ├── 0001-Revert-Make-newly-installed-modules-available-immedi.patch
 │   ├── dkms.install
 │   ├── hook.install
 │   ├── hook.remove
@@ -539,4 +540,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-182 directories, 357 files
+182 directories, 358 files
