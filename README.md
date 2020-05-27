@@ -304,6 +304,8 @@
 
 - qconf-git
 
+- qogir-icon-theme-git
+
 - qogir-kde-git
 
 - qtcreator-dev-git
