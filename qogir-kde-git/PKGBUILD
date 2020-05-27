@@ -4,7 +4,7 @@ pkgbase=qogir-kde-git
 _pkgbase=Qogir-kde
 pkgname=('qogir-kde-git' 'kvantum-theme-qogir-git')
 pkgver=20200506.r48.g17ff307
-pkgrel=1
+pkgrel=2
 pkgdesc="Qogir theme for KDE Plasma 5"
 arch=('any')
 url="https://github.com/vinceliuice/${_pkgbase}"
@@ -24,11 +24,21 @@ package_qogir-kde-git() {
     provides=('qogir-kde')
     cd ${_pkgbase}
     install -d "${pkgdir}"/usr/share
- 
-    cp -r plasma "${pkgdir}"/usr/share
-    cp -r aurorae "${pkgdir}"/usr/share
-    cp -r color-schemes "${pkgdir}"/usr/share
-    cp -r sddm "${pkgdir}"/usr/share
+
+    mkdir -p ${pkgdir}/usr/share/aurorae
+    cp -r  ${srcdir}/${_pkgbase}/aurorae/themes/ ${pkgdir}/usr/share/aurorae
+
+    mkdir -p ${pkgdir}/usr/share/color-schemes
+    cp -r ${srcdir}/${_pkgbase}/color-schemes ${pkgdir}/usr/share
+
+    mkdir -p ${pkgdir}/usr/share/plasma/desktoptheme/
+    cp -r ${srcdir}/${_pkgbase}/plasma/desktoptheme ${pkgdir}/usr/share/plasma
+
+    mkdir -p ${pkgdir}/usr/share/plasma/look-and-feel/
+    cp -r ${srcdir}/${_pkgbase}/plasma/look-and-feel/ ${pkgdir}/usr/share/plasma
+
+    mkdir -p ${pkgdir}/usr/share/sddm/themes/Qogir
+    cp -r ${srcdir}/${_pkgbase}/sddm/Qogir ${pkgdir}/usr/share/sddm/themes
 }
 
 package_kvantum-theme-qogir-git() {
@@ -39,5 +49,6 @@ package_kvantum-theme-qogir-git() {
     cd ${_pkgbase}
     install -d "${pkgdir}"/usr/share
 
-    cp -r Kvantum "${pkgdir}"/usr/share
+    mkdir -p ${pkgdir}/usr/share/Kvantum/
+    cp -r ${srcdir}/${_pkgbase}/Kvantum ${pkgdir}/usr/share
 }
