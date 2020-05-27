@@ -402,6 +402,8 @@
 │   └── PKGBUILD
 ├── qconf-git
 │   └── PKGBUILD
+├── qogir-kde-git
+│   └── PKGBUILD
 ├── qtcreator-dev-git
 │   └── PKGBUILD
 ├── qtcreator-git
@@ -540,4 +542,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-182 directories, 358 files
+183 directories, 359 files
