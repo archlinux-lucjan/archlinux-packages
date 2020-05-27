@@ -4,7 +4,7 @@ pkgbase=qogir-kde-git
 _pkgbase=Qogir-kde
 pkgname=('qogir-kde-git' 'kvantum-theme-qogir-git')
 pkgver=20200506.r48.g17ff307
-pkgrel=2
+pkgrel=3
 pkgdesc="Qogir theme for KDE Plasma 5"
 arch=('any')
 url="https://github.com/vinceliuice/${_pkgbase}"
@@ -19,8 +19,9 @@ pkgver() {
 }
 
 package_qogir-kde-git() {
-    optdepends=('kvantum-theme-qogir-git: Qogir theme for Kvantum Qt style (recommended)')
-    conflicts=('qogir-kde-')
+    optdepends=('kvantum-theme-qogir-git: Qogir theme for Kvantum Qt style (recommended)'
+                'qogir-icon-theme-git: for a more consistent and beautiful experience (recommended)')
+    conflicts=('qogir-kde')
     provides=('qogir-kde')
     cd ${_pkgbase}
     install -d "${pkgdir}"/usr/share
