@@ -358,6 +358,8 @@
 
 - vault-git
 
+- vimix-icon-theme-git
+
 - vimix-kde-git
 
 - wayland-git

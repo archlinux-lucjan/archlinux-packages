@@ -1,0 +1,29 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=vimix-icon-theme-git
+pkgver=20200512.r55.g9f42f359
+pkgrel=1
+pkgdesc='A colorful design icon theme for linux desktops'
+arch=('any')
+url='https://github.com/vinceliuice/vimix-icon-theme'
+license=('GPL3')
+makedepends=('git')
+provides=('vimix-icon-theme')
+conflicts=('vimix-icon-theme')
+options=('!strip')
+source=('git+https://github.com/vinceliuice/vimix-icon-theme')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd vimix-icon-theme
+  # git describe
+  # git describe --long --tags | sed 's/-/./g'
+  # git show
+  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd vimix-icon-theme
+  mkdir -p "${pkgdir}/usr/share/icons"
+  ./install.sh -d "${pkgdir}/usr/share/icons"
+}

@@ -522,6 +522,8 @@
 │   ├── vault.service
 │   ├── vault.sysusers
 │   └── vault.tmpfiles
+├── vimix-icon-theme-git
+│   └── PKGBUILD
 ├── vimix-kde-git
 │   └── PKGBUILD
 ├── wayland-git
@@ -557,4 +559,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-189 directories, 368 files
+190 directories, 369 files
