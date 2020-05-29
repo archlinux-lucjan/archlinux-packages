@@ -12,6 +12,8 @@
 
 - blktrace-git
 
+- canta-kde-git
+
 - cantata-git
 
 - chromeos-kde-git

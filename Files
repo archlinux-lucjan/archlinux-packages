@@ -11,6 +11,8 @@
 │   └── PKGBUILD
 ├── blktrace-git
 │   └── PKGBUILD
+├── canta-kde-git
+│   └── PKGBUILD
 ├── cantata-git
 │   └── PKGBUILD
 ├── chromeos-kde-git
@@ -559,4 +561,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-190 directories, 369 files
+191 directories, 370 files
