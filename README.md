@@ -198,6 +198,8 @@
 
 - lucjan-keyring-git
 
+- mcmojave-kde-git
+
 - mercurial-hg
 
 - mercurial-stable-hg

@@ -272,6 +272,8 @@
 ├── lucjan-keyring-git
 │   ├── lucjan-keyring.install
 │   └── PKGBUILD
+├── mcmojave-kde-git
+│   └── PKGBUILD
 ├── mercurial-hg
 │   ├── mercurial.profile
 │   └── PKGBUILD
@@ -551,4 +553,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-186 directories, 365 files
+187 directories, 366 files
