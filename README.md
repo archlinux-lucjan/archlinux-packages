@@ -14,6 +14,8 @@
 
 - cantata-git
 
+- chromeos-kde-git
+
 - clang-git
 
 - clean-chroot-manager-git

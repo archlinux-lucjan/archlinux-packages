@@ -13,6 +13,8 @@
 │   └── PKGBUILD
 ├── cantata-git
 │   └── PKGBUILD
+├── chromeos-kde-git
+│   └── PKGBUILD
 ├── clang-git
 │   ├── enable-SSP-and-PIE-by-default.patch
 │   └── PKGBUILD
@@ -547,4 +549,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-184 directories, 363 files
+185 directories, 364 files
