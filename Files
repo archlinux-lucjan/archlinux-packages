@@ -47,6 +47,7 @@
 │   ├── hook.install
 │   ├── hook.remove
 │   ├── hook.sh
+│   ├── hook.upgrade
 │   └── PKGBUILD
 ├── dracut-git
 │   └── PKGBUILD
@@ -546,4 +547,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-184 directories, 362 files
+184 directories, 363 files
