@@ -340,6 +340,8 @@
 
 - systemd-stable-git
 
+- tele-icon-theme-git
+
 - toxcore-git
 
 - toxcore-stable-git
