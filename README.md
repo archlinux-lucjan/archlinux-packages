@@ -356,6 +356,8 @@
 
 - vault-git
 
+- vimix-kde-git
+
 - wayland-git
 
 - wayland-protocols-git

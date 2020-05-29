@@ -1,0 +1,55 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+
+pkgbase=vimix-kde-git
+_pkgbase=vimix-kde
+pkgname=('vimix-kde-git' 'kvantum-theme-vimix-git')
+pkgver=20200425.r35.g8ecc8db
+pkgrel=1
+pkgdesc="vimix theme for KDE Plasma 5"
+arch=('any')
+url="https://github.com/vinceliuice/${_pkgbase}"
+license=('GPL3')
+options=('!strip')
+source=("${_pkgbase}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgbase}
+  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+package_vimix-kde-git() {
+    optdepends=('kvantum-theme-vimix-git: vimix theme for Kvantum Qt style (recommended)'
+                'vimix-icon-theme-git: for a more consistent and beautiful experience (recommended)')
+    conflicts=('vimix-kde')
+    provides=('vimix-kde')
+    cd ${_pkgbase}
+    install -d "${pkgdir}"/usr/share
+
+    rm sddm/{README.md,install.sh}
+    
+    # Temporary fix for upstream filestructure
+    mv aurorae themes
+    mkdir -p aurorae
+    mv themes aurorae/
+    
+    mv sddm themes
+    mkdir -p sddm
+    mv themes sddm/
+
+    cp -r aurorae "$pkgdir"/usr/share
+    cp -r color-schemes "$pkgdir"/usr/share
+    cp -r plasma "$pkgdir"/usr/share
+    cp -r sddm "$pkgdir"/usr/share
+}
+
+package_kvantum-theme-vimix-git() {
+    pkgdesc="vimix theme for Kvantum"
+    depends=('kvantum-qt5')
+    provides=('kvantum-theme-vimix')
+    conflicts=('kvantum-theme-vimix')
+    cd ${_pkgbase}
+    install -d "${pkgdir}"/usr/share
+
+    cp -r Kvantum "$pkgdir"/usr/share
+}
