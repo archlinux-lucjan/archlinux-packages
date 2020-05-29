@@ -200,6 +200,8 @@
 
 - lucjan-keyring-git
 
+- matcha-kde-git
+
 - mcmojave-kde-git
 
 - mercurial-hg
