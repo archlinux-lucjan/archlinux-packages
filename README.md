@@ -126,6 +126,8 @@
 
 - lab-git
 
+- layan-kde-git
+
 - libassuan-git
 
 - libclc-git

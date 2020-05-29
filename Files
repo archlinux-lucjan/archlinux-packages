@@ -189,6 +189,8 @@
 │   └── PKGBUILD
 ├── lab-git
 │   └── PKGBUILD
+├── layan-kde-git
+│   └── PKGBUILD
 ├── libassuan-git
 │   └── PKGBUILD
 ├── libclc-git
@@ -549,4 +551,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-185 directories, 364 files
+186 directories, 365 files
