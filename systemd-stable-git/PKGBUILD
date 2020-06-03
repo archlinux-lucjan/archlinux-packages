@@ -6,7 +6,7 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=245.4.0.g2c4229221c
+pkgver=245.6.0.gaa0cb635f1
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -15,7 +15,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion' 'p11-kit')
+             'bash-completion' 'p11-kit' 'systemd')
 options=('strip')
 source=('git+https://github.com/systemd/systemd-stable#branch=v245-stable'
         'git+https://github.com/systemd/systemd'
@@ -44,7 +44,7 @@ sha512sums=('SKIP'
             'e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4'
             '85d11bbbb5c10016e4a67eec051315e2e292939844f260bf698018c5bd1c516c28444f635eb15832a23e26891c4beda14bacfa57fdeda45c00f1b653abe3b123'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '01de24951a05d38eca6b615a7645beb3677ca0e0f87638d133649f6dc14dcd2ea82594a60b793c31b14493a286d1d11a0d25617f54dbfa02be237652c8faa691'
+            'bc16cd288fa4fe8f8d2d4ba7a3198f942626af08330e4d1656ee38c408b23bb532a1955a1327ec367ae35161e3cc1f336d9285fb9c7d4322f2865451fb9b8961'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -85,7 +85,7 @@ prepare() {
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
-  
+
   # Make homed/userdbd/repart services installable (to allow uninstalling)
   patch -Np1 -i ../0002-make-homed-userdbd-repart-services-installable.patch
 }
@@ -143,9 +143,12 @@ build() {
 package_systemd-stable-git() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'systemd-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
-           'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit' 'libp11-kit')
+  depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
+           'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwids' 'libcap' 'libcap.so'
+           'libgcrypt' 'systemd-libs' 'libidn2' 'libidn2.so' 'lz4' 'pam'
+           'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
+           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
+           'libp11-kit.so')
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" )
   conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: remote journald capabilities'
