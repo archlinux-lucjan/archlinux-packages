@@ -131,9 +131,10 @@
 │   ├── sdt-config.h
 │   └── sdt.h
 ├── gnupg-git
+│   ├── avoid-beta-warning.patch
+│   ├── drop-import-clean.patch
 │   ├── install
-│   ├── PKGBUILD
-│   └── self-sigs-only.patch
+│   └── PKGBUILD
 ├── gpgme-git
 │   └── PKGBUILD
 ├── grub-git
@@ -563,4 +564,4 @@
 └── yakuake-git
     └── PKGBUILD
 
-192 directories, 371 files
+192 directories, 372 files

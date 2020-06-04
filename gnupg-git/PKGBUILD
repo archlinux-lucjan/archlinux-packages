@@ -5,7 +5,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-git
-pkgver=2.2.7.766.g70cb02c05
+pkgver=2.2.7.974.g074ab108e
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
@@ -19,9 +19,11 @@ optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
 source=('git://git.gnupg.org/gnupg.git'
-        'self-sigs-only.patch')
+        'drop-import-clean.patch'
+        'avoid-beta-warning.patch')
 sha1sums=('SKIP'
-          '1c161b370a8e2e30fae35eb06a1360168231d962')
+          'dfb6aeaa84ee76ab9f5383a9fd61e816caf65fdb'
+          '9dbb09a7446408447cd2b3ea9ad48bf7058ab67a')
 
 install=install
 
@@ -36,9 +38,10 @@ pkgver() {
 
 prepare() {
 	cd gnupg
-        ./autogen.sh
-        sed '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' -i tools/Makefile.in
-	patch -R -p1 -i ../self-sigs-only.patch
+	patch -p1 -i ../avoid-beta-warning.patch
+	patch -p1 -i ../drop-import-clean.patch
+
+	./autogen.sh
 }
 
 build() {
