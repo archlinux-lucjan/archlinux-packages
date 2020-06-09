@@ -7,7 +7,7 @@
 pkgname=ktorrent-git
 _pkgname=ktorrent
 pkgver=5.1.2.92.g052d7123
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful BitTorrent client for KDE"
 arch=('x86_64')
 url='https://www.kde.org/applications/internet/ktorrent/'
@@ -21,24 +21,17 @@ provides=('ktorrent')
 source=('git://anongit.kde.org/ktorrent')
 sha1sums=('SKIP')
 
-prepare() {
-  mkdir -p build
-}
-
 pkgver() {
   cd $_pkgname
   git describe  --long | sed 's/^v//;s/-/./g'
 }
 
-
 build() {
-  cd build
-  cmake ../$_pkgname \
+  cmake -B build -S $_pkgname \
 	 -DWITH_SYSTEM_GEOIP=ON
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
