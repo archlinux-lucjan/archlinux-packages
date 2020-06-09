@@ -4,7 +4,7 @@
 pkgname=kvantum-qt5-git
 _gitname=Kvantum
 pkgver=0.13.0.r5.gf7fb0ca
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG-based theme engine for Qt5 (including config tool and extra themes)"
 arch=('x86_64')
 url="https://github.com/tsujan/Kvantum"
@@ -31,6 +31,4 @@ build() {
 
 package() {
    make -C build DESTDIR="${pkgdir}" install
-   # KDE4 is long dead
-   rm -r "${pkgdir}"/usr/share/kde4   
 }
