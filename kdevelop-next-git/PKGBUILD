@@ -8,7 +8,7 @@
 
 pkgname=kdevelop-next-git
 pkgver=5.4.6.0.g977a688ac4
-pkgrel=2
+pkgrel=3
 _clangver=10.0.0
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('x86_64')
@@ -41,18 +41,12 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../kdevelop \
+  cmake -B build -S kdevelop \
         -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
