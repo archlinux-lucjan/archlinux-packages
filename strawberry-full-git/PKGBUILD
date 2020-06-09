@@ -3,7 +3,7 @@
 
 pkgname=strawberry-full-git
 _pkgname=strawberry
-pkgver=0.3.1.29.g36563cd
+pkgver=0.6.12.4.g9a5f6c7b
 pkgrel=1
 pkgdesc="Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer, xine and vlc engines"
 arch=('x86_64')
@@ -25,19 +25,12 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  install -d strawberry-build
-}
-
 build() {
-  cd "${srcdir}/${_pkgname}/strawberry-build"
-  cmake .. \
+  cmake -B build -S $_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/strawberry-build"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
