@@ -22,13 +22,6 @@ pkgver() {
   git describe --long | sed 's/^v//;s/-/./g'
 }
 
-pkgver() {
-  cd kdesvn
-  #_ver="$(cat CMakeLists.txt | grep -m3 -e KDESVN_VERSION_MAJOR -e KDESVN_VERSION_MINOR -e KDESVN_VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
-  #echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-  git describe --long | sed 's/^v//;s/-/./g'
-}
-
 build() {
   cmake -B build -S kdesvn \
    -DCMAKE_INSTALL_PREFIX=/usr \
