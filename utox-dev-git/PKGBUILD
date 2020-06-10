@@ -32,6 +32,7 @@ pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/-/./g'
 }
+
 build() {
   cmake -B build -S $_pkgname -DCMAKE_INSTALL_PREFIX="/usr"
   cmake --build build
