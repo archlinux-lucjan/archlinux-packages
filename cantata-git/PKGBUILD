@@ -1,8 +1,8 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=cantata-git
-pkgver=2.2.0.54.g478e5c95
-pkgrel=1
+pkgver=2.3.1.18.g650f05430
+pkgrel=2
 pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
 arch=(x86_64)
 url="https://github.com/cdrummond/cantata"
@@ -20,23 +20,15 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-    if [[ -d build ]]; then
-        rm -rf build
-    fi
-        mkdir build
-}
-
 build() {
     cd build
-    cmake ../${pkgname} \
+    cmake -B build -S $pkgname \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DENABLE_TOUCH_SUPPORT=ON
-  make
+    cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
