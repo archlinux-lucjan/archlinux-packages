@@ -1,18 +1,19 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Madotsuki <madotsuki at cock dot li>
 
 _pkgname=utox
-_branch=develop
-pkgname=$_pkgname-git
-pkgver=0.15.0.r204.g257029d8
+_branch=master
+pkgname=utox-git
+pkgver=0.16.1.0.gb9f10540
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/uTox/uTox'
 license=('GPL3')
 depends=('fontconfig'
-         'libfilteraudio-git'
+         'libfilteraudio'
          'hicolor-icon-theme'
          'libdbus'
          'libxext'
@@ -22,23 +23,25 @@ depends=('fontconfig'
          'v4l-utils')
 makedepends=('check' 'git')
 optdepends=('gtk3: GTK file picker')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$pkgname::git+$url#branch=$_branch")
+provides=("utox")
+conflicts=("utox")
+source=("$_pkgname::git+https://github.com/uTox/uTox#branch=$_branch")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
+pkgver() {
+  cd $_pkgname
+  git describe --long --tags | sed 's/^v//;s/-/./g'
+}
 build() {
-  cd "$pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+  cmake -B build -S $_pkgname -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake --build build
 }
 
 package() {
-  cd "$pkgname"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
