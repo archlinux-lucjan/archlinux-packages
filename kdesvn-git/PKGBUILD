@@ -3,7 +3,7 @@
 
 pkgname=kdesvn-git
 pkgver=2.0.0.226.g6230f6bd
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure C++ SVN-client for KDE. (GIT Version)"
 arch=('x86_64')
 url='http://projects.kde.org/kdesvn'
@@ -15,6 +15,12 @@ provides=('kdesvn')
 source=('git://anongit.kde.org/kdesvn.git')
 sha1sums=('SKIP')
 
+pkgver() {
+  cd kdesvn
+  #_ver="$(cat CMakeLists.txt | grep -m3 -e KDESVN_VERSION_MAJOR -e KDESVN_VERSION_MINOR -e KDESVN_VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+  #echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/-/./g'
+}
 
 pkgver() {
   cd kdesvn
@@ -23,20 +29,15 @@ pkgver() {
   git describe --long | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../kdesvn \
+  cmake -B build -S kdesvn \
    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS="-DQT_THREAD_SUPPORT" \
     -DLIB_SUFFIX=
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
