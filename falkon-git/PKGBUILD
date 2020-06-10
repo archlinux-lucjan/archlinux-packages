@@ -5,7 +5,7 @@
 pkgname=falkon-git
 _pkgname=falkon
 pkgver=3.1.0.107.gfcfdc340
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Qt Web Browser"
 arch=('x86_64')
 url="http://www.qupzilla.com"
@@ -23,18 +23,12 @@ pkgver() {
   git describe --long | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../$_pkgname \
+  cmake -B build -S $_pkgname \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
