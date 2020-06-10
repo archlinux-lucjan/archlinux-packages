@@ -6,14 +6,14 @@
 _pkgname=utox
 _branch=develop
 pkgname=utox-dev-git
-pkgver=0.16.1.137.g9f8486e3
-pkgrel=1
+pkgver=0.16.1.33.gaf88a7b5
+pkgrel=2
 pkgdesc='Lightweight Tox client'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/uTox/uTox'
 license=('GPL3')
 depends=('fontconfig'
-         'libfilteraudio-git'
+         'libfilteraudio'
          'hicolor-icon-theme'
          'libdbus'
          'libxext'
@@ -25,26 +25,18 @@ makedepends=('check' 'git')
 optdepends=('gtk3: GTK file picker')
 provides=("utox")
 conflicts=("utox")
-source=("$_pkgname::git+https://github.com/uTox/uTox#branch=$_branch")
+source=("$_pkgname::git+https://github.com/uTox/uTox#commit=af88a7b565")
 md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/-/./g'
 }
-
-prepare() {
-  cd $_pkgname
-  install -d build
-}
-
 build() {
-  cd $_pkgname/build
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
-  make $MAKEFLAGS
+  cmake -B build -S $_pkgname -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake --build build
 }
 
 package() {
-  cd $_pkgname/build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
