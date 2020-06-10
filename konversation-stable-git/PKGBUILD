@@ -2,10 +2,10 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=konversation-stable-git
-pkgver=1.7.4.3.g20018b3d
-pkgrel=1
+pkgver=1.7.5.7.g6d896b4e
+pkgrel=2
 pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='http://konversation.kde.org'
 license=('GPL2' 'FDL')
 makedepends=('git'
@@ -32,22 +32,15 @@ pkgver() {
   git describe  --long | sed 's/^v//;s/-/./g'
 }
 
-
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../konversation \
+  cmake -B build -S konversation \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
