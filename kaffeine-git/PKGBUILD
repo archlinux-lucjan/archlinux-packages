@@ -5,7 +5,7 @@
 
 pkgname=kaffeine-git
 pkgver=2.0.18.19.g4e9c817
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE media player'
 license=('GPL')
 arch=('x86_64')
@@ -22,19 +22,13 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../kaffeine \
+  cmake -B build -S kaffeine \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
