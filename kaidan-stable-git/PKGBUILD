@@ -21,11 +21,6 @@ pkgver() {
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir/kaidan"
-  mkdir -p build
-}
-
 build() {
   cmake -B build -S kaidan \
     -DI18N=ON
