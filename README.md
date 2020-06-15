@@ -102,6 +102,8 @@
 
 - kdevelop-next-git
 
+- kdiff-git
+
 - kdiff3-git
 
 - kmod-git

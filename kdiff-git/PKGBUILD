@@ -1,0 +1,35 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Konstantinos Foutzopoulos <mail@konfou.xyz>
+
+_pkgname=kdiff
+pkgname=${_pkgname}-git
+pkgver=20181121.r16.g8cc05c1
+pkgrel=2
+pkgdesc="Graphical difference viewer for the KDE platform. (GIT version)"
+arch=('x86_64')
+url="https://github.com/jsalatas/kdiff"
+license=('GPL' 'LGPL')
+depends=('ktexteditor')
+makedepends=('extra-cmake-modules' 'git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://github.com/jsalatas/${_pkgname}.git")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -B build -S $_pkgname \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
