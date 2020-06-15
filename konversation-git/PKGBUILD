@@ -2,8 +2,8 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=konversation-git
-pkgver=1.7.5.110.gf29a1525
-pkgrel=2
+pkgver=1.7.5.209.g20a411c9
+pkgrel=1
 pkgdesc="A user friendly IRC client for KDE. (GIT Version)"
 arch=('x86_64')
 url='http://konversation.kde.org'
@@ -22,7 +22,7 @@ depends=('knotifyconfig'
 optdepends=('python: python scripting support')
 conflicts=('konversation')
 provides=('konversation')
-source=('git://anongit.kde.org/konversation')
+source=('git+https://anongit.kde.org/konversation')
 sha1sums=('SKIP')
 
 pkgver() {
@@ -34,9 +34,6 @@ pkgver() {
 
 build() {
   cmake -B build -S konversation \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
