@@ -4,8 +4,8 @@
 
 pkgname=falkon-git
 _pkgname=falkon
-pkgver=3.1.0.107.gfcfdc340
-pkgrel=2
+pkgver=3.1.0.190.g4920e3fa
+pkgrel=1
 pkgdesc="Cross-platform Qt Web Browser"
 arch=('x86_64')
 url="http://www.qupzilla.com"
@@ -15,7 +15,7 @@ makedepends=('extra-cmake-modules' 'qt5-tools' 'kio' 'purpose' 'libgnome-keyring
 optdepends=('kio: KDE integration' 'purpose: KDE integration' 'libgnome-keyring: gnome keyring integration')
 conflicts=('qupzilla' 'qupzilla-git' 'falkon')
 replaces=('qupzilla')
-source=("git://anongit.kde.org/falkon.git")
+source=("git+https://anongit.kde.org/falkon.git")
 sha256sums=(SKIP)
 
 pkgver() {
