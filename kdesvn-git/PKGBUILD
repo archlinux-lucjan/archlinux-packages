@@ -2,8 +2,8 @@
 # Contributor: João Silva <mwksoul@gmail.com>
 
 pkgname=kdesvn-git
-pkgver=2.0.0.226.g6230f6bd
-pkgrel=2
+pkgver=2.0.0.258.g1f91ab91
+pkgrel=1
 pkgdesc="A pure C++ SVN-client for KDE. (GIT Version)"
 arch=('x86_64')
 url='http://projects.kde.org/kdesvn'
@@ -12,7 +12,7 @@ depends=('subversion' 'kcoreaddons' 'kdoctools' 'kio' 'knotifications' 'kparts' 
 makedepends=('extra-cmake-modules' 'git')
 conflicts=('kdesvn')
 provides=('kdesvn')
-source=('git://anongit.kde.org/kdesvn.git')
+source=('git+https://anongit.kde.org/kdesvn.git')
 sha1sums=('SKIP')
 
 pkgver() {
