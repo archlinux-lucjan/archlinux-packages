@@ -3,7 +3,7 @@
 
 pkgname=krusader-dev-git
 pkgver=2.8.0.dev.r5924.g4f9edb98
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
 url='http://www.krusader.org'
@@ -30,7 +30,7 @@ optdepends=('xz: LZMA and XZ archive support'
             'ktexteditor: file editing support')
 provides=('krusader')
 conflicts=('krusader')
-source=('git://anongit.kde.org/krusader#branch=synchronizer/rework')
+source=('git+https://anongit.kde.org/krusader#branch=synchronizer/rework')
 sha1sums=('SKIP')
 
 pkgver() {
