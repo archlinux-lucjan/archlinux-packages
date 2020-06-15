@@ -388,8 +388,6 @@
 
 - xorgproto-git
 
-- yakuake-git
-
 # Download:
 
 ```

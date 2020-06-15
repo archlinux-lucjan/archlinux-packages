@@ -555,13 +555,11 @@
 │   ├── xorg-server-git.install
 │   ├── xvfb-run
 │   └── xvfb-run.1
-├── xorg-xserver-next-git
-│   ├── PKGBUILD
-│   ├── xorg-server-git.install
-│   ├── xserver-autobind-hotplug.patch
-│   ├── xvfb-run
-│   └── xvfb-run.1
-└── yakuake-git
-    └── PKGBUILD
+└── xorg-xserver-next-git
+    ├── PKGBUILD
+    ├── xorg-server-git.install
+    ├── xserver-autobind-hotplug.patch
+    ├── xvfb-run
+    └── xvfb-run.1
 
-192 directories, 372 files
+191 directories, 371 files
