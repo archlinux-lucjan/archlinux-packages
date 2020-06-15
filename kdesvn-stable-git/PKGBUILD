@@ -3,7 +3,7 @@
 
 pkgname=kdesvn-stable-git
 pkgver=2.0.0.11.gf81a2468
-pkgrel=2
+pkgrel=3
 pkgdesc="A pure C++ SVN-client for KDE. (GIT Version)"
 arch=('x86_64')
 url='http://projects.kde.org/kdesvn'
@@ -12,7 +12,7 @@ depends=('subversion' 'kcoreaddons' 'kdoctools' 'kio' 'knotifications' 'kparts' 
 makedepends=('extra-cmake-modules' 'git')
 conflicts=('kdesvn')
 provides=('kdesvn')
-source=('git://anongit.kde.org/kdesvn.git#branch=2.0')
+source=('git+https://anongit.kde.org/kdesvn.git#branch=2.0')
 sha1sums=('SKIP')
 
 pkgver() {
