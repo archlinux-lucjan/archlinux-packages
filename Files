@@ -167,6 +167,8 @@
 │   └── PKGBUILD
 ├── kdiff-git
 │   └── PKGBUILD
+├── kgtk-git
+│   └── PKGBUILD
 ├── kmod-git
 │   ├── depmod.hook
 │   ├── depmod.script
@@ -564,4 +566,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-192 directories, 372 files
+193 directories, 373 files

@@ -106,6 +106,8 @@
 
 - kdiff3-git
 
+- kgtk-git
+
 - kmod-git
 
 - konversation-git
