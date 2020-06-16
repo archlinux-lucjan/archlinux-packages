@@ -106,7 +106,7 @@
 
 - kdiff3-git
 
-- kgtk-git
+- kgtk-kf5-git
 
 - kmod-git
 
