@@ -312,8 +312,7 @@
 │   ├── 0003-alpm-hooks-should-use-Type-Path-not-File.patch
 │   └── PKGBUILD
 ├── modemmanager-git
-│   ├── PKGBUILD
-│   └── strict-filter.diff
+│   └── PKGBUILD
 ├── modemmanager-stable-git
 │   ├── PKGBUILD
 │   └── strict-filter.diff
@@ -566,4 +565,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-193 directories, 373 files
+193 directories, 372 files

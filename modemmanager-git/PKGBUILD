@@ -4,18 +4,16 @@
 
 pkgbase=modemmanager-git
 pkgname=(modemmanager-git libmm-glib-git)
-pkgver=1.12.0.1.g0c554aec
+pkgver=1.14.0.3.g408e9f32
 pkgrel=1
 pkgdesc="Mobile broadband modem management service"
 arch=(x86_64)
 url="http://www.freedesktop.org/wiki/Software/ModemManager/"
 license=(GPL2 LGPL2.1)
 depends=(systemd libgudev polkit ppp libqmi libmbim)
-makedepends=(intltool gtk-doc gobject-introspection vala)
-source=(git://anongit.freedesktop.org/ModemManager/ModemManager
-        strict-filter.diff)
-sha256sums=('SKIP'
-            '0602cc5088b193426c3af3d6ce14a7fd6502b06f77982dc56291d834280f311e')
+makedepends=(intltool gtk-doc gobject-introspection autoconf-archive vala git)
+source=(git://anongit.freedesktop.org/ModemManager/ModemManager)
+sha256sums=('SKIP')
 
 pkgver() {
   cd ModemManager
@@ -25,10 +23,6 @@ pkgver() {
 
 prepare() {
   cd ModemManager
-
-  # Recommended by upstream
-  git apply -3 ../strict-filter.diff
-
   NOCONFIGURE=1 ./autogen.sh
 
 }
@@ -45,6 +39,7 @@ build() {
     --with-polkit=permissive \
     --with-systemd-journal \
     --with-systemd-suspend-resume \
+    --enable-compile-warnings=yes \
     --enable-gtk-doc \
     --disable-static
 
@@ -60,7 +55,8 @@ build() {
 #}
 
 package_modemmanager-git() {
-  depends+=(libmm-glib)
+  depends+=(libmm-glib.so libg{lib,object,io,module}-2.0.so libsystemd.so libgudev-1.0.so
+            libqmi-glib.so libmbim-glib.so)
   optdepends=('usb_modeswitch: install if your modem shows up as a storage drive')
   options=(!emptydirs)
   conflicts=('modemmanager')
@@ -78,9 +74,9 @@ package_modemmanager-git() {
 
 package_libmm-glib-git() {
   pkgdesc="ModemManager library"
-  depends=(glib2)
+  depends=(libg{lib,object,io}-2.0.so)
   conflicts=('libmm-glib')
-  provides=('libmm-glib')
+  provides=('libmm-glib' 'libmm-glib.so')
 
   install -d "$pkgdir/usr/lib"
   mv include "$pkgdir/usr"
