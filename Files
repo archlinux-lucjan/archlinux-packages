@@ -317,8 +317,7 @@
 │   ├── PKGBUILD
 │   └── strict-filter.diff
 ├── modemmanager-test-git
-│   ├── PKGBUILD
-│   └── strict-filter.diff
+│   └── PKGBUILD
 ├── modprobed-db-git
 │   ├── PKGBUILD
 │   └── readme.install
@@ -565,4 +564,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-193 directories, 372 files
+193 directories, 371 files
