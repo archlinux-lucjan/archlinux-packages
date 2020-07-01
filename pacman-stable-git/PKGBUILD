@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-stable-git
-pkgver=5.2.1.0.gf6564377
+pkgver=5.2.2.0.g5537881b
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('x86_64')
@@ -22,22 +22,15 @@ provides=("pacman=$pkgver" 'libalpm.so')
 conflicts=('pacman')
 options=('!libtool' '!strip')
 source=(git://git.archlinux.org/pacman.git#branch=release/5.2.x
-        pacman-5.2.1-fix-pactest-package-tar-format.patch::https://git.archlinux.org/pacman.git/patch/?id=b9faf652735c603d1bdf849a570185eb721f11c1
         pacman.conf
         makepkg.conf)
 sha1sums=('SKIP'
-          '848749176a1a89a7f68c70de5779f7546529a1b5'
           'a9306b6da1f490c5ebebc4ae8661fb5800558b4c'
-          'f539bf108a977a7c9875480d4c4ba3ca95070326')
+          'efa94cc2b0c635bb21b8d1281a5567247716a621')
 
 pkgver() {
   cd pacman
   git describe --long | sed 's/^v//;s/-/./g'
-}
-
-prepare() {
-  cd pacman
-  patch -Np1 < ../pacman-5.2.1-fix-pactest-package-tar-format.patch
 }
 
 local _meson_options=(
