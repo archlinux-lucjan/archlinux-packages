@@ -1,0 +1,25 @@
+From 55c7d52b340670d4afb2bd1c51574674521f233e Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Mon, 6 Jul 2020 20:33:48 +0200
+Subject: [PATCH] Add zstd compression supoort for initramfs
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ mkinitcpio.conf | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mkinitcpio.conf b/mkinitcpio.conf
+index b926b90..ba1cce3 100644
+--- a/mkinitcpio.conf
++++ b/mkinitcpio.conf
+@@ -60,6 +60,7 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
+ #COMPRESSION="xz"
+ #COMPRESSION="lzop"
+ #COMPRESSION="lz4"
++#COMPRESSION="zstd"
+ 
+ # COMPRESSION_OPTIONS
+ # Additional options for the compressor
+-- 
+2.27.0.203.gf402ea6816
+

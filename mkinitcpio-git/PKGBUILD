@@ -5,7 +5,7 @@
 
 pkgname=mkinitcpio-git
 pkgver=27.r0.g7f81f51
-pkgrel=4
+pkgrel=5
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
 url='http://www.archlinux.org/'
@@ -23,11 +23,13 @@ backup=('etc/mkinitcpio.conf')
 source=('git://projects.archlinux.org/mkinitcpio.git'
         '0001-mkinitcpio-remove-preset-pacsave.patch'
         '0002-mkinitcpio-fix-builtin.patch'
-        '0003-alpm-hooks-should-use-Type-Path-not-File.patch')
+        '0003-alpm-hooks-should-use-Type-Path-not-File.patch'
+        '0004-Add-zstd-compression-supoort-for-initramfs.patch')
 sha256sums=('SKIP'
             '845569fa760f70c868ecb3dc8ae9667287970526dddaf403fdafcb716e8b3d51'
             'd097f3df15ba9fefd3771f9f784e1c31c8d5ff1d9d6885a46fc6b5188e419796'
-            '63fd0c170b8b56977a68127213bd62e83d746865f064769c1b8fb813e139541a')
+            '63fd0c170b8b56977a68127213bd62e83d746865f064769c1b8fb813e139541a'
+            '14e4674754df515c99999625331706ec66495d08342119dce04d765de9f961a5')
 
 pkgver() {
 	cd mkinitcpio/
@@ -43,12 +45,15 @@ prepare() {
          cd mkinitcpio/
          # Apply 0001-mkinitcpio-remove-preset-pacsave.patch
          patch -Np1 < $srcdir/0001-mkinitcpio-remove-preset-pacsave.patch
-         
+
          # Apply 0002-mkinitcpio-fix-builtin.patch
          patch -Np1 < $srcdir/0002-mkinitcpio-fix-builtin.patch
-         
-         # 0003-alpm-hooks-should-use-Type-Path-not-File.patch
+
+         # Apply 0003-alpm-hooks-should-use-Type-Path-not-File.patch
          patch -Np1 < $srcdir/0003-alpm-hooks-should-use-Type-Path-not-File.patch
+
+         # Apply 0004-Add-zstd-compression-supoort-for-initramfs.patch
+        patch -Np1 < $srcdir/0004-Add-zstd-compression-supoort-for-initramfs.patch
          
 }
 
