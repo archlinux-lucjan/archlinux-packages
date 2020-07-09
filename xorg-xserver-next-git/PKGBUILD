@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="http://cgit.freedesktop.org/xorg/xserver/"
-makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
+makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans'
              'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
