@@ -6,8 +6,8 @@
 pkgbase=xorg-xserver-next-git
 _pkgbase=xserver
 pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-xwayland-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
-pkgver=1.20.6.6.g87ca1bdf6
-pkgrel=2
+pkgver=1.20.8.4.gfc297c87d
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -194,6 +194,7 @@ package_xorg-server-devel-next-git() {
 
   _install fakeinstall/usr/include/xorg/*
   _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
+  #_install fakeinstall/usr/lib/pkgconfig/xwayland.pc
   _install fakeinstall/usr/share/aclocal/xorg-server.m4
 
   # license
