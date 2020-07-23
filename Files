@@ -98,7 +98,6 @@
 │   ├── 0001-Update-requirements.patch
 │   └── PKGBUILD
 ├── git-main-git
-│   ├── 0001-git-p4-python.patch
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
 │   ├── git-git.install
@@ -565,4 +564,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-193 directories, 372 files
+193 directories, 371 files
