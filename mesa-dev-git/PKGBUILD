@@ -7,7 +7,7 @@ pkgbase=mesa-dev-git
 pkgname=('vulkan-mesa-layers-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=20.2.0.devel.r124190.g045267d1e62
-pkgrel=2
+pkgrel=3
 groups=('mesagit')
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -40,7 +40,7 @@ build() {
     -D b_ndebug=true \
     -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
-    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris \
+    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris,zink \
     -D vulkan-drivers=amd,intel \
     -D vulkan-overlay-layer=true \
     -D vulkan-device-select-layer=true \
