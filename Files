@@ -141,6 +141,7 @@
 ├── grub-git
 │   ├── 0003-10_linux-detect-archlinux-initramfs.patch
 │   ├── 0004-add-GRUB_COLOR_variables.patch
+│   ├── 0005-grub-install-fix-inverted-test-for-NLS-enabled-when-.patch
 │   ├── grub.default
 │   ├── grub.install
 │   └── PKGBUILD
@@ -563,4 +564,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-193 directories, 370 files
+193 directories, 371 files
