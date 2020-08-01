@@ -9,8 +9,8 @@
 # This PKGBUILD is based on the official Arch cmake package.
 
 pkgname=cmake-release-git
-pkgver=3.18.0.0.gd421274e3e
-pkgrel=2
+pkgver=3.18.1.0.g63a65baf4c
+pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="http://www.cmake.org/"
@@ -22,11 +22,9 @@ makedepends=('qt5-base' 'python-sphinx' 'git' 'ncurses' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 source=('git+https://gitlab.kitware.com/cmake/cmake.git#branch=release'
-        'cmake-cppflags.patch'
-        'cmake-crash-qt5.15.patch'::"https://gitlab.kitware.com/cmake/cmake/-/commit/4b1c6f90.patch")
+        'cmake-cppflags.patch')
 md5sums=('SKIP'
-         'd7316e540d07e0a7ebce75951a7b2697'
-         '29c78de2728d9595306de1b4b6a2b0b8')
+         'd7316e540d07e0a7ebce75951a7b2697')
 #shortver=$(printf "${pkgver}" | sed 's/\([0-9]\+\.[0-9]\+\)\..*/\1/')
 
 pkgver() {
@@ -37,7 +35,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/cmake"
     patch -p1 -i ../cmake-cppflags.patch # Honor CPPFLAGS https://gitlab.kitware.com/cmake/cmake/issues/12928
-    patch -p1 -i ../cmake-crash-qt5.15.patch # Fix crash with Qt 5.15
 }
 
 build() {
