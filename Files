@@ -482,7 +482,6 @@
 │   └── systemd-user.pam
 ├── systemd-stable-git
 │   ├── 0001-Use-Arch-Linux-device-access-groups.patch
-│   ├── 0002-make-homed-userdbd-repart-services-installable.patch
 │   ├── 20-systemd-sysusers.hook
 │   ├── 30-systemd-binfmt.hook
 │   ├── 30-systemd-catalog.hook
@@ -564,4 +563,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-193 directories, 371 files
+193 directories, 370 files
