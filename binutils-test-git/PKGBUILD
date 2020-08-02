@@ -15,7 +15,7 @@
 
 pkgname=binutils-test-git
 _pkgname=binutils-gdb
-pkgver=2.34.0.r100253.5dfc0c955db
+pkgver=2.35.0.r102413.4d9145534f0
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ checkdepends=('dejagnu' 'bc')
 provides=('binutils')
 conflicts=('binutils-multilib' 'binutils')
 options=('staticlibs' '!distcc' '!ccache')
-source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_34-branch)
+source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_35-branch)
 md5sums=('SKIP')
 
 pkgver() {
