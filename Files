@@ -1,6 +1,4 @@
 .
-├── antimicrox-git
-│   └── PKGBUILD
 ├── auracle-git
 │   └── PKGBUILD
 ├── bat-polaur-git
@@ -567,4 +565,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-193 directories, 374 files
+192 directories, 373 files

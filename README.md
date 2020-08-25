@@ -1,7 +1,5 @@
 # Collection of PKGBUILDS for Ach Linux:
 
-- antimicrox-git
-
 - auracle-git
 
 - bat-polaur-git
