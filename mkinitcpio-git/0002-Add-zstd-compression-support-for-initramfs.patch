@@ -1,7 +1,7 @@
-From ae888b39e171f38468309ad6e310da6a8e03761a Mon Sep 17 00:00:00 2001
+From af3d0387b8d9d2c95c3a76687c647fe29d5e1639 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 26 Aug 2020 22:41:29 +0200
-Subject: [PATCH] Add zstd compression supoort for initramfs
+Subject: [PATCH] Add zstd compression support for initramfs
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---

@@ -24,10 +24,10 @@ conflicts=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
 source=('git://projects.archlinux.org/mkinitcpio.git'
         '0001-alpm-hooks-should-use-Type-Path-not-File.patch'
-        '0002-Add-zstd-compression-supoort-for-initramfs.patch')
+        '0002-Add-zstd-compression-support-for-initramfs.patch')
 sha256sums=('SKIP'
             '63fd0c170b8b56977a68127213bd62e83d746865f064769c1b8fb813e139541a'
-            'c5ab289f0fb409b1344913bc458ad522efe665e5eb97173b465043c4d960848b')
+            '6d2cf4d188ae4e16510ea1b58baf21269f8572282441e61a474f43b1823b5723')
 
 pkgver() {
   cd mkinitcpio
@@ -39,8 +39,8 @@ prepare() {
   # Apply 0001-alpm-hooks-should-use-Type-Path-not-File.patch
   patch -Np1 < $srcdir/0001-alpm-hooks-should-use-Type-Path-not-File.patch
 
-  # Apply 0002-Add-zstd-compression-supoort-for-initramfs.patch
-  patch -Np1 < $srcdir/0002-Add-zstd-compression-supoort-for-initramfs.patch
+  # Apply 0002-Add-zstd-compression-support-for-initramfs.patch
+  patch -Np1 < $srcdir/0002-Add-zstd-compression-support-for-initramfs.patch
 }
 
 check() {
