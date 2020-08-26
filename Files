@@ -308,7 +308,7 @@
 │   └── skip-test.diff
 ├── mkinitcpio-git
 │   ├── 0001-alpm-hooks-should-use-Type-Path-not-File.patch
-│   ├── 0002-Add-zstd-compression-supoort-for-initramfs.patch
+│   ├── 0002-Add-zstd-compression-support-for-initramfs.patch
 │   └── PKGBUILD
 ├── modemmanager-git
 │   └── PKGBUILD
