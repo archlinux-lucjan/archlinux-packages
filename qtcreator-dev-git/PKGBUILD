@@ -7,15 +7,15 @@
 # Contributor: delor <bartekpiech gmail com>
 
 pkgname=qtcreator-dev-git
-pkgver=4.12.4.0.g88b9ef5c5b
+pkgver=4.13.0.62.g831a709857
 _clangver=10.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='http://qt-project.org'
 license=('LGPL')
 depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' "clang=$_clangver" 'qbs' 'clazy' 'syntax-highlighting' 'desktop-file-utils')
-makedepends=('llvm' 'python' 'patchelf')
+makedepends=('llvm' 'python' 'git')
 options=('docs')
 optdepends=('qt5-doc: integrated Qt documentation'
             'qt5-examples: welcome page examples'
@@ -30,7 +30,7 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'perf: performer analyzer')
 conflicts=('qtcreator')
 provides=('qtcreator')
-source=("git://code.qt.io/qt-creator/qt-creator.git#branch=4.12")
+source=("git://code.qt.io/qt-creator/qt-creator.git#branch=4.13")
 md5sums=('SKIP')
 
 pkgver() {
@@ -69,7 +69,4 @@ package() {
     make INSTALL_ROOT="$pkgdir/usr/" install_docs
 
     install -Dm644 "$srcdir"/qt-creator/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
-
-    # Link clazy plugin explicitely
-    patchelf --add-needed ClazyPlugin.so "$pkgdir"/usr/lib/qtcreator/clangbackend
 }
