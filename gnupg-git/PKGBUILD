@@ -5,7 +5,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-git
-pkgver=2.2.7.974.g074ab108e
+pkgver=2.2.7.1106.g65eb15698
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
@@ -14,15 +14,14 @@ arch=('x86_64')
 checkdepends=('openssh')
 makedepends=('libldap' 'libusb-compat' 'pcsclite' 'git' 'fig2dev')
 depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
-         'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
+         'pinentry' 'bzip2' 'readline' 'libreadline.so' 'gnutls'
+         'sqlite' 'zlib' 'glibc')
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
 source=('git://git.gnupg.org/gnupg.git'
-        'drop-import-clean.patch'
         'avoid-beta-warning.patch')
 sha1sums=('SKIP'
-          'dfb6aeaa84ee76ab9f5383a9fd61e816caf65fdb'
           '9dbb09a7446408447cd2b3ea9ad48bf7058ab67a')
 
 install=install
@@ -39,7 +38,6 @@ pkgver() {
 prepare() {
 	cd gnupg
 	patch -p1 -i ../avoid-beta-warning.patch
-	patch -p1 -i ../drop-import-clean.patch
 
 	./autogen.sh
 }
@@ -68,8 +66,5 @@ package() {
 	ln -s gpg "${pkgdir}"/usr/bin/gpg2
 	ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
 
-	cd doc/examples/systemd-user
-	for i in *.*; do
-		install -Dm644 "$i" "${pkgdir}/usr/lib/systemd/user/$i"
-	done
+	install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
 }

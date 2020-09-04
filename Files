@@ -131,7 +131,6 @@
 │   └── sdt.h
 ├── gnupg-git
 │   ├── avoid-beta-warning.patch
-│   ├── drop-import-clean.patch
 │   ├── install
 │   └── PKGBUILD
 ├── gpgme-git
@@ -566,4 +565,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-192 directories, 374 files
+192 directories, 373 files
