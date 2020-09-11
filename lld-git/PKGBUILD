@@ -5,7 +5,7 @@
 pkgname=lld-git
 _pkgname=lld
 pkgver=11.0.0.r351819.g73c33fcf563
-pkgrel=1
+pkgrel=2
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
 url="https://lld.llvm.org/"
@@ -60,7 +60,10 @@ package() {
   cd "$srcdir/llvm-project/lld/build"
 
   DESTDIR="$pkgdir" ninja install
-  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # https://bugs.llvm.org/show_bug.cgi?id=42455
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" ../docs/ld.lld.1
 
   # Remove documentation sources
   # rm -r "$pkgdir"/usr/share/doc/$_pkgname/html/{_sources,.buildinfo}
