@@ -272,6 +272,10 @@
 
 - pkgfile-git
 
+- plasma-disks-dev-git
+
+- plasma-disks-git
+
 - poppler-git
 
 - psi-clean-full-git
