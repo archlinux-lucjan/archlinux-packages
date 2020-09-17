@@ -1,0 +1,34 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Maintainer: pavbaranov <pavbaranov at gmail dot com>
+
+pkgname=plasma-disks-git
+_pkgname=plasma-disks
+pkgver=5.19.90.r115.g9d80fb0
+pkgrel=1
+pkgdesc='Monitors S.M.A.R.T. capable devices for imminent failure'
+arch=(x86_64)
+url='https://invent.kde.org/plasma/plasma-disks'
+license=(LGPL)
+depends=(kdeclarative)
+makedepends=(git extra-cmake-modules smartmontools)
+optdepends=(smartmontools)
+groups=(plasma)
+source=("git+https://invent.kde.org/plasma/plasma-disks.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  _ver="$(cat CMakeLists.txt | grep -m1 'set(PROJECT_VERSION' | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -B build -S $_pkgname \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
