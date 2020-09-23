@@ -3,7 +3,7 @@
 
 pkgname=libva-utils-next-git
 _pkgname=libva-utils
-pkgver=2.4.0.1.2019.r220.gbb6a0bd
+pkgver=2.9.0.11.2020.r255.g50c7f19
 pkgrel=1
 pkgdesc='Intel VA-API Media Applications and Scripts for libva (git version)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libva')
 makedepends=('git' 'libglvnd' 'mesa' 'meson')
 provides=('libva-utils')
 conflicts=('libva-utils')
-source=('git+https://github.com/intel/libva-utils.git#branch=v2.4-branch')
+source=('git+https://github.com/intel/libva-utils.git#branch=v2.9-branch')
 sha256sums=('SKIP')
 
 pkgver() {
