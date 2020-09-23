@@ -176,6 +176,8 @@
 
 - linux-firmware-git
 
+- linux-firmware-main-git
+
 - linux-usermode
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/linux-usermode.svg)](https://repology.org/project/linux-usermode/versions)
