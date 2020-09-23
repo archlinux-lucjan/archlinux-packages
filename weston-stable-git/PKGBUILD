@@ -5,8 +5,8 @@
 
 pkgname=weston-stable-git
 _pkgname=weston
-pkgver=6.0.1.0.g8757261c
-pkgrel=2
+pkgver=9.0.0.0.g04d3ae26
+pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
 arch=('x86_64')
 url='http://wayland.freedesktop.org'
@@ -19,7 +19,7 @@ makedepends=('wayland-protocols' 'meson' 'ninja' 'freerdp' 'git')
 optdepends=('freerdp: support rdp backend')
 conflicts=('weston')
 provides=('weston')
-source=('git://anongit.freedesktop.org/wayland/weston#branch=6.0')
+source=('git://anongit.freedesktop.org/wayland/weston#branch=9.0')
 sha1sums=('SKIP')
 
 pkgver() {
