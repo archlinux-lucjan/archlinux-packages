@@ -378,6 +378,8 @@
 │   └── PKGBUILD
 ├── plasma-disks-git
 │   └── PKGBUILD
+├── plasma-systemmonitor-git
+│   └── PKGBUILD
 ├── poppler-git
 │   └── PKGBUILD
 ├── psi-clean-full-git
@@ -571,4 +573,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-195 directories, 376 files
+196 directories, 377 files

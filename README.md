@@ -278,6 +278,8 @@
 
 - plasma-disks-git
 
+- plasma-systemmonitor-git
+
 - poppler-git
 
 - psi-clean-full-git
