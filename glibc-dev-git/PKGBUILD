@@ -7,7 +7,7 @@
 
 pkgbase=glibc-dev-git
 pkgname=(glibc-dev-git lib32-glibc-dev-git)
-pkgver=2.31.476.g02802fafcf
+pkgver=2.32.128.g06e95b93f0
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
@@ -18,15 +18,13 @@ source=(git+https://sourceware.org/git/glibc.git
         locale.gen.txt
         locale-gen
         lib32-glibc.conf
-        sdt.h sdt-config.h
-        bz20338.patch)
+        sdt.h sdt-config.h)
 md5sums=('SKIP'
          '07ac979b6ab5eeb778d55f041529d623'
          '476e9113489f93b348b21e144b6a8fcf'
          '6e052f1cb693d5d3203f50f9d4e8c33b'
          '91fec3b7e75510ae2ac42533aa2e695e'
-         '680df504c683640b02ed4a805797c0b2'
-         '430673eccc78e52c249aa4b0f1786450')
+         '680df504c683640b02ed4a805797c0b2')
 
 pkgver() {
   cd glibc
@@ -199,6 +197,9 @@ package_glibc-dev-git() {
   # libraries too. Useful for gdb's catch command.
   install -Dm644 "$srcdir/sdt.h" "$pkgdir/usr/include/sys/sdt.h"
   install -Dm644 "$srcdir/sdt-config.h" "$pkgdir/usr/include/sys/sdt-config.h"
+
+  # Provided by libxcrypt; keep the old shared library for backwards compatibility
+  rm -f "$pkgdir"/usr/include/crypt.h "$pkgdir"/usr/lib/libcrypt.{a,so}
 }
 
 package_lib32-glibc-dev-git() {
@@ -234,4 +235,7 @@ package_lib32-glibc-dev-git() {
       -not -name 'libthread_db-*.so' \
       -name '*-*.so' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
   fi
+
+  # Provided by lib32-libxcrypt; keep the old shared library for backwards compatibility
+  rm -f "$pkgdir"/usr/lib32/libcrypt.{a,so}
 }
