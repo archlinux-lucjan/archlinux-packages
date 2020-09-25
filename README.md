@@ -170,6 +170,10 @@
 
 - libva-utils-next-git
 
+- libxcrypt-dev-git
+
+- libxcrypt-git
+
 - linux-api-headers-git
 
 - linux-api-headers-rc-git
