@@ -120,7 +120,6 @@
 │   ├── sdt-config.h
 │   └── sdt.h
 ├── glibc-git
-│   ├── bz20338.patch
 │   ├── glibc.install
 │   ├── lib32-glibc.conf
 │   ├── locale-gen
@@ -572,4 +571,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-196 directories, 376 files
+196 directories, 375 files
