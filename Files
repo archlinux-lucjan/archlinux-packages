@@ -238,6 +238,8 @@
 │   └── PKGBUILD
 ├── libxcrypt-dev-git
 │   └── PKGBUILD
+├── libxcrypt-git
+│   └── PKGBUILD
 ├── linux-api-headers-git
 │   └── PKGBUILD
 ├── linux-api-headers-rc-git
@@ -573,4 +575,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-197 directories, 376 files
+198 directories, 377 files
