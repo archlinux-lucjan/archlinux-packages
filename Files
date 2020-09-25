@@ -236,6 +236,8 @@
 │   └── PKGBUILD
 ├── libva-utils-next-git
 │   └── PKGBUILD
+├── libxcrypt-dev-git
+│   └── PKGBUILD
 ├── linux-api-headers-git
 │   └── PKGBUILD
 ├── linux-api-headers-rc-git
@@ -571,4 +573,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-196 directories, 375 files
+197 directories, 376 files
