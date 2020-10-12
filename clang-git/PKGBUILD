@@ -5,7 +5,7 @@
 pkgname=clang-git
 _pkgname=clang
 pkgver=11.0.0.r355145.g5d6c5b463ca
-pkgrel=1
+pkgrel=2
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -43,6 +43,9 @@ _get_distribution_components() {
       clang-libraries|distribution)
         continue
         ;;
+      clang-tidy-headers)
+        continue
+        ;;
       clang|clangd|clang-*)
         ;;
       clang*|findAllSymbols)
@@ -58,14 +61,6 @@ prepare() {
   patch -Np2 -i ../../enable-SSP-and-PIE-by-default.patch
   mkdir build
   mv "$srcdir/llvm-project/clang-tools-extra" tools/extra
-  
- if [[ $pkgver != 11.* ]]; then
-    echo "Remove libclangHandleLLVM hack!"
-    return 1
-  fi
-  # Remove libclangHandleLLVM; breaks zig (https://reviews.llvm.org/D75579)
-  sed -i '/add_clang_subdirectory(handle-llvm)/d' \
-    tools/clang-fuzzer/CMakeLists.txt
 }
 
 build() {
