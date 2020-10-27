@@ -278,10 +278,6 @@
 
 - pkgfile-git
 
-- plasma-disks-dev-git
-
-- plasma-disks-git
-
 - plasma-systemmonitor-git
 
 - poppler-git
