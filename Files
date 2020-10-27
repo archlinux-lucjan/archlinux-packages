@@ -376,8 +376,6 @@
 ├── pkgfile-git
 │   ├── PKGBUILD
 │   └── pkgfile.install
-├── plasma-disks-git
-│   └── PKGBUILD
 ├── plasma-systemmonitor-git
 │   └── PKGBUILD
 ├── poppler-git
@@ -573,4 +571,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-197 directories, 376 files
+196 directories, 375 files
