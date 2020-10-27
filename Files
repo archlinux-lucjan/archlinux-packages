@@ -310,8 +310,6 @@
 │   ├── PKGBUILD
 │   └── skip-test.diff
 ├── mkinitcpio-git
-│   ├── 0001-alpm-hooks-should-use-Type-Path-not-File.patch
-│   ├── 0002-Add-zstd-compression-support-for-initramfs.patch
 │   └── PKGBUILD
 ├── modemmanager-git
 │   └── PKGBUILD
@@ -571,4 +569,4 @@
     ├── xvfb-run
     └── xvfb-run.1
 
-196 directories, 375 files
+196 directories, 373 files
