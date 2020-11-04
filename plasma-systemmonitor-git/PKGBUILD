@@ -2,7 +2,8 @@
 # Maintanier: pavbaranov <pavbaranov at gmail dot com>
 
 pkgname=plasma-systemmonitor-git
-pkgver=5.19.0.r204.g4a9e582
+_pkgname=plasma-systemmonitor
+pkgver=5.19.0.r266.g098b915
 pkgrel=1
 pkgdesc="New version of KSysGuard built on top of the new KStats daemon and using QML for its UI"
 arch=('x86_64')
@@ -10,17 +11,18 @@ license=('FDL1.2' 'GPL2' 'LGPL')
 url='https://invent.kde.org/plasma/plasma-systemmonitor.git'
 makedepends=('extra-cmake-modules' 'git') 
 depends=('libksysguard' 'qca-qt5')
+conflicts=('plasma-systemmonitor-dev-git')
 source=('git+https://invent.kde.org/plasma/plasma-systemmonitor.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-*}"
+  cd $_pkgname
   _ver="$(cat CMakeLists.txt | grep -m1 'project(systemmonitor VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S ${pkgname%-*} \
+  cmake -B build -S $_pkgname \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
