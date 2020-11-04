@@ -278,6 +278,8 @@
 
 - pkgfile-git
 
+- plasma-systemmonitor-dev-git
+
 - plasma-systemmonitor-git
 
 - poppler-git
