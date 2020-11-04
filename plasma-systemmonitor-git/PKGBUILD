@@ -3,7 +3,7 @@
 
 pkgname=plasma-systemmonitor-git
 _pkgname=plasma-systemmonitor
-pkgver=5.19.0.r266.g098b915
+pkgver=5.20.0.r0.g098b915
 pkgrel=1
 pkgdesc="New version of KSysGuard built on top of the new KStats daemon and using QML for its UI"
 arch=('x86_64')
@@ -17,8 +17,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  _ver="$(cat CMakeLists.txt | grep -m1 'project(systemmonitor VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
-  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  # _ver="$(cat CMakeLists.txt | grep -m1 'project(systemmonitor VERSION' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  # echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
