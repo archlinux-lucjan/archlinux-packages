@@ -400,6 +400,8 @@
 
 - xorgproto-git
 
+- zstd-git
+
 # Download:
 
 ```

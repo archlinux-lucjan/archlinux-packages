@@ -562,14 +562,16 @@
 │   ├── xorg-server-git.install
 │   ├── xvfb-run
 │   └── xvfb-run.1
-└── xorg-xserver-next-git
-    ├── 0001-fix-for-ZDI-11426.patch
-    ├── 0001-v2-FS-58644.patch
-    ├── 0002-fix-libshadow-2.patch
-    ├── PKGBUILD
-    ├── xorg-server-git.install
-    ├── xserver-autobind-hotplug.patch
-    ├── xvfb-run
-    └── xvfb-run.1
+├── xorg-xserver-next-git
+│   ├── 0001-fix-for-ZDI-11426.patch
+│   ├── 0001-v2-FS-58644.patch
+│   ├── 0002-fix-libshadow-2.patch
+│   ├── PKGBUILD
+│   ├── xorg-server-git.install
+│   ├── xserver-autobind-hotplug.patch
+│   ├── xvfb-run
+│   └── xvfb-run.1
+└── zstd-git
+    └── PKGBUILD
 
-197 directories, 375 files
+198 directories, 376 files
