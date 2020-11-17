@@ -6,8 +6,8 @@
 pkgbase=xorg-xserver-next-git
 _pkgbase=xserver
 pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-xwayland-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
-pkgver=1.20.8.15.g23c55ec32
-pkgrel=2
+pkgver=1.20.9.21.g5c400cae1
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -22,14 +22,12 @@ source=('git://anongit.freedesktop.org/xorg/xserver#branch=server-1.20-branch'
         'xserver-autobind-hotplug.patch'
         '0001-v2-FS-58644.patch'
         '0002-fix-libshadow-2.patch'
-	'0001-fix-for-ZDI-11426.patch'
         'xvfb-run' # with updates from FC master
         'xvfb-run.1')
 sha256sums=('SKIP'
             'cae1b7f296c18177de38f9b1215a4f916da2288b85f1fcb9e80373a42e2892b8'
             '6253fb5cf06cf650539be585d6ca13cfa00217b51ca9825476c8fd55c09341a4'
             'd07b2fe55828dad61517a80c77f6f183113916f5e1fce30ff43041550d58bd6e'
-            'ed649104022f8e0579d7916f949ef5e532dfbd6224b5e56a6ded6fae4cf76b54'
             'd709078f5658576931655c7a46ff90b3586a2643a9124075d00ff3a567937845'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -51,9 +49,6 @@ prepare() {
 
   # Fix libshadow.so: libfb.so => not found - merge in master
   patch -Np1 -i ../0002-fix-libshadow-2.patch
-
-  # fix CVE-2020-14347
-  patch -Np1 -i ../0001-fix-for-ZDI-11426.patch
 }
 
 build() {
