@@ -7,7 +7,7 @@ pkgbase=xorg-xserver-git
 _pkgbase=xserver
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
 pkgver=1.20.0.680.g5188603ff7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -22,7 +22,7 @@ source=('git://anongit.freedesktop.org/xorg/xserver'
         'xvfb-run' # with updates from FC master
         'xvfb-run.1')
 sha256sums=('SKIP'
-            '021e5d2d22fe7e707d5fe239433d828764ea8c141248b9a71fd4006286a4d275'
+            'd709078f5658576931655c7a46ff90b3586a2643a9124075d00ff3a567937845'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
 pkgver() {
