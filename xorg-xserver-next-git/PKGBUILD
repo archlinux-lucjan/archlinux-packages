@@ -7,7 +7,7 @@ pkgbase=xorg-xserver-next-git
 _pkgbase=xserver
 pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-xwayland-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
 pkgver=1.20.8.15.g23c55ec32
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
             '6253fb5cf06cf650539be585d6ca13cfa00217b51ca9825476c8fd55c09341a4'
             'd07b2fe55828dad61517a80c77f6f183113916f5e1fce30ff43041550d58bd6e'
             'ed649104022f8e0579d7916f949ef5e532dfbd6224b5e56a6ded6fae4cf76b54'
-            '021e5d2d22fe7e707d5fe239433d828764ea8c141248b9a71fd4006286a4d275'
+            'd709078f5658576931655c7a46ff90b3586a2643a9124075d00ff3a567937845'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
 pkgver() {
