@@ -6,8 +6,8 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=246.2.gcb263973ac
-pkgrel=2
+pkgver=247.41.g1526e55f6c
+pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -158,11 +158,14 @@ package_systemd-git() {
               'curl: machinectl pull-tar and pull-raw')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
+          etc/systemd/homed.conf
           etc/systemd/journald.conf
           etc/systemd/journal-remote.conf
           etc/systemd/journal-upload.conf
           etc/systemd/logind.conf
           etc/systemd/networkd.conf
+          etc/systemd/oomd.conf
+          etc/systemd/pstore.conf
           etc/systemd/resolved.conf
           etc/systemd/sleep.conf
           etc/systemd/system.conf
@@ -181,10 +184,10 @@ package_systemd-git() {
   mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
-  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
+  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
 
   # executable (symlinks) shipped with systemd-sysvcompat
-  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
+  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,shutdown}
 
   # files shipped with systemd-resolvconf
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
@@ -259,11 +262,11 @@ package_systemd-sysvcompat-git() {
   conflicts=('systemd-sysvcompat')
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
-    build/man/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
+    build/man/{halt,poweroff,reboot,shutdown}.8
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
-  for tool in halt poweroff reboot runlevel shutdown telinit; do
+  for tool in halt poweroff reboot shutdown; do
     ln -s systemctl "$pkgdir"/usr/bin/$tool
   done
 }
