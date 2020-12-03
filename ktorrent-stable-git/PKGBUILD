@@ -6,7 +6,7 @@
 
 pkgname=ktorrent-stable-git
 _pkgname=ktorrent
-pkgver=5.1.2.14.g1c5d2a13
+pkgver=5.2.0.18.g447395d2
 pkgrel=1
 pkgdesc="A powerful BitTorrent client for KDE"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('plasma-workspace: shutdown plugin' 'kdnssd: zeroconf plugin' 'tagli
             'syndication: syndication plugin' 'kdewebkit: search plugin, syndication plugin' 'kplotting: statistics plugin')
 conflicts=('ktorrent')
 provides=('ktorrent')
-source=('git+https://anongit.kde.org/ktorrent#branch=5.1')
+source=('git+https://anongit.kde.org/ktorrent#branch=5.2')
 sha1sums=('SKIP')
 
 pkgver() {
