@@ -7,8 +7,8 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-next-git
-pkgver=5.5.2.9.g44e3f236d3
-pkgrel=3
+pkgver=5.6.0.54.gd211c7c137
+pkgrel=1
 _clangver=11.0.0
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=('konsole: embedded terminal'
 conflicts=('kdevelop' 'kdevplatform')
 provides=('kdevelop' 'kdevplatform' 'kdevplatform-git')
 replaces=('kdevplatform-git')
-source=('git+https://anongit.kde.org/kdevelop.git#branch=5.5')
+source=('git+https://anongit.kde.org/kdevelop.git#branch=5.6')
 sha1sums=('SKIP')
 
 pkgver() {
