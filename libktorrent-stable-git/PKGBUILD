@@ -6,7 +6,7 @@
 
 pkgname=libktorrent-stable-git
 _pkgname=libktorrent
-pkgver=2.1.1.0.ga52f20c
+pkgver=2.2.0.4.g8fc9083
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation"
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=(kio qca-qt5)
 makedepends=(extra-cmake-modules python boost doxygen git)
 conflicts=('libktorrent')
 provides=('libktorrent')
-source=('git+https://anongit.kde.org/libktorrent#branch=2.1')
+source=('git+https://anongit.kde.org/libktorrent#branch=2.2')
 sha1sums=('SKIP')
 
 pkgver() {
