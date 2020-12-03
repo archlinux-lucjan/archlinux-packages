@@ -3,7 +3,7 @@
 
 pkgname=libinput-stable-git
 _pkgname=libinput
-pkgver=1.15.6.0.gf8032ba7
+pkgver=1.16.4.0.gedddb5c0
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=('gtk3: libinput debug-gui'
             'python-libevdev: libinput measure')
 conflicts=('libinput')
 provides=("libinput=${pkgver}")
-source=(git://anongit.freedesktop.org/wayland/libinput#branch=1.15-branch)
+source=(git://anongit.freedesktop.org/wayland/libinput#branch=1.16-branch)
 sha1sums=('SKIP')
 
 pkgver() {
