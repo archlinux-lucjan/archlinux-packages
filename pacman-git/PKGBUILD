@@ -6,7 +6,7 @@
 
 pkgname=pacman-git
 pkgver=6.0.0alpha1.0.ga4240a55
-pkgrel=2
+pkgrel=3
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('x86_64')
 url="http://www.archlinux.org/pacman/"
@@ -27,7 +27,7 @@ source=(git://git.archlinux.org/pacman.git
         TotalDownload.patch
         0001-meson-update-version-and-libalpm_version.patch)
 sha1sums=('SKIP'
-          'a9306b6da1f490c5ebebc4ae8661fb5800558b4c'
+          '78a8b65d17529189fccae2d64ab8ce41fe02a352'
           'efa94cc2b0c635bb21b8d1281a5567247716a621'
           '9a60271523dd5fbf3ee76bd8f6b795473c3f8e5e'
           'c8fb51f5d6b37fd2acf0d5111ff596849313e787')
