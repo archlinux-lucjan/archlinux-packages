@@ -347,11 +347,6 @@
 │   └── PKGBUILD
 ├── pacman-contrib-git
 │   └── PKGBUILD
-├── pacman-dev-git
-│   ├── makepkg.conf
-│   ├── pacman.conf
-│   ├── PKGBUILD
-│   └── TotalDownload.patch
 ├── pacman-git
 │   ├── makepkg.conf
 │   ├── pacman.conf
@@ -575,4 +570,4 @@
 └── zstd-git
     └── PKGBUILD
 
-198 directories, 377 files
+197 directories, 373 files
