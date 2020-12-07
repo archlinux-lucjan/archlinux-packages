@@ -260,15 +260,9 @@
 
 - pacman-contrib-git
 
-- pacman-dev-git
-
 - pacman-git
 
 - pacman-stable-git
-
-- pacman-test-git
-
-- pacman-trunk-git
 
 - pacutils-git
 
