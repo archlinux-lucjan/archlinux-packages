@@ -356,10 +356,6 @@
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   └── PKGBUILD
-├── pacman-test-git
-│   ├── makepkg.conf
-│   ├── pacman.conf
-│   └── PKGBUILD
 ├── pacutils-git
 │   └── PKGBUILD
 ├── pkgbuild-introspection-lucjan-git
@@ -570,4 +566,4 @@
 └── zstd-git
     └── PKGBUILD
 
-197 directories, 373 files
+196 directories, 370 files
