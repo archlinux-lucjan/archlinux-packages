@@ -6,7 +6,7 @@
 
 pkgname=pacman-stable-git
 pkgver=5.2.2.0.g5537881b
-pkgrel=2
+pkgrel=3
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('x86_64')
 url="http://www.archlinux.org/pacman/"
@@ -20,7 +20,7 @@ backup=(etc/pacman.conf
         etc/makepkg.conf)
 provides=("pacman=$pkgver" 'libalpm.so')
 conflicts=('pacman')
-options=('!libtool' '!strip')
+options=('strip' 'debug')
 source=(git://git.archlinux.org/pacman.git#branch=release/5.2.x
         pacman.conf
         makepkg.conf)
