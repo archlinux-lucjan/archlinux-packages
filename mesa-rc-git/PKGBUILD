@@ -147,7 +147,7 @@ package_mesa-vulkan-radeon-rc-git() {
 package_mesa-vulkan-mesa-rc-git() {
   pkgdesc="Vulkan swrast driver. Git version"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd' 'llvm-libs')
-  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  optdepends=('vulkan-mesa-layer-rc-git: additional vulkan layers')
   provides=('vulkan-driver' 'vulkan-mesa')
   conflicts=('vulkan-mesa')
 
