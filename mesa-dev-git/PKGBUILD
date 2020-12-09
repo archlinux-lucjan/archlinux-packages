@@ -4,10 +4,10 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa-dev-git
-pkgname=('vulkan-mesa-layers-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
+pkgname=('vulkan-mesa-layers-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'mesa-vulkan-mesa-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=20.2.0.devel.r124190.g045267d1e62
-pkgrel=4
+pkgrel=5
 groups=('mesagit')
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -41,7 +41,7 @@ build() {
     -D platforms=x11,wayland \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris,zink \
-    -D vulkan-drivers=amd,intel \
+    -D vulkan-drivers=amd,intel,swrast \
     -D vulkan-overlay-layer=true \
     -D vulkan-device-select-layer=true \
     -D swr-arches=avx,avx2 \
@@ -140,6 +140,19 @@ package_mesa-vulkan-radeon-dev-git() {
   
   _install fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json
   _install fakeinstall/usr/lib/libvulkan_radeon.so
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
+package_mesa-vulkan-mesa-dev-git() {
+  pkgdesc="Vulkan swrast driver. Git version"
+  depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd' 'llvm-libs-git')
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver' 'vulkan-mesa')
+  conflicts=('vulkan-mesa')
+
+  _install fakeinstall/usr/share/vulkan/icd.d/lvp_icd*.json
+  _install fakeinstall/usr/lib/libvulkan_lvp.so
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
