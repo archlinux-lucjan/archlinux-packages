@@ -8,8 +8,8 @@
 
 pkgbase=networkmanager-git
 pkgname=(networkmanager-git libnm-git nm-cloud-setup-git)
-pkgver=1.25.2dev.1.gb4fb2a4f9
-pkgrel=1
+pkgver=1.27.0dev.124.g2a1e62170
+pkgrel=2
 pkgdesc="Network connection manager and user applications"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -56,7 +56,12 @@ build() {
 
     # configuration plugins
     -D config_plugins_default=keyfile
-    
+
+    # handlers for resolv.conf
+    -D resolvconf=no
+    -D netconfig=no
+    -D config_dns_rc_manager_default=auto
+
     # dhcp clients
     -D dhcpcd=no
 
@@ -95,7 +100,6 @@ package_networkmanager-git() {
               'modemmanager: cellular network support'
               'iwd: wpa_supplicant alternative'
               'dhclient: alternative DHCP client'
-              'openresolv: alternative resolv.conf manager'
               'firewalld: Firewall support')
   backup=('etc/NetworkManager/NetworkManager.conf')
   conflicts=('networkmanager')
