@@ -171,8 +171,6 @@
 │   ├── depmod.script
 │   ├── depmod-search.conf
 │   └── PKGBUILD
-├── konversation-git
-│   └── PKGBUILD
 ├── konversation-stable-git
 │   └── PKGBUILD
 ├── krename-git
@@ -566,4 +564,4 @@
 └── zstd-git
     └── PKGBUILD
 
-196 directories, 370 files
+195 directories, 369 files
