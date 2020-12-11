@@ -210,8 +210,6 @@
 │   └── PKGBUILD
 ├── libksba-git
 │   └── PKGBUILD
-├── libktorrent-stable-git
-│   └── PKGBUILD
 ├── libsignal-protocol-c-git
 │   └── PKGBUILD
 ├── libva-git
@@ -556,4 +554,4 @@
 └── zstd-git
     └── PKGBUILD
 
-191 directories, 365 files
+190 directories, 364 files
