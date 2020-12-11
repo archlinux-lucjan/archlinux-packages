@@ -108,10 +108,6 @@
 
 - kmod-git
 
-- konversation-git
-
-- konversation-stable-git
-
 - krename-git
 
 - krename-stable-git
@@ -121,10 +117,6 @@
 - krusader-git
 
 - krusader-stable-git
-
-- ktorrent-git
-
-- ktorrent-stable-git
 
 - kvantum-qt5-git
 
@@ -151,10 +143,6 @@
 - libinput-stable-git
 
 - libksba-git
-
-- libktorrent-git
-
-- libktorrent-stable-git
 
 - libsignal-protocol-c-git
 
