@@ -181,8 +181,6 @@
 │   └── PKGBUILD
 ├── krusader-stable-git
 │   └── PKGBUILD
-├── ktorrent-stable-git
-│   └── PKGBUILD
 ├── kvantum-qt5-git
 │   └── PKGBUILD
 ├── lab-git
@@ -560,4 +558,4 @@
 └── zstd-git
     └── PKGBUILD
 
-193 directories, 367 files
+192 directories, 366 files
