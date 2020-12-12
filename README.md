@@ -376,9 +376,13 @@
 
 - xf86-video-intel-git
 
-- xorg-server-git
+- xorg-xserver-git
 
-- xorg-server-next-git
+- xorg-xserver-next-git
+
+- xorg-xwayland-git
+
+- xorg-xwayland-next-git
 
 - xorgproto-git
 
