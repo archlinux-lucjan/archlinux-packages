@@ -5,8 +5,8 @@
 
 pkgbase=xorg-xserver-next-git
 _pkgbase=xserver
-pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-xwayland-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
-pkgver=1.20.9.21.g5c400cae1
+pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
+pkgver=1.20.10.0.gbc111a2e6
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -67,8 +67,8 @@ build() {
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=true \
-    -D xwayland_eglstream=true \
+    -D xwayland=false \
+    -D xwayland_eglstream=false \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -177,19 +177,6 @@ package_xorg-server-xnest-next-git() {
 
   _install fakeinstall/usr/bin/Xnest
   _install fakeinstall/usr/share/man/man1/Xnest.1
-
-  # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
-}
-
-package_xorg-server-xwayland-next-git() {
-  pkgdesc="Run X clients under Wayland - Git"
-  depends=(libxfont2 libepoxy libunwind libsystemd libgl pixman xorg-server-common
-           nettle libtirpc)
-  provides=(xorg-server-xwayland=$pkgver)
-  conflicts=(xorg-server-xwayland)
-
-  _install fakeinstall/usr/bin/Xwayland
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
