@@ -376,9 +376,9 @@
 
 - xf86-video-intel-git
 
-- xorg-xserver-git
+- xorg-server-git
 
-- xorg-xserver-next-git
+- xorg-server-next-git
 
 - xorg-xwayland-git
 
