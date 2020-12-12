@@ -538,7 +538,7 @@
 │   └── xf86-video-intel-git.install
 ├── xorgproto-git
 │   └── PKGBUILD
-├── xorg-xserver-git
+├── xorg-server-git
 │   ├── PKGBUILD
 │   ├── xorg-server-git.install
 │   ├── xvfb-run

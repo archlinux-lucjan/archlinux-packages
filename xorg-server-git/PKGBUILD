@@ -3,7 +3,7 @@
 # Contributors: SpeedVin, FoxBuru, Federico Cinelli
 # Based on xorg-server-dev: https://aur.archlinux.org/packages/xorg-server-dev/
 
-pkgbase=xorg-xserver-git
+pkgbase=xorg-server-git
 _pkgbase=xserver
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-common-git' 'xorg-server-devel-git')
 pkgver=1.20.0.795.gf95d81e88
