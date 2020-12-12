@@ -543,7 +543,7 @@
 │   ├── xorg-server-git.install
 │   ├── xvfb-run
 │   └── xvfb-run.1
-├── xorg-xserver-next-git
+├── xorg-server-next-git
 │   ├── 0001-v2-FS-58644.patch
 │   ├── 0002-fix-libshadow-2.patch
 │   ├── PKGBUILD
