@@ -5,9 +5,9 @@
 
 pkgbase=xorg-xserver-git
 _pkgbase=xserver
-pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
-pkgver=1.20.0.680.g5188603ff7
-pkgrel=2
+pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-common-git' 'xorg-server-devel-git')
+pkgver=1.20.0.795.gf95d81e88
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -51,8 +51,8 @@ build() {
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=true \
-    -D xwayland_eglstream=true \
+    -D xwayland=false \
+    -D xwayland_eglstream=false \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -161,19 +161,6 @@ package_xorg-server-xnest-git() {
 
   _install fakeinstall/usr/bin/Xnest
   _install fakeinstall/usr/share/man/man1/Xnest.1
-
-  # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
-}
-
-package_xorg-server-xwayland-git() {
-  pkgdesc="Run X clients under Wayland - Git"
-  depends=(libxfont2 libepoxy libunwind libsystemd libgl pixman xorg-server-common
-           nettle libtirpc)
-  provides=(xorg-server-xwayland=$pkgver)
-  conflicts=(xorg-server-xwayland)
-
-  _install fakeinstall/usr/bin/Xwayland
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
