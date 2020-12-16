@@ -7,7 +7,7 @@ pkgbase=xorg-server-next-git
 _pkgbase=xserver
 pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
 pkgver=1.20.10.0.gbc111a2e6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -67,8 +67,8 @@ build() {
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=false \
-    -D xwayland_eglstream=false \
+    -D xwayland=true \
+    -D xwayland_eglstream=true \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -199,5 +199,6 @@ package_xorg-server-devel-next-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 
   # make sure there are no files left to install
+  rm fakeinstall/usr/bin/Xwayland
   find fakeinstall -depth -print0 | xargs -0 rmdir
 }
