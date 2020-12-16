@@ -67,8 +67,8 @@ build() {
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=true \
-    -D xwayland_eglstream=true \
+    -D xwayland=false \
+    -D xwayland_eglstream=false \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -199,6 +199,5 @@ package_xorg-server-devel-next-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 
   # make sure there are no files left to install
-  rm fakeinstall/usr/bin/Xwayland
   find fakeinstall -depth -print0 | xargs -0 rmdir
 }
