@@ -112,8 +112,6 @@
 
 - krename-stable-git
 
-- krusader-dev-git
-
 - krusader-git
 
 - krusader-stable-git
