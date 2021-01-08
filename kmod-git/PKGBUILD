@@ -3,14 +3,14 @@
 
 pkgname=kmod-git
 _pkgname=kmod
-pkgver=27.1.g9b003b6
+pkgver=28.0.g1ccfe99
 pkgrel=1
 pkgdesc="interface to kernel module operations"
 arch=('x86_64')
 url="http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary"
 license=('GPL2')
-depends=('glibc' 'zlib' 'openssl' 'xz')
-makedepends=('gtk-doc' 'git')
+depends=('glibc' 'zlib' 'openssl' 'xz' 'zstd')
+makedepends=('git')
 checkdepends=('linux-headers' 'libelf')
 options=('strip' 'debug')
 provides=('module-init-tools=3.16' 'libkmod.so' 'kmod')
@@ -39,9 +39,9 @@ build() {
   ./autogen.sh
   ./configure \
     --sysconfdir=/etc \
-    --enable-gtk-doc \
     --with-xz \
     --with-zlib \
+    --with-zstd \
     --with-openssl
 
   make
