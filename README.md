@@ -56,6 +56,8 @@
 
 - gdb-stable-git
 
+- git-delta-git
+
 - git-dev-git
 
 - git-extras-git

@@ -78,6 +78,8 @@
 │   └── PKGBUILD
 ├── gdb-stable-git
 │   └── PKGBUILD
+├── git-delta-git
+│   └── PKGBUILD
 ├── git-dev-git
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
@@ -556,4 +558,4 @@
 └── zstd-git
     └── PKGBUILD
 
-191 directories, 365 files
+192 directories, 366 files
