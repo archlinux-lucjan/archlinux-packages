@@ -355,8 +355,6 @@
 ├── pkgfile-git
 │   ├── PKGBUILD
 │   └── pkgfile.install
-├── plasma-systemmonitor-dev-git
-│   └── PKGBUILD
 ├── plasma-systemmonitor-git
 │   └── PKGBUILD
 ├── poppler-git
@@ -558,4 +556,4 @@
 └── zstd-git
     └── PKGBUILD
 
-192 directories, 366 files
+191 directories, 365 files
