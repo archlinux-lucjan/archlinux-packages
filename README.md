@@ -260,10 +260,6 @@
 
 - pkgfile-git
 
-- plasma-systemmonitor-dev-git
-
-- plasma-systemmonitor-git
-
 - poppler-git
 
 - psi-clean-full-git
