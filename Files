@@ -96,7 +96,6 @@
 │   └── PKGBUILD
 ├── gitless-git
 │   ├── 0001-Update-requirements.patch
-│   ├── 0002-Fix-gitless-error.patch
 │   └── PKGBUILD
 ├── git-main-git
 │   ├── git-daemon@.service
@@ -555,4 +554,4 @@
 └── zstd-git
     └── PKGBUILD
 
-190 directories, 365 files
+190 directories, 364 files
