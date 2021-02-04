@@ -15,7 +15,7 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.34.50.r101747.80fc5e77f07
+pkgver=2.36.50.r104851.ee87f50b8d2
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -62,7 +62,6 @@ build() {
     --enable-lto \
     --enable-plugins \
     --enable-relro \
-    --enable-shared \
     --enable-targets=x86_64-pep \
     --enable-threads \
     --disable-gdb \
