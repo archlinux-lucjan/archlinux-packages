@@ -7,14 +7,14 @@
 
 pkgbase=glibc-git
 pkgname=(glibc-git lib32-glibc-git)
-pkgver=2.32.2.g386543bc44
+pkgver=2.33.0.g9826b03b74
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
 makedepends=(git gd lib32-gcc-libs python)
 options=(!strip staticlibs)
-source=(git+https://sourceware.org/git/glibc.git#branch=release/2.32/master
+source=(git+https://sourceware.org/git/glibc.git#branch=release/2.33/master
         locale.gen.txt
         locale-gen
         lib32-glibc.conf
