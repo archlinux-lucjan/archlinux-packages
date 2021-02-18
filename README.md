@@ -84,6 +84,10 @@
 
 - hub-git
 
+- intel-media-driver-git
+
+- intel-media-driver-stable-git
+
 - intel-ucode-git
 
 - iucode-tool-git
