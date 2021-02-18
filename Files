@@ -145,6 +145,8 @@
 │   └── PKGBUILD
 ├── intel-media-driver-git
 │   └── PKGBUILD
+├── intel-media-driver-stable-git
+│   └── PKGBUILD
 ├── intel-ucode-git
 │   └── PKGBUILD
 ├── iucode-tool-git
@@ -555,4 +557,4 @@
 └── zstd-git
     └── PKGBUILD
 
-191 directories, 364 files
+192 directories, 365 files
