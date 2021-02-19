@@ -7,7 +7,7 @@
 
 pkgbase=glibc-git
 pkgname=(glibc-git lib32-glibc-git)
-pkgver=2.33.0.g9826b03b74
+pkgver=2.33.6.g8d4241b897
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
@@ -56,6 +56,7 @@ build() {
       --enable-add-ons
       --enable-bind-now
       --enable-cet
+      --enable-kernel=4.4
       --enable-lock-elision
       --enable-multi-arch
       --enable-stack-protector=strong
