@@ -22,10 +22,6 @@
 │   ├── ccm.install
 │   └── PKGBUILD
 ├── clementine-lite-qt5-git
-│   ├── linux-usermode-rc
-│   │   ├── 70-uml.hook
-│   │   ├── config
-│   │   └── PKGBUILD
 │   └── PKGBUILD
 ├── clementine-qt5-git
 │   └── PKGBUILD
@@ -561,4 +557,4 @@
 └── zstd-git
     └── PKGBUILD
 
-193 directories, 368 files
+192 directories, 365 files
