@@ -305,8 +305,7 @@
 ├── modemmanager-git
 │   └── PKGBUILD
 ├── modemmanager-stable-git
-│   ├── PKGBUILD
-│   └── strict-filter.diff
+│   └── PKGBUILD
 ├── modemmanager-test-git
 │   └── PKGBUILD
 ├── modprobed-db-git
@@ -557,4 +556,4 @@
 └── zstd-git
     └── PKGBUILD
 
-192 directories, 365 files
+192 directories, 364 files
