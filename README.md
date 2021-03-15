@@ -328,8 +328,6 @@
 
 - smplayer-svn
 
-- strawberry-full-git
-
 - strawberry-git
 
 - syslinux-git
