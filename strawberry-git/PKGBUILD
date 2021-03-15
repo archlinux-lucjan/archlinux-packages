@@ -3,21 +3,20 @@
 
 pkgname=strawberry-git
 _pkgname=strawberry
-pkgver=0.6.12.4.g9a5f6c7b
+pkgver=0.9.1.6.gf5bb15f7
 pkgrel=1
-pkgdesc="Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer engine only"
+pkgdesc="Bitperfect audio player and music collection organizer, fork of Clementine. gstreamer, xine and vlc engines"
 arch=('x86_64')
 url="http://www.strawbs.org/"
 license=(GPL3)
-depends=('chromaprint' 'protobuf' 'gst-plugins-base' 'gst-plugins-good' 'qt5-base' 'qt5-x11extras'
-         'sqlite3' 'dbus' 'alsa-lib' 'libcdio' 'taglib')
-#depends+=('libimobiledevice' 'libplist' 'libusbmuxd' 'libgpod' 'libmtp' 'phonon-qt5' 'vlc' 'xine-lib')
-makedepends=('git' 'cmake' 'boost')
-optdepends=('gst-plugins-bad'
-            'gst-plugins-ugly')
+depends=('qt6-base' 'chromaprint' 'protobuf' 'gst-plugins-base' 'gst-plugins-good' 'udisks2' 'libcdio' 'libgpod' 'libmtp' 'fftw')
+makedepends=('cmake' 'boost' 'qt6-tools' 'git')
+optdepends=('gst-libav: additional codecs'
+            'gst-plugins-bad: additional codecs'
+            'gst-plugins-ugly: additional codecs')
 provides=('strawberry')
-conflicts=('strawberry' 'strawberry-full-git')
-source=("git://github.com/jonaski/strawberry.git")
+conflicts=('strawberry')
+source=("git://github.com/strawberrymusicplayer/strawberry.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,13 +27,7 @@ pkgver() {
 build() {
   cmake -B build -S $_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_SYSTEM_TAGLIB=ON \
-    -DENABLE_IMOBILEDEVICE=OFF \
-    -DENABLE_LIBGPOD=OFF \
-    -DENABLE_LIBMTP=OFF \
-    -DENABLE_SPARKLE=OFF \
-    -DENABLE_VLC=OFF \
-    -DENABLE_XINE=OFF
+    -DBUILD_WITH_QT6=ON 
   cmake --build build
 }
 
