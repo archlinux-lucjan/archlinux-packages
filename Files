@@ -428,8 +428,6 @@
 │   └── PKGBUILD
 ├── smplayer-svn
 │   └── PKGBUILD
-├── strawberry-full-git
-│   └── PKGBUILD
 ├── strawberry-git
 │   └── PKGBUILD
 ├── syslinux-git
@@ -556,4 +554,4 @@
 └── zstd-git
     └── PKGBUILD
 
-192 directories, 364 files
+191 directories, 363 files
