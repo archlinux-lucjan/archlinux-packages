@@ -3,13 +3,13 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=poppler-git
-pkgname=('poppler-git' 'poppler-glib-git' 'poppler-qt5-git')
-pkgver=0.83.0.r29.g78840bb7
+pkgname=('poppler-git' 'poppler-glib-git' 'poppler-qt5-git' 'poppler-qt6-git')
+pkgver=21.03.0.r11.g57836ce2
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
 makedepends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'gtk3' 'pkgconfig' 'lcms2' 
-             'gobject-introspection' 'icu' 'qt5-base' 'git' 'nss' 'gtk-doc' 'curl' 'poppler-data'
+             'gobject-introspection' 'icu' 'qt5-base' 'qt6-base' 'git' 'nss' 'gtk-doc' 'curl' 'poppler-data'
              'cmake' 'python' 'boost')
 options=('!emptydirs')
 url="http://poppler.freedesktop.org/"
@@ -47,17 +47,17 @@ check() {
 
 package_poppler-git() {
   pkgdesc="PDF rendering library based on xpdf 3.0"
-  depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2' 'nss' 'curl')
-  optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
-  conflicts=("poppler-qt3<${_standdardversion}" 'poppler')
-  provides=("poppler=${_standdardversion}" 'poppler')
+   depends=('libjpeg' 'gcc-libs' 'cairo' 'fontconfig' 'openjpeg2' 'lcms2' 'nss' 'curl')
+  optdepends=('poppler-data: highly recommended encoding data to display PDF documents with certain encodings and characters')
+  provides=('libpoppler.so' 'libpoppler-cpp.so' 'poppler')
+  conflicts=("poppler-qt3<${pkgver}" "poppler-qt4<${pkgver}" 'poppler')
 
   cd build
   make DESTDIR="${pkgdir}" install
 
   # cleanup for splitted build
-  rm -vrf "${pkgdir}"/usr/include/poppler/{glib,qt5}
-  rm -vf "${pkgdir}"//usr/lib/libpoppler-{glib,qt5}.*
+  rm -vrf "${pkgdir}"/usr/include/poppler/{glib,qt5,qt6}
+  rm -vf "${pkgdir}"//usr/lib/libpoppler-{glib,qt5,qt6}.*
   rm -vf "${pkgdir}"/usr/lib/pkgconfig/poppler-{glib,qt5}.pc
   rm -vrf "${pkgdir}"/usr/{lib,share}/gir*
   rm -vrf "${pkgdir}"/usr/share/gtk-doc
@@ -88,4 +88,15 @@ package_poppler-qt5-git() {
   make -C qt5 DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/lib/pkgconfig"
   install -m644 poppler-qt5.pc "${pkgdir}/usr/lib/pkgconfig/"
+}
+
+package_poppler-qt6-git() {
+  pkgdesc="Poppler Qt5 bindings"
+  depends=('poppler-git' 'qt6-base')
+  conflicts=('poppler-qt6')
+  provides=('poppler-qt6')
+
+  cd build
+  make -C qt6 DESTDIR="${pkgdir}" install
+  install -m755 -d "${pkgdir}/usr/lib/pkgconfig"
 }
