@@ -6,8 +6,8 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=247.41.g1526e55f6c
-pkgrel=2
+pkgver=248.rc4.25.g7e7b0e2198
+pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -40,7 +40,7 @@ source=('git+https://github.com/systemd/systemd-stable'
 
 sha512sums=('SKIP'
             'SKIP'
-            'e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4'
+            '5b7cf0b51df7ee76f9dc644aee1084f88748791e9e37a35d99781846d21574a16e8e84f4f26dacd60a8f9da3be0aaafc4312877b7d0959f654aeaf0086665e57'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             'f1f0bc599eb73b96f81e5413a55617ab82978d057dc0cabf226d225bb836a967fe13b84c4f24f64c074b6568026ab81d457512ff20a5918892c47a3a603eaa6e'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
@@ -123,7 +123,7 @@ build() {
     
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-dnssec=no
-    -Ddefault-hierarchy=hybrid
+    -Ddefault-hierarchy=unified
     -Ddefault-kill-user-processes=false
     -Ddefault-locale=C
     -Ddns-over-tls=openssl
@@ -165,6 +165,7 @@ package_systemd-git() {
           etc/systemd/journal-upload.conf
           etc/systemd/logind.conf
           etc/systemd/networkd.conf
+          etc/systemd/oomd.conf
           etc/systemd/pstore.conf
           etc/systemd/resolved.conf
           etc/systemd/sleep.conf
@@ -231,7 +232,7 @@ package_systemd-git() {
 
 package_systemd-libs-git() {
   pkgdesc="systemd client libraries"
-  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
+  depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd')
   license=('LGPL2.1')
   provides=('libsystemd.so' 'libudev.so' 'libsystemd' 'systemd-libs')
   conflicts=('libsystemd' 'systemd-libs')
