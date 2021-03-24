@@ -4,7 +4,7 @@
 
 pkgname=libva-next-git
 _pkgname=libva
-pkgver=2.10.0.04.2020.r1660.ge3c7598
+pkgver=2.11.0.23.2021.r1678.g64d75c0
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
 conflicts=('libva')
 provides=('libva')
 backup=('etc/libva.conf')
-source=('git+https://github.com/intel/libva.git#branch=v2.10-branch')
+source=('git+https://github.com/intel/libva.git#branch=v2.11-branch')
 md5sums=('SKIP')
 
 pkgver() {
