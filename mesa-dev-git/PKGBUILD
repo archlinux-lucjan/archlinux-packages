@@ -7,7 +7,7 @@ pkgbase=mesa-dev-git
 pkgname=('vulkan-mesa-layers-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'mesa-vulkan-mesa-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=20.2.0.devel.r124190.g045267d1e62
-pkgrel=5
+pkgrel=6
 groups=('mesagit')
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -63,8 +63,9 @@ build() {
     -D libunwind=enabled \
     -D llvm=enabled \
     -D lmsensors=enabled \
-    -D osmesa=gallium \
+    -D osmesa=true \
     -D shared-glapi=enabled \
+    -D microsoft-clc=disabled \
     -D valgrind=enabled
 
   # Print config
