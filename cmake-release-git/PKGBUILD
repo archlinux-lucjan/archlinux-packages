@@ -9,7 +9,7 @@
 # This PKGBUILD is based on the official Arch cmake package.
 
 pkgname=cmake-release-git
-pkgver=3.18.1.0.g63a65baf4c
+pkgver=3.20.0.9.gfef28dbc1e
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -17,10 +17,9 @@ url="http://www.cmake.org/"
 license=('custom')
 conflicts=('cmake')
 provides=('cmake')
-depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash')
-makedepends=('qt5-base' 'python-sphinx' 'git' 'ncurses' 'emacs')
-optdepends=('qt5-base: cmake-gui'
-            'libxkbcommon-x11: cmake-gui')
+depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash')
+makedepends=('qt6-base' 'python-sphinx' 'emacs' 'git')
+optdepends=('qt6-base: cmake-gui')
 source=('git+https://gitlab.kitware.com/cmake/cmake.git#branch=release'
         'cmake-cppflags.patch')
 md5sums=('SKIP'
