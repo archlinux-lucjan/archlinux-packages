@@ -90,6 +90,8 @@
 
 - intel-ucode-git
 
+- intel-undervolt-git
+
 - iucode-tool-git
 
 - kaidan-git
