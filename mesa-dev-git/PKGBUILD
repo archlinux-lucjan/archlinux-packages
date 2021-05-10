@@ -7,7 +7,7 @@ pkgbase=mesa-dev-git
 pkgname=('vulkan-mesa-layers-dev-git' 'opencl-mesa-dev-git' 'mesa-vulkan-intel-dev-git' 'mesa-vulkan-radeon-dev-git' 'mesa-vulkan-mesa-dev-git' 'libva-mesa-driver-dev-git' 'mesa-vdpau-dev-git' 'mesa-dev-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=20.2.0.devel.r124190.g045267d1e62
-pkgrel=6
+pkgrel=7
 groups=('mesagit')
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -42,8 +42,7 @@ build() {
     -D dri-drivers=i915,i965,r100,r200,nouveau \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris,zink \
     -D vulkan-drivers=amd,intel,swrast \
-    -D vulkan-overlay-layer=true \
-    -D vulkan-device-select-layer=true \
+    -D vulkan-layers=device-select,intel-nullhw,overlay \
     -D swr-arches=avx,avx2 \
     -D dri3=enabled \
     -D egl=enabled \
@@ -95,11 +94,9 @@ package_vulkan-mesa-layers-dev-git() {
   conflicts=('vulkan-mesa-layers')
   
   _install fakeinstall/usr/share/vulkan/explicit_layer.d
-  _install fakeinstall/usr/lib/libVkLayer_MESA_overlay.so
-  _install fakeinstall/usr/bin/mesa-overlay-control.py
-
   _install fakeinstall/usr/share/vulkan/implicit_layer.d
-  _install fakeinstall/usr/lib/libVkLayer_MESA_device_select.so
+  _install fakeinstall/usr/lib/libVkLayer_*.so
+  _install fakeinstall/usr/bin/mesa-overlay-control.py
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
@@ -127,7 +124,6 @@ package_mesa-vulkan-intel-dev-git() {
   
   _install fakeinstall/usr/share/vulkan/icd.d/intel_icd*.json
   _install fakeinstall/usr/lib/libvulkan_intel.so
-  _install fakeinstall/usr/include/vulkan/vulkan_intel.h
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
@@ -204,9 +200,6 @@ package_mesa-dev-git() {
   _install fakeinstall/usr/lib/libOSMesa.so*
   _install fakeinstall/usr/lib/libxatracker.so*
   _install fakeinstall/usr/lib/libswrAVX*.so*
-
-  # in vulkan-headers
-  rm -rv fakeinstall/usr/include/vulkan
 
   _install fakeinstall/usr/include
   _install fakeinstall/usr/lib/pkgconfig
