@@ -12,11 +12,11 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-dev-git gcc-libs-dev-git gcc-fortran-dev-git gcc-objc-dev-git gcc-ada-dev-git gcc-go-dev-git lib32-gcc-libs-dev-git gcc-d-dev-git)
-pkgver=11.0.0.r176363.9e20d0f0ce9
+pkgver=12.0.0.r185194.f9af11c7f15
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
-_islver=0.21
+_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
@@ -31,14 +31,12 @@ source=(
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         gdc_phobos_path.patch
         c89 c99
-        fs64270.patch
         )
 sha256sums=('SKIP'
-            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859'
+            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
             'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
-            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            '1ef190ed4562c4db8c1196952616cd201cfdd788b65f302ac2cc4dabb4d72cee')
+            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
 
 # also set after pkgver() runs!
 _libdir=usr/lib/gcc/$CHOST/${_basever}
@@ -72,7 +70,7 @@ prepare() {
 
   # Turn off SSP for nostdlib|nodefaultlibs|ffreestanding
   # https://bugs.archlinux.org/task/64270
-  patch -p1 -i "$srcdir/fs64270.patch"
+  # patch -p1 -i "$srcdir/fs64270.patch"
 
   mkdir -p "$srcdir/gcc-build"
 }
