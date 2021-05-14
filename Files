@@ -70,7 +70,6 @@
 ├── gcc-git
 │   ├── c89
 │   ├── c99
-│   ├── fs64270.patch
 │   ├── gdc_phobos_path.patch
 │   └── PKGBUILD
 ├── gdb-git
@@ -562,4 +561,4 @@
 └── zstd-git
     └── PKGBUILD
 
-193 directories, 369 files
+193 directories, 368 files

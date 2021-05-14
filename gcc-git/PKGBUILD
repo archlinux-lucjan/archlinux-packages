@@ -12,11 +12,11 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git gcc-d-git)
-pkgver=10.1.1.r176198.ceae6a13366
+pkgver=11.1.1.r184565.07579460443
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
-_islver=0.21
+_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
@@ -26,19 +26,17 @@ makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python g
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 source=(
-        # git://gcc.gnu.org/git/gcc.git#branch=branch=releases/gcc-10
-        git://github.com/gcc-mirror/gcc.git#branch=releases/gcc-10
+        # git://gcc.gnu.org/git/gcc.git#branch=branch=releases/gcc-11
+        git://github.com/gcc-mirror/gcc.git#branch=releases/gcc-11
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         gdc_phobos_path.patch
         c89 c99
-        fs64270.patch
         )
 sha256sums=('SKIP'
-            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859'
+            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
             'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
-            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            '1ef190ed4562c4db8c1196952616cd201cfdd788b65f302ac2cc4dabb4d72cee')
+            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
 
 # also set after pkgver() runs!
 _libdir=usr/lib/gcc/$CHOST/${_basever}
@@ -69,10 +67,6 @@ prepare() {
 
   # D hacks
   patch -p1 -i "$srcdir/gdc_phobos_path.patch"
-
-  # Turn off SSP for nostdlib|nodefaultlibs|ffreestanding
-  # https://bugs.archlinux.org/task/64270
-  patch -p1 -i "$srcdir/fs64270.patch"
 
   mkdir -p "$srcdir/gcc-build"
 }
