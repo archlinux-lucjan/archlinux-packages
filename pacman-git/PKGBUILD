@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=6.0.0alpha1.1.g11e09a23
+pkgver=6.0.0.0.g75eb3f4c
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="http://www.archlinux.org/pacman/"
 license=('GPL')
 depends=('bash' 'glibc' 'libarchive' 'curl'
          'gpgme' 'pacman-mirrorlist' 'archlinux-keyring')
-makedepends=('asciidoc' 'git' 'meson')
+makedepends=('asciidoc' 'git' 'meson' 'doxygen')
 checkdepends=('python' 'fakechroot')
 optdepends=('perl-locale-gettext: translation support in makepkg-template')
 backup=(etc/pacman.conf
@@ -23,12 +23,10 @@ conflicts=('pacman')
 options=('strip' 'debug')
 source=(git://git.archlinux.org/pacman.git
         pacman.conf
-        makepkg.conf
-        0001-meson-update-version-and-libalpm_version.patch)
+        makepkg.conf)
 sha1sums=('SKIP'
-          '78a8b65d17529189fccae2d64ab8ce41fe02a352'
-          'efa94cc2b0c635bb21b8d1281a5567247716a621'
-          'c8fb51f5d6b37fd2acf0d5111ff596849313e787')
+          'da4fff7132858c15358129c5eea6a915d2d4f698'
+          'cc020a7a0b3a617ac88a4da22e39d5dc20b89452')
 
 pkgver() {
   cd pacman
@@ -48,26 +46,30 @@ prepare() {
   done
 }
 
-local _meson_options=(
-    -Ddoc=enabled
-    -Duse-git-version=true
-    -Dscriptlet-shell=/usr/bin/bash
-    -Dldconfig=/usr/bin/ldconfig
-)
-
 build() {
-  arch-meson pacman build  "${_meson_options[@]}"
-    
-  ninja -C build
+  cd pacman
+
+  meson --prefix=/usr \
+        --buildtype=plain \
+        -Ddoc=enabled \
+        -Ddoxygen=enabled \
+        -Dscriptlet-shell=/usr/bin/bash \
+        -Dldconfig=/usr/bin/ldconfig \
+        build
+
+  meson compile -C build
 }
 
 check() {
+  cd pacman
+
   meson test -C build
 }
 
 package() {
-  
-  DESTDIR="$pkgdir" ninja -C build install
+  cd pacman
+
+  DESTDIR="$pkgdir" meson install -C build
 
   # install Arch specific stuff
   install -dm755 "$pkgdir/etc"

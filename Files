@@ -338,7 +338,6 @@
 ├── pacman-contrib-git
 │   └── PKGBUILD
 ├── pacman-git
-│   ├── 0001-meson-update-version-and-libalpm_version.patch
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   └── PKGBUILD
@@ -561,4 +560,4 @@
 └── zstd-git
     └── PKGBUILD
 
-193 directories, 368 files
+193 directories, 367 files
