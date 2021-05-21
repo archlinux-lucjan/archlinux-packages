@@ -4,19 +4,17 @@
 
 _pkgname=pyalpm
 pkgname=$_pkgname-git
-pkgver=0.8.3.0.g284d480
+pkgver=0.10.1.0.gb665bc5
 pkgrel=1
 pkgdesc="Libalpm bindings for Python 3 (Git version)"
 arch=('x86_64')
 url="https://projects.archlinux.org/git/pyalpm.git"
 license=('GPL')
-depends=('python>=3.6' 'pacman>=5.0')
+depends=('python' 'pacman')
+makedepends=('git' 'python-setuptools' 'python-pytest' 'python-pkgconfig' 'python-pytest-pacman')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-makedepends=('git')
-source=(
-    'git+https://projects.archlinux.org/git/pyalpm.git'
-)
+source=("git+https://gitlab.archlinux.org/archlinux/pyalpm.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,9 +22,18 @@ pkgver() {
   git describe --long | sed 's/^v//;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/$_pkgname"
+}
+
 build() {
   cd "$srcdir/$_pkgname"
   python setup.py build
+}
+
+check() {
+  cd "$srcdir/$_pkgname"
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.9" pytest
 }
 
 package() {
