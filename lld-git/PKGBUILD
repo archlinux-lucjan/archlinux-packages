@@ -5,7 +5,7 @@
 pkgname=lld-git
 _pkgname=lld
 pkgver=11.0.0.r351819.g73c33fcf563
-pkgrel=2
+pkgrel=3
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
 url="https://lld.llvm.org/"
@@ -40,12 +40,12 @@ build() {
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_INCLUDE_TESTS=ON \
     -DLLVM_BUILD_TESTS=ON \
     -DLLVM_BUILD_DOCS=ON \
     -DLLVM_ENABLE_SPHINX=ON \
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-project/lld"
   ninja
