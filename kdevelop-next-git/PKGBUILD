@@ -8,8 +8,8 @@
 
 pkgname=kdevelop-next-git
 pkgver=5.6.2.1.g4688d626c1
-pkgrel=1
-_clangver=11.1.0
+pkgrel=2
+_clangver=12.0.0
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('x86_64')
 url='http://www.kdevelop.org'
