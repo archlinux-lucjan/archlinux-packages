@@ -134,8 +134,8 @@
 ├── gpgme-git
 │   └── PKGBUILD
 ├── grub-git
-│   ├── 0003-10_linux-detect-archlinux-initramfs.patch
-│   ├── 0004-add-GRUB_COLOR_variables.patch
+│   ├── 0001-00_header-add-GRUB_COLOR_-variables.patch
+│   ├── 0002-10_linux-detect-archlinux-initramfs.patch
 │   ├── grub.default
 │   ├── grub.install
 │   └── PKGBUILD
