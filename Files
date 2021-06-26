@@ -414,7 +414,6 @@
 ├── rebuild-detector-git
 │   └── PKGBUILD
 ├── sddm-dev-git
-│   ├── pam-faillock.patch
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
@@ -555,4 +554,4 @@
 └── zstd-git
     └── PKGBUILD
 
-192 directories, 363 files
+192 directories, 362 files
