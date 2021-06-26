@@ -423,11 +423,6 @@
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
-├── sddm-wayland-git
-│   ├── pam-faillock.patch
-│   ├── PKGBUILD
-│   ├── sddm.sysusers
-│   └── sddm.tmpfiles
 ├── s-git
 │   └── PKGBUILD
 ├── smplayer-svn
@@ -560,4 +555,4 @@
 └── zstd-git
     └── PKGBUILD
 
-193 directories, 367 files
+192 directories, 363 files

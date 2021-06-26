@@ -328,8 +328,6 @@
 
 - sddm-git
 
-- sddm-wayland-git
-
 - smplayer-svn
 
 - strawberry-git
