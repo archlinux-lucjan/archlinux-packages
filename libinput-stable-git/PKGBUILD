@@ -3,7 +3,7 @@
 
 pkgname=libinput-stable-git
 _pkgname=libinput
-pkgver=1.16.4.0.gedddb5c0
+pkgver=1.17.3.0.g4a4c30f5
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=('gtk3: libinput debug-gui'
             'python-libevdev: libinput measure')
 conflicts=('libinput')
 provides=("libinput=${pkgver}")
-source=(git://anongit.freedesktop.org/wayland/libinput#branch=1.16-branch)
+source=(git://anongit.freedesktop.org/wayland/libinput#branch=1.17-branch)
 sha1sums=('SKIP')
 
 pkgver() {
@@ -27,11 +27,12 @@ pkgver() {
 
 build() {
   arch-meson $_pkgname build \
-    -Dudev-dir=/usr/lib/udev \
-    -Dtests=false \
-    -Ddocumentation=false
-  ninja -C build
-}
+   D b_lto=false \
+    -D udev-dir=/usr/lib/udev \
+    -D tests=false \
+    -D documentation=false
+  meson compile -C build
+}  
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
