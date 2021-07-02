@@ -3,7 +3,7 @@
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgname=namcap-git
-pkgver=3.2.8.17.g97e816e
+pkgver=3.2.10.4.g28fdd26
 pkgrel=1
 pkgdesc="A Pacman package analyzer (git)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'pyalpm>=0.5' 'licenses'
 makedepends=('python-setuptools' 'git')
 provides=('namcap')
 conflicts=('namcap')
-source=("$pkgname::git+http://projects.archlinux.org/git/namcap.git")
+source=("$pkgname::git+https://gitlab.archlinux.org/pacman/namcap")
 sha256sums=('SKIP')
 
 pkgver() {
