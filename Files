@@ -319,6 +319,8 @@
 │   ├── bootstrap.install
 │   ├── LICENSE
 │   └── PKGBUILD
+├── netctl-git
+│   └── PKGBUILD
 ├── networkmanager-git
 │   └── PKGBUILD
 ├── networkmanager-stable-git
@@ -554,4 +556,4 @@
 └── zstd-git
     └── PKGBUILD
 
-192 directories, 362 files
+193 directories, 363 files

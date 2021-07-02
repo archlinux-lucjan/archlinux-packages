@@ -236,6 +236,8 @@
 
 - netbsd-pkgsrc
 
+- netctl-git
+
 - networkmanager-git
 
 - networkmanager-stable-git
