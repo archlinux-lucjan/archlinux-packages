@@ -1,0 +1,64 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
+
+pkgname=polly-git
+_pkgname=polly
+pkgver=13.0.0.r392817.g28fe9afdba83
+pkgrel=1
+pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
+arch=('x86_64')
+url="https://polly.llvm.org/"
+license=('custom:Apache 2.0 with LLVM Exception')
+depends=('gcc-libs')
+makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx' 'git')
+provides=('polly')
+conflicts=('polly')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "llvm-project/llvm"
+
+    local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
+            'BEGIN { ORS="." ; i=0 } \
+             /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
+             END { print "\n" }' \
+             CMakeLists.txt).r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
+    echo "${_pkgver}"
+}
+
+prepare() {
+  cd "llvm-project/llvm"
+  mkdir build
+}
+
+build() {
+ cd "llvm-project/llvm/build"
+
+  cmake .. -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLLVM_LINK_LLVM_DYLIB=ON \
+    -DLLVM_BUILD_TESTS=ON \
+    -DLLVM_BUILD_DOCS=ON \
+    -DLLVM_ENABLE_SPHINX=ON \
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
+    -DLLVM_BUILD_MAIN_SRC_DIR="$srcdir/llvm-project/llvm"
+  ninja
+}
+
+#check() {
+#  cd "llvm-project/llvm/build"
+#  ninja check-polly
+#}
+
+package() {
+  cd "llvm-project/llvm/build"
+
+  DESTDIR="$pkgdir" ninja install
+  install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Remove documentation sources
+  rm -r "$pkgdir"/usr/share/doc/$pkgname/html/{_sources,.buildinfo}
+} 
