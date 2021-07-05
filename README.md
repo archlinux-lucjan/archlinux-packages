@@ -268,8 +268,6 @@
 
 - pkgfile-git
 
-- polly-git
-
 - poppler-git
 
 - psi-clean-full-git
