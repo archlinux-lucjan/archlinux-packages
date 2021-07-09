@@ -7,9 +7,9 @@
 # Contributor: delor <bartekpiech gmail com>
 
 pkgname=qtcreator-dev-git
-pkgver=4.14.0.134.g015080878c
-_clangver=12.0.0
-pkgrel=2
+pkgver=4.15.1.30.g94d227cd43
+_clangver=12.0.1
+pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='http://qt-project.org'
@@ -30,7 +30,7 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'perf: performer analyzer')
 conflicts=('qtcreator')
 provides=('qtcreator')
-source=("git://code.qt.io/qt-creator/qt-creator.git#branch=4.14")
+source=("git://code.qt.io/qt-creator/qt-creator.git#branch=4.15")
 md5sums=('SKIP')
 
 pkgver() {
