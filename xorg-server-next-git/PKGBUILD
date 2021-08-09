@@ -6,8 +6,8 @@
 pkgbase=xorg-server-next-git
 _pkgbase=xserver
 pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
-pkgver=1.20.10.0.gbc111a2e6
-pkgrel=2
+pkgver=1.20.13.0.g86a72cb19
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -90,7 +90,9 @@ _install() {
     f="${src#fakeinstall/}"
     dir="${pkgdir}/${f%/*}"
     install -m755 -d "${dir}"
-    mv -v "${src}" "${dir}/"
+    # use copy so a new file is created and fakeroot can track properties such as setuid
+    cp -av "${src}" "${dir}/"
+    rm -rf "${src}"
   done
 }
 
