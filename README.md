@@ -390,6 +390,8 @@
 
 - xorgproto-git
 
+- zstd-cmake-git
+
 - zstd-git
 
 # Download:
