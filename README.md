@@ -68,6 +68,8 @@
 
 - git-test-git
 
+- github-cli-git
+
 - gitless-git
 
 - gitolite-git

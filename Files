@@ -92,6 +92,8 @@
 │   ├── git-git.install
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
+├── github-cli-git
+│   └── PKGBUILD
 ├── gitless-git
 │   ├── 0001-Update-requirements.patch
 │   └── PKGBUILD
@@ -560,4 +562,4 @@
 └── zstd-git
     └── PKGBUILD
 
-195 directories, 365 files
+196 directories, 366 files
