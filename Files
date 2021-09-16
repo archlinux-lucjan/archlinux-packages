@@ -205,7 +205,7 @@
 │   ├── libgit2-1.2.0-remove_http-parse_incompatible_tests.patch
 │   └── PKGBUILD
 ├── libgit2-stable-git
-│   ├── libgit2-0.99.0-remove_http-parse_incompatible_tests.patch
+│   ├── libgit2-1.2.0-remove_http-parse_incompatible_tests.patch
 │   └── PKGBUILD
 ├── libgpg-error-git
 │   └── PKGBUILD
