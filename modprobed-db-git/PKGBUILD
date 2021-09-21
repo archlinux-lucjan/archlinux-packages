@@ -3,7 +3,7 @@
 
 pkgname=modprobed-db-git
 _pkgname=modprobed-db
-pkgver=2.44.0.g8e0e3c9
+pkgver=2.43.1.g82da2ab
 pkgrel=1
 pkgdesc='Keeps track of EVERY kernel module ever used - useful for those of us who make localmodconfig :)'
 arch=('any')
@@ -12,7 +12,6 @@ depends=('kmod')
 makedepends=('git')
 optdepends=('sudo')
 provides=('modprobed-db')
-replaces=('modprobed-db')
 conflicts=('modprobed-db')
 url="https://wiki.archlinux.org/index.php/Modprobed-db"
 source=("git://github.com/graysky2/modprobed-db")
