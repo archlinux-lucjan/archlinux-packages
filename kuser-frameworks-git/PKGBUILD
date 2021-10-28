@@ -1,0 +1,35 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: maz-1 <ohmygod19993 at gmail dot com>
+
+pkgname=kuser-frameworks-git
+_pkgname=kuser
+pkgver=16.08.3.r6.gc4e4857
+pkgrel=1
+pkgdesc='User Manager'
+url='http://kde.org/applications/system/kuser/'
+arch=('i686' 'x86_64')
+license=('GPL' 'LGPL' 'FDL')
+groups=('kde-applications' 'kdeadmin')
+depends=('kdelibs4support' 'kio' 'kldap')
+makedepends=('cmake' 'extra-cmake-modules' 'kdesignerplugin' 'kdoctools' 'kinit' 'git')
+provides=('kdeadmin-kuser' 'kuser' 'kuser-frameworks')
+conflicts=('kdeadmin-kuser' 'kuser' 'kuser-frameworks')
+source=("git://github.com/sirlucjan/kuser#branch=kf5")
+md5sums=('SKIP')
+
+pkgver() {
+  cd kuser
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cmake -B build -S kuser \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

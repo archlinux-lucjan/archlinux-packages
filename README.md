@@ -122,6 +122,8 @@
 
 - krename-stable-git
 
+- kuser-frameworks-git
+
 - krusader-git
 
 - krusader-stable-git
