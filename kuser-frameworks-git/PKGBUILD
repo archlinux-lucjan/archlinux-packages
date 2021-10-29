@@ -3,7 +3,7 @@
 
 pkgname=kuser-frameworks-git
 _pkgname=kuser
-pkgver=16.08.3.r6.gc4e4857
+pkgver=21.10.0.dev.r770.gab5a82f
 pkgrel=1
 pkgdesc='User Manager'
 url='http://kde.org/applications/system/kuser/'
@@ -19,7 +19,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd kuser
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _ver="$(cat CMakeLists.txt | grep -m1 'set(VERSION' | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
