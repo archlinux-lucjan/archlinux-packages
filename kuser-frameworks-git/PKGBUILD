@@ -3,14 +3,14 @@
 
 pkgname=kuser-frameworks-git
 _pkgname=kuser
-pkgver=21.10.0.dev.r770.gab5a82f
+pkgver=21.10.0.dev.r773.gebd2cdc
 pkgrel=1
 pkgdesc='User Manager'
 url='http://kde.org/applications/system/kuser/'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 groups=('kde-applications' 'kdeadmin')
-depends=('kdelibs4support' 'kio' 'kldap')
+depends=('kdelibs4support' 'kio' 'kde-cli-tools' 'kldap')
 makedepends=('cmake' 'extra-cmake-modules' 'kdesignerplugin' 'kdoctools' 'kinit' 'git')
 provides=('kdeadmin-kuser' 'kuser' 'kuser-frameworks')
 conflicts=('kdeadmin-kuser' 'kuser' 'kuser-frameworks')
