@@ -8,14 +8,15 @@
 
 pkgname=qtcreator-git
 pkgver=5.0.0.beta1.77.g327645c0f0
-_clangver=12.0.1
-pkgrel=1
+_clangver=13.0.0
+pkgrel=2
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='http://qt-project.org'
 license=('LGPL')
-depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' "clang=$_clangver" 'qbs' 'clazy' 'syntax-highlighting' 'desktop-file-utils')
-makedepends=('llvm' 'python' 'git')
+depends=('qt5-tools' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-quick3d' 'qt5-webengine' 'qt5-serialport' 'syntax-highlighting' # qt6-shadertools qt6-5compat
+         'clang=$_clangver' 'clazy' 'yaml-cpp')
+makedepends=('cmake' 'llvm' 'git' 'python')
 options=('docs')
 optdepends=('qt5-doc: integrated Qt documentation'
             'qt5-examples: welcome page examples'
@@ -37,36 +38,24 @@ pkgver() {
     cd qt-creator
     git describe --long --match v* | sed 's/^v//;s/-/./g'
 }
-        
-prepare() {
-    mkdir -p build
-    
-    cd qt-creator
-
-    # fix hardcoded libexec path
-    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
-    sed -e 's|libexec|lib|g' -i src/tools/tools.pro
-    # use system qbs
-    rm -r src/shared/qbs
-}
 
 build() {
-    cd build
-
-    qmake LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr \
-    KSYNTAXHIGHLIGHTING_LIB_DIR=/usr/lib KSYNTAXHIGHLIGHTING_INCLUDE_DIR=/usr/include/KF5/KSyntaxHighlighting \
-    CONFIG+=journald QMAKE_CFLAGS_ISYSTEM=-I \
-    DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES \
-    "$srcdir"/qt-creator/qtcreator.pro
-    make
-    make docs
+  cmake -B build -S qt-creator \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DWITH_DOCS=ON \
+    -DBUILD_DEVELOPER_DOCS=ON \
+    -DBUILD_QBS=OFF \
+    -DQTC_CLANG_BUILDMODE_MATCH=ON \
+    -DBUILD_HELVIEWERBACKEND_QTWEBENGINE=ON
+  cmake --build build
+  cmake --build build --target docs
 }
 
 package() {
-    cd build
+  DESTDIR="$pkgdir" cmake --install build
+# Install docs
+  cp -r build/share/doc "$pkgdir"/usr/share
 
-    make INSTALL_ROOT="$pkgdir/usr/" install
-    make INSTALL_ROOT="$pkgdir/usr/" install_docs
-
-    install -Dm644 "$srcdir"/qt-creator/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+  install -Dm644 qt-creator/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
 }
