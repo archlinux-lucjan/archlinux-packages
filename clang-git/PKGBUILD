@@ -5,13 +5,13 @@
 pkgname=clang-git
 _pkgname=clang
 pkgver=11.0.0.r355145.g5d6c5b463ca
-pkgrel=3
+pkgrel=4
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm-libs-git' 'gcc' 'compiler-rt-git')
-makedepends=('llvm-git' 'cmake' 'ninja' 'python-sphinx' 'python2' 'git')
+makedepends=('llvm-git' 'cmake' 'ninja' 'python-sphinx' 'git')
 optdepends=('openmp-git: OpenMP support in clang with -fopenmp'
             'python: for scan-view and git-clang-format'
             'llvm-git: referenced by some clang headers')
@@ -61,6 +61,9 @@ prepare() {
   patch -Np2 -i ../../enable-SSP-and-PIE-by-default.patch
   mkdir build
   mv "$srcdir/llvm-project/clang-tools-extra" tools/extra
+  # Attempt to convert script to Python 3
+  2to3 -wn --no-diffs \
+    tools/extra/clang-include-fixer/find-all-symbols/tool/run-find-all-symbols.py
 }
 
 build() {
@@ -96,15 +99,10 @@ build() {
 #  ninja check-clang{,-tools}
 #}
 
-_python2_optimize() {
-  python2 -m compileall "$@"
-  python2 -O -m compileall "$@"
-}
-
-_python3_optimize() {
-  python3 -m compileall "$@"
-  python3 -O -m compileall "$@"
-  python3 -OO -m compileall "$@"
+_python_optimize() {
+  python -m compileall "$@"
+  python -O -m compileall "$@"
+  python -OO -m compileall "$@"
 }
 
 package() {
@@ -116,26 +114,19 @@ package() {
   # Remove documentation sources
   rm -r "$pkgdir"/usr/share/doc/clang{,-tools}/html/{_sources,.buildinfo}
 
+  # Move scanbuild-py into site-packages and install Python bindings
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/$site_packages"
+  mv "$pkgdir"/usr/lib/{libear,libscanbuild} "$pkgdir/$site_packages/"
+  cp -a ../bindings/python/clang "$pkgdir/$site_packages/"
+
   # Move analyzer scripts out of /usr/libexec
-  mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir/usr/lib/clang/"
+  mv "$pkgdir"/usr/libexec/* "$pkgdir/usr/lib/clang/"
   rmdir "$pkgdir/usr/libexec"
-  sed -i 's|libexec|lib/clang|' "$pkgdir/usr/bin/scan-build"
-
-  # Install Python bindings
-  for _py in 2.7 3.7; do
-    install -d "$pkgdir/usr/lib/python$_py/site-packages"
-    cp -a ../bindings/python/clang "$pkgdir/usr/lib/python$_py/site-packages/"
-    _python${_py%%.*}_optimize "$pkgdir/usr/lib/python$_py"
-  done
-
-  # Fix shebang in Python 2 script
-  sed -i '1s|/usr/bin/env python$|&2|' \
-    "$pkgdir"/usr/share/$_pkgname/run-find-all-symbols.py
-  touch -d @$SOURCE_DATE_EPOCH "$pkgdir"/usr/share/$pkgname/run-find-all-symbols.py
+  sed -i 's|libexec|lib/clang|' "$pkgdir/$site_packages/libscanbuild/analyze.py"
 
   # Compile Python scripts
-  _python2_optimize "$pkgdir/usr/share/clang"
-  _python3_optimize "$pkgdir/usr/share" -x 'clang-include-fixer|run-find-all-symbols'
+  _python_optimize "$pkgdir/usr/share" "$pkgdir/$site_packages"
 }
 
 # vim:set ts=2 sw=2 et:
