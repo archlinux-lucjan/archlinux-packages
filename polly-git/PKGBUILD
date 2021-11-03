@@ -4,7 +4,7 @@
 pkgname=polly-git
 _pkgname=polly
 pkgver=13.0.0.r392824.g873e8b96b122
-pkgrel=1
+pkgrel=2
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
 url="https://polly.llvm.org/"
@@ -57,7 +57,7 @@ package() {
   cd "llvm-project/polly/build"
 
   DESTDIR="$pkgdir" ninja install
-  install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Remove documentation sources
   rm -r "$pkgdir"/usr/share/doc/$_pkgname/html/{_sources,.buildinfo}
