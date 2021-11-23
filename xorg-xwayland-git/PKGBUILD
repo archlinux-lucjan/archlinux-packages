@@ -2,7 +2,7 @@
 # Contributo: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-git
-pkgver=1.20.0.r795.gf95d81e88
+pkgver=21.0.99.1.r127.gda9d012a9
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -10,7 +10,7 @@ groups=('xorg')
 url="https://xorg.freedesktop.org"
 pkgdesc="run X clients under wayland"
 depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
-         'pixman' 'xorg-server-common')
+         'pixman' 'xorg-server-common' 'libxcvt')
 makedepends=('meson' 'git' 
              'xorgproto' 'xtrans'
              'pixman' 'libxkbfile' 'libxfont2' 'dbus'
@@ -31,29 +31,14 @@ pkgver() {
 }
 
 build() {
-  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
-  # With them, module fail to load with undefined symbol.
-  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-#  export CFLAGS=${CFLAGS/-fno-plt}
-#  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-#  export LDFLAGS=${LDFLAGS/,-z,now}
-
   arch-meson xserver build \
-    -D os_vendor="Arch Linux" \
     -D ipv6=true \
     -D xvfb=false \
-    -D xnest=false \
+    -D xdmcp=false \
     -D xcsecurity=true \
-    -D xorg=false \
-    -D xephyr=false \
-    -D xwayland=true \
+    -D dri3=true \
     -D xwayland_eglstream=true \
-    -D xwin=false \
-    -D xquartz=false \
     -D glamor=true \
-    -D udev=true \
-    -D systemd_logind=true \
-    -D suid_wrapper=true \
     -D xkb_dir=/usr/share/X11/xkb \
     -D xkb_output_dir=/var/lib/xkb
 
@@ -61,6 +46,7 @@ build() {
   meson configure build
   ninja -C build
 }
+
 
 package() {
 
