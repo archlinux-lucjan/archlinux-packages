@@ -6,28 +6,22 @@
 pkgbase=xorg-server-next-git
 _pkgbase=xserver
 pkgname=('xorg-server-next-git' 'xorg-server-xephyr-next-git' 'xorg-server-xvfb-next-git' 'xorg-server-xnest-next-git' 'xorg-server-common-next-git' 'xorg-server-devel-next-git')
-pkgver=1.20.13.0.g86a72cb19
+pkgver=21.1.1.0.g6b997fb74
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="http://cgit.freedesktop.org/xorg/xserver/"
-makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans'
-             'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
+makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
+             'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv' 'libxcvt'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
-             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
-source=('git://anongit.freedesktop.org/xorg/xserver#branch=server-1.20-branch'
-        'xserver-autobind-hotplug.patch'
-        '0001-v2-FS-58644.patch'
-        '0002-fix-libshadow-2.patch'
+             'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
+source=('git://anongit.freedesktop.org/xorg/xserver#branch=server-21.1-branch'
         'xvfb-run' # with updates from FC master
         'xvfb-run.1')
 sha256sums=('SKIP'
-            'cae1b7f296c18177de38f9b1215a4f916da2288b85f1fcb9e80373a42e2892b8'
-            '6253fb5cf06cf650539be585d6ca13cfa00217b51ca9825476c8fd55c09341a4'
-            'd07b2fe55828dad61517a80c77f6f183113916f5e1fce30ff43041550d58bd6e'
             'd709078f5658576931655c7a46ff90b3586a2643a9124075d00ff3a567937845'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -39,16 +33,6 @@ pkgver() {
 
 prepare() {
   cd "${_pkgbase}"
-
-  # patch from Fedora, not yet merged
-  patch -Np1 -i ../xserver-autobind-hotplug.patch
-
-  # Fix rootless xorg - FS#58644
-  # https://bugs.freedesktop.org/show_bug.cgi?id=106588
-  patch -Np1 -i ../0001-v2-FS-58644.patch
-
-  # Fix libshadow.so: libfb.so => not found - merge in master
-  patch -Np1 -i ../0002-fix-libshadow-2.patch
 }
 
 build() {
@@ -67,8 +51,6 @@ build() {
     -D xcsecurity=true \
     -D xorg=true \
     -D xephyr=true \
-    -D xwayland=true \
-    -D xwayland_eglstream=true \
     -D glamor=true \
     -D udev=true \
     -D systemd_logind=true \
@@ -114,7 +96,7 @@ package_xorg-server-next-git() {
   pkgdesc="Xorg X server - Git"
   depends=(libepoxy libxfont2 pixman xorg-server-common libunwind
            dbus libgl xf86-input-libinput nettle
-           libpciaccess libdrm libxshmfence) # FS#52949
+           libpciaccess libdrm libxshmfence libxcvt) # FS#52949
 
   # see src/xserver/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-git pkg
@@ -123,12 +105,12 @@ package_xorg-server-next-git() {
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
 
-  _install fakeinstall/usr/bin/{Xorg,cvt,gtf}
+  _install fakeinstall/usr/bin/{Xorg,gtf}
   ln -s /usr/bin/Xorg "${pkgdir}/usr/bin/X"
   _install fakeinstall/usr/lib/Xorg{,.wrap}
   _install fakeinstall/usr/lib/xorg/modules/*
   _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
-  _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,cvt,gtf}.1
+  _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,gtf}.1
   _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
   _install fakeinstall/usr/share/man/man5/{Xwrapper.config,xorg.conf,xorg.conf.d}.5
 
@@ -201,6 +183,6 @@ package_xorg-server-devel-next-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 
   # make sure there are no files left to install
-  rm fakeinstall/usr/bin/Xwayland
+  rm -rf fakeinstall/usr/bin/cvt fakeinstall/usr/share/man/man1/cvt.1
   find fakeinstall -depth -print0 | xargs -0 rmdir
 }
