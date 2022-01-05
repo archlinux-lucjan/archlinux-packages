@@ -450,7 +450,6 @@
 │   └── syslinux-install_update
 ├── systemd-git
 │   ├── 0001-Use-Arch-Linux-device-access-groups.patch
-│   ├── 0003-PARTIAL-REVERT-commit-tree-wide-replace-strverscmp-and-str_verscmp-with-strverscmp_improved.patch
 │   ├── 20-systemd-sysusers.hook
 │   ├── 30-systemd-binfmt.hook
 │   ├── 30-systemd-catalog.hook
@@ -561,4 +560,4 @@
 └── zstd-git
     └── PKGBUILD
 
-197 directories, 364 files
+197 directories, 363 files
