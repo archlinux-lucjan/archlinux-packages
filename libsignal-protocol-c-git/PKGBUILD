@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('cmake')
 conflicts=('libsignal-protocol-c')
 provides=('libsignal-protocol-c')
-source=("git://github.com/WhisperSystems/$_pkgname")
+source=("git+https://github.com/WhisperSystems/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {

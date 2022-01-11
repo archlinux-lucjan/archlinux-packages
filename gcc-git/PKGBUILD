@@ -27,7 +27,7 @@ checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 source=(
         # git://gcc.gnu.org/git/gcc.git#branch=branch=releases/gcc-11
-        git://github.com/gcc-mirror/gcc.git#branch=releases/gcc-11
+        git+https://github.com/gcc-mirror/gcc.git#branch=releases/gcc-11
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         gdc_phobos_path.patch
         c89 c99

@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('git')
 provides=('libcrypt.so' 'libxcrypt')
 conflicts=('libxcrypt')
-source=("git://github.com/besser82/libxcrypt#branch=develop")
+source=("git+https://github.com/besser82/libxcrypt#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {

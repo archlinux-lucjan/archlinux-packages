@@ -14,7 +14,7 @@ provides=('lucjan-keyring')
 license=('GPL')
 install="${_pkgname}.install"
 source=(
-        "git://github.com/archlinux-lucjan/lucjan-keyring.git"
+        "git+https://github.com/archlinux-lucjan/lucjan-keyring.git"
         #"git://gitlab.com/archlinux-lucjan/lucjan-keyring.git"
         )
 sha256sums=('SKIP')

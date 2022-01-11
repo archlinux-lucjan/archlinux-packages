@@ -16,7 +16,7 @@ depends=('qt5-multimedia' 'qt5-webkit' 'qt5-svg' 'qt5-xmlpatterns' 'hicolor-icon
 makedepends=('cmake' 'qt5-tools' 'qt5-webengine' 'git')
 optdepends=('hunspell: for spell checking'
             'qt5-webengine: for experimental backend using Qt5-Webengine')
-source=('git://github.com/OtterBrowser/otter-browser.git')
+source=('git+https://github.com/OtterBrowser/otter-browser.git')
 sha256sums=('SKIP')
 
 prepare() {

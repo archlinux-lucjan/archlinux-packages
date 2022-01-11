@@ -12,7 +12,7 @@ conflicts=('lostfiles')
 provides=('lostfiles')
 license=('GPL2')
 url="https://github.com/graysky2/lostfiles"
-source=("git://github.com/graysky2/lostfiles")
+source=("git+https://github.com/graysky2/lostfiles")
 sha256sums=('SKIP')
 
 pkgver() {

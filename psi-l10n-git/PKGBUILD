@@ -14,7 +14,7 @@ depends=('psi-plus-git')
 conflicts=('psi-l10n')
 provides=("psi-l10n=$pkgver")
 options=('!strip' '!zipman')
-source=('git://github.com/psi-im/psi-l10n.git')
+source=('git+https://github.com/psi-im/psi-l10n.git')
 md5sums=('SKIP')
 
 pkgver() {

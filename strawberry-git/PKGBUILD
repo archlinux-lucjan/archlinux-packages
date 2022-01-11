@@ -16,7 +16,7 @@ optdepends=('gst-libav: additional codecs'
             'gst-plugins-ugly: additional codecs')
 provides=('strawberry')
 conflicts=('strawberry')
-source=("git://github.com/strawberrymusicplayer/strawberry.git")
+source=("git+https://github.com/strawberrymusicplayer/strawberry.git")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -15,7 +15,7 @@ makedepens=('git')
 conflict=('intel-undervolt')
 provides=('intel-undervolt')
 backup=(etc/intel-undervolt.conf)
-source=("git://github.com/kitsunyan/intel-undervolt")
+source=("git+https://github.com/kitsunyan/intel-undervolt")
 b2sums=('SKIP')
 
 pkgver() {

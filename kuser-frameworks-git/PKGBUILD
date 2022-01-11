@@ -14,7 +14,7 @@ depends=('kdelibs4support' 'kio' 'kde-cli-tools' 'kldap')
 makedepends=('cmake' 'extra-cmake-modules' 'kdesignerplugin' 'kdoctools' 'kinit' 'git')
 provides=('kdeadmin-kuser' 'kuser' 'kuser-frameworks')
 conflicts=('kdeadmin-kuser' 'kuser' 'kuser-frameworks')
-source=("git://github.com/sirlucjan/kuser#branch=kf5")
+source=("git+https://github.com/sirlucjan/kuser#branch=kf5")
 md5sums=('SKIP')
 
 pkgver() {
