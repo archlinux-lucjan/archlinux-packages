@@ -28,7 +28,7 @@ pkgbase = kuser-frameworks-git
 	conflicts = kdeadmin-kuser
 	conflicts = kuser
 	conflicts = kuser-frameworks
-	source = git://github.com/sirlucjan/kuser#branch=kf5
+	source = git+https://github.com/sirlucjan/kuser#branch=kf5
 	md5sums = SKIP
 
 pkgname = kuser-frameworks-git

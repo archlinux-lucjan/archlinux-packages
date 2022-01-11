@@ -21,7 +21,7 @@ pkgbase = gcc-git
 	makedepends = python
 	makedepends = git
 	options = !emptydirs
-	source = git://github.com/gcc-mirror/gcc.git#branch=releases/gcc-11
+	source = git+https://github.com/gcc-mirror/gcc.git#branch=releases/gcc-11
 	source = http://isl.gforge.inria.fr/isl-0.24.tar.bz2
 	source = gdc_phobos_path.patch
 	source = c89

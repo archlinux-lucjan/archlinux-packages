@@ -11,7 +11,7 @@ pkgbase = psi-resources-git
 	conflicts = psi-resources
 	options = !strip
 	options = !zipman
-	source = psi-resources::git://github.com/psi-plus/resources.git
+	source = psi-resources::git+https://github.com/psi-plus/resources.git
 	md5sums = SKIP
 
 pkgname = psi-resources-git

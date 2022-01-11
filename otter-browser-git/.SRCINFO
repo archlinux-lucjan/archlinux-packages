@@ -25,7 +25,7 @@ pkgbase = otter-browser-git
 	conflicts = otter-browser-beta
 	conflicts = otter-browser-rc
 	conflicts = otter-browser
-	source = git://github.com/OtterBrowser/otter-browser.git
+	source = git+https://github.com/OtterBrowser/otter-browser.git
 	sha256sums = SKIP
 
 pkgname = otter-browser-git

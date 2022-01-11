@@ -10,7 +10,7 @@ pkgbase = intel-undervolt-git
 	depends = glibc
 	provides = intel-undervolt
 	backup = etc/intel-undervolt.conf
-	source = git://github.com/kitsunyan/intel-undervolt
+	source = git+https://github.com/kitsunyan/intel-undervolt
 	b2sums = SKIP
 
 pkgname = intel-undervolt-git

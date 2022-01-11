@@ -12,7 +12,7 @@ pkgbase = libxcrypt-dev-git
 	provides = libcrypt.so
 	provides = libxcrypt
 	conflicts = libxcrypt
-	source = git://github.com/besser82/libxcrypt#branch=develop
+	source = git+https://github.com/besser82/libxcrypt#branch=develop
 	sha256sums = SKIP
 
 pkgname = libxcrypt-dev-git

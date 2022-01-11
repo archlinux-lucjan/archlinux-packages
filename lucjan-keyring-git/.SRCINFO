@@ -9,7 +9,7 @@ pkgbase = lucjan-keyring-git
 	license = GPL
 	provides = lucjan-keyring
 	conflicts = lucjan-keyring
-	source = git://github.com/archlinux-lucjan/lucjan-keyring.git
+	source = git+https://github.com/archlinux-lucjan/lucjan-keyring.git
 	sha256sums = SKIP
 
 pkgname = lucjan-keyring-git

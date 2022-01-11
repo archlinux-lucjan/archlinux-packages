@@ -21,10 +21,10 @@ pkgbase = psi-plugins-git
 	optdepends = libsignal-protocol-c: for omemoplugin
 	provides = psi-plugins=1.1.345.ga0acd31
 	conflicts = psi-plugins
-	source = git://github.com/psi-im/plugins
-	source = git://github.com/psi-im/psi.git
-	source = git://github.com/psi-im/iris.git
-	source = git://github.com/psi-im/libpsi.git
+	source = git+https://github.com/psi-im/plugins
+	source = git+https://github.com/psi-im/psi.git
+	source = git+https://github.com/psi-im/iris.git
+	source = git+https://github.com/psi-im/libpsi.git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

@@ -11,7 +11,7 @@ pkgbase = libsignal-protocol-c-git
 	makedepends = cmake
 	provides = libsignal-protocol-c
 	conflicts = libsignal-protocol-c
-	source = git://github.com/WhisperSystems/libsignal-protocol-c
+	source = git+https://github.com/WhisperSystems/libsignal-protocol-c
 	md5sums = SKIP
 
 pkgname = libsignal-protocol-c-git

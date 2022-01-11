@@ -22,7 +22,7 @@ pkgbase = sddm-git
 	backup = etc/pam.d/sddm
 	backup = etc/pam.d/sddm-autologin
 	backup = etc/pam.d/sddm-greeter
-	source = git://github.com/sddm/sddm.git#branch=master
+	source = git+https://github.com/sddm/sddm.git#branch=master
 	source = sddm.sysusers
 	source = sddm.tmpfiles
 	source = pam-faillock.patch

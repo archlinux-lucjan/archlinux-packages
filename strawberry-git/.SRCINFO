@@ -26,7 +26,7 @@ pkgbase = strawberry-git
 	optdepends = gst-plugins-ugly: additional codecs
 	provides = strawberry
 	conflicts = strawberry
-	source = git://github.com/strawberrymusicplayer/strawberry.git
+	source = git+https://github.com/strawberrymusicplayer/strawberry.git
 	sha256sums = SKIP
 
 pkgname = strawberry-git

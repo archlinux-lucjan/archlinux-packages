@@ -13,7 +13,7 @@ pkgbase = mupen64plus-qt-qit
 	depends = hicolor-icon-theme
 	provides = mupen64plus-qt
 	conflicts = mupen64plus-qt
-	source = git://github.com/dh4/mupen64plus-qt.git
+	source = git+https://github.com/dh4/mupen64plus-qt.git
 	md5sums = SKIP
 
 pkgname = mupen64plus-qt-qit

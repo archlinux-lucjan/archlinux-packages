@@ -10,7 +10,7 @@ pkgbase = lostfiles-git
 	makedepends = git
 	provides = lostfiles
 	conflicts = lostfiles
-	source = git://github.com/graysky2/lostfiles
+	source = git+https://github.com/graysky2/lostfiles
 	sha256sums = SKIP
 
 pkgname = lostfiles-git
