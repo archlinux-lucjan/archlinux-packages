@@ -240,6 +240,7 @@
 ├── linux-api-headers-rc-git
 │   └── PKGBUILD
 ├── linux-firmware-git
+│   ├── 0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
 │   └── PKGBUILD
 ├── linux-usermode
 │   ├── 70-uml.hook
@@ -557,4 +558,4 @@
 └── zstd-git
     └── PKGBUILD
 
-196 directories, 361 files
+196 directories, 362 files
