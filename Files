@@ -241,8 +241,6 @@
 │   └── PKGBUILD
 ├── linux-firmware-git
 │   └── PKGBUILD
-├── linux-firmware-main-git
-│   └── PKGBUILD
 ├── linux-usermode
 │   ├── 70-uml.hook
 │   ├── config
@@ -559,4 +557,4 @@
 └── zstd-git
     └── PKGBUILD
 
-197 directories, 362 files
+196 directories, 361 files
