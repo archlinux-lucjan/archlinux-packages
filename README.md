@@ -2,6 +2,8 @@
 
 - auracle-git
 
+- bat-polaur-extras-git
+
 - bat-polaur-git
 
 - binutils-git

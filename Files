@@ -1,6 +1,8 @@
 .
 ├── auracle-git
 │   └── PKGBUILD
+├── bat-polaur-extras-git
+│   └── PKGBUILD
 ├── bat-polaur-git
 │   └── PKGBUILD
 ├── binutils-git
@@ -558,4 +560,4 @@
 └── zstd-git
     └── PKGBUILD
 
-196 directories, 362 files
+197 directories, 363 files
