@@ -6,8 +6,8 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=250.142.gda2862ef06
-pkgrel=2
+pkgver=250.799.g97f27f8a16
+pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -94,17 +94,18 @@ build() {
 
   local _timeservers=({0..3}.arch.pool.ntp.org)
   local _nameservers=(
-    # We use these public name services, ordered by their
-    # privacy policy (hopefully):
+    # We use these public name services, ordered by their privacy policy (hopefully):
     #  * Cloudflare (https://1.1.1.1/)
     #  * Quad9 without filtering (https://www.quad9.net/)
     #  * Google (https://developers.google.com/speed/public-dns/)
-    1.1.1.1#cloudflare-dns.com
-    9.9.9.10#dns.quad9.net
-    8.8.8.8#dns.google
-    2606:4700:4700::1111#cloudflare-dns.com
-    2620:fe::10#dns.quad9.net
-    2001:4860:4860::8888#dns.google
+    # TODO: go back to cloudflare? Currently it is unusable with systemd-resolved...
+    #  https://community.cloudflare.com/t/ttl-for-cnames/354506
+    #'1.1.1.1#cloudflare-dns.com'
+    '9.9.9.10#dns.quad9.net'
+    '8.8.8.8#dns.google'
+    #'2606:4700:4700::1111#cloudflare-dns.com'
+    '2620:fe::10#dns.quad9.net'
+    '2001:4860:4860::8888#dns.google'
 )
 
   local _meson_options=(
@@ -147,7 +148,7 @@ build() {
 
   arch-meson "$_pkgbase" build "${_meson_options[@]}"
 
-  ninja -C build
+  meson compile -C build
 }
 
 package_systemd-git() {
