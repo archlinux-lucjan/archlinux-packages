@@ -1,13 +1,13 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
-# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 
 pkgname=linux-api-headers-rc-git
 _major=5.16
 _srcname=linux-stable-rc
-pkgver=5.16.r0.gdf0cc57e057f
-pkgrel=1
+pkgver=5.16.7.r134.gddf6ceb4eefb
+pkgrel=2
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
 url="http://www.gnu.org/software/libc"
