@@ -3,7 +3,7 @@
 # ==================
 # Maintainer: Allan McRae <allan@archlinux.org>
 
-# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 
 # build from head of release branch as bug fix releases are rare
 
@@ -15,7 +15,7 @@
 
 pkgname=binutils-test-git
 _pkgname=binutils-gdb
-pkgver=2.36.0.r104586.3592ada38da
+pkgver=2.38.r108864.a96f7ba94b6
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ checkdepends=('dejagnu' 'bc')
 provides=('binutils')
 conflicts=('binutils-multilib' 'binutils')
 options=('staticlibs' '!distcc' '!ccache')
-source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_36-branch)
+source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_38-branch)
 md5sums=('SKIP')
 
 pkgver() {
@@ -69,8 +69,8 @@ build() {
     --with-pic \
     --with-system-zlib
 
-  make configure-host
-  make tooldir=/usr
+  make -O configure-host
+  make -O tooldir=/usr
 }
 
 #check() {
@@ -78,8 +78,7 @@ build() {
 #  
 #  # unset LDFLAGS as testsuite makes assumptions about which ones are active
 #  # ignore failures in gold testsuite...
-#  make -k LDFLAGS="" check || true
-#}
+#  make -O -k LDFLAGS="" check || true
 
 package() {
   cd binutils-build
