@@ -3,7 +3,7 @@
 # ==================
 # Maintainer: Allan McRae <allan@archlinux.org>
 
-# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 
 # build from head of release branch as bug fix releases are rare
 
@@ -15,7 +15,7 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.36.50.r104851.ee87f50b8d2
+pkgver=2.38.50.r109003.577a2a5f205
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -69,8 +69,8 @@ build() {
     --with-pic \
     --with-system-zlib
 
-  make configure-host
-  make tooldir=/usr
+  make -O configure-host
+  make -O tooldir=/usr
 }
 
 #check() {
@@ -78,7 +78,7 @@ build() {
 #  
 #  # unset LDFLAGS as testsuite makes assumptions about which ones are active
 #  # ignore failures in gold testsuite...
-#  make -k LDFLAGS="" check || true
+#  make -O -k LDFLAGS="" check || true
 #}
 
 package() {
