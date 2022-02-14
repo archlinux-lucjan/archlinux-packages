@@ -394,6 +394,8 @@
 
 - xorgproto-git
 
+- zsh-fast-syntax-highlighting-git
+
 - zstd-cmake-git
 
 - zstd-git

@@ -555,9 +555,11 @@
 │   └── PKGBUILD
 ├── xorg-xwayland-next-git
 │   └── PKGBUILD
+├── zsh-fast-syntax-highlighting-git
+│   └── PKGBUILD
 ├── zstd-cmake-git
 │   └── PKGBUILD
 └── zstd-git
     └── PKGBUILD
 
-197 directories, 363 files
+198 directories, 364 files
