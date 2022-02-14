@@ -557,9 +557,12 @@
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
 │   └── PKGBUILD
+├── zsh-you-should-use-git
+│   ├── PKGBUILD
+│   └── zsh-you-should-use.install
 ├── zstd-cmake-git
 │   └── PKGBUILD
 └── zstd-git
     └── PKGBUILD
 
-198 directories, 364 files
+199 directories, 366 files

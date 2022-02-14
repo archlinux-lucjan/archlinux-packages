@@ -396,6 +396,8 @@
 
 - zsh-fast-syntax-highlighting-git
 
+- zsh-you-should-use-git
+
 - zstd-cmake-git
 
 - zstd-git
