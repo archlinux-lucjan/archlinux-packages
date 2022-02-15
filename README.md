@@ -398,6 +398,8 @@
 
 - zsh-you-should-use-git
 
+- zsh-z-git
+
 - zstd-cmake-git
 
 - zstd-git
