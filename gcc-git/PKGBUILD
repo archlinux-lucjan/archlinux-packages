@@ -12,7 +12,7 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git gcc-d-git)
-pkgver=11.1.1.r184565.07579460443
+pkgver=11.2.1.r185724.2c9485a496f
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
@@ -24,17 +24,19 @@ license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
 makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git)
 checkdepends=(dejagnu inetutils)
-options=(!emptydirs)
+options=(!emptydirs !lto )
 source=(
         # git://gcc.gnu.org/git/gcc.git#branch=branch=releases/gcc-11
         git+https://github.com/gcc-mirror/gcc.git#branch=releases/gcc-11
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
+        https://libisl.sourceforge.io/isl-${_islver}.tar.xz
         gdc_phobos_path.patch
+        gcc-ada-repro.patch
         c89 c99
         )
 sha256sums=('SKIP'
-            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
+            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
             'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
 
@@ -66,7 +68,10 @@ prepare() {
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
   # D hacks
-  patch -p1 -i "$srcdir/gdc_phobos_path.patch"
+  patch -Np1 -i "$srcdir/gdc_phobos_path.patch"
+
+  # Reproducible gcc-ada
+  patch -Np0 < "$srcdir/gcc-ada-repro.patch"
 
   mkdir -p "$srcdir/gcc-build"
 }
@@ -74,10 +79,11 @@ prepare() {
 build() {
   cd gcc-build
 
-  # using -pipe causes spurious test-suite failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  CFLAGS=${CFLAGS/-pipe/}
-  CXXFLAGS=${CXXFLAGS/-pipe/}
+  # Credits @allanmcrae
+  # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/gcc/PKGBUILD
+  # TODO: properly deal with the build issues resulting from this
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir/gcc/configure" --prefix=/usr \
       --libdir=/usr/lib \
@@ -97,29 +103,34 @@ build() {
       --enable-default-ssp \
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
-      --enable-install-libiberty \
       --enable-linker-build-id \
       --enable-lto \
       --enable-multilib \
+      --enable-pgo-build=lto \
       --enable-plugin \
       --enable-shared \
       --enable-threads=posix \
       --disable-libssp \
       --disable-libstdcxx-pch \
-      --disable-libunwind-exceptions \
       --disable-werror \
+      --with-build-config=bootstrap-lto \
+      --enable-link-serialization=1 \
       gdc_include_dir=/usr/include/dlang/gdc
 
-  make
+  # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
+  make -O STAGE1_CFLAGS="-O2" \
+          BOOT_CFLAGS="$CFLAGS" \
+          BOOT_LDFLAGS="$LDFLAGS" \
+          LDFLAGS_FOR_TARGET="$LDFLAGS"
 
   # make documentation
-  make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+  make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
 #check() {
 #  cd gcc-build
 
-#  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time  
+#  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
 #   sed -i '/maybe-check-target-libphobos \\/d' Makefile 
 #
 #  # do not abort on error as some are "expected"
@@ -174,7 +185,7 @@ package_gcc-libs-git() {
 
 package_gcc-git() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (git version)"
-  depends=("gcc-libs-git=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
+  depends=("gcc-libs-git=$pkgver-$pkgrel" 'binutils>=2.28' 'libmpc' 'zstd')
   groups=('base-devel')
   optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
   provides=(gcc-multilib=${pkgver}-${pkgrel} gcc=${pkgver}-${pkgrel})
@@ -226,9 +237,6 @@ package_gcc-git() {
   make -C $CHOST/32/libitm DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
   make -C $CHOST/32/libsanitizer DESTDIR="$pkgdir" install-nodist_{saninclude,toolexeclib}HEADERS
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
-
-  make -C libiberty DESTDIR="$pkgdir" install
-  install -m644 libiberty/pic/libiberty.a "$pkgdir/usr/lib"
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
   rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1
