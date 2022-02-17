@@ -396,6 +396,8 @@
 
 - zsh-fast-syntax-highlighting-git
 
+- zsh-history-substring-search-git
+
 - zsh-you-should-use-git
 
 - zsh-z-git
