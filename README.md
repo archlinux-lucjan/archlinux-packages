@@ -72,6 +72,8 @@
 
 - github-cli-git
 
+- gitless
+
 - gitless-git
 
 - gitolite-git
