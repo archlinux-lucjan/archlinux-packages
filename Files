@@ -99,7 +99,6 @@
 ├── github-cli-git
 │   └── PKGBUILD
 ├── gitless
-│   ├── 0001-Update-requirements.patch
 │   └── PKGBUILD
 ├── gitless-git
 │   └── PKGBUILD
@@ -574,4 +573,4 @@
 └── zstd-git
     └── PKGBUILD
 
-202 directories, 372 files
+202 directories, 371 files
