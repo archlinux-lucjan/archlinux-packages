@@ -101,7 +101,6 @@
 ├── gitless
 │   └── PKGBUILD
 ├── gitless-git
-│   ├── 0001-Adds-gl-revert-a-wrapper-for-git-revert.patch
 │   └── PKGBUILD
 ├── git-main-git
 │   ├── git-daemon@.service
@@ -574,4 +573,4 @@
 └── zstd-git
     └── PKGBUILD
 
-202 directories, 372 files
+202 directories, 371 files
