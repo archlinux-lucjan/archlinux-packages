@@ -6,7 +6,7 @@
 
 pkgname=pacman-stable-git
 pkgver=6.0.1.0.g0a6fecd0
-pkgrel=2
+pkgrel=3
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('x86_64')
 url="http://www.archlinux.org/pacman/"
@@ -26,7 +26,7 @@ source=(git+https://gitlab.archlinux.org/pacman/pacman#branch=release/6.0.x
         makepkg.conf)
 sha1sums=('SKIP'
           'da4fff7132858c15358129c5eea6a915d2d4f698'
-          '1af27cafb3f9a33a1cd074a5e957c8ba627b6d47')
+          '543c8c6c7ece78e131a2e639cc35aeb30a493fdb')
 
 pkgver() {
   cd pacman
