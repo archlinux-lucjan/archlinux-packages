@@ -110,10 +110,6 @@
 
 - kdesvn-stable-git
 
-- kdevelop-dev-git
-
-- kdevelop-next-git
-
 - kdiff-git
 
 - kdiff3-git
