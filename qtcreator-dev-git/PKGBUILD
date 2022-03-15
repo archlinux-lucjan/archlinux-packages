@@ -7,20 +7,20 @@
 # Contributor: delor <bartekpiech gmail com>
 
 pkgname=qtcreator-dev-git
-pkgver=5.0.2.28.gad8a04f410
-_clangver=13.0.0
+pkgver=6.0.2.51.g5d675ff533
+_clangver=13.0.1
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='http://qt-project.org'
 license=('LGPL')
-depends=('qt5-tools' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-quick3d' 'qt5-webengine' 'qt5-serialport' 'syntax-highlighting' # qt6-shadertools qt6-5compat
-         'clang=$_clangver' 'clazy' 'yaml-cpp')
-makedepends=('cmake' 'llvm' 'git' 'python')
+depends=('qt6-tools' 'qt6-svg' 'qt6-quick3d' 'qt6-webengine' 'qt6-serialport' 'qt6-shadertools' 'qt6-5compat'
+         "clang=$_clangver" 'clazy' 'yaml-cpp') # syntax-highlighting
+makedepends=('cmake' 'llvm' 'python' 'git')
 options=('docs')
-optdepends=('qt5-doc: integrated Qt documentation'
-            'qt5-examples: welcome page examples'
-            'qt5-translations: for other languages'
+optdepends=('qt6-doc: integrated Qt documentation'
+            'qt6-examples: welcome page examples'
+            'qt6-translations: for other languages'
             'gdb: debugger'
             'cmake: cmake project support'
             'x11-ssh-askpass: ssh support'
@@ -28,10 +28,11 @@ optdepends=('qt5-doc: integrated Qt documentation'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support'
-            'perf: performer analyzer')
+            'perf: performer analyzer'
+            'mlocate: locator filter')
 conflicts=('qtcreator')
 provides=('qtcreator')
-source=("git://code.qt.io/qt-creator/qt-creator.git#branch=5.0")
+source=("git://code.qt.io/qt-creator/qt-creator.git#branch=6.0")
 md5sums=('SKIP')
 
 pkgver() {
