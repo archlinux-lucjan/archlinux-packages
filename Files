@@ -168,8 +168,6 @@
 │   └── PKGBUILD
 ├── kdesvn-stable-git
 │   └── PKGBUILD
-├── kdevelop-dev-git
-│   └── PKGBUILD
 ├── kdevelop-next-git
 │   └── PKGBUILD
 ├── kdiff3-git
@@ -573,4 +571,4 @@
 └── zstd-git
     └── PKGBUILD
 
-202 directories, 371 files
+201 directories, 370 files
