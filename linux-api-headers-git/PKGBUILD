@@ -4,10 +4,10 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 
 pkgname=linux-api-headers-git
-_major=5.16
+_major=5.17
 _srcname=linux
-pkgver=5.16.8.r0.gdf659ebe5d2f
-pkgrel=2
+pkgver=5.17.r0.gf443e374ae13
+pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('any')
 url="http://www.gnu.org/software/libc"
@@ -28,7 +28,6 @@ build() {
   cd ${_srcname}
 
   make mrproper
-  make headers_check
 }
 
 package() {
