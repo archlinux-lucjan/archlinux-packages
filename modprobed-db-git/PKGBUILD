@@ -3,7 +3,7 @@
 
 pkgname=modprobed-db-git
 _pkgname=modprobed-db
-pkgver=2.43.1.g82da2ab
+pkgver=2.45.0.g8322973
 pkgrel=1
 pkgdesc='Keeps track of EVERY kernel module ever used - useful for those of us who make localmodconfig :)'
 arch=('any')
