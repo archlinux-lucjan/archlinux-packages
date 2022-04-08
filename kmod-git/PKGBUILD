@@ -3,7 +3,7 @@
 
 pkgname=kmod-git
 _pkgname=kmod
-pkgver=28.0.g1ccfe99
+pkgver=29.r23.gea3c8ad
 pkgrel=1
 pkgdesc="interface to kernel module operations"
 arch=('x86_64')
@@ -22,11 +22,11 @@ source=('git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 md5sums=('SKIP'
          'dd62cbf62bd8f212f51ef8c43bec9a77'
          'e179ace75721e92b04b2e145b69dab29'
-         '18fb3d1f6024a5a84514c8276cb3ebff')
+         'b00253ca0d4ebfb2414e4596597bdebd')
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/^v//;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
