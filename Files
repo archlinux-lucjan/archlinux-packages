@@ -302,9 +302,10 @@
 │   ├── arch-meson
 │   └── PKGBUILD
 ├── meson-stable-git
+│   ├── 0001-Skip-broken-tests.patch
+│   ├── 0002-gtk-doc-fixes.patch
 │   ├── arch-meson
-│   ├── PKGBUILD
-│   └── skip-test.diff
+│   └── PKGBUILD
 ├── mkinitcpio-git
 │   └── PKGBUILD
 ├── modemmanager-git
@@ -570,4 +571,4 @@
 └── zstd-git
     └── PKGBUILD
 
-200 directories, 370 files
+200 directories, 371 files
