@@ -15,21 +15,24 @@
 
 pkgname=binutils-test-git
 _pkgname=binutils-gdb
-pkgver=2.38.r108864.a96f7ba94b6
+pkgver=2.38.r108942.33e42262496
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/binutils/"
-license=('GPL')
+license=('GPL3' 'GPL' 'FDL1.3' 'custom:FSFAP')
 groups=('base-devel')
-depends=('glibc' 'zlib')
+depends=('glibc' 'zlib' 'libelf')
 makedepends=('git')
-checkdepends=('dejagnu' 'bc')
+checkdepends=('dejagnu' 'debuginfod' 'bc')
+optdepends=('debuginfod: for debuginfod server/client functionality')
 provides=('binutils')
 conflicts=('binutils-multilib' 'binutils')
 options=('staticlibs' '!distcc' '!ccache')
-source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_38-branch)
-md5sums=('SKIP')
+source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_38-branch
+        gold-warn-unsupported.patch)
+md5sums=('SKIP'
+         '0283237e17804af1c55703d7e35557f1')
 
 pkgver() {
    cd binutils-gdb
@@ -42,8 +45,11 @@ prepare() {
   # Turn off development mode (-Werror, gas run-time checks, date in sonames)
   sed -i '/^development=/s/true/false/' bfd/development.sh
 
-  # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+  # Creds @Fedora
+  # Change the gold configuration script to only warn about
+  # unsupported targets.  This allows the binutils to be built with
+  # BPF support enabled.
+  patch -Np1 -i "${srcdir}"/gold-warn-unsupported.patch
 
   mkdir ${srcdir}/binutils-build
 }
@@ -58,37 +64,60 @@ build() {
     --enable-cet \
     --enable-deterministic-archives \
     --enable-gold \
+    --enable-install-libiberty \
     --enable-ld=default \
-    --enable-lto \
+    --enable-pgo-build=lto \
     --enable-plugins \
     --enable-relro \
-    --enable-targets=x86_64-pep \
+    --enable-shared \
+    --enable-targets=x86_64-pep,bpf-unknown-none \
     --enable-threads \
     --disable-gdb \
+    --disable-gdbserver \
+    --disable-libdecnumber \
+    --disable-readline \
+    --disable-sim \
     --disable-werror \
+    --with-debuginfod \
     --with-pic \
     --with-system-zlib
 
-  make -O configure-host
   make -O tooldir=/usr
+
+  # Extract the FSF All Permissive License
+  # <https://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html>
+  # used for some linker scripts.
+  tail -n 5 "${srcdir}"/binutils-gdb/ld/scripttempl/README > FSFAP
 }
 
 #check() {
 #  cd binutils-build
-#  
-#  # unset LDFLAGS as testsuite makes assumptions about which ones are active
-#  # ignore failures in gold testsuite...
-#  make -O -k LDFLAGS="" check || true
+#
+#  # Use minimal flags for testsuite
+#  # ld testsuite uses CFLAGS_FOR_TARGET and requires -g
+#  # gold testsuite requires CXXFLAGS/CFLAGS with default PIE/PIC disabled
+#  make -O CFLAGS_FOR_TARGET="-O2 -g" \
+#          CXXFLAGS="-O2 -no-pie -fno-PIC" \
+#          CFLAGS="-O2 -no-pie" \
+#          LDFLAGS="" \
+#          check
+#}
 
 package() {
   cd binutils-build
   make prefix="$pkgdir/usr" tooldir="$pkgdir/usr" install
 
+  # install PIC version of libiberty
+  install -m644 libiberty/pic/libiberty.a "$pkgdir/usr/lib"
+
   # Remove unwanted files
-  rm -f "$pkgdir"/usr/share/man/man1/{dlltool,nlmconv,windres,windmc}*
+  rm -f "$pkgdir"/usr/share/man/man1/{dlltool,windres,windmc}*
 
   # No shared linking to these files outside binutils
   rm -f "$pkgdir"/usr/lib/lib{bfd,opcodes}.so
   echo 'INPUT( /usr/lib/libbfd.a -liberty -lz -ldl )' > "$pkgdir/usr/lib/libbfd.so"
   echo 'INPUT( /usr/lib/libopcodes.a -lbfd )' > "$pkgdir/usr/lib/libopcodes.so"
+
+  # install FSF All Permissive License
+  install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ FSFAP
 }
