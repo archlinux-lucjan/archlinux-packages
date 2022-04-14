@@ -298,9 +298,9 @@
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── meson-git
+│   ├── 0001-Skip-broken-tests.patch
 │   ├── arch-meson
-│   ├── PKGBUILD
-│   └── skip-test.diff
+│   └── PKGBUILD
 ├── meson-stable-git
 │   ├── arch-meson
 │   ├── PKGBUILD
