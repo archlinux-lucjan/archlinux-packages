@@ -305,7 +305,6 @@
 │   └── PKGBUILD
 ├── meson-stable-git
 │   ├── 0001-Skip-broken-tests.patch
-│   ├── 0002-gtk-doc-fixes.patch
 │   ├── arch-meson
 │   └── PKGBUILD
 ├── mkinitcpio-git
@@ -573,4 +572,4 @@
 └── zstd-git
     └── PKGBUILD
 
-200 directories, 373 files
+200 directories, 372 files
