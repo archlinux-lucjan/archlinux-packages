@@ -26,10 +26,6 @@
 │   ├── ccm.install
 │   └── PKGBUILD
 ├── clementine-lite-qt5-git
-│   ├── meson-stable-git
-│   │   ├── 0001-Skip-broken-tests.patch
-│   │   ├── arch-meson
-│   │   └── PKGBUILD
 │   └── PKGBUILD
 ├── clementine-qt5-git
 │   └── PKGBUILD
@@ -577,4 +573,4 @@
 └── zstd-git
     └── PKGBUILD
 
-201 directories, 376 files
+200 directories, 373 files
