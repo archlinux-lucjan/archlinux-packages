@@ -388,6 +388,8 @@
 
 - xorgproto-git
 
+- zsh-git
+
 - zsh-fast-syntax-highlighting-git
 
 - zsh-history-substring-search-git
