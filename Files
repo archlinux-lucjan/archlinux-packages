@@ -553,6 +553,10 @@
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
 │   └── PKGBUILD
+├── zsh-git
+│   ├── PKGBUILD
+│   ├── zprofile
+│   └── zsh.install
 ├── zsh-history-substring-search-git
 │   ├── PKGBUILD
 │   └── zsh-history-substring-search-git.install
@@ -566,4 +570,4 @@
 └── zstd-git
     └── PKGBUILD
 
-198 directories, 368 files
+199 directories, 371 files
