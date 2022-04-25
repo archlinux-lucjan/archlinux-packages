@@ -293,9 +293,6 @@
 ├── mesa-demos-git
 │   ├── LICENSE
 │   └── PKGBUILD
-├── mesa-rc-git
-│   ├── LICENSE
-│   └── PKGBUILD
 ├── meson-git
 │   ├── 0001-Skip-broken-tests.patch
 │   ├── arch-meson
@@ -569,4 +566,4 @@
 └── zstd-git
     └── PKGBUILD
 
-199 directories, 370 files
+198 directories, 368 files
