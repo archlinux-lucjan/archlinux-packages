@@ -214,10 +214,6 @@
 
 - mesa-demos-git
 
-- mesa-dev-git
-
-- mesa-rc-git
-
 - meson-git
 
 - meson-stable-git
