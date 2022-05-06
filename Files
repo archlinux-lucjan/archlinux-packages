@@ -78,7 +78,6 @@
 │   ├── c89
 │   ├── c99
 │   ├── gcc-ada-repro.patch
-│   ├── gdc_phobos_path.patch
 │   └── PKGBUILD
 ├── gdb-git
 │   └── PKGBUILD
@@ -574,4 +573,4 @@
 └── zstd-git
     └── PKGBUILD
 
-200 directories, 374 files
+200 directories, 373 files

@@ -11,13 +11,12 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git gcc-d-git libgccjit-git)
-pkgver=11.2.1.r185724.2c9485a496f
+pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git libgccjit-git)
+pkgver=12.1.1.r192761.e38194f5ad3
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
-_islver=0.24
-pkgrel=2
+pkgrel=1
 pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -44,14 +43,12 @@ checkdepends=(
 )
 options=(!emptydirs !lto )
 source=(
-        # git://gcc.gnu.org/git/gcc.git#branch=branch=releases/gcc-11
-        git+https://github.com/gcc-mirror/gcc.git#branch=releases/gcc-11
-        gdc_phobos_path.patch
+        # git://gcc.gnu.org/git/gcc.git#branch=branch=releases/gcc-12
+        git+https://github.com/gcc-mirror/gcc.git#branch=releases/gcc-12
         gcc-ada-repro.patch
         c89 c99
         )
 sha256sums=('SKIP'
-            'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
             '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
@@ -76,9 +73,6 @@ prepare() {
 
   # Arch Linux installs x86_64 libraries /lib
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-
-  # D hacks
-  patch -Np1 -i "$srcdir/gdc_phobos_path.patch"
 
   # Reproducible gcc-ada
   patch -Np0 < "$srcdir/gcc-ada-repro.patch"
@@ -114,8 +108,7 @@ build() {
       --disable-libstdcxx-pch \
       --disable-werror \
       --with-build-config=bootstrap-lto \
-      --enable-link-serialization=1 \
-      gdc_include_dir=/usr/include/dlang/gdc"
+      --enable-link-serialization=1"
 
   cd gcc-build
 
@@ -126,7 +119,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir/gcc/configure" \
-    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \
+    -enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ \
     --enable-bootstrap \
     $_confflags
 
@@ -162,9 +155,6 @@ build() {
 
 #check() {
 #  cd gcc-build
-
-#  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
-#   sed -i '/maybe-check-target-libphobos \\/d' Makefile 
 #
 #  # do not abort on error as some are "expected"
 #  make -k check || true
@@ -198,10 +188,6 @@ package_gcc-libs-git() {
   make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
-  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/$_libdir/include/d/
-  rm -f "$pkgdir"/usr/lib/libgphobos.spec
-  
   for lib in libgomp \
              libitm \
              libquadmath; do
@@ -272,8 +258,8 @@ package_gcc-git() {
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran}.1
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn}.info
 
   make -C libcpp DESTDIR="$pkgdir" install
   make -C gcc DESTDIR="$pkgdir" install-po
@@ -383,7 +369,7 @@ package_gcc-ada-git() {
 package_gcc-go-git() {
   pkgdesc='Go front-end for GCC (git version)'
   depends=("gcc-go=$pkgver-$pkgrel")
-  provides=("go=1.12.2" gcc-go-multilib gcc-go=${pkgver}-${pkgrel})
+  provides=("go=1.18" gcc-go-multilib gcc-go=${pkgver}-${pkgrel})
   conflicts=(go gcc-go)
 
   cd gcc-build
@@ -428,41 +414,12 @@ package_lib32-gcc-libs-git() {
 
   make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
 
-  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-  rm -f "$pkgdir"/usr/lib32/libgphobos.spec
-  
   # remove files provided by gcc-libs
   rm -rf "$pkgdir"/usr/lib
 
   # Install Runtime Library Exception
   install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
     "$pkgdir/usr/share/licenses/lib32-gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION"
-}
-
-package_gcc-d-git() {
-  pkgdesc="D frontend for GCC"
-  depends=("gcc-git=$pkgver-$pkgrel")
-  provides=(gdc gcc-d)
-  replaces=(gdc)
-  options=('staticlibs')
-
-  cd gcc-build
-  make -C gcc DESTDIR="$pkgdir" d.install-{common,man,info}
-
-  install -Dm755 gcc/gdc "$pkgdir"/usr/bin/gdc
-  install -Dm755 gcc/d21 "$pkgdir"/"$_libdir"/d21
-
-  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-  rm -f "$pkgdir/usr/lib/"lib{gphobos,gdruntime}.so*
-  rm -f "$pkgdir/usr/lib32/"lib{gphobos,gdruntime}.so*
-
-  install -d "$pkgdir"/usr/include/dlang
-  ln -s /"${_libdir}"/include/d "$pkgdir"/usr/include/dlang/gdc
-
-  # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/gcc-d-git/"
-  ln -s /usr/share/licenses/gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/gcc-d-git/"
 }
 
 package_libgccjit-git() {
