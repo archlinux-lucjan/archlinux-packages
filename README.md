@@ -86,6 +86,8 @@
 
 - gpgme-git
 
+- grub-btrfs-git
+
 - grub-git
 
 - hub-git
