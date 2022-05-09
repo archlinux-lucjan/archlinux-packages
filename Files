@@ -141,6 +141,10 @@
 │   ├── avoid-beta-warning.patch
 │   ├── install
 │   └── PKGBUILD
+├── gnupg-stable-git
+│   ├── avoid-beta-warning.patch
+│   ├── install
+│   └── PKGBUILD
 ├── gpgme-git
 │   └── PKGBUILD
 ├── grub-btrfs-git
@@ -573,4 +577,4 @@
 └── zstd-git
     └── PKGBUILD
 
-200 directories, 373 files
+201 directories, 376 files

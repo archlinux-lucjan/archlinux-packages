@@ -84,6 +84,8 @@
 
 - gnupg-git
 
+- gnupg-stable-git
+
 - gpgme-git
 
 - grub-btrfs-git
