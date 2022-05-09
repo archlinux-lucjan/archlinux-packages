@@ -5,11 +5,11 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-git
-pkgver=2.2.7.1106.g65eb15698
+pkgver=2.3.6.19.g3d7d7e8bf
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='http://www.gnupg.org/'
-license=('GPL')
+license=(BSD custom CC0 GPL2 GPL3 LGPL3 LGPL2.1 MIT)
 arch=('x86_64')
 checkdepends=('openssh')
 makedepends=('libldap' 'libusb-compat' 'pcsclite' 'git' 'fig2dev')
@@ -67,4 +67,5 @@ package() {
 	ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
 
 	install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
+	install -Dm 644 COPYING.{CC0,other} -t "${pkgdir}/usr/share/licenses/$pkgname/"
 }
