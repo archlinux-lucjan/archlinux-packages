@@ -5,7 +5,6 @@ pkgbase = kuser-frameworks-git
 	pkgver = 21.10.0.dev.r773.gebd2cdc
 	pkgrel = 1
 	url = http://kde.org/applications/system/kuser/
-	arch = i686
 	arch = x86_64
 	groups = kde-applications
 	groups = kdeadmin

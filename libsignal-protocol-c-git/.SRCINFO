@@ -5,7 +5,6 @@ pkgbase = libsignal-protocol-c-git
 	pkgver = 2.3.2.4.g71954c5
 	pkgrel = 1
 	url = https://github.com/WhisperSystems/libsignal-protocol-c
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
