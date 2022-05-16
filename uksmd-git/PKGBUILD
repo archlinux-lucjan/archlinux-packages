@@ -3,36 +3,32 @@
 
 pkgname=uksmd-git
 _pkgname=uksmd
-pkgver=20190519.r15.g42f4ff8
+pkgver=20220513.r31.ge9b06f4
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
 arch=(x86_64)
-depends=('procps-ng')
+depends=('systemd' 'procps-ng' 'libcap-ng')
+makedepends=('meson' 'git')
 conflicts=('uksmd')
 provides=('uksmd')
 source=('git+https://gitlab.com/post-factum/uksmd')
 sha256sums=('SKIP')
 
 pkgver() {
-        cd "${srcdir}/${_pkgname}"
-  
-        echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd $_pkgname
+  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-
-	make
+  cd $_pkgname
+  arch-meson . build
+  meson compile -C build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-
-	make DESTDIR="${pkgdir}" PREFIX="/usr" install
-
-	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-	install -Dm644 "distro/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  cd $_pkgname
+  meson install -C build --destdir "${pkgdir}"
+  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
