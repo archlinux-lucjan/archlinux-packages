@@ -6,8 +6,8 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=250.3.0.g1b003bbc80
-pkgrel=4
+pkgver=251.0.gb622e95f2f
+pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -17,7 +17,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss')
 options=('strip')
-source=('git+https://github.com/systemd/systemd-stable#branch=v250-stable'
+source=('git+https://github.com/systemd/systemd-stable#branch=v251-stable'
         'git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -78,7 +78,7 @@ prepare() {
     else
       git log --oneline -1 "${_c}"
     fi
-    git cherry-pick -n "${_c}"
+    git cherry-pick -n -m1 "${_c}"
   done
   for _c in "${_reverts[@]}"; do
     git log --oneline -1 "${_c}"
@@ -115,6 +115,7 @@ build() {
     # internal version comparison is incompatible with pacman:
     #   249~rc1 < 249 < 249.1 < 249rc
     -Dversion-tag="${pkgver/-/\~}-${pkgrel}-arch"
+    -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
     -Dgnu-efi=true
