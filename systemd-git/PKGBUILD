@@ -6,8 +6,8 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=250.799.g97f27f8a16
-pkgrel=4
+pkgver=251.55.ge133c79f9f
+pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -78,7 +78,7 @@ prepare() {
     else
       git log --oneline -1 "${_c}"
     fi
-    git cherry-pick -n "${_c}"
+    git cherry-pick -n -m1 "${_c}"
   done
   for _c in "${_reverts[@]}"; do
     git log --oneline -1 "${_c}"
@@ -115,6 +115,7 @@ build() {
     # internal version comparison is incompatible with pacman:
     #   249~rc1 < 249 < 249.1 < 249rc
     -Dversion-tag="${pkgver/-/\~}-${pkgrel}-arch"
+    -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
     -Dgnu-efi=true
