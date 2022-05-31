@@ -44,6 +44,8 @@
 
 - dracut-git
 
+- esdm-git
+
 - falcon-git
 
 - fetchmirrors-git
