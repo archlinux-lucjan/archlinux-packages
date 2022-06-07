@@ -8,12 +8,12 @@
 pkgbase=glibc-git
 pkgname=(glibc-git lib32-glibc-git)
 pkgver=2.35.6.g491f2ef1f0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
 makedepends=(git gd lib32-gcc-libs python)
-options=(!strip staticlibs !lto)
+options=(debug staticlibs !lto)
 source=(git+https://sourceware.org/git/glibc.git#branch=release/2.35/master
         locale.gen.txt
         locale-gen
@@ -21,7 +21,7 @@ source=(git+https://sourceware.org/git/glibc.git#branch=release/2.35/master
         sdt.h sdt-config.h)
 md5sums=('SKIP'
          '07ac979b6ab5eeb778d55f041529d623'
-         '476e9113489f93b348b21e144b6a8fcf'
+         'c5356ee3c544864e36b3ab7763eb7805'
          '6e052f1cb693d5d3203f50f9d4e8c33b'
          '91fec3b7e75510ae2ac42533aa2e695e'
          '680df504c683640b02ed4a805797c0b2')
@@ -89,6 +89,10 @@ build() {
   sed -i "/build-programs=/s#no#yes#" configparms
   echo "CFLAGS += -Wp,-D_FORTIFY_SOURCE=2" >> configparms
   make -O
+
+  # pregenerate C.UTF-8 locale until it is built into glibc
+  # (https://sourceware.org/glibc/wiki/Proposals/C.UTF-8, FS#74864)
+  locale/localedef -c -f ../glibc/localedata/charmaps/UTF-8 -i ../glibc/localedata/locales/C ../C.UTF-8/
 
   # build info pages manually for reproducibility
   make info
@@ -185,18 +189,10 @@ package_glibc-git() {
   sed -e '1,3d' -e 's|/| |g' -e 's|\\| |g' -e 's|^|#|g' \
     "$srcdir/glibc/localedata/SUPPORTED" >> "$pkgdir/etc/locale.gen"
 
-  if check_option 'debug' n; then
-    find "$pkgdir"/usr/bin -type f -executable -exec strip $STRIP_BINARIES {} + 2> /dev/null || true
-    find "$pkgdir"/usr/lib -name '*.a' -type f -exec strip $STRIP_STATIC {} + 2> /dev/null || true
-
-    # Do not strip these for gdb and valgrind functionality, but strip the rest
-    find "$pkgdir"/usr/lib \
-      -not -name 'ld-*.so*' \
-      -not -name 'libc.so*' \
-      -not -name 'libpthread.so*' \
-      -not -name 'libthread_db.so*' \
-      -name '*.so*' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
-  fi
+  # install C.UTF-8 so that it is always available
+  install -dm755 "$pkgdir/usr/lib/locale"
+  cp -r "$srcdir/C.UTF-8" -t "$pkgdir/usr/lib/locale"
+  sed -i '/#C\.UTF-8 /d' "$pkgdir/etc/locale.gen"
 
   # Provide tracing probes to libstdc++ for exceptions, possibly for other
   # libraries too. Useful for gdb's catch command.
@@ -227,14 +223,4 @@ package_lib32-glibc-git() {
 
   # Symlink /usr/lib32/locale to /usr/lib/locale
   ln -s ../lib/locale "$pkgdir/usr/lib32/locale"
-
-  if check_option 'debug' n; then
-    find "$pkgdir"/usr/lib32 -name '*.a' -type f -exec strip $STRIP_STATIC {} + 2> /dev/null || true
-    find "$pkgdir"/usr/lib32 \
-      -not -name 'ld-*.so*' \
-      -not -name 'libc.so*' \
-      -not -name 'libpthread.so*' \
-      -not -name 'libthread_db.so*' \
-      -name '*.so*' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
-  fi
 }
