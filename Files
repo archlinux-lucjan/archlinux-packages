@@ -574,9 +574,7 @@
 │   └── zsh-you-should-use.install
 ├── zsh-z-git
 │   └── PKGBUILD
-├── zstd-cmake-git
-│   └── PKGBUILD
 └── zstd-git
     └── PKGBUILD
 
-202 directories, 377 files
+201 directories, 376 files

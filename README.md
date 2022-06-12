@@ -404,8 +404,6 @@
 
 - zsh-z-git
 
-- zstd-cmake-git
-
 - zstd-git
 
 # Download:
