@@ -6,21 +6,21 @@
 # Contributor: thotypous <matiasΘarchlinux-br·org>
 # Contributor: delor <bartekpiech gmail com>
 
-pkgname=qtcreator-git
-pkgver=7.0.0.rc1.224.ga141d56991
-_clangver=13.0.1
+pkgbase=qtcreator-git
+pkgname=(qtcreator-git qtcreator-git-devel)
+pkgver=8.0.0.beta2.114.g1257a4c5c3
+_clangver=14.0.6
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='http://qt-project.org'
 license=('LGPL')
 depends=('qt6-tools' 'qt6-svg' 'qt6-quick3d' 'qt6-webengine' 'qt6-serialport' 'qt6-shadertools' 'qt6-5compat'
-         "clang=$_clangver" 'clazy' 'yaml-cpp') # syntax-highlighting
+         "clang=$_clangver" 'clazy' 'yaml-cpp' 'litehtml') # syntax-highlighting
 makedepends=('cmake' 'llvm' 'python' 'git')
 options=('docs')
 optdepends=('qt6-doc: integrated Qt documentation'
             'qt6-examples: welcome page examples'
-            'qt6-translations: for other languages'
             'gdb: debugger'
             'cmake: cmake project support'
             'x11-ssh-askpass: ssh support'
@@ -53,10 +53,18 @@ build() {
   cmake --build build --target docs
 }
 
-package() {
+package_qtcreator-git() {
   DESTDIR="$pkgdir" cmake --install build
 # Install docs
   cp -r build/share/doc "$pkgdir"/usr/share
 
   install -Dm644 qt-creator/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+}
+
+package_qtcreator-git-devel() {
+  pkgdesc+=' (development files)'
+  depends=('qtcreator-git')
+  optdepends=()
+
+  DESTDIR="$pkgdir" cmake --install build --component Devel
 }
