@@ -6,21 +6,21 @@
 # Contributor: thotypous <matiasΘarchlinux-br·org>
 # Contributor: delor <bartekpiech gmail com>
 
-pkgname=qtcreator-dev-git
-pkgver=6.0.2.51.g5d675ff533
-_clangver=13.0.1
+pkgbase=qtcreator-dev-git
+pkgname=(qtcreator-dev-git qtcreator-dev-git-devel)
+pkgver=7.0.2.104.g234958a47a
+_clangver=14.0.6
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='http://qt-project.org'
 license=('LGPL')
 depends=('qt6-tools' 'qt6-svg' 'qt6-quick3d' 'qt6-webengine' 'qt6-serialport' 'qt6-shadertools' 'qt6-5compat'
-         "clang=$_clangver" 'clazy' 'yaml-cpp') # syntax-highlighting
+         "clang=$_clangver" 'clazy' 'yaml-cpp' 'litehtml') # syntax-highlighting
 makedepends=('cmake' 'llvm' 'python' 'git')
 options=('docs')
 optdepends=('qt6-doc: integrated Qt documentation'
             'qt6-examples: welcome page examples'
-            'qt6-translations: for other languages'
             'gdb: debugger'
             'cmake: cmake project support'
             'x11-ssh-askpass: ssh support'
@@ -32,7 +32,7 @@ optdepends=('qt6-doc: integrated Qt documentation'
             'mlocate: locator filter')
 conflicts=('qtcreator')
 provides=('qtcreator')
-source=("git://code.qt.io/qt-creator/qt-creator.git#branch=6.0")
+source=("git://code.qt.io/qt-creator/qt-creator.git#branch=7.0")
 md5sums=('SKIP')
 
 pkgver() {
@@ -53,10 +53,18 @@ build() {
   cmake --build build --target docs
 }
 
-package() {
+package_qtcreator-dev-git() {
   DESTDIR="$pkgdir" cmake --install build
 # Install docs
   cp -r build/share/doc "$pkgdir"/usr/share
 
   install -Dm644 qt-creator/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
+}
+
+package_qtcreator-dev-git-devel() {
+  pkgdesc+=' (development files)'
+  depends=('qtcreator-dev-git')
+  optdepends=()
+
+  DESTDIR="$pkgdir" cmake --install build --component Devel
 }
