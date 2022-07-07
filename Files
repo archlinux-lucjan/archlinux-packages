@@ -275,8 +275,7 @@
 ├── lldb-git
 │   └── PKGBUILD
 ├── lld-git
-│   ├── PKGBUILD
-│   └── sphinx2.patch
+│   └── PKGBUILD
 ├── llvm-git
 │   ├── llvm-config.h
 │   └── PKGBUILD
@@ -576,4 +575,4 @@
 └── zstd-git
     └── PKGBUILD
 
-201 directories, 375 files
+201 directories, 374 files

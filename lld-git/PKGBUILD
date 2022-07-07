@@ -4,18 +4,16 @@
 
 pkgname=lld-git
 _pkgname=lld
-pkgver=11.0.0.r351819.g73c33fcf563
-pkgrel=3
+pkgver=15.0.0.r429042.g519d7876cbee
+pkgrel=1
 pkgdesc="Linker from the LLVM project"
 arch=('x86_64')
 url="https://lld.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-depends=('llvm-libs-git')
-makedepends=('llvm-git' 'cmake' 'ninja' 'gtest' 'git')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-        'sphinx2.patch')
-sha256sums=('SKIP'
-            '7f7cca66a16c5a4aca132bfa1d86a7a2ff33612ec47d3422dc91ad4cc1810646')
+depends=('llvm-libs')
+makedepends=('llvm' 'cmake' 'ninja' 'gtest' 'git' 'python-sphinx')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/llvm-project/llvm"
@@ -30,24 +28,27 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/llvm-project/lld"
-  patch -Np1 -i "${srcdir}/sphinx2.patch"
   mkdir build
 }
 
 build() {
   cd "${srcdir}/llvm-project/lld/build"
 
-  cmake .. -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DLLVM_INCLUDE_TESTS=ON \
-    -DLLVM_BUILD_TESTS=ON \
-    -DLLVM_BUILD_DOCS=ON \
-    -DLLVM_ENABLE_SPHINX=ON \
-    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
-    -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
+  local cmake_args=(
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_DOCDIR=share/doc
+    -DCMAKE_SKIP_RPATH=ON
+    -DLLVM_BUILD_DOCS=ON
+    -DLLVM_ENABLE_SPHINX=ON
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit
+    -DLLVM_INCLUDE_TESTS=ON
+    -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-project/lld"
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF
+  )
+  cmake .. "${cmake_args[@]}"
   ninja
 }
 
