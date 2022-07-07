@@ -3,14 +3,14 @@
 
 pkgname=polly-git
 _pkgname=polly
-pkgver=13.0.0.r392824.g873e8b96b122
-pkgrel=2
+pkgver=15.0.0.r429042.g519d7876cbee
+pkgrel=1
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
 url="https://polly.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('gcc-libs')
-makedepends=('llvm-git' 'cmake' 'ninja' 'python-sphinx' 'git')
+makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx' 'git')
 provides=('polly')
 conflicts=('polly')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
@@ -35,16 +35,20 @@ prepare() {
 build() {
  cd "llvm-project/polly/build"
 
-  cmake .. -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DLLVM_BUILD_TESTS=ON \
-    -DLLVM_BUILD_DOCS=ON \
-    -DLLVM_ENABLE_SPHINX=ON \
-    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
-    -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
-    -DLLVM_BUILD_MAIN_SRC_DIR="$srcdir/llvm-project/llvm"
+  local cmake_args=(
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_DOCDIR=share/doc
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DLLVM_BUILD_DOCS=ON
+    -DLLVM_BUILD_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
+    -DLLVM_BUILD_TESTS=ON
+    -DLLVM_ENABLE_SPHINX=ON
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit
+    -DLLVM_LINK_LLVM_DYLIB=ON
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF
+  )
+  cmake .. "${cmake_args[@]}"
   ninja
 }
 
