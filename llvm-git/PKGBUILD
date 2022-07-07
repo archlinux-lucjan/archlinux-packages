@@ -3,18 +3,17 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgbase=llvm-git
-pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
+pkgname=('llvm-git' 'llvm-libs-git')
 _pkgname1=llvm
 _pkgname2=llvm-libs
 _pkgname3=llvm-ocaml
-pkgver=11.0.0.r351802.ge71dd7c011a
-pkgrel=6
+pkgver=15.0.0.r429042.g519d7876cbee
+pkgrel=1
 _ocaml_ver=4.12.0
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             "ocaml>=$_ocaml_ver" 'ocaml-ctypes' 'ocaml-findlib'
              'python-psutil' 'python-sphinx' 'python-recommonmark' 'git')
 options=('staticlibs')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
@@ -41,22 +40,28 @@ prepare() {
 build() {
   cd "llvm-project/llvm/build"
 
-  cmake .. -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLLVM_HOST_TRIPLE=$CHOST \
-    -DLLVM_BUILD_LLVM_DYLIB=ON \
-    -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DLLVM_INSTALL_UTILS=ON \
-    -DLLVM_ENABLE_RTTI=ON \
-    -DLLVM_ENABLE_FFI=ON \
-    -DLLVM_BUILD_TESTS=ON \
-    -DLLVM_BUILD_DOCS=ON \
-    -DLLVM_ENABLE_SPHINX=ON \
-    -DLLVM_ENABLE_DOXYGEN=OFF \
-    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
+  local cmake_args=(
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_DOCDIR=share/doc
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_SKIP_RPATH=ON
     -DLLVM_BINUTILS_INCDIR=/usr/include
-  ninja all ocaml_doc
+    -DLLVM_BUILD_DOCS=ON
+    -DLLVM_BUILD_LLVM_DYLIB=ON
+    -DLLVM_BUILD_TESTS=ON
+    -DLLVM_ENABLE_BINDINGS=OFF
+    -DLLVM_ENABLE_FFI=ON
+    -DLLVM_ENABLE_RTTI=ON
+    -DLLVM_ENABLE_SPHINX=ON
+    -DLLVM_HOST_TRIPLE=$CHOST
+    -DLLVM_INCLUDE_BENCHMARKS=OFF
+    -DLLVM_INSTALL_UTILS=ON
+    -DLLVM_LINK_LLVM_DYLIB=ON
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF
+  )
+  cmake .. "${cmake_args[@]}"
+  ninja
 }
 
 #check() {
@@ -86,11 +91,6 @@ package_llvm-git() {
   # The runtime libraries go into llvm-libs
   mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
   mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
-
-  # OCaml bindings go to a separate package
-  rm -rf "$srcdir"/ocaml.{lib,doc}
-  mv "$pkgdir/usr/lib/ocaml" "$srcdir/ocaml.lib"
-  mv "$pkgdir/usr/share/doc/$_pkgname1/ocaml-html" "$srcdir/ocaml.doc"
 
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
