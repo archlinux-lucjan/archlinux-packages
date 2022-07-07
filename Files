@@ -23,7 +23,6 @@
 ├── chromeos-kde-git
 │   └── PKGBUILD
 ├── clang-git
-│   ├── enable-SSP-and-PIE-by-default.patch
 │   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
@@ -577,4 +576,4 @@
 └── zstd-git
     └── PKGBUILD
 
-201 directories, 376 files
+201 directories, 375 files

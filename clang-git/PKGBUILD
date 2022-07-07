@@ -4,24 +4,22 @@
 
 pkgname=clang-git
 _pkgname=clang
-pkgver=11.0.0.r355145.g5d6c5b463ca
-pkgrel=4
+pkgver=15.0.0.r429042.g519d7876cbee
+pkgrel=1
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-depends=('llvm-libs-git' 'gcc' 'compiler-rt-git')
-makedepends=('llvm-git' 'cmake' 'ninja' 'python-sphinx' 'git')
+depends=('llvm-libs' 'gcc' 'compiler-rt')
+makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx' 'git' 'python-recommonmark')
 optdepends=('openmp-git: OpenMP support in clang with -fopenmp'
             'python: for scan-view and git-clang-format'
             'llvm-git: referenced by some clang headers')
 provides=("clang-analyzer=$pkgver" "clang-tools-extra=$pkgver" "clang")
 conflicts=('clang-analyzer' 'clang-tools-extra' 'clang' )
 replaces=('clang-analyzer' 'clang-tools-extra')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-        "enable-SSP-and-PIE-by-default.patch")
-sha256sums=('SKIP'
-            '9e557a18f3ca96cc5cc9b62d2e308b993025523b2aca0735248118a928c8c3ff')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/llvm-project/llvm"
@@ -58,7 +56,6 @@ _get_distribution_components() {
 
 prepare() {
   cd "${srcdir}/llvm-project/clang"
-  patch -Np2 -i ../../enable-SSP-and-PIE-by-default.patch
   mkdir build
   mv "$srcdir/llvm-project/clang-tools-extra" tools/extra
   # Attempt to convert script to Python 3
@@ -73,16 +70,19 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
-    -DLLVM_LINK_LLVM_DYLIB=ON
+    -DCMAKE_INSTALL_DOCDIR=share/doc
+    -DCMAKE_SKIP_RPATH=ON
+    -DCLANG_DEFAULT_PIE_ON_LINUX=ON
     -DCLANG_LINK_CLANG_DYLIB=ON
-    -DLLVM_ENABLE_RTTI=ON
-    -DLLVM_BUILD_TESTS=ON
-    -DLLVM_INCLUDE_DOCS=ON
     -DLLVM_BUILD_DOCS=ON
+    -DLLVM_BUILD_TESTS=ON
+    -DLLVM_ENABLE_RTTI=ON
     -DLLVM_ENABLE_SPHINX=ON
-    -DSPHINX_WARNINGS_AS_ERRORS=OFF
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit
-    -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-project/llvm"
+    -DLLVM_INCLUDE_DOCS=ON
+    -DLLVM_LINK_LLVM_DYLIB=ON
+    -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-project/clang"
+    -DSPHINX_WARNINGS_AS_ERRORS=OFF
   )
 
   cmake .. "${cmake_args[@]}"
