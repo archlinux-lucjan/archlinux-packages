@@ -4,14 +4,14 @@
 
 pkgname=lldb-git
 _pkgname=lldb
-pkgver=11.0.0.r351819.g73c33fcf563
+pkgver=15.0.0.r429042.g519d7876cbee
 pkgrel=1
 pkgdesc="Next generation, high-performance debugger"
 arch=('x86_64')
 url="https://lldb.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-depends=('llvm-libs-git' 'clang-git' 'python' 'python-six')
-makedepends=('llvm-git' 'cmake' 'ninja' 'swig' 'git')
+depends=('llvm-libs' 'clang' 'python' 'python-six')
+makedepends=('llvm' 'cmake' 'ninja' 'swig' 'git' 'doxygen' )
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 sha256sums=('SKIP')
 
@@ -34,13 +34,17 @@ prepare() {
 build() {
   cd "$srcdir/llvm-project/lldb/build"
 
-  cmake .. -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLLVM_LINK_LLVM_DYLIB=ON \
-    -DCLANG_LINK_CLANG_DYLIB=ON \
-    -DLLVM_ENABLE_SPHINX=ON \
+  local cmake_args=(
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_SKIP_RPATH=ON
+    -DCLANG_LINK_CLANG_DYLIB=ON
     -DLLDB_USE_SYSTEM_SIX=1
+    -DLLVM_ENABLE_SPHINX=ON
+    -DLLVM_LINK_LLVM_DYLIB=ON
+  )
+  cmake .. "${cmake_args[@]}"
   ninja all docs-lldb-man
 }
 
