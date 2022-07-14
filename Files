@@ -268,7 +268,6 @@
 │   ├── config
 │   └── PKGBUILD
 ├── linux-usermode-rc-git
-│   ├── 0001-um-Add-missing-apply_returns.patch
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
@@ -577,4 +576,4 @@
 └── zstd-git
     └── PKGBUILD
 
-201 directories, 376 files
+201 directories, 375 files
