@@ -11,12 +11,12 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git libgccjit-git)
+pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git gcc-d-git lib32-gcc-libs-git lto-dump-git libgccjit-git)
 pkgver=12.1.1.r192761.e38194f5ad3
 _majorver=${pkgver%%.*}
 #this is set after pkgver() runs!  (Thanks makepkg!)
 _basever=${pkgver%%.r*}
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection (git version)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -25,6 +25,7 @@ makedepends=(
   binutils
   doxygen
   gcc-ada
+  gcc-d
   git
   lib32-glibc
   lib32-gcc-libs
@@ -89,6 +90,7 @@ build() {
       --mandir=/usr/share/man
       --infodir=/usr/share/info
       --with-bugurl=https://bugs.archlinux.org/
+      --with-build-config=bootstrap-lto
       --with-linker-hash-style=gnu
       --with-system-zlib
       --enable-__cxa_atexit
@@ -98,6 +100,8 @@ build() {
       --enable-default-pie
       --enable-default-ssp
       --enable-gnu-indirect-function
+      --enable-libstdcxx-backtrace
+      --enable-link-serialization=1
       --enable-gnu-unique-object
       --enable-linker-build-id
       --enable-lto
@@ -108,8 +112,6 @@ build() {
       --disable-libssp
       --disable-libstdcxx-pch
       --disable-werror
-      --with-build-config=bootstrap-lto
-      --enable-link-serialization=1
   )
 
   cd gcc-build
@@ -121,7 +123,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir/gcc/configure" \
-    -enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ \
+    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \
     --enable-bootstrap \
   "${_confflags[@]:?_confflags unset}"
 
@@ -157,7 +159,8 @@ build() {
 
 #check() {
 #  cd gcc-build
-#
+#  # disable libphobos test to avoid segfaults
+#  sed -i '/maybe-check-target-libphobos \\/d' Makefile
 #  # do not abort on error as some are "expected"
 #  make -k check || true
 #  "$srcdir/gcc/contrib/test_summary"
@@ -189,6 +192,10 @@ package_gcc-libs-git() {
 
   make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
+
+  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+  rm -rf "$pkgdir"/$_libdir/include/d/
+  rm -f "$pkgdir"/usr/lib/libgphobos.spec
 
   for lib in libgomp \
              libitm \
@@ -260,8 +267,8 @@ package_gcc-git() {
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran}.1
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn}.info
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,lto-dump,gdc}.1
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info
 
   make -C libcpp DESTDIR="$pkgdir" install
   make -C gcc DESTDIR="$pkgdir" install-po
@@ -416,12 +423,55 @@ package_lib32-gcc-libs-git() {
 
   make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
 
+  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+  rm -f "$pkgdir"/usr/lib32/libgphobos.spec
+
   # remove files provided by gcc-libs
   rm -rf "$pkgdir"/usr/lib
 
   # Install Runtime Library Exception
   install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
     "$pkgdir/usr/share/licenses/lib32-gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION"
+}
+
+package_gcc-d-git() {
+  pkgdesc="D frontend for GCC"
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+  provides=(gdc gcc-d)
+  conflicts=(gcc-d)
+  replaces=(gdc)
+  options=(staticlibs debug)
+
+  cd gcc-build
+  make -C gcc DESTDIR="$pkgdir" d.install-{common,man,info}
+
+  install -Dm755 gcc/gdc "$pkgdir"/usr/bin/gdc
+  install -Dm755 gcc/d21 "$pkgdir"/"$_libdir"/d21
+
+  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+  rm -f "$pkgdir/usr/lib/"lib{gphobos,gdruntime}.so*
+  rm -f "$pkgdir/usr/lib32/"lib{gphobos,gdruntime}.so*
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+
+package_lto-dump-git() {
+  pkgdesc="Dump link time optimization object files"
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+  provides=(libgccjit)
+  replaces=(libgccjit)
+
+  cd gcc-build
+  make -C gcc DESTDIR="$pkgdir" lto.install-{common,man,info}
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_libgccjit-git() {
