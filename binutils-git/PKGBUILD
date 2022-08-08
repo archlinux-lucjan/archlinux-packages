@@ -15,7 +15,7 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.38.50.r109728.8e347faf8f1
+pkgver=2.39.50.r110959.ce81f9d6fa8
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -65,6 +65,7 @@ build() {
     --enable-deterministic-archives \
     --enable-gold \
     --enable-install-libiberty \
+    --enable-jansson \
     --enable-ld=default \
     --enable-pgo-build=lto \
     --enable-plugins \
@@ -100,7 +101,7 @@ build() {
 #          CXXFLAGS="-O2 -no-pie -fno-PIC" \
 #          CFLAGS="-O2 -no-pie" \
 #          LDFLAGS="" \
-#          check
+#          check || true
 #}
 
 package() {

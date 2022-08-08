@@ -15,7 +15,7 @@
 
 pkgname=binutils-test-git
 _pkgname=binutils-gdb
-pkgver=2.38.r108942.33e42262496
+pkgver=2.39.0.r110711.9284b63ea39
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=('debuginfod: for debuginfod server/client functionality')
 provides=('binutils')
 conflicts=('binutils-multilib' 'binutils')
 options=('staticlibs' '!distcc' '!ccache')
-source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_38-branch
+source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_39-branch
         gold-warn-unsupported.patch)
 md5sums=('SKIP'
          '0283237e17804af1c55703d7e35557f1')
@@ -65,6 +65,7 @@ build() {
     --enable-deterministic-archives \
     --enable-gold \
     --enable-install-libiberty \
+    --enable-jansson \
     --enable-ld=default \
     --enable-pgo-build=lto \
     --enable-plugins \
@@ -100,7 +101,7 @@ build() {
 #          CXXFLAGS="-O2 -no-pie -fno-PIC" \
 #          CFLAGS="-O2 -no-pie" \
 #          LDFLAGS="" \
-#          check
+#          check || true
 #}
 
 package() {

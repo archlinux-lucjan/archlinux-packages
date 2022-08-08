@@ -7,8 +7,8 @@
 
 pkgbase=glibc-dev-git
 pkgname=(glibc-dev-git lib32-glibc-dev-git)
-pkgver=2.35.46.g9e94f57484
-pkgrel=3
+pkgver=2.36.28.g8bc3f94a06
+pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
@@ -144,13 +144,14 @@ check() {
   # The following tests fail due to restrictions in the Arch build system
   # The correct fix is to add the following to the systemd-nspawn call:
   # --system-call-filter="@clock @memlock @pkey"
-  skip_test test-errno-linux sysdeps/unix/sysv/linux/Makefile
-  skip_test tst-ntp_gettime  sysdeps/unix/sysv/linux/Makefile
-  skip_test tst-ntp_gettimex sysdeps/unix/sysv/linux/Makefile
-  skip_test tst-mlock2       sysdeps/unix/sysv/linux/Makefile
-  skip_test tst-pkey         sysdeps/unix/sysv/linux/Makefile
-  skip_test tst-adjtime      time/Makefile
-  skip_test tst-clock2       time/Makefile
+  skip_test test-errno-linux        sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-mlock2              sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-ntp_gettime         sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-ntp_gettimex        sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-pkey                sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-process_mrelease    sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-adjtime             time/Makefile
+  skip_test tst-clock2              time/Makefile
 
   make -O check
 }
