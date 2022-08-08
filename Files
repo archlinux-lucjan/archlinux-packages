@@ -2,9 +2,6 @@
 ├── auracle-git
 │   └── PKGBUILD
 ├── bat-polaur-extras-git
-│   ├── 0001-batman-Fix-error-when-using-fzf-to-pick-manpages.patch
-│   ├── 0002-batdiff-Fix-use-of-deprecated-hunk-style.patch
-│   ├── 0003-batdiff-Fix-line-too-long-80-chars.patch
 │   └── PKGBUILD
 ├── bat-polaur-git
 │   └── PKGBUILD
@@ -576,4 +573,4 @@
 └── zstd-git
     └── PKGBUILD
 
-201 directories, 375 files
+201 directories, 372 files
