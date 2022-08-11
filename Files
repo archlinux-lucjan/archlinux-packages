@@ -305,6 +305,11 @@
 │   ├── 0001-Skip-broken-tests.patch
 │   ├── arch-meson
 │   └── PKGBUILD
+├── mkinitcpio-cachyos
+│   ├── 0001-Fix-the-warning-about-missing-modules.builtin.modinf.patch
+│   ├── 0001-mkinitcpio-cachyos.patch
+│   ├── mkinitcpio.install
+│   └── PKGBUILD
 ├── mkinitcpio-git
 │   └── PKGBUILD
 ├── modemmanager-git
@@ -573,4 +578,4 @@
 └── zstd-git
     └── PKGBUILD
 
-201 directories, 372 files
+202 directories, 376 files

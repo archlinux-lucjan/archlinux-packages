@@ -224,6 +224,8 @@
 
 - meson-stable-git
 
+- mkinitcpio-cachyos
+
 - mkinitcpio-git
 
 - modemmanager-git
