@@ -1,7 +1,7 @@
-From ad0cf82356409bc01a2806967bd83b476959604a Mon Sep 17 00:00:00 2001
+From 3eec6275b6e859303e6c29099f92a1a349bbcbc5 Mon Sep 17 00:00:00 2001
 From: Hugo Osvaldo Barrera <hugo@barrera.io>
 Date: Sun, 29 Aug 2021 18:55:30 +0200
-Subject: [PATCH 01/11] Merge mkinitcpio libalpm scripts into one
+Subject: [PATCH 01/12] Merge mkinitcpio libalpm scripts into one
 
 Fixes #10
 
@@ -281,10 +281,10 @@ index 17b4b31..0000000
 2.37.1.377.g679aad9e82
 
 
-From 0777c5024ab52d31470acfb944bdc8e948a12d50 Mon Sep 17 00:00:00 2001
+From 69acb1703a064265dbde58a8e68d64830ecb62c9 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tpowa@archlinux.org>
 Date: Fri, 11 Mar 2022 15:01:22 +0100
-Subject: [PATCH 02/11] add zst compressed firmware support fpr future kernel
+Subject: [PATCH 02/12] add zst compressed firmware support fpr future kernel
  versions
 
 ---
@@ -309,10 +309,10 @@ index 48cfd7a..92bdced 100644
 2.37.1.377.g679aad9e82
 
 
-From ac3bb4a9638a496e5426f0a90a9b9a556c9a5d80 Mon Sep 17 00:00:00 2001
+From 2f74cd8bb4eb1ac7aaa0e06f56c39f7dbfea7a32 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tpowa@archlinux.org>
 Date: Fri, 11 Mar 2022 15:47:59 +0100
-Subject: [PATCH 03/11] add real symlink support
+Subject: [PATCH 03/12] add real symlink support
 
 ---
  functions | 10 +++++++++-
@@ -343,10 +343,10 @@ index 92bdced..803487f 100644
 2.37.1.377.g679aad9e82
 
 
-From 3ce527411e094826729a2bf3885aca00f6fbb61c Mon Sep 17 00:00:00 2001
+From 6a03e363e97250c44e47779da83cdacbd7a390c7 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tpowa@archlinux.org>
 Date: Fri, 11 Mar 2022 15:53:09 +0100
-Subject: [PATCH 04/11] add real symlink support
+Subject: [PATCH 04/12] add real symlink support
 
 ---
  functions | 10 +++++++++-
@@ -377,10 +377,10 @@ index 803487f..8a3f43a 100644
 2.37.1.377.g679aad9e82
 
 
-From a43e3900c778bf56357099e10c214fde8ab4cede Mon Sep 17 00:00:00 2001
+From 012d07d112f2a22b267e0b6327a93d40e49837fb Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tpowa@archlinux.org>
 Date: Fri, 11 Mar 2022 15:59:45 +0100
-Subject: [PATCH 05/11] add MODULES_DECOMPRESS switch
+Subject: [PATCH 05/12] add MODULES_DECOMPRESS switch
 
 ---
  functions                 | 32 +++++++++++++++++---------------
@@ -493,10 +493,10 @@ index 3494fab..19ec038 100644
 2.37.1.377.g679aad9e82
 
 
-From f8464cac2f4ebee75defc29ae8593b8b7e11cd08 Mon Sep 17 00:00:00 2001
+From 72a1d5a3e8d8ee09c78cd7dfccdd6eb323296304 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tobias.powalowski@googlemail.com>
 Date: Sun, 13 Mar 2022 20:49:15 +0100
-Subject: [PATCH 06/11] Good idea, add the default value
+Subject: [PATCH 06/12] Good idea, add the default value
 
 Co-authored-by: nl6720 <nl6720@gmail.com>
 ---
@@ -519,10 +519,10 @@ index 19ec038..8acf414 100644
 2.37.1.377.g679aad9e82
 
 
-From ff953b3e43d68af2f5c880b3adcf2c602ec771e1 Mon Sep 17 00:00:00 2001
+From 74b323c36e275bc8b7a4e5361a5022a4bcf99107 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tobias.powalowski@googlemail.com>
 Date: Mon, 14 Mar 2022 13:50:18 +0100
-Subject: [PATCH 07/11] shorter version, thanks
+Subject: [PATCH 07/12] shorter version, thanks
 
 Co-authored-by: Morten Linderud <morten@linderud.pw>
 ---
@@ -546,10 +546,10 @@ index 924fc0e..a8171b8 100755
 2.37.1.377.g679aad9e82
 
 
-From e8917f1c291da6b3766f87e173ecff19d7931008 Mon Sep 17 00:00:00 2001
+From e62cf9634f8b778c91f8dbe234872ede7f8414e0 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tpowa@archlinux.org>
 Date: Fri, 11 Mar 2022 16:04:51 +0100
-Subject: [PATCH 08/11] fix reproducibility, in case of /var/cache is included
+Subject: [PATCH 08/12] fix reproducibility, in case of /var/cache is included
  in initramfs
 
 ---
@@ -573,10 +573,10 @@ index a8171b8..af779f9 100755
 2.37.1.377.g679aad9e82
 
 
-From 96c7737c656d7323fde37f62a3754da4adc10be2 Mon Sep 17 00:00:00 2001
+From 1def3c840c88b7513e902d7164d3fda210b6b3a0 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tobias.powalowski@googlemail.com>
 Date: Sun, 13 Mar 2022 20:37:55 +0100
-Subject: [PATCH 09/11] Replace check with rm -f
+Subject: [PATCH 09/12] Replace check with rm -f
 
 Co-authored-by: nl6720 <nl6720@gmail.com>
 ---
@@ -600,10 +600,10 @@ index af779f9..18b5cd0 100755
 2.37.1.377.g679aad9e82
 
 
-From fda522e7f1b711cea2c26df55cb7c85b620e69d0 Mon Sep 17 00:00:00 2001
+From ad70e10a5d1c2042e2340488014ac0f8050c37d1 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tobias.powalowski@googlemail.com>
 Date: Sun, 13 Mar 2022 20:46:26 +0100
-Subject: [PATCH 10/11] Fix typo in commit reproducibility
+Subject: [PATCH 10/12] Fix typo in commit reproducibility
 
 ---
  mkinitcpio | 2 +-
@@ -626,10 +626,10 @@ index 18b5cd0..f67370d 100755
 2.37.1.377.g679aad9e82
 
 
-From 7e7056a3630460270f9585199f0916ad73ea860c Mon Sep 17 00:00:00 2001
+From cffa6bc48d39d48e65dee17febbc567fc1695b58 Mon Sep 17 00:00:00 2001
 From: Tobias Powalowski <tobias.powalowski@googlemail.com>
 Date: Tue, 15 Mar 2022 15:58:47 +0100
-Subject: [PATCH 11/11] add quotes to $BUILDROOT
+Subject: [PATCH 11/12] add quotes to $BUILDROOT
 
 ---
  mkinitcpio | 2 +-
@@ -648,6 +648,68 @@ index f67370d..1490407 100755
  
  # Set umask to create initramfs images and EFI images as 600
  umask 077
+-- 
+2.37.1.377.g679aad9e82
+
+
+From ae9ca14b32daf95ca46578798a97426b8361be9c Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Thu, 17 Mar 2022 20:29:57 +0100
+Subject: [PATCH 12/12] mkinitcpio: preserve module dir by the kernel, remove
+ modules.order hack
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ functions | 21 +++++++--------------
+ 1 file changed, 7 insertions(+), 14 deletions(-)
+
+diff --git a/functions b/functions
+index cf9b991..3b1da9b 100644
+--- a/functions
++++ b/functions
+@@ -874,20 +874,20 @@ install_modules() {
+         return 0
+     fi
+ 
+-    cp "$@" "$moduledest/kernel"
+-
+     if [[ $MODULES_DECOMPRESS == yes ]]; then
+-        # unzip modules prior to recompression
++
+         for m in "$@"; do
++        install -D -m644 "$m" "$BUILDROOT/$m"
++        # unzip modules prior to recompression
+             case $m in
+                 *.xz)
+-                    xz_comp+=("$moduledest/kernel/${m##*/}")
++                    xz_comp+=("$BUILDROOT/$m")
+                     ;;
+                 *.gz)
+-                    gz_comp+=("$moduledest/kernel/${m##*/}")
++                    gz_comp+=("$BUILDROOT/$m")
+                     ;;
+                 *.zst)
+-                    zst_comp+=("$moduledest/kernel/${m##*/}")
++                    zst_comp+=("$BUILDROOT/$m")
+                     ;;
+             esac
+         done
+@@ -898,14 +898,7 @@ install_modules() {
+ 
+     msg "Generating module dependencies"
+     install -m644 -t "$moduledest" "$_d_kmoduledir"/modules.builtin
+-
+-    # we install all modules into kernel/, making the .order file incorrect for
+-    # the module tree. munge it, so that we have an accurate index. This avoids
+-    # some rare and subtle issues with module loading choices when an alias
+-    # resolves to multiple modules, only one of which can claim a device.
+-    awk -F'/' '{ print "kernel/" $NF }' \
+-        "$_d_kmoduledir"/modules.order >"$moduledest/modules.order"
+-
++    install -m644 -t "$moduledest" "$_d_kmoduledir"/modules.order
+     depmod -b "$BUILDROOT" "$KERNELVERSION"
+ 
+     # remove all non-binary module.* files (except devname for on-demand module loading)
 -- 
 2.37.1.377.g679aad9e82
 
