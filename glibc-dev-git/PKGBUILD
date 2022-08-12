@@ -7,7 +7,7 @@
 
 pkgbase=glibc-dev-git
 pkgname=(glibc-dev-git lib32-glibc-dev-git)
-pkgver=2.36.28.g8bc3f94a06
+pkgver=2.36.42.g453b88efe6
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
@@ -91,8 +91,8 @@ build() {
   make -O
 
   # pregenerate C.UTF-8 locale until it is built into glibc
-  # (https://sourceware.org/glibc/wiki/Proposals/C.UTF-8, FS#74864)
-  locale/localedef -c -f ../glibc/localedata/charmaps/UTF-8 -i ../glibc/localedata/locales/C ../C.UTF-8/
+  # (https://sourceware.org/glibc/wiki/Proposals/C.UTF-8, FS#74864)-
+  elf/ld.so --library-path "$PWD" locale/localedef -c -f ../glibc/localedata/charmaps/UTF-8 -i ../glibc/localedata/locales/C ../C.UTF-8/
 
   # build info pages manually for reproducibility
   make info
@@ -126,9 +126,9 @@ build() {
 # Credits for skip_test() and check() @allanmcrae
 # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/glibc/PKGBUILD
 skip_test() {
-  test=$1
-  file=$2
-  sed -i "s/\b$test\b//" $srcdir/glibc/$file
+  test=${1}
+  file=${2}
+  sed -i "s/\b${test}\b//" "${srcdir}"/glibc/${file}
 }
 
 check() {
