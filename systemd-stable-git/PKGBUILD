@@ -6,7 +6,7 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=251.0.gb622e95f2f
+pkgver=251.4.0.g2a674b4b66
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -131,7 +131,7 @@ build() {
     -Ddefault-dnssec=no
     -Ddefault-hierarchy=unified
     -Ddefault-kill-user-processes=false
-    -Ddefault-locale=C
+    -Ddefault-locale='C.UTF-8'
     -Dlocalegen-path=/usr/bin/locale-gen
     -Ddns-over-tls=openssl
     -Dfallback-hostname='archlinux'
