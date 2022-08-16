@@ -13,6 +13,9 @@
 │   └── PKGBUILD
 ├── blktrace-git
 │   └── PKGBUILD
+├── cachyos-settings
+│   ├── cachyos-settings.install
+│   └── PKGBUILD
 ├── canta-kde-git
 │   └── PKGBUILD
 ├── cantata-git
@@ -578,4 +581,4 @@
 └── zstd-git
     └── PKGBUILD
 
-202 directories, 376 files
+203 directories, 378 files

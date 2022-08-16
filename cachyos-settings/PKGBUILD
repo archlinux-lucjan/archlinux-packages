@@ -1,0 +1,28 @@
+# Maintainer: Peter Jung <admin@ptr1337.dev>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=cachyos-settings
+gitname=CachyOS-Settings
+pkgver=15
+pkgrel=2
+groups=(cachyos)
+arch=('any')
+license=('GPL')
+makedepends=('coreutils')
+pkgdesc='CachyOS - Settings'
+source=("git+https://github.com/sirlucjan/$gitname")
+install=$pkgname.install
+sha256sums=('SKIP')
+depends=(
+    'irqbalance'
+    'ananicy-cpp'
+    'ananicy-rules-git'
+    'uksmd'
+    )
+replaces=(zramd)
+package() {
+  install -d $pkgdir/etc
+  cp -rf $srcdir/$gitname/etc $pkgdir
+  install -d $pkgdir/usr
+  cp -rf $srcdir/$gitname/usr $pkgdir
+}

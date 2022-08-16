@@ -12,6 +12,8 @@
 
 - blktrace-git
 
+- cachyos-settings
+
 - canta-kde-git
 
 - cantata-git
