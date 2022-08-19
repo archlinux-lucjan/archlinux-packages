@@ -3,8 +3,8 @@
 
 pkgname=cachyos-settings
 gitname=CachyOS-Settings
-pkgver=15
-pkgrel=2
+pkgver=20220819.r49.gc129cad
+pkgrel=1
 groups=(cachyos)
 arch=('any')
 license=('GPL')
@@ -20,6 +20,12 @@ depends=(
     'uksmd'
     )
 replaces=(zramd)
+
+pkgver() {
+  cd $gitname
+  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
 package() {
   install -d $pkgdir/etc
   cp -rf $srcdir/$gitname/etc $pkgdir
