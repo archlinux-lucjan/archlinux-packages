@@ -4,7 +4,7 @@
 pkgname=cachyos-settings
 gitname=CachyOS-Settings
 pkgver=20220819.r49.gc129cad
-pkgrel=1
+pkgrel=2
 groups=(cachyos)
 arch=('any')
 license=('GPL')
