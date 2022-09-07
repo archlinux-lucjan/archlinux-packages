@@ -153,6 +153,7 @@
 ├── grub-git
 │   ├── 0001-00_header-add-GRUB_COLOR_-variables.patch
 │   ├── 0002-10_linux-detect-archlinux-initramfs.patch
+│   ├── 0003-kern-efi-mm-increase-default-heap-size.patch
 │   ├── grub.default
 │   ├── grub.install
 │   ├── PKGBUILD
@@ -581,4 +582,4 @@
 └── zstd-git
     └── PKGBUILD
 
-203 directories, 378 files
+203 directories, 379 files
