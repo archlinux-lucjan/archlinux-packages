@@ -15,7 +15,7 @@
 
 pkgname=binutils-test-git
 _pkgname=binutils-gdb
-pkgver=2.39.0.r110711.9284b63ea39
+pkgver=2.39.0.r110747.84088650637
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -28,6 +28,7 @@ checkdepends=('dejagnu' 'debuginfod' 'bc')
 optdepends=('debuginfod: for debuginfod server/client functionality')
 provides=('binutils')
 conflicts=('binutils-multilib' 'binutils')
+backup=('etc/gprofng.rc')
 options=('staticlibs' '!distcc' '!ccache')
 source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_39-branch
         gold-warn-unsupported.patch)
@@ -59,6 +60,7 @@ build() {
 
   $srcdir/binutils-gdb/configure \
     --prefix=/usr \
+    --sysconfdir="${pkgdir}"/etc \
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
     --enable-cet \
