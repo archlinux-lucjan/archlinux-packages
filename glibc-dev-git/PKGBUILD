@@ -7,7 +7,7 @@
 
 pkgbase=glibc-dev-git
 pkgname=(glibc-dev-git lib32-glibc-dev-git)
-pkgver=2.36.113.g83859e1115
+pkgver=2.36.126.g766b73768b
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
@@ -20,7 +20,7 @@ source=(git+https://sourceware.org/git/glibc.git
         lib32-glibc.conf
         sdt.h sdt-config.h)
 md5sums=('SKIP'
-         'caa985d284cc77face751654f7bff2b9'
+         'a11977655869942ddf369857eb00894b'
          'c5356ee3c544864e36b3ab7763eb7805'
          '6e052f1cb693d5d3203f50f9d4e8c33b'
          '91fec3b7e75510ae2ac42533aa2e695e'
@@ -190,8 +190,9 @@ package_glibc-dev-git() {
   sed -e '1,3d' -e 's|/| |g' -e 's|\\| |g' -e 's|^|#|g' \
     "$srcdir/glibc/localedata/SUPPORTED" >> "$pkgdir/etc/locale.gen"
 
-  # Add SUPPORTED file
-  install -m644 "$srcdir"/glibc/localedata/SUPPORTED "$pkgdir"/usr/share/i18n/SUPPORTED
+  # Add SUPPORTED file to pkg
+  sed -e '1,3d' -e 's|/| |g' -e 's| \\||g' \
+    "${srcdir}"/glibc/localedata/SUPPORTED > "${pkgdir}"/usr/share/i18n/SUPPORTED
 
   # install C.UTF-8 so that it is always available
   install -dm755 "$pkgdir/usr/lib/locale"
