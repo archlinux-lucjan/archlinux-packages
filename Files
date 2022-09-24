@@ -310,6 +310,7 @@
 │   └── PKGBUILD
 ├── mkinitcpio-cachyos
 │   ├── 0001-Fix-the-warning-about-missing-modules.builtin.modinf.patch
+│   ├── 0001-fsck.xfs-needs-xfs_repair-for-actual-work-only-with-.patch
 │   ├── 0001-mkinitcpio-cachyos.patch
 │   ├── mkinitcpio.install
 │   └── PKGBUILD
@@ -581,4 +582,4 @@
 └── zstd-git
     └── PKGBUILD
 
-203 directories, 378 files
+203 directories, 379 files
