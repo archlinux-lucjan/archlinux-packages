@@ -13,6 +13,8 @@
 │   └── PKGBUILD
 ├── blktrace-git
 │   └── PKGBUILD
+├── cachyos-ananicy-rules
+│   └── PKGBUILD
 ├── cachyos-settings
 │   ├── cachyos-settings.install
 │   └── PKGBUILD
@@ -582,4 +584,4 @@
 └── zstd-git
     └── PKGBUILD
 
-203 directories, 379 files
+204 directories, 380 files

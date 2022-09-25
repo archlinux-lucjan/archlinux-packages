@@ -4,7 +4,7 @@
 pkgname=cachyos-settings
 gitname=CachyOS-Settings
 pkgver=20220825.r51.g34bfa6b
-pkgrel=2
+pkgrel=3
 groups=(cachyos)
 arch=('any')
 license=('GPL')
@@ -19,7 +19,6 @@ depends=(
     'cachyos-ananicy-rules'
     'uksmd'
     )
-replaces=(zramd)
 
 pkgver() {
   cd $gitname

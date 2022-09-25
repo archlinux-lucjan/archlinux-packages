@@ -1,0 +1,27 @@
+# Maintainer: Peter Jung <admin@ptr1337.dev>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=cachyos-ananicy-rules
+gitname=ananicy-rules
+pkgver=20220925.r21.gd433809
+pkgrel=1
+groups=(cachyos)
+arch=('any')
+license=('GPL')
+pkgdesc='CachyOS - ananicy-rules '
+source=("git+https://github.com/CachyOS/$gitname")
+sha256sums=('SKIP')
+replaces=(ananicy-rules-git)
+provides=(ananicy-rules-git)
+conflicts=(ananicy-rules-git)
+
+pkgver() {
+  cd $gitname
+  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd $gitname
+  install -d $pkgdir/etc/ananicy.d
+  cp -rf $srcdir/$gitname/* $pkgdir/etc/ananicy.d
+}

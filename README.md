@@ -12,6 +12,8 @@
 
 - blktrace-git
 
+- cachyos-ananicy-rules
+
 - cachyos-settings
 
 - canta-kde-git
