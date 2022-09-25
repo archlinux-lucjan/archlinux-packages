@@ -3,7 +3,7 @@
 
 pkgname=cachyos-settings
 gitname=CachyOS-Settings
-pkgver=20220819.r49.gc129cad
+pkgver=20220825.r51.g34bfa6b
 pkgrel=2
 groups=(cachyos)
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 depends=(
     'irqbalance'
     'ananicy-cpp'
-    'ananicy-rules-git'
+    'cachyos-ananicy-rules'
     'uksmd'
     )
 replaces=(zramd)
