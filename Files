@@ -1,4 +1,8 @@
 .
+├── ananicy-cpp-git
+│   └── PKGBUILD
+├── ananicy-cpp-nice-git
+│   └── PKGBUILD
 ├── auracle-git
 │   └── PKGBUILD
 ├── bat-polaur-extras-git
@@ -584,4 +588,4 @@
 └── zstd-git
     └── PKGBUILD
 
-204 directories, 380 files
+206 directories, 382 files

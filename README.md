@@ -1,5 +1,9 @@
 # Collection of PKGBUILDS for Ach Linux:
 
+- ananicy-cpp-git
+
+- ananicy-cpp-nice-git
+
 - auracle-git
 
 - bat-polaur-extras-git
