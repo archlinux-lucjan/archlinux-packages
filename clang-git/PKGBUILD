@@ -5,7 +5,7 @@
 pkgname=clang-git
 _pkgname=clang
 pkgver=15.0.0.r429042.g519d7876cbee
-pkgrel=1
+pkgrel=2
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -74,6 +74,7 @@ build() {
     -DCMAKE_SKIP_RPATH=ON
     -DCLANG_DEFAULT_PIE_ON_LINUX=ON
     -DCLANG_LINK_CLANG_DYLIB=ON
+    -DENABLE_LINKER_BUILD_ID=ON
     -DLLVM_BUILD_DOCS=ON
     -DLLVM_BUILD_TESTS=ON
     -DLLVM_ENABLE_RTTI=ON
