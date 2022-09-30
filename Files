@@ -365,7 +365,11 @@
 │   ├── PKGBUILD
 │   └── x86_64v3.patch
 ├── pacman-stable-git
+│   ├── add-flto-to-LDFLAGS-for-clang.patch
+│   ├── libmakepkg-add-extra-buildflags-only-when-buildflags.patch
+│   ├── make-link-time-optimization-flags-configurable.patch
 │   ├── makepkg.conf
+│   ├── makepkg-use-ffile-prefix-map-instead-of-fdebug-prefi.patch
 │   ├── pacman.conf
 │   ├── PKGBUILD
 │   └── x86_64v3.patch
@@ -590,4 +594,4 @@
 └── zstd-git
     └── PKGBUILD
 
-206 directories, 384 files
+206 directories, 388 files
