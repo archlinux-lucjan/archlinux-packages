@@ -6,7 +6,7 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=251.4.0.g2a674b4b66
+pkgver=251.5.0.g654ae8c1e4
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -118,6 +118,10 @@ build() {
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
+    # https://bugs.archlinux.org/task/75852
+    --buildtype debugoptimized
+    -D b_ndebug=true
+
     -Dgnu-efi=true
     -Dima=false
     -Dlibidn2=true
@@ -190,7 +194,7 @@ package_systemd-stable-git() {
           etc/udev/udev.conf)
   install="systemd-git.install"
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
