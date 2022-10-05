@@ -2,8 +2,6 @@
 
 - ananicy-cpp-git
 
-- ananicy-cpp-nice-git
-
 - auracle-git
 
 - bat-polaur-extras-git
