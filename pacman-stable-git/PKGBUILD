@@ -5,8 +5,8 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-stable-git
-pkgver=6.0.1.2.g77420fe5
-pkgrel=2
+pkgver=6.0.2.0.gc2d4568d
+pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('x86_64')
 url="http://www.archlinux.org/pacman/"
@@ -22,22 +22,10 @@ provides=("pacman=$pkgver" 'libalpm.so')
 conflicts=('pacman')
 options=('strip' 'debug')
 source=(git+https://gitlab.archlinux.org/pacman/pacman#branch=release/6.0.x
-        "fix-wkd-lookup.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/e1246baddd14ec6f4b6270b59bea0e1b639472a7.patch"
-        "patch-updatedb.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/58d678fa289034f1fe2a56adbb5e496b774755fc.patch"
-        add-flto-to-LDFLAGS-for-clang.patch
-        makepkg-use-ffile-prefix-map-instead-of-fdebug-prefi.patch
-        libmakepkg-add-extra-buildflags-only-when-buildflags.patch
-        make-link-time-optimization-flags-configurable.patch
         pacman.conf
         makepkg.conf
         x86_64v3.patch)
 sha1sums=('SKIP'
-          '95fb7a398aff9f48337924626071eeb51911340d'
-          'd6d49ee2214ae5c8f7604d5ffdb4e1941595a9c4'
-          'c73c15a383ae42ef0b713a8aa4d29ebbe66d8141'
-          '48a30e6c6802bdd6876522c60963f621770fe955'
-          'f3dcb71a93a702d4a4fdf6ba8b878ef04cd9e4f3'
-          'a10a2ec30ea65f4c3d1cfcadbca60263472ad1c7'
           'da4fff7132858c15358129c5eea6a915d2d4f698'
           '543c8c6c7ece78e131a2e639cc35aeb30a493fdb'
           '63a82b2556347a19a7e043d0b5fbf9f31c47bd8f')
