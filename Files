@@ -358,12 +358,14 @@
 ├── pacman-contrib-git
 │   └── PKGBUILD
 ├── pacman-git
+│   ├── fix-source-path.patch
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   ├── PKGBUILD
 │   └── x86_64v3.patch
 ├── pacman-stable-git
 │   ├── add-flto-to-LDFLAGS-for-clang.patch
+│   ├── fix-source-path.patch
 │   ├── libmakepkg-add-extra-buildflags-only-when-buildflags.patch
 │   ├── make-link-time-optimization-flags-configurable.patch
 │   ├── makepkg.conf
@@ -592,4 +594,4 @@
 └── zstd-git
     └── PKGBUILD
 
-205 directories, 387 files
+205 directories, 389 files
