@@ -6,7 +6,7 @@
 pkgbase=systemd-stable-git
 _pkgbase=systemd
 pkgname=('systemd-stable-git' 'systemd-libs-stable-git' 'systemd-resolvconf-stable-git' 'systemd-sysvcompat-stable-git')
-pkgver=251.5.0.g654ae8c1e4
+pkgver=251.6.0.g3028e05955
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -117,10 +117,6 @@ build() {
     -Dversion-tag="${pkgver/-/\~}-${pkgrel}-arch"
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
-
-    # https://bugs.archlinux.org/task/75852
-    --buildtype debugoptimized
-    -D b_ndebug=true
 
     -Dgnu-efi=true
     -Dima=false
