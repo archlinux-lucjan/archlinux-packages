@@ -358,19 +358,16 @@
 ├── pacman-contrib-git
 │   └── PKGBUILD
 ├── pacman-git
-│   ├── fix-source-path.patch
+│   ├── 0001-add-information-about-origin-db.patch
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   ├── PKGBUILD
 │   └── x86_64v3.patch
 ├── pacman-stable-git
-│   ├── add-flto-to-LDFLAGS-for-clang.patch
-│   ├── fix-source-path.patch
-│   ├── libmakepkg-add-extra-buildflags-only-when-buildflags.patch
-│   ├── make-link-time-optimization-flags-configurable.patch
+│   ├── 0001-add-information-about-origin-db.patch
 │   ├── makepkg.conf
-│   ├── makepkg-use-ffile-prefix-map-instead-of-fdebug-prefi.patch
 │   ├── pacman.conf
+│   ├── pacman-fix.patch
 │   ├── PKGBUILD
 │   └── x86_64v3.patch
 ├── pacutils-git
@@ -594,4 +591,4 @@
 └── zstd-git
     └── PKGBUILD
 
-205 directories, 389 files
+205 directories, 386 files
