@@ -1,12 +1,12 @@
-From c27a6e72ec0dab059055562c3f79c5c2a40bdc6a Mon Sep 17 00:00:00 2001
+From 19f6f56fa774e3d5af43bdb1676a117e3544ae94 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 26 Oct 2022 19:28:31 +0200
+Date: Thu, 27 Oct 2022 21:46:37 +0200
 Subject: [PATCH] mkinitcpio cachyos
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
  Makefile                                 |  3 +-
- functions                                | 32 ++++----
+ functions                                | 67 ++++++++++++-----
  install/strip                            |  1 +
  libalpm/hooks/60-mkinitcpio-remove.hook  |  2 +-
  libalpm/hooks/90-mkinitcpio-install.hook |  2 +-
@@ -16,7 +16,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  man/mkinitcpio.conf.5.txt                |  8 +-
  mkinitcpio                               |  2 +
  mkinitcpio.conf                          |  6 ++
- 11 files changed, 131 insertions(+), 125 deletions(-)
+ 11 files changed, 162 insertions(+), 129 deletions(-)
  create mode 100644 libalpm/scripts/mkinitcpio
  delete mode 100644 libalpm/scripts/mkinitcpio-install
  delete mode 100644 libalpm/scripts/mkinitcpio-remove
@@ -37,10 +37,66 @@ index 9ef0f6a..e6f3789 100644
  doc: $(MANPAGES)
  man/%: man/%.txt Makefile
 diff --git a/functions b/functions
-index 2148ed8..6d7d015 100644
+index 2148ed8..120874c 100644
 --- a/functions
 +++ b/functions
-@@ -849,7 +849,7 @@ try_enable_color() {
+@@ -574,7 +574,15 @@ add_file() {
+     else
+         quiet "adding file: %s" "$dest"
+     fi
+-    command install -Dm$mode "$src" "$BUILDROOT$dest"
++   #check if $src is a symlink
++    if [[ -L $src ]]; then
++        # add the symlink
++        add_file "$(realpath -- "$src")"
++        # create the symlink
++        add_symlink "$src" "$(realpath -- "$src")"
++    else
++       command install -Dm$mode "$src" "$BUILDROOT$dest"
++    fi
+ }
+ 
+ add_runscript() {
+@@ -634,7 +642,15 @@ add_binary() {
+     mode=$(stat -c %a "$binary")
+ 
+     # always add the binary itself
+-    add_file "$binary" "$dest" "$mode"
++    # check if binary is a symlink
++    if [[ -L $binary ]]; then
++        # add the binary
++        add_file "$(realpath -- "$binary")"
++        # create the symlink
++        add_symlink "$binary" "$(realpath -- "$binary")"
++    else
++        add_file "$binary" "$dest" "$mode"
++    fi
+ 
+     # negate this so that the RETURN trap is not fired on non-binaries
+     ! lddout=$(ldd "$binary" 2>/dev/null) && return 0
+@@ -777,8 +793,19 @@ initialize_buildroot() {
+     ln -s /proc/self/mounts "$buildroot/etc/mtab"
+     >"$buildroot/etc/fstab"
+ 
+-    # indicate that this is an initramfs
+-    >"$buildroot/etc/initrd-release"
++    # add os-release and initrd-release for systemd
++    if [[ -e /etc/os-release ]]; then
++        if [[ -L /etc/os-release ]]; then
++            install -Dm0644 /etc/os-release "${buildroot}$(realpath -- /etc/os-release)"
++            ln -sT  "$(realpath -- /etc/os-release)" "$buildroot/etc/os-release"
++            ln -sT "$(realpath -- /etc/os-release)" "$buildroot/etc/initrd-release"
++        else
++            install -Dm0644 /etc/os-release "$buildroot/etc/os-release"
++            ln -sT os-release "$buildroot/etc/initrd-release"
++        fi
++    else
++        >"$buildroot/etc/initrd-release"
++    fi
+ 
+     # add a blank ld.so.conf to keep ldconfig happy
+     >"$buildroot/etc/ld.so.conf"
+@@ -849,7 +876,7 @@ try_enable_color() {
  
  install_modules() {
      local m moduledest=$BUILDROOT/lib/modules/$KERNELVERSION
@@ -49,7 +105,7 @@ index 2148ed8..6d7d015 100644
  
      [[ $KERNELVERSION == none ]] && return 0
  
-@@ -860,20 +860,22 @@ install_modules() {
+@@ -860,20 +887,22 @@ install_modules() {
  
      cp "$@" "$moduledest/kernel"
  
