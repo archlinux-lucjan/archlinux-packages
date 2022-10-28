@@ -1,6 +1,6 @@
-From 19f6f56fa774e3d5af43bdb1676a117e3544ae94 Mon Sep 17 00:00:00 2001
+From 9d9b7eab5d926058a989e666c8dd2f84112bf1c4 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Thu, 27 Oct 2022 21:46:37 +0200
+Date: Fri, 28 Oct 2022 15:22:07 +0200
 Subject: [PATCH] mkinitcpio cachyos
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -178,21 +178,21 @@ index cf480bd..5b02fb8 100644
  NeedsTargets
 diff --git a/libalpm/scripts/mkinitcpio b/libalpm/scripts/mkinitcpio
 new file mode 100644
-index 0000000..95c7e4d
+index 0000000..4ef56e2
 --- /dev/null
 +++ b/libalpm/scripts/mkinitcpio
 @@ -0,0 +1,95 @@
 +#!/usr/bin/env bash
 +
-+ set -e
++set -e
 +
 +args=()
 +package=0
 +
 +process_preset() {
-+    if [[ -n "${pkgbase}" && -e $preset ]]; then
++    if [[ -n "$pkgbase" && -e "$preset" ]]; then
 +        if ! cmp "$preset" > /dev/null 2>&1 <(sed "s|%PKGBASE%|${pkgbase}|g" /usr/share/mkinitcpio/hook.preset); then
-+            if [[ ! -e $preset.pacsave ]]; then
++            if [[ ! -e "$preset.pacsave" ]]; then
 +                # save the preset as pacsave
 +                mv -- "$preset" "$preset.pacsave" && return 0
 +            fi
@@ -205,8 +205,8 @@ index 0000000..95c7e4d
 +
 +install_kernel() {
 +    preset="/etc/mkinitcpio.d/${1}.preset"
-+    if [[ ! -e $preset ]]; then
-+        if [[ -e $preset.pacsave ]]; then
++    if [[ ! -e "$preset" ]]; then
++        if [[ -e "$preset.pacsave" ]]; then
 +            # move the pacsave to the template
 +            mv -- "${preset}.pacsave" "$preset"
 +        else
@@ -267,7 +267,7 @@ index 0000000..95c7e4d
 +          for preset in /etc/mkinitcpio.d/*.preset; do
 +              pkgbase=${preset##*/}
 +              pkgbase=${pkgbase%.preset}
-+              process_preset "${pkgbase}" "$preset"
++              process_preset "$pkgbase" "$preset"
 +          done
 +          shopt -u nullglob
 +          ;;
