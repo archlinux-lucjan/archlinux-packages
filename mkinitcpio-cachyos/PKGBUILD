@@ -6,7 +6,7 @@
 pkgname=mkinitcpio-cachyos
 _pkgname=mkinitcpio
 pkgver=32
-pkgrel=5
+pkgrel=6
 pkgdesc="Modular initramfs image creation utility"
 arch=('any')
 url='https://github.com/archlinux/mkinitcpio'
@@ -28,10 +28,10 @@ source=("https://sources.archlinux.org/other/$_pkgname/$_pkgname-$pkgver.tar.gz"
 install=mkinitcpio.install
 sha512sums=('c180bef8af774305e8c9779b3405daaa5be33588bf89c6625a28eac1cde424f447782737d85d810fed4971d38b31086a072293d42aad08398c090f9538b56a4e'
             'SKIP'
-            'a7edab5a9bf5965d5e9d3ba796e83615ebe78443996adf004d722074fc5f9f24f371aa26fdab47ce77bfc6b940a1ec1398a2b1904d611402db8b35800184f2c4')
+            '8a1bf9e121cda1cd3700a2ce91f354b625148cb0fc775f17a5b5e1e5a313f3530a42a794d5b6c9aa718a4fbcbbd8bb202bd82c1be10773c7878e7543d36c8b72')
 b2sums=('0c29659278e662eb58bc776f99e9579b5f0cf3268175382ecf2d635d54a6a8261ae173e387503a0c20a7492656c703a6699b52e1a6693c85c3211225d3e7abf8'
         'SKIP'
-        'ee69b0e2889f93aa2486878b0a3b1c5094af35bdfa3958b4de797143624c7b49215eb1ea445f343169cc83fb3c5c84e9fd38a1eb9d70b8b3da3447bc98527880')
+        'f33a8d5b82d4fbd5f07faa199b7a34249df00bc9488c01bbfb512bf2a58f6a1e23c048346ae6a7ca8f1d74a03ac9210c1aa9f2098cd49ef7303bc6cf9eba4ea7')
 validpgpkeys=('ECCAC84C1BA08A6CC8E63FBBF22FB1D78A77AEAB'    # Giancarlo Razzolini
               'C100346676634E80C940FB9E9C02FF419FECBE16')   # Morten Linderud
 
