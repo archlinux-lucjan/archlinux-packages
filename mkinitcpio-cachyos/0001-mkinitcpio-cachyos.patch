@@ -1,27 +1,27 @@
-From a16b940884bd9d0125fe36e306321b040dc4a3ac Mon Sep 17 00:00:00 2001
+From 666be588f8a993f2f6cfd5917c33c6ca662b587b Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Thu, 3 Nov 2022 21:56:16 +0100
+Date: Wed, 9 Nov 2022 21:08:12 +0100
 Subject: [PATCH] mkinitcpio cachyos
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
  Makefile                                 |   3 +-
- functions                                | 154 +++++++++++++++++------
+ functions                                | 149 ++++++++++++++++++-----
  install/fsck                             |  37 +++---
  install/strip                            |   1 +
  libalpm/hooks/60-mkinitcpio-remove.hook  |   2 +-
  libalpm/hooks/90-mkinitcpio-install.hook |   2 +-
- libalpm/scripts/mkinitcpio               |  95 ++++++++++++++
+ libalpm/scripts/mkinitcpio               |  95 +++++++++++++++
  libalpm/scripts/mkinitcpio-install       |  44 -------
- libalpm/scripts/mkinitcpio-remove        |  61 ---------
- lsinitcpio                               |  48 +------
+ libalpm/scripts/mkinitcpio-remove        |  61 ----------
+ lsinitcpio                               |  48 +-------
  man/mkinitcpio.8.txt                     |   6 +
  man/mkinitcpio.conf.5.txt                |   8 +-
- mkinitcpio                               |  52 ++++++--
+ mkinitcpio                               |  54 ++++++--
  mkinitcpio.conf                          |  28 +++--
  shell/bash-completion                    |   2 +-
  shell/zsh-completion                     |   1 +
- 16 files changed, 316 insertions(+), 228 deletions(-)
+ 16 files changed, 315 insertions(+), 226 deletions(-)
  create mode 100644 libalpm/scripts/mkinitcpio
  delete mode 100644 libalpm/scripts/mkinitcpio-install
  delete mode 100644 libalpm/scripts/mkinitcpio-remove
@@ -42,7 +42,7 @@ index 9ef0f6a..e6f3789 100644
  doc: $(MANPAGES)
  man/%: man/%.txt Makefile
 diff --git a/functions b/functions
-index 2148ed8..fdbcb37 100644
+index 2148ed8..64d10f4 100644
 --- a/functions
 +++ b/functions
 @@ -147,18 +147,79 @@ kver_x86() {
@@ -123,10 +123,10 @@ index 2148ed8..fdbcb37 100644
      # https://elixir.bootlin.com/linux/v5.7.2/source/init/version.c#L46
 -    local kver=
 +    local kver= reader=cat
++    
++    [[ $(detect_compression "$1") == 'gzip' ]] && reader=zcat
  
 -    read _ _ kver _ < <(grep -m1 -aoE 'Linux version .(\.[-[:alnum:]+]+)+' "$1")
-+    [[ $(detect_compression "$1") == 'gzip' ]] && reader=zcat
-+
 +    read _ _ kver _ < <($reader "$1" | grep -m1 -aoE 'Linux version .(\.[-[:alnum:]+]+)+')
  
      printf '%s' "$kver"
@@ -197,23 +197,14 @@ index 2148ed8..fdbcb37 100644
  
      # add a blank ld.so.conf to keep ldconfig happy
      >"$buildroot/etc/ld.so.conf"
-@@ -849,7 +938,7 @@ try_enable_color() {
- 
- install_modules() {
-     local m moduledest=$BUILDROOT/lib/modules/$KERNELVERSION
--    local -a xz_comp gz_comp zst_comp
-+    MODULES_DECOMPRESS="yes" && local -a xz_comp gz_comp zst_comp
- 
-     [[ $KERNELVERSION == none ]] && return 0
- 
-@@ -858,36 +947,29 @@ install_modules() {
+@@ -858,36 +947,30 @@ install_modules() {
          return 0
      fi
  
 -    cp "$@" "$moduledest/kernel"
 -
 -    # unzip modules prior to recompression
--    for m in "$@"; do
+     for m in "$@"; do
 -        case $m in
 -            *.xz)
 -                xz_comp+=("$moduledest/kernel/${m##*/}")
@@ -225,11 +216,9 @@ index 2148ed8..fdbcb37 100644
 -                zst_comp+=("$moduledest/kernel/${m##*/}")
 -                ;;
 -        esac
--    done
-+    if [[ "$MODULES_DECOMPRESS" = yes ]]; then
-+        for m in "$@"; do
 +        install -D -m644 "$m" "$BUILDROOT/$m"
 +        # unzip modules prior to recompression
++        if [[ "$MODULES_DECOMPRESS" == 'yes' ]]; then
 +            case "$m" in
 +                *.xz)
 +                    xz_comp+=("$BUILDROOT/$m")
@@ -241,8 +230,9 @@ index 2148ed8..fdbcb37 100644
 +                    zst_comp+=("$BUILDROOT/$m")
 +                    ;;
 +            esac
-+        done
-+    fi
++        fi
+     done
++
      (( ${#xz_comp[*]} )) && xz -d "${xz_comp[@]}"
      (( ${#gz_comp[*]} )) && gzip -d "${gz_comp[@]}"
      (( ${#zst_comp[*]} )) && zstd -d --rm -q "${zst_comp[@]}"
@@ -679,7 +669,7 @@ index 0383360..fdb8d91 100644
 -Copyright (c) Arch Linux 2006-2021
 +Copyright (c) Arch Linux 2006-2022
 diff --git a/mkinitcpio b/mkinitcpio
-index 2781e3a..15e7e57 100755
+index 2781e3a..f6787a7 100755
 --- a/mkinitcpio
 +++ b/mkinitcpio
 @@ -24,7 +24,7 @@ _optmoduleroot= _optgenimg=
@@ -700,6 +690,15 @@ index 2781e3a..15e7e57 100755
     -r, --moduleroot <dir>       Root directory for modules (default: /)
     -S, --skiphooks <hooks>      Skip specified hooks, comma-separated, during build
     -s, --save                   Save build directory. (default: no)
+@@ -288,7 +290,7 @@ build_uefi(){
+     msg "Creating UEFI executable: %s" "$out"
+ 
+     if [[ -z "$uefistub" ]]; then
+-        for stub in {/usr,}/lib/{systemd/boot/efi,gummiboot}/linux{x64,ia32}.efi.stub; do
++        for stub in {/usr,}/lib/{systemd/boot/efi,gummiboot}/linux{x64,ia32,aa64}.efi.stub; do
+             if [[ -f "$stub" ]]; then
+                 uefistub="$stub"
+                 msg2 "Using UEFI stub: %s" "$uefistub"
 @@ -376,7 +378,7 @@ build_uefi(){
  
  process_preset() (
@@ -899,5 +898,5 @@ index a62ed90..8bcef17 100644
              '(-S --skiphooks)'{-S,--skiphooks}'[Skip specified hooks, comma-separated, during build]:hook(s):_sequence -s , _path_files -W hookdirs' \
              '(-s --save)'{-s,--save}'[Save build directory (default: no)]' \
 -- 
-2.38.1.143.g1fc3c0ad40
+2.38.1.385.g3b08839926
 
