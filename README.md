@@ -48,6 +48,8 @@
 
 - dkms-git
 
+- dracut-cachyos
+
 - dracut-git
 
 - esdm-git
