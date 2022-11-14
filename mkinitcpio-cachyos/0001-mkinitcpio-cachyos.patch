@@ -1,27 +1,28 @@
-From 666be588f8a993f2f6cfd5917c33c6ca662b587b Mon Sep 17 00:00:00 2001
+From bb5c9e76bb085b05ea40a1a1fc11de13df257bd1 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 9 Nov 2022 21:08:12 +0100
+Date: Mon, 14 Nov 2022 22:34:19 +0100
 Subject: [PATCH] mkinitcpio cachyos
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
  Makefile                                 |   3 +-
- functions                                | 149 ++++++++++++++++++-----
- install/fsck                             |  37 +++---
+ functions                                | 156 +++++++++++++++++------
+ init                                     |   2 +
+ install/fsck                             |  39 +++---
  install/strip                            |   1 +
  libalpm/hooks/60-mkinitcpio-remove.hook  |   2 +-
  libalpm/hooks/90-mkinitcpio-install.hook |   2 +-
- libalpm/scripts/mkinitcpio               |  95 +++++++++++++++
+ libalpm/scripts/mkinitcpio               |  95 ++++++++++++++
  libalpm/scripts/mkinitcpio-install       |  44 -------
- libalpm/scripts/mkinitcpio-remove        |  61 ----------
- lsinitcpio                               |  48 +-------
+ libalpm/scripts/mkinitcpio-remove        |  61 ---------
+ lsinitcpio                               |  52 +-------
  man/mkinitcpio.8.txt                     |   6 +
  man/mkinitcpio.conf.5.txt                |   8 +-
  mkinitcpio                               |  54 ++++++--
- mkinitcpio.conf                          |  28 +++--
+ mkinitcpio.conf                          |  28 ++--
  shell/bash-completion                    |   2 +-
  shell/zsh-completion                     |   1 +
- 16 files changed, 315 insertions(+), 226 deletions(-)
+ 17 files changed, 323 insertions(+), 233 deletions(-)
  create mode 100644 libalpm/scripts/mkinitcpio
  delete mode 100644 libalpm/scripts/mkinitcpio-install
  delete mode 100644 libalpm/scripts/mkinitcpio-remove
@@ -42,7 +43,7 @@ index 9ef0f6a..e6f3789 100644
  doc: $(MANPAGES)
  man/%: man/%.txt Makefile
 diff --git a/functions b/functions
-index 2148ed8..64d10f4 100644
+index 2148ed8..23e733f 100644
 --- a/functions
 +++ b/functions
 @@ -147,18 +147,79 @@ kver_x86() {
@@ -174,8 +175,28 @@ index 2148ed8..64d10f4 100644
  
      if ! workdir=$(mktemp -d --tmpdir mkinitcpio.XXXXXX); then
          error 'Failed to create temporary working directory in %s' "${TMPDIR:-/tmp}"
-@@ -777,8 +854,20 @@ initialize_buildroot() {
-     ln -s /proc/self/mounts "$buildroot/etc/mtab"
+@@ -750,14 +827,11 @@ initialize_buildroot() {
+     fi
+ 
+     # base directory structure
+-    install -dm755 "$buildroot"/{new_root,proc,sys,dev,run,tmp,var,etc,usr/{local,lib,bin}}
++    install -dm755 "$buildroot"/{new_root,proc,sys,dev,run,tmp,var,etc,usr/{local{,/bin,/sbin,/lib},lib,bin}}
+     ln -s "usr/lib" "$buildroot/lib"
+-    ln -s "../lib"  "$buildroot/usr/local/lib"
+     ln -s "bin"     "$buildroot/usr/sbin"
+     ln -s "usr/bin" "$buildroot/bin"
+     ln -s "usr/bin" "$buildroot/sbin"
+-    ln -s "../bin"  "$buildroot/usr/local/bin"
+-    ln -s "../bin"  "$buildroot/usr/local/sbin"
+     ln -s "/run"    "$buildroot/var/run"
+ 
+     case $arch in
+@@ -774,11 +848,23 @@ initialize_buildroot() {
+     [[ $kernver != none ]] && install -dm755 "$buildroot/usr/lib/modules/$kernver/kernel"
+ 
+     # mount tables
+-    ln -s /proc/self/mounts "$buildroot/etc/mtab"
++    ln -s ../proc/self/mounts "$buildroot/etc/mtab"
      >"$buildroot/etc/fstab"
  
 -    # indicate that this is an initramfs
@@ -197,7 +218,7 @@ index 2148ed8..64d10f4 100644
  
      # add a blank ld.so.conf to keep ldconfig happy
      >"$buildroot/etc/ld.so.conf"
-@@ -858,36 +947,30 @@ install_modules() {
+@@ -858,36 +944,30 @@ install_modules() {
          return 0
      fi
  
@@ -250,11 +271,23 @@ index 2148ed8..64d10f4 100644
      depmod -b "$BUILDROOT" "$KERNELVERSION"
  
      # remove all non-binary module.* files (except devname for on-demand module loading)
+diff --git a/init b/init
+index 2cb3526..c564237 100644
+--- a/init
++++ b/init
+@@ -1,5 +1,7 @@
+ #!/usr/bin/ash
+ 
++export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
++
+ udevd_running=0
+ mount_handler=default_mount_handler
+ init=/sbin/init
 diff --git a/install/fsck b/install/fsck
-index 4f5cf93..e394e0d 100644
+index 4f5cf93..f3c0bfd 100644
 --- a/install/fsck
 +++ b/install/fsck
-@@ -4,18 +4,26 @@ build() {
+@@ -4,18 +4,28 @@ build() {
      local fsck= added=0
  
      add_fsck() {
@@ -271,7 +304,9 @@ index 4f5cf93..e394e0d 100644
 +            add_symlink /usr/bin/fsck.ext2 e2fsck
 +            add_symlink /usr/bin/fsck.ext3 e2fsck
 +            add_symlink /usr/bin/fsck.ext4 e2fsck
-+            [[ -e /etc/e2fsck.conf ]] && add_file /etc/e2fsck.conf
++            if [[ -e /etc/e2fsck.conf ]]; then
++                add_file /etc/e2fsck.conf
++            fi
 +            ;;
 +        xfs)
              add_binary fsck.xfs
@@ -291,7 +326,7 @@ index 4f5cf93..e394e0d 100644
      }
  
      if (( ! fs_autodetect_failed )) && [[ $rootfstype$usrfstype ]]; then
-@@ -26,9 +34,8 @@ build() {
+@@ -26,9 +36,8 @@ build() {
              add_fsck $usrfstype && (( ++added ))
          fi
      else
@@ -303,7 +338,7 @@ index 4f5cf93..e394e0d 100644
          done
      fi
  
-@@ -38,10 +45,6 @@ build() {
+@@ -38,10 +47,6 @@ build() {
      fi
  
      add_binary fsck
@@ -567,9 +602,18 @@ index 17b4b31..0000000
 -    shopt -u nullglob
 -fi
 diff --git a/lsinitcpio b/lsinitcpio
-index 4715783..f5c43ef 100755
+index 4715783..beb0dbc 100755
 --- a/lsinitcpio
 +++ b/lsinitcpio
+@@ -3,7 +3,7 @@
+ # lsinitcpio - dump the contents of an initramfs image
+ #
+ 
+-shopt -s extglob
++shopt -s extglob globstar
+ 
+ _list='--list'
+ _optcolor=1
 @@ -84,54 +84,12 @@ detect_filetype() {
              echo
              return
@@ -628,6 +672,15 @@ index 4715783..f5c43ef 100755
          return
      fi
  
+@@ -170,7 +128,7 @@ analyze_image() {
+     # decompress the image since we need to read from it multiple times.
+     decomp "$_image" | bsdtar -C "$workdir" -xf - || die 'Failed to decompress image'
+ 
+-    modules=("$workdir/usr/lib/modules"/*/kernel/*.ko*)
++    modules=("$workdir/usr/lib/modules"/*/kernel/**/*.ko*)
+     if [[ -f ${modules[0]} ]]; then
+         IFS=/ read -r _ _ _ kernver _ <<<"${modules[0]#$workdir/}"
+         modules=("${modules[@]##*/}")
 diff --git a/man/mkinitcpio.8.txt b/man/mkinitcpio.8.txt
 index 0360a6b..ced9ec6 100644
 --- a/man/mkinitcpio.8.txt
