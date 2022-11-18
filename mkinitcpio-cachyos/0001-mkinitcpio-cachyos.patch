@@ -1,37 +1,94 @@
-From bb5c9e76bb085b05ea40a1a1fc11de13df257bd1 Mon Sep 17 00:00:00 2001
+From 5d57748dbb06e7acdf8a3c2093a25202465d3582 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Mon, 14 Nov 2022 22:34:19 +0100
+Date: Fri, 18 Nov 2022 17:07:53 +0100
 Subject: [PATCH] mkinitcpio cachyos
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
- Makefile                                 |   3 +-
- functions                                | 156 +++++++++++++++++------
+ .gitlab-ci.yml                           |  16 +++
+ .shellcheckrc                            |  14 ++
+ Makefile                                 |  10 +-
+ functions                                | 161 +++++++++++++++++------
  init                                     |   2 +
  install/fsck                             |  39 +++---
+ install/kms                              |  10 +-
+ install/sd-vconsole                      |  25 +++-
  install/strip                            |   1 +
  libalpm/hooks/60-mkinitcpio-remove.hook  |   2 +-
  libalpm/hooks/90-mkinitcpio-install.hook |   2 +-
- libalpm/scripts/mkinitcpio               |  95 ++++++++++++++
+ libalpm/scripts/mkinitcpio               |  95 +++++++++++++
  libalpm/scripts/mkinitcpio-install       |  44 -------
  libalpm/scripts/mkinitcpio-remove        |  61 ---------
  lsinitcpio                               |  52 +-------
- man/mkinitcpio.8.txt                     |   6 +
+ man/mkinitcpio.8.txt                     |  12 +-
  man/mkinitcpio.conf.5.txt                |   8 +-
  mkinitcpio                               |  54 ++++++--
  mkinitcpio.conf                          |  28 ++--
  shell/bash-completion                    |   2 +-
  shell/zsh-completion                     |   1 +
- 17 files changed, 323 insertions(+), 233 deletions(-)
+ 21 files changed, 395 insertions(+), 244 deletions(-)
+ create mode 100644 .gitlab-ci.yml
+ create mode 100644 .shellcheckrc
  create mode 100644 libalpm/scripts/mkinitcpio
  delete mode 100644 libalpm/scripts/mkinitcpio-install
  delete mode 100644 libalpm/scripts/mkinitcpio-remove
 
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+new file mode 100644
+index 0000000..353dd92
+--- /dev/null
++++ b/.gitlab-ci.yml
+@@ -0,0 +1,16 @@
++stages:
++    - check
++
++check:
++    stage: check
++    before_script:
++        # NOTE: Install latest archlinux-keyring before upgrading system. In the
++        # future this should not be needed anymore when we can guarantee a valid
++        # keyring for longer:
++        # https://gitlab.archlinux.org/archlinux/archlinux-keyring/-/issues/4
++        - echo -e "\e[0Ksection_start:`date +%s`:pacman[collapsed=true]\r\e[0KInstalling ShellCheck"
++        - pacman -Sy --needed --noconfirm archlinux-keyring
++        - pacman --noconfirm -Syu --needed git make shellcheck
++        - echo -e "\e[0Ksection_end:`date +%s`:pacman\r\e[0K"
++    script:
++        - make shellcheck
+diff --git a/.shellcheckrc b/.shellcheckrc
+new file mode 100644
+index 0000000..19077d8
+--- /dev/null
++++ b/.shellcheckrc
+@@ -0,0 +1,14 @@
++# Suggest explicitly using -n in `[ $var ]`
++enable=avoid-nullary-conditions
++
++# Suggest 'command -v' instead of 'which'
++enable=deprecate-which
++
++# Suggest quoting variables without metacharacters
++enable=quote-safe-variables
++
++# Require [[ and warn about [ in Bash/Ksh
++enable=require-double-brackets
++
++# disable warnings validating ash scripts
++disable=SC2187
 diff --git a/Makefile b/Makefile
-index 9ef0f6a..e6f3789 100644
+index 9ef0f6a..8719773 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -73,9 +73,8 @@ install: all
+@@ -26,6 +26,8 @@ BASH_SCRIPTS = \
+ 	mkinitcpio \
+ 	lsinitcpio
+ 
++ALL_SCRIPTS=$(shell grep -rIzlE '^#! ?/.+(ba|d|k)?sh' --exclude-dir=".git" ./)
++
+ all: doc
+ 
+ MANPAGES = \
+@@ -73,9 +75,8 @@ install: all
  	install -m644 shell/zsh-completion $(DESTDIR)/usr/share/zsh/site-functions/_mkinitcpio
  
  	install -m644 libalpm/hooks/90-mkinitcpio-install.hook $(DESTDIR)/usr/share/libalpm/hooks/90-mkinitcpio-install.hook
@@ -42,8 +99,24 @@ index 9ef0f6a..e6f3789 100644
  
  doc: $(MANPAGES)
  man/%: man/%.txt Makefile
+@@ -88,6 +89,9 @@ check:
+ 	@r=0; for t in test/test_*; do $$t || { echo $$t fail; r=1; }; done; exit $$r
+ 	@r=0; for s in $(BASH_SCRIPTS); do bash -O extglob -n $$s || r=1; done; exit $$r
+ 
++shellcheck:
++	shellcheck -W 99 --color $(ALL_SCRIPTS)
++
+ clean:
+ 	$(RM) mkinitcpio-$(VERSION).tar.gz.sig mkinitcpio-$(VERSION).tar.gz $(MANPAGES)
+ 
+@@ -108,4 +112,4 @@ upload: mkinitcpio-$(VERSION).tar.gz mkinitcpio-$(VERSION).tar.gz.sig
+ version:
+ 	@echo $(VERSION)
+ 
+-.PHONY: clean dist install tarball version
++.PHONY: clean dist install shellcheck tarball version
 diff --git a/functions b/functions
-index 2148ed8..23e733f 100644
+index 2148ed8..e0a68e2 100644
 --- a/functions
 +++ b/functions
 @@ -147,18 +147,79 @@ kver_x86() {
@@ -132,41 +205,62 @@ index 2148ed8..23e733f 100644
  
      printf '%s' "$kver"
  }
-@@ -574,7 +635,15 @@ add_file() {
+@@ -556,12 +617,14 @@ add_file() {
+     (( $# )) || return 1
+ 
+     # determine source and destination
+-    local src=$1 dest=${2:-$1} mode=
++    local src=$1 dest=${2:-$1} mode= srcrealpath
+ 
+     if [[ ! -f $src ]]; then
+         error "file not found: \`%s'" "$src"
+         return 1
+     fi
++    src="$(realpath -s -- "$src")"
++    dest="$(realpath -ms -- "$dest")"
+ 
+     mode=${3:-$(stat -c %a "$src")}
+     if [[ -z $mode ]]; then
+@@ -574,7 +637,23 @@ add_file() {
      else
          quiet "adding file: %s" "$dest"
      fi
 -    command install -Dm$mode "$src" "$BUILDROOT$dest"
-+   #check if $src is a symlink
-+    if [[ -L $src ]]; then
-+        # add the symlink
-+        add_file "$(realpath -- "$src")"
-+        # create the symlink
-+        add_symlink "$src" "$(realpath -- "$src")"
++    # check if $src is a symlink
++    if [[ -L "$src" ]]; then
++        # add the file
++        srcrealpath="$(realpath -- "$src")"
++        mode="$(stat -c %a -- "$srcrealpath")"
++        add_file "$srcrealpath" "$srcrealpath" "$mode"
++        [[ -d "${BUILDROOT}${dest%/*}" ]] || install -d -- "${BUILDROOT}${dest%/*}"
++        if [[ "$src" == "$dest" ]]; then
++            # copy the symlink to preserve relativity
++            cp -adT -- "$src" "${BUILDROOT}${src}"
++        else
++            # create the symlink
++            add_symlink "$src" "$dest"
++        fi
 +    else
 +       command install -Dm$mode "$src" "$BUILDROOT$dest"
 +    fi
  }
  
  add_runscript() {
-@@ -634,7 +703,15 @@ add_binary() {
+@@ -629,11 +708,12 @@ add_binary() {
+         error "file not found: \`%s'" "$1"
+         return 1
+     fi
++    binary="$(realpath -s -- "$binary")"
+ 
+     dest=${2:-$binary}
++    dest="$(realpath -ms -- "$dest")"
      mode=$(stat -c %a "$binary")
  
-     # always add the binary itself
--    add_file "$binary" "$dest" "$mode"
-+    # check if binary is a symlink
-+    if [[ -L $binary ]]; then
-+        # add the binary
-+        add_file "$(realpath -- "$binary")"
-+        # create the symlink
-+        add_symlink "$binary" "$(realpath -- "$binary")"
-+    else
-+        add_file "$binary" "$dest" "$mode"
-+    fi
+-    # always add the binary itself
+     add_file "$binary" "$dest" "$mode"
  
      # negate this so that the RETURN trap is not fired on non-binaries
-     ! lddout=$(ldd "$binary" 2>/dev/null) && return 0
-@@ -736,7 +813,7 @@ initialize_buildroot() {
+@@ -736,7 +816,7 @@ initialize_buildroot() {
      # creates a temporary directory for the buildroot and initialize it with a
      # basic set of necessary directories and symlinks
  
@@ -175,7 +269,7 @@ index 2148ed8..23e733f 100644
  
      if ! workdir=$(mktemp -d --tmpdir mkinitcpio.XXXXXX); then
          error 'Failed to create temporary working directory in %s' "${TMPDIR:-/tmp}"
-@@ -750,14 +827,11 @@ initialize_buildroot() {
+@@ -750,14 +830,11 @@ initialize_buildroot() {
      fi
  
      # base directory structure
@@ -191,7 +285,7 @@ index 2148ed8..23e733f 100644
      ln -s "/run"    "$buildroot/var/run"
  
      case $arch in
-@@ -774,11 +848,23 @@ initialize_buildroot() {
+@@ -774,11 +851,23 @@ initialize_buildroot() {
      [[ $kernver != none ]] && install -dm755 "$buildroot/usr/lib/modules/$kernver/kernel"
  
      # mount tables
@@ -218,7 +312,7 @@ index 2148ed8..23e733f 100644
  
      # add a blank ld.so.conf to keep ldconfig happy
      >"$buildroot/etc/ld.so.conf"
-@@ -858,36 +944,30 @@ install_modules() {
+@@ -858,36 +947,30 @@ install_modules() {
          return 0
      fi
  
@@ -349,6 +443,75 @@ index 4f5cf93..f3c0bfd 100644
  }
  
  help() {
+diff --git a/install/kms b/install/kms
+index 59ea9eb..d2499a5 100644
+--- a/install/kms
++++ b/install/kms
+@@ -1,12 +1,18 @@
+ #!/usr/bin/env bash
+ 
+ build() {
++    # AGP and DRM modules for GPUs
+     map add_checked_modules '/drivers/char/agp/' '/drivers/gpu/drm/'
++
++    # modules that implement the privacy screen interface
++    # TODO: Replace with dynamic lookup of modules that depend on the drm_privacy_screen_register symbol
++    # See https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio/-/issues/132
++    map add_checked_modules 'chromeos_privacy_screen?' 'thinkpad_acpi?'
+ }
+ 
+ help() {
+     cat <<HELPEOF
+-Adds KMS drivers to the initramfs image. To minimize the modules in the image,
+-add the autodetect hook too.
++Adds KMS and privacy screen drivers to the initramfs image. To minimize the
++modules in the image, add the autodetect hook too.
+ HELPEOF
+ }
+diff --git a/install/sd-vconsole b/install/sd-vconsole
+index 8c01ffb..3c1eb8b 100644
+--- a/install/sd-vconsole
++++ b/install/sd-vconsole
+@@ -42,7 +42,21 @@ build() {
+ 
+     # subshell to avoid namespace pollution
+     (
+-        shopt -s nullglob
++        shopt -s extglob nullglob
++
++        add_font_file() {
++            local cat file filename fontfile="$1"
++            get_decompressor "$fontfile"
++            add_dir "${of%/*}"
++            "$cat" "$fontfile" > "$BUILDROOT/$of"
++            if [[ "$(head -c 23 "$BUILDROOT/$of" | tr -d '\0')" == '# combine partial fonts' ]]; then
++                while read filename; do
++                    for file in "/usr/share/kbd/consolefonts/partialfonts/$filename"?('.gz'|'.bz2'); do
++                        add_font_file "$file"
++                    done
++                done < <(sed '/^#/d' "$BUILDROOT/$of")
++            fi
++        }
+ 
+         [[ -s /etc/vconsole.conf ]] && . /etc/vconsole.conf
+ 
+@@ -50,11 +64,12 @@ build() {
+         [[ $KEYMAP_TOGGLE ]] && add_keymap_file $KEYMAP_TOGGLE.map
+ 
+         if [[ $FONT ]]; then
+-            for file in "/usr/share/kbd/consolefonts/$FONT".@(fnt|psf?(u))?(.gz); do
+-                get_decompressor "$file"
+-                add_dir "${of%/*}"
+-                $cat "$file" > "$BUILDROOT/$of"
++            for file in "/usr/share/kbd/consolefonts/$FONT"?('.psfu'|'.psf'|'.cp'|'.fnt')?('.gz'|'.bz2'); do
++                add_font_file "$file"
++                return
+             done
++            error "sd-vconsole: requested font not found: '%s'" "$FONT"
++            return 1
+         fi
+     )
+ }
 diff --git a/install/strip b/install/strip
 index f8eb49d..b71ed54 100644
 --- a/install/strip
@@ -682,7 +845,7 @@ index 4715783..beb0dbc 100755
          IFS=/ read -r _ _ _ kernver _ <<<"${modules[0]#$workdir/}"
          modules=("${modules[@]##*/}")
 diff --git a/man/mkinitcpio.8.txt b/man/mkinitcpio.8.txt
-index 0360a6b..ced9ec6 100644
+index 0360a6b..8872206 100644
 --- a/man/mkinitcpio.8.txt
 +++ b/man/mkinitcpio.8.txt
 @@ -84,6 +84,12 @@ Options
@@ -698,6 +861,25 @@ index 0360a6b..ced9ec6 100644
  *-r, \--moduleroot* 'root'::
  	Specifies the root directory to find modules in, defaulting to '/'.
  
+@@ -162,14 +168,16 @@ functions exist to facilitate this.
+ 
+ 	Adds a binary to the image. The argument 'binary' need not be an absolute
+ 	path and, if needed, a lookup will be performed. If the binary is a dynamically
+-	linked ELF binary, dependencies will be automatically added. Optionally, a
++	linked ELF binary, dependencies will be automatically added. If it is a
++	symlink, both the symlink and the target binary will be added. Optionally, a
+ 	destination within the initramfs image as well as a file mode can be specified.
+ 	By default, the destintation and mode be taken from the source derived from
+ 	'binary'.
+ 
+ *add_file* 'path' [ 'destination' ] [ 'mode' ]::
+ 
+-	Adds a file and any needed parent directories to the image. Optionally, a
++	Adds a file and any needed parent directories to the image. If it is a
++	symlink, both the symlink and the target file will be added. Optionally, a
+ 	destination within the initramfs image as well as a file mode can be specified.
+ 	By default, the destination and mode will be taken from the source and mode of
+ 	the file specified by the 'path'.
 diff --git a/man/mkinitcpio.conf.5.txt b/man/mkinitcpio.conf.5.txt
 index 0383360..fdb8d91 100644
 --- a/man/mkinitcpio.conf.5.txt
