@@ -50,7 +50,7 @@
 
 - dracut-cachyos
 
-- dracut-git
+- dracut-cachyos-git
 
 - esdm-git
 
