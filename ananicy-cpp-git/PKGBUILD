@@ -5,17 +5,15 @@
 pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
 pkgver=1.0.1.r0.g4d263de
-pkgrel=1
+pkgrel=2
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
-source=(
-	"git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
-	"git+https://gitlab.com/ananicy-cpp/stl-polyfills/std-format.git"
-)
+source=("git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
+        "git+https://gitlab.com/vnepogodin/std-format.git")
 md5sums=('SKIP'
          'SKIP')
 arch=('x86_64')
-depends=('fmt' 'spdlog' 'nlohmann-json' 'systemd')
-makedepends=('cmake' 'git' 'gcc')
+depends=('fmt' 'spdlog' 'nlohmann-json' 'systemd' 'libelf' 'zlib' 'libbpf')
+makedepends=('cmake' 'clang' 'git' 'bpf')
 conflicts=('ananicy-cpp')
 provides=('ananicy-cpp')
 optdepends=("cachyos-ananicy-rules: community rules")
@@ -26,30 +24,35 @@ pkgver() {
 }
 
 prepare() {
-	cd "$_pkgname"
+  cd "$_pkgname"
 
-	git submodule init
-	git config submodule."external/std-format".url "${srcdir}/std-format"
-	git submodule update
+  git submodule init
+  git config submodule."external/std-format".url "${srcdir}/std-format"
+  git -c protocol.file.allow=always submodule update
 
-	cmake -B build -S . \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DUSE_EXTERNAL_SPDLOG=ON \
-		-DUSE_EXTERNAL_JSON=ON \
-		-DUSE_EXTERNAL_FMTLIB=ON
+  cmake -B build -S . \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_EXTERNAL_SPDLOG=ON \
+        -DUSE_EXTERNAL_JSON=ON \
+        -DUSE_EXTERNAL_FMTLIB=ON \
+        -DENABLE_SYSTEMD=ON \
+        -DUSE_BPF_PROC_IMPL=ON \
+        -DBPF_BUILD_LIBBPF=OFF \
+        -DVERSION=${pkgver}
 }
 
 build() {
-	cd "$_pkgname"
-	cmake --build build --target ananicy-cpp
+  cd "$_pkgname"
+
+  cmake --build build
 }
 
 package() {
-	cd "$_pkgname"
-	export DESTDIR="$pkgdir"
-	cmake --install build --component Runtime
+  cd "$_pkgname"
 
-	install -m755 -d "$pkgdir/etc/ananicy.d"
+  export DESTDIR="$pkgdir"
+  cmake --install build --component Runtime
+
+  install -m755 -d "$pkgdir/etc/ananicy.d"
 }
-
