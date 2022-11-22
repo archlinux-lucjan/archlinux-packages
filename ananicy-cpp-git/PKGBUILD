@@ -4,7 +4,7 @@
 
 pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
-pkgver=1.0.0.rc7.r2.g0935ce3
+pkgver=1.0.1.r0.g4d263de
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 source=(
@@ -22,7 +22,7 @@ optdepends=("cachyos-ananicy-rules: community rules")
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
