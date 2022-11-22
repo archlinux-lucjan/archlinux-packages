@@ -17,6 +17,8 @@
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules
 │   └── PKGBUILD
+├── cachyos-hooks
+│   └── PKGBUILD
 ├── cachyos-settings
 │   ├── cachyos-settings.install
 │   └── PKGBUILD
@@ -595,4 +597,4 @@
 └── zstd-git
     └── PKGBUILD
 
-205 directories, 390 files
+206 directories, 391 files

@@ -16,6 +16,8 @@
 
 - cachyos-ananicy-rules
 
+- cachyos-hooks
+
 - cachyos-settings
 
 - canta-kde-git
