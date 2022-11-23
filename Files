@@ -317,11 +317,9 @@
 │   ├── LICENSE
 │   └── PKGBUILD
 ├── meson-git
-│   ├── 0001-Skip-broken-tests.patch
 │   ├── arch-meson
 │   └── PKGBUILD
 ├── meson-stable-git
-│   ├── 0001-Skip-broken-tests.patch
 │   ├── arch-meson
 │   └── PKGBUILD
 ├── mkinitcpio-git
@@ -597,4 +595,4 @@
 └── zstd-git
     └── PKGBUILD
 
-206 directories, 391 files
+206 directories, 389 files
