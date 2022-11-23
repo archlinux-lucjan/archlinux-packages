@@ -14,11 +14,11 @@
 
 - blktrace-git
 
-- cachyos-ananicy-rules
+- cachyos-ananicy-rules-git
 
-- cachyos-hooks
+- cachyos-hooks-git
 
-- cachyos-settings
+- cachyos-settings-git
 
 - canta-kde-git
 

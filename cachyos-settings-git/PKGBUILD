@@ -1,10 +1,10 @@
 # Maintainer: Peter Jung <admin@ptr1337.dev>
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
-pkgname=cachyos-settings
+pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20220825.r51.g34bfa6b
-pkgrel=3
+pkgver=20221108.r65.g70ab77c
+pkgrel=1
 groups=(cachyos)
 arch=('any')
 license=('GPL')
@@ -19,6 +19,9 @@ depends=(
     'cachyos-ananicy-rules'
     'uksmd'
     )
+replaces=('cachyos-settings')
+provides=('cachyos-settings')
+conflicts=('cachyos-settings')
 
 pkgver() {
   cd $gitname

@@ -15,12 +15,12 @@
 │   └── PKGBUILD
 ├── blktrace-git
 │   └── PKGBUILD
-├── cachyos-ananicy-rules
+├── cachyos-ananicy-rules-git
 │   └── PKGBUILD
-├── cachyos-hooks
+├── cachyos-hooks-git
 │   └── PKGBUILD
-├── cachyos-settings
-│   ├── cachyos-settings.install
+├── cachyos-settings-git
+│   ├── cachyos-settings-git.install
 │   └── PKGBUILD
 ├── canta-kde-git
 │   └── PKGBUILD
