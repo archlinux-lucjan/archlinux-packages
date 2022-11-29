@@ -4,11 +4,10 @@
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
 pkgver=20221108.r65.g70ab77c
-pkgrel=1
+pkgrel=2
 groups=(cachyos)
 arch=('any')
 license=('GPL')
-makedepends=('coreutils')
 pkgdesc='CachyOS - Settings'
 source=("git+https://github.com/sirlucjan/$gitname")
 install=$pkgname.install
@@ -19,6 +18,7 @@ depends=(
     'cachyos-ananicy-rules'
     'uksmd'
     )
+makedepends=('coreutils')
 replaces=('cachyos-settings')
 provides=('cachyos-settings')
 conflicts=('cachyos-settings')

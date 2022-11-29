@@ -8,6 +8,6 @@ post_install() {
 post_upgrade() {
   echo "Attempting to enable services..."
   systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
-  systemctl is-active ananicy-cpp >/dev/null || systemctl enable ananicy-cpp.service
+  systemctl is-active ananicy-cpp >/dev/null || systemctl enable ananicy-cpp
   systemctl is-active uksmd >/dev/null || systemctl enable uksmd
   }
