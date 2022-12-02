@@ -364,6 +364,10 @@
 
 - uksmd-git
 
+- uksmstat-git
+
+- uksmtools-git
+
 - utox-dev-git
 
 - utox-git
