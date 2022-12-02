@@ -363,17 +363,17 @@
 │   └── PKGBUILD
 ├── pacman-git
 │   ├── 0001-add-information-about-origin-db.patch
+│   ├── 0001-add-support-for-x86_64_v-2-3-4-autodetection.patch
 │   ├── makepkg.conf
 │   ├── pacman.conf
-│   ├── PKGBUILD
-│   └── x86_64v3.patch
+│   └── PKGBUILD
 ├── pacman-stable-git
 │   ├── 0001-add-information-about-origin-db.patch
+│   ├── 0001-add-support-for-x86_64_v-2-3-4-autodetection.patch
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   ├── pacman-fix.patch
-│   ├── PKGBUILD
-│   └── x86_64v3.patch
+│   └── PKGBUILD
 ├── pacutils-git
 │   └── PKGBUILD
 ├── pkgbuild-introspection-lucjan-git
