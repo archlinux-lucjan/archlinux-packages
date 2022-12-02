@@ -525,10 +525,6 @@
 │   └── toxcore.install
 ├── uksmd-git
 │   └── PKGBUILD
-├── uksmstat-git
-│   └── PKGBUILD
-├── uksmtools-git
-│   └── PKGBUILD
 ├── utox-dev-git
 │   └── PKGBUILD
 ├── utox-git
@@ -594,4 +590,4 @@
 └── zstd-git
     └── PKGBUILD
 
-206 directories, 388 files
+204 directories, 386 files
