@@ -15,7 +15,7 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.39.50.r111185.58448ad29c2
+pkgver=2.39.50.r112302.e03698c1227
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
@@ -69,6 +69,7 @@ build() {
     --enable-install-libiberty \
     --enable-jansson \
     --enable-ld=default \
+    --enable-new-dtags \
     --enable-pgo-build=lto \
     --enable-plugins \
     --enable-relro \
