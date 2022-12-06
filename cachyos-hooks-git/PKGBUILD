@@ -4,7 +4,7 @@
 pkgname=cachyos-hooks-git
 gitname=cachyos-hooks
 pkgver=20221206.r22.gd1d3569
-pkgrel=1
+pkgrel=3
 pkgdesc='Cachy OS Pacman Hooks'
 groups=('cachyos')
 arch=('any')
@@ -30,7 +30,7 @@ package() {
   install -Dm644 os-release.hook                  $hooks/os-release.hook
   install -Dm644 ${gitname}.hook                  $hooks/${gitname}.hook
   install -Dm644 cachyos-reboot-required.hook     $hooks/cachyos-reboot-required.hook
-  install -Dm644 cachyos-systemd-boot.hook        $hooks/cachyos-systemd-boot.hook
+  install -Dm644 cachyos-systemd-boot.hook        $hooks/95-cachyos-systemd-boot.hook
 
   install -Dm755 cachyos-reboot-required          $bin/cachyos-reboot-required
   install -Dm755 cachyos-check-reboot-required    $bin/cachyos-check-reboot-required
