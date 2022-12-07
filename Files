@@ -471,13 +471,6 @@
 │   ├── syslinux.cfg
 │   ├── syslinux.install
 │   └── syslinux-install_update
-├── systemd-boot-manager
-│   ├── PKGBUILD
-│   ├── sdboot-kernel-install.hook
-│   ├── sdboot-kernel-remove.hook
-│   ├── sdboot-manage
-│   ├── sdboot-manage.conf
-│   └── sdboot-systemd-update.hook
 ├── systemd-git
 │   ├── 0001-Use-Arch-Linux-device-access-groups.patch
 │   ├── 20-systemd-sysusers.hook
@@ -597,4 +590,4 @@
 └── zstd-git
     └── PKGBUILD
 
-205 directories, 392 files
+204 directories, 386 files

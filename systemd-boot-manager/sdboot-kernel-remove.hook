@@ -1,9 +1,0 @@
-[Trigger]
-Type = Path
-Operation = Remove
-Target = boot/linux*.kver
-
-[Action]
-Description = Remove systemd-boot entries
-When = PostTransaction
-Exec = /usr/bin/sdboot-manage remove

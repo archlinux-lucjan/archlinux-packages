@@ -352,8 +352,6 @@
 
 - syslinux-git
 
-- systemd-boot-manager
-
 - systemd-git
 
 - systemd-stable-git
