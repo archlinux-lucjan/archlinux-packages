@@ -6,7 +6,7 @@
 pkgbase=systemd-git
 _pkgbase=systemd
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
-pkgver=252.780.g7b37aea98c
+pkgver=252.r780.g7b37aea98c
 pkgrel=1
 arch=('x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -92,7 +92,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/$_pkgbase"
-  git describe --long --tags | sed 's/^v//;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
