@@ -85,16 +85,6 @@
 ├── Files
 ├── freebsd-manpages
 │   └── PKGBUILD
-├── gcc-dev-git
-│   ├── c89
-│   ├── c99
-│   ├── gcc-ada-repro.patch
-│   └── PKGBUILD
-├── gcc-git
-│   ├── c89
-│   ├── c99
-│   ├── gcc-ada-repro.patch
-│   └── PKGBUILD
 ├── gdb-git
 │   └── PKGBUILD
 ├── gdb-stable-git
@@ -590,4 +580,4 @@
 └── zstd-git
     └── PKGBUILD
 
-204 directories, 386 files
+202 directories, 378 files

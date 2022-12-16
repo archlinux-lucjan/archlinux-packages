@@ -62,10 +62,6 @@
 
 - freebsd-manpages
 
-- gcc-dev-git
-
-- gcc-git
-
 - gdb-git
 
 - gdb-stable-git
