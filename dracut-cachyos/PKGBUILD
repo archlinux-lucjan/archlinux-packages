@@ -4,7 +4,7 @@
 pkgname=dracut-cachyos
 _pkgname=dracut
 pkgver=059
-pkgrel=1
+pkgrel=2
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://dracut.wiki.kernel.org"
@@ -58,4 +58,5 @@ package() {
   install -Dm644 "${srcdir}/60-dracut-remove.hook"  "${pkgdir}/usr/share/libalpm/hooks/60-dracut-remove.hook"
   install -Dm755 "${srcdir}/dracut-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-install"
   install -Dm755 "${srcdir}/dracut-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
+  install -Dm755 "${srcdir}/dracut-rebuild"         "${pkgdir}/usr/bin/dracut-rebuild"
 } 
