@@ -68,12 +68,14 @@
 │   ├── 60-dracut-remove.hook
 │   ├── 90-dracut-install.hook
 │   ├── dracut-install
+│   ├── dracut-rebuild
 │   ├── dracut-remove
 │   └── PKGBUILD
 ├── dracut-cachyos-git
 │   ├── 60-dracut-remove.hook
 │   ├── 90-dracut-install.hook
 │   ├── dracut-install
+│   ├── dracut-rebuild
 │   ├── dracut-remove
 │   └── PKGBUILD
 ├── esdm-git
@@ -580,4 +582,4 @@
 └── zstd-git
     └── PKGBUILD
 
-203 directories, 378 files
+203 directories, 380 files
