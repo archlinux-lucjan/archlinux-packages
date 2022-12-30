@@ -20,6 +20,8 @@
 
 - cachyos-settings-git
 
+- cachyos-sysctl-manager-git
+
 - canta-kde-git
 
 - cantata-git
