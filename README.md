@@ -28,8 +28,6 @@
 
 - chromeos-kde-git
 
-- clang-git
-
 - clean-chroot-manager-git
 
 - clementine-lite-qt5-git 
@@ -39,8 +37,6 @@
 - cmake-git
 
 - cmake-release-git
-
-- compiler-rt-git
 
 - cpio-git
 
@@ -206,12 +202,6 @@
 
 - liquidshell-git
 
-- lld-git
-
-- lldb-git
-
-- llvm-git
-
 - lostfiles-git
 
 - lucjan-keyring
@@ -258,8 +248,6 @@
 
 - ninja-git
 
-- openmp-git
-
 - openvpn-git
 
 - openvpn-stable-git
@@ -279,8 +267,6 @@
 - pkgconf-git
 
 - pkgfile-git
-
-- polly-git
 
 - poppler-git
 

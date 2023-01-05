@@ -30,8 +30,6 @@
 │   └── PKGBUILD
 ├── chromeos-kde-git
 │   └── PKGBUILD
-├── clang-git
-│   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
 │   └── PKGBUILD
@@ -44,8 +42,6 @@
 │   └── PKGBUILD
 ├── cmake-release-git
 │   ├── cmake-cppflags.patch
-│   └── PKGBUILD
-├── compiler-rt-git
 │   └── PKGBUILD
 ├── cpio-git
 │   └── PKGBUILD
@@ -282,13 +278,6 @@
 │   └── PKGBUILD
 ├── liquidshell-git
 │   └── PKGBUILD
-├── lldb-git
-│   └── PKGBUILD
-├── lld-git
-│   └── PKGBUILD
-├── llvm-git
-│   ├── llvm-config.h
-│   └── PKGBUILD
 ├── lostfiles-git
 │   └── PKGBUILD
 ├── lucjan-keyring
@@ -345,8 +334,6 @@
 │   └── PKGBUILD
 ├── ninja-git
 │   └── PKGBUILD
-├── openmp-git
-│   └── PKGBUILD
 ├── openvpn-git
 │   └── PKGBUILD
 ├── openvpn-stable-git
@@ -379,8 +366,6 @@
 ├── pkgfile-git
 │   ├── PKGBUILD
 │   └── pkgfile.install
-├── polly-git
-│   └── PKGBUILD
 ├── poppler-git
 │   └── PKGBUILD
 ├── psi-clean-full-git
@@ -584,4 +569,4 @@
 └── zstd-git
     └── PKGBUILD
 
-204 directories, 381 files
+197 directories, 373 files
