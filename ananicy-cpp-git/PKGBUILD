@@ -4,10 +4,10 @@
 
 pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
-pkgver=1.0.1.r16.g360f867
+pkgver=1.0.2.r7.gf230dc2
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
-source=("git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git#branch=refactor-bpf"
+source=("git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
         "git+https://gitlab.com/vnepogodin/std-format.git")
 md5sums=('SKIP'
          'SKIP')
