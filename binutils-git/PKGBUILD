@@ -15,14 +15,14 @@
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.39.50.r112302.e03698c1227
+pkgver=2.40.50.r112991.da8c9663995
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL3' 'GPL' 'FDL1.3' 'custom:FSFAP')
 groups=('base-devel')
-depends=('glibc' 'zlib' 'libelf')
+depends=('glibc' 'jansson' 'libelf' 'zlib' 'zstd')
 makedepends=('git')
 checkdepends=('dejagnu' 'debuginfod' 'bc')
 optdepends=('debuginfod: for debuginfod server/client functionality')
@@ -64,6 +64,7 @@ build() {
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
     --enable-cet \
+    --enable-colored-disassembly \
     --enable-deterministic-archives \
     --enable-gold \
     --enable-install-libiberty \
