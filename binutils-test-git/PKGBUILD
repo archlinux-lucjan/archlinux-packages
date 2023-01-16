@@ -15,14 +15,14 @@
 
 pkgname=binutils-test-git
 _pkgname=binutils-gdb
-pkgver=2.39.0.r110841.3480ff9ff3e
+pkgver=2.40.00.r112699.fb25c2afe5e
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL3' 'GPL' 'FDL1.3' 'custom:FSFAP')
 groups=('base-devel')
-depends=('glibc' 'zlib' 'libelf')
+depends=('glibc' 'jansson' 'libelf' 'zlib' 'zstd')
 makedepends=('git')
 checkdepends=('dejagnu' 'debuginfod' 'bc')
 optdepends=('debuginfod: for debuginfod server/client functionality')
@@ -30,7 +30,7 @@ provides=('binutils')
 conflicts=('binutils-multilib' 'binutils')
 backup=('etc/gprofng.rc')
 options=('staticlibs' '!distcc' '!ccache')
-source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_39-branch
+source=(git://sourceware.org/git/binutils-gdb.git#branch=binutils-2_40-branch
         gold-warn-unsupported.patch)
 md5sums=('SKIP'
          '0283237e17804af1c55703d7e35557f1')
@@ -64,6 +64,7 @@ build() {
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
     --enable-cet \
+    --enable-colored-disassembly \
     --enable-deterministic-archives \
     --enable-gold \
     --enable-install-libiberty \
