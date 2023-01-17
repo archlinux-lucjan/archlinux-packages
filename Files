@@ -561,6 +561,9 @@
 ├── zsh-history-substring-search-git
 │   ├── PKGBUILD
 │   └── zsh-history-substring-search-git.install
+├── zsh-lucjan-config
+│   ├── PKGBUILD
+│   └── zshrc
 ├── zsh-you-should-use-git
 │   ├── PKGBUILD
 │   └── zsh-you-should-use.install
@@ -569,4 +572,4 @@
 └── zstd-git
     └── PKGBUILD
 
-197 directories, 373 files
+198 directories, 375 files

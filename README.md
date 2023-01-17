@@ -390,6 +390,8 @@
 
 - zsh-history-substring-search-git
 
+- zsh-lucjan-config
+
 - zsh-you-should-use-git
 
 - zsh-z-git
