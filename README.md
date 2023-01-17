@@ -392,6 +392,8 @@
 
 - zsh-lucjan-config
 
+- zsh-syntax-highlighting-git
+
 - zsh-you-should-use-git
 
 - zsh-z-git

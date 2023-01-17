@@ -564,6 +564,9 @@
 ├── zsh-lucjan-config
 │   ├── PKGBUILD
 │   └── zshrc
+├── zsh-syntax-highlighting-git
+│   ├── PKGBUILD
+│   └── zsh-syntax-highlighting.install
 ├── zsh-you-should-use-git
 │   ├── PKGBUILD
 │   └── zsh-you-should-use.install
@@ -572,4 +575,4 @@
 └── zstd-git
     └── PKGBUILD
 
-198 directories, 375 files
+199 directories, 377 files
