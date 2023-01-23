@@ -177,8 +177,6 @@
 │   └── PKGBUILD
 ├── ninja-git
 │   └── PKGBUILD
-├── otter-browser-git
-│   └── PKGBUILD
 ├── pacman-contrib-git
 │   └── PKGBUILD
 ├── pacman-git
@@ -274,4 +272,4 @@
 └── zstd-git
     └── PKGBUILD
 
-100 directories, 175 files
+99 directories, 174 files
