@@ -27,6 +27,8 @@
 ├── cmake-release-git
 │   ├── cmake-cppflags.patch
 │   └── PKGBUILD
+├── devtools-git
+│   └── PKGBUILD
 ├── dracut-cachyos
 │   ├── 60-dracut-remove.hook
 │   ├── 90-dracut-install.hook
@@ -204,6 +206,9 @@
 │   └── PKGBUILD
 ├── pkgbuild-introspection-lucjan-git
 │   └── PKGBUILD
+├── pkgfile-git
+│   ├── PKGBUILD
+│   └── pkgfile.install
 ├── psi-clean-full-git
 │   └── PKGBUILD
 ├── psi-clean-git
@@ -287,4 +292,4 @@
 └── zstd-git
     └── PKGBUILD
 
-107 directories, 181 files
+109 directories, 184 files
