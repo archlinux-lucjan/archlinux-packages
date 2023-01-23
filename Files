@@ -126,8 +126,6 @@
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
-├── liquidshell-git
-│   └── PKGBUILD
 ├── lostfiles-git
 │   └── PKGBUILD
 ├── lucjan-keyring
@@ -260,4 +258,4 @@
 └── zstd-git
     └── PKGBUILD
 
-93 directories, 168 files
+92 directories, 167 files
