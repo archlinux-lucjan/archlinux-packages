@@ -1,19 +1,9 @@
 .
 ├── ananicy-cpp-git
 │   └── PKGBUILD
-├── auracle-git
-│   └── PKGBUILD
 ├── bat-polaur-extras-git
 │   └── PKGBUILD
 ├── bat-polaur-git
-│   └── PKGBUILD
-├── binutils-git
-│   ├── gold-warn-unsupported.patch
-│   └── PKGBUILD
-├── binutils-test-git
-│   ├── gold-warn-unsupported.patch
-│   └── PKGBUILD
-├── blktrace-git
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
 │   └── PKGBUILD
@@ -26,41 +16,16 @@
 │   └── PKGBUILD
 ├── canta-kde-git
 │   └── PKGBUILD
-├── cantata-git
-│   └── PKGBUILD
 ├── chromeos-kde-git
 │   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
-│   └── PKGBUILD
-├── clementine-lite-qt5-git
-│   └── PKGBUILD
-├── clementine-qt5-git
 │   └── PKGBUILD
 ├── cmake-git
 │   ├── cmake-cppflags.patch
 │   └── PKGBUILD
 ├── cmake-release-git
 │   ├── cmake-cppflags.patch
-│   └── PKGBUILD
-├── cpio-git
-│   └── PKGBUILD
-├── dbus-git
-│   ├── dbus-reload.hook
-│   ├── no-fatal-warnings.diff
-│   └── PKGBUILD
-├── dbus-stable-git
-│   ├── dbus-reload.hook
-│   ├── no-fatal-warnings.diff
-│   └── PKGBUILD
-├── devtools-git
-│   └── PKGBUILD
-├── dkms-git
-│   ├── dkms.install
-│   ├── hook.install
-│   ├── hook.remove
-│   ├── hook.sh
-│   ├── hook.upgrade
 │   └── PKGBUILD
 ├── dracut-cachyos
 │   ├── 60-dracut-remove.hook
@@ -78,16 +43,10 @@
 │   └── PKGBUILD
 ├── esdm-git
 │   └── PKGBUILD
-├── falkon-git
-│   └── PKGBUILD
 ├── fetchmirrors-git
 │   └── PKGBUILD
 ├── Files
 ├── freebsd-manpages
-│   └── PKGBUILD
-├── gdb-git
-│   └── PKGBUILD
-├── gdb-stable-git
 │   └── PKGBUILD
 ├── git-delta-git
 │   └── PKGBUILD
@@ -127,56 +86,6 @@
 │   ├── git-git.install
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
-├── glibc-dev-git
-│   ├── glibc.install
-│   ├── lib32-glibc.conf
-│   ├── locale-gen
-│   ├── locale.gen.txt
-│   ├── PKGBUILD
-│   ├── sdt-config.h
-│   └── sdt.h
-├── glibc-git
-│   ├── glibc.install
-│   ├── lib32-glibc.conf
-│   ├── locale-gen
-│   ├── locale.gen.txt
-│   ├── PKGBUILD
-│   ├── sdt-config.h
-│   └── sdt.h
-├── gnupg-git
-│   ├── avoid-beta-warning.patch
-│   ├── install
-│   └── PKGBUILD
-├── gnupg-stable-git
-│   ├── avoid-beta-warning.patch
-│   ├── install
-│   └── PKGBUILD
-├── gpgme-git
-│   └── PKGBUILD
-├── grub-btrfs-git
-│   └── PKGBUILD
-├── grub-git
-│   ├── 0001-00_header-add-GRUB_COLOR_-variables.patch
-│   ├── 0002-10_linux-detect-archlinux-initramfs.patch
-│   ├── 0003-kern-efi-mm-increase-default-heap-size.patch
-│   ├── grub.default
-│   ├── grub.install
-│   ├── PKGBUILD
-│   └── sbat.csv
-├── hub-git
-│   └── PKGBUILD
-├── intel-media-driver-git
-│   └── PKGBUILD
-├── intel-media-driver-stable-git
-│   └── PKGBUILD
-├── intel-ucode-git
-│   └── PKGBUILD
-├── intel-undervolt-git
-│   └── PKGBUILD
-├── iucode-tool-git
-│   └── PKGBUILD
-├── kaffeine-git
-│   └── PKGBUILD
 ├── kaidan-git
 │   └── PKGBUILD
 ├── kaidan-stable-git
@@ -206,52 +115,9 @@
 │   └── PKGBUILD
 ├── kuser-frameworks-git
 │   └── PKGBUILD
-├── kvantum-qt5-git
-│   └── PKGBUILD
-├── lab-git
-│   └── PKGBUILD
 ├── layan-kde-git
 │   └── PKGBUILD
-├── libassuan-git
-│   └── PKGBUILD
-├── libclc-git
-│   └── PKGBUILD
-├── libdrm-git
-│   ├── COPYING
-│   └── PKGBUILD
-├── libgcrypt-git
-│   └── PKGBUILD
-├── libgit2-git
-│   ├── libgit2-1.5.0-remove_http-parse_incompatible_tests.patch
-│   └── PKGBUILD
-├── libgit2-stable-git
-│   ├── libgit2-1.5.0-remove_http-parse_incompatible_tests.patch
-│   └── PKGBUILD
-├── libgpg-error-git
-│   └── PKGBUILD
-├── libinput-git
-│   └── PKGBUILD
-├── libinput-stable-git
-│   └── PKGBUILD
-├── libksba-git
-│   └── PKGBUILD
 ├── libsignal-protocol-c-git
-│   └── PKGBUILD
-├── libva-git
-│   └── PKGBUILD
-├── libva-intel-driver-git
-│   └── PKGBUILD
-├── libva-intel-driver-next-git
-│   └── PKGBUILD
-├── libva-next-git
-│   └── PKGBUILD
-├── libva-utils-git
-│   └── PKGBUILD
-├── libva-utils-next-git
-│   └── PKGBUILD
-├── libxcrypt-dev-git
-│   └── PKGBUILD
-├── libxcrypt-git
 │   └── PKGBUILD
 ├── linux-api-headers-git
 │   └── PKGBUILD
@@ -296,9 +162,6 @@
 ├── mercurial-stable-hg
 │   ├── mercurial.profile
 │   └── PKGBUILD
-├── mesa-demos-git
-│   ├── LICENSE
-│   └── PKGBUILD
 ├── meson-git
 │   ├── arch-meson
 │   └── PKGBUILD
@@ -306,12 +169,6 @@
 │   ├── arch-meson
 │   └── PKGBUILD
 ├── mkinitcpio-git
-│   └── PKGBUILD
-├── modemmanager-git
-│   └── PKGBUILD
-├── modemmanager-stable-git
-│   └── PKGBUILD
-├── modemmanager-test-git
 │   └── PKGBUILD
 ├── modprobed-db-git
 │   ├── PKGBUILD
@@ -326,17 +183,7 @@
 │   └── PKGBUILD
 ├── netctl-git
 │   └── PKGBUILD
-├── networkmanager-git
-│   └── PKGBUILD
-├── networkmanager-stable-git
-│   └── PKGBUILD
-├── networkmanager-test-git
-│   └── PKGBUILD
 ├── ninja-git
-│   └── PKGBUILD
-├── openvpn-git
-│   └── PKGBUILD
-├── openvpn-stable-git
 │   └── PKGBUILD
 ├── otter-browser-git
 │   └── PKGBUILD
@@ -355,18 +202,7 @@
 │   ├── pacman.conf
 │   ├── pacman-fix.patch
 │   └── PKGBUILD
-├── pacutils-git
-│   └── PKGBUILD
 ├── pkgbuild-introspection-lucjan-git
-│   └── PKGBUILD
-├── pkgconf-git
-│   ├── i686-pc-linux-gnu.personality
-│   ├── PKGBUILD
-│   └── x86_64-pc-linux-gnu.personality
-├── pkgfile-git
-│   ├── PKGBUILD
-│   └── pkgfile.install
-├── poppler-git
 │   └── PKGBUILD
 ├── psi-clean-full-git
 │   └── PKGBUILD
@@ -408,21 +244,11 @@
 │   └── PKGBUILD
 ├── python-pygit2-git
 │   └── PKGBUILD
-├── qconf-git
-│   └── PKGBUILD
 ├── qogir-icon-theme-git
 │   └── PKGBUILD
 ├── qogir-kde-git
 │   └── PKGBUILD
-├── qtcreator-dev-git
-│   └── PKGBUILD
-├── qtcreator-git
-│   └── PKGBUILD
-├── qtox-git
-│   └── PKGBUILD
 ├── README.md
-├── rebuild-detector-git
-│   └── PKGBUILD
 ├── sddm-dev-git
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
@@ -432,125 +258,11 @@
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
-├── s-git
-│   └── PKGBUILD
-├── smplayer-svn
-│   └── PKGBUILD
-├── strawberry-git
-│   └── PKGBUILD
-├── syslinux-git
-│   ├── 0002-gfxboot-menu-label.patch
-│   ├── 0004-gnu-efi-from-arch.patch
-│   ├── 0005-gnu-efi-version-compatibility.patch
-│   ├── 0016-strip-gnu-property.patch
-│   ├── 0017-single-load-segment.patch
-│   ├── 0018-prevent-pow-optimization.patch
-│   ├── 0025-reproducible-build.patch
-│   ├── PKGBUILD
-│   ├── syslinux.cfg
-│   ├── syslinux.install
-│   └── syslinux-install_update
-├── systemd-git
-│   ├── 0001-Use-Arch-Linux-device-access-groups.patch
-│   ├── 20-systemd-sysusers.hook
-│   ├── 30-systemd-binfmt.hook
-│   ├── 30-systemd-catalog.hook
-│   ├── 30-systemd-daemon-reload.hook
-│   ├── 30-systemd-hwdb.hook
-│   ├── 30-systemd-sysctl.hook
-│   ├── 30-systemd-tmpfiles.hook
-│   ├── 30-systemd-udev-reload.hook
-│   ├── 30-systemd-update.hook
-│   ├── arch.conf
-│   ├── initcpio-hook-udev
-│   ├── initcpio-install-systemd
-│   ├── initcpio-install-udev
-│   ├── loader.conf
-│   ├── PKGBUILD
-│   ├── splash-arch.bmp
-│   ├── systemd-git.install
-│   ├── systemd-hook
-│   └── systemd-user.pam
-├── systemd-stable-git
-│   ├── 0001-Use-Arch-Linux-device-access-groups.patch
-│   ├── 20-systemd-sysusers.hook
-│   ├── 30-systemd-binfmt.hook
-│   ├── 30-systemd-catalog.hook
-│   ├── 30-systemd-daemon-reload.hook
-│   ├── 30-systemd-hwdb.hook
-│   ├── 30-systemd-sysctl.hook
-│   ├── 30-systemd-tmpfiles.hook
-│   ├── 30-systemd-udev-reload.hook
-│   ├── 30-systemd-update.hook
-│   ├── arch.conf
-│   ├── initcpio-hook-udev
-│   ├── initcpio-install-systemd
-│   ├── initcpio-install-udev
-│   ├── loader.conf
-│   ├── PKGBUILD
-│   ├── splash-arch.bmp
-│   ├── systemd-git.install
-│   ├── systemd-hook
-│   └── systemd-user.pam
-├── tela-icon-theme-git
-│   └── PKGBUILD
-├── toxcore-git
-│   ├── PKGBUILD
-│   ├── toxcore.conf
-│   └── toxcore.install
-├── toxcore-stable-git
-│   ├── PKGBUILD
-│   ├── toxcore.conf
-│   └── toxcore.install
 ├── uksmd-git
 │   └── PKGBUILD
-├── utox-dev-git
-│   └── PKGBUILD
-├── utox-git
-│   └── PKGBUILD
-├── vault-git
-│   ├── PKGBUILD
-│   ├── vault.hcl
-│   ├── vault.install
-│   ├── vault.service
-│   ├── vault.sysusers
-│   └── vault.tmpfiles
 ├── vimix-icon-theme-git
 │   └── PKGBUILD
 ├── vimix-kde-git
-│   └── PKGBUILD
-├── wayland-git
-│   └── PKGBUILD
-├── wayland-protocols-git
-│   └── PKGBUILD
-├── wayland-stable-git
-│   └── PKGBUILD
-├── weston-git
-│   └── PKGBUILD
-├── weston-stable-git
-│   └── PKGBUILD
-├── wireguard-dkms-git
-│   └── PKGBUILD
-├── wireguard-tools-git
-│   └── PKGBUILD
-├── xf86-video-intel-git
-│   ├── PKGBUILD
-│   └── xf86-video-intel-git.install
-├── xorgproto-git
-│   └── PKGBUILD
-├── xorg-server-git
-│   ├── PKGBUILD
-│   ├── xorg-server-git.install
-│   ├── xvfb-run
-│   └── xvfb-run.1
-├── xorg-server-next-git
-│   ├── PKGBUILD
-│   ├── xorg-server-git.install
-│   ├── xvfb-run
-│   └── xvfb-run.1
-├── xorg-xwayland-git
-│   └── PKGBUILD
-├── xorg-xwayland-next-git
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
 │   └── PKGBUILD
@@ -575,4 +287,4 @@
 └── zstd-git
     └── PKGBUILD
 
-199 directories, 377 files
+107 directories, 181 files
