@@ -14,10 +14,6 @@
 │   └── PKGBUILD
 ├── cachyos-sysctl-manager-git
 │   └── PKGBUILD
-├── canta-kde-git
-│   └── PKGBUILD
-├── chromeos-kde-git
-│   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
 │   └── PKGBUILD
@@ -117,8 +113,6 @@
 │   └── PKGBUILD
 ├── kuser-frameworks-git
 │   └── PKGBUILD
-├── layan-kde-git
-│   └── PKGBUILD
 ├── libsignal-protocol-c-git
 │   └── PKGBUILD
 ├── linux-api-headers-git
@@ -153,10 +147,6 @@
 │   └── PKGBUILD
 ├── lucjan-keyring-git
 │   ├── lucjan-keyring.install
-│   └── PKGBUILD
-├── matcha-kde-git
-│   └── PKGBUILD
-├── mcmojave-kde-git
 │   └── PKGBUILD
 ├── mercurial-hg
 │   ├── mercurial.profile
@@ -249,10 +239,6 @@
 │   └── PKGBUILD
 ├── python-pygit2-git
 │   └── PKGBUILD
-├── qogir-icon-theme-git
-│   └── PKGBUILD
-├── qogir-kde-git
-│   └── PKGBUILD
 ├── README.md
 ├── sddm-dev-git
 │   ├── PKGBUILD
@@ -264,10 +250,6 @@
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
 ├── uksmd-git
-│   └── PKGBUILD
-├── vimix-icon-theme-git
-│   └── PKGBUILD
-├── vimix-kde-git
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
 │   └── PKGBUILD
@@ -292,4 +274,4 @@
 └── zstd-git
     └── PKGBUILD
 
-109 directories, 184 files
+100 directories, 175 files
