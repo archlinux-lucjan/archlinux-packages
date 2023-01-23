@@ -88,24 +88,12 @@
 │   └── PKGBUILD
 ├── kaidan-stable-git
 │   └── PKGBUILD
-├── kdesvn-git
-│   └── PKGBUILD
-├── kdesvn-stable-git
-│   └── PKGBUILD
-├── kdiff3-git
-│   └── PKGBUILD
-├── kdiff-git
-│   └── PKGBUILD
 ├── kgtk-kf5-git
 │   └── PKGBUILD
 ├── kmod-git
 │   ├── depmod.hook
 │   ├── depmod.script
 │   ├── depmod-search.conf
-│   └── PKGBUILD
-├── krename-git
-│   └── PKGBUILD
-├── krename-stable-git
 │   └── PKGBUILD
 ├── krusader-git
 │   └── PKGBUILD
@@ -272,4 +260,4 @@
 └── zstd-git
     └── PKGBUILD
 
-99 directories, 174 files
+93 directories, 168 files
