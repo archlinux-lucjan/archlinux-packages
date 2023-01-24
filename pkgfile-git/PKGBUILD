@@ -3,7 +3,7 @@
 
 pkgname=pkgfile-git
 _pkgname=pkgfile
-pkgver=21.r0.g5a3b8b7
+pkgver=21.r52.g9c45690
 pkgrel=1
 pkgdesc="a pacman .files metadata explorer"
 arch=('x86_64')
@@ -14,8 +14,23 @@ makedepends=('git' 'meson')
 conflicts=('pkgfile')
 provides=('pkgfile')
 install=pkgfile.install
-source=("git://github.com/falconindy/pkgfile")
-md5sums=('SKIP')
+source=("git+https://github.com/falconindy/pkgfile"
+        '0001-Fix-build-failure-missing-include-of-optional.patch')
+md5sums=('SKIP'
+         '2b2636e9d5a9a5de1830a1bfcfdfd52c')
+
+prepare() {
+ cd "$_pkgname"
+
+ local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+}
 
 pkgver() {
   cd "$_pkgname"

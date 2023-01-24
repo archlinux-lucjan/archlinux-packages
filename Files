@@ -178,6 +178,7 @@
 ├── pkgbuild-introspection-lucjan-git
 │   └── PKGBUILD
 ├── pkgfile-git
+│   ├── 0001-Fix-build-failure-missing-include-of-optional.patch
 │   ├── PKGBUILD
 │   └── pkgfile.install
 ├── psi-clean-full-git
@@ -255,4 +256,4 @@
 └── zstd-git
     └── PKGBUILD
 
-91 directories, 165 files
+91 directories, 166 files
