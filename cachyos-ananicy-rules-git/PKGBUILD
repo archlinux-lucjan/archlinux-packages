@@ -3,8 +3,8 @@
 
 pkgname=cachyos-ananicy-rules-git
 gitname=ananicy-rules
-pkgver=20221119.r71.g4ba9649
-pkgrel=1
+pkgver=20230111.r92.gac260c0
+pkgrel=2
 groups=(cachyos)
 arch=('any')
 license=('GPL')
@@ -18,6 +18,11 @@ conflicts=('ananicy-rules-git' 'cachyos-ananicy-rules')
 pkgver() {
   cd $gitname
   echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $gitname
+  rm -f README.md
 }
 
 package() {
