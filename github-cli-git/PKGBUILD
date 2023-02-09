@@ -5,7 +5,7 @@
 
 pkgname=github-cli-git
 _pkgname=cli
-pkgver=2.0.0.r4.g355d2819
+pkgver=2.23.0.r1.gfd0af5e3a
 pkgrel=1
 pkgdesc="The GitHub CLI"
 arch=("x86_64")
@@ -40,6 +40,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_ENABLED=0
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
 
     make GH_VERSION="v$pkgver" bin/gh manpages
