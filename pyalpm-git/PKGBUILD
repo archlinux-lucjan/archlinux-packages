@@ -4,7 +4,7 @@
 
 _pkgname=pyalpm
 pkgname=$_pkgname-git
-pkgver=0.10.1.0.gb665bc5
+pkgver=0.10.6.7.g54d9077
 pkgrel=1
 pkgdesc="Libalpm bindings for Python 3 (Git version)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ build() {
 
 check() {
   cd "$srcdir/$_pkgname"
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.9" pytest
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.10" pytest
 }
 
 package() {
