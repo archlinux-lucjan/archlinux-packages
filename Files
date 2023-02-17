@@ -231,6 +231,10 @@
 ├── python-pygit2-git
 │   └── PKGBUILD
 ├── README.md
+├── sddm-git
+│   ├── PKGBUILD
+│   ├── sddm.sysusers
+│   └── sddm.tmpfiles
 ├── uksmd-git
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
@@ -256,4 +260,4 @@
 └── zstd-git
     └── PKGBUILD
 
-90 directories, 167 files
+91 directories, 170 files
