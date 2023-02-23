@@ -119,12 +119,10 @@
 │   ├── config
 │   └── PKGBUILD
 ├── linux-usermode-rc
-│   ├── 0001-Revert-uaccess-Add-speculation-barrier-to-copy_from_.patch
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
 ├── linux-usermode-rc-git
-│   ├── 0001-Revert-uaccess-Add-speculation-barrier-to-copy_from_.patch
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
@@ -264,4 +262,4 @@
 └── zstd-git
     └── PKGBUILD
 
-92 directories, 173 files
+92 directories, 171 files
