@@ -232,6 +232,8 @@
 │   └── PKGBUILD
 ├── python-pygit2-git
 │   └── PKGBUILD
+├── rate-mirrors-git
+│   └── PKGBUILD
 ├── README.md
 ├── sddm-git
 │   ├── PKGBUILD
@@ -262,4 +264,4 @@
 └── zstd-git
     └── PKGBUILD
 
-91 directories, 172 files
+92 directories, 173 files
