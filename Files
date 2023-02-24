@@ -28,6 +28,7 @@
 ├── dracut-cachyos
 │   ├── 60-dracut-remove.hook
 │   ├── 90-dracut-install.hook
+│   ├── cachyos-dracut.conf
 │   ├── dracut-install
 │   ├── dracut-rebuild
 │   ├── dracut-remove
@@ -262,4 +263,4 @@
 └── zstd-git
     └── PKGBUILD
 
-92 directories, 171 files
+92 directories, 172 files
