@@ -5,7 +5,7 @@
 pkgname=dracut-cachyos-git
 _pkgname=dracut
 pkgver=059.69.g8f9ad068
-pkgrel=1
+pkgrel=2
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://dracut.wiki.kernel.org"
@@ -28,7 +28,7 @@ source=("git+https://github.com/dracutdevs/dracut"
         "dracut-remove"
         "90-dracut-install.hook"
         "60-dracut-remove.hook"
-        "cachyos-dracut.conf")
+        "dracut-cachyos.conf")
 
 sha512sums=('SKIP'
             '6457ce228e78e1d7f07eafec6f37484264004e53e170b357093d2a92c024588bc28a4c4664539e7ca42a6e6838f156ca7cb047f3b8c927228d6ead2a43786d2f'
@@ -88,5 +88,5 @@ package() {
   install -Dm755 "${srcdir}/dracut-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-install"
   install -Dm755 "${srcdir}/dracut-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
   install -Dm755 "${srcdir}/dracut-rebuild"         "${pkgdir}/usr/bin/dracut-rebuild"
-  install -Dm644 "${srcdir}/cachyos-dracut.conf"    "${pkgdir}/etc/cachyos-dracut.conf"
+  install -Dm644 "${srcdir}/dracut-cachyos.conf"    "${pkgdir}/etc/dracut-cachyos.conf"
 }
