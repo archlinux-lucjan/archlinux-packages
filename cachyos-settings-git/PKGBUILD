@@ -3,7 +3,7 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20221108.r65.g70ab77c
+pkgver=20230226.r88.gcdc8f18
 pkgrel=2
 groups=(cachyos)
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
     'ananicy-cpp'
     'cachyos-ananicy-rules'
     'uksmd'
+    'zram-generator'
     )
 makedepends=('coreutils')
 replaces=('cachyos-settings')
