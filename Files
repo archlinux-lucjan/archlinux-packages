@@ -9,6 +9,9 @@
 │   └── PKGBUILD
 ├── cachyos-hooks-git
 │   └── PKGBUILD
+├── cachyos-rate-mirrors
+│   ├── cachyos-rate-mirrors
+│   └── PKGBUILD
 ├── cachyos-settings-git
 │   ├── cachyos-settings-git.install
 │   └── PKGBUILD
@@ -264,4 +267,4 @@
 └── zstd-git
     └── PKGBUILD
 
-92 directories, 173 files
+93 directories, 175 files
