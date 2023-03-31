@@ -3,9 +3,9 @@
 
 pkgname=cachyos-ananicy-rules-git
 gitname=ananicy-rules
-pkgver=20230111.r92.gac260c0
-pkgrel=2
-groups=(cachyos)
+pkgver=20230313.r123.g7ee75a1
+pkgrel=1
+groups=('cachyos')
 arch=('any')
 license=('GPL')
 pkgdesc='CachyOS - ananicy-rules '
@@ -27,6 +27,6 @@ prepare() {
 
 package() {
   cd $gitname
-  install -d $pkgdir/etc/ananicy.d
-  cp -rf $srcdir/$gitname/* $pkgdir/etc/ananicy.d
+  install -d "$pkgdir/etc/ananicy.d"
+  cp -rf $srcdir/$gitname/* "$pkgdir/etc/ananicy.d"
 }

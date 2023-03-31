@@ -3,14 +3,14 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20230322.r85.gee5d514
+pkgver=20230331.r88.ga670089
 pkgrel=1
-groups=(cachyos)
+groups=('cachyos')
 arch=('any')
 license=('GPL')
 pkgdesc='CachyOS - Settings'
 source=("git+https://github.com/sirlucjan/$gitname")
-install=$pkgname.install
+install="$pkgname.install"
 sha256sums=('SKIP')
 depends=(
     'irqbalance'
@@ -30,8 +30,8 @@ pkgver() {
 }
 
 package() {
-  install -d $pkgdir/etc
-  cp -rf $srcdir/$gitname/etc $pkgdir
-  install -d $pkgdir/usr
-  cp -rf $srcdir/$gitname/usr $pkgdir
+  install -d "$pkgdir/etc"
+  cp -rf "${srcdir}/${_gitname}/etc" "$pkgdir"
+  install -d "$pkgdir/usr"
+  cp -rf "${srcdir}/${_gitname}/usr" "$pkgdir"
 }
