@@ -3,7 +3,7 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20230331.r88.ga670089
+pkgver=20230406.r89.gc18b5be
 pkgrel=1
 groups=('cachyos')
 arch=('any')
@@ -31,7 +31,7 @@ pkgver() {
 
 package() {
   install -d "$pkgdir/etc"
-  cp -rf "${srcdir}/${_gitname}/etc" "$pkgdir"
+  cp -rf "${srcdir}/${gitname}/etc" "$pkgdir"
   install -d "$pkgdir/usr"
-  cp -rf "${srcdir}/${_gitname}/usr" "$pkgdir"
+  cp -rf "${srcdir}/${gitname}/usr" "$pkgdir"
 }
