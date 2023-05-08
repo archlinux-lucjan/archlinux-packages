@@ -242,6 +242,8 @@
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
+├── uksmd-dev-git
+│   └── PKGBUILD
 ├── uksmd-git
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
@@ -267,4 +269,4 @@
 └── zstd-git
     └── PKGBUILD
 
-93 directories, 175 files
+94 directories, 176 files
