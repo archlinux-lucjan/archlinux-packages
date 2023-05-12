@@ -174,6 +174,7 @@
 │   ├── 0001-add-information-about-origin-db.patch
 │   ├── 0001-Add-new-variable-to-declare-package-architecture.patch
 │   ├── 0001-add-support-for-x86_64_v-2-3-4-autodetection.patch
+│   ├── 0001-add-update-message-notice.patch
 │   ├── 0001-Fix-package-signing.patch
 │   ├── 0001-makepkg-add-D-flag-to-change-directory-before-buildi.patch
 │   ├── makepkg.conf
@@ -269,4 +270,4 @@
 └── zstd-git
     └── PKGBUILD
 
-94 directories, 176 files
+94 directories, 177 files
