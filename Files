@@ -35,7 +35,10 @@
 │   ├── dracut-install
 │   ├── dracut-rebuild
 │   ├── dracut-remove
-│   └── PKGBUILD
+│   ├── dracut-systemd-253.patch
+│   ├── module-setup.sh
+│   ├── PKGBUILD
+│   └── snapshot-overlay.sh
 ├── dracut-cachyos-git
 │   ├── 60-dracut-remove.hook
 │   ├── 90-dracut-install.hook
@@ -43,7 +46,9 @@
 │   ├── dracut-install
 │   ├── dracut-rebuild
 │   ├── dracut-remove
-│   └── PKGBUILD
+│   ├── module-setup.sh
+│   ├── PKGBUILD
+│   └── snapshot-overlay.sh
 ├── esdm-git
 │   └── PKGBUILD
 ├── fetchmirrors-git
@@ -271,4 +276,4 @@
 └── zstd-git
     └── PKGBUILD
 
-94 directories, 178 files
+94 directories, 183 files
