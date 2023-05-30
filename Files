@@ -113,6 +113,8 @@
 │   └── PKGBUILD
 ├── libgit2-git
 │   └── PKGBUILD
+├── libgit2-stable-git
+│   └── PKGBUILD
 ├── libsignal-protocol-c-git
 │   └── PKGBUILD
 ├── linux-api-headers-git
@@ -278,4 +280,4 @@
 └── zstd-git
     └── PKGBUILD
 
-95 directories, 184 files
+96 directories, 185 files
