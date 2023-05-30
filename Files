@@ -111,6 +111,8 @@
 │   └── PKGBUILD
 ├── kuser-frameworks-git
 │   └── PKGBUILD
+├── libgit2-git
+│   └── PKGBUILD
 ├── libsignal-protocol-c-git
 │   └── PKGBUILD
 ├── linux-api-headers-git
@@ -276,4 +278,4 @@
 └── zstd-git
     └── PKGBUILD
 
-94 directories, 183 files
+95 directories, 184 files
