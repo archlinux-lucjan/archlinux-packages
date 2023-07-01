@@ -122,6 +122,8 @@
 ├── linux-api-headers-rc-git
 │   └── PKGBUILD
 ├── linux-firmware-git
+│   ├── linux-firmware-git-xz
+│   │   └── PKGBUILD
 │   └── linux-firmware-git-zst
 │       └── PKGBUILD
 ├── linux-usermode
@@ -278,4 +280,4 @@
 └── zstd-git
     └── PKGBUILD
 
-96 directories, 183 files
+97 directories, 184 files
