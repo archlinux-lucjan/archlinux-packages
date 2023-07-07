@@ -4,7 +4,7 @@
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
 pkgver=20230612.r110.g33bb58c
-pkgrel=2
+pkgrel=3
 groups=('cachyos')
 arch=('any')
 license=('GPL')
@@ -16,7 +16,7 @@ depends=(
     'irqbalance'
     'ananicy-cpp'
     'cachyos-ananicy-rules'
-    'uksmd'
+    'uksmd-git'
     'zram-generator'
     'bpftune-git'
 )
