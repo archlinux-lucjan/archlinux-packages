@@ -1,4 +1,4 @@
-SERVICES=("irqbalance" "ananicy-cpp" "uksmd" "optimize-interruptfreq" "pci-latency")
+SERVICES=("irqbalance" "ananicy-cpp" "bpftune"  "uksmd" "optimize-interruptfreq" "pci-latency")
 
 post_install() {
     echo "Enabling services..."
