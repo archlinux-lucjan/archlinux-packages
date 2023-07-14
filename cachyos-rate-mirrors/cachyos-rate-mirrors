@@ -97,7 +97,9 @@ rate_mirror_ex() {
     rate-mirrors "${_rate_mirrors_flags[@]}"
     _exitcode=$?
     if [[ "${_exitcode}" -eq 0 ]]; then
-        cat "${mirrorlist_path}" > "${mirrorlist_path}-backup"
+        if [ -f "${mirrorlist_path}" ]; then
+            cat "${mirrorlist_path}" > "${mirrorlist_path}-backup"
+        fi
         cat "${TMPFILE}" > "${mirrorlist_path}"
         msg "Done [${name}] ${mirrorlist_path}"
     else
@@ -112,11 +114,7 @@ MIRRORS_DEFAULT_DIR="/etc/pacman.d"
 rate_mirror_ex arch "${MIRRORS_DEFAULT_DIR}/mirrorlist"
 rate_mirror_ex cachyos "${MIRRORS_DEFAULT_DIR}/cachyos-mirrorlist"
 
-if [ -f "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist" ]; then
-    mv -f "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist" "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist-backup"
-fi
-
-cp -f "${MIRRORS_DEFAULT_DIR}/cachyos-mirrorlist" "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist"
+cp -f --backup=simple --suffix="-backup" "${MIRRORS_DEFAULT_DIR}/cachyos-mirrorlist" "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist"
 sed -i 's|/repo/$arch/|/repo/$arch_v3/|g' "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist"
 
 rate_mirror_ex chaotic-aur "${MIRRORS_DEFAULT_DIR}/chaotic-mirrorlist"
