@@ -3,8 +3,8 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20230612.r110.g33bb58c
-pkgrel=4
+pkgver=20230714.r113.gc4c2cae
+pkgrel=1
 groups=('cachyos')
 arch=('any')
 license=('GPL')
@@ -19,7 +19,7 @@ depends=(
     'zram-generator'
     'bpftune-git'
 )
-makedepends=('coreutils')
+makedepends=('coreutils' 'git')
 replaces=('cachyos-settings')
 provides=('cachyos-settings')
 conflicts=('cachyos-settings')
