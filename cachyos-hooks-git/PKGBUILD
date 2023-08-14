@@ -4,12 +4,12 @@
 pkgname=cachyos-hooks-git
 gitname=cachyos-hooks
 pkgver=20230328.r25.g1f68450
-pkgrel=2
+pkgrel=3
 pkgdesc='Cachy OS Pacman Hooks'
 groups=('cachyos')
 arch=('any')
 license=('GPL3')
-url="https://github.com/cachyos/$pkgname/master"
+url="https://github.com/sirlucjan/$gitname"
 source=("git+https://github.com/sirlucjan/cachyos-hooks")
 sha512sums=('SKIP')
 makedepends=('git')
