@@ -283,6 +283,7 @@ bindkey '\e[1;3C' forward-half-word
 alias su='su -'
 alias tarball='updpkgsums && mkaurball'
 alias pacman-upgrade='pacman -Fy && pacman -Syu'
+alias pacman-downgrade='pacman -Fy && pacman -Syuu'
 alias download='pkgctl repo clone --protocol https'
 alias kde-reload='kquitapp5 plasmashell && kstart5 plasmashell &'
 alias ls='exa'
