@@ -93,6 +93,7 @@
 │   ├── gitolite-tmpfiles.conf
 │   └── PKGBUILD
 ├── git-test-git
+│   ├── 0001-t6300-fix-match-with-insecure-memory.patch
 │   ├── git-daemon@.service
 │   ├── git-daemon.socket
 │   ├── git-git.install
@@ -281,4 +282,4 @@
 └── zstd-git
     └── PKGBUILD
 
-96 directories, 186 files
+96 directories, 187 files
