@@ -5,7 +5,7 @@
 
 pkgname=lucjan-keyring-git
 _pkgname=lucjan-keyring
-pkgver=20180929.0.g124ec48
+pkgver=20230822.0.g3cb0f4c
 pkgrel=1
 pkgdesc="Lucjan's PGP keyring"
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 pkgver() {
         cd "${_pkgname}"
         ### use git describe
-        git describe --long | sed 's/^v//;s/-/./g'
+        git describe --long --tags | sed 's/^v//;s/-/./g'
         ### use another method
         # echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
