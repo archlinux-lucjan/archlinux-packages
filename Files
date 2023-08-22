@@ -53,6 +53,8 @@
 │   └── snapshot-overlay.sh
 ├── esdm-git
 │   └── PKGBUILD
+├── fastfetch-git
+│   └── PKGBUILD
 ├── fetchmirrors-git
 │   └── PKGBUILD
 ├── Files
@@ -282,4 +284,4 @@
 └── zstd-git
     └── PKGBUILD
 
-96 directories, 187 files
+97 directories, 188 files
