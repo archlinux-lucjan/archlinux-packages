@@ -2,24 +2,27 @@
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Contributor: Antoine Viallon <antoine@lesviallon.fr>
 
-pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
-pkgver=1.0.2.r7.gf230dc2
+pkgname=ananicy-cpp-git
+pkgver=1.1.0.r5.gddbb795
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
-source=("git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
-        "git+https://gitlab.com/vnepogodin/std-format.git")
-md5sums=('SKIP'
-         'SKIP')
 arch=('x86_64')
-depends=('fmt' 'spdlog' 'nlohmann-json' 'systemd' 'libelf' 'zlib' 'libbpf')
-makedepends=('cmake' 'clang' 'git' 'bpf')
-conflicts=('ananicy-cpp')
+url="https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
+license=('GPLv3')
+depends=('fmt' 'systemd' 'libelf' 'zlib' 'libbpf')
+makedepends=('cmake' 'ninja' 'clang' 'git' 'nlohmann-json' 'bpf')
+optdepends=("ananicy-rules-git: community rules"
+            "ananicy-rules: Rules based for ananicy-cpp"
+            "cachyos-ananicy-rules: community rules")
+source=("${_pkgname}::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git")
+sha512sums=('SKIP')
 provides=('ananicy-cpp')
-optdepends=("cachyos-ananicy-rules: community rules")
+conflicts=('ananicy-cpp')
 
 pkgver() {
   cd "$_pkgname"
+
   git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -34,34 +37,35 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
-  git submodule init
-  git config submodule."external/std-format".url "${srcdir}/std-format"
-  git -c protocol.file.allow=always submodule update
-
-  cmake -B build -S . \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_EXTERNAL_SPDLOG=ON \
-        -DUSE_EXTERNAL_JSON=ON \
-        -DUSE_EXTERNAL_FMTLIB=ON \
-        -DENABLE_SYSTEMD=ON \
-        -DUSE_BPF_PROC_IMPL=ON \
-        -DBPF_BUILD_LIBBPF=OFF \
-        -DVERSION=${pkgver}
 }
 
 build() {
   cd "$_pkgname"
 
-  cmake --build build
+  _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
+
+  export CFLAGS="${CFLAGS}"
+  export CXXFLAGS="${CXXFLAGS}"
+  export LDFLAGS="${LDFLAGS}"
+
+  # disable system spdlog
+  cmake -S . -Bbuild \
+        -GNinja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_EXTERNAL_SPDLOG=OFF \
+        -DUSE_EXTERNAL_JSON=ON \
+        -DUSE_BPF_PROC_IMPL=ON \
+        -DBPF_BUILD_LIBBPF=OFF \
+        -DUSE_EXTERNAL_FMTLIB=ON
+
+  cmake --build build --target ananicy-cpp --parallel $_cpuCount
 }
 
 package() {
   cd "$_pkgname"
 
-  export DESTDIR="$pkgdir"
-  cmake --install build --component Runtime
+  DESTDIR="${pkgdir}" cmake --install build --component Runtime
 
-  install -m755 -d "$pkgdir/etc/ananicy.d"
+  install -m755 -d "${pkgdir}/etc/ananicy.d"
 }
