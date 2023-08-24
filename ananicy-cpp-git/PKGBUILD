@@ -12,9 +12,9 @@ url="https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
 license=('GPLv3')
 depends=('fmt' 'systemd' 'libelf' 'zlib' 'libbpf')
 makedepends=('cmake' 'ninja' 'clang' 'git' 'nlohmann-json' 'bpf')
-optdepends=("ananicy-rules-git: community rules"
+optdepends=("ananicy-rules-git: Rules based for ananicy-cpp"
             "ananicy-rules: Rules based for ananicy-cpp"
-            "cachyos-ananicy-rules: community rules")
+            "cachyos-ananicy-rules: Rules based for ananicy-cpp from CachyOS")
 source=("${_pkgname}::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git")
 sha512sums=('SKIP')
 provides=('ananicy-cpp')
