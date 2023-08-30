@@ -5,6 +5,9 @@
 │   └── PKGBUILD
 ├── bat-polaur-git
 │   └── PKGBUILD
+├── betterbird-bin
+│   ├── betterbird.desktop
+│   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
 │   └── PKGBUILD
 ├── cachyos-hooks-git
@@ -281,4 +284,4 @@
 └── zstd-git
     └── PKGBUILD
 
-97 directories, 185 files
+98 directories, 187 files
