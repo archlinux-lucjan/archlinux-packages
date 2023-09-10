@@ -191,7 +191,6 @@
 │   ├── 0001-add-support-for-x86_64_v-2-3-4-autodetection.patch
 │   ├── 0001-add-update-message-notice.patch
 │   ├── 0001-Fix-package-signing.patch
-│   ├── 0001-makepkg-add-D-flag-to-change-directory-before-buildi.patch
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   └── PKGBUILD
@@ -284,4 +283,4 @@
 └── zstd-git
     └── PKGBUILD
 
-98 directories, 187 files
+98 directories, 186 files
