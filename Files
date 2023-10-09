@@ -10,6 +10,8 @@
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
 │   └── PKGBUILD
+├── cachyos-armcord
+│   └── PKGBUILD
 ├── cachyos-hooks-git
 │   └── PKGBUILD
 ├── cachyos-rate-mirrors
@@ -285,4 +287,4 @@
 └── zstd-git
     └── PKGBUILD
 
-99 directories, 187 files
+100 directories, 188 files
