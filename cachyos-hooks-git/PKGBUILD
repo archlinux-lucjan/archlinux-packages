@@ -4,7 +4,7 @@
 pkgname=cachyos-hooks-git
 gitname=cachyos-hooks
 pkgver=20230328.r25.g1f68450
-pkgrel=3
+pkgrel=4
 pkgdesc='Cachy OS Pacman Hooks'
 groups=('cachyos')
 arch=('any')
@@ -12,6 +12,7 @@ license=('GPL3')
 url="https://github.com/sirlucjan/$gitname"
 source=("git+https://github.com/sirlucjan/cachyos-hooks")
 sha512sums=('SKIP')
+depends=('libnotify')
 makedepends=('git')
 replaces=('cachyos-hooks' 'systemd-boot-pacman-hook')
 provides=('cachyos-hooks' 'systemd-boot-pacman-hook')
