@@ -258,6 +258,8 @@
 ├── rate-mirrors-git
 │   └── PKGBUILD
 ├── README.md
+├── scx-git
+│   └── PKGBUILD
 ├── sddm-git
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
@@ -289,4 +291,4 @@
 └── zstd-git
     └── PKGBUILD
 
-101 directories, 189 files
+102 directories, 190 files
