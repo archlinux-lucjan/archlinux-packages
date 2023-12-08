@@ -258,7 +258,7 @@
 ├── rate-mirrors-git
 │   └── PKGBUILD
 ├── README.md
-├── scx-git
+├── scx-scheds-git
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── PKGBUILD
