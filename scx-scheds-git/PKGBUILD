@@ -2,7 +2,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds-git
-pkgver=0.1.1.r6.g330e104
+pkgver=0.1.1.r27.gfbb0164
 pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=(x86_64)
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 options=(!lto)
 _reponame="scx"
 replaces=("scx-git")
-provides=("scx-scheds=$pkgver")
+provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 pkgver() {
