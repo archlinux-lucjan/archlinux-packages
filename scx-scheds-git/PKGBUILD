@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 pkgver=0.1.1.r27.gfbb0164
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=(x86_64)
 url="https://github.com/sched-ext/scx"
@@ -24,14 +24,13 @@ pkgver() {
 }
 
 build() {
-	cd $_reponame
-	meson setup build -Dbuildtype=release --prefix=/usr
-	cd build
-	meson compile -v
+    cd "$_reponame"
+    arch-meson . build
+    meson compile -C build
 }
 
 
 package() {
-	cd $_reponame/build
-	DESTDIR="$pkgdir" meson install
+    cd "$_reponame"
+    meson install -C build --destdir "${pkgdir}"
 }
