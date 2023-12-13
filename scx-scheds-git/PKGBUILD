@@ -42,7 +42,6 @@ build() {
   meson compile -C build
 }
 
-
 package() {
   cd $gitname
   meson install -C build --destdir "${pkgdir}"
