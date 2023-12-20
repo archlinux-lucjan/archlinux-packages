@@ -1,18 +1,26 @@
-From da8a99a28b92304b02648cbe08bd724a2fe7eb51 Mon Sep 17 00:00:00 2001
+From e947e7ecf7890d4a04d0ca43c09a65516053651d Mon Sep 17 00:00:00 2001
 From: Andrea Righi <andrea.righi@canonical.com>
 Date: Thu, 14 Dec 2023 07:54:25 +0100
-Subject: [PATCH] scx_rustlite: simple vtime-based scheduler written in Rust
+Subject: [PATCH] scx_rustlite: simple user-space scheduler written in Rust
 
-Provide a simple scheduler with a BPF part and a user-space counterpart,
-written in Rust, that can be used as a template to implement more
-complex scheduling policies.
+This scheduler is made of a BPF component (dispatcher) that implements
+the low level sched-ext functionalities and a user-space counterpart
+(scheduler), written in Rust, that implements the actual scheduling
+policy.
 
 The main goal of this scheduler is to be easy to read and well
 documented, so that newcomers (i.e., students, researchers, junior devs,
-etc.) can use it to quickly experiment their scheduling theories.
+etc.) can use this as a template to quickly experiment scheduling
+theory.
 
 For this reason the design of this scheduler is mostly focused on
 simplicity and code readability.
+
+Moreover, the BPF dispatcher is completely agnostic of the particular
+scheduling policy implemented by the user-space scheduler. For this
+reason developers that are willing to use this scheduler to experiment
+scheduling policies should be able to simply modify the Rust component,
+without having to deal with any internal kernel / BPF details.
 
 Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
 ---
@@ -23,12 +31,12 @@ Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
  scheds/rust/scx_rustlite/build.rs           |  11 +
  scheds/rust/scx_rustlite/meson.build        |   7 +
  scheds/rust/scx_rustlite/rustfmt.toml       |   8 +
- scheds/rust/scx_rustlite/src/bpf/intf.h     |  33 ++
- scheds/rust/scx_rustlite/src/bpf/main.bpf.c | 370 ++++++++++++++++++++
+ scheds/rust/scx_rustlite/src/bpf/intf.h     |  61 +++
+ scheds/rust/scx_rustlite/src/bpf/main.bpf.c | 404 ++++++++++++++++
  scheds/rust/scx_rustlite/src/bpf_intf.rs    |   9 +
  scheds/rust/scx_rustlite/src/bpf_skel.rs    |   4 +
- scheds/rust/scx_rustlite/src/main.rs        | 314 +++++++++++++++++
- 12 files changed, 788 insertions(+)
+ scheds/rust/scx_rustlite/src/main.rs        | 480 ++++++++++++++++++++
+ 12 files changed, 1016 insertions(+)
  create mode 100644 scheds/rust/scx_rustlite/.gitignore
  create mode 100644 scheds/rust/scx_rustlite/Cargo.toml
  create mode 120000 scheds/rust/scx_rustlite/LICENSE
@@ -145,10 +153,10 @@ index 0000000..b7258ed
 +version = "Two"
 diff --git a/scheds/rust/scx_rustlite/src/bpf/intf.h b/scheds/rust/scx_rustlite/src/bpf/intf.h
 new file mode 100644
-index 0000000..a146426
+index 0000000..75254ed
 --- /dev/null
 +++ b/scheds/rust/scx_rustlite/src/bpf/intf.h
-@@ -0,0 +1,33 @@
+@@ -0,0 +1,61 @@
 +// This software may be used and distributed according to the terms of the
 +// GNU General Public License version 2.
 +
@@ -157,6 +165,13 @@ index 0000000..a146426
 +
 +#define MAX(x, y) ((x) > (y) ? (x) : (y))
 +#define MIN(x, y) ((x) < (y) ? (x) : (y))
++
++#ifndef unlikely
++#define unlikely(x)	__builtin_expect(!!(x), 0)
++#endif
++
++#define NSEC_PER_SEC	1000000000L
++#define CLOCK_BOOTTIME	7
 +
 +#include <stdbool.h>
 +#ifndef __kptr
@@ -176,45 +191,69 @@ index 0000000..a146426
 +
 +#include <scx/ravg.bpf.h>
 +
-+struct task_ctx {
++/*
++ * Task sent to the user-space scheduler by the BPF dispatcher.
++ *
++ * All attributes are collected from the kernel by the the BPF component.
++ */
++struct queued_task_ctx {
 +	s32 pid;
-+	u64 vtime;
++	u64 sum_exec_runtime; /* Total cpu time */
++	u64 weight; /* Task static priority */
++};
++
++/*
++ * Task sent to the BPF dispatcher by the user-space scheduler.
++ *
++ * This structure has a payload that can be used by the user-space scheduler to
++ * send debugging information to the BPF dispatcher (i.e., vruntime, etc.),
++ * depending on the particular scheduler implementation.
++ *
++ * This struct can be easily extended to send more information to the
++ * dispatcher (i.e., a target CPU, a variable time slice, etc.).
++ */
++struct dispatched_task_ctx {
++	s32 pid;
++	u64 payload; /* Task payload */
 +};
 +
 +#endif /* __INTF_H */
 diff --git a/scheds/rust/scx_rustlite/src/bpf/main.bpf.c b/scheds/rust/scx_rustlite/src/bpf/main.bpf.c
 new file mode 100644
-index 0000000..4a3cf9c
+index 0000000..2e829f5
 --- /dev/null
 +++ b/scheds/rust/scx_rustlite/src/bpf/main.bpf.c
-@@ -0,0 +1,370 @@
+@@ -0,0 +1,404 @@
 +/* Copyright (c) Andrea Righi <andrea.righi@canonical.com> */
 +/*
-+ * scx_rustlite: simple vtime-based scheduler written in Rust
++ * scx_rustlite: simple user-space scheduler written in Rust
 + *
-+ *  The main goal of this scheduler is be an "easy to read" template that can
-+ *  be used to quickly test more complex scheduling policies. For this reason
-+ *  this scheduler is mostly focused on simplicity and code readability.
++ * The main goal of this scheduler is be an "easy to read" template that can be
++ * used to quickly test more complex scheduling policies. For this reason this
++ * scheduler is mostly focused on simplicity and code readability.
 + *
-+ * The scheduler is made of a BPF part that implements the basic sched-ext
-+ * functionalities and a user-space counterpart, written in Rust, that
-+ * implement the scheduling policy itself.
++ * The scheduler is made of a BPF component (dispatcher) that implements the
++ * low level sched-ext functionalities and a user-space counterpart
++ * (scheduler), written in Rust, that implements the actual scheduling policy.
 + *
-+ * The default policy used by the user-space part is a based on virtual runtime
-+ * (vtime):
++ * The BPF dispatcher collects total cputime and weight from the tasks that
++ * need to run, then it sends all details to the user-space scheduler that
++ * decides the best order of execution of the tasks (based on the collected
++ * metrics).
 + *
-+ * - each task receives the same time slice of execution
++ * The user-space scheduler then returns to the BPF component the list of tasks
++ * to be dispatched in the proper order.
 + *
-+ * - the actual execution time (adjusted based on the task's static priority)
-+ *   determines the vtime
++ * Messages between the BPF component and the user-space scheduler are passed
++ * using two BPF_MAP_TYPE_QUEUE maps: @queued for the messages sent by the BPF
++ * dispatcher to the user-space scheduler and @dispatched for the messages sent
++ * by the user-space scheduler to the BPF dispatcher.
 + *
-+ * - tasks are then dispatched from the lowest to the highest vtime
-+ *
-+ * The vtime is evaluated in the BPF part, tasks' then all the information are
-+ * sent to the user-space part and stored in a red-black tree (indexed by
-+ * vtime); then the user-space part sends back to the BPF part the list of
-+ * tasks (ordered by their vtime, that will be dispatched using the order
-+ * determined by the user-space.
++ * The BPF dispatcher is completely agnostic of the particular scheduling
++ * policy implemented in user-space. For this reason developers that are
++ * willing to use this scheduler to experiment scheduling policies should be
++ * able to simply modify the Rust component, without having to deal with any
++ * internal kernel / BPF details.
 + *
 + * This software may be used and distributed according to the terms of the
 + * GNU General Public License version 2.
@@ -234,176 +273,178 @@ index 0000000..4a3cf9c
 + * Scheduler attributes and statistics.
 + */
 +u32 usersched_pid; /* User-space scheduler PID */
-+
 +static bool usersched_needed; /* Used to wake-up the user-space scheduler */
 +const volatile bool switch_partial; /* Switch all tasks or SCHED_EXT tasks */
 +const volatile u64 slice_ns = SCX_SLICE_DFL; /* Base time slice duration */
 +
-+u64 nr_enqueues, nr_user_dispatches, nr_kernel_dispatches; /* Statistics */
++/* Statistics */
++u64 nr_enqueues, nr_user_dispatches, nr_kernel_dispatches;
++u64 nr_sched_congested, nr_tasks_running;
++
++ /* Report additional debugging information */
++const volatile bool debug;
++
++/* Allow to use bpf_printk() only when @debug is set */
++#define dbg_msg(_fmt, ...) do {				\
++	if (unlikely(debug))				\
++		bpf_printk(_fmt, ##__VA_ARGS__);	\
++} while(0)
 +
 +/*
-+ * Maximum amount of tasks enqueued/dispatched between kernel and user-space at
-+ * a certain time.
++ * Maximum amount of tasks queued between kernel and user-space at a certain
++ * time.
 + *
-+ * The enqueued/dispatched queues are used in a producer/consumer way between
-+ * the BPF part and the user-space part.
++ * The @queued and @dispatched lists are used in a producer/consumer fashion
++ * between the BPF part and the user-space part.
 + */
 +#define MAX_ENQUEUED_TASKS 1024
 +
 +/*
-+ * Tasks enqueued to the user-space for scheduling.
++ * The map containing tasks that are queued to user space from the kernel.
++ *
++ * This map is drained by the user space scheduler.
 + */
 +struct {
 +	__uint(type, BPF_MAP_TYPE_QUEUE);
 +	__uint(key, 0);
-+	__type(value, struct task_ctx);
++	__type(value, struct queued_task_ctx);
 +	__uint(max_entries, MAX_ENQUEUED_TASKS);
-+} enqueued SEC(".maps");
++} queued SEC(".maps");
 +
 +/*
-+ * Tasks enqueued by the user-space for dispatching.
++ * The map containing pids that are dispatched from user space to the kernel.
++ *
++ * Drained by the kernel in .dispatch().
 + */
 +struct {
 +	__uint(type, BPF_MAP_TYPE_QUEUE);
 +	__uint(key, 0);
-+	__type(value, struct task_ctx);
++	__type(value, struct dispatched_task_ctx);
 +	__uint(max_entries, MAX_ENQUEUED_TASKS);
 +} dispatched SEC(".maps");
 +
-+/* Per-task local storage */
-+struct task_storage {
-+	u64 start_ns; /* Updated when the task is running */
-+	u64 stop_ns;  /* Updated when the task is stopping */
++/*
++ * Heartbeat timer used to periodically trigger the check to run the user-space
++ * scheduler.
++ *
++ * Without this timer we may starve the scheduler if the system is completely
++ * idle and hit the watchdog that would auto-kill this scheduler.
++ */
++struct usersched_timer {
++	struct bpf_timer timer;
 +};
 +
-+/* Map that contains task-local storage. */
 +struct {
-+	__uint(type, BPF_MAP_TYPE_TASK_STORAGE);
-+	__uint(map_flags, BPF_F_NO_PREALLOC);
-+	__type(key, int);
-+	__type(value, struct task_storage);
-+} task_storage_map SEC(".maps");
++	__uint(type, BPF_MAP_TYPE_ARRAY);
++	__uint(max_entries, 1);
++	__type(key, u32);
++	__type(value, struct usersched_timer);
++} usersched_timer SEC(".maps");
 +
-+/* Return true if the target task @p is a kernel thread */
++/*
++ * Return true if the target task @p is a kernel thread.
++ */
 +static inline bool is_kthread(const struct task_struct *p)
 +{
 +	return !!(p->flags & PF_KTHREAD);
 +}
 +
-+/* Return true if the target task @p is the user-space scheduler */
++/*
++ * Return true if the target task @p is the user-space scheduler.
++ */
 +static inline bool is_usersched_task(const struct task_struct *p)
 +{
 +	return p->pid == usersched_pid;
 +}
 +
-+/* Return a (wrapping safe) time delta */
-+static inline u64 time_diff(u64 end, u64 start)
-+{
-+	return (s64)end - (s64)start;
-+}
-+
-+/* Update task timestamps in the local task storage */
-+static void update_task_time(struct task_struct *p,
-+			     bool update_start, bool update_stop)
-+{
-+	struct task_storage *ts;
-+	u64 now = bpf_ktime_get_ns();
-+
-+	ts = bpf_task_storage_get(&task_storage_map, p, 0, 0);
-+	if (!ts)
-+		return;
-+	if (update_start)
-+		ts->start_ns = now;
-+	if (update_stop)
-+		ts->stop_ns = now;
-+}
-+
-+/* Task @p starts to run on a CPU */
-+void BPF_STRUCT_OPS(rustlite_running, struct task_struct *p)
-+{
-+	bpf_printk("start: pid=%d (%s)", p->pid, p->comm);
-+	update_task_time(p, true, false);
-+}
-+
-+/* Task @p releases a CPU */
-+void BPF_STRUCT_OPS(rustlite_stopping, struct task_struct *p, bool runnable)
-+{
-+	bpf_printk("stop: pid=%d (%s)", p->pid, p->comm);
-+	update_task_time(p, false, true);
-+}
-+
 +/*
-+ * Return the time slice (in ns) used by the task during the previous execution
-+ * slot (up to a maximum of slice_ns = full time slice used).
++ * Dispatch a task on the local per-CPU FIFO.
 + */
-+static u64 task_slice_used(struct task_struct *p)
++static void dispatch_task_local(struct task_struct *p, u64 enq_flags)
 +{
-+	struct task_storage *ts;
-+	u64 time_ns;
-+
-+	ts = bpf_task_storage_get(&task_storage_map, p, 0, 0);
-+	if (!ts)
-+		return 0;
-+	time_ns = time_diff(ts->stop_ns, ts->start_ns);
-+
-+	return MIN(time_ns, slice_ns);
-+}
-+
-+/*
-+ * Return task's vtime, evaluated as following:
-+ *
-+ *    current time + used task slice (scaled based on task's priority)
-+ */
-+static u64 task_vtime(struct task_struct *p)
-+{
-+	return bpf_ktime_get_ns() + task_slice_used(p) * 100 / p->scx.weight;
-+}
-+
-+/*
-+ * Task @p starts to be controlled by the sched-ext scheduling class for the
-+ * first time.
-+ */
-+void BPF_STRUCT_OPS(rustlite_enable, struct task_struct *p,
-+		    struct scx_enable_args *args)
-+{
-+	bpf_printk("new: pid=%d (%s)", p->pid, p->comm);
-+	update_task_time(p, true, true);
-+}
-+
-+/*
-+ * Initilize local storage for a new task.
-+ *
-+ * We can sleep in this function and the allocation of the local task storage
-+ * will automatically use GFP_KERNEL.
-+ */
-+s32 BPF_STRUCT_OPS(rustlite_prep_enable, struct task_struct *p,
-+		   struct scx_enable_args *args)
-+{
-+	if (bpf_task_storage_get(&task_storage_map, p, 0,
-+				 BPF_LOCAL_STORAGE_GET_F_CREATE))
-+		return 0;
-+	else
-+		return -ENOMEM;
-+}
-+
-+/* Dispatch a task on the local per-CPU FIFO */
-+static inline void dispatch_task_local(struct task_struct *p, u64 enq_flags)
-+{
++	dbg_msg("dispatch (local): pid=%d", p->pid);
 +	scx_bpf_dispatch(p, SCX_DSQ_LOCAL, slice_ns, enq_flags);
 +	__sync_fetch_and_add(&nr_kernel_dispatches, 1);
 +}
 +
-+/* Dispatch a task on the global FIFO */
-+static inline void dispatch_task_global(struct task_struct *p, u64 enq_flags)
++/*
++ * Dispatch a task on the global FIFO.
++ */
++static void
++dispatch_task_global(struct task_struct *p, u64 payload, u64 enq_flags)
 +{
++	/*
++	 * Tasks without a payload are dispatched directly by the kernel, tasks
++	 * with payload are dispatched by the user-space scheduler.
++	 */
++	if (!payload)
++		dbg_msg("dispatch (global): pid=%d", p->pid);
++	else
++		dbg_msg("dispatch (user): pid=%d payload=%llu", p->pid, payload);
 +	scx_bpf_dispatch(p, SCX_DSQ_GLOBAL, slice_ns, enq_flags);
 +	__sync_fetch_and_add(&nr_user_dispatches, 1);
 +}
 +
-+/* Task @p becomes ready to run */
++/*
++ * Select the target CPU for a task that is ready to run.
++ */
++s32 BPF_STRUCT_OPS(rustlite_select_cpu, struct task_struct *p, s32 prev_cpu,
++		   u64 wake_flags)
++{
++	/*
++	 * Let's keep it simple for now and always return the previously used
++	 * cpu, .enqueue() will be called on this cpu and if it's idle we can
++	 * immediately dispatch the task bypassing the user-space scheduler.
++	 */
++	return prev_cpu;
++}
++
++/*
++ * Return true if the selected CPU for the task is immediately avaliable
++ * (user-space scheduler not required), false otherwise (user-space scheduler
++ * required).
++ */
++static bool is_task_cpu_available(struct task_struct *p)
++{
++	/*
++	 * Always dispatch per-CPU kthread on the same CPU, bypassing the
++	 * user-space scheduler (in this way we can to prioritize critical
++	 * kernel threads that may potentially slow down the entire system if
++	 * they are blocked for too long).
++	 */
++        if (is_kthread(p) && p->nr_cpus_allowed == 1)
++		return true;
++	/*
++	 * Keep using the same CPU if the task can only run there or if the CPU
++	 * is idle.
++	 */
++	if (p->nr_cpus_allowed == 1 ||
++	    scx_bpf_test_and_clear_cpu_idle(bpf_get_smp_processor_id()))
++		return true;
++	/*
++	 * For all the other cases we can't use the current cpu immediately.
++	 */
++	return false;
++}
++
++/*
++ * Fill @task with all the information that need to be sent to the user-space
++ * scheduler.
++ */
++static void
++get_task_info(struct queued_task_ctx *task, const struct task_struct *p)
++{
++        task->pid = p->pid;
++        task->sum_exec_runtime = p->se.sum_exec_runtime;
++        task->weight = p->scx.weight;
++}
++
++/*
++ * Task @p becomes ready to run.
++ */
 +void BPF_STRUCT_OPS(rustlite_enqueue, struct task_struct *p, u64 enq_flags)
 +{
-+        struct task_ctx task;
++        struct queued_task_ctx task;
 +
 +	/*
 +	 * Scheduler is dispatched directly in .dispatch() when needed, so
@@ -412,30 +453,28 @@ index 0000000..4a3cf9c
 +	if (is_usersched_task(p))
 +		return;
 +
-+        /*
-+	 * Dispatch per-cpu kthreads on the local FIFO directly from the
-+	 * kernel.
-+         */
-+	if (is_kthread(p) && p->nr_cpus_allowed == 1) {
-+		bpf_printk("dispatch (local): pid=%d", p->pid);
++	/*
++	 * Dispatch the task on the local FIFO directly if the selected task's
++	 * CPU is available (no scheduling decision required).
++	 */
++	if (is_task_cpu_available(p)) {
 +		dispatch_task_local(p, enq_flags | SCX_ENQ_LOCAL);
 +		return;
 +	}
 +
 +	/*
-+	 * Other tasks can be added to the @enqueued list and they will be
++	 * Other tasks can be added to the @queued list and they will be
 +	 * processed by the user-space scheduler.
 +	 *
-+	 * If the @enqueued list is full (user-space scheduler is congested)
-+	 * tasks will be dispatched directly from the kernel to the global
-+	 * FIFO.
++	 * If @queued list is full (user-space scheduler is congested) tasks
++	 * will be dispatched directly from the kernel to the global FIFO.
 +	 */
-+	task.pid = p->pid;
-+	task.vtime = task_vtime(p);
-+	bpf_printk("enqueue: pid=%d vtime=%llu", task.pid, task.vtime);
-+	if (bpf_map_push_elem(&enqueued, &task, 0)) {
-+		bpf_printk("dispatch (global): pid=%d", task.pid);
-+		dispatch_task_global(p, enq_flags);
++	get_task_info(&task, p);
++	dbg_msg("enqueue: pid=%d", task.pid);
++	if (bpf_map_push_elem(&queued, &task, 0)) {
++		dbg_msg("scheduler congested: pid=%d", task.pid);
++		__sync_fetch_and_add(&nr_sched_congested, 1);
++		dispatch_task_global(p, 0, enq_flags);
 +		return;
 +	}
 +	__sync_fetch_and_add(&nr_enqueues, 1);
@@ -447,7 +486,9 @@ index 0000000..4a3cf9c
 +	usersched_needed = true;
 +}
 +
-+/* Dispatch the user-space scheduler */
++/*
++ * Dispatch the user-space scheduler.
++ */
 +static void dispatch_user_scheduler(void)
 +{
 +	struct task_struct *p;
@@ -461,28 +502,26 @@ index 0000000..4a3cf9c
 +		scx_bpf_error("Failed to find usersched task %d", usersched_pid);
 +		return;
 +	}
-+	bpf_printk("dispatch (scheduler): pid=%d", usersched_pid);
-+	scx_bpf_dispatch(p, SCX_DSQ_GLOBAL, slice_ns, 0);
++	dispatch_task_global(p, 0, 0);
 +	bpf_task_release(p);
 +}
 +
-+/* Dispatch tasks that are ready to run */
++/*
++ * Dispatch tasks that are ready to run.
++ */
 +void BPF_STRUCT_OPS(rustlite_dispatch, s32 cpu, struct task_struct *prev)
 +{
 +	/* Check if the user-space scheduler needs to run */
 +	dispatch_user_scheduler();
 +
 +	/*
-+	 * Consume all tasks from the dispatched list and immediately dispatch
++	 * Consume all tasks from the @dispatched list and immediately dispatch
 +	 * them to the global FIFO (the proper ordering has been already
 +	 * determined by the user-space scheduler).
-+	 *
-+	 * A trace of the dispatched tasks can be seen in
-+	 * /sys/kernel/debug/tracing/trace_pipe.
 +	 */
 +	bpf_repeat(MAX_ENQUEUED_TASKS) {
 +		struct task_struct *p;
-+		struct task_ctx task;
++		struct dispatched_task_ctx task;
 +
 +		if (!scx_bpf_dispatch_nr_slots())
 +			break;
@@ -491,35 +530,63 @@ index 0000000..4a3cf9c
 +		p = bpf_task_from_pid(task.pid);
 +		if (!p)
 +			continue;
-+		bpf_printk("dispatch: pid=%d vtime=%llu", task.pid, task.vtime);
-+		dispatch_task_global(p, 0);
++		dispatch_task_global(p, task.payload, 0);
 +		bpf_task_release(p);
 +	}
 +}
 +
-+/* Select the target CPU for a task that is ready to run */
-+s32 BPF_STRUCT_OPS(rustlite_select_cpu, struct task_struct *p, s32 prev_cpu,
-+		   u64 wake_flags)
++void BPF_STRUCT_OPS(rustlite_running, struct task_struct *p)
 +{
-+	s32 cpu;
++	dbg_msg("start: pid=%d (%s)", p->pid, p->comm);
++	__sync_fetch_and_add(&nr_tasks_running, 1);
++}
 +
-+	/*
-+	 * Keep using the same CPU if the task can only run there or if the CPU
-+	 * is idle.
-+	 */
-+	if (p->nr_cpus_allowed == 1 ||
-+	    scx_bpf_test_and_clear_cpu_idle(prev_cpu))
-+		return prev_cpu;
++/* Task @p releases a CPU */
++void BPF_STRUCT_OPS(rustlite_stopping, struct task_struct *p, bool runnable)
++{
++	dbg_msg("stop: pid=%d (%s)", p->pid, p->comm);
++	__sync_fetch_and_sub(&nr_tasks_running, 1);
++}
 +
-+	/*
-+	 * Otherwise migrate to the next idle CPU, if available (this strategy
-+	 * is not ideal, since it assumes a migration cost of zero).
-+	 */
-+	cpu = scx_bpf_pick_idle_cpu(p->cpus_ptr, 0);
-+	if (cpu < 0)
-+		return prev_cpu;
++/*
++ * Heartbeat scheduler timer callback.
++ */
++static int usersched_timer_fn(void *map, int *key, struct bpf_timer *timer)
++{
++	int err = 0;
 +
-+	return cpu;
++	/* Kick the scheduler */
++	usersched_needed = true;
++
++	/* Re-arm the timer */
++	err = bpf_timer_start(timer, NSEC_PER_SEC, 0);
++	if (err)
++		scx_bpf_error("Failed to arm stats timer");
++
++	return 0;
++}
++
++/*
++ * Initialize the heartbeat scheduler timer.
++ */
++static int usersched_timer_init(void)
++{
++	struct bpf_timer *timer;
++	u32 key = 0;
++	int err;
++
++	timer = bpf_map_lookup_elem(&usersched_timer, &key);
++	if (!timer) {
++		scx_bpf_error("Failed to lookup scheduler timer");
++		return -ESRCH;
++	}
++	bpf_timer_init(timer, &usersched_timer, CLOCK_BOOTTIME);
++	bpf_timer_set_callback(timer, usersched_timer_fn);
++	err = bpf_timer_start(timer, NSEC_PER_SEC, 0);
++	if (err)
++		scx_bpf_error("Failed to arm scheduler timer");
++
++	return err;
 +}
 +
 +/*
@@ -527,6 +594,11 @@ index 0000000..4a3cf9c
 + */
 +s32 BPF_STRUCT_OPS_SLEEPABLE(rustlite_init)
 +{
++	int err;
++
++	err = usersched_timer_init();
++	if (err)
++		return err;
 +        if (!switch_partial)
 +		scx_bpf_switch_all();
 +	return 0;
@@ -551,8 +623,6 @@ index 0000000..4a3cf9c
 +	.dispatch		= (void *)rustlite_dispatch,
 +	.running		= (void *)rustlite_running,
 +	.stopping		= (void *)rustlite_stopping,
-+	.enable			= (void *)rustlite_enable,
-+	.prep_enable		= (void *)rustlite_prep_enable,
 +	.init			= (void *)rustlite_init,
 +	.exit			= (void *)rustlite_exit,
 +	.timeout_ms		= 5000,
@@ -585,10 +655,10 @@ index 0000000..c42af33
 +include!(concat!(env!("OUT_DIR"), "/bpf_skel.rs"));
 diff --git a/scheds/rust/scx_rustlite/src/main.rs b/scheds/rust/scx_rustlite/src/main.rs
 new file mode 100644
-index 0000000..27a2556
+index 0000000..4c0447e
 --- /dev/null
 +++ b/scheds/rust/scx_rustlite/src/main.rs
-@@ -0,0 +1,314 @@
+@@ -0,0 +1,480 @@
 +// Copyright (c) Andrea Righi <andrea.righi@canonical.com>
 +
 +// This software may be used and distributed according to the terms of the
@@ -600,6 +670,8 @@ index 0000000..27a2556
 +use std::thread;
 +
 +use std::collections::BTreeSet;
++use std::collections::HashMap;
++
 +use std::ffi::CStr;
 +use std::sync::atomic::AtomicBool;
 +use std::sync::atomic::Ordering;
@@ -623,27 +695,36 @@ index 0000000..27a2556
 +// Defined in UAPI
 +const SCHED_EXT: i32 = 7;
 +
-+/// scx_rustlite: simple vtime-based scheduler written in Rust
++/// scx_rustlite: simple user-space scheduler written in Rust
 +///
 +/// The main goal of this scheduler is be an "easy to read" template that can be used to quickly
 +/// test more complex scheduling policies. For this reason this scheduler is mostly focused on
 +/// simplicity and code readability.
 +///
-+/// The scheduler is made of a BPF part that implements the basic sched-ext functionalities and a
-+/// user-space counterpart, written in Rust, that implement the scheduling policy itself.
++/// The scheduler is made of a BPF component (dispatcher) that implements the low level sched-ext
++/// functionalities and a user-space counterpart (scheduler), written in Rust, that implements the
++/// actual scheduling policy.
 +///
-+/// The default policy used by the user-space part is a based on virtual runtime (vtime):
++/// The default scheduling policy implemented in the user-space scheduler is a based on virtual
++/// runtime (vruntime):
 +///
-+/// - each task receives the same time slice of execution
++/// - each task receives the same time slice of execution (slice_ns)
 +///
-+/// - the actual execution time (adjusted based on the task's static priority) determines the vtime
++/// - the actual execution time, adjusted based on the task's static priority (weight), determines
++///   the vruntime
 +///
-+/// - tasks are then dispatched from the lowest to the highest vtime
++/// - tasks are then dispatched from the lowest to the highest vruntime
 +///
-+/// The vtime is evaluated in the BPF part, tasks' then all the information are sent to the
-+/// user-space part and stored in a red-black tree (indexed by vtime); then the user-space part
-+/// sends back to the BPF part the list of tasks (ordered by their vtime, that will be dispatched
-+/// using the order determined by the user-space.
++/// All the tasks are stored in a BTreeSet (TaskTree), using vruntime as the ordering key.
++/// Once the order of execution is determined all tasks are sent back to the BPF counterpart to be
++/// dispatched. To keep track of the accumulated cputime and vruntime the scheduler maintain a
++/// HashMap (TaskInfoMap) indexed by pid.
++///
++/// The BPF dispatcher is completely agnostic of the particular scheduling policy implemented in
++/// user-space. For this reason developers that are willing to use this scheduler to experiment
++/// scheduling policies should be able to simply modify the Rust component, without having to deal
++/// with any internal kernel / BPF details.
++///
 +#[derive(Debug, Parser)]
 +struct Opts {
 +    /// Scheduling slice duration in microseconds.
@@ -655,44 +736,131 @@ index 0000000..27a2556
 +    /// tasks are switched.
 +    #[clap(short = 'p', long, action = clap::ArgAction::SetTrue)]
 +    partial: bool,
++
++    /// If specified, all the BPF scheduling events will be reported in
++    /// debugfs (e.g., /sys/kernel/debug/tracing/trace_pipe).
++    #[clap(short = 'd', long, action = clap::ArgAction::SetTrue)]
++    debug: bool,
++}
++
++// Message received from the dispatcher (see bpf_intf::queued_task_ctx for details).
++//
++// NOTE: eventually libbpf-rs will provide a better abstraction for this.
++struct EnqueuedMessage {
++    inner: bpf_intf::queued_task_ctx,
++}
++
++impl EnqueuedMessage {
++    fn from_bytes(bytes: &[u8]) -> Self {
++        let queued_task_struct = unsafe { *(bytes.as_ptr() as *const bpf_intf::queued_task_ctx) };
++        EnqueuedMessage {
++            inner: queued_task_struct,
++        }
++    }
++
++    fn as_queued_task_ctx(&self) -> bpf_intf::queued_task_ctx {
++        self.inner
++    }
++}
++
++// Message sent to the dispatcher (see bpf_intf::dispatched_task_ctx for details).
++//
++// NOTE: eventually libbpf-rs will provide a better abstraction for this.
++struct DispatchedMessage {
++    inner: bpf_intf::dispatched_task_ctx,
++}
++
++impl DispatchedMessage {
++    fn from_task(task: &Task) -> Self {
++        let dispatched_task_struct = bpf_intf::dispatched_task_ctx {
++            pid: task.pid,
++            payload: task.vruntime,
++        };
++        DispatchedMessage {
++            inner: dispatched_task_struct,
++        }
++    }
++
++    fn as_bytes(&self) -> &[u8] {
++        let size = std::mem::size_of::<bpf_intf::dispatched_task_ctx>();
++        let ptr = &self.inner as *const _ as *const u8;
++
++        unsafe { std::slice::from_raw_parts(ptr, size) }
++    }
++}
++
++// Basic item stored in the task information map.
++#[derive(Debug)]
++struct TaskInfo {
++    sum_exec_runtime: u64, // total cpu time used by the task
++    vruntime: u64,         // total vruntime of the task
++}
++
++// Task information map: store total execution time and vruntime of each task in the system.
++//
++// TaskInfo objects are stored in the HashMap and they are indexed by pid.
++struct TaskInfoMap {
++    tasks: HashMap<i32, TaskInfo>,
++}
++
++// TaskInfoMap implementation: provide methods to get items and update items by pid.
++impl TaskInfoMap {
++    fn new() -> Self {
++        TaskInfoMap {
++            tasks: HashMap::new(),
++        }
++    }
++
++    // Get an item (as mutable) from the HashMap (by pid)
++    fn get_mut(&mut self, pid: i32) -> Option<&mut TaskInfo> {
++        self.tasks.get_mut(&pid)
++    }
++
++    // Add or update an item in the HashMap (by pid), if the pid is already present the item will
++    // be replaced (updated)
++    fn insert(&mut self, pid: i32, task: TaskInfo) {
++        self.tasks.insert(pid, task);
++    }
 +}
 +
 +// Basic task item stored in the task pool.
 +#[derive(Debug, PartialEq, Eq, PartialOrd)]
-+#[repr(C)]
 +struct Task {
-+    pid: i32,
-+    vtime: u64,
++    pid: i32,      // pid that uniquely identifies  a task
++    vruntime: u64, // total vruntime (that determines the order how tasks are dispatched)
 +}
 +
-+// Make sure tasks are ordered by vtime, if multiple tasks have the same vtime order by pid.
++// Make sure tasks are ordered by vruntime, if multiple tasks have the same vruntime order by pid.
 +impl Ord for Task {
 +    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-+        self.vtime
-+            .cmp(&other.vtime)
++        self.vruntime
++            .cmp(&other.vruntime)
 +            .then_with(|| self.pid.cmp(&other.pid))
 +    }
 +}
 +
-+// Task pool where all the tasks are store before dispatching them
-+// (ordered by vtime using a BTreeset).
-+struct TaskPool {
++// Task pool where all the tasks that needs to run are stored before dispatching
++// (ordered by vruntime using a BTreeSet).
++struct TaskTree {
 +    tasks: BTreeSet<Task>,
 +}
 +
 +// Task pool methods (push / pop).
-+impl TaskPool {
++impl TaskTree {
 +    fn new() -> Self {
-+        TaskPool {
++        TaskTree {
 +            tasks: BTreeSet::new(),
 +        }
 +    }
 +
-+    fn push(&mut self, pid: i32, vtime: u64) {
-+        let task = Task { pid, vtime };
++    // Add an item to the pool (item will be placed in the tree depending on its vruntime, items
++    // with the same vruntime will be sorted by pid).
++    fn push(&mut self, pid: i32, vruntime: u64) {
++        let task = Task { pid, vruntime };
 +        self.tasks.insert(task);
 +    }
 +
++    // Pop the first item from the BTreeSet (item with the smallest vruntime).
 +    fn pop(&mut self) -> Option<Task> {
 +        self.tasks.pop_first()
 +    }
@@ -700,8 +868,11 @@ index 0000000..27a2556
 +
 +// Main scheduler object
 +struct Scheduler<'a> {
-+    skel: BpfSkel<'a>,
-+    task_pool: TaskPool,
++    skel: BpfSkel<'a>,     // BPF connector
++    task_pool: TaskTree,   // tasks ordered by vruntime
++    task_map: TaskInfoMap, // map pids to the corresponding task information
++    min_vruntime: u64,     // Keep track of the minimum vruntime across all tasks
++    nr_cpus_online: u64,   // Amount of the available CPUs in the system
 +    struct_ops: Option<libbpf_rs::Link>,
 +}
 +
@@ -712,13 +883,26 @@ index 0000000..27a2556
 +        let mut skel = skel_builder.open().context("Failed to open BPF program")?;
 +        let pid = std::process::id();
 +
-+        // Scheduler task pool to sort task by vtime.
-+        let task_pool = TaskPool::new();
++        // Scheduler task pool to sort tasks by vruntime.
++        let task_pool = TaskTree::new();
 +
-+        // Set scheduler options (defined in the BPF part)
++        // Scheduler task map to store tasks information.
++        let task_map = TaskInfoMap::new();
++
++        // Initialize global minimum vruntime.
++        let min_vruntime: u64 = 0;
++
++        // Initialize online CPUs counter.
++        //
++        // We should probably refresh this counter during the normal execution to support cpu
++        // hotplugging, but for now let's keep it simple and set this only at initialization).
++        let nr_cpus_online = libbpf_rs::num_possible_cpus().unwrap() as u64;
++
++        // Set scheduler options (defined in the BPF part).
 +        skel.bss_mut().usersched_pid = pid;
 +        skel.rodata_mut().slice_ns = opts.slice_us * 1000;
 +        skel.rodata_mut().switch_partial = opts.partial;
++        skel.rodata_mut().debug = opts.debug;
 +
 +        // Attach BPF scheduler.
 +        let mut skel = skel.load().context("Failed to load BPF program")?;
@@ -735,14 +919,19 @@ index 0000000..27a2556
 +        Ok(Self {
 +            skel,
 +            task_pool,
++            task_map,
++            min_vruntime,
++            nr_cpus_online,
 +            struct_ops,
 +        })
 +    }
 +
++    // Read exit code from the BPF part.
 +    fn read_bpf_exit_kind(&mut self) -> i32 {
 +        unsafe { std::ptr::read_volatile(&self.skel.bss().exit_kind as *const _) }
 +    }
 +
++    // Called on exit to get exit code and exit message from the BPF part.
 +    fn report_bpf_exit_kind(&mut self) -> Result<()> {
 +        match self.read_bpf_exit_kind() {
 +            0 => Ok(()),
@@ -758,17 +947,53 @@ index 0000000..27a2556
 +        }
 +    }
 +
-+    fn schedule(&mut self) {
-+        let maps = self.skel.maps();
-+        let enqueued = maps.enqueued();
-+        let dispatched = maps.dispatched();
++    // Update task's vruntime based on the information collected from the kernel part.
++    fn update_enqueued(
++        task_info: &mut TaskInfo,
++        sum_exec_runtime: u64,
++        weight: u64,
++        min_vruntime: u64,
++    ) {
++        // Add cputime delta normalized by weight to the vruntime (if delta > 0).
++        if sum_exec_runtime > task_info.sum_exec_runtime {
++            let delta = (sum_exec_runtime - task_info.sum_exec_runtime) / weight;
++            task_info.vruntime += delta;
++        }
++        // Make sure vruntime is moving forward (> current minimum).
++        if min_vruntime > task_info.vruntime {
++            task_info.vruntime = min_vruntime;
++        }
++        // Update total task cputime.
++        task_info.sum_exec_runtime = sum_exec_runtime;
++    }
 +
-+        // Drain enqueued list and push all the tasks to the task pool (sorted by vtime).
++    // Drain all the tasks from the queued list, update their vruntime (Self::update_enqueued()),
++    // then push them all to the task pool (doing so will sort them by their vruntime).
++    fn drain_queued_tasks(&mut self) {
++        let maps = self.skel.maps();
++        let queued = maps.queued();
++
 +        loop {
-+            match enqueued.lookup_and_delete(&[]) {
-+                Ok(Some(val)) => {
-+                    let task = unsafe { &*(val.as_slice().as_ptr() as *const bpf_intf::task_ctx) };
-+                    self.task_pool.push(task.pid, task.vtime);
++            match queued.lookup_and_delete(&[]) {
++                Ok(Some(msg)) => {
++                    // Schedule the task and update task information.
++                    let task = EnqueuedMessage::from_bytes(msg.as_slice()).as_queued_task_ctx();
++                    if let Some(task_info) = self.task_map.get_mut(task.pid) {
++                        Self::update_enqueued(
++                            task_info,
++                            task.sum_exec_runtime,
++                            task.weight,
++                            self.min_vruntime,
++                        );
++                        self.task_pool.push(task.pid, task_info.vruntime);
++                    } else {
++                        let task_info = TaskInfo {
++                            sum_exec_runtime: task.sum_exec_runtime,
++                            vruntime: self.min_vruntime,
++                        };
++                        self.task_map.insert(task.pid, task_info);
++                        self.task_pool.push(task.pid, self.min_vruntime);
++                    }
 +                }
 +                Ok(None) => break,
 +                Err(err) => {
@@ -777,31 +1002,50 @@ index 0000000..27a2556
 +                }
 +            }
 +        }
++    }
 +
-+        // Dispatch tasks from the task pool in order (sending them to the BPF part).
++    // Dispatch tasks from the task pool in order (sending them to the BPF dispatcher).
++    fn dispatch_tasks(&mut self) {
++        let maps = self.skel.maps();
++        let dispatched = maps.dispatched();
++
 +        loop {
 +            match self.task_pool.pop() {
 +                Some(task) => {
-+                    let task_struct: &[u8] = unsafe {
-+                        std::slice::from_raw_parts(
-+                            &task as *const Task as *const u8,
-+                            std::mem::size_of::<Task>(),
-+                        )
-+                    };
-+                    match dispatched.update(&[], &task_struct, libbpf_rs::MapFlags::ANY) {
++                    // Update global minimum vruntime.
++                    self.min_vruntime = task.vruntime;
++
++                    // Send task to the dispatcher.
++                    let msg = DispatchedMessage::from_task(&task);
++                    match dispatched.update(&[], msg.as_bytes(), libbpf_rs::MapFlags::ANY) {
 +                        Ok(_) => {}
 +                        Err(_) => {
 +                            /*
 +                             * Re-add the task to the dispatched list in case of failure and stop
 +                             * dispatching.
 +                             */
-+                            self.task_pool.push(task.pid, task.vtime);
++                            self.task_pool.push(task.pid, task.vruntime);
 +                            break;
 +                        }
 +                    }
 +                }
 +                None => break,
 +            }
++        }
++    }
++
++    // Check if there's at least a CPU that can accept tasks.
++    fn is_dispatcher_needed(&self) -> bool {
++        let nr_tasks_running = self.skel.bss().nr_tasks_running as u64;
++        return nr_tasks_running < self.nr_cpus_online;
++    }
++
++    // Main scheduling function (called in a loop to periodically drain tasks from the queued list
++    // and dispatch them to the BPF part via the dispatched list).
++    fn schedule(&mut self) {
++        self.drain_queued_tasks();
++        if self.is_dispatcher_needed() {
++            self.dispatch_tasks();
 +        }
 +
 +        // Yield to avoid using too much CPU from the scheduler itself.
@@ -813,10 +1057,12 @@ index 0000000..27a2556
 +        let nr_enqueues = self.skel.bss().nr_enqueues as u64;
 +        let nr_user_dispatches = self.skel.bss().nr_user_dispatches as u64;
 +        let nr_kernel_dispatches = self.skel.bss().nr_kernel_dispatches as u64;
++        let nr_sched_congested = self.skel.bss().nr_sched_congested as u64;
++        let nr_tasks_running = self.skel.bss().nr_tasks_running as u64;
 +
 +        info!(
-+            "nr_enqueues={} nr_user_dispatched={} nr_kernel_dispatches={}",
-+            nr_enqueues, nr_user_dispatches, nr_kernel_dispatches
++            "min_vtime={} nr_tasks_running={} nr_enqueues={} nr_user_dispatched={} nr_kernel_dispatches={} nr_sched_congested={}",
++            self.min_vruntime, nr_tasks_running, nr_enqueues, nr_user_dispatches, nr_kernel_dispatches, nr_sched_congested
 +        );
 +        log::logger().flush();
 +    }
@@ -832,7 +1078,7 @@ index 0000000..27a2556
 +
 +            self.schedule();
 +
-+            // Print scheduler statistics every second
++            // Print scheduler statistics every second.
 +            if elapsed > Duration::from_secs(1) {
 +                self.print_stats();
 +                prev_ts = curr_ts;
@@ -889,16 +1135,6 @@ index 0000000..27a2556
 +        shutdown_clone.store(true, Ordering::Relaxed);
 +    })
 +    .context("Error setting Ctrl-C handler")?;
-+
-+    /*
-+     * Spawn a heartbeat thread to periodically trigger the check to run the user-space scheduler.
-+     *
-+     * Without this thread we may starve the scheduler task if the system is completely idle and
-+     * hit the sched-ext watchdog that would auto-kill this scheduler.
-+     */
-+    thread::spawn(|| loop {
-+        thread::sleep(Duration::from_secs(1));
-+    });
 +
 +    // Start the scheduler.
 +    sched.run(shutdown)
