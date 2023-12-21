@@ -3,18 +3,16 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.2.r26.gcfb41a7
-pkgrel=2
+pkgver=0.1.2.r28.g4cadb92
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
 license=('GPL-2.0-only')
 depends=('libbpf' 'bpf' 'libelf' 'zlib')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
-source=("git+https://github.com/sched-ext/scx"
-       'rustlite.patch')
-sha256sums=('SKIP'
-            'b98ec0a28bdf9f44cb10e56d7417f7f9ae0797d609e71d3b2857dbb595ea1889')
+source=("git+https://github.com/sched-ext/scx")
+sha256sums=('SKIP')
 options=(!lto)
 replaces=("scx-git")
 provides=("scx-scheds")

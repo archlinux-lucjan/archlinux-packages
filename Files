@@ -259,8 +259,7 @@
 │   └── PKGBUILD
 ├── README.md
 ├── scx-scheds-git
-│   ├── PKGBUILD
-│   └── rustlite.patch
+│   └── PKGBUILD
 ├── sddm-git
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
@@ -292,4 +291,4 @@
 └── zstd-git
     └── PKGBUILD
 
-102 directories, 191 files
+102 directories, 190 files
