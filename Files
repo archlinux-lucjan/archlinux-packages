@@ -164,9 +164,13 @@
 │   └── PKGBUILD
 ├── meson-git
 │   ├── arch-meson
+│   ├── cross-lib32
+│   ├── native-clang
 │   └── PKGBUILD
 ├── meson-stable-git
 │   ├── arch-meson
+│   ├── cross-lib32
+│   ├── native-clang
 │   └── PKGBUILD
 ├── mkinitcpio-git
 │   └── PKGBUILD
@@ -291,4 +295,4 @@
 └── zstd-git
     └── PKGBUILD
 
-102 directories, 190 files
+102 directories, 194 files
