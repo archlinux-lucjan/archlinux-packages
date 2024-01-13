@@ -264,6 +264,8 @@
 ├── README.md
 ├── scx-scheds-git
 │   └── PKGBUILD
+├── scx-systemd-services-git
+│   └── PKGBUILD
 ├── sddm-git
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
@@ -295,4 +297,4 @@
 └── zstd-git
     └── PKGBUILD
 
-102 directories, 194 files
+103 directories, 195 files
