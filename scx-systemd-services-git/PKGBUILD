@@ -3,7 +3,7 @@
 pkgname=scx-systemd-services-git
 gitname=sched-ext-systemd
 pkgver=20240113.r8.gf904053
-pkgrel=1
+pkgrel=2
 pkgdesc='SystemD sched-ext services'
 arch=('any')
 license=('GPL-2.0-only')
@@ -19,16 +19,20 @@ pkgver() {
 }
 
 package() {
-  cd $gitname
+  cd $gitname/systemd-services
   local services="$pkgdir/etc/systemd/system/"
 
-  install -Dm644 systemd-services/sched-ext-central.service     "$services/sched-ext-central.service"
-  install -Dm644 systemd-services/sched-ext-flatcg.service      "$services/sched-ext-flatcg.service"
-  install -Dm644 systemd-services/sched-ext-nest.service        "$services/sched-ext-nest.service"
-  install -Dm644 systemd-services/sched-ext-pair.service        "$services/sched-ext-pair.service"
-  install -Dm644 systemd-services/sched-ext-qmap.service        "$services/sched-ext-qmap.service"
-  install -Dm644 systemd-services/sched-ext-rustland.service    "$services/sched-ext-rustland.service"
-  install -Dm644 systemd-services/sched-ext-rusty.service       "$services/sched-ext-rusty.service"
-  install -Dm644 systemd-services/sched-ext-simple.service      "$services/sched-ext-simple.service"
-  install -Dm644 systemd-services/sched-ext-userland.service    "$services/sched-ext-userland.service"
+  #install -Dm644 systemd-services/sched-ext-central.service     "$services/sched-ext-central.service"
+  #install -Dm644 systemd-services/sched-ext-flatcg.service      "$services/sched-ext-flatcg.service"
+  #install -Dm644 systemd-services/sched-ext-nest.service        "$services/sched-ext-nest.service"
+  #install -Dm644 systemd-services/sched-ext-pair.service        "$services/sched-ext-pair.service"
+  #install -Dm644 systemd-services/sched-ext-qmap.service        "$services/sched-ext-qmap.service"
+  #install -Dm644 systemd-services/sched-ext-rustland.service    "$services/sched-ext-rustland.service"
+  #install -Dm644 systemd-services/sched-ext-rusty.service       "$services/sched-ext-rusty.service"
+  #install -Dm644 systemd-services/sched-ext-simple.service      "$services/sched-ext-simple.service"
+  #install -Dm644 systemd-services/sched-ext-userland.service    "$services/sched-ext-userland.service"
+  for scx in *; do
+    install -Dm644 $scx "$services/$scx"
+  done
+
 }
