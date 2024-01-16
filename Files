@@ -265,8 +265,6 @@
 ├── scx-scheds-git
 │   ├── 0001-Add-systemd-services-for-scx-schedulers.patch
 │   └── PKGBUILD
-├── scx-systemd-services-git
-│   └── PKGBUILD
 ├── sddm-git
 │   ├── PKGBUILD
 │   ├── sddm.sysusers
@@ -298,4 +296,4 @@
 └── zstd-git
     └── PKGBUILD
 
-103 directories, 196 files
+102 directories, 195 files
