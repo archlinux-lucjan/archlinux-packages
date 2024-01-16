@@ -263,6 +263,7 @@
 │   └── PKGBUILD
 ├── README.md
 ├── scx-scheds-git
+│   ├── 0001-Add-systemd-services-for-scx-schedulers.patch
 │   └── PKGBUILD
 ├── scx-systemd-services-git
 │   └── PKGBUILD
@@ -297,4 +298,4 @@
 └── zstd-git
     └── PKGBUILD
 
-103 directories, 195 files
+103 directories, 196 files
