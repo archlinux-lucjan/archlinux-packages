@@ -1,7 +1,7 @@
-From b8277161d8acb01a61ae22162cf47a0e4e756718 Mon Sep 17 00:00:00 2001
+From 1abd319caeaa89341c49876a70e78221e8193ef6 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 17 Jan 2024 23:22:55 +0100
-Subject: [PATCH] Set log size to 10M
+Date: Thu, 18 Jan 2024 00:03:07 +0100
+Subject: [PATCH 1/2] Set log size to 10M
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -21,7 +21,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 
 diff --git a/services/journald@sched-ext.conf b/services/journald@sched-ext.conf
 new file mode 100644
-index 0000000..05cd1f7
+index 0000000..6e68c17
 --- /dev/null
 +++ b/services/journald@sched-ext.conf
 @@ -0,0 +1,7 @@
