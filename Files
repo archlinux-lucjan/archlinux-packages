@@ -120,6 +120,8 @@
 │   └── PKGBUILD
 ├── kuser-frameworks-git
 │   └── PKGBUILD
+├── leancrypto-git
+│   └── PKGBUILD
 ├── libgit2-git
 │   └── PKGBUILD
 ├── libgit2-stable-git
@@ -295,4 +297,4 @@
 └── zstd-git
     └── PKGBUILD
 
-102 directories, 194 files
+103 directories, 195 files

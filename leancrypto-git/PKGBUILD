@@ -1,0 +1,31 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=leancrypto-git
+_pkgname=leancrypto
+pkgver=0.8.0.r52.ge30f9f0
+pkgrel=1
+pkgdesc="Lean cryptographic library usable for bare-metal environments"
+url="https://github.com/smuellerDD/leancrypto"
+license=('GPL2' 'BSD')
+arch=('x86_64')
+makedepends=('meson' 'git')
+conflicts=('leancrypto')
+provides=('leancrypto')
+source=('git+https://github.com/smuellerDD/leancrypto')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $_pkgname
+  arch-meson . build
+  meson compile -C build
+}
+
+package() {
+  cd $_pkgname
+  meson install -C build --destdir "${pkgdir}"
+}
