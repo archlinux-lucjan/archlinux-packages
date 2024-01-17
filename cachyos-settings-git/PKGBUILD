@@ -3,8 +3,8 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20230714.r113.gc4c2cae
-pkgrel=1
+pkgver=20240116.r172.ge3c2544
+pkgrel=2
 groups=('cachyos')
 arch=('any')
 license=('GPL')
