@@ -26,7 +26,7 @@ index 0000000..05cd1f7
 +++ b/services/journald@sched-ext.conf
 @@ -0,0 +1,7 @@
 +[Journal]
-+# Sets the maximum journal size to 5M for each namespace.
++# Sets the maximum journal size to 10M for each namespace.
 +NamespaceMaxUse=10M
 +# Sets the maximum log age to 7 days.
 +MaxRetentionSec=7day

@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.5.r42.g24ef0f6
-pkgrel=3
+pkgrel=4
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -14,7 +14,7 @@ makedepends=('git' 'python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 source=("git+https://github.com/sched-ext/scx"
         '0001-Set-log-size-to-10M.patch')
 sha256sums=('SKIP'
-            '1f235f74b64b657ec539274b8371e74ccd741ec73d7d66319893e0676a7f84b0')
+            '655c71a04d665b526a49d25b176138454b2457eae44329433bfbfbbb4d770eba')
 options=(!lto)
 replaces=("scx-git" "scx-systemd-services-git")
 provides=("scx-scheds")
