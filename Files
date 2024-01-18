@@ -265,8 +265,6 @@
 │   └── PKGBUILD
 ├── README.md
 ├── scx-scheds-git
-│   ├── 0001-Set-log-size-to-10M.patch
-│   ├── 0002-Drop-unneeded-default-value.patch
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── PKGBUILD
@@ -299,4 +297,4 @@
 └── zstd-git
     └── PKGBUILD
 
-103 directories, 197 files
+103 directories, 195 files
