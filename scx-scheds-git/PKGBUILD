@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.5.r47.gaf11da2
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -13,10 +13,12 @@ depends=('libbpf' 'bpf' 'libelf' 'zlib')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 source=("git+https://github.com/sched-ext/scx"
         '0001-Set-the-correct-value-for-sched-ext-journald-namespa.patch'
-        '0002-Simplify-the-location-of-the-journal-sched-ext-file.patch')
+        '0002-Simplify-the-location-of-the-journal-sched-ext-file.patch'
+        '0003-Increase-log-size-to-25M.patch')
 sha256sums=('SKIP'
-            'c1944a570d98d190d3b35de89fd4c10158baed8019855fd5c12ab34b8bb9aa7b'
-            '0833adbc2724c7c95499ac4adf42170fcd2c28f6dbf951f3bcb726ac5e8927a3')
+            'f90c32c354e03cb6ee619645e08a418ce9f2351511cf581ba70deeae56563ed5'
+            '8d72df83b419b8fe61241ef2294241bb1f7e03a66d86513bfe6d18dff45c8904'
+            'bb673d6b717d7dfde4be1a716fa76b06f954104fc1db3817cfd61412ef72e118')
 options=(!lto)
 replaces=("scx-git" "scx-systemd-services-git")
 provides=("scx-scheds")

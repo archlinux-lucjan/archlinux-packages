@@ -1,7 +1,7 @@
 From 1a1290d54ccabfaa284044c5ce49936c1c44d5ba Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 19 Jan 2024 19:13:28 +0100
-Subject: [PATCH 2/2] Simplify the location of the journal-sched-ext file
+Subject: [PATCH 2/3] Simplify the location of the journal-sched-ext file
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---

@@ -1,28 +1,25 @@
-From b6650fa4dc6371ec5f60f15be5b1d6bc6a33917a Mon Sep 17 00:00:00 2001
+From a64da68a9a4fbb502794f1f2559b1298504f523b Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 19 Jan 2024 18:22:47 +0100
-Subject: [PATCH 1/3] Set the correct value for sched-ext journald namespace
+Date: Fri, 19 Jan 2024 20:51:54 +0100
+Subject: [PATCH 3/3] Increase log size to 25M
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
- services/journald@sched-ext.conf | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ services/journald@sched-ext.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/services/journald@sched-ext.conf b/services/journald@sched-ext.conf
-index 6e68c17..df022dd 100644
+index df022dd..bf2b809 100644
 --- a/services/journald@sched-ext.conf
 +++ b/services/journald@sched-ext.conf
-@@ -1,7 +1,9 @@
+@@ -1,6 +1,6 @@
  [Journal]
  # Sets the maximum journal size to 10M for each namespace.
--NamespaceMaxUse=10M
-+SystemMaxUse=10M
+-SystemMaxUse=10M
++SystemMaxUse=25M
  # Sets the maximum log age to 7 days.
  MaxRetentionSec=7day
  # Sets the priority level for messages to be stored to info.
- MaxLevelStore=info
-+# Sets the maximum number of log files that can be stored for each namespace.
-+SystemMaxFiles=5
 -- 
 2.43.0.232.ge79552d197
 
