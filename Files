@@ -265,6 +265,8 @@
 │   └── PKGBUILD
 ├── README.md
 ├── scx-scheds-git
+│   ├── 0001-Set-the-correct-value-for-sched-ext-journald-namespa.patch
+│   ├── 0002-Simplify-the-location-of-the-journal-sched-ext-file.patch
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── PKGBUILD
@@ -297,4 +299,4 @@
 └── zstd-git
     └── PKGBUILD
 
-103 directories, 195 files
+103 directories, 197 files
