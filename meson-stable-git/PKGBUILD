@@ -4,7 +4,7 @@
 pkgname=meson-stable-git
 pkgver=1.3.1.0.g110642dd7
 tagver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
 url="http://mesonbuild.com/"
@@ -83,7 +83,7 @@ source=('git+https://github.com/mesonbuild/meson#branch=1.3'
 md5sums=('SKIP'
          '452e6d80308b53225c747be1d678e5c8'
          '30d1a418f06de7deb6b8fe5e63a25d28'
-         '7e3f2ea6849fb6cdcc66b09fbc960f64'
+         '92cac4ebaa57de9656f48efc688b18b7'
          '8e1d245db195d0d221a5ff083d12f6aa'
          'c941b0388c5d01e26147480a04317871')
 
