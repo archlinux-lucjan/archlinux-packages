@@ -22,6 +22,8 @@
 │   └── PKGBUILD
 ├── cachyos-sysctl-manager-git
 │   └── PKGBUILD
+├── cachyos-vesktop
+│   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
 │   └── PKGBUILD
@@ -297,4 +299,4 @@
 └── zstd-git
     └── PKGBUILD
 
-103 directories, 195 files
+104 directories, 196 files
