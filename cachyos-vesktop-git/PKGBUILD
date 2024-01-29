@@ -1,6 +1,6 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
-pkgname=cachyos-vesktop
+pkgname=cachyos-vesktop-git
 pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop"
 pkgver=20240128.r288.g2bd8ca9
 pkgrel=1
@@ -12,6 +12,7 @@ optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
 )
+replaces=("cachyos-vesktop")
 provides=("vesktop")
 conflicts=("vesktop")
 source=(

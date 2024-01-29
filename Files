@@ -22,7 +22,7 @@
 │   └── PKGBUILD
 ├── cachyos-sysctl-manager-git
 │   └── PKGBUILD
-├── cachyos-vesktop
+├── cachyos-vesktop-git
 │   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
