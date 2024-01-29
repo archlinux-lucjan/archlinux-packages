@@ -4,10 +4,10 @@
 
 pkgname=cachyos-armcord
 pkgdesc="ArmCord fork by CachyOS and maintained by nextwork, custom client designed to enhance your Discord experience while keeping everything lightweight."
-pkgver=20240128.r1030.g4157878
+pkgver=20231013.r1017.gf41170b
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/Armcord/ArmCord"
+url="https://github.com/NextWork123/ArmCord"
 license=("custom:OSL-3.0")
 makedepends=("git" "nodejs" "bunjs-bin" "libxcrypt-compat")
 optdepends=(
