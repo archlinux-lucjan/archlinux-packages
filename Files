@@ -10,7 +10,7 @@
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
 │   └── PKGBUILD
-├── cachyos-armcord
+├── cachyos-armcord-git
 │   └── PKGBUILD
 ├── cachyos-hooks-git
 │   └── PKGBUILD

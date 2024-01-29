@@ -2,7 +2,7 @@
 # Maintainer: NextWork123 <nextworks@protonmail.com>
 # Maintainer: Vendicated <vendicated at riseup dot net>
 
-pkgname=cachyos-armcord
+pkgname=cachyos-armcord-git
 pkgdesc="ArmCord custom client designed to enhance your Discord experience while keeping everything lightweight."
 pkgver=20240128.r1030.g4157878
 pkgrel=1
@@ -14,6 +14,7 @@ optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
 )
+replaces=("cachyos-armcord")
 provides=("armcord")
 conflicts=("armcord")
 source=(
