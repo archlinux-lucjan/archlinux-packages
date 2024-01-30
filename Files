@@ -22,8 +22,6 @@
 │   └── PKGBUILD
 ├── cachyos-sysctl-manager-git
 │   └── PKGBUILD
-├── cachyos-vesktop-git
-│   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
 │   └── PKGBUILD
@@ -273,6 +271,8 @@
 │   ├── sddm.sysusers
 │   └── sddm.tmpfiles
 ├── uksmd-git
+│   └── PKGBUILD
+├── vesktop-lucjan-git
 │   └── PKGBUILD
 ├── zlib-ng-git
 │   └── PKGBUILD
