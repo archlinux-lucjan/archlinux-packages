@@ -1,6 +1,8 @@
 .
 ├── ananicy-cpp-git
 │   └── PKGBUILD
+├── armcord-lucjan-git
+│   └── PKGBUILD
 ├── bat-polaur-extras-git
 │   └── PKGBUILD
 ├── bat-polaur-git
@@ -9,8 +11,6 @@
 │   ├── betterbird.desktop
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
-│   └── PKGBUILD
-├── cachyos-armcord-git
 │   └── PKGBUILD
 ├── cachyos-hooks-git
 │   └── PKGBUILD
