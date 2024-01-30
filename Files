@@ -152,6 +152,9 @@
 │   └── PKGBUILD
 ├── lostfiles-git
 │   └── PKGBUILD
+├── lucjan-keyring
+│   ├── lucjan-keyring.install
+│   └── PKGBUILD
 ├── lucjan-keyring-git
 │   ├── lucjan-keyring.install
 │   └── PKGBUILD
@@ -296,4 +299,4 @@
 └── zstd-git
     └── PKGBUILD
 
-103 directories, 194 files
+104 directories, 196 files
