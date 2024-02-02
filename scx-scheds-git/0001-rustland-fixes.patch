@@ -1,0 +1,1159 @@
+From 70d0408edb8775a33cf545e9bfc6dfeb88bc4d4c Mon Sep 17 00:00:00 2001
+From: Andrea Righi <andrea.righi@canonical.com>
+Date: Wed, 24 Jan 2024 16:32:24 +0100
+Subject: [PATCH 1/7] scx_rustland: BPF: small refactoring
+
+No functional change, just some refactoring to make the code more clear.
+
+We have is_usersched_needed() and set_usersched_needed() that are doing
+different things (the former is checkig if there are pending tasks for
+the scheduler, the latter is setting the usersched_needed flag to
+activate the dispatch of the user-space scheduler).
+
+Rename is_usersched_needed() to usersched_has_pending_tasks() to make
+the code more clear and understandable.
+
+Also move dispatch_user_scheduler() closer to the other dispatch-related
+helper functions.
+
+Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
+---
+ scheds/rust/scx_rustland/src/bpf/main.bpf.c | 44 ++++++++++-----------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/scheds/rust/scx_rustland/src/bpf/main.bpf.c b/scheds/rust/scx_rustland/src/bpf/main.bpf.c
+index 2856627..5a03eba 100644
+--- a/scheds/rust/scx_rustland/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_rustland/src/bpf/main.bpf.c
+@@ -249,7 +249,7 @@ static bool test_and_clear_usersched_needed(void)
+  * doesn't run concurrently with the user-space scheduler (that is single
+  * threaded), therefore this check is also safe from a concurrency perspective.
+  */
+-static bool is_usersched_needed(void)
++static bool usersched_has_pending_tasks(void)
+ {
+ 	return nr_queued || nr_scheduled;
+ }
+@@ -282,6 +282,26 @@ static void dispatch_local(struct task_struct *p, u64 enq_flags)
+ 	dispatch_task(p, cpu, enq_flags);
+ }
+ 
++/*
++ * Dispatch the user-space scheduler.
++ */
++static void dispatch_user_scheduler(s32 cpu)
++{
++	struct task_struct *p;
++
++	if (!test_and_clear_usersched_needed())
++		return;
++
++	p = bpf_task_from_pid(usersched_pid);
++	if (!p) {
++		scx_bpf_error("Failed to find usersched task %d", usersched_pid);
++		return;
++	}
++	dispatch_task(p, cpu, 0);
++	__sync_fetch_and_add(&nr_kernel_dispatches, 1);
++	bpf_task_release(p);
++}
++
+ /*
+  * Select the target CPU where a task can be directly dispatched to from
+  * .enqueue().
+@@ -391,26 +411,6 @@ void BPF_STRUCT_OPS(rustland_enqueue, struct task_struct *p, u64 enq_flags)
+ 	__sync_fetch_and_add(&nr_queued, 1);
+ }
+ 
+-/*
+- * Dispatch the user-space scheduler.
+- */
+-static void dispatch_user_scheduler(s32 cpu)
+-{
+-	struct task_struct *p;
+-
+-	if (!test_and_clear_usersched_needed())
+-		return;
+-
+-	p = bpf_task_from_pid(usersched_pid);
+-	if (!p) {
+-		scx_bpf_error("Failed to find usersched task %d", usersched_pid);
+-		return;
+-	}
+-	dispatch_task(p, cpu, 0);
+-	__sync_fetch_and_add(&nr_kernel_dispatches, 1);
+-	bpf_task_release(p);
+-}
+-
+ /*
+  * Dispatch tasks that are ready to run.
+  *
+@@ -520,7 +520,7 @@ void BPF_STRUCT_OPS(rustland_update_idle, s32 cpu, bool idle)
+ 	 * A CPU is now available, notify the user-space scheduler that tasks
+ 	 * can be dispatched.
+ 	 */
+-	if (is_usersched_needed())
++	if (usersched_has_pending_tasks())
+ 		set_usersched_needed();
+ }
+ 
+-- 
+2.43.0.232.ge79552d197
+
+
+From fbbd8c8d36192c9efe781539a51814b613352128 Mon Sep 17 00:00:00 2001
+From: Andrea Righi <andrea.righi@canonical.com>
+Date: Sat, 27 Jan 2024 14:49:02 +0100
+Subject: [PATCH 2/7] scx_rustland: re-introduce per-CPU DSQ + a global shared
+ DSQ
+
+With commit c6ada25 ("scx_rustland: use custom pcpu DSQ instead of
+SCX_DSQ_LOCAL{_ON}") we tried to introduce custom per-CPU DSQs, instead
+of using SCX_DSQ_LOCAL and SCX_DSQ_LOCAL_ON to dispatch tasks.
+
+This was required, because dispatching tasks using SCX_DSQ_LOCAL_ON
+doesn't provide a guarantee that the cpumask, checked at dispatch time
+to determine the validity of a target CPU, remains valid.
+
+This method solved the cpumask validity issue, but unfortunately it
+introduced a noticeable performance regression and a potential
+starvation issue (that were probably caused by the same problem): if a
+task is assigned to a CPU in select_cpu() and the scheduler decides to
+dispatch it on a different CPU, the task will be added to the new CPU's
+DSQ, but if no dispatch event happens there, the task may remain stuck
+in the per-CPU DSQ for a long time, triggering the sched-ext watchdog
+timeout that would kick out the scheduler, for example:
+
+  12:53:28 [WARN] FAIL: IPC:CSteamEngin[7217] failed to run for 6.482s (err=1026)
+  12:53:28 [INFO] Unregister RustLand scheduler
+
+Therefore, we reverted this change with 6d89ece ("scx_rustland: dispatch
+tasks only on the global DSQ"), dispatching all the tasks to the global
+DSQ, completely delegating the kernel to distribute tasks among the
+available CPUs.
+
+This is not the ideal solution, because we still want to give the
+possibility to the user-space scheduler to assign tasks to specific
+CPUs.
+
+Therefore, re-introduce distinct per-CPU DSQs, but also provide a global
+shared DSQ. Tasks dispatched in the per-CPU DSQs are consumed from the
+dispatch() callback of their corresponding CPU, tasks dispatched in the
+global shared DSQ are consumed from any CPU.
+
+In this way the BPF layer is able to provide an interface that gives
+the flexibility to the user-space to dispatch a task on a specific CPU
+or on the first CPU available, depending on the particular scheduler's
+need.
+
+If an invalid CPU (according to the cpumask) is selected the BPF
+dispatcher will transparently redirect the task to a valid CPU, selected
+using the built-in idle selection logic.
+
+In the future we may want to improve this part, giving to the
+user-space the visibility of the cpumask, in order to pick a valid CPU
+in advance and in a proper synchronized way.
+
+Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
+---
+ scheds/rust/scx_rustland/src/bpf.rs         |   6 +
+ scheds/rust/scx_rustland/src/bpf/main.bpf.c | 192 ++++++++++++++++----
+ 2 files changed, 159 insertions(+), 39 deletions(-)
+
+diff --git a/scheds/rust/scx_rustland/src/bpf.rs b/scheds/rust/scx_rustland/src/bpf.rs
+index 79c40bc..ce698eb 100644
+--- a/scheds/rust/scx_rustland/src/bpf.rs
++++ b/scheds/rust/scx_rustland/src/bpf.rs
+@@ -24,6 +24,12 @@ use scx_utils::uei_report;
+ // Defined in UAPI
+ const SCHED_EXT: i32 = 7;
+ 
++// Do not assign any specific CPU to the task.
++//
++// The task will be dispatched to the global shared DSQ and it will run on the first CPU available.
++#[allow(dead_code)]
++pub const NO_CPU: i32 = -1;
++
+ /// scx_rustland: provide high-level abstractions to interact with the BPF component.
+ ///
+ /// Overview
+diff --git a/scheds/rust/scx_rustland/src/bpf/main.bpf.c b/scheds/rust/scx_rustland/src/bpf/main.bpf.c
+index 5a03eba..7648cf2 100644
+--- a/scheds/rust/scx_rustland/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_rustland/src/bpf/main.bpf.c
+@@ -45,6 +45,15 @@ struct user_exit_info uei;
+  */
+ #define MAX_CPUS 1024
+ 
++/*
++ * Introduce a custom DSQ shared across all the CPUs, where we can dispatch
++ * tasks that will be executed on the first CPU available.
++ *
++ * Per-CPU DSQs are also provided, to allow the scheduler to run a task on a
++ * specific CPU (see dsq_init()).
++ */
++#define SHARED_DSQ MAX_CPUS
++
+ /* !0 for veristat, set during init */
+ const volatile s32 num_possible_cpus = 8;
+ 
+@@ -255,37 +264,79 @@ static bool usersched_has_pending_tasks(void)
+ }
+ 
+ /*
+- * Dispatch a task and wake-up a target CPU.
++ * Return the corresponding CPU associated to a DSQ.
+  */
+-static void
+-dispatch_task(struct task_struct *p, s32 cpu, u64 enq_flags)
++static s32 dsq_id_to_cpu(u64 dsq_id)
+ {
+-	u64 slice = __sync_fetch_and_add(&effective_slice_ns, 0) ? : slice_ns;
++	if (dsq_id >= MAX_CPUS) {
++		scx_bpf_error("Invalid dsq_id: %llu", dsq_id);
++		return -EINVAL;
++	}
++	return (s32)dsq_id;
++}
+ 
+-	/*
+-	 * Wake-up the CPU selected by the scheduler, so the task will have
+-	 * more chances to transition there.
+-	 */
+-	if (cpu >= 0)
+-		scx_bpf_kick_cpu(cpu, 0);
+-	dbg_msg("dispatch: pid=%d (%s) cpu=%ld", p->pid, p->comm, cpu);
+-	scx_bpf_dispatch(p, SCX_DSQ_GLOBAL, slice, enq_flags);
++/*
++ * Return the DSQ ID associated to a CPU, or SHARED_DSQ if the CPU is not
++ * valid.
++ */
++static u64 cpu_to_dsq_id(s32 cpu)
++{
++	if (cpu < 0 || cpu >= MAX_CPUS) {
++		scx_bpf_error("Invalid cpu: %d", cpu);
++		return SHARED_DSQ;
++	}
++	return (u64)cpu;
+ }
+ 
+ /*
+- * Dispatch a task on its local CPU.
++ * Dispatch a task to a target DSQ, waking up the corresponding CPU, if needed.
+  */
+-static void dispatch_local(struct task_struct *p, u64 enq_flags)
++static void dispatch_task(struct task_struct *p, u64 dsq_id, u64 enq_flags)
+ {
+-	s32 cpu = scx_bpf_task_cpu(p);
++	u64 slice = __sync_fetch_and_add(&effective_slice_ns, 0) ? : slice_ns;
++	s32 cpu;
+ 
+-	dispatch_task(p, cpu, enq_flags);
++	switch (dsq_id) {
++	case SCX_DSQ_LOCAL:
++		break;
++	case SHARED_DSQ:
++		/*
++		 * Dispatch a task to the shared DSQ and kick the CPU assigned
++		 * to the task by the select_cpu() callbak.
++		 */
++		cpu = scx_bpf_task_cpu(p);
++		scx_bpf_kick_cpu(cpu, 0);
++		break;
++	default:
++		/*
++		 * Dispatch a task to a specific per-CPU DSQ if the target CPU
++		 * can be used (according to the cpumask), otherwise redirect
++		 * the task to the shared DSQ.
++		 *
++		 * In the future we may want to provide a way to check the
++		 * cpumask in advance from user-space in a proper synchronized
++		 * way, instead of bouncing the task somewhere else, but for
++		 * now this allows to dispatch tasks to valid CPUs, avoid
++		 * potential starvation issues.
++		 */
++		cpu = dsq_id_to_cpu(dsq_id);
++		if (bpf_cpumask_test_cpu(cpu, p->cpus_ptr)) {
++			scx_bpf_kick_cpu(cpu, 0);
++		} else {
++			dsq_id = SHARED_DSQ;
++			cpu = scx_bpf_task_cpu(p);
++			scx_bpf_kick_cpu(cpu, 0);
++		}
++		break;
++	}
++	dbg_msg("dispatch: pid=%d (%s) dsq=%llu", p->pid, p->comm, dsq_id);
++	scx_bpf_dispatch(p, dsq_id, slice, enq_flags);
+ }
+ 
+ /*
+  * Dispatch the user-space scheduler.
+  */
+-static void dispatch_user_scheduler(s32 cpu)
++static void dispatch_user_scheduler(void)
+ {
+ 	struct task_struct *p;
+ 
+@@ -297,21 +348,22 @@ static void dispatch_user_scheduler(s32 cpu)
+ 		scx_bpf_error("Failed to find usersched task %d", usersched_pid);
+ 		return;
+ 	}
+-	dispatch_task(p, cpu, 0);
+-	__sync_fetch_and_add(&nr_kernel_dispatches, 1);
++	/*
++	 * Dispatch the scheduler on the first CPU available, likely the
++	 * current one.
++	 */
++	dispatch_task(p, SHARED_DSQ, 0);
+ 	bpf_task_release(p);
+ }
+ 
+ /*
+- * Select the target CPU where a task can be directly dispatched to from
+- * .enqueue().
++ * Select the target CPU where a task can be executed.
+  *
+  * The idea here is to try to find an idle CPU in the system, and preferably
+- * maintain the task on the same CPU.
+- *
+- * If the CPU where the task was running is still idle, then the task can be
+- * dispatched immediately on the same CPU from .enqueue(), without having to
+- * call the scheduler.
++ * maintain the task on the same CPU. If we can find an idle CPU in the system
++ * dispatch the task directly bypassing the user-space scheduler. Otherwise,
++ * send the task to the user-space scheduler, maintaining the previously used
++ * CPU as a hint for the scheduler.
+  *
+  * Decision made in this function is not final. The user-space scheduler may
+  * decide to move the task to a different CPU later, if needed.
+@@ -324,7 +376,11 @@ s32 BPF_STRUCT_OPS(rustland_select_cpu, struct task_struct *p, s32 prev_cpu,
+ 
+ 	cpu = scx_bpf_select_cpu_dfl(p, prev_cpu, wake_flags, &is_idle);
+ 	if (is_idle) {
+-		dispatch_local(p, 0);
++		/*
++		 * Using SCX_DSQ_LOCAL ensures that the task will be executed
++		 * directly on the CPU returned by this function.
++		 */
++		dispatch_task(p, SCX_DSQ_LOCAL, 0);
+ 		__sync_fetch_and_add(&nr_kernel_dispatches, 1);
+ 	}
+ 
+@@ -387,7 +443,7 @@ void BPF_STRUCT_OPS(rustland_enqueue, struct task_struct *p, u64 enq_flags)
+ 	 * long (i.e., ksoftirqd/N, rcuop/N, etc.).
+ 	 */
+ 	if (is_kthread(p) && p->nr_cpus_allowed == 1) {
+-		dispatch_local(p, enq_flags);
++		dispatch_task(p, SCX_DSQ_LOCAL, enq_flags);
+ 		__sync_fetch_and_add(&nr_kernel_dispatches, 1);
+ 		return;
+ 	}
+@@ -404,7 +460,7 @@ void BPF_STRUCT_OPS(rustland_enqueue, struct task_struct *p, u64 enq_flags)
+ 	dbg_msg("enqueue: pid=%d (%s)", p->pid, p->comm);
+ 	if (bpf_map_push_elem(&queued, &task, 0)) {
+ 		sched_congested(p);
+-		dispatch_local(p, enq_flags);
++		dispatch_task(p, SHARED_DSQ, enq_flags);
+ 		__sync_fetch_and_add(&nr_kernel_dispatches, 1);
+ 		return;
+ 	}
+@@ -425,9 +481,9 @@ void BPF_STRUCT_OPS(rustland_dispatch, s32 cpu, struct task_struct *prev)
+ {
+ 	/*
+ 	 * Check if the user-space scheduler needs to run, and in that case try
+-	 * to dispatch it on the current CPU.
++	 * to dispatch it immediately.
+ 	 */
+-	dispatch_user_scheduler(cpu);
++	dispatch_user_scheduler();
+ 
+ 	/*
+ 	 * Consume all tasks from the @dispatched list and immediately try to
+@@ -451,19 +507,34 @@ void BPF_STRUCT_OPS(rustland_dispatch, s32 cpu, struct task_struct *prev)
+ 		if (!p)
+ 			continue;
+ 		/*
+-		 * Check whether the scheduler assigned a different CPU to the
+-		 * task and migrate (if possible).
++		 * Check whether the user-space scheduler assigned a different
++		 * CPU to the task and migrate (if possible).
++		 *
++		 * If no CPU has been specified (task.cpu < 0), then dispatch
++		 * the task to the shared DSQ and rely on the built-in idle CPU
++		 * selection.
+ 		 */
+ 		dbg_msg("usersched: pid=%d cpu=%d payload=%llu",
+ 			task.pid, task.cpu, task.payload);
+-		/*
+-		 * Update task vruntime with the value determined by the
+-		 * user-space scheduler.
+-		 */
+-		dispatch_task(p, task.cpu, 0);
++		if (task.cpu < 0)
++			dispatch_task(p, SHARED_DSQ, 0);
++		else
++			dispatch_task(p, cpu_to_dsq_id(task.cpu), 0);
+ 		bpf_task_release(p);
+ 		__sync_fetch_and_add(&nr_user_dispatches, 1);
+ 	}
++
++	/* Consume all tasks enqueued in the current CPU's DSQ first */
++	bpf_repeat(MAX_ENQUEUED_TASKS) {
++		if (!scx_bpf_consume(cpu_to_dsq_id(cpu)))
++			break;
++	}
++
++	/* Consume all tasks enqueued in the shared DSQ */
++	bpf_repeat(MAX_ENQUEUED_TASKS) {
++		if (!scx_bpf_consume(SHARED_DSQ))
++			break;
++	}
+ }
+ 
+ /*
+@@ -520,8 +591,14 @@ void BPF_STRUCT_OPS(rustland_update_idle, s32 cpu, bool idle)
+ 	 * A CPU is now available, notify the user-space scheduler that tasks
+ 	 * can be dispatched.
+ 	 */
+-	if (usersched_has_pending_tasks())
++	if (usersched_has_pending_tasks()) {
+ 		set_usersched_needed();
++		/*
++		 * Wake up the idle CPU, so that it can immediately accept
++		 * dispatched tasks.
++		 */
++		scx_bpf_kick_cpu(cpu, 0);
++	}
+ }
+ 
+ /*
+@@ -619,6 +696,40 @@ static int usersched_timer_init(void)
+ 	return err;
+ }
+ 
++/*
++ * Create a DSQ for each CPU available in the system and a global shared DSQ.
++ *
++ * All the tasks processed by the user-space scheduler can be dispatched either
++ * to a specific CPU/DSQ or to the first CPU available (SHARED_DSQ).
++ *
++ * Custom DSQs are then consumed from the .dispatch() callback, that will
++ * transfer all the enqueued tasks to the consuming CPU's local DSQ.
++ */
++static int dsq_init(void)
++{
++	int err;
++	s32 cpu;
++
++	/* Create per-CPU DSQs */
++	bpf_for(cpu, 0, num_possible_cpus) {
++		err = scx_bpf_create_dsq(cpu_to_dsq_id(cpu), -1);
++		if (err) {
++			scx_bpf_error("failed to create pcpu DSQ %d: %d",
++				      cpu, err);
++			return err;
++		}
++	}
++
++	/* Create the global shared DSQ */
++	err = scx_bpf_create_dsq(SHARED_DSQ, -1);
++	if (err) {
++		scx_bpf_error("failed to create shared DSQ: %d", err);
++		return err;
++	}
++
++	return 0;
++}
++
+ /*
+  * Initialize the scheduling class.
+  */
+@@ -626,6 +737,9 @@ s32 BPF_STRUCT_OPS_SLEEPABLE(rustland_init)
+ {
+ 	int err;
+ 
++	err = dsq_init();
++	if (err)
++		return err;
+ 	err = usersched_timer_init();
+ 	if (err)
+ 		return err;
+-- 
+2.43.0.232.ge79552d197
+
+
+From 26899f9359edb163fea7f4f1a7469f21528ef4a7 Mon Sep 17 00:00:00 2001
+From: Andrea Righi <andrea.righi@canonical.com>
+Date: Thu, 1 Feb 2024 11:10:23 +0100
+Subject: [PATCH 3/7] scx_rustland: BPF: refine CPU dispatch logic
+
+When the user-space scheduler dispatches a task on a specific CPU, that
+CPU might not be valid, since the user-space doesn't have visibility of
+the task's cpumask.
+
+When this happens the BPF dispatcher (that has direct visibility of the
+cpumask) should automatically redirect the task to a valid CPU, but
+instead of bouncing the task on the shared DSQ, we should try to use the
+CPU assigned by the built-in idle selection logic.
+
+If this CPU is also not valid, then we can simply ignore the task, that
+has been de-queued and re-enqueued, since a valid CPU will be naturally
+re-selected at a later time.
+
+Moreover, avoid to kick any specific CPU when the task is dispatched to
+shared DSQ, since the task can be consumed on any CPU and the additional
+kick would simply add more overhead.
+
+Lastly, rename dsq_id_to_cpu() to dsq_to_cpu() and cpu_to_dsq_id() to
+cpu_to_dsq() for more clarity.
+
+Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
+---
+ scheds/rust/scx_rustland/src/bpf/main.bpf.c | 42 +++++++++------------
+ 1 file changed, 17 insertions(+), 25 deletions(-)
+
+diff --git a/scheds/rust/scx_rustland/src/bpf/main.bpf.c b/scheds/rust/scx_rustland/src/bpf/main.bpf.c
+index 7648cf2..6054629 100644
+--- a/scheds/rust/scx_rustland/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_rustland/src/bpf/main.bpf.c
+@@ -266,7 +266,7 @@ static bool usersched_has_pending_tasks(void)
+ /*
+  * Return the corresponding CPU associated to a DSQ.
+  */
+-static s32 dsq_id_to_cpu(u64 dsq_id)
++static s32 dsq_to_cpu(u64 dsq_id)
+ {
+ 	if (dsq_id >= MAX_CPUS) {
+ 		scx_bpf_error("Invalid dsq_id: %llu", dsq_id);
+@@ -279,7 +279,7 @@ static s32 dsq_id_to_cpu(u64 dsq_id)
+  * Return the DSQ ID associated to a CPU, or SHARED_DSQ if the CPU is not
+  * valid.
+  */
+-static u64 cpu_to_dsq_id(s32 cpu)
++static u64 cpu_to_dsq(s32 cpu)
+ {
+ 	if (cpu < 0 || cpu >= MAX_CPUS) {
+ 		scx_bpf_error("Invalid cpu: %d", cpu);
+@@ -298,35 +298,27 @@ static void dispatch_task(struct task_struct *p, u64 dsq_id, u64 enq_flags)
+ 
+ 	switch (dsq_id) {
+ 	case SCX_DSQ_LOCAL:
+-		break;
+ 	case SHARED_DSQ:
+-		/*
+-		 * Dispatch a task to the shared DSQ and kick the CPU assigned
+-		 * to the task by the select_cpu() callbak.
+-		 */
+-		cpu = scx_bpf_task_cpu(p);
+-		scx_bpf_kick_cpu(cpu, 0);
+ 		break;
+ 	default:
+ 		/*
+ 		 * Dispatch a task to a specific per-CPU DSQ if the target CPU
+ 		 * can be used (according to the cpumask), otherwise redirect
+-		 * the task to the shared DSQ.
++		 * the task to the CPU assigned by the built-in idle selection
++		 * logic.
+ 		 *
+-		 * In the future we may want to provide a way to check the
+-		 * cpumask in advance from user-space in a proper synchronized
+-		 * way, instead of bouncing the task somewhere else, but for
+-		 * now this allows to dispatch tasks to valid CPUs, avoid
+-		 * potential starvation issues.
++		 * If also this CPU is not usable (because cpumask has changed
++		 * in the meantime), we can simply ignore the task, as it has
++		 * been dequeued and re-enqueued, so it will pick a valid CPU.
+ 		 */
+-		cpu = dsq_id_to_cpu(dsq_id);
+-		if (bpf_cpumask_test_cpu(cpu, p->cpus_ptr)) {
+-			scx_bpf_kick_cpu(cpu, 0);
+-		} else {
+-			dsq_id = SHARED_DSQ;
++		cpu = dsq_to_cpu(dsq_id);
++		if (!bpf_cpumask_test_cpu(cpu, p->cpus_ptr)) {
+ 			cpu = scx_bpf_task_cpu(p);
+-			scx_bpf_kick_cpu(cpu, 0);
++			if (!bpf_cpumask_test_cpu(cpu, p->cpus_ptr))
++				return;
++			dsq_id = dsq_to_cpu(cpu);
+ 		}
++		scx_bpf_kick_cpu(cpu, 0);
+ 		break;
+ 	}
+ 	dbg_msg("dispatch: pid=%d (%s) dsq=%llu", p->pid, p->comm, dsq_id);
+@@ -425,7 +417,7 @@ static void sched_congested(struct task_struct *p)
+  */
+ void BPF_STRUCT_OPS(rustland_enqueue, struct task_struct *p, u64 enq_flags)
+ {
+-        struct queued_task_ctx task;
++	struct queued_task_ctx task;
+ 
+ 	/*
+ 	 * Scheduler is dispatched directly in .dispatch() when needed, so
+@@ -519,14 +511,14 @@ void BPF_STRUCT_OPS(rustland_dispatch, s32 cpu, struct task_struct *prev)
+ 		if (task.cpu < 0)
+ 			dispatch_task(p, SHARED_DSQ, 0);
+ 		else
+-			dispatch_task(p, cpu_to_dsq_id(task.cpu), 0);
++			dispatch_task(p, cpu_to_dsq(task.cpu), 0);
+ 		bpf_task_release(p);
+ 		__sync_fetch_and_add(&nr_user_dispatches, 1);
+ 	}
+ 
+ 	/* Consume all tasks enqueued in the current CPU's DSQ first */
+ 	bpf_repeat(MAX_ENQUEUED_TASKS) {
+-		if (!scx_bpf_consume(cpu_to_dsq_id(cpu)))
++		if (!scx_bpf_consume(cpu_to_dsq(cpu)))
+ 			break;
+ 	}
+ 
+@@ -712,7 +704,7 @@ static int dsq_init(void)
+ 
+ 	/* Create per-CPU DSQs */
+ 	bpf_for(cpu, 0, num_possible_cpus) {
+-		err = scx_bpf_create_dsq(cpu_to_dsq_id(cpu), -1);
++		err = scx_bpf_create_dsq(cpu_to_dsq(cpu), -1);
+ 		if (err) {
+ 			scx_bpf_error("failed to create pcpu DSQ %d: %d",
+ 				      cpu, err);
+-- 
+2.43.0.232.ge79552d197
+
+
+From ae345e6226885b9380e253c4150e6ecea1f094b0 Mon Sep 17 00:00:00 2001
+From: Andrea Righi <andrea.righi@canonical.com>
+Date: Tue, 23 Jan 2024 21:15:18 +0100
+Subject: [PATCH 4/7] scx_rustland: usersched: code refactoring
+
+No functional change, just move code around to make it more readable.
+
+Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
+---
+ scheds/rust/scx_rustland/src/main.rs | 157 ++++++++++++---------------
+ 1 file changed, 69 insertions(+), 88 deletions(-)
+
+diff --git a/scheds/rust/scx_rustland/src/main.rs b/scheds/rust/scx_rustland/src/main.rs
+index 3047eb9..ff55c88 100644
+--- a/scheds/rust/scx_rustland/src/main.rs
++++ b/scheds/rust/scx_rustland/src/main.rs
+@@ -260,10 +260,10 @@ impl<'a> Scheduler<'a> {
+         })
+     }
+ 
+-    // Returns the list of idle CPUs, sorted by the amount of free sibling CPUs in the same core.
++    // Returns the list of idle CPUs.
+     //
+-    // In this way we can schedule first on the CPUs that are "more free" than others, maximizing
+-    // performance in presence of SMT cores.
++    // On SMT systems consider only one CPU for each fully idle core, to avoid disrupting
++    // performnance too much by running multiple tasks in the same core.
+     fn get_idle_cpus(&self) -> Vec<i32> {
+         let cores = &self.cores.map;
+         let num_cpus = self.cores.nr_cpus_online;
+@@ -273,8 +273,15 @@ impl<'a> Scheduler<'a> {
+             .map(|cpu_id| self.bpf.get_cpu_pid(cpu_id))
+             .collect();
+ 
+-        // Generate the list of idle cores (cores that don't have any task running on their CPUs).
+-        let core_idle: Vec<i32> = cores
++        // Generate the list of idle CPU IDs by selecting the first item from each list of CPU IDs
++        // associated to the idle cores. The remaining sibling CPUs will be used as spare/emergency
++        // CPUs by the BPF dispatcher.
++        //
++        // This prevents overloading cores on SMT systems, improving the overall system
++        // responsiveness and it also improves scheduler stability: using the remaining sibling
++        // CPUs as spare CPUs ensures that the BPF dispatcher will always have some available CPUs
++        // that can be used in emergency conditions.
++        let idle_cores: Vec<i32> = cores
+             .iter()
+             .filter_map(|(&core_id, core_cpus)| {
+                 if core_cpus
+@@ -288,22 +295,7 @@ impl<'a> Scheduler<'a> {
+             })
+             .collect();
+ 
+-        // Generate the list of idle CPU IDs by selecting the first item from each list of CPU IDs
+-        // associated to the idle cores. The remaining sibling CPUs will be used as spare/emergency
+-        // CPUs by the BPF dispatcher.
+-        //
+-        // This prevents overloading cores on SMT systems, improving the overall system
+-        // responsiveness and it also improves scheduler stability: using the remaining sibling
+-        // CPUs as spare CPUs ensures that the BPF dispatcher will always have some available CPUs
+-        // that can be used in emergency conditions (e.g., when the target CPU for a task cannot be
+-        // used, in presence of cpumask restrictions).
+-        let idle_cpus: Vec<i32> = core_idle
+-            .iter()
+-            .flat_map(|&core_id| cores[&core_id].iter().take(1).cloned())
+-            .collect();
+-
+-        // Return the list of idle CPUs.
+-        idle_cpus
++        idle_cores.iter().map(|&core| cores[&core][0]).collect()
+     }
+ 
+     // Return current timestamp in ns.
+@@ -318,16 +310,7 @@ impl<'a> Scheduler<'a> {
+     // evaluated weighted time slice to the caller.
+     //
+     // This method implements the main task ordering logic of the scheduler.
+-    fn update_enqueued(
+-        task_info: &mut TaskInfo,
+-        sum_exec_runtime: u64,
+-        nvcsw: u64,
+-        mut weight: u64,
+-        min_vruntime: u64,
+-        slice_ns: u64,
+-        slice_boost: u64,
+-        now: u64,
+-    ) {
++    fn update_enqueued(&mut self, task: &QueuedTask) -> u64 {
+         // Determine if a task is new or old, based on their current runtime and previous runtime
+         // counters.
+         //
+@@ -353,20 +336,57 @@ impl<'a> Scheduler<'a> {
+             delta_nvcsw * 10 * NSEC_PER_SEC / delta_ns.max(1) >= 10
+         }
+ 
++        // Cache the current timestamp.
++        let now = Self::now();
++
++        // Get the current effective time slice.
++        let slice_ns = self.bpf.get_effective_slice_us() * MSEC_PER_SEC;
++
++        // Update dynamic slice boost.
++        //
++        // The slice boost is dynamically adjusted as a function of the amount of CPUs
++        // in the system and the amount of tasks currently waiting to be dispatched.
++        //
++        // As the amount of waiting tasks in the task_pool increases we should reduce
++        // the slice boost to enforce the scheduler to apply a pure vruntime-based
++        // policy.
++        //
++        // This allows to survive stress tests that are spawning a massive amount of
++        // tasks.
++        self.eff_slice_boost = (self.slice_boost * self.cores.nr_cpus_online as u64
++            / self.task_pool.tasks.len().max(1) as u64)
++            .max(1);
++
++        // Get task information if the task is already stored in the task map,
++        // otherwise create a new entry for it.
++        let task_info = self
++            .task_map
++            .tasks
++            .entry(task.pid)
++            .or_insert_with_key(|&_pid| TaskInfo {
++                sum_exec_runtime: 0,
++                vruntime: self.min_vruntime,
++                nvcsw: 0,
++                nvcsw_ts: now,
++            });
++
+         // Evaluate last time slot used by the task.
+-        let mut slice = if is_new_task(sum_exec_runtime, task_info.sum_exec_runtime) {
++        let mut slice = if is_new_task(task.sum_exec_runtime, task_info.sum_exec_runtime) {
+             // Give to newer tasks a priority boost, so we can prioritize responsiveness of
+             // interactive shell sessions.
+-            sum_exec_runtime / slice_boost
++            task.sum_exec_runtime / self.slice_boost
+         } else {
+             // Old task: charge time slice normally.
+-            sum_exec_runtime - task_info.sum_exec_runtime
++            task.sum_exec_runtime - task_info.sum_exec_runtime
+         };
+ 
+         // Apply the slice boost to interactive tasks.
+-        if is_interactive_task(nvcsw - task_info.nvcsw, now - task_info.nvcsw_ts) {
+-            weight *= slice_boost;
+-        }
++        let weight = if is_interactive_task(task.nvcsw - task_info.nvcsw, now - task_info.nvcsw_ts)
++        {
++            task.weight * self.slice_boost
++        } else {
++            task.weight
++        };
+ 
+         // Scale the time slice by the task's priority (weight).
+         slice = slice * 100 / weight;
+@@ -381,22 +401,24 @@ impl<'a> Scheduler<'a> {
+         //
+         // Moreover, limiting the accounted time slice to slice_ns, allows to prevent starving the
+         // current task for too long in the scheduler task pool.
+-        task_info.vruntime = min_vruntime + slice.clamp(1, slice_ns * 100 / weight);
++        task_info.vruntime = self.min_vruntime + slice.clamp(1, slice_ns * 100 / weight);
+ 
+         // Update total task cputime.
+-        task_info.sum_exec_runtime = sum_exec_runtime;
++        task_info.sum_exec_runtime = task.sum_exec_runtime;
+ 
+         // Update voluntay context switches counter and timestamp.
+         if now - task_info.nvcsw_ts > 10 * NSEC_PER_SEC {
+-            task_info.nvcsw = nvcsw;
++            task_info.nvcsw = task.nvcsw;
+             task_info.nvcsw_ts = now;
+         }
++
++        // Return the task vruntime.
++        task_info.vruntime
+     }
+ 
+     // Drain all the tasks from the queued list, update their vruntime (Self::update_enqueued()),
+     // then push them all to the task pool (doing so will sort them by their vruntime).
+     fn drain_queued_tasks(&mut self) {
+-        let slice_ns = self.bpf.get_effective_slice_us() * MSEC_PER_SEC;
+         loop {
+             match self.bpf.dequeue_task() {
+                 Ok(Some(task)) => {
+@@ -407,51 +429,14 @@ impl<'a> Scheduler<'a> {
+                         continue;
+                     }
+ 
+-                    // Get task information if the task is already stored in the task map,
+-                    // otherwise create a new entry for it.
+-                    let task_info =
+-                        self.task_map
+-                            .tasks
+-                            .entry(task.pid)
+-                            .or_insert_with_key(|&_pid| TaskInfo {
+-                                sum_exec_runtime: 0,
+-                                vruntime: self.min_vruntime,
+-                                nvcsw: 0,
+-                                nvcsw_ts: Self::now(),
+-                            });
+-
+-                    // Update dynamic slice boost.
+-                    //
+-                    // The slice boost is dynamically adjusted as a function of the amount of CPUs
+-                    // in the system and the amount of tasks currently waiting to be dispatched.
+-                    //
+-                    // As the amount of waiting tasks in the task_pool increases we should reduce
+-                    // the slice boost to enforce the scheduler to apply a pure vruntime-based
+-                    // policy.
+-                    //
+-                    // This allows to survive stress tests that are spawning a massive amount of
+-                    // tasks.
+-                    self.eff_slice_boost = (self.slice_boost * self.cores.nr_cpus_online as u64
+-                        / self.task_pool.tasks.len().max(1) as u64)
+-                        .max(1);
+-
+                     // Update task information.
+-                    Self::update_enqueued(
+-                        task_info,
+-                        task.sum_exec_runtime,
+-                        task.nvcsw,
+-                        task.weight,
+-                        self.min_vruntime,
+-                        slice_ns,
+-                        self.eff_slice_boost,
+-                        Self::now(),
+-                    );
++                    let vruntime = self.update_enqueued(&task);
+ 
+                     // Insert task in the task pool (ordered by vruntime).
+                     self.task_pool.push(Task {
+                         pid: task.pid,
+                         cpu: task.cpu,
+-                        vruntime: task_info.vruntime,
++                        vruntime,
+                     });
+                 }
+                 Ok(None) => {
+@@ -485,30 +470,26 @@ impl<'a> Scheduler<'a> {
+ 
+     // Dispatch tasks from the task pool in order (sending them to the BPF dispatcher).
+     fn dispatch_tasks(&mut self) {
+-        let mut idle_cpus = self.get_idle_cpus();
+-
+         // Dispatch only a batch of tasks equal to the amount of idle CPUs in the system.
+         //
+         // This allows to have more tasks sitting in the task pool, reducing the pressure on the
+         // dispatcher queues and giving a chance to higher priority tasks to come in and get
+         // dispatched earlier, mitigating potential priority inversion issues.
++        let mut idle_cpus = self.get_idle_cpus();
+         while !idle_cpus.is_empty() {
+             match self.task_pool.pop() {
+                 Some(mut task) => {
+                     // Update global minimum vruntime.
+                     self.min_vruntime = task.vruntime;
+ 
+-                    // Select a CPU to dispatch the task.
+-                    //
+-                    // Use the previously used CPU if idle, that is always the best choice (to
+-                    // mitigate migration overhead), otherwise pick the next idle CPU available.
++                    // Pick an ideal idle CPU for the task.
+                     if let Some(pos) = idle_cpus.iter().position(|&x| x == task.cpu) {
+                         // The CPU assigned to the task is in idle_cpus, keep the assignment and
+                         // remove the CPU from idle_cpus.
+                         idle_cpus.remove(pos);
+                     } else {
+-                        // The CPU assigned to the task is not in idle_cpus, pop the first CPU from
+-                        // idle_cpus and assign it to the task.
++                        // The CPU assigned to the task is not in idle_cpus, remove the first idle
++                        // CPU and dispatch the task to the shared DSQ.
+                         task.cpu = idle_cpus.pop().unwrap();
+                     }
+ 
+-- 
+2.43.0.232.ge79552d197
+
+
+From 2419e087f8113b0b6f4f4a720fbe4971dc9a41b1 Mon Sep 17 00:00:00 2001
+From: Andrea Righi <andrea.righi@canonical.com>
+Date: Tue, 30 Jan 2024 00:57:29 +0100
+Subject: [PATCH 5/7] scx_rustland: rely on the built-in idle selection logic
+
+Simplify the idle selection logic by relying only on the built-in idle
+selection performed in the BPF layer.
+
+When there are idle CPUs available in the system, tasks are dispatched
+directly by the BPF dispatcher without invoking the user-space
+scheduler. This allows to avoid the user-space overhead and get the best
+system performance when CPU resources are not overcommitted.
+
+Once the number of tasks exceeds the available CPUs, the user-space
+scheduler takes over. However, by this time, the system is already
+overcommitted, so there's little advantage in attempting to pinpoint the
+optimal idle CPU through the user-space scheduler. Instead, tasks can be
+executed on the first available CPU, consistently dispatching them to
+the shared DSQ.
+
+This allows to achieve the optimal performance both with system
+under-utilization and over-utilization.
+
+With this change in place the user-space scheduler won't dispatch tasks
+directly to specific CPUs, but we still want to keep this as a generic
+feature in the BPF layer, so that it can be potentially used in the
+future by this scheduler or even by other user-space schedulers (once
+the BPF layer will be moved to a more generic place).
+
+Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
+---
+ scheds/rust/scx_rustland/src/main.rs | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
+
+diff --git a/scheds/rust/scx_rustland/src/main.rs b/scheds/rust/scx_rustland/src/main.rs
+index ff55c88..d74d7dc 100644
+--- a/scheds/rust/scx_rustland/src/main.rs
++++ b/scheds/rust/scx_rustland/src/main.rs
+@@ -475,23 +475,16 @@ impl<'a> Scheduler<'a> {
+         // This allows to have more tasks sitting in the task pool, reducing the pressure on the
+         // dispatcher queues and giving a chance to higher priority tasks to come in and get
+         // dispatched earlier, mitigating potential priority inversion issues.
+-        let mut idle_cpus = self.get_idle_cpus();
+-        while !idle_cpus.is_empty() {
++        let idle_cpus = self.get_idle_cpus();
++        for _ in &idle_cpus {
+             match self.task_pool.pop() {
+                 Some(mut task) => {
+                     // Update global minimum vruntime.
+                     self.min_vruntime = task.vruntime;
+ 
+-                    // Pick an ideal idle CPU for the task.
+-                    if let Some(pos) = idle_cpus.iter().position(|&x| x == task.cpu) {
+-                        // The CPU assigned to the task is in idle_cpus, keep the assignment and
+-                        // remove the CPU from idle_cpus.
+-                        idle_cpus.remove(pos);
+-                    } else {
+-                        // The CPU assigned to the task is not in idle_cpus, remove the first idle
+-                        // CPU and dispatch the task to the shared DSQ.
+-                        task.cpu = idle_cpus.pop().unwrap();
+-                    }
++                    // Do not pin the task to any specific CPU, simply dispatch on the first idle
++                    // CPU available.
++                    task.cpu = NO_CPU;
+ 
+                     // Send task to the BPF dispatcher.
+                     match self.bpf.dispatch_task(&task.to_dispatched_task()) {
+-- 
+2.43.0.232.ge79552d197
+
+
+From 1966f5259ca601b035d0edd366ac7540ffce13ff Mon Sep 17 00:00:00 2001
+From: Andrea Righi <andrea.righi@canonical.com>
+Date: Tue, 23 Jan 2024 20:45:08 +0100
+Subject: [PATCH 6/7] scx_rustland: enhance interactive task classification
+
+Evaluate the number of voluntary context switches per second (nvcsw/sec)
+for each task using an exponentially weighted moving average (EWMA) with
+weight 0.5, that allows to classify interactive tasks with more
+accuracy.
+
+Using a simple average over a period of time of 10 sec can introduce
+small lags every 10 sec, as the statistics for the number of voluntary
+context switches are refreshed. This can result in interactive tasks
+taking a brief time to catch up in order to be accurately classified as
+so, causing for example short audio cracks, small drop of 5-10 fps in
+games, etc.
+
+Using a EMWA allows to smooth the average of nvcsw/sec, preventing short
+lags in the interactive tasks, while also preventing to incorrectly
+classify as interactive tasks that may experience an isolated short
+burst of voluntary context switches.
+
+This patch has been tested with the usual test case of playing a
+videogame while running a parallel kernel build in the background.
+
+Without this patch the short lag every 10 sec is clearly noticeable,
+with this patch applied the game and audio run smoothly.
+
+Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
+---
+ scheds/rust/scx_rustland/src/main.rs | 48 +++++++++++++++-------------
+ 1 file changed, 25 insertions(+), 23 deletions(-)
+
+diff --git a/scheds/rust/scx_rustland/src/main.rs b/scheds/rust/scx_rustland/src/main.rs
+index d74d7dc..8ce25ee 100644
+--- a/scheds/rust/scx_rustland/src/main.rs
++++ b/scheds/rust/scx_rustland/src/main.rs
+@@ -112,6 +112,8 @@ struct Opts {
+ }
+ 
+ // Time constants.
++const USEC_PER_NSEC: u64 = 1_000;
++const NSEC_PER_USEC: u64 = 1_000;
+ const MSEC_PER_SEC: u64 = 1_000;
+ const NSEC_PER_SEC: u64 = 1_000_000_000;
+ 
+@@ -120,6 +122,7 @@ const NSEC_PER_SEC: u64 = 1_000_000_000;
+ struct TaskInfo {
+     sum_exec_runtime: u64, // total cpu time used by the task
+     vruntime: u64,         // total vruntime of the task
++    avg_nvcsw: u64,        // average of voluntary context switches
+     nvcsw: u64,            // total amount of voluntary context switches
+     nvcsw_ts: u64,         // timestamp of the previous nvcsw update
+ }
+@@ -219,7 +222,7 @@ impl<'a> Scheduler<'a> {
+         let cores = CoreMapping::new();
+ 
+         // Save the default time slice (in ns) in the scheduler class.
+-        let slice_ns = opts.slice_us * MSEC_PER_SEC;
++        let slice_ns = opts.slice_us * NSEC_PER_USEC;
+ 
+         // Slice booster (0 = disabled).
+         let slice_boost = opts.slice_boost;
+@@ -326,16 +329,6 @@ impl<'a> Scheduler<'a> {
+             curr_runtime < prev_runtime || prev_runtime == 0
+         }
+ 
+-        // Determine if a task is interactive, based on the amount of voluntary context switches
+-        // per seconds.
+-        //
+-        // NOTE: we should probably make the (delta_nvcsw / delta_t) threshold a tunable, but for
+-        // now let's pretend that an average of 1 voluntary context switch per second, over the
+-        // last 10 seconds, is enough to assume that the task is interactive.
+-        fn is_interactive_task(delta_nvcsw: u64, delta_ns: u64) -> bool {
+-            delta_nvcsw * 10 * NSEC_PER_SEC / delta_ns.max(1) >= 10
+-        }
+-
+         // Cache the current timestamp.
+         let now = Self::now();
+ 
+@@ -366,24 +359,28 @@ impl<'a> Scheduler<'a> {
+             .or_insert_with_key(|&_pid| TaskInfo {
+                 sum_exec_runtime: 0,
+                 vruntime: self.min_vruntime,
+-                nvcsw: 0,
++                nvcsw: task.nvcsw,
+                 nvcsw_ts: now,
++                avg_nvcsw: 0,
+             });
+ 
+         // Evaluate last time slot used by the task.
+         let mut slice = if is_new_task(task.sum_exec_runtime, task_info.sum_exec_runtime) {
+-            // Give to newer tasks a priority boost, so we can prioritize responsiveness of
+-            // interactive shell sessions.
+-            task.sum_exec_runtime / self.slice_boost
++            task.sum_exec_runtime
+         } else {
+-            // Old task: charge time slice normally.
+             task.sum_exec_runtime - task_info.sum_exec_runtime
+         };
+ 
+         // Apply the slice boost to interactive tasks.
+-        let weight = if is_interactive_task(task.nvcsw - task_info.nvcsw, now - task_info.nvcsw_ts)
+-        {
+-            task.weight * self.slice_boost
++        //
++        // Determine if a task is interactive, based on the moving average of voluntary context
++        // switches over time.
++        //
++        // NOTE: we should make this threshold a tunable, but for now let's assume that a moving
++        // average of 10 voluntary context switch per second is enough to classify the task as
++        // interactive.
++        let weight = if task_info.avg_nvcsw >= 10 {
++            task.weight * self.slice_boost.max(1)
+         } else {
+             task.weight
+         };
+@@ -401,13 +398,18 @@ impl<'a> Scheduler<'a> {
+         //
+         // Moreover, limiting the accounted time slice to slice_ns, allows to prevent starving the
+         // current task for too long in the scheduler task pool.
+-        task_info.vruntime = self.min_vruntime + slice.clamp(1, slice_ns * 100 / weight);
++        task_info.vruntime = self.min_vruntime + slice.clamp(1, slice_ns);
+ 
+         // Update total task cputime.
+         task_info.sum_exec_runtime = task.sum_exec_runtime;
+ 
+-        // Update voluntay context switches counter and timestamp.
+-        if now - task_info.nvcsw_ts > 10 * NSEC_PER_SEC {
++        // Refresh voluntay context switches average, counter and timestamp every second.
++        if now - task_info.nvcsw_ts > NSEC_PER_SEC {
++            let delta_nvcsw = task.nvcsw - task_info.nvcsw;
++            let delta_t = (now - task_info.nvcsw_ts).max(1);
++            let avg_nvcsw = delta_nvcsw * NSEC_PER_SEC / delta_t;
++
++            task_info.avg_nvcsw = (task_info.avg_nvcsw + avg_nvcsw) / 2;
+             task_info.nvcsw = task.nvcsw;
+             task_info.nvcsw_ts = now;
+         }
+@@ -462,7 +464,7 @@ impl<'a> Scheduler<'a> {
+ 
+         // Scale time slice as a function of nr_scheduled, but never scale below 1 ms.
+         let scaling = (nr_scheduled / 2).max(1);
+-        let slice_us = (slice_us_max / scaling).max(MSEC_PER_SEC);
++        let slice_us = (slice_us_max / scaling).max(USEC_PER_NSEC);
+ 
+         // Apply new scaling.
+         self.bpf.set_effective_slice_us(slice_us);
+-- 
+2.43.0.232.ge79552d197
+
+
+From 5c2cf68f99353a3dc9f55315d16617561e096d33 Mon Sep 17 00:00:00 2001
+From: Andrea Righi <andrea.righi@canonical.com>
+Date: Tue, 30 Jan 2024 15:07:35 +0100
+Subject: [PATCH 7/7] scx_rustland: more aggressive time slice scaling
+
+Allow to scale the effective time slice down to 250 us. This can help to
+maintain a good quality of the audio even when the system is overloaded
+by multiple CPU-intensive tasks.
+
+Moreover, always round up the time slice scaling factor to be a little
+more aggressive and prioritize at scaling the time slice, so that we can
+prioritize low latency tasks even more.
+
+Signed-off-by: Andrea Righi <andrea.righi@canonical.com>
+---
+ scheds/rust/scx_rustland/src/main.rs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scheds/rust/scx_rustland/src/main.rs b/scheds/rust/scx_rustland/src/main.rs
+index 8ce25ee..c903fe6 100644
+--- a/scheds/rust/scx_rustland/src/main.rs
++++ b/scheds/rust/scx_rustland/src/main.rs
+@@ -462,9 +462,9 @@ impl<'a> Scheduler<'a> {
+         let nr_scheduled = self.task_pool.tasks.len() as u64;
+         let slice_us_max = self.slice_ns / MSEC_PER_SEC;
+ 
+-        // Scale time slice as a function of nr_scheduled, but never scale below 1 ms.
+-        let scaling = (nr_scheduled / 2).max(1);
+-        let slice_us = (slice_us_max / scaling).max(USEC_PER_NSEC);
++        // Scale time slice as a function of nr_scheduled, but never scale below 250 us.
++        let scaling = ((nr_scheduled + 1) / 2).max(1);
++        let slice_us = (slice_us_max / scaling).max(USEC_PER_NSEC / 4);
+ 
+         // Apply new scaling.
+         self.bpf.set_effective_slice_us(slice_us);
+-- 
+2.43.0.232.ge79552d197
+
