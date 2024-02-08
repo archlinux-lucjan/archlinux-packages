@@ -20,7 +20,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
- 05c0c1481f0227f34f6ce01503e5c0414675af85 # Implement solution to infeasible weights problem
+ 05c0c1481f0227f34f6ce01503e5c0414675af85 # scx: Implement solution to infeasible weights problem
  63b204e8630b52db66119879904a52fbc06034c0 # scx_rusty: Fix typos
 )
 
