@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.6.r57.g73c68c6
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -12,16 +12,20 @@ license=('GPL-2.0-only')
 depends=('libbpf' 'bpf' 'libelf' 'zlib')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm-libs' 'cargo' 'rust')
 backup=('etc/default/scx')
-source=("git+https://github.com/sched-ext/scx"
-        '0001-scx_rusty-Fix-typos.patch'
-        '0002-scx-Implement-solution-to-infeasible-weights-problem.patch')
-sha256sums=('SKIP'
-            'bbaf7f28c43b162319b64a1f154ed7ef2d57424d22b8cc8b4bdf12db6ebf2024'
-            'ae7e31ef6d54b8c7881c2193e1b332c1663236e30b08ae632f4140083cfb3674')
+source=("git+https://github.com/sched-ext/scx")
+sha256sums=('SKIP')
 options=(!lto)
 replaces=("scx-git" "scx-systemd-services-git")
 provides=("scx-scheds")
 conflicts=("scx-scheds")
+
+_backports=(
+ 05c0c1481f0227f34f6ce01503e5c0414675af85 # Implement solution to infeasible weights problem
+ 63b204e8630b52db66119879904a52fbc06034c0 # scx_rusty: Fix typos
+)
+
+_reverts=(
+)
 
 pkgver() {
   cd $gitname
@@ -31,13 +35,16 @@ pkgver() {
 prepare() {
  cd $gitname
 
- local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+ local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
   done
 }
 
