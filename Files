@@ -265,6 +265,8 @@
 │   └── PKGBUILD
 ├── README.md
 ├── scx-scheds-git
+│   ├── 0001-scx_rusty-Fix-typos.patch
+│   ├── 0002-scx-Implement-solution-to-infeasible-weights-problem.patch
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── PKGBUILD
@@ -299,4 +301,4 @@
 └── zstd-git
     └── PKGBUILD
 
-104 directories, 196 files
+104 directories, 198 files

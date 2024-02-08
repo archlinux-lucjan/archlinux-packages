@@ -1,0 +1,54 @@
+From 9f4bc923d44d38a2e49d64a4bb540baf2d34fd45 Mon Sep 17 00:00:00 2001
+From: David Vernet <void@manifault.com>
+Date: Wed, 13 Dec 2023 14:06:38 -0600
+Subject: [PATCH 1/2] scx_rusty: Fix typos
+
+Signed-off-by: David Vernet <void@manifault.com>
+---
+ scheds/include/scx/ravg.bpf.h            | 2 +-
+ scheds/rust/scx_rusty/src/bpf/main.bpf.c | 2 +-
+ scheds/rust/scx_rusty/src/main.rs        | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scheds/include/scx/ravg.bpf.h b/scheds/include/scx/ravg.bpf.h
+index a233d85..7e2235f 100644
+--- a/scheds/include/scx/ravg.bpf.h
++++ b/scheds/include/scx/ravg.bpf.h
+@@ -34,7 +34,7 @@ struct ravg_data {
+ 
+ 	/*
+ 	 * Accumulated value of the current period. Input value is 48bits and we
+-	 * normalize half-life to 16bit, so it should fit in an u64.
++	 * normalize half-life to 16bit, so it should fit in a u64.
+ 	 */
+ 	u64			cur;
+ };
+diff --git a/scheds/rust/scx_rusty/src/bpf/main.bpf.c b/scheds/rust/scx_rusty/src/bpf/main.bpf.c
+index e3de840..0b224e7 100644
+--- a/scheds/rust/scx_rusty/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_rusty/src/bpf/main.bpf.c
+@@ -908,7 +908,7 @@ static u32 task_pick_domain(struct task_ctx *taskc, struct task_struct *p,
+ 		if (cpumask_intersects_domain(cpumask, dom)) {
+ 			taskc->dom_mask |= 1LLU << dom;
+ 			/*
+-			 * AsThe starting point is round-robin'd and the first
++			 * The starting point is round-robin'd and the first
+ 			 * match should be spread across all the domains.
+ 			 */
+ 			if (first_dom == MAX_DOMS)
+diff --git a/scheds/rust/scx_rusty/src/main.rs b/scheds/rust/scx_rusty/src/main.rs
+index e816617..58aedaa 100644
+--- a/scheds/rust/scx_rusty/src/main.rs
++++ b/scheds/rust/scx_rusty/src/main.rs
+@@ -815,7 +815,7 @@ impl<'a, 'b, 'c> LoadBalancer<'a, 'b, 'c> {
+             loop {
+                 let last_pushed = pushed;
+ 
+-                // Pull from the most imbalaned to least.
++                // Pull from the most imbalanced to least.
+                 let mut doms_to_pull = BTreeMap::<_, _>::new();
+                 std::mem::swap(&mut self.doms_to_pull, &mut doms_to_pull);
+                 let mut pull_doms = doms_to_pull.into_iter().rev().collect::<Vec<(_, _)>>();
+-- 
+2.43.0.232.ge79552d197
+
