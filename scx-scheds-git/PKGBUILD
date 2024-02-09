@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.6.r62.ga4ff395
-pkgrel=5
+pkgver=0.1.6.r65.g1c00de9
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,8 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
- c574598dc7de6b39c364a48c8cde73e4eb88ef18 # scx_rusty: Fix typos
- 5c1d8cbb874ee0b7d9c6755d976c693cb2170347 # scx: Implement solution to infeasible weights problem
 )
 
 _reverts=(
