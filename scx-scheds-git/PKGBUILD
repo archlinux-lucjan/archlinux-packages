@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.6.r65.g1c00de9
-pkgrel=2
+pkgver=0.1.6.r67.g7ce0d03
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
- 61d1ed338a7c08616a27beedaa23c6fbf8fef357 # scx_rustland: per-task cpumask generation counter
 )
 
 _reverts=(
