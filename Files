@@ -35,17 +35,6 @@
 │   └── PKGBUILD
 ├── devtools-git
 │   └── PKGBUILD
-├── dracut-cachyos
-│   ├── 60-dracut-remove.hook
-│   ├── 90-dracut-install.hook
-│   ├── dracut-cachyos.conf
-│   ├── dracut-install
-│   ├── dracut-rebuild
-│   ├── dracut-remove
-│   ├── dracut-systemd-253.patch
-│   ├── module-setup.sh
-│   ├── PKGBUILD
-│   └── snapshot-overlay.sh
 ├── dracut-cachyos-git
 │   ├── 60-dracut-remove.hook
 │   ├── 90-dracut-install.hook
@@ -299,4 +288,4 @@
 └── zstd-git
     └── PKGBUILD
 
-104 directories, 196 files
+103 directories, 186 files
