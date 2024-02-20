@@ -35,6 +35,18 @@
 │   └── PKGBUILD
 ├── devtools-git
 │   └── PKGBUILD
+├── dracut
+│   ├── 60-dracut-remove.hook
+│   ├── 90-dracut-install.hook
+│   ├── dracut-cachyos.conf
+│   ├── dracut-install
+│   ├── dracut-rebuild
+│   ├── dracut-remove
+│   ├── dracut-systemd-253.patch
+│   ├── dracut-systemd-255-pcrphase.patch
+│   ├── module-setup.sh
+│   ├── PKGBUILD
+│   └── snapshot-overlay.sh
 ├── esdm-git
 │   └── PKGBUILD
 ├── fastfetch-git
@@ -278,4 +290,4 @@
 └── zstd-git
     └── PKGBUILD
 
-102 directories, 177 files
+103 directories, 188 files

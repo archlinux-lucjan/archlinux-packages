@@ -1,0 +1,23 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/dracut/*
+Target = usr/lib/firmware/*
+Target = usr/src/*/dkms.conf
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = amd-ucode
+Target = intel-ucode
+Target = systemd
+
+[Action]
+Description = Updating initramfs...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/dracut-install
+NeedsTargets
