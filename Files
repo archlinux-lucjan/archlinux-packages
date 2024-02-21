@@ -53,7 +53,6 @@
 │   ├── dracut-install
 │   ├── dracut-rebuild
 │   ├── dracut-remove
-│   ├── dracut-systemd-255-pcrphase.patch
 │   ├── module-setup.sh
 │   ├── PKGBUILD
 │   └── snapshot-overlay.sh
@@ -300,4 +299,4 @@
 └── zstd-git
     └── PKGBUILD
 
-104 directories, 197 files
+104 directories, 196 files
