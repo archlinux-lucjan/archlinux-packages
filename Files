@@ -267,9 +267,7 @@
 ├── scx-scheds-git
 │   └── PKGBUILD
 ├── sddm-git
-│   ├── PKGBUILD
-│   ├── sddm.sysusers
-│   └── sddm.tmpfiles
+│   └── PKGBUILD
 ├── uksmd-git
 │   └── PKGBUILD
 ├── vesktop-lucjan-git
@@ -299,4 +297,4 @@
 └── zstd-git
     └── PKGBUILD
 
-104 directories, 196 files
+104 directories, 194 files
