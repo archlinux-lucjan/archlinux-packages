@@ -4,7 +4,7 @@
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
 pkgver=0.21.0.14.gae072f9
-pkgrel=1
+pkgrel=2
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -33,10 +33,7 @@ optdepends=('qt5-declarative: for using Qt5 themes')
 provides=("$_pkgbase" 'display-manager')
 conflicts=("$_pkgbase")
 backup=('usr/share/sddm/scripts/Xsetup'
-        'usr/share/sddm/scripts/Xstop'
-        'etc/pam.d/sddm'
-        'etc/pam.d/sddm-autologin'
-        'etc/pam.d/sddm-greeter')
+        'usr/share/sddm/scripts/Xstop')
 source=("git+https://github.com/sddm/sddm.git#branch=develop")
 sha256sums=('SKIP')
 
