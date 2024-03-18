@@ -219,42 +219,6 @@
 │   ├── 0001-Fix-build-failure-missing-include-of-optional.patch
 │   ├── PKGBUILD
 │   └── pkgfile.install
-├── psi-clean-full-git
-│   └── PKGBUILD
-├── psi-clean-git
-│   └── PKGBUILD
-├── psi-l10n-git
-│   └── PKGBUILD
-├── psi-plugins-git
-│   └── PKGBUILD
-├── psi-plus-clean-full-git
-│   └── PKGBUILD
-├── psi-plus-clean-git
-│   └── PKGBUILD
-├── psi-plus-l10n-git
-│   └── PKGBUILD
-├── psi-plus-plugins-git
-│   └── PKGBUILD
-├── psi-plus-resources-git
-│   └── PKGBUILD
-├── psi-plus-webengine-full-git
-│   └── PKGBUILD
-├── psi-plus-webengine-git
-│   └── PKGBUILD
-├── psi-plus-webkit-full-git
-│   └── PKGBUILD
-├── psi-plus-webkit-git
-│   └── PKGBUILD
-├── psi-resources-git
-│   └── PKGBUILD
-├── psi-webengine-full-git
-│   └── PKGBUILD
-├── psi-webengine-git
-│   └── PKGBUILD
-├── psi-webkit-full-git
-│   └── PKGBUILD
-├── psi-webkit-git
-│   └── PKGBUILD
 ├── pyalpm-git
 │   └── PKGBUILD
 ├── python-pygit2-git
@@ -265,6 +229,7 @@
 ├── scx-scheds-git
 │   └── PKGBUILD
 ├── sddm-git
+│   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
 ├── uksmd-git
 │   └── PKGBUILD
@@ -295,4 +260,4 @@
 └── zstd-git
     └── PKGBUILD
 
-104 directories, 192 files
+86 directories, 175 files
