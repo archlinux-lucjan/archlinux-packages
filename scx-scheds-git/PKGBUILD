@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.7.r147.g6bd3e6c
+pkgver=0.1.7.r166.g0e53e7a
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -20,20 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-17bce169e74ffffee0c464342d4f9b1b43c46461 # scx_lavd: fix formatting issues in main.rs and main.bpf.c
-ead7d55c5cc9ed1ec643ebe1105e11cf13461677 # scx_lavd: replace num_cpus to scx_utils::Topology
-315e5b3fe247974670871fd02d9e359f130f5d2d # scx_lavd: remove unnecessary arg from put_local_rq()
-670c1b5b92d98b766ec1f67800889f7f01ff6266 # scx_lavd: print one scheduling decision by default
-47e7238b138699de48eac633bd721dadeabb5c98 # scs_lavd: improve the description of fairness
-97b4d9ce5a25a55c1ab5594f5b9974aadbb5b623 # scx_lavd: remove unnecessary condition check in is_wakeup_wf()
-0fc5591bf6ca7339e9a914202e45462ed8167aec # scx_lavd: add a utility func, {try_}get_task_ctx()
-66e15285eab714825a56294b3a04a3f9c5e20f33 # scx_lavd: move scx_bpf_error() calls to get_cpu_ctx{_id}()
-419ccae8db0dc1764748aed121d5d1a05bdb6af0 # scx_lavd: improve the clarity of the task state transition
-a27b509452eafafd35e0a6ef4886b0cd644dd29b # sdx_lavd: use is_wakeup_ef() in checking wait flag
-c2b1a10e1752b3f921c4545debd0df2af880882d # scx_lavd: remove unnecessary condition check at update_stat_for_stop()
-865269f438541265b74e57c129a3f3ed7251d1dc # scx_lavd: remove unnecessary condition check at slice_fully_consumed()
-e41c674faeb33aea862bc199509af027971c7727 # scx_lavd: remove redundant latency calculation at calc_latency_weight()
-512c4e794f733e32900269c298520510b10c0fcd # scx_lavd: fix potential CPU stall in lavd_select_cpu()
 )
 
 _reverts=(
