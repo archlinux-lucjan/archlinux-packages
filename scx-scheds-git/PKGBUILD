@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.7.r145.g80986e4
-pkgrel=2
+pkgver=0.1.7.r147.g6bd3e6c
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-040ade57ef3c1d9218335abb0577ac81786bed21 # scx: update /etc/default/scx
 17bce169e74ffffee0c464342d4f9b1b43c46461 # scx_lavd: fix formatting issues in main.rs and main.bpf.c
 ead7d55c5cc9ed1ec643ebe1105e11cf13461677 # scx_lavd: replace num_cpus to scx_utils::Topology
 315e5b3fe247974670871fd02d9e359f130f5d2d # scx_lavd: remove unnecessary arg from put_local_rq()
