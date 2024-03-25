@@ -142,10 +142,6 @@
 │   ├── 70-uml.hook
 │   ├── config
 │   └── PKGBUILD
-├── linux-usermode-rc
-│   ├── 70-uml.hook
-│   ├── config
-│   └── PKGBUILD
 ├── linux-usermode-rc-git
 │   ├── 70-uml.hook
 │   ├── config
@@ -262,4 +258,4 @@
 └── zstd-git
     └── PKGBUILD
 
-86 directories, 177 files
+85 directories, 174 files
