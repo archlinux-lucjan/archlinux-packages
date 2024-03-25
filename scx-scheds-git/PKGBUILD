@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.7.r166.g0e53e7a
-pkgrel=1
+pkgver=0.1.7.r168.g5bfd90b
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,10 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+32570789d820f6dea81c366354aeb1908fda9bc5 # scx_lavd: improve the accuracy of runtime per schedule
+9c12b607cacba77194e3c4678ea7ff65650e7ea6 # scx_lavd: increase LAVD_LC_RUNTIME_MAX for improved lat_prio
+2b5d3c1300f67a1800f3132c71f5374a248dabc7 # scx_lavd: change sched_prio_to_latency_weight to more skewed one
+83169481a6799b3882be520723b43d7673fedd22 # scx_lavd: improve latency criticality to latency priority mapping
 )
 
 _reverts=(
