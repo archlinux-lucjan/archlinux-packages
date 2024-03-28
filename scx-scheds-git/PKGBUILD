@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.7.r170.g63bae69
-pkgrel=2
+pkgver=0.1.7.r186.g04c9e7f
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,14 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-32570789d820f6dea81c366354aeb1908fda9bc5 # scx_lavd: improve the accuracy of runtime per schedule
-9c12b607cacba77194e3c4678ea7ff65650e7ea6 # scx_lavd: increase LAVD_LC_RUNTIME_MAX for improved lat_prio
-2b5d3c1300f67a1800f3132c71f5374a248dabc7 # scx_lavd: change sched_prio_to_latency_weight to more skewed one
-83169481a6799b3882be520723b43d7673fedd22 # scx_lavd: improve latency criticality to latency priority mapping
-dd40377f037bc18b805b2a28aa68c24830320d55 # scx_lavd: Drop unnecessary extern crates
-625bb84bc42e11ae686ebf7cce56ae8fe6e81752 # scx_lavd: Move load subtraction to quiescent state transition
-d7ec05e0172213fc5b721ad1bc80248dd4fa3871 # scx_lavd: Call update_stat_for_enq() from lavd_runnable()
-129d99f5425c9591edc60a2083b01d390d1048f2 # scx_lavd: Remove custom task state tracking
 )
 
 _reverts=(
