@@ -1,0 +1,69 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Allan McRae <allan@archlinux.org>
+
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
+
+pkgname=linux-api-headers-rc
+_major=6.8
+_minor=2
+_minorc=$((_minor+1))
+_rcver=rc1
+pkgver=${_major}.${_minorc}
+_stable=${_major}.${_minor}
+_stablerc=${pkgver}-${_rcver}
+_srcname=linux-${_stable}
+pkgrel=0
+pkgdesc="Kernel headers sanitized for use in userspace"
+arch=('any')
+url="http://www.gnu.org/software/libc"
+license=('GPL2')
+makedepends=('rsync')
+provides=("linux-api-headers=$pkgver")
+conflicts=('linux-api-headers')
+
+### Stable-review
+# In case the stable-review repository ever stopped working,
+# a solution to build rc kernels had to be prepared.
+
+if [ "$_minor" = 0 ]; then
+_patchver=${_major}
+else
+_patchver=${_major}.${_minor}
+fi
+
+source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_stable}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_stable}.tar.sign"
+        "https://www.kernel.org/pub/linux/kernel/v6.x/stable-review/patch-${_stablerc}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v6.x/stable-review/patch-${_stablerc}.sign"
+        # https://lkml.org/lkml/2019/8/23/712
+        # "patch-${_stablerc}.diff::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=linux-${_major}.y&id2=v${_patchver}"
+)
+md5sums=('728e7da5137577232593b2210ae1bdc4'
+         'SKIP'
+         '0275b9857f10de28bed6b0f1cc1baea3'
+         'SKIP')
+
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
+              '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
+
+prepare() {
+  cd linux-${_stable}
+
+  echo "Add stable-review patch..."
+  patch -p1 -i ../patch-${_stablerc}
+  # patch -p1 -i ../patch-${_stablerc}.diff
+}
+
+build() {
+  cd linux-${_stable}
+
+  make mrproper
+}
+
+package() {
+  cd linux-${_stable}
+  make INSTALL_HDR_PATH="$pkgdir/usr" headers_install
+
+  # use headers from libdrm
+  rm -r "$pkgdir/usr/include/drm"
+}
