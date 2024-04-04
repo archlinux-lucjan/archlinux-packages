@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.7.r228.g7d335fa
+pkgver=0.1.7.r235.gc6fda26
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -57,7 +57,7 @@ prepare() {
 
 build() {
   cd $gitname
-  arch-meson . build --buildtype release -Dsystemd=enabled -Dopenrc=disabled
+  arch-meson . build --buildtype release --auto-features auto
   meson compile -C build
 }
 
