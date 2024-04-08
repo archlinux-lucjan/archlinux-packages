@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.7.r235.gc6fda26
-pkgrel=1
+pkgver=0.1.8.r17.g994d2a5
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,10 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+cddbc376843e2a4517afd5f21cb1d52e5f6550a6 # scx-lavd: preemption of a lower-priority task using kick cpu
+4dce6cc78d97c6c93ef0e69d8125dd8a415bdd92 # scx_lavd: stretch time space when a system is overloaded
+cadcd635b85f1eb7c0126a9e320505a54eabc885 # Merge branch 'scx-lavd-kick' of github.com:multics69/scx into scx-lavd-kick
+505b87987581d1119f279629471ff1c43ed7ee96 # scxZ_lavd: when finding a victim cpu, test the current is useable
 )
 
 _reverts=(
