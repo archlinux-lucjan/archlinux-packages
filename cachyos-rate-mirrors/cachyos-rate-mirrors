@@ -147,7 +147,8 @@ rate_mirror_ex arch "${MIRRORS_DEFAULT_DIR}/mirrorlist"
 rate_mirror_ex_cos cachyos "${MIRRORS_DEFAULT_DIR}/cachyos-mirrorlist"
 
 cp -f --backup=simple --suffix="-backup" "${MIRRORS_DEFAULT_DIR}/cachyos-mirrorlist" "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist"
-sed -i 's|/repo/$arch/|/repo/$arch_v3/|g' "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist"
+
+sed -i 's|/$arch/|/$arch_v3/|g' "${MIRRORS_DEFAULT_DIR}/cachyos-v3-mirrorlist"
 
 rate_mirror_ex chaotic-aur "${MIRRORS_DEFAULT_DIR}/chaotic-mirrorlist"
 rate_mirror_ex archlinuxcn "${MIRRORS_DEFAULT_DIR}/archlinuxcn-mirrorlist"
