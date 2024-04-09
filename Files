@@ -12,6 +12,9 @@
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
 │   └── PKGBUILD
+├── cachyos-deckify-git
+│   ├── cachyos-deckify-git.install
+│   └── PKGBUILD
 ├── cachyos-hooks-git
 │   └── PKGBUILD
 ├── cachyos-rate-mirrors
@@ -263,4 +266,4 @@
 └── zstd-git
     └── PKGBUILD
 
-87 directories, 177 files
+88 directories, 179 files

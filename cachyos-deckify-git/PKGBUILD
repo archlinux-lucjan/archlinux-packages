@@ -1,0 +1,29 @@
+# Maintainer: Peter Jung <admin@ptr1337.dev>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=cachyos-deckify-git
+gitname=CachyOS-Deckify
+pkgver=20240408.r51.ge16a15d
+pkgrel=1
+groups=('cachyos')
+arch=('any')
+license=('GPL')
+pkgdesc='CachyOS - Deckify'
+source=("git+https://github.com/CachyOS/$gitname")
+install="$pkgname.install"
+sha256sums=('SKIP')
+depends=('gamescope' 'mangohud' 'cachyos-gaming-meta' 'gamescope-session-steam-git' 'chimeraos-device-quirks-git'
+         'inputplumber' 'asusctl' 'scx-scheds')
+makedepends=('git')
+
+pkgver() {
+  cd $gitname
+  echo "$(git show --format='%cI' -q main | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+package() {
+  install -d "$pkgdir/etc"
+  cp -rf "${srcdir}/${gitname}/etc" "$pkgdir"
+  install -d "$pkgdir/usr"
+  cp -rf "${srcdir}/${gitname}/usr" "$pkgdir"
+}
