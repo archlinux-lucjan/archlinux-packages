@@ -1,0 +1,12 @@
+#!/bin/bash -ex
+
+exec meson setup \
+  --prefix        /usr \
+  --libexecdir    lib \
+  --sbindir       bin \
+  --buildtype     release \
+  --auto-features auto \
+  --wrap-mode     nodownload \
+  -D              b_pie=true \
+  -D              python.bytecompile=1 \
+  "$@"

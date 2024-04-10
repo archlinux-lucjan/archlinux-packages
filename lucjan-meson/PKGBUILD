@@ -1,0 +1,18 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+
+pkgname=lucjan-meson
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="lucjan's meson settings"
+url="https://github.com/sirlucjan"
+arch=(any)
+license=(Apache)
+depends=(meson)
+source=(lucjan-meson)
+b2sums=('cdc691dcd3dff42330b63c6a80895385c0e0ba77c0f81e2f75474f8036b10d710fc940f4b2c8c1ceff11425b67c87cdad686011bde06d0f5aec011031226d220')
+
+package() {
+  install -D ../lucjan-meson -t "$pkgdir/usr/bin"
+}
+
+# vim:set sw=2 sts=-1 et:
