@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.8.r20.g47ab933
-pkgrel=3
+pkgver=0.1.8.r22.g52d8a5d
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-31cc2dccb918d18031e3014736c4aa5dc8342b11 # rusty: Allocate DSQ on appropriate NUMA node
 )
 
 _reverts=(
