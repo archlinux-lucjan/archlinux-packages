@@ -6,7 +6,7 @@
 
 _pkgname=zsh-syntax-highlighting
 pkgname="${_pkgname}-git"
-pkgver=0.8.0.r71.gb2c910a
+pkgver=0.8.1.dev.r1333.ge0165ea
 pkgrel=1
 pkgdesc="Fish shell like syntax highlighting for Zsh (from git)"
 arch=('any')
@@ -22,7 +22,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/.alpha1.pre.redrawhook//;s/-/./g'
+  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/.alpha1.pre.redrawhook//;s/-/./g'
+  _ver="$(cat .version | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
