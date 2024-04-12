@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.8.r22.g52d8a5d
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,10 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+e27d5b4e67ae39acf815632a25801d6a49d52356 # rusty: Fix a few random issues
+0ff73754cfe87d95d820d17bc3d7e75b13e4a169 # rusty: Add create_save_cpumask() helper
+885a9fd7da934cbbbd52dd07a733f0a5071b1a53 # rusty: Make lookup_task_ctx() static
+e032ee7cc01303ed9d429241573ff89f64725549 # rusty: Add lookup_pcpu_ctx() helper
 )
 
 _reverts=(
