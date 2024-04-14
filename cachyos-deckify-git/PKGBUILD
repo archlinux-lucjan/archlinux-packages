@@ -3,14 +3,15 @@
 
 pkgname=cachyos-deckify-git
 gitname=CachyOS-Deckify
-pkgver=20240408.r51.ge16a15d
-pkgrel=2
+pkgver=20240413.r58.g4dd34d4
+pkgrel=1
 groups=('cachyos')
 arch=('any')
 license=('GPL')
 pkgdesc='CachyOS - Deckify'
 source=("git+https://github.com/CachyOS/$gitname")
 install="$pkgname.install"
+options=(!strip !debug)
 sha256sums=('SKIP')
 depends=('gamescope-plus' 'mangohud' 'cachyos-gaming-meta' 'gamescope-session-steam-git' 'chimeraos-device-quirks-git'
          'inputplumber' 'asusctl' 'scx-scheds' 'qt5-tools')
