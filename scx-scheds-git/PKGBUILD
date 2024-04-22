@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.8.r27.g5404303
-pkgrel=1
+pkgver=0.1.8.r37.g7b4d231
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,10 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+d87bb99b6a16835ce48e87e0c170ef198151e4a8 # scx_rustland_core: introduce dispatch flags
+ebeed6c778ddde213c264b0887b5694205c6cee1 # scx_rustland_core: introduce preemption
+4287e77697cac6eec41b263a900b60451284cf97 # scx_rustland: enable preemption
+7c8121332f96afe82b5a5ef2cfb509a5a7fafe3a # scx_rustland: introduce --no-preemption
 )
 
 _reverts=(
