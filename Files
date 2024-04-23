@@ -236,7 +236,6 @@
 │   └── PKGBUILD
 ├── README.md
 ├── scx-scheds-git
-│   ├── meson.patch
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
@@ -270,4 +269,4 @@
 └── zstd-git
     └── PKGBUILD
 
-89 directories, 182 files
+89 directories, 181 files
