@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.8.r46.ga8226f0
-pkgrel=2
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-854fdb42984482835f4c6bc5f1e6cc2e5fc0c424 # scx_rustland: reduce overhead by caching host topology
 )
 
 _reverts=(
