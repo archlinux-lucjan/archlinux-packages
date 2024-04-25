@@ -1,7 +1,7 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 
 pkgname=lucjan-meson
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="lucjan's meson settings"
 url="https://github.com/sirlucjan"
@@ -9,7 +9,7 @@ arch=(any)
 license=(Apache)
 depends=(meson)
 source=(lucjan-meson)
-b2sums=('cdc691dcd3dff42330b63c6a80895385c0e0ba77c0f81e2f75474f8036b10d710fc940f4b2c8c1ceff11425b67c87cdad686011bde06d0f5aec011031226d220')
+b2sums=('724d3a13897ad1c6c85dbeb6f108a94b793fa7332daf4d287e880b4d5c467330ba669d3b41ec0baec01ddde75a141f48eeab183cefae8685c2770dcb5c88d971')
 
 package() {
   install -D ../lucjan-meson -t "$pkgdir/usr/bin"

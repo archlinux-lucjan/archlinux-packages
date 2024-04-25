@@ -1,4 +1,5 @@
 #!/bin/bash -ex
+# Highly opinionated wrapper for Arch Linux packaging (mainly for scx-scheds: https://github.com/sched-ext/scx)
 
 exec meson setup \
   --prefix        /usr \
