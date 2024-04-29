@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.8.r70.g344cbd7
+pkgver=0.1.9.r0.g3ee64a1
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -20,8 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-f470b1aa13581f7fd59c4dcd7dc87e38df74accc # scx_lavd: always inline submit_task_ctx to make the verifier happy
-5f63e0ca3033c4088eb0395d5b1feab56b3ed6d2 # scx_lavd: replesih time slice at ops.running() only when necessary
 )
 
 _reverts=(
