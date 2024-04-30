@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.9.r4.gb1bb2a5
-pkgrel=3
+pkgrel=4
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,8 +20,8 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-95b76deae0c4beb39a2596083bc5b6774ae51dbd # scx_rustland_core: relax compact unevictable memory constraint
-cc354d4c789cfc81087b27f3e750b940fc5b2ed7 # scx_rustland_core: bump up version to 0.4.0
+be415d4c069e5d9cd8fd173e9d0e478fdef83798 # scx_rustland_core: relax compact unevictable memory constraint
+fd68ce13a7dcafb8a2fbb68fd906e306b712ce2c # scx_rustland_core: bump up version to 0.4.0
 )
 
 _reverts=(
