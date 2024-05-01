@@ -3,7 +3,7 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20240403.r181.gfe8a8cd
+pkgver=20240422.r183.g25fd473
 pkgrel=2
 groups=('cachyos')
 arch=('any')
@@ -17,7 +17,6 @@ depends=(
     'cachyos-ananicy-rules'
     'uksmd-git'
     'zram-generator'
-    'bpftune-git'
     'dracut'
 )
 makedepends=('coreutils' 'git')
