@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.9.r24.gefb97de
+pkgver=0.1.9.r40.g07b521b
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -20,7 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-689289846926bf78abed2e2a160fb55a6e2f17f9 # scx_lavd: support CPU frequency scaling
 )
 
 _reverts=(
