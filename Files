@@ -234,6 +234,8 @@
 ├── README.md
 ├── scx-scheds
 │   ├── 0001-Add-pacman-hooks.patch
+│   ├── 0002-Exclude-hooks-to-systemd.patch
+│   ├── 0003-Make-place-for-openrc-support.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -271,4 +273,4 @@
 └── zstd-git
     └── PKGBUILD
 
-89 directories, 183 files
+89 directories, 185 files
