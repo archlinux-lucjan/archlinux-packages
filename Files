@@ -233,8 +233,7 @@
 │   └── PKGBUILD
 ├── README.md
 ├── scx-scheds
-│   ├── 90-scx-scheds-install.hook
-│   ├── 90-scx-scheds-upgrade.hook
+│   ├── 0001-Add-pacman-hooks.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -272,4 +271,4 @@
 └── zstd-git
     └── PKGBUILD
 
-89 directories, 184 files
+89 directories, 183 files

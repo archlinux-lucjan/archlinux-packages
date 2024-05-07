@@ -1,0 +1,112 @@
+From 456871d55dd5cbde9c7e18a69cad9a2e3a1653e9 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Tue, 7 May 2024 15:39:06 +0200
+Subject: [PATCH] Add pacman hooks
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ libalpm/hooks/90-scx-scheds-install.hook | 19 +++++++++++++++++++
+ libalpm/hooks/90-scx-scheds-upgrade.hook | 19 +++++++++++++++++++
+ libalpm/hooks/meson.build                |  8 ++++++++
+ meson.build                              |  6 ++++++
+ meson.options                            |  6 ++++++
+ 5 files changed, 58 insertions(+)
+ create mode 100644 libalpm/hooks/90-scx-scheds-install.hook
+ create mode 100644 libalpm/hooks/90-scx-scheds-upgrade.hook
+ create mode 100644 libalpm/hooks/meson.build
+
+diff --git a/libalpm/hooks/90-scx-scheds-install.hook b/libalpm/hooks/90-scx-scheds-install.hook
+new file mode 100644
+index 0000000..bddf44a
+--- /dev/null
++++ b/libalpm/hooks/90-scx-scheds-install.hook
+@@ -0,0 +1,19 @@
++[Trigger]
++Type = Path
++Operation = Install
++Target = etc/default/scx
++Target = etc/systemd/journald@sched-ext.conf
++Target = usr/bin/scx_*
++Target = usr/lib/systemd/system/scx.service
++
++[Trigger]
++Type = Package
++Operation = Install
++Target = scx-scheds
++Target = scx-scheds-git
++
++[Action]
++Description = Enable scx_scheduler...
++When = PostTransaction
++Exec = /usr/bin/systemctl enable --now scx.service
++NeedsTargets
+diff --git a/libalpm/hooks/90-scx-scheds-upgrade.hook b/libalpm/hooks/90-scx-scheds-upgrade.hook
+new file mode 100644
+index 0000000..fe2a847
+--- /dev/null
++++ b/libalpm/hooks/90-scx-scheds-upgrade.hook
+@@ -0,0 +1,19 @@
++[Trigger]
++Type = Path
++Operation = Upgrade
++Target = etc/default/scx
++Target = etc/systemd/journald@sched-ext.conf
++Target = usr/bin/scx_*
++Target = usr/lib/systemd/system/scx.service
++
++[Trigger]
++Type = Package
++Operation = Upgrade
++Target = scx-scheds
++Target = scx-scheds-git
++
++[Action]
++Description = Restart scx_scheduler...
++When = PostTransaction
++Exec = /usr/bin/systemctl restart scx.service
++NeedsTargets
+diff --git a/libalpm/hooks/meson.build b/libalpm/hooks/meson.build
+new file mode 100644
+index 0000000..5e1be84
+--- /dev/null
++++ b/libalpm/hooks/meson.build
+@@ -0,0 +1,8 @@
++# Install the 'pacman hooks' file to the pacman hooks directory
++
++install_data(
++    [
++      '90-scx-scheds-install.hook', '90-scx-scheds-upgrade.hook'
++    ],
++    install_dir: '/usr/share/libalpm/hooks'
++  )
+diff --git a/meson.build b/meson.build
+index d00a4a8..325b882 100644
+--- a/meson.build
++++ b/meson.build
+@@ -327,3 +327,9 @@ openrc = dependency('openrc', required: get_option('openrc'))
+ if openrc.found()
+   subdir('services/openrc')
+ endif
++
++libalpm = dependency('libalpm', required: get_option('libalpm'))
++
++if libalpm.found()
++  subdir('libalpm/hooks')
++endif
+diff --git a/meson.options b/meson.options
+index 087abf2..68efa11 100644
+--- a/meson.options
++++ b/meson.options
+@@ -30,3 +30,9 @@ option(
+   value: 'auto',
+   description: 'openrc init.d service file'
+ )
++option(
++  'libalpm',
++  type: 'feature',
++  value: 'auto',
++  description: 'install pacman hooks'
++)
+-- 
+2.44.0.325.g11c821f2f2
+
