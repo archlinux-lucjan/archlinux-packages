@@ -1,0 +1,16 @@
+[Trigger]
+Type = Path
+Operation = Install
+Target = usr/bin/uksmdstats
+Target = usr/lib/systemd/system/uksmd.service
+
+[Trigger]
+Type = Package
+Operation = Install
+Target = uksmd-git
+
+[Action]
+Description = Enable uksmd...
+When = PostTransaction
+Exec = /usr/bin/systemctl enable --now uksmd.service
+NeedsTargets
