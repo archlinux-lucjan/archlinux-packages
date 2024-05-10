@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.9.r40.g07b521b
-pkgrel=5
+pkgver=0.1.9.r51.g382ef72
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,6 +23,7 @@ _backports=(
 fab07c2b69baaec9b1b1a951efff1fccccc59c59 # Add pacman hooks
 5c9bf0e0c6ee1b72478ce08fa05de4a0b543b543 # Exclude hooks to systemd
 a8925ef2be318015527632c9e5a6405a5491423a # Make place for openrc support
+97ad2b43d39ee7633edc9bf9a5ca87868f34a484 # Add hooks for openrc
 )
 
 _reverts=(
