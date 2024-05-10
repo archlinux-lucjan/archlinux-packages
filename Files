@@ -237,6 +237,7 @@
 │   ├── 0002-Exclude-hooks-to-systemd.patch
 │   ├── 0003-Make-place-for-openrc-support.patch
 │   ├── 0004-Add-hooks-for-openrc.patch
+│   ├── 0005-Fix-upgrade-hook-for-openrc.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -274,4 +275,4 @@
 └── zstd-git
     └── PKGBUILD
 
-89 directories, 186 files
+89 directories, 187 files

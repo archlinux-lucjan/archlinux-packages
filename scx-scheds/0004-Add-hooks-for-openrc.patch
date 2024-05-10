@@ -1,7 +1,7 @@
 From 97ad2b43d39ee7633edc9bf9a5ca87868f34a484 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 10 May 2024 18:12:10 +0200
-Subject: [PATCH 4/4] Add hooks for openrc
+Subject: [PATCH 4/5] Add hooks for openrc
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---

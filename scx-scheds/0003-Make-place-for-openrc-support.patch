@@ -1,7 +1,7 @@
 From a8925ef2be318015527632c9e5a6405a5491423a Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Tue, 7 May 2024 21:00:24 +0200
-Subject: [PATCH 3/4] Make place for openrc support
+Subject: [PATCH 3/5] Make place for openrc support
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
