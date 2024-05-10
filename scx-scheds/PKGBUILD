@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds
 pkgver=0.1.9
-pkgrel=4
+pkgrel=5
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -16,11 +16,13 @@ options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz
        0001-Add-pacman-hooks.patch
        0002-Exclude-hooks-to-systemd.patch
-       0003-Make-place-for-openrc-support.patch)
+       0003-Make-place-for-openrc-support.patch
+       0004-Add-hooks-for-openrc.patch)
 sha512sums=('dabee9d4fc5ef4b5bbd8b1e7d681d918d3006499f000d33a1a419b2595415ec1beb454be0d97b22a84ebf56bd1ace444162eec6cfc14c972fb38fceaf6477337'
-            'fa4c510d461b81f258d34fcaa24cdfb14ae078e66c55179c989e9e1c2e56a5e7038d3adb1facbe91c9189866d0c200174e4047ce9ec69d508f235e3c38b6ec90'
-            'a1c88a4c6cceb5ec168f146b01976b502d2becf9e5fa99331e8acbbf34aedb434d5ea0414389a5b9753bd64dde3518f7af04ba253e5bbcc4b25fbc90011c429d'
-            'c9a66bb3620ccdd55ea96d886c5d49304ed5eef31e3a07dfd2b5ee7bb828c367c7d9e87fd8fb77c3caf71eac1dfba0b7514ee77eec857b3daaba40e8c218196d')
+            '66262a9dd325a1321e2e9ff9cb240751ef3cebaba1f32670e14e190fe4bce260a279f0bb3f411dfa2dd8c0279705570d044b28621c5a783698217dde6eab0d52'
+            'add867475baf3fc0493096e9699f2058629410b551c1423292df913105a765ab31826d0c4c3bcf7e1d03766971d13c8a3d07472cdfa7a745409abf26f646f2ad'
+            '46a505198fb8f6703943b589eda93e4d6b1f0cba7b426b8f937b81f9fa96d450462530e00ef4d6be1c5049e3bed3435151295d71adf1e35700fe7b185278bd84'
+            '4b0777b6833544d07107f8d29ecc8b9a0bbf826fe9096ab9df013fd8fc93ba138736559debc03a40a8fd909dfd139cb3c631d8142b6d71b7141cd7dd3495cab9')
 
 prepare() {
  cd scx-${pkgver}

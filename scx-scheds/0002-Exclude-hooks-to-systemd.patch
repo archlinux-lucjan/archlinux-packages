@@ -1,7 +1,7 @@
 From 5c9bf0e0c6ee1b72478ce08fa05de4a0b543b543 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Tue, 7 May 2024 20:58:03 +0200
-Subject: [PATCH 2/3] Exclude hooks to systemd
+Subject: [PATCH 2/4] Exclude hooks to systemd
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
