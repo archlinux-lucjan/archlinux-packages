@@ -5,7 +5,7 @@
 pkgname=uksmd-git
 gitname=uksmd
 pkgver=1.2.9.r0.g3b026f1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Userspace KSM helper daemon"
 url="https://github.com/CachyOS/uksmd"
@@ -16,11 +16,11 @@ makedepends=('meson' 'git')
 conflicts=('uksmd')
 provides=('uksmd')
 source=('git+https://github.com/CachyOS/uksmd'
-        '90-uksmd-install.hook'
+        'uksmd-systemd-restart'
         '90-uksmd-upgrade.hook')
 sha256sums=('SKIP'
-            '252cdd6fcafc0aecdf32ba8e3dc6b7faf05162d397a42554cae2da0e3c37403a'
-            '908689eb01c4595f00edcc897dd7ed881e5f1866c113f8654914a4f52b2fcd0e')
+            '6771a9ce1bbf6e7235db506882c76e94d7aec55c525055d878a841bd684e54bf'
+            '31fe98436761086aab380810bb5b908ec6da40e739cb75a574a7d3dbb94b5c2e')
 
 pkgver() {
   cd $gitname
@@ -51,6 +51,6 @@ package() {
 
   cd $gitname
   meson install -C build --destdir "${pkgdir}"
-  install -Dm644 "${srcdir}/90-uksmd-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-uksmd-install.hook"
+  install -Dm644 "${srcdir}/uksmd-systemd-restart" "${pkgdir}/usr/share/libalpm/scripts/uksmd-systemd-restart"
   install -Dm644 "${srcdir}/90-uksmd-upgrade.hook"  "${pkgdir}/usr/share/libalpm/hooks/90-uksmd-upgrade.hook"
 }

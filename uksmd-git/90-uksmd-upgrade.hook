@@ -10,7 +10,7 @@ Operation = Upgrade
 Target = uksmd-git
 
 [Action]
-Description = Restart uksmd...
+Description = Checking uksmd...
 When = PostTransaction
-Exec = /usr/bin/systemctl restart uksmd.service
+Exec = /usr/share/libalpm/scripts/uksmd-systemd-restart
 NeedsTargets
