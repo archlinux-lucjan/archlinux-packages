@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.9.r64.gfa1c146
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-5a4d07de2b23f3436ad2376df79019a86a776604 # Add pacman hooks for systemd
+1fbf4f4f9b0e3dedcb9be25dcabc84a8bfa6fa50 # Add pacman hooks for systemd
 )
 
 _reverts=(
