@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds
 pkgver=0.1.9
-pkgrel=7
+pkgrel=8
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz
         0001-Add-pacman-hooks-for-systemd.patch)
 sha512sums=('dabee9d4fc5ef4b5bbd8b1e7d681d918d3006499f000d33a1a419b2595415ec1beb454be0d97b22a84ebf56bd1ace444162eec6cfc14c972fb38fceaf6477337'
-            'deffbb074a5a701af090fd9d8301ecb7c896a3716e8ba970fc3188ef8c6c636e61ab51d761c738243ca5fac1badda4bbdc1422fc7ec6800c931b9e2574472174')
+            'a53c655f5d0be8cf4aa097cbd9cde692d61b72c0fd61d4e994f5750b295fb502998a02caf2e53f48819990a52ac60cebe2adeace6d972a8f750fe9d7756e7da3')
 
 prepare() {
  cd scx-${pkgver}
