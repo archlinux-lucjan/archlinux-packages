@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.9.r64.gfa1c146
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -33,10 +33,6 @@ pkgver() {
 
 prepare() {
  cd $gitname
-
- # Add my fork for a while
- git remote add fork http://github.com/sirlucjan/scx
- git fetch fork pacman-hooks-systemd
 
  local _c _l
   for _c in "${_backports[@]}"; do
