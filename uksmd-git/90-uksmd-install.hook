@@ -1,16 +1,16 @@
 [Trigger]
 Type = Path
-Operation = Upgrade
+Operation = Install
 Target = usr/bin/uksmdstats
 Target = usr/lib/systemd/system/uksmd.service
 
 [Trigger]
 Type = Package
-Operation = Upgrade
+Operation = Install
 Target = uksmd-git
 
 [Action]
-Description = Restart uksmd...
+Description = Enable uksmd...
 When = PostTransaction
-Exec = /usr/bin/systemctl restart uksmd.service
+Exec = /usr/bin/systemctl enable --now uksmd.service
 NeedsTargets

@@ -241,9 +241,9 @@
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
 ├── uksmd-git
+│   ├── 90-uksmd-install.hook
 │   ├── 90-uksmd-upgrade.hook
-│   ├── PKGBUILD
-│   └── uksmd-systemd-restart
+│   └── PKGBUILD
 ├── vesktop-lucjan-git
 │   └── PKGBUILD
 ├── zlib-ng-git
