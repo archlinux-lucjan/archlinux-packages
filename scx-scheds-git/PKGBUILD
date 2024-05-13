@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.9.r51.g382ef72
-pkgrel=3
+pkgver=0.1.9.r64.gfa1c146
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,11 +20,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-fab07c2b69baaec9b1b1a951efff1fccccc59c59 # Add pacman hooks
-5c9bf0e0c6ee1b72478ce08fa05de4a0b543b543 # Exclude hooks to systemd
-a8925ef2be318015527632c9e5a6405a5491423a # Make place for openrc support
-97ad2b43d39ee7633edc9bf9a5ca87868f34a484 # Add hooks for openrc
-e96ced20841a3fc4b0f4d6b8289462fd3c688a80 # Fix upgrade hook for openrc
+5a4d07de2b23f3436ad2376df79019a86a776604 # Add pacman hooks for systemd
 )
 
 _reverts=(
@@ -40,7 +36,7 @@ prepare() {
 
  # Add my fork for a while
  git remote add fork http://github.com/sirlucjan/scx
- git fetch fork pacman-hooks
+ git fetch fork pacman-hooks-systemd
 
  local _c _l
   for _c in "${_backports[@]}"; do
