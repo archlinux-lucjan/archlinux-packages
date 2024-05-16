@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds
 pkgver=0.1.9
-pkgrel=9
+pkgrel=10
 pkgdesc='Sched_ext schedulers'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -14,9 +14,11 @@ makedepends=('python' 'meson' 'lucjan-meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
 options=(!lto)
 source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz
-        0001-Add-pacman-hooks-for-systemd.patch)
+        0001-Add-pacman-hooks-for-systemd.patch
+        0002-journal.conf-increase-the-size-of-the-logs-and-drop-.patch)
 sha512sums=('dabee9d4fc5ef4b5bbd8b1e7d681d918d3006499f000d33a1a419b2595415ec1beb454be0d97b22a84ebf56bd1ace444162eec6cfc14c972fb38fceaf6477337'
-            'a53c655f5d0be8cf4aa097cbd9cde692d61b72c0fd61d4e994f5750b295fb502998a02caf2e53f48819990a52ac60cebe2adeace6d972a8f750fe9d7756e7da3')
+            'a53c655f5d0be8cf4aa097cbd9cde692d61b72c0fd61d4e994f5750b295fb502998a02caf2e53f48819990a52ac60cebe2adeace6d972a8f750fe9d7756e7da3'
+            '38faab550461f2d7af80e20ae9456b1331f05ec5b78c3705b7e133a1c804e799b5605cefd2ac55c7121da381d39e85496ed61754e429d2a4c283a0742eb01e18')
 
 prepare() {
  cd scx-${pkgver}
