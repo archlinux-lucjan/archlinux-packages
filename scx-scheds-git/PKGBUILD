@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.9.r101.gc9bfc5f
-pkgrel=2
+pkgver=0.1.9.r111.geeb2151
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,8 +20,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-951a3d66bcb149254c16aee954ca4eb793f92d67 # Add pacman hooks for openrc
-2bad1dd58e4900c25c59d2a8d1e759444eaf32a1 # meson: fix a build error for libbpf at release build
 )
 
 _reverts=(
