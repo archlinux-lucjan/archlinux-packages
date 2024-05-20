@@ -242,8 +242,6 @@
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
 ├── uksmd-git
-│   ├── 90-uksmd-install.hook
-│   ├── 90-uksmd-upgrade.hook
 │   └── PKGBUILD
 ├── vesktop-lucjan-git
 │   └── PKGBUILD
@@ -272,4 +270,4 @@
 └── zstd-git
     └── PKGBUILD
 
-89 directories, 184 files
+89 directories, 182 files
