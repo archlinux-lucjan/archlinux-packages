@@ -3,7 +3,7 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20240422.r183.g25fd473
+pkgver=20240517.r186.g15e0c47
 pkgrel=2
 groups=('cachyos')
 arch=('any')
@@ -15,7 +15,6 @@ sha256sums=('SKIP')
 depends=(
     'ananicy-cpp'
     'cachyos-ananicy-rules'
-    'uksmd-git'
     'zram-generator'
     'dracut'
 )

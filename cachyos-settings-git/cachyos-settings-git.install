@@ -1,4 +1,4 @@
-SERVICES=("ananicy-cpp" "uksmd")
+SERVICES=("ananicy-cpp")
 
 post_install() {
     echo "Enabling services..."
