@@ -4,7 +4,7 @@
 
 pkgname=cachyos-rate-mirrors
 pkgver=2
-pkgrel=3.9
+pkgrel=3.10
 groups=('cachyos')
 arch=('any')
 url="https://github.com/CachyOS"
@@ -12,7 +12,7 @@ license=('GPL')
 pkgdesc='CachyOS - Rate mirrors service'
 depends=('rate-mirrors')
 source=("$pkgname")
-sha256sums=('ab20d7e27bcdc5a01f2b7efacc6e2235afafdf04bf1352433e0b997596f4d833')
+sha256sums=('41b7b3791c61d562dc65f07398783bbf03db4c5e218fd38f616a0ef1758b751e')
 
 package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
