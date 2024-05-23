@@ -235,6 +235,7 @@
 ├── scx-scheds
 │   ├── 0001-Add-pacman-hooks-for-systemd.patch
 │   ├── 0002-journal.conf-increase-the-size-of-the-logs-and-drop-.patch
+│   ├── 0003-Add-pacman-hooks-for-openrc.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -270,4 +271,4 @@
 └── zstd-git
     └── PKGBUILD
 
-89 directories, 182 files
+89 directories, 183 files
