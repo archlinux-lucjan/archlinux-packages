@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.9.r136.g1bdc8bd
+pkgver=0.1.9.r140.gc09bc2a
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-91984882155105a1d0a00512ef9ee8f12fdd4076 # rusty: Rework deadline as a signed sum
+5ba14c0854773eee3810bdc9b87f8cd550b6982f # rusty: Rework deadline as a signed sum
 )
 
 _reverts=(
