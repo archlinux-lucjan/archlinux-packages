@@ -31,6 +31,7 @@
 ├── cppdap-git
 │   └── PKGBUILD
 ├── devtools-git
+│   ├── 0001-makechrootpkg-add-paccache-flag.patch
 │   └── PKGBUILD
 ├── dracut
 │   ├── 60-dracut-remove.hook
@@ -271,4 +272,4 @@
 └── zstd-git
     └── PKGBUILD
 
-89 directories, 183 files
+89 directories, 184 files
