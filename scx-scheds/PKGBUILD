@@ -1,31 +1,48 @@
-# Maintainer: Tejun Heo <tj@kernel.org>
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Maintainer: Tejun Heo <tj@kernel.org>
 
 pkgname=scx-scheds
+gitname=scx
 pkgver=0.1.9
-pkgrel=11
-pkgdesc='Sched_ext schedulers'
-url='https://github.com/sched-ext/scx'
+pkgrel=12
+pkgdesc="sched_ext schedulers"
 arch=('x86_64')
+url="https://github.com/sched-ext/scx"
 license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
-makedepends=('python' 'meson' 'lucjan-meson' 'clang' 'llvm' 'llvm-libs' 'rust')
+makedepends=('git' 'python' 'meson' 'lucjan-meson' 'clang' 'llvm' 'llvm-libs' 'cargo' 'rust')
 backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
+source=("git+https://github.com/sched-ext/scx#tag=v$pkgver")
+sha256sums=('4b226e717366a2d11561f72c9bde85b89390dbeb3f909504e5986e8751d9ef9e')
 options=(!lto)
-source=(https://github.com/sched-ext/scx/archive/refs/tags/v${pkgver}.tar.gz
-        0001-Add-pacman-hooks-for-systemd.patch
-        0002-journal.conf-increase-the-size-of-the-logs-and-drop-.patch
-        0003-Add-pacman-hooks-for-openrc.patch)
-sha512sums=('dabee9d4fc5ef4b5bbd8b1e7d681d918d3006499f000d33a1a419b2595415ec1beb454be0d97b22a84ebf56bd1ace444162eec6cfc14c972fb38fceaf6477337'
-            'a53c655f5d0be8cf4aa097cbd9cde692d61b72c0fd61d4e994f5750b295fb502998a02caf2e53f48819990a52ac60cebe2adeace6d972a8f750fe9d7756e7da3'
-            '38faab550461f2d7af80e20ae9456b1331f05ec5b78c3705b7e133a1c804e799b5605cefd2ac55c7121da381d39e85496ed61754e429d2a4c283a0742eb01e18'
-            '23f11d931d1119ba90d2d01143f4941575d21e787a31e265839917d6534a8eb58e40234b70eccd40cd778eb67a54f268bcd9b259b5facb63d7b9cf27763dc78a')
+replaces=("scx-git" "scx-systemd-services-git")
+
+_backports=(
+1fbf4f4f9b0e3dedcb9be25dcabc84a8bfa6fa50 # Add pacman hooks for systemd
+6c4101f30bf041b6b740051bb96f3cd9ef0a7f90 # journal.conf: increase the size of the logs and drop unneeded options
+951a3d66bcb149254c16aee954ca4eb793f92d67 # Add pacman hooks for openrc
+)
+
+_reverts=(
+)
 
 prepare() {
- cd scx-${pkgver}
+ cd $gitname
 
- local src
+ local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
+
+  local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
@@ -36,13 +53,13 @@ prepare() {
 }
 
 build() {
-  cd scx-${pkgver}
+  cd $gitname
   lucjan-meson . build
   meson compile -C build
 }
 
 package() {
-  cd scx-${pkgver}
+  cd $gitname
   meson install -C build --destdir "${pkgdir}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
