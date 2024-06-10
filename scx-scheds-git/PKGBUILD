@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r9.g3e921cc
-pkgrel=1
+pkgver=0.1.10.r20.g472ab94
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+bb39b7c2f5c755799212a2c0f11d007c05fb2f86 # scheds: Add scx_mitosis scheduler
 )
 
 _reverts=(
