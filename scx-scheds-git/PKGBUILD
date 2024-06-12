@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r42.g3407582
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,6 +26,7 @@ e9ae539dee4edd6f4932d5f2ff45d06016fe13bd # rusty: Refactor + slightly improve wa
 fc919d78555d7158a596546508ee421294a3a913 # scx_rustland: prevent excessive starvation when system is congested
 bf4c45373feee764ed69ef65e10a0c91f5e0dd34 # scx_rustland_core: use SCX_DSQ_LOCAL only with kthreads
 90d7a78cec159846d84569c1d1559deddcdb0acf # scx_rustland_core: allow user-space scheduler to preempt other tasks
+7046b47b9cefe3dffdfe5e8f22e9e3a3a1b23552 # scx_lavd: properly calculate task's runtime after suspend/resume
 )
 
 _reverts=(
