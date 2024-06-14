@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r44.g08521d4
+pkgver=0.1.10.r58.g3a53162
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -20,18 +20,13 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-bbd3132b8e12f922d6781dc6ff970d241c869a97 # scheds: Add scx_mitosis scheduler to /etc/default/scx
 e9ae539dee4edd6f4932d5f2ff45d06016fe13bd # rusty: Refactor + slightly improve wake_sync
 878002ee0e2d8ed2a25f6d9b58408a0ff0fe2269 # rusty: Clean up dispatch logic
-fc919d78555d7158a596546508ee421294a3a913 # scx_rustland: prevent excessive starvation when system is congested
-bf4c45373feee764ed69ef65e10a0c91f5e0dd34 # scx_rustland_core: use SCX_DSQ_LOCAL only with kthreads
-90d7a78cec159846d84569c1d1559deddcdb0acf # scx_rustland_core: allow user-space scheduler to preempt other tasks
-7046b47b9cefe3dffdfe5e8f22e9e3a3a1b23552 # scx_lavd: properly calculate task's runtime after suspend/resume
-9d129f0afab25cf840fe698f23e87d2523da53a9 # scx_lavd: rename LAVD_CPU_UTIL_INTERVAL_NS to LAVD_SYS_STAT_INTERVAL_NS
-753f333c09ad715d4657cb5da3ab58f67afac960 # scx_lavd: refactoring do_update_sys_stat()
-e6348a11e91ac27f0f3bb5668ca2ebebce7da73e # scx_lavd: improve frequency scaling logic
-2e74b86b4af2484d546260e53eb4ed61e7819415 # scx_lavd: logging cpu performance target
-747bf2a7d7e27027a2bc809077badc417254a2c0 # scx_lavd: add the design of CPU frequency scaling
+cb290b0ef031910e5d4cfbe371a979048ec6a4c9 # scx_rustland: prevent excessive starvation when system is congested
+305bd4352ad634853aca0614a83c861466f4ea77 # scx_rustland_core: use SCX_DSQ_LOCAL only with kthreads
+b3377df083a0464c5214948e76a8ebd06418228a # scx_rustland_core: allow user-space scheduler to preempt other tasks
+b36ae4fd82466237f3c5408051bf413b10a56022 # scx_rustland_core: kick CPUs on dispatch
+
 )
 
 _reverts=(
