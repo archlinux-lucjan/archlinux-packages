@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r58.g3a53162
+pkgver=0.1.10.r79.g3814190
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -22,11 +22,6 @@ conflicts=("scx-scheds")
 _backports=(
 e9ae539dee4edd6f4932d5f2ff45d06016fe13bd # rusty: Refactor + slightly improve wake_sync
 878002ee0e2d8ed2a25f6d9b58408a0ff0fe2269 # rusty: Clean up dispatch logic
-cb290b0ef031910e5d4cfbe371a979048ec6a4c9 # scx_rustland: prevent excessive starvation when system is congested
-305bd4352ad634853aca0614a83c861466f4ea77 # scx_rustland_core: use SCX_DSQ_LOCAL only with kthreads
-b3377df083a0464c5214948e76a8ebd06418228a # scx_rustland_core: allow user-space scheduler to preempt other tasks
-b36ae4fd82466237f3c5408051bf413b10a56022 # scx_rustland_core: kick CPUs on dispatch
-
 )
 
 _reverts=(
