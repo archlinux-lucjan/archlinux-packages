@@ -3,8 +3,8 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20240517.r186.g15e0c47
-pkgrel=2
+pkgver=20240618.r192.ga37f355
+pkgrel=1
 groups=('cachyos')
 arch=('any')
 license=('GPL')
@@ -22,7 +22,9 @@ makedepends=('coreutils' 'git')
 optdepends=('lucjan-meson: meson settings'
             'zsh-lucjan-config: zsh config'
             'lucjan-keyring: keyring'
-            'pkgbuild-introspection-lucjan-git: for generating .SRCINFO files (mkaurball)')
+            'pkgbuild-introspection-lucjan-git: for generating .SRCINFO files (mkaurball)'
+            'libluv: for topmem'
+            'lua-luv: for topmem')
 replaces=('cachyos-settings')
 provides=('cachyos-settings')
 conflicts=('cachyos-settings')
