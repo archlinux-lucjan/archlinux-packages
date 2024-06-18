@@ -3,8 +3,8 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20240618.r192.ga37f355
-pkgrel=1
+pkgver=20240618.r196.g0a2cc23
+pkgrel=2
 groups=('cachyos')
 arch=('any')
 license=('GPL')
@@ -17,6 +17,7 @@ depends=(
     'cachyos-ananicy-rules'
     'zram-generator'
     'dracut'
+    'systemd>=256'
 )
 makedepends=('coreutils' 'git')
 optdepends=('lucjan-meson: meson settings'
