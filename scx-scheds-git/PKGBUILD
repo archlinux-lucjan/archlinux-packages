@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r146.ge60c5c0
-pkgrel=1
+pkgver=0.1.10.r151.g98a5fa8
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -22,6 +22,7 @@ conflicts=("scx-scheds")
 _backports=(
 89fd6eb655a647b01954cd768737f080858d6dc9 # scheds: introduce scx_bpfland
 2d21a64683a83548b677ed3deee4de82f7a0c899 # scx_bpfland: enable CI and stress tests
+f38300326c5790219a92878a695032dcb9d5852e # scx_bpfland: adjust default settings
 )
 
 _reverts=(
