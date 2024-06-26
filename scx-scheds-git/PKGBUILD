@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r153.gd26a76f
-pkgrel=3
+pkgver=0.1.10.r157.g41d60ae
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -13,9 +13,9 @@ depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'lucjan-meson' 'clang' 'llvm' 'llvm-libs' 'cargo' 'rust')
 backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
 source=("git+https://github.com/sched-ext/scx"
-        '0001-scx-scheds-Add-After-multi-user.target-and-graphical.patch')
+        '0001-scx-scheds-Add-After-graphical.target-into-service-s.patch')
 sha256sums=('SKIP'
-            '57c6eb41fcb2958ff5d427db1019501d89179295031851325656c586b4a8cbde')
+            '88d1867f687f782b2575cc79981e12a7b5f65f8aa15ca1eb1e193ab127e1d5bb')
 options=(!lto)
 replaces=("scx-git" "scx-systemd-services-git")
 provides=("scx-scheds")
@@ -26,9 +26,6 @@ _backports=(
 2d21a64683a83548b677ed3deee4de82f7a0c899 # scx_bpfland: enable CI and stress tests
 f38300326c5790219a92878a695032dcb9d5852e # scx_bpfland: adjust default settings
 d349f86d0409dd8682eee225d5261ae68e0be77a # mitosis: Update synchronization
-b32734168bba9fd59c345508a1963dde3dc1a21e # scx_lavd: print build ID when lavd is loaded
-ac9c49f5b54c0beca7c46e2c9f436980c28058a0 # scx_lavd: loosen the deadline when overloaded
-abc6e31fef69bd94a21ca03562fc3d84e1e33727 # scx_lavd: for a forked task, inherit its parent's statistics
 )
 
 _reverts=(

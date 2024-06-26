@@ -236,7 +236,7 @@
 ├── scx-scheds
 │   └── PKGBUILD
 ├── scx-scheds-git
-│   ├── 0001-scx-scheds-Add-After-multi-user.target-and-graphical.patch
+│   ├── 0001-scx-scheds-Add-After-graphical.target-into-service-s.patch
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
