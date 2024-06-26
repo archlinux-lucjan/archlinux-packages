@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r151.g98a5fa8
-pkgrel=3
+pkgver=0.1.10.r153.gd26a76f
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -12,8 +12,12 @@ license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'lucjan-meson' 'clang' 'llvm' 'llvm-libs' 'cargo' 'rust')
 backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
-source=("git+https://github.com/sched-ext/scx")
-sha256sums=('SKIP')
+source=("git+https://github.com/sched-ext/scx"
+        '0001-scx-scheds-Add-After-graphical.target-into-service-s.patch'
+        '0002-scx-scheds-Add-DefaultDependencies-no-to-avoid-probl.patch')
+sha256sums=('SKIP'
+            '5759e7031031de2f886352940087a95cae4b10d853ba097c8d21b2d914080409'
+            '85d3fcd90a8a02885e812e6d542acac62b8fa06dada5da2c26bb5a975ed5c724')
 options=(!lto)
 replaces=("scx-git" "scx-systemd-services-git")
 provides=("scx-scheds")

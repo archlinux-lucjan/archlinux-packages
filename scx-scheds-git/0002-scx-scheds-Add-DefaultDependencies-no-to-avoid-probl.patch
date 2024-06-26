@@ -1,0 +1,32 @@
+From c3052b5112a2cd8ca06b4dc0eedb9259df8dcd04 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Wed, 26 Jun 2024 13:50:24 +0200
+Subject: [PATCH 2/2] scx-scheds: Add DefaultDependencies=no to avoid problems
+ with start
+
+Fix:
+cze 26 13:15:26 cachyos systemd[1]: graphical.target: Found ordering cycle on multi-user.target/start
+cze 26 13:15:26 cachyos systemd[1]: graphical.target: Found dependency on scx.service/start
+cze 26 13:15:26 cachyos systemd[1]: graphical.target: Found dependency on graphical.target/start
+cze 26 13:15:26 cachyos systemd[1]: graphical.target: Job scx.service/start deleted to break ordering cycle starting with graphical.target/start
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ services/systemd/scx.service | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/services/systemd/scx.service b/services/systemd/scx.service
+index e44e575..9d0569c 100644
+--- a/services/systemd/scx.service
++++ b/services/systemd/scx.service
+@@ -4,6 +4,7 @@ ConditionPathIsDirectory=/sys/kernel/sched_ext
+ StartLimitIntervalSec=30
+ StartLimitBurst=2
+ After=graphical.target
++DefaultDependencies=no
+ 
+ [Service]
+ Type=simple
+-- 
+2.45.2.606.g9005149a4a
+

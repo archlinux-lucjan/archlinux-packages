@@ -236,6 +236,8 @@
 ├── scx-scheds
 │   └── PKGBUILD
 ├── scx-scheds-git
+│   ├── 0001-scx-scheds-Add-After-graphical.target-into-service-s.patch
+│   ├── 0002-scx-scheds-Add-DefaultDependencies-no-to-avoid-probl.patch
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
@@ -269,4 +271,4 @@
 └── zstd-git
     └── PKGBUILD
 
-89 directories, 181 files
+89 directories, 183 files

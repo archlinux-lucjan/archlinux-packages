@@ -1,0 +1,33 @@
+From 3052ac5cf477edb927686e6cd50f052dfb960bdd Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Wed, 26 Jun 2024 12:36:32 +0200
+Subject: [PATCH 1/2] scx-scheds: Add After=graphical.target into service
+ (second attempt)
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ services/systemd/scx.service | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/services/systemd/scx.service b/services/systemd/scx.service
+index 56b338d..e44e575 100644
+--- a/services/systemd/scx.service
++++ b/services/systemd/scx.service
+@@ -3,6 +3,7 @@ Description=Start scx_scheduler
+ ConditionPathIsDirectory=/sys/kernel/sched_ext
+ StartLimitIntervalSec=30
+ StartLimitBurst=2
++After=graphical.target
+ 
+ [Service]
+ Type=simple
+@@ -11,6 +12,3 @@ ExecStart=/bin/bash -c 'exec ${SCX_SCHEDULER_OVERRIDE:-$SCX_SCHEDULER} ${SCX_FLA
+ Restart=on-failure
+ StandardError=journal
+ LogNamespace=sched-ext
+-
+-[Install]
+-WantedBy=graphical.target
+-- 
+2.45.2.606.g9005149a4a
+
