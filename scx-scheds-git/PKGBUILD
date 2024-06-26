@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r157.g41d60ae
-pkgrel=6
+pkgrel=5
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,7 +23,7 @@ _backports=(
 d370398a755a2ddc171e15893f18268f6532f3ee # scheds: introduce scx_bpfland
 b0ddb7da055a9266d209e0f84e18e999fb2b59c0 # scx_bpfland: enable CI and stress tests
 934aebd33345052644f8d2435bbd66cda51719a4 # scx_bpfland: fix vruntime logic
-138622961e47a66640476c4ef33624df84838266 # mitosis: Update synchronization
+d349f86d0409dd8682eee225d5261ae68e0be77a # mitosis: Update synchronization
 )
 
 _reverts=(
