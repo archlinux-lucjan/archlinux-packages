@@ -1,8 +1,8 @@
-From 3052ac5cf477edb927686e6cd50f052dfb960bdd Mon Sep 17 00:00:00 2001
+From 778709e686a8ad7b6a6ab975cdcd891ee774cb14 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 26 Jun 2024 12:36:32 +0200
-Subject: [PATCH 1/2] scx-scheds: Add After=graphical.target into service
- (second attempt)
+Date: Wed, 26 Jun 2024 15:35:55 +0200
+Subject: [PATCH] scx-scheds: Add After=multi-user.target and graphical.target
+ into service
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -10,14 +10,14 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/services/systemd/scx.service b/services/systemd/scx.service
-index 56b338d..e44e575 100644
+index 56b338d..a1dc289 100644
 --- a/services/systemd/scx.service
 +++ b/services/systemd/scx.service
 @@ -3,6 +3,7 @@ Description=Start scx_scheduler
  ConditionPathIsDirectory=/sys/kernel/sched_ext
  StartLimitIntervalSec=30
  StartLimitBurst=2
-+After=graphical.target
++After=multi-user.target graphical.target
  
  [Service]
  Type=simple
