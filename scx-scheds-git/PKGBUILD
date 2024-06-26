@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r153.gd26a76f
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,6 +26,9 @@ _backports=(
 2d21a64683a83548b677ed3deee4de82f7a0c899 # scx_bpfland: enable CI and stress tests
 f38300326c5790219a92878a695032dcb9d5852e # scx_bpfland: adjust default settings
 d349f86d0409dd8682eee225d5261ae68e0be77a # mitosis: Update synchronization
+b32734168bba9fd59c345508a1963dde3dc1a21e # scx_lavd: print build ID when lavd is loaded
+ac9c49f5b54c0beca7c46e2c9f436980c28058a0 # scx_lavd: loosen the deadline when overloaded
+abc6e31fef69bd94a21ca03562fc3d84e1e33727 # scx_lavd: for a forked task, inherit its parent's statistics
 )
 
 _reverts=(
