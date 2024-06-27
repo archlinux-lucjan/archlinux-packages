@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r157.g41d60ae
-pkgrel=8
+pkgver=0.1.10.r159.g8537c1b
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,9 +20,9 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-d370398a755a2ddc171e15893f18268f6532f3ee # scheds: introduce scx_bpfland
-b0ddb7da055a9266d209e0f84e18e999fb2b59c0 # scx_bpfland: enable CI and stress tests
-b63389ea7e7e48fe7d3ac54c8255a03bb297d4a3 # scx_bpfland: fix vruntime logic
+acec855abb82bba9bbc7079a2fdb35536a6da481 # scheds: introduce scx_bpfland
+202008808ed2be88b1447d6906663cdb0b0f447f # scx_bpfland: enable CI and stress tests
+3663345036348cf2d2e73ab6ba7062c484298dd3 # scx_bpfland: fix vruntime logic
 d349f86d0409dd8682eee225d5261ae68e0be77a # mitosis: Update synchronization
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 )
