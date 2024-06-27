@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r159.g8537c1b
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,6 +25,7 @@ acec855abb82bba9bbc7079a2fdb35536a6da481 # scheds: introduce scx_bpfland
 3663345036348cf2d2e73ab6ba7062c484298dd3 # scx_bpfland: fix vruntime logic
 d349f86d0409dd8682eee225d5261ae68e0be77a # mitosis: Update synchronization
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
+a7965abdbc8d381ef44b4c8b0718280e7ebbb886 # scx_utils: clarify error about missing CONFIG_DEBUG_INFO_BTF
 )
 
 _reverts=(
