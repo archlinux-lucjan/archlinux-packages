@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r168.g657fb6a
-pkgrel=3
+pkgver=0.1.10.r170.g38a05d4
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,7 +26,6 @@ d349f86d0409dd8682eee225d5261ae68e0be77a # mitosis: Update synchronization
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 f64cdd1a5152a4c0db0a15acd14024d74b845e11 # sched_utils: Add log recorder format customization
 cf4883fbf8eeddd31723ee9027fea17a123edeed # meson: introduce serialize build option
-22f13e22844d3e12590bc71492462dc7d40821a3 # meson: run cargo build in release mode when using plain buildtype
 )
 
 _reverts=(
