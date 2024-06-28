@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r168.g657fb6a
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,7 +24,7 @@ _backports=(
 188b3d3bfc8efa9079f53165fa75114d745973f2 # ci: enable stress tests for scx_bpfland
 d349f86d0409dd8682eee225d5261ae68e0be77a # mitosis: Update synchronization
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
-f82d3a82b3319fd6b379dddc2d054dd974d8a6f2 # sched_utils: Add log recorder format customization
+f64cdd1a5152a4c0db0a15acd14024d74b845e11 # sched_utils: Add log recorder format customization
 cf4883fbf8eeddd31723ee9027fea17a123edeed # meson: introduce serialize build option
 22f13e22844d3e12590bc71492462dc7d40821a3 # meson: run cargo build in release mode when using plain buildtype
 )
