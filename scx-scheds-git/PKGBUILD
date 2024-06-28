@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r164.gb18ebfe
+pkgver=0.1.10.r166.g769e6c4
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -25,7 +25,6 @@ _backports=(
 188b3d3bfc8efa9079f53165fa75114d745973f2 # ci: enable stress tests for scx_bpfland
 d349f86d0409dd8682eee225d5261ae68e0be77a # mitosis: Update synchronization
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
-e59c48a6da71b7911996b7d25f1eb2b6365dd5cc # Update libbpf commit hash
 f82d3a82b3319fd6b379dddc2d054dd974d8a6f2 # sched_utils: Add log recorder format customization
 )
 
