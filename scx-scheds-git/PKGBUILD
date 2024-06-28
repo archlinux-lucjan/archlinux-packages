@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r170.g38a05d4
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -15,7 +15,7 @@ backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
 source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 options=(!lto)
-provides=("scx-scheds=$pkgver")
+provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
