@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r190.ga72c905
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,8 +21,10 @@ conflicts=("scx-scheds")
 _backports=(
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 f64cdd1a5152a4c0db0a15acd14024d74b845e11 # sched_utils: Add log recorder format customization
-6c23ce3c1c582cd9e58fe105a348a7991d3a9605 # scx_bpfland: introduce unbounded tasks
-55d4509ff7a2062cfb372ca556847005da113ef7 # scx_bpfland: introduce starvation counter for regular tasks
+7c0cd57bbfb510877dafbffb04877a0d8efdb8be # scx_bpfland: introduce unbounded tasks
+eaea06aa01c56e290de20bcf9328795381b099e2 # scx_bpfland: prevent starvation of regular tasks
+f09186b3b3d4302a3c8ac5450546b0ae50012941 # scx_bpfland: adjust default time slice to 5ms
+f0022d55f63ca4e464ac893e31d5af53563ead8c # scx_bpfland: introduce --disable-unbounded
 )
 
 _reverts=(
