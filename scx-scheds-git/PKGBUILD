@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r190.ga72c905
-pkgrel=9
+pkgrel=11
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,15 +20,14 @@ conflicts=("scx-scheds")
 
 _backports=(
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
+c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will be moved
 f64cdd1a5152a4c0db0a15acd14024d74b845e11 # sched_utils: Add log recorder format customization
 d2231b0aedd46422fd512f9f2ceb2705db219a7a # scx_bpfland: drop built-in idle CPU selection logic
 e8a4d350adff23508a99131f5472efe937df394d # scx_bpfland: unify dispatching kthreads with direct CPU dispatches
 27176fb6ed204e58724e18b1a3e6186a5113b1ae # scx_bpfland: prevent starvation of regular tasks
 e4ce742b690e4bcf929c651d29e98460f66f0596 # scx_bpfland: ensure task time slice never exceeds the slice_ns limit
 3bac5e442944d6f3dcabf31147b25ad8f902a09b # scx_bpfland: adjust default time slice to 5ms
-e4056c559845fd0c746eeb6adfbc384e1c649920 # scx_bpfland: optimize idle CPU selection when system is busy
-c005a0bfd5622f68bc730583eb98c62477868949 # scx_bpfland: introduce unbounded tasks
-574ac20f86b4e21fdf063e9c0f8da7ad3fcbd15c # scx_bpfland: format output in a more human-readable way
+e2d8d82c56909442c5848ace9e271d1ddb5b02cb # scx_bpfland: remove unnecessary RCU read protection
 )
 
 _reverts=(
