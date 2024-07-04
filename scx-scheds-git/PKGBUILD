@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r190.ga72c905
-pkgrel=16
+pkgrel=17
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -28,7 +28,7 @@ e8a4d350adff23508a99131f5472efe937df394d # scx_bpfland: unify dispatching kthrea
 cef6ca93cff435d97bd0ea48abbcacd2dd18da4c # scx_bpfland: adjust default time slice to 5ms
 9e0db4ae17d8ce4ce86c205728d3ad6271977a6f # scx_bpfland: remove unnecessary RCU read protection
 cfe2ed063d48dc5e66b4d62cf303f284511d949d # scx_bpfland: time-based starvation prevention
-99d34832957c45af1003bee134da34e2e115a1d7 # scx_bpfland: format output in a more human-readable way
+3773f1db394aa45ce9b11fdd562bed79c132247f # scx_bpfland: format output in a more human-readable way
 )
 
 _reverts=(
