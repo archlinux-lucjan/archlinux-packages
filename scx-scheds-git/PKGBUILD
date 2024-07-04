@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r190.ga72c905
-pkgrel=17
+pkgver=0.1.10.r199.g86d2f50
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -22,13 +22,12 @@ _backports=(
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will be moved
 f64cdd1a5152a4c0db0a15acd14024d74b845e11 # sched_utils: Add log recorder format customization
-d2231b0aedd46422fd512f9f2ceb2705db219a7a # scx_bpfland: drop built-in idle CPU selection logic
-e8a4d350adff23508a99131f5472efe937df394d # scx_bpfland: unify dispatching kthreads with direct CPU dispatches
-7d15e3171c17dc0a8c813864da395b2ccc1ca735 # scx_bpfland: ensure task time slice never exceeds the slice_ns limit
-cef6ca93cff435d97bd0ea48abbcacd2dd18da4c # scx_bpfland: adjust default time slice to 5ms
-9e0db4ae17d8ce4ce86c205728d3ad6271977a6f # scx_bpfland: remove unnecessary RCU read protection
-cfe2ed063d48dc5e66b4d62cf303f284511d949d # scx_bpfland: time-based starvation prevention
-3773f1db394aa45ce9b11fdd562bed79c132247f # scx_bpfland: format output in a more human-readable way
+b2cdd2810a27a5f5356425a63640267e9ca9e781 # scx_bpfland: report build id version
+562672c6f0973dcba2ba50fb2b499076c1cd2823 # scx_bpfland: split direct dispatches and kthread dispatches
+5315cd1b2c57450fee3f53e4ae5762faf3b1274f # scx_bpfland: always classify interactive tasks
+75c19b2f3dcdf8107e4d862c69a65135c09a505e # scx_bpfland: refill task time slice
+ee9f5e9aa33851fe892d694c55d7faa5a3823397 # scx_bpfland: introduce speculative dispatches
+83e8e4c907c739e36389bb48e4006ed6f02dc68b # scx_bpfland: show statistics in a more human-readable format
 )
 
 _reverts=(
