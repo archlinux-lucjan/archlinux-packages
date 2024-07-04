@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r190.ga72c905
-pkgrel=12
+pkgrel=14
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,7 +27,10 @@ e8a4d350adff23508a99131f5472efe937df394d # scx_bpfland: unify dispatching kthrea
 7d15e3171c17dc0a8c813864da395b2ccc1ca735 # scx_bpfland: ensure task time slice never exceeds the slice_ns limit
 cef6ca93cff435d97bd0ea48abbcacd2dd18da4c # scx_bpfland: adjust default time slice to 5ms
 9e0db4ae17d8ce4ce86c205728d3ad6271977a6f # scx_bpfland: remove unnecessary RCU read protection
-47ac74b21350c7a218403c413c751c8f614d1f1e # scx_bpfland: time-based starvation prevention
+cfe2ed063d48dc5e66b4d62cf303f284511d949d # scx_bpfland: time-based starvation prevention
+e93d8c3896b9fa27a80938275f074d3593e521a9 # scx_bpfland: optimize idle CPU selection when system is busy
+a193a08499524c8bf0a354ebb27e576f8973a31f # scx_bpfland: introduce unbounded tasks
+e52d34a8bc6a8c181b37fffe6a09f59cd14a4b8a # scx_bpfland: format output in a more human-readable way
 )
 
 _reverts=(
