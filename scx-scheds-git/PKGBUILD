@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r199.g86d2f50
-pkgrel=3
+pkgrel=4
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -29,6 +29,7 @@ bdb31e98e29ee910b856f340aef37acb5135a0fa # scx_bpfland: show statistics in a mor
 6ef369d6366734ecf74201c66772129b21137bcc # scx_bpfland: refill task time slice
 8b570e47659954ed735a1d73603401bda7be7255 # scx_bpfland: consider enqueue flags when dispatching kthreads
 d19e7c919d46da863029d1c97f6e28b6ebe39b19 # scx_bpfland: introduce dynamic nvcsw threshold
+306debb5a1d9c7072cdbf006c91bf70f7345caa5 # scx_bpfland: introduce a tunable for the max nvcsw threshold
 )
 
 _reverts=(
