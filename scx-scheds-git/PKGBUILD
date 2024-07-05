@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r199.g86d2f50
-pkgrel=4
+pkgver=0.1.10.r209.gfc0d1bd
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,10 +21,6 @@ conflicts=("scx-scheds")
 _backports=(
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will be moved
-f64cdd1a5152a4c0db0a15acd14024d74b845e11 # sched_utils: Add log recorder format customization
-f9d7844b2e84cf3a57e33d01f1c285cd041f63a3 # scx_bpfland: split direct dispatches and kthread dispatches
-bdb31e98e29ee910b856f340aef37acb5135a0fa # scx_bpfland: show statistics in a more human-readable format
-2bc8f800e740bc179d7c0c4f524dd86765c5db04 # scx_bpfland: report build id version
 2f59ebeebfc8a9bd924084848d492cea7bb7a2da # scx_bpfland: always classify interactive tasks
 6ef369d6366734ecf74201c66772129b21137bcc # scx_bpfland: refill task time slice
 8b570e47659954ed735a1d73603401bda7be7255 # scx_bpfland: consider enqueue flags when dispatching kthreads
