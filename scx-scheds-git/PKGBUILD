@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r209.gfc0d1bd
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,11 +21,12 @@ conflicts=("scx-scheds")
 _backports=(
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will be moved
-2f59ebeebfc8a9bd924084848d492cea7bb7a2da # scx_bpfland: always classify interactive tasks
-6ef369d6366734ecf74201c66772129b21137bcc # scx_bpfland: refill task time slice
-8b570e47659954ed735a1d73603401bda7be7255 # scx_bpfland: consider enqueue flags when dispatching kthreads
-d19e7c919d46da863029d1c97f6e28b6ebe39b19 # scx_bpfland: introduce dynamic nvcsw threshold
-306debb5a1d9c7072cdbf006c91bf70f7345caa5 # scx_bpfland: introduce a tunable for the max nvcsw threshold
+8dd528abfdeee4f6f0c4a1754a420efa3c91bc7d # scx_bpfland: pass enqueue flags when dispatching kthreads
+6a64182ef23e4083843c51551b612c661e84cfa9 # scx_bpfland: always classify interactive tasks
+995577762a6b6513802126ab00ce123a6e0efc49 # scx_bpfland: refill task time slice
+afe3b8875484b03fdaf8d9936a75e963d73ac868 # scx_bpfland: introduce dynamic nvcsw threshold
+d1064a817fc64e4d59889fd1fc447fcd8921f27e # scx_bpfland: introduce a tunable for the max nvcsw threshold
+f80123cfdde50e02fd63f0167e82c70c2c416e24 # scx_bpfland: prevent per-CPU kthreads starving other tasks
 )
 
 _reverts=(
