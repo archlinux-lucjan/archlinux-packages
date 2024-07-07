@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r209.gfc0d1bd
-pkgrel=3
+pkgrel=4
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -28,9 +28,8 @@ afe3b8875484b03fdaf8d9936a75e963d73ac868 # scx_bpfland: introduce dynamic nvcsw 
 d1064a817fc64e4d59889fd1fc447fcd8921f27e # scx_bpfland: introduce a tunable for the max nvcsw threshold
 7f3d942721d1c9babca11011791ed413fa44ed4d # scx_bpfland: prevent per-CPU kthreads starving other tasks
 88752885a64962b7235f1b9c4b7866f1e7c68a4b # scx_bpfland: always give a full timeslice to interactive tasks
-0ccfa724904d72d1152c04768e6082e72c3ca8b4 # scx_bpfland: fix typo in slice_ns definition
-68d65f9ee01d33c1a365e4a5afdbaaa52e1d24bd # scx_bpfland: bump up max time slice to 20ms
-c8d6efa15937e1b2db9af0b36d7438704020c8e9 # scx_bpfland: show cpu load in verbose mode
+0ccfa724904d72d1152c04768e6082e72c3ca8b4 # scx_bpfland: fix typo in slice_ns definition 20ms
+d75d426243f41ecd7dea3390f937e2b6985c5356 # scx_bpfland: show cpu load in verbose mode
 )
 
 _reverts=(
