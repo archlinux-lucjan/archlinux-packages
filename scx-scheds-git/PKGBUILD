@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r209.gfc0d1bd
-pkgrel=4
+pkgrel=5
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,9 +27,11 @@ c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will 
 afe3b8875484b03fdaf8d9936a75e963d73ac868 # scx_bpfland: introduce dynamic nvcsw threshold
 d1064a817fc64e4d59889fd1fc447fcd8921f27e # scx_bpfland: introduce a tunable for the max nvcsw threshold
 7f3d942721d1c9babca11011791ed413fa44ed4d # scx_bpfland: prevent per-CPU kthreads starving other tasks
-88752885a64962b7235f1b9c4b7866f1e7c68a4b # scx_bpfland: always give a full timeslice to interactive tasks
-0ccfa724904d72d1152c04768e6082e72c3ca8b4 # scx_bpfland: fix typo in slice_ns definition 20ms
-d75d426243f41ecd7dea3390f937e2b6985c5356 # scx_bpfland: show cpu load in verbose mode
+7ad04c664fbd1162c9bf89a5df62f32efb0171c2 # scx_bpfland: always give a full timeslice to interactive tasks
+330c6a55eb23fa0e963dac8fe4ca39f917c8695f # scx_bpfland: fix typo in slice_ns definition
+44a329dded03eb869844c6e29b7af2291f98b0e4 # scx_bpfland: show cpu load in verbose mode
+73048cf96bdde5353eda8df396d7dde172f4839c # scx_bpfland: bump up max time slice to 20ms
+ee4a4547ed2cb3cc63026149b41424ece849187d # scx_bpfland: prevent interactive tasks over classification
 )
 
 _reverts=(
