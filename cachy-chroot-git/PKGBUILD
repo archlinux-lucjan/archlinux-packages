@@ -1,0 +1,51 @@
+# Maintainer: SoulHarsh007 <harsh.peshwani@outlook.com>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=cachy-chroot-git
+gitname=cachy-chroot
+pkgver=1.0.0.r1.g4f63597
+pkgrel=1
+pkgdesc='Chroot helper for CachyOS'
+arch=('x86_64' 'x86_64_v3')
+groups=('cachyos')
+license=(BSD-3-Clause)
+url="https://github.com/CachyOS/cachy-chroot"
+depends=('arch-install-scripts' 'btrfs-progs' 'util-linux')
+makedepends=('git' 'cargo' 'lld' 'clang' 'llvm')
+source=("git+https://github.com/CachyOS/cachy-chroot")
+b2sums=('SKIP')
+provides=('cachy-chroot')
+conflicts=('cachy-chroot')
+options=(strip)
+
+pkgver() {
+  cd "${gitname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${gitname}"
+  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
+
+build() {
+  cd "${gitname}"
+
+  # Compile with clang
+  export AR=llvm-ar
+  export CC=clang
+  export CXX=clang++
+  export NM=llvm-nm
+  export RANLIB=llvm-ranlib
+
+  export RUSTFLAGS="-Cembed-bitcode -C opt-level=3 -Ccodegen-units=1 -Clinker=clang -C link-arg=-flto -Clink-arg=-fuse-ld=/usr/bin/ld.lld"
+  cargo build --release --frozen
+}
+
+package() {
+  cd "${gitname}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/cachy-chroot/LICENSE"
+  install -Dm755 "target/release/cachy-chroot" "${pkgdir}/usr/bin/cachy-chroot"
+}
+
+# vim:set sw=2 sts=2 et:
