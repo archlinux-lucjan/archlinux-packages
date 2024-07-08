@@ -3,10 +3,10 @@
 
 pkgname=cachy-chroot-git
 gitname=cachy-chroot
-pkgver=1.0.0.r1.g4f63597
+pkgver=1.1.0.r0.gf2c2c71
 pkgrel=1
 pkgdesc='Chroot helper for CachyOS'
-arch=('x86_64' 'x86_64_v3')
+arch=('x86_64')
 groups=('cachyos')
 license=(BSD-3-Clause)
 url="https://github.com/CachyOS/cachy-chroot"
