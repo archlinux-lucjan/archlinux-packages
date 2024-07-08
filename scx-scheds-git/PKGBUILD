@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r209.gfc0d1bd
-pkgrel=10
+pkgver=0.1.10.r213.g3df7a13
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,9 +21,6 @@ conflicts=("scx-scheds")
 _backports=(
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will be moved
-8dd528abfdeee4f6f0c4a1754a420efa3c91bc7d # scx_bpfland: pass enqueue flags when dispatching kthreads
-6a64182ef23e4083843c51551b612c661e84cfa9 # scx_bpfland: always classify interactive tasks
-995577762a6b6513802126ab00ce123a6e0efc49 # scx_bpfland: refill task time slice
 a0fab633730cca7463c27feeaf1b4fb54240314d # scx_bpfland: introduce dynamic nvcsw threshold
 5e805876e250cd83a1128055935f7f0d829b5167 # scx_bpfland: introduce a tunable for the max nvcsw threshold
 abd1fd8236f6a0f83e1a37f313e10208b42c9876 # scx_bpfland: improve producer/consumer workloads
