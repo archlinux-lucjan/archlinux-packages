@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r209.gfc0d1bd
-pkgrel=7
+pkgrel=8
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,15 +24,15 @@ c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will 
 8dd528abfdeee4f6f0c4a1754a420efa3c91bc7d # scx_bpfland: pass enqueue flags when dispatching kthreads
 6a64182ef23e4083843c51551b612c661e84cfa9 # scx_bpfland: always classify interactive tasks
 995577762a6b6513802126ab00ce123a6e0efc49 # scx_bpfland: refill task time slice
-47d929dc326c91dad04ec18c4fdfa3c6a18bc3b6 # scx_bpfland: introduce dynamic nvcsw threshold
-79c8cbc1da24e3e8becc3ada1f3468ea08509507 # scx_bpfland: introduce a tunable for the max nvcsw threshold
-0b5019c77a671fb178ecaaa71c97096d8eee206b # scx_bpfland: prevent per-CPU kthreads starving other tasks
-9f7c4e082cad51f6a8f3aff8bfa93aca9e7773e1 # scx_bpfland: always give a full timeslice to interactive tasks
-8a5a3c86cd9bdf15eb562d2d958f04e2469389f5 # scx_bpfland: fix typo in slice_ns definition
-d7e38eedb2eceba81ceafc88c38b48e34978c80d # scx_bpfland: improve producer/consumer workloads
-ced319c833ce35f08ca61002b56fc72a33dd4846 # scx_bpfland: report running interactive tasks to stdout
-0d91265ac8a70df6a30eab55aef1472aae9310fb # scx_bpfland: bump up max time slice to 20ms
-9141da8af08ebe41cc014093be16e6b640242881 # scx_bpfland: reduce starvation threshold to 1ms
+a0fab633730cca7463c27feeaf1b4fb54240314d # scx_bpfland: introduce dynamic nvcsw threshold
+5e805876e250cd83a1128055935f7f0d829b5167 # scx_bpfland: introduce a tunable for the max nvcsw threshold
+abd1fd8236f6a0f83e1a37f313e10208b42c9876 # scx_bpfland: improve producer/consumer workloads
+eee53d80ca6802c1fe60b45dd7c2267b6afbf442 # scx_bpfland: prevent per-CPU kthreads starving other tasks
+187c6a504eb2c944090ef0d5b1f4aca563509207 # scx_bpfland: fix typo in slice_ns definition
+8b55020fa761618eed770b123111b54523c5e679 # scx_bpfland: prevent slice delta overflow
+2e4368d9dcf95e99f7c6a9ba85528c1b707d2b82 # scx_bpfland: report running interactive tasks to stdout
+2cbeab0031af30d498efa5e5126b61b169693749 # scx_bpfland: bump up max time slice to 20ms
+33ffa9df067776dc7b8643e09dee45cc45847d9a # scx_bpfland: reduce starvation threshold to 1ms
 )
 
 _reverts=(
