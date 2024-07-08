@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r209.gfc0d1bd
-pkgrel=8
+pkgrel=9
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -33,6 +33,7 @@ eee53d80ca6802c1fe60b45dd7c2267b6afbf442 # scx_bpfland: prevent per-CPU kthreads
 2e4368d9dcf95e99f7c6a9ba85528c1b707d2b82 # scx_bpfland: report running interactive tasks to stdout
 2cbeab0031af30d498efa5e5126b61b169693749 # scx_bpfland: bump up max time slice to 20ms
 33ffa9df067776dc7b8643e09dee45cc45847d9a # scx_bpfland: reduce starvation threshold to 1ms
+0bfc9ffba1b5d62223ae65d4c5ef24c7503dfa92 # scx_bpfland: account unused time slice in sched_yield()
 )
 
 _reverts=(
