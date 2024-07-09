@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r213.g3df7a13
-pkgrel=8
+pkgrel=9
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -28,9 +28,8 @@ c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will 
 7495ed210647fd768e6a093d7b034253324e9d35 # scx_bpfland: prevent slice delta overflow
 1d77ac39fc167ec9a496500f247af518229aad94 # scx_bpfland: account unused time slice in sched_yield()
 9b5859b639fd06aa2768a8d7f795582ec6785c7f # scx_bpfland: report interactive tasks to stdout
-0d7a51cae96bcbc273ef296a76b45fab98d10b62 # scx_bpfland: bump up max time slice to 20ms
-fdbce313e46f2cc43e8dc92fceb542879d916b1e # scx_bpfland: prevent tasks from abusing interactive priority boost
-f3a00a600d5e6b06052dac834c6601978c0b4052 # scx_bpfland: introduce a tunable for the interactive time threshold
+ed4ccf2de74f1c149b14466222645c09e7fe2e9d # scx_bpfland: prevent tasks from abusing interactive priority boost
+be069bbc3d41a056a4f4c4f97312c7e71e3b4d24 # scx_bpfland: bump up max time slice to 20ms
 )
 
 _reverts=(
