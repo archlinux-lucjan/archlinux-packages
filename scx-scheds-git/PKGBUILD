@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r213.g3df7a13
-pkgrel=4
+pkgrel=5
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -31,7 +31,8 @@ c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will 
 fd2854b9944def3ceccb3a8b9221eec03b9e2f95 # scx_bpfland: kick idle CPUs after dispatch to optimize task consumption
 bd708cdcd679fa0548cac50a839bfa680ff6340d # scx_bpfland: optimize offline CPU handling
 e2e9b952bee77a03383ebbc4b1162b34bf8ec03d # scx_bpfland: prevent tasks from abusing interactive priority boost
-ae1b4a326347086da8ea1dce7435b4a7845b44cc # scx_bpfland: bump up max time slice to 20ms
+20c446b9ec46dea80fcae9da31ab746e505baf4e # scx_bpfland: introduce a tunable for the interactive time threshold
+6ade889cf1986cb78b885ea40a2a7370b8b8cd64 # scx_bpfland: bump up max time slice to 20ms
 )
 
 _reverts=(
