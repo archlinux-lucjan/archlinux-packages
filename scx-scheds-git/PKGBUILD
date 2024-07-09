@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r213.g3df7a13
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,14 +23,15 @@ d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.targe
 c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will be moved
 67ca4995e442a7dced0e9b41aa21697c6e398978 # scx_bpfland: introduce dynamic nvcsw threshold
 85d114839150911b722af57195312d03c7edf398 # scx_bpfland: introduce a tunable for the max nvcsw threshold
-514dcc75b240435f8313c338c9ccadd4d7f72bab # scx_bpfland: improve producer/consumer workloads
-6f6db9c1e516f5cd05d75c6f1449388054c10bcc # scx_bpfland: prevent per-CPU kthreads starving other tasks
-370233f81da7c075ca04bc5a29a47eff4a42bc6c # scx_bpfland: fix typo in slice_ns definition
-cee7c9d007355cb93bbc5fcd137f7bdbfab15df2 # scx_bpfland: prevent slice delta overflow
-ff1447c5d4b85d416446a0b95c5a04084ad259fd # scx_bpfland: account unused time slice in sched_yield()
-1ea19a979958628412898546014a2c697de328a2 # scx_bpfland: report interactive tasks to stdout
-0ece4f24af9e9ad9ed3b91b0e63bab109b21d3ed # scx_bpfland: kick idle CPUs after dispatch to optimize task consumption
-659da3ec52850f09a13cdb2b646a0b3568e7f469 # scx_bpfland: bump up max time slice to 20ms
+1ec98664b92e70232792ba4b7f9627aae1d0edf7 # scx_bpfland: prevent per-CPU kthreads starving other tasks
+38cf6ffa8f0174714f8b00d0f7a3532c5ad2a728 # scx_bpfland: fix typo in slice_ns definition
+7495ed210647fd768e6a093d7b034253324e9d35 # scx_bpfland: prevent slice delta overflow
+1d77ac39fc167ec9a496500f247af518229aad94 # scx_bpfland: account unused time slice in sched_yield()
+9b5859b639fd06aa2768a8d7f795582ec6785c7f # scx_bpfland: report interactive tasks to stdout
+fd2854b9944def3ceccb3a8b9221eec03b9e2f95 # scx_bpfland: kick idle CPUs after dispatch to optimize task consumption
+bd708cdcd679fa0548cac50a839bfa680ff6340d # scx_bpfland: optimize offline CPU handling
+f1738e09bdb27abc514748e987bea9afc2486057 # scx_bpfland: reset interactive state upon wake-up
+09d4792ca6ebc713451d7a2dc00b464ca1c627a3 # scx_bpfland: bump up max time slice to 20ms
 )
 
 _reverts=(
