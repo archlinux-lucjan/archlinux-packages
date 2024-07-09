@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r213.g3df7a13
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,17 +21,16 @@ conflicts=("scx-scheds")
 _backports=(
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will be moved
-a0fab633730cca7463c27feeaf1b4fb54240314d # scx_bpfland: introduce dynamic nvcsw threshold
-5e805876e250cd83a1128055935f7f0d829b5167 # scx_bpfland: introduce a tunable for the max nvcsw threshold
-abd1fd8236f6a0f83e1a37f313e10208b42c9876 # scx_bpfland: improve producer/consumer workloads
-eee53d80ca6802c1fe60b45dd7c2267b6afbf442 # scx_bpfland: prevent per-CPU kthreads starving other tasks
-187c6a504eb2c944090ef0d5b1f4aca563509207 # scx_bpfland: fix typo in slice_ns definition
-8b55020fa761618eed770b123111b54523c5e679 # scx_bpfland: prevent slice delta overflow
-2e4368d9dcf95e99f7c6a9ba85528c1b707d2b82 # scx_bpfland: report running interactive tasks to stdout
-2cbeab0031af30d498efa5e5126b61b169693749 # scx_bpfland: bump up max time slice to 20ms
-33ffa9df067776dc7b8643e09dee45cc45847d9a # scx_bpfland: reduce starvation threshold to 1ms
-0bfc9ffba1b5d62223ae65d4c5ef24c7503dfa92 # scx_bpfland: account unused time slice in sched_yield()
-5a3c4fd5bd84cac0d364dc5f499440055085e0c9 # scx_bpfland: better distribute tasks across CPUs on wake-up
+67ca4995e442a7dced0e9b41aa21697c6e398978 # scx_bpfland: introduce dynamic nvcsw threshold
+85d114839150911b722af57195312d03c7edf398 # scx_bpfland: introduce a tunable for the max nvcsw threshold
+514dcc75b240435f8313c338c9ccadd4d7f72bab # scx_bpfland: improve producer/consumer workloads
+6f6db9c1e516f5cd05d75c6f1449388054c10bcc # scx_bpfland: prevent per-CPU kthreads starving other tasks
+370233f81da7c075ca04bc5a29a47eff4a42bc6c # scx_bpfland: fix typo in slice_ns definition
+cee7c9d007355cb93bbc5fcd137f7bdbfab15df2 # scx_bpfland: prevent slice delta overflow
+ff1447c5d4b85d416446a0b95c5a04084ad259fd # scx_bpfland: account unused time slice in sched_yield()
+1ea19a979958628412898546014a2c697de328a2 # scx_bpfland: report interactive tasks to stdout
+0ece4f24af9e9ad9ed3b91b0e63bab109b21d3ed # scx_bpfland: kick idle CPUs after dispatch to optimize task consumption
+659da3ec52850f09a13cdb2b646a0b3568e7f469 # scx_bpfland: bump up max time slice to 20ms
 )
 
 _reverts=(
