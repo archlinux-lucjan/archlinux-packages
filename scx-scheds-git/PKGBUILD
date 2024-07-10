@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r213.g3df7a13
-pkgrel=10
+pkgrel=11
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,12 +21,11 @@ conflicts=("scx-scheds")
 _backports=(
 d440b1819f9f72da397b51b7f23af0b977b0dc60 # scx-scheds: Add After=graphical.target into service (third attempt)
 c8a60e2566c6387aeed27190feb9764023035dbf # libalpm: make sure that symlink will be moved
-3b94dcd61b72063e1438f72a66b8f7a039f82d33 # scx_bpfland: introduce dynamic nvcsw threshold
-db94ba98ae37d9cef76de5fc8bae20925fee5d2a # scx_bpfland: prevent per-CPU kthreads starving other tasks
-169f2a9c5f6a332f0df552d1ffec092316770296 # scx_bpfland: fix typo in slice_ns definition
-ae3bdc3f730496152cfa08ac288536007266f70e # scx_bpfland: prevent slice delta overflow
-9f0ff59eceb46ae64d3d2c49753e9a36bed3d959 # scx_bpfland: report interactive tasks to stdout
-a69ca02bd5531c4af7ec4754eab77b55f16226d7 # scx_bpfland: prevent tasks from abusing interactive priority boost
+333bf91981bf17ec9ddbc8a1bb7a0ca6d035dc2c # scx_bpfland: prevent per-CPU kthreads starving other tasks
+967884a713f6774d8a01b7792ca78b4cc3afdc31 # scx_bpfland: fix typo in slice_ns definition
+cc48d4628d338c7fa7808369e581f85f2ae02ee7 # scx_bpfland: prevent slice delta overflow
+37efd89abd3375793c59cc861be30e7a2839054a # scx_bpfland: report interactive tasks to stdout
+a8ca2c860199beb1f26d760a69c55416dd84e96f # scx_bpfland: prevent tasks from abusing interactive priority boost
 )
 
 _reverts=(
