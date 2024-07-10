@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r213.g3df7a13
-pkgrel=15
+pkgrel=16
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,7 +24,7 @@ _backports=(
 cc48d4628d338c7fa7808369e581f85f2ae02ee7 # scx_bpfland: prevent slice delta overflow
 37efd89abd3375793c59cc861be30e7a2839054a # scx_bpfland: report interactive tasks to stdout
 217aa8008153c5b42059d69683081609a06818ff # scx_bpfland: expose the amount of online CPUs
-a8061c909251f7c03833b2be33393e216972a198 # scx_bpfland: prevent tasks from abusing interactive priority boost
+1f7df8aea4dc728455a94cc1f61d4de0fdeb8f12 # scx_bpfland: prevent tasks from abusing interactive priority boost
 )
 
 _reverts=(
