@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r213.g3df7a13
-pkgrel=19
+pkgrel=20
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,12 +19,12 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-333bf91981bf17ec9ddbc8a1bb7a0ca6d035dc2c # scx_bpfland: prevent per-CPU kthreads starving other tasks
-967884a713f6774d8a01b7792ca78b4cc3afdc31 # scx_bpfland: fix typo in slice_ns definition
-cc48d4628d338c7fa7808369e581f85f2ae02ee7 # scx_bpfland: prevent slice delta overflow
-0ab1e78b51c2061528c0e95e8a1f3f60e9bfc845 # scx_bpfland: report interactive tasks to stdout
-0abeac1b4cb8d6aa62222879749fdb3e98add842 # scx_bpfland: expose the amount of online CPUs
-efcc36988e26a11dc129b7c0333cc6c621dc0480 # scx_bpfland: prevent tasks from abusing interactive priority boost
+1a1a16b9e9db1a6e8da7af8e4c379d580bcb8578 # scx_bpfland: fix typo in slice_ns definition
+3a47b484afba944efd906a97f840be709b00c66f # scx_bpfland: report interactive tasks to stdout
+f59aa52fe7de332da46804218800ef8a9299a11a # scx_bpfland: expose the amount of online CPUs
+c3ebdd338f5d3ec0e5531b18df92aa84ec86d1ed # scx_bpfland: prevent slice delta overflow
+1babb2b92decc31cc08e6eec8507723b6d3271be # scx_bpfland: prevent per-CPU kthreads starving other tasks
+640bd562ff0bafad623d65f1743d22d7d7f895ae # scx_bpfland: prevent tasks from abusing interactive priority boost
 )
 
 _reverts=(
