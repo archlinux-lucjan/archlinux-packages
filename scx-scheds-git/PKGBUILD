@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r220.g641a8c4
+pkgver=0.1.10.r230.g00fdc1d
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -20,13 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 2d34c6cc635285336f8829e308c0d35ef6fbeabd # scx_bpfland: prevent flood of "interactive" tasks
-e081b2a294d12576b3273c878012a06798aeacab # scx_lavd: rename LAVD_MAX_CAS_RETRY to LAVD_MAX_RETRY
-9ed488798ea9fdcf003aa722432e7f8ba7a3b3b7 # scx_lavd: use task's runtime to determine its deaddline
-c72e063680bb4bc7e0cf518093ef6032f6d7f3cb # scx_lavd: do not use lat_prio_to_greedy_thresholds
-48debe416e9f9e8b48492d3bc41a904f46151c83 # scx_lavd: tuning the deadline equation under high load
-bd964acff62aad702de36692c6831c47f2487db0 # scx_lavd: deprioritize a newly forked task in latency
-408ea7892c4e92a11f738f2f6ee7bf9aade91bc1 # scx_lavd: induce sched_prio_to_latency_weight from slice weight
-bdbfeb9fd136287231296ec792f92d2f9e5d4a20 # scx_lavd: use logical current clock for virtual deadlines
 )
 
 _reverts=(
