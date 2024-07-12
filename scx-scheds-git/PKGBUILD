@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=0.1.10.r230.g00fdc1d
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-2d34c6cc635285336f8829e308c0d35ef6fbeabd # scx_bpfland: prevent flood of "interactive" tasks
+711f345b3bdd5ca6f47d399e3b9d8ef73791005a # scx_bpfland: introduce new parameter --boost-wakeup
 )
 
 _reverts=(
