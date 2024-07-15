@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=0.1.10.r230.g00fdc1d
-pkgrel=7
+pkgver=1.0.0.r13.g8aae691
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,13 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-29d1f2a633cfaa7660781289af06c3a65244982d # scx_bpfland: prevent flood of "interactive" tasks
-3a248262b2a09e5eab7a7ef10720cec1f30c70f7 # scx_bpfland: improve vruntime / time slice evaluation
-62fb7157999374beab81980cbdfedff9d0e1a632 # scx_bpfland: bump up default max/min time slice
-91d4be1d19775d86ba28af1639625a49be4c479b # scx_bpfland: introduce --max-task-wakeups
-c7f19094153acf7738b70bfef0c450f0051f2d3e # meson: fix RUSTFLAGS being appended incorrectly
-95733f63ab59a7f1c101a8dac75e0bf788ed8775 # scx_lavd: calculate time slice as a function of run queue length
-512bd143a51e706b111d5dcf714e29ca1b782dae # scx_lavd: count only related tasks in calculating waker_freq
 )
 
 _reverts=(
