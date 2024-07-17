@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.0.r13.g8aae691
-pkgrel=1
+pkgver=1.0.1.r8.ge4be1ec
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+771b6e74632b16fcc7a894ed0a2c6168e0b3b255 # scx_bpfland: introduce dynamic nvcsw threshold
 )
 
 _reverts=(
