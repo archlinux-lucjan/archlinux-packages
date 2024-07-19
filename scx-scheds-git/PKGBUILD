@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.1.r10.gcb86768
+pkgver=1.0.1.r13.gd974690
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -19,8 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-bf2f0fbf3500d3ea31b718796192c494487fac84 # scx_rusty: Remove skip_while in find_first_candidate
-2525b94af47198a11763e6ad83b01bfd9ef43ccd # scx_rusty: Remove unused variable
 )
 
 _reverts=(
