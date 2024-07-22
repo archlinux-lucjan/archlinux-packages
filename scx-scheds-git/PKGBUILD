@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.1.r39.gaf75d14
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -22,7 +22,6 @@ _backports=(
 4616f4818b358523b562c7c36e9818e7e73b9498 # scx_bpfland: adjust task time slice based on the amount of waiting tasks
 e5b095d658d48f8f8721fba11bab921b13586699 # scx_bpfland: show average amount of tasks waiting to be dispatched
 5c2eda114e829340bc01f4ddd190880095a67597 # scx_bpfland: drop kthread dispatches metric
-8c23edc0b3641378468341981aecb918084bcad7 # scx_bpfland: bump up max time slice to 20ms
 )
 
 _reverts=(
