@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.1.r13.gd974690
+pkgver=1.0.1.r39.gaf75d14
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -19,6 +19,8 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+683499a1519437482019c97e22d05a228f499294 # scx_bpfland: adjust task time slice based on the amount of waiting tasks
+1e0efb2f3d1ee2f2e489e5a9cab8c54e08c9598a # scx_bpfland: bump up max time slice to 20ms
 )
 
 _reverts=(
