@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.1.r53.g427eed6
-pkgrel=3
+pkgrel=4
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,8 +21,6 @@ conflicts=("scx-scheds")
 _backports=(
 c73a5d9e7efd0c4f9965d341040e2afec526f5c7 # scx_bpfland: allow to specify negative values with --slice-us-lag
 89240e6ddacaec409a9be8b275045da15627008e # WIP: scx_bpfland: introduce unbounded tasks
-933ea9baa151418d0eb3d712d396afb87c4852d9 # rusty: Rework deadline as a signed sum
-c1ad602ce5d216232082b68949a6461aebfe0d87 # rusty: Transfer latency priority between CPU-intensive and interactive tasks
 )
 
 _reverts=(
