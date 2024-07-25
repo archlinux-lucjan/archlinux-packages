@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.1.r53.g427eed6
-pkgrel=4
+pkgver=1.0.1.r56.g09536aa
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,8 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-c73a5d9e7efd0c4f9965d341040e2afec526f5c7 # scx_bpfland: allow to specify negative values with --slice-us-lag
-89240e6ddacaec409a9be8b275045da15627008e # WIP: scx_bpfland: introduce unbounded tasks
 )
 
 _reverts=(
