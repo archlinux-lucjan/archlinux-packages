@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.1.r58.g59c3493
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,12 @@ conflicts=("scx-scheds")
 
 _backports=(
 19854f1535c28efa12ceaf1b8765cb7f1bcdf890 # scx_bpfland: allow to specify negative values with --slice-us-lag
+e76bf999dfdd01f6c91ee57a85d5789c21ef0387 # scx_lavd: clean up constants (no functional changes)
+90b57a3fd791c753f7a8304ca6d31474024a05aa # scx_lavd: put a pinned kernel task to an overflow set
+dbb3957eb17bf903aca9f02e3d8c26661e9e6972 # scx_lavd: add a missing no_freq_scaling option check
+19e337cd9b23ad0ed2a285c6ad784918ddf6b51c # scx_lavd: make the core compaction AMP-aware
+e7b6ed1838eee47c1a96173f11a2f159a3180092 # scx_lavd: add --prefer-smt-core option
+eeea847697354a986eb6382cada17ae1144e1a91 # scx_lavd: adjust time slice based on CPU's capacity
 )
 
 _reverts=(
