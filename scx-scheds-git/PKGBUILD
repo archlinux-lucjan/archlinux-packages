@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.1.r58.g59c3493
-pkgrel=5
+pkgver=1.0.1.r60.g0ea5c7c
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-19854f1535c28efa12ceaf1b8765cb7f1bcdf890 # scx_bpfland: allow to specify negative values with --slice-us-lag
 e76bf999dfdd01f6c91ee57a85d5789c21ef0387 # scx_lavd: clean up constants (no functional changes)
 90b57a3fd791c753f7a8304ca6d31474024a05aa # scx_lavd: put a pinned kernel task to an overflow set
 dbb3957eb17bf903aca9f02e3d8c26661e9e6972 # scx_lavd: add a missing no_freq_scaling option check
