@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.1.r58.g59c3493
-pkgrel=4
+pkgrel=5
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,6 +30,7 @@ d307d7071545c75021e1c9b65f2dab58608fef32 # bolt: Introduce new scx_bolt schedule
 d1702515fdde41ffa1980a0cb8e333fedfa97159 # bolt: Add Topology object to Scheduler
 261efd216ad21c1552fd316f9d7b241701214e56 # bolt: Move scheduler logic into separate mod
 a9bafd4a2c270d5b171c079adc7ac5b3454465f3 # bolt: Use BPF_PROG_RUN to create domains
+7a5d8cf9e19887f058670151af29d58ad5770b1d # scx_joule: Introduce scx_joule scheduler
 )
 
 _reverts=(
