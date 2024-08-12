@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.1.r60.g0ea5c7c
+pkgver=1.0.2.r11.g35e45fe
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -19,17 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-e76bf999dfdd01f6c91ee57a85d5789c21ef0387 # scx_lavd: clean up constants (no functional changes)
-90b57a3fd791c753f7a8304ca6d31474024a05aa # scx_lavd: put a pinned kernel task to an overflow set
-dbb3957eb17bf903aca9f02e3d8c26661e9e6972 # scx_lavd: add a missing no_freq_scaling option check
-19e337cd9b23ad0ed2a285c6ad784918ddf6b51c # scx_lavd: make the core compaction AMP-aware
-e7b6ed1838eee47c1a96173f11a2f159a3180092 # scx_lavd: add --prefer-smt-core option
-eeea847697354a986eb6382cada17ae1144e1a91 # scx_lavd: adjust time slice based on CPU's capacity
-d307d7071545c75021e1c9b65f2dab58608fef32 # bolt: Introduce new scx_bolt scheduler
-d1702515fdde41ffa1980a0cb8e333fedfa97159 # bolt: Add Topology object to Scheduler
-261efd216ad21c1552fd316f9d7b241701214e56 # bolt: Move scheduler logic into separate mod
-a9bafd4a2c270d5b171c079adc7ac5b3454465f3 # bolt: Use BPF_PROG_RUN to create domains
-7a5d8cf9e19887f058670151af29d58ad5770b1d # scx_joule: Introduce scx_joule scheduler
 )
 
 _reverts=(
