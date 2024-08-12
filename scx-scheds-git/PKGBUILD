@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r13.g646cefd
-pkgrel=3
+pkgrel=4
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -33,6 +33,9 @@ c213a3e44f052d47d21bb11c78429d56719d9a80 # scx_lavd: make core compaction core t
 4ecf3fc94e34504f21ab975a55133c421082b451 # scx_lavd: build cpdom map from rust
 182b0bd249476a22992ef2bfab79557baed4c0a9 # scx_lavd: make the verifier in 6.8 kernel happy
 b7b8c8de902eeb8619911f64a1468b13c3f94b03 # scx_lavd: fix build errors
+d8208122a1ebff67970d0256136d9b90238e4c4d # scx_bpfland: update copyright info
+4b999298bc64c6adcaa7cd2e2568cb5324c47860 # scx_bpfland: make output more compact
+8e43175f3712e08d642e98582a679b4cb8bdd07f # scx_bpfland: introduce primary scheduling domain
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
 d307d7071545c75021e1c9b65f2dab58608fef32 # bolt: Introduce new scx_bolt scheduler
 d1702515fdde41ffa1980a0cb8e333fedfa97159 # bolt: Add Topology object to Scheduler
