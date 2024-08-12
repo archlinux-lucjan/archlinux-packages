@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r13.g646cefd
-pkgrel=4
+pkgrel=5
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -37,13 +37,6 @@ d8208122a1ebff67970d0256136d9b90238e4c4d # scx_bpfland: update copyright info
 4b999298bc64c6adcaa7cd2e2568cb5324c47860 # scx_bpfland: make output more compact
 8e43175f3712e08d642e98582a679b4cb8bdd07f # scx_bpfland: introduce primary scheduling domain
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
-d307d7071545c75021e1c9b65f2dab58608fef32 # bolt: Introduce new scx_bolt scheduler
-d1702515fdde41ffa1980a0cb8e333fedfa97159 # bolt: Add Topology object to Scheduler
-261efd216ad21c1552fd316f9d7b241701214e56 # bolt: Move scheduler logic into separate mod
-b9bc71fced0c8814466722639c07424c011b4711 # bolt: Use BPF_PROG_RUN to create domains
-aeb3f23611e77ebe6afff9f19c931fcacd453755 # bolt: Create and initialize per-domain DSQ
-ddcc7e4969b47a9c8e36538b5eb4698c6a6aa842 # bolt: Add tasks and pcpu logic
-7a5d8cf9e19887f058670151af29d58ad5770b1d # scx_joule: Introduce scx_joule scheduler
 )
 
 _reverts=(
