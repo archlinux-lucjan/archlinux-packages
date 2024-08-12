@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r13.g646cefd
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,20 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+4705520d4000bffa76a3259b29e90154955eacc2 # scx_lavd: remove unnecessary options which has never been used
+9dc7f94cb60095c7caa896ca7a933070326cb8be # scx_lavd: unifiy the deadline calculation and ineligibility calculation
+15871fd032820deda7c90bba5b9901c5e9c6624d # scx_lavd: turn off pinned core less aggressively
+623b05a282d9cb7bb092c6b1429a9332ceed5ce0 # scx_lavd: revise perf_cri factor to reflect wakeup, runtime, and run_freq
+03a8c10ece2b13bf2fa1e64a808cb7fe16d14666 # scx_lavd: add cpdom_ctx to abstract compute domain and its DSQ
+c1cf11f7b1862b70786329a6908c019ee8a6bd0d # scx_lavd: make ops.enqueue() core type aware
+fa87e1c593cdb18e2a470f4b66c5fe4697da8e9e # scx_lavd: make ops.dispatch() core type aware
+25bf98d2a05a1ab1ac1cd9f67f95f64dbce06bf8 # scx_lavd: make ops.select_cpu() core type aware
+c35b6b27ff8f8e88a11885ee6313757f9245d695 # scx_lavd: consider task pinning for core-type-aware ops.enqueue()
+c213a3e44f052d47d21bb11c78429d56719d9a80 # scx_lavd: make core compaction core type aware
+1f1a3dc4f1cbe98d516a56d7780270aa0604d457 # scx_lavd: sort cores in descending order of max freq
+4ecf3fc94e34504f21ab975a55133c421082b451 # scx_lavd: build cpdom map from rust
+182b0bd249476a22992ef2bfab79557baed4c0a9 # scx_lavd: make the verifier in 6.8 kernel happy
+b7b8c8de902eeb8619911f64a1468b13c3f94b03 # scx_lavd: fix build errors
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
 d307d7071545c75021e1c9b65f2dab58608fef32 # bolt: Introduce new scx_bolt scheduler
 d1702515fdde41ffa1980a0cb8e333fedfa97159 # bolt: Add Topology object to Scheduler
