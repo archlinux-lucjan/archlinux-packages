@@ -2,8 +2,8 @@
 # Contributor: nontlikeuname
 
 pkgname=meson-stable-git
-pkgver=1.4.1.0.g1e2e30bbc
-tagver=1.4.1
+pkgver=1.5.1.0.gb6b634ad3
+tagver=1.5.1
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -75,7 +75,7 @@ checkdepends=(
 )
 provides=('meson')
 conflicts=('meson')
-source=('git+https://github.com/mesonbuild/meson#branch=1.4'
+source=('git+https://github.com/mesonbuild/meson#branch=1.5'
         "meson-reference-$tagver.3::https://github.com/mesonbuild/meson/releases/download/$tagver/meson-reference.3"
         "meson-reference-$tagver.json::https://github.com/mesonbuild/meson/releases/download/$tagver/reference_manual.json"
         'arch-meson'
@@ -83,8 +83,8 @@ source=('git+https://github.com/mesonbuild/meson#branch=1.4'
         'native-clang'
 )
 md5sums=('SKIP'
-         '96c8d0a0a5a53cb890d56e5343592f30'
-         '8cd8e1651cb84e6a92a5418303e307bc'
+         '2ed824a03d8325ac3ac3823360b031a0'
+         'e8d38708aa2a4ea98c8774fb8ddbb0e7'
          '92cac4ebaa57de9656f48efc688b18b7'
          '8e1d245db195d0d221a5ff083d12f6aa'
          'c941b0388c5d01e26147480a04317871')
