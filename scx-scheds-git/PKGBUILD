@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r34.g9e7d767
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,9 +19,9 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-296d904ea3516192e48ea576b758c03f1df61f49 # scx_bpfland: update copyright info
-425b6f790b2dfaae686edbf93fcda5d54d96381c # scx_bpfland: make output more compact
-67254e42026c94f025e9bd8c81860700452a669c # scx_bpfland: introduce primary scheduling domain
+8656effa505f817acaaaabf743c1a51b00fcd2e8 # scx_bpfland: update copyright info
+a6e977c70bab700953c5a9b12bef95fc5c072d29 # scx_bpfland: make output more compact
+f9a994412d8bbfd25b4a418c971cb767691a2c11 # scx_bpfland: introduce primary scheduling domain
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
 )
 
