@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r43.g4528389
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,7 +23,7 @@ b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline 
 03495cd37b3d955c5b6d0b52adf241d99a5d1f19 # scx_stat: Initial commit
 7820ec9b464034734f120d6ba11c5b5f2a125c75 # scx_stat, scx_layered: cargo fmt
 6e466d18dfbe4d4825265534d3296503ebc916b6 # scx_layered: Initial switch to scx_stat
-597c6958bf05bb8f3fd02d7474afa1b7b9f3d12a # WIP: scx_bpfland: introduce cache awareness
+a76041519a796956ef474d1d82b54f0fe668021b # WIP: scx_bpfland: introduce cache awareness
 )
 
 _reverts=(
