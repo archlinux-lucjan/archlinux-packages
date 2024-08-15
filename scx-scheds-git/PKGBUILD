@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.2.r41.g0f018c5
-pkgrel=4
+pkgver=1.0.2.r43.g4528389
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,8 +20,9 @@ conflicts=("scx-scheds")
 
 _backports=(
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
-099b6c266a37c7af5a066c100d6331f33968d1d4 # scx_lavd: Build fix
 03495cd37b3d955c5b6d0b52adf241d99a5d1f19 # scx_stat: Initial commit
+7820ec9b464034734f120d6ba11c5b5f2a125c75 # scx_stat, scx_layered: cargo fmt
+6e466d18dfbe4d4825265534d3296503ebc916b6 # scx_layered: Initial switch to scx_stat
 )
 
 _reverts=(
