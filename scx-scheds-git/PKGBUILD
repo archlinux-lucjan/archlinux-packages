@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.2.r92.g0fdb840
-pkgrel=3
+pkgver=1.0.2.r96.gcb9a2f5
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -22,6 +22,8 @@ _backports=(
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
 174993f9d2bd6870490b41076443c91b7231373e # scx_bpfland: introduce cache awareness
 f8a2445869747e8351f7158b5be1a0b9d4cfa57c # scx_bpfland: introduce performance/powersave primary domain
+902c647c9cf4736c8ad243973c4ed9e7073e80f0 # scx_bpfland: allow to completely disable interactive classification
+0281c8d756a3f9d4e70ee1513b7925647022ae2f # WIP: scx_bpfland: make the scheduler deadline-based
 0656c3232ec8e7ea2f656fc0f33b23852a232be3 # scx_lavd: revise FlatTopology prettier
 9475ace3365e082266037f2bdeb990bc799bd81f # scx_lavd: always enqueue to a DSQ in task's compute domain
 73b873827d0c6eaf4e51d4c0183bf29b0695ec93 # scx_lavd: merge put_cpdom_rq() to ops.enqueue()
