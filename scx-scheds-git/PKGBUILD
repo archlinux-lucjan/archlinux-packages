@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r92.g0fdb840
-pkgrel=2
+pkgrel=3
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,6 +27,17 @@ f8a2445869747e8351f7158b5be1a0b9d4cfa57c # scx_bpfland: introduce performance/po
 73b873827d0c6eaf4e51d4c0183bf29b0695ec93 # scx_lavd: merge put_cpdom_rq() to ops.enqueue()
 c4c157f91cc0cacd39b4a7908e6e437b0027284a # scx_lavd: add "--prefer-little-core" option
 832f194845de18a237ae8155979ea503d20c3c0f # scx_lavd: add power profile options: --performance, --balanced, --powersave
+689d380db12f759dc04373bd7036465e5b87fb51 # scx_stats: Implement ScxStatsServer::add_stats_ops()
+a77fe372d6be8dd035824fa183f7a92cb6d64c17 # scx_stats: Make server shutdown when connection is dropped and add communication channel
+0cf5ca605d5cfb0364db49f0d5bc7b5b1f366931 # scx_layered: Move processing_dur accounting into Stats and protect it with Arc<Mutex<>>
+4d88c9aec71f36c7dfb3b6770fe9712cb52b00ac # scx_stats: Add channel arguments to open and close ops too
+1e89184ba7e567e698e949e37f991e966c298cc0 # scx_stats: server: s/Tx/Req/ and s/Rx/Res/ for clarity
+27c530e17ee1e38d403f46275e6d219880af8f65 # scx_stats: Add missing trait exports
+17a460c179a936969bc9f0245ca98675c10b07b4 # scx_stats: ScxStatsOps fields must be public
+25d7e6f7878ceb818f1325f362282b61ea17598c # scx_layered: Implement on-demand statistics generation
+6cba8d786a6a86a9529b95a46ee1b6318082b3b6 # scx_stats: server: open_ops must be kept throughout a client session
+448aacfd60467e762c0a16f70c885e0e8f7e9736 # scx_layered: Initialize Stats.prev_layer_cycles properly on new()
+d03e48eb752e5d86d8af3ee81e7347a9eae2f4d2 # scx_layered: Implement per-stats-client nr_layer_cpus_ranges tracking
 )
 
 _reverts=(
