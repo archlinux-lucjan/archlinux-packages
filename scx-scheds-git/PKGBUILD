@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.2.r129.g0394469
-pkgrel=3
+pkgver=1.0.2.r136.g33b6ada
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,10 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
-174993f9d2bd6870490b41076443c91b7231373e # scx_bpfland: introduce cache awareness
-f8a2445869747e8351f7158b5be1a0b9d4cfa57c # scx_bpfland: introduce performance/powersave primary domain
-0b2dc6b9fce4c50e7807ffa58ae32fd838ebb699 # scx_utils: Add L2 / L3 cache id to CPU
-467d4b5ea455a2744f6f87c824d087cb3af02ab0 # scx_bpfland: get topology information from scx_utils::Topology
 aa136ca390f260c1143314b332c7a2d86e6080ec # scx_bpfland: allow to completely disable interactive classification
 8df7cf91e4b6343fd699e73f0001c3449de8f94e # WIP: scx_bpfland: make the scheduler deadline-based
 c0418250f403ea7b793dd3bd7a60887dbc09ff5b # scx_layered: Add --run-example option
