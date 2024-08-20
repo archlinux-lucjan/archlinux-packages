@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r129.g0394469
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,6 +24,8 @@ b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline 
 f8a2445869747e8351f7158b5be1a0b9d4cfa57c # scx_bpfland: introduce performance/powersave primary domain
 902c647c9cf4736c8ad243973c4ed9e7073e80f0 # scx_bpfland: allow to completely disable interactive classification
 0281c8d756a3f9d4e70ee1513b7925647022ae2f # WIP: scx_bpfland: make the scheduler deadline-based
+c0418250f403ea7b793dd3bd7a60887dbc09ff5b # scx_layered: Add --run-example option
+c0fcc9bdebd42bab5420537fac5c9c8815313a88 # meson-scripts/test_sched: Enable scx_layered testing
 )
 
 _reverts=(
