@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.2.r163.g6a2faf2
+pkgver=1.0.2.r165.g2e63c0b
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -22,7 +22,6 @@ _backports=(
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
 f60375467a29800631afdeeb7d7e92334d2fa367 # WIP: scx_bpfland: introduce deadline-based scheduling
 5a0e3d9e01298c82cc8e880bb6a369db83446428 # WIP: scx_bpfland: introduce --lowlatency
-fedfee0bd666da1d423d1af8129261b5e031b2b5 # scx_bpfland: drop unused variable
 )
 
 _reverts=(
