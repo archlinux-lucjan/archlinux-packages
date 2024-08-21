@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.2.r139.g014dc7b
-pkgrel=4
+pkgver=1.0.2.r145.g092f542
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,8 +26,6 @@ bdb6e83a8498d110fac810e7d3ec2ffbbb5611b2 # WIP: scx_bpfland: introduce --lowlate
 444056794913b5f83b0fb00c3d43d992bebe1554 # scx_rusty: Update Cargo.lock
 8f786be08f5adf88ae7548dd38445794917bb944 # scx_rusty: cargo fmt
 f7c193e5285e76ad5e07ee47a923e320212080cf # scx_utils, scx_rusty: Minor updates to version handling
-c0418250f403ea7b793dd3bd7a60887dbc09ff5b # scx_layered: Add --run-example option
-c0fcc9bdebd42bab5420537fac5c9c8815313a88 # meson-scripts/test_sched: Enable scx_layered testing
 0cc59a5243cf3cf0f9568a5f816b760cef62453b # scx_utils: cargo fmt
 3ca2f0b6f933b88d47b74df585c73768ec3b6dd9 # scx_utils/cpumask: Use nr_cpu_ids instead of num_possible_cpus
 16820e5173aa2749ca3160a88a75dd3c3faf571c # scx_utils::topology, scx_rusty: Always use NR_CPU_IDS and NR_CPUS_POSSIBLE
