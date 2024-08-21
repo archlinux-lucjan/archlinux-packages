@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r161.g9f7a11b
-pkgrel=1
+pkgrel=2
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,8 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
-3f62cbe1afda8d66ee53c370b5545107d745f945 # scx_utils: topology: add base_freq() method to Cpu
-9a31db9bcdd0e3097016eaea73ff310a56b8cc77 # scx_bpfland: classify CPUs depending of their the base frequency
 f60375467a29800631afdeeb7d7e92334d2fa367 # WIP: scx_bpfland: introduce deadline-based scheduling
 5a0e3d9e01298c82cc8e880bb6a369db83446428 # WIP: scx_bpfland: introduce --lowlatency
 081b99936165b6741506c3c7bf2ab26c3c7092c4 # scx_utils::topology: Use lazy_static instead of LazyLock
