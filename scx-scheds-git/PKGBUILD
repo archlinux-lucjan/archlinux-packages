@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.2.r136.g33b6ada
-pkgrel=3
+pkgrel=4
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,8 +20,8 @@ conflicts=("scx-scheds")
 
 _backports=(
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
-3bc99c3b232fc3e6cb2c41e389030e449073b8f4 # cpumask: implement hex string formatter
-1f453b230528522daf8d82e4313af04e7c27d348 # scx_bpfland: replace custom CpuMask with scx_utils::Cpumask
+235f19fdf10f44dece19ccaf07b596fe35c7f122 # cpumask: implement hex string formatter
+a9f5aaa5369dbce5b9e34630876154119f43692a # scx_bpfland: replace custom CpuMask with scx_utils::Cpumask
 e0549bb329cb30cfccf356feb4d6c2ba4ea28c73 # scx_bpfland: allow to completely disable interactive classification
 f63d88545b903c78730aee0f9f6cb13d09ebd941 # WIP: scx_bpfland: introduce deadline-based scheduling
 a8ad501fec4630822546ce198d5d55b92e41b911 # WIP: scx_bpfland: introduce --lowlatency
