@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.2.r147.ge0fb998
+pkgver=1.0.2.r156.g9c62019
 pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
@@ -20,15 +20,10 @@ conflicts=("scx-scheds")
 
 _backports=(
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
-a141b2615a6f0aeaa602f18c2b718c4a3e2cce21 # WIP: scx_bpfland: introduce deadline-based scheduling
-bdb6e83a8498d110fac810e7d3ec2ffbbb5611b2 # WIP: scx_bpfland: introduce --lowlatency
-444056794913b5f83b0fb00c3d43d992bebe1554 # scx_rusty: Update Cargo.lock
-8f786be08f5adf88ae7548dd38445794917bb944 # scx_rusty: cargo fmt
-f7c193e5285e76ad5e07ee47a923e320212080cf # scx_utils, scx_rusty: Minor updates to version handling
-0cc59a5243cf3cf0f9568a5f816b760cef62453b # scx_utils: cargo fmt
-3ca2f0b6f933b88d47b74df585c73768ec3b6dd9 # scx_utils/cpumask: Use nr_cpu_ids instead of num_possible_cpus
-1ae4655b3cd1a339b24c60f97df108568408d510 # scx_utils::cpumask: Default to displaying in hex
-1da249f063cec0a8940c2bc188e5dd333eb35bbd # scx_utils::topology: Always use NR_CPU_IDS and NR_CPUS_POSSIBLE
+3f62cbe1afda8d66ee53c370b5545107d745f945 # scx_utils: topology: add base_freq() method to Cpu
+9a31db9bcdd0e3097016eaea73ff310a56b8cc77 # scx_bpfland: classify CPUs depending of their the base frequency
+f60375467a29800631afdeeb7d7e92334d2fa367 # WIP: scx_bpfland: introduce deadline-based scheduling
+5a0e3d9e01298c82cc8e880bb6a369db83446428 # WIP: scx_bpfland: introduce --lowlatency
 )
 
 _reverts=(
