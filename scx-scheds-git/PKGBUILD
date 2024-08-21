@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.2.r136.g33b6ada
-pkgrel=4
+pkgver=1.0.2.r139.g014dc7b
+pkgrel=1
 pkgdesc="sched_ext schedulers"
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,11 +20,9 @@ conflicts=("scx-scheds")
 
 _backports=(
 b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
-235f19fdf10f44dece19ccaf07b596fe35c7f122 # cpumask: implement hex string formatter
-a9f5aaa5369dbce5b9e34630876154119f43692a # scx_bpfland: replace custom CpuMask with scx_utils::Cpumask
-e0549bb329cb30cfccf356feb4d6c2ba4ea28c73 # scx_bpfland: allow to completely disable interactive classification
-f63d88545b903c78730aee0f9f6cb13d09ebd941 # WIP: scx_bpfland: introduce deadline-based scheduling
-a8ad501fec4630822546ce198d5d55b92e41b911 # WIP: scx_bpfland: introduce --lowlatency
+0a7f2f0289256c7cb732a1e78a6c61ae15b341b4 # scx_bpfland: allow to completely disable interactive classification
+78500c89d344c17bb977c8f1457edd930c649615 # WIP: scx_bpfland: introduce deadline-based scheduling
+e49b633c9945f2541c2a511189e3ac4b40175cc2 # WIP: scx_bpfland: introduce --lowlatency
 c0418250f403ea7b793dd3bd7a60887dbc09ff5b # scx_layered: Add --run-example option
 c0fcc9bdebd42bab5420537fac5c9c8815313a88 # meson-scripts/test_sched: Enable scx_layered testing
 )
