@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.3.r0.g52d97c0
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-b69f42be63870da266d814c1fdb8049ec8970941 # scx_asdf: Adaptive Shortest Deadline First scheduler
 fdb7f9676fbce4a0061ac9882cace24530aa7606 # WIP: scx_bpfland: introduce deadline-based scheduling
 deb0c1b9a66f45bd621e389f6a85c982e8999a19 # WIP: scx_bpfland: introduce --lowlatency
 )
