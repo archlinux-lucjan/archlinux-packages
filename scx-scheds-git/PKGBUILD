@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.3.r2.g8c35a19
-pkgrel=2
+pkgver=1.0.3.r4.gdca4af1
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-b0a8e4a91e4c8225b42c71c6d436c1579e393025 # scx_bpfland: better time slice control
 06c0b89e3c9025d4413e9bd47e63c955221f815e # WIP: scx_bpfland: introduce --lowlatency
 )
 
