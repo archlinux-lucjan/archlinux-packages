@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.3.r4.gdca4af1
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-cf11483ef31594ccc7792736b2af98ccd5533f55 # scx_bpfland: introduce --lowlatency
+6a2285398dd3821e1a6c37ef02185555bca22499 # scx_bpfland: introduce --lowlatency
 0579a0ad21cc71f7133f85ac73eaca94b3b8560f # WIP: scx_bpfland: dynamic energy profile
 )
 
