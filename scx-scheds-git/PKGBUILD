@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.3.r8.g115bfc8
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,10 +19,9 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-243c70d3e8a41e48b4f169971ebdc0c96e9fe205 # scx_utils::cpumask: introduce is_empty() and is_full()
-2501737312d75ad65a6dd9929c157b0bd94b61af # scx_bpfland: introduce dynamic energy profile
-384a0dfb1d7196acb3f926c3f5cfd308aa667d9b # scx_bpfland: introduce Intel Turbo Boost awareness
-fe8e1444ff49f48042d5fa9de3addc8c31bc8fcc # scx_bpfland: always honor avg nvcsw in lowlatency mode
+bb7248ce61cf760aba65cdbb9365193c8a76f40b # scx_utils::cpumask: introduce is_empty() and is_full()
+d958dd44823fe19b97999662b678264d209a0131 # scx_bpfland: introduce dynamic energy profile
+50684e45692ac1af3cbc210f1f761fd29632efaf # scx_bpfland: introduce Intel Turbo Boost awareness
 )
 
 _reverts=(
