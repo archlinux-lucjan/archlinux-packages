@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.3.r31.ge72676e
-pkgrel=2
+pkgver=1.0.3.r33.gab2e408
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-924156c3987b07162b3a20e226912cc66c986ee5 # scx-scheds: Update scx_bpfland suggested flags
 )
 
 _reverts=(
