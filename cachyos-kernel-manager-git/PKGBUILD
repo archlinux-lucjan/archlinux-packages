@@ -2,7 +2,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=cachyos-kernel-manager-git
-pkgver=1.9.0.r0.gc280bdd
+pkgver=1.9.1.r2.g666b97d
 pkgrel=1
 epoch=1
 pkgdesc="Simple kernel manager"
@@ -21,7 +21,6 @@ options=(strip)
 
 
 _backports=(
-d68adbfe37d12522a3678c86611f22c34be80fc7 # Add scx_asdf
 )
 
 _reverts=(
