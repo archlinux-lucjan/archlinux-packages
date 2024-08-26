@@ -3,7 +3,7 @@
 
 pkgname=cachyos-kernel-manager-git
 pkgver=1.9.1.r2.g666b97d
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Simple kernel manager"
 arch=(aarch64 x86_64 x86_64_v3)
@@ -21,7 +21,7 @@ options=(strip)
 
 
 _backports=(
-20957ee1b184d5975c556a5154914b80a70d4379 # sched-ext: introduce the concept of performance profiles
+a2f77e9dc24262f6319495d757c8b740b324890a # sched-ext: introduce the concept of performance profiles
 )
 
 _reverts=(
