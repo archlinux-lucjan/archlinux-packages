@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 gitname=scx
-pkgver=1.0.3.r95.gbf67b83
-pkgrel=7
+pkgver=1.0.3.r108.g1c1cc10
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,17 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-9368c6881d5ddc2fdf4573f9de9db935041624a0 # scx_lavd: replace get_task_cpu_id() to scx_bpf_task_cpu()
-d4bb35e6516b7203f935c2c7bbb4837470562295 # scx_lavd: use itertools::iproduct!() for a nested loop
-9551657b4262b60770c313c69b80bd19bab5a608 # scx_lavd: prefer big cores in the performance mode
-4f906f1f491fe0619de19aeddd09ad31323a9a39 # scx_lavd: update README since it supports multi-CCX/NUMA
-954b684a7075520a85f498b71b6c38634d8d0a98 # scx_lavd: update nr_queued_task every system stat update interval
-950710990fb0a69fd2c14be941e284e09b7766cb # scx_lavd: move time slice calculation to ops.enqueue() and ops.select_cpu()
-d1d9e97d0898a7a8897bd47751849b5fcbf57f41 # scx_lavd: reduce LAVD_CPDOM_MAX_DIST to 4
-38779dbe8b1b79f11a20e927e95c36d1dcf13a27 # scx_lavd: improve pick_idle_cpu()
-82f55b95b2e71b792315a36153f6ba38b851f496 # scx_lavd: add a fast path in pick_idle_cpu() when SMT is not activated
-be7d06e280cfcdd494df0e10d8e8409872ba30d1 # scx_lavd: make the old BPF verifier happy :-(
-4e3c36ca3f81db7940f487ee3ff836d437d2ba46 # scx_lavd: handle the missing cases in time slice calculation
 1e818e565a418b0b7d4f6a5a2aee9819c8a34e1a # scx_bpfland: try to keep tasks running on the primary domain
 4a5de749830f67ad1791842f3a12cf5057fcdfca # version-too: Avoid exception by skipping workspace cargo files
 )
