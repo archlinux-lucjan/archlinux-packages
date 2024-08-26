@@ -3,9 +3,9 @@
 # Contributor: Damian N. <nycko123 at gmail>
 
 pkgname=uksmd-git
-gitname=uksmd
+_gitname=uksmd
 pkgver=1.2.11.r0.g7d10cac
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Userspace KSM helper daemon"
 url="https://github.com/CachyOS/uksmd"
@@ -19,7 +19,7 @@ source=('git+https://github.com/CachyOS/uksmd')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $gitname
+  cd $_gitname
   # git describe
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   # alternative
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 prepare() {
- cd $gitname
+ cd $_gitname
 
  local src
   for src in "${source[@]}"; do
@@ -41,7 +41,7 @@ prepare() {
 }
 
 build() {
-  cd $gitname
+  cd $_gitname
   arch-meson . build
   meson compile -C build
 }
@@ -49,6 +49,6 @@ build() {
 package() {
   depends+=(UKSMD-BUILTIN)
 
-  cd $gitname
+  cd $_gitname
   meson install -C build --destdir "${pkgdir}"
 }
