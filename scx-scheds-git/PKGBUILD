@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r108.g1c1cc10
-pkgrel=4
+pkgver=1.0.3.r110.gce439d9
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 1e818e565a418b0b7d4f6a5a2aee9819c8a34e1a # scx_bpfland: try to keep tasks running on the primary domain
-4a5de749830f67ad1791842f3a12cf5057fcdfca # version-too: Avoid exception by skipping workspace cargo files
 e887c56da016267cdf22b6cbbd25aca5ee2b83e8 # scx_lavd: add "--version" option, which prints the current version
 cd5b2bf664786c28ec00c77c9f54503509cf2afc # scx_lavd: replace nix signal handler to ctrlc
 9807e561f09994a8d3b70bff063b9f6c728e42fd # scx_lavd: prioritize the turbo boost-able cores
