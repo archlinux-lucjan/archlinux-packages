@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.3.r95.gbf67b83
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,8 +30,7 @@ d1d9e97d0898a7a8897bd47751849b5fcbf57f41 # scx_lavd: reduce LAVD_CPDOM_MAX_DIST 
 82f55b95b2e71b792315a36153f6ba38b851f496 # scx_lavd: add a fast path in pick_idle_cpu() when SMT is not activated
 be7d06e280cfcdd494df0e10d8e8409872ba30d1 # scx_lavd: make the old BPF verifier happy :-(
 4e3c36ca3f81db7940f487ee3ff836d437d2ba46 # scx_lavd: handle the missing cases in time slice calculation
-505f659ef13c58072dfa900c391d5de8f35cb3cf # scx_bpfland: enable per-CPU kthread direct dispatch by default
-a4fb550c82bdc61446a4494a41d8b5c6622636aa # scx_bpfland: try to keep tasks running on the primary domain
+1e818e565a418b0b7d4f6a5a2aee9819c8a34e1a # scx_bpfland: try to keep tasks running on the primary domain
 f2a227e95da8737fa023f44ba68c1e3789e5da3e # version-too: Avoid exception by skipping workspace cargo files
 )
 
