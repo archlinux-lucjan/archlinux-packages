@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r110.gce439d9
+pkgver=1.0.3.r115.g35db89e
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,10 +23,6 @@ _backports=(
 e887c56da016267cdf22b6cbbd25aca5ee2b83e8 # scx_lavd: add "--version" option, which prints the current version
 cd5b2bf664786c28ec00c77c9f54503509cf2afc # scx_lavd: replace nix signal handler to ctrlc
 9807e561f09994a8d3b70bff063b9f6c728e42fd # scx_lavd: prioritize the turbo boost-able cores
-2ee07bb1fb785b09e9f4bf6cef73348b103dd773 # scx_rustland_core: temporarily drop RL_PREEMPT_CPU
-820fc5a8b48705489c1b1212e91b4c267a8b2b70 # scx_rustland_core: allow to propagate vtime to BPF
-1427d7d34707f47f90216920dd1dcb3da6f3b748 # scx_rlfifo: enhance code design
-0bdbb255bbed3e0f22362823515d39239b5fa1e4 # scx_rustland_core: update README.md with a FIFO example
 )
 
 _reverts=(
