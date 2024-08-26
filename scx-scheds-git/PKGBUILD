@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 gitname=scx
 pkgver=1.0.3.r95.gbf67b83
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -31,7 +31,7 @@ d1d9e97d0898a7a8897bd47751849b5fcbf57f41 # scx_lavd: reduce LAVD_CPDOM_MAX_DIST 
 be7d06e280cfcdd494df0e10d8e8409872ba30d1 # scx_lavd: make the old BPF verifier happy :-(
 4e3c36ca3f81db7940f487ee3ff836d437d2ba46 # scx_lavd: handle the missing cases in time slice calculation
 1e818e565a418b0b7d4f6a5a2aee9819c8a34e1a # scx_bpfland: try to keep tasks running on the primary domain
-f2a227e95da8737fa023f44ba68c1e3789e5da3e # version-too: Avoid exception by skipping workspace cargo files
+4a5de749830f67ad1791842f3a12cf5057fcdfca # version-too: Avoid exception by skipping workspace cargo files
 )
 
 _reverts=(
