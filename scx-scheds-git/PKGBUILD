@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r131.g250eacd
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,11 +19,10 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-46f17df03badad0b0b1808066c0cb14eb3b21360 # scx_bpfland: fix build warning
-c276709b09811e82bdff782bf5bd8e5d38738563 # scx_bpfland: try to keep tasks running on the primary domain
 19657d4e0ca4fb73d891b6b69ad1cdbdd51a2954 # scx_stats: Drop sched-ext namespace
 8c84da358bb2c49a136adbe18e296c64a00ee309 # scx_utils: introduce Turbo core type to Topology
 a559e66c657fa230a62ab405faa3c40dcc9e3596 # scx_bpfland: rely on Topology to classify core types
+8fb55f3b7ba680e68e3a7030c1ad9046dcc3a735 # scx_bpfland: try to keep tasks running on the primary domain
 )
 
 _reverts=(
