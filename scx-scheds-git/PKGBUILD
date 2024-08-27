@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r123.ge567ee8
-pkgrel=2
+pkgver=1.0.3.r125.g6768f9f
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-e0f49a338a376f4e3f02afbe602b15ff31cb7413 # scx_bpfland: fix turbo boost domain nullifying primary domain limits
 )
 
 _reverts=(
