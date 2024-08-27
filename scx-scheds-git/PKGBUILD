@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r129.g41cebb8
+pkgver=1.0.3.r131.g250eacd
 pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/sched-ext/scx"
 license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
-backup=('etc/default/scx' 'etc/systemd/journald@sched-ext.conf')
+backup=('etc/default/scx')
 source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 options=(!lto)
@@ -21,6 +21,7 @@ conflicts=("scx-scheds")
 _backports=(
 46f17df03badad0b0b1808066c0cb14eb3b21360 # scx_bpfland: fix build warning
 c276709b09811e82bdff782bf5bd8e5d38738563 # scx_bpfland: try to keep tasks running on the primary domain
+19657d4e0ca4fb73d891b6b69ad1cdbdd51a2954 # scx_stats: Drop sched-ext namespace
 )
 
 _reverts=(
