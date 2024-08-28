@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r138.gd708939
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,6 +21,7 @@ conflicts=("scx-scheds")
 _backports=(
 19657d4e0ca4fb73d891b6b69ad1cdbdd51a2954 # scx_stats: Drop sched-ext namespace
 28cb1ec5cb688c95f400c836d0e18301ac97efb1 # scx_bpfland: enhanced task affinity
+b050a5f24fe7167f1d6b27402ac4a9e24a6414a6 # scx_loader: Add WIP scheduler loader via system DBUS interface
 )
 
 _reverts=(
