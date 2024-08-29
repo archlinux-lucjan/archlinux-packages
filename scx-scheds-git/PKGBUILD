@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r140.g5391816
+pkgver=1.0.3.r151.gcc3f696
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,7 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 19657d4e0ca4fb73d891b6b69ad1cdbdd51a2954 # scx_stats: Drop sched-ext namespace
-28cb1ec5cb688c95f400c836d0e18301ac97efb1 # scx_bpfland: enhanced task affinity
 )
 
 _reverts=(
