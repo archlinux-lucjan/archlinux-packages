@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r151.gcc3f696
-pkgrel=13
+pkgrel=14
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,6 +21,7 @@ conflicts=("scx-scheds")
 _backports=(
 19657d4e0ca4fb73d891b6b69ad1cdbdd51a2954 # scx_stats: Drop sched-ext namespace
 81a6ae629d02bc82407f78cf46714a0d65bb37d9 # scx_bpfland: always rely on prev_cpu with single-CPU tasks
+42064c4cfe946f7582ba06c225b7ef0b4d6adf59 # DROP: scx_bpfland: debug prev_cpu
 a49f22c9af793109b8838a0e6b1fb53da54c2ccb # WIP: scx_bpfland: add basic cpufreq support
 9c4428fd8b667f27e9fa93c1fa737942d5821484 # scx_lavd: remove unused rust functions
 95272ae910d5d53026b24168278bf6a7ee40c5fb # scx_lavd: proper handling of ctrl-c in a monitoring mode
