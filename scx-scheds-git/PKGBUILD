@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r151.gcc3f696
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,7 +26,7 @@ a49f22c9af793109b8838a0e6b1fb53da54c2ccb # WIP: scx_bpfland: add basic cpufreq s
 95272ae910d5d53026b24168278bf6a7ee40c5fb # scx_lavd: proper handling of ctrl-c in a monitoring mode
 5588126cffff98491d5d34eed0d48e78fb860be7 # scx_lavd: minior optimization for consume_task()
 bb08919203066ae72c6b3c43923ae508eb8b48bd # scx_lavd: determine power mode automatically with --auto option
-269a87b2d48d8234093f021499026ccff97a4685 # scx_loader: Add scheduler loader via system DBUS interface
+b090d8f3ad5605fa2462b3b90b6820ac7debd647 # scx_loader: Add scheduler loader via system DBUS interface
 )
 
 _reverts=(
