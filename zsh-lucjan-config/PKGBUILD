@@ -1,7 +1,7 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 
 pkgname=zsh-lucjan-config
-pkgver=6
+pkgver=7
 pkgrel=1
 arch=(any)
 pkgdesc="Meta package for zsh lucjan's config"
@@ -10,7 +10,7 @@ depends=('zsh' 'zsh-autopair-git' 'zsh-autosuggestions-git'
          'zsh-you-should-use-git'
          'eza' 'bat-extras' 'gitless')
 source=('zshrc')
-sha256sums=('46dc123545e2401197c668374f7566160e04929f0dc49736cad92509cf01238e')
+sha256sums=('666231bcfeef52ea8683c60800e771d47ddd40ccde28fbacde7cb18d37d806d2')
 
 package() {
     install -D -m644 zshrc $pkgdir/etc/zsh/zshrc
