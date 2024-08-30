@@ -318,9 +318,6 @@ alias glpl='gl pull'
 alias glpa='gl patch'
 alias glrv='gl revert'
 
-# load zsh-syntax-highlighting
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # load fast-syntax-highlighting
 [ -f /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ] && source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
