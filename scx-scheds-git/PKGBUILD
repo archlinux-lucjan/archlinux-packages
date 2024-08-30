@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r162.g3e2e78a
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,8 +20,8 @@ conflicts=("scx-scheds")
 
 _backports=(
 19657d4e0ca4fb73d891b6b69ad1cdbdd51a2954 # scx_stats: Drop sched-ext namespace
-81a6ae629d02bc82407f78cf46714a0d65bb37d9 # scx_bpfland: always rely on prev_cpu with single-CPU tasks
-a49f22c9af793109b8838a0e6b1fb53da54c2ccb # WIP: scx_bpfland: add basic cpufreq support
+7cc18460b9bad9eed5df6718c5444e4d197c6f06 # scx_bpfland: always rely on prev_cpu with single-CPU tasks
+6ad8cdf1007cb283b60a166c5980f97f33b8d1ff # WIP: scx_bpfland: add basic cpufreq support
 4d770e1f84f8a171355e941f89e2ef7c6691d383 # scx_loader: Add scheduler loader via system DBUS interface
 )
 
