@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r164.gb54fc20
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,6 +23,12 @@ _backports=(
 2d3ebf77cb26677c36613501059ff9d7130292f9 # WIP: scx_bpfland: add basic cpufreq support
 4d770e1f84f8a171355e941f89e2ef7c6691d383 # scx_loader: Add scheduler loader via system DBUS interface
 f782467eafda11f29a47d470e0bb41b32c6886d2 # scx_rustland: convert to scx_stats
+a89a56dba45b8256d8cda96a728c2d1c37bc277e # scx_lavd: add a fastpath in ops.select_cpu() for a sharply pinned task
+afb8c78a09d4b3e5bc857a457298f3a68eac0b37 # scx_lavd: print power mode change in the auto mode
+815f1263b274d081ce638bb7505bd9f683c3feac # scx_lavd: reinitialize active cpumask when power mode changes
+2f8cc0d60fdb307e62a0e9c137d6f2c98f6d1981 # scx_lavd: rename the "--auto" opetion to "--autopower" to be clear
+5ecaa9ebe2417d1e794141a81413e517f64c60d1 # scx_lavd: improve the accuracy of cpu utilization calculation
+9091dd983b4d6a3efd2e89dbd412237443169690 # scx_lavd: add "--autopilot" mode
 )
 
 _reverts=(
