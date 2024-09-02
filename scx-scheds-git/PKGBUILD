@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r182.gf2122c4
-pkgrel=2
+pkgver=1.0.3.r186.g172fe1e
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,10 +23,6 @@ _backports=(
 930f427f3049b298af8bb39a41653bcf8d44f2c5 # WIP: scx_bpfland: add cpufreq support
 766e74696a6d8b3199dfa0f8acde93167602907b # WIP: scx_bpfland: improve turbo domain CPU selection
 4d770e1f84f8a171355e941f89e2ef7c6691d383 # scx_loader: Add scheduler loader via system DBUS interface
-afbebaeed65e0bdd89bb6c6eb17f013d16275b40 # scx_lavd: check a core type of previous cpu at pick_idle_cpu()
-c3b2b5e9ddb38fe5348c9e601307ecaa4b7e642a # scx_lavd: rename "--monitor_sched_samples" to "--monitor" for consistency
-f7a13f54f862e6d2ebfd16162ad47001b9027903 # scx_lavd: update README
-0e6401c797505b538415ef09a5db30a85d92829b # scx_lavd: make the old verifier happy (bpf_cpumask_set_cpu)
 )
 
 _reverts=(
