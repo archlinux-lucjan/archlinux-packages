@@ -20,7 +20,6 @@
 │   ├── fix-installed-db.patch
 │   └── PKGBUILD
 ├── cachyos-settings-git
-│   ├── cachyos-settings-git.install
 │   └── PKGBUILD
 ├── cachyos-sysctl-manager-git
 │   └── PKGBUILD
@@ -271,4 +270,4 @@
 └── zstd-git
     └── PKGBUILD
 
-90 directories, 182 files
+90 directories, 181 files
