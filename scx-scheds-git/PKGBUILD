@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r190.g4fd1ae0
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,8 +19,8 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-930f427f3049b298af8bb39a41653bcf8d44f2c5 # WIP: scx_bpfland: add cpufreq support
-766e74696a6d8b3199dfa0f8acde93167602907b # WIP: scx_bpfland: improve turbo domain CPU selection
+6e834fe0f48b8cf0ff9ffeef0ed10ebed7ec6c37 # WIP: scx_bpfland: add cpufreq support
+5f4701b0e5ae00d324027406e370ac26b20fb2a2 # WIP: scx_bpfland: improve turbo domain CPU selection
 4d770e1f84f8a171355e941f89e2ef7c6691d383 # scx_loader: Add scheduler loader via system DBUS interface
 304f007c01705638221fe11d451b58f100269430 # scx_rustland: aggressively prioritize interactive tasks
 )
