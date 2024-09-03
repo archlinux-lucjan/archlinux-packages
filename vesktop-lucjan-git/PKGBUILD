@@ -2,12 +2,12 @@
 
 pkgname=vesktop-lucjan-git
 pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop"
-pkgver=20240712.r356.g9acc665
+pkgver=20240827.r361.ga318f6b
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/Vencord/Vesktop"
 license=("GPL-3.0 license")
-makedepends=("git" "nodejs" "bunjs-bin" "libxcrypt-compat")
+makedepends=("git" "nodejs" "pnpm" "libxcrypt-compat")
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
@@ -28,8 +28,9 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
-  bun install
-  bun run build && bun x electron-builder --linux pacman
+  pnpm install --ignore-scripts
+  pnpm install electron@beta
+  pnpm run build && pnpm electron-builder --linux pacman
 
   bsdtar -xf "dist/vesktop-1.5.3.pacman" -C "$srcdir"
 }
