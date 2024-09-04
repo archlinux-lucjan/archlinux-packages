@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r194.g9c57175
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,6 +25,8 @@ c458d6711f0a1f43b1365ca868f22ea2180d71aa # scx_bpfland: skip idle CPU selection 
 a9c5a0aba72ad644405e749d3325c6dd1e1dab6b # scx_bpfland: dynamically adjust cpufreq level in auto mode
 4d770e1f84f8a171355e941f89e2ef7c6691d383 # scx_loader: Add scheduler loader via system DBUS interface
 1de44d918c1f470a176dfd03104dc57518d8ca73 # scx_rusty: Support domain/core cookie policy
+94a359434f20e25eb8765e0bdc2100a92dbe92d4 # scx_rustland_core: always dispatch per-cpu kthreads directly
+c3cab45f6aa1c53519c134b8b51cddca056c51ad # scx_rustland_core: bump up version to 2.0.1
 )
 
 _reverts=(
