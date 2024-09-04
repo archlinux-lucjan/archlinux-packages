@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r201.gfe81ccb
-pkgrel=2
+pkgver=1.0.3.r203.g4513dfb
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,7 +25,6 @@ e4d395d2d85d6e5259832b561a35f779c779b259 # scx_bpfland: add basic cpufreq suppor
 c458d6711f0a1f43b1365ca868f22ea2180d71aa # scx_bpfland: skip idle CPU selection for tasks with changing affinity
 17c43e0608f9521a9330129b2790d24415bdf098 # scx_bpfland: improve turbo domain CPU selection
 a9c5a0aba72ad644405e749d3325c6dd1e1dab6b # scx_bpfland: dynamically adjust cpufreq level in auto mode
-4d770e1f84f8a171355e941f89e2ef7c6691d383 # scx_loader: Add scheduler loader via system DBUS interface
 1de44d918c1f470a176dfd03104dc57518d8ca73 # scx_rusty: Support domain/core cookie policy
 4021ace1cb2a50e8004f3769923fe0d387d6d80d # scx_rustland_core: avoid critical failures due by missing task context
 )
