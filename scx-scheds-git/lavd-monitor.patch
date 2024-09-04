@@ -1,0 +1,802 @@
+From 249573785659108ac1d75c0ae9851ad950db92c0 Mon Sep 17 00:00:00 2001
+From: Changwoo Min <changwoo@igalia.com>
+Date: Wed, 4 Sep 2024 10:52:22 +0900
+Subject: [PATCH 1/4] scx_lavd: improve pick_idle_cpu() for pinned tasks
+
+When a pinned task cannot run on either active or overflow sets, we try
+to stay on the previous CPU which is still okay to run on.
+
+Signed-off-by: Changwoo Min <changwoo@igalia.com>
+---
+ scheds/rust/scx_lavd/src/bpf/intf.h     | 2 +-
+ scheds/rust/scx_lavd/src/bpf/main.bpf.c | 7 ++++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/scheds/rust/scx_lavd/src/bpf/intf.h b/scheds/rust/scx_lavd/src/bpf/intf.h
+index 48233564..5029147d 100644
+--- a/scheds/rust/scx_lavd/src/bpf/intf.h
++++ b/scheds/rust/scx_lavd/src/bpf/intf.h
+@@ -85,7 +85,7 @@ enum consts {
+ 	LAVD_CC_PER_TURBO_CORE_MAX_CTUIL = 750, /* maximum per-core CPU utilization for a turbo core */
+ 	LAVD_CC_NR_ACTIVE_MIN		= 1, /* num of mininum active cores */
+ 	LAVD_CC_NR_OVRFLW		= 1, /* num of overflow cores */
+-	LAVD_CC_CPU_PIN_INTERVAL	= (2ULL * LAVD_TIME_ONE_SEC),
++	LAVD_CC_CPU_PIN_INTERVAL	= (1ULL * LAVD_TIME_ONE_SEC),
+ 	LAVD_CC_CPU_PIN_INTERVAL_DIV	= (LAVD_CC_CPU_PIN_INTERVAL /
+ 					   LAVD_SYS_STAT_INTERVAL_NS),
+ 
+diff --git a/scheds/rust/scx_lavd/src/bpf/main.bpf.c b/scheds/rust/scx_lavd/src/bpf/main.bpf.c
+index fdf78b90..e9b5ee9e 100644
+--- a/scheds/rust/scx_lavd/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_lavd/src/bpf/main.bpf.c
+@@ -1626,13 +1626,14 @@ static s32 pick_idle_cpu(struct task_struct *p, struct task_ctx *taskc,
+ 	/*
+ 	 * If the task cannot run on either active or overflow cores,
+ 	 * stay on the previous core (if it is okay) or one of its taskset.
++	 * Then, put the CPU to the overflow set.
+ 	 */
++start_any_mask:
+ 	if (bpf_cpumask_test_cpu(prev_cpu, p->cpus_ptr))
+ 		cpu_id = prev_cpu;
+-	else {
+-start_any_mask:
++	else
+ 		cpu_id = bpf_cpumask_any_distribute(p->cpus_ptr);
+-	}
++	bpf_cpumask_set_cpu(cpu_id, ovrflw);
+ 
+ 	/*
+ 	 * Note that we don't need to kick the picked CPU here since the
+
+From b01d8f244ca68c163dd7dfc07174d07679c811b2 Mon Sep 17 00:00:00 2001
+From: Changwoo Min <changwoo@igalia.com>
+Date: Wed, 4 Sep 2024 12:05:23 +0900
+Subject: [PATCH 2/4] scx_lavd: add --help-stats option
+
+Signed-off-by: Changwoo Min <changwoo@igalia.com>
+---
+ scheds/rust/scx_lavd/src/main.rs  |  9 +++++++++
+ scheds/rust/scx_lavd/src/stats.rs | 30 +++++++++++++++++++++++-------
+ 2 files changed, 32 insertions(+), 7 deletions(-)
+
+diff --git a/scheds/rust/scx_lavd/src/main.rs b/scheds/rust/scx_lavd/src/main.rs
+index c2ddb12e..54fc7d4d 100644
+--- a/scheds/rust/scx_lavd/src/main.rs
++++ b/scheds/rust/scx_lavd/src/main.rs
+@@ -135,6 +135,10 @@ struct Opts {
+     /// Print scheduler version and exit.
+     #[clap(short = 'V', long, action = clap::ArgAction::SetTrue)]
+     version: bool,
++
++    /// Show descriptions for statistics.
++    #[clap(long)]
++    help_stats: bool,
+ }
+ 
+ impl Opts {
+@@ -791,6 +795,11 @@ fn main() -> Result<()> {
+         return Ok(());
+     }
+ 
++    if opts.help_stats {
++        stats::server_data(0).describe_meta(&mut std::io::stdout(), None)?;
++        return Ok(());
++    }
++
+     init_log(&opts);
+     debug!("{:#?}", opts);
+ 
+diff --git a/scheds/rust/scx_lavd/src/stats.rs b/scheds/rust/scx_lavd/src/stats.rs
+index eabf5f8c..a5c4c433 100644
+--- a/scheds/rust/scx_lavd/src/stats.rs
++++ b/scheds/rust/scx_lavd/src/stats.rs
+@@ -13,28 +13,51 @@ use std::thread::ThreadId;
+ use std::time::Duration;
+ 
+ #[derive(Clone, Debug, Default, Serialize, Deserialize, Stats)]
++#[stat(top)]
+ pub struct SchedSample {
++    #[stat(desc = "Sequence ID of task log")]
+     pub mseq: u64,
++    #[stat(desc = "Process ID")]
+     pub pid: i32,
++    #[stat(desc = "Task name")]
+     pub comm: String,
++    #[stat(desc = "LR: 'L'atency-critical or 'R'egular, HI: performance-'H'ungry or performance-'I'nsensitive, BT: 'B'ig or li'T'tle, EG: 'E'ligigle or 'G'reedy, PN: 'P'reempting or 'N'ot")]
+     pub stat: String,
++    #[stat(desc = "CPU id where this task is scheduled on")]
+     pub cpu_id: u32,
++    #[stat(desc = "Victim CPU to be preempted out (-1 = no preemption)")]
+     pub victim_cpu: i32,
++    #[stat(desc = "Assigned virtual deadline")]
+     pub vdeadline_delta_ns: u64,
++    #[stat(desc = "Assigned time slice")]
+     pub slice_ns: u64,
++    #[stat(desc = "How greedy this task is in using CPU time (1000 = fair)")]
+     pub greedy_ratio: u32,
++    #[stat(desc = "Latency criticality of this task")]
+     pub lat_cri: u32,
++    #[stat(desc = "Average latency criticality in a system")]
+     pub avg_lat_cri: u32,
++    #[stat(desc = "Static priority (20 == nice 0)")]
+     pub static_prio: u16,
++    #[stat(desc = "Slice boost factor (number of consecutive full slice exhaustions)")]
+     pub slice_boost_prio: u16,
++    #[stat(desc = "How often this task is scheduled per second")]
+     pub run_freq: u64,
++    #[stat(desc = "Average runtime per schedule")]
+     pub run_time_ns: u64,
++    #[stat(desc = "How frequently this task waits for other tasks")]
+     pub wait_freq: u64,
++    #[stat(desc = "How frequently this task wakes other tasks")]
+     pub wake_freq: u64,
++    #[stat(desc = "Performance criticality of this task")]
+     pub perf_cri: u32,
++    #[stat(desc = "Average performance criticality in a system")]
+     pub avg_perf_cri: u32,
++    #[stat(desc = "Target performance level of this CPU")]
+     pub cpuperf_cur: u32,
++    #[stat(desc = "CPU utilization of this particular CPU")]
+     pub cpu_util: u64,
++    #[stat(desc = "Number of active CPUs when core compaction is enabled")]
+     pub nr_active: u32,
+ }
+ 
+@@ -205,13 +228,6 @@ pub fn server_data(nr_cpus_onln: u64) -> StatsServerData<StatsReq, StatsRes> {
+ }
+ 
+ pub fn monitor_sched_samples(nr_samples: u64, shutdown: Arc<AtomicBool>) -> Result<()> {
+-    println!("## stats");
+-    println!("  LR: 'L'atency-critical or 'R'egular");
+-    println!("  HI: performance-'H'ungry or performance-'I'nsensitive");
+-    println!("  BT: 'B'ig or li'T'tle");
+-    println!("  EG: 'E'ligigle or 'G'reedy");
+-    println!("  PN: 'P'reempting or 'N'ot");
+-
+     scx_utils::monitor_stats::<SchedSamples>(
+         &vec![
+             ("target".into(), "sched_samples".into()),
+
+From dc22bb7ea1646f8ca436c06aa0f8d86aa9093b33 Mon Sep 17 00:00:00 2001
+From: Changwoo Min <changwoo@igalia.com>
+Date: Wed, 4 Sep 2024 13:48:49 +0900
+Subject: [PATCH 3/4] scx_lavd: print basic system status when --monior is
+ given
+
+Signed-off-by: Changwoo Min <changwoo@igalia.com>
+---
+ scheds/rust/scx_lavd/src/bpf/main.bpf.c |   4 +-
+ scheds/rust/scx_lavd/src/main.rs        |  50 ++++++++++-
+ scheds/rust/scx_lavd/src/stats.rs       | 109 ++++++++++++++++++++++--
+ 3 files changed, 152 insertions(+), 11 deletions(-)
+
+diff --git a/scheds/rust/scx_lavd/src/bpf/main.bpf.c b/scheds/rust/scx_lavd/src/bpf/main.bpf.c
+index e9b5ee9e..88c6e2db 100644
+--- a/scheds/rust/scx_lavd/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_lavd/src/bpf/main.bpf.c
+@@ -197,8 +197,8 @@ char _license[] SEC("license") = "GPL";
+ volatile u64		nr_cpus_onln;
+ static volatile u64	nr_cpus_big;
+ 
+-static struct sys_stat	__sys_stats[2];
+-static volatile int	__sys_stat_idx;
++struct sys_stat	__sys_stats[2];
++volatile int	__sys_stat_idx;
+ 
+ private(LAVD) struct bpf_cpumask __kptr *turbo_cpumask; /* CPU mask for turbo CPUs */
+ private(LAVD) struct bpf_cpumask __kptr *big_cpumask; /* CPU mask for big CPUs */
+diff --git a/scheds/rust/scx_lavd/src/main.rs b/scheds/rust/scx_lavd/src/main.rs
+index 54fc7d4d..f53b936b 100644
+--- a/scheds/rust/scx_lavd/src/main.rs
++++ b/scheds/rust/scx_lavd/src/main.rs
+@@ -12,6 +12,7 @@ pub mod bpf_intf;
+ pub use bpf_intf::*;
+ 
+ mod stats;
++use stats::SysStats;
+ use stats::SchedSample;
+ use stats::SchedSamples;
+ use stats::StatsReq;
+@@ -122,6 +123,14 @@ struct Opts {
+     #[clap(long = "no-freq-scaling", action = clap::ArgAction::SetTrue)]
+     no_freq_scaling: bool,
+ 
++    /// Enable stats monitoring with the specified interval.
++    #[clap(long)]
++    stats: Option<f64>,
++
++    /// Run in stats monitoring mode with the specified interval. Scheduler is not launched.
++    #[clap(long)]
++    monitor: Option<f64>,
++
+     /// Run in monitoring mode. Show the specified number of scheduling
+     /// samples every second.
+     #[clap(long)]
+@@ -452,8 +461,9 @@ struct Scheduler<'a> {
+     rb_mgr: libbpf_rs::RingBuffer<'static>,
+     intrspc: introspec,
+     intrspc_rx: Receiver<SchedSample>,
+-    sampler_tid: Option<ThreadId>,
++    monitor_tid: Option<ThreadId>,
+     stats_server: StatsServer<StatsReq, StatsRes>,
++    mseq_id: u64,
+ }
+ 
+ impl<'a> Scheduler<'a> {
+@@ -498,8 +508,9 @@ impl<'a> Scheduler<'a> {
+             rb_mgr,
+             intrspc: introspec::new(),
+             intrspc_rx,
+-            sampler_tid: None,
++            monitor_tid: None,
+             stats_server,
++            mseq_id: 0,
+         })
+     }
+ 
+@@ -634,15 +645,35 @@ impl<'a> Scheduler<'a> {
+         Ok(match req {
+             StatsReq::NewSampler(tid) => {
+                 self.rb_mgr.consume().unwrap();
+-                self.sampler_tid = Some(*tid);
++                self.monitor_tid = Some(*tid);
+                 StatsRes::Ack
+             }
++            StatsReq::SysStatsReq {
++                tid,
++            } => {
++                if Some(*tid) != self.monitor_tid {
++                    return Ok(StatsRes::Bye);
++                }
++                self.mseq_id += 1;
++
++                let mseq = self.mseq_id;
++                let avg_svc_time = self.skel.maps.bss_data.__sys_stats[0].avg_svc_time;
++                let nr_queued_task = self.skel.maps.bss_data.__sys_stats[0].nr_queued_task;
++                let nr_active = self.skel.maps.bss_data.__sys_stats[0].nr_active;
++
++                StatsRes::SysStats(SysStats {
++                    mseq,
++                    avg_svc_time,
++                    nr_queued_task,
++                    nr_active,
++                })
++            }
+             StatsReq::SchedSamplesNr {
+                 tid,
+                 nr_samples,
+                 interval_ms,
+             } => {
+-                if Some(*tid) != self.sampler_tid {
++                if Some(*tid) != self.monitor_tid {
+                     return Ok(StatsRes::Bye);
+                 }
+ 
+@@ -817,6 +848,17 @@ fn main() -> Result<()> {
+         return Ok(());
+     }
+ 
++    if let Some(intv) = opts.monitor.or(opts.stats) {
++        let shutdown_copy = shutdown.clone();
++        let jh = std::thread::spawn(move || {
++            stats::monitor(Duration::from_secs_f64(intv), shutdown_copy).unwrap()
++        });
++        if opts.monitor.is_some() {
++            let _ = jh.join();
++            return Ok(());
++        }
++    }
++
+     let mut open_object = MaybeUninit::uninit();
+     loop {
+         let mut sched = Scheduler::init(&opts, &mut open_object)?;
+diff --git a/scheds/rust/scx_lavd/src/stats.rs b/scheds/rust/scx_lavd/src/stats.rs
+index a5c4c433..8c2f586b 100644
+--- a/scheds/rust/scx_lavd/src/stats.rs
++++ b/scheds/rust/scx_lavd/src/stats.rs
+@@ -12,10 +12,56 @@ use std::sync::Arc;
+ use std::thread::ThreadId;
+ use std::time::Duration;
+ 
++#[derive(Clone, Debug, Default, Serialize, Deserialize, Stats)]
++pub struct SysStats {
++    #[stat(desc = "Sequence ID of this messge")]
++    pub mseq: u64,
++
++    #[stat(desc = "Average runtime per schedule")]
++    pub avg_svc_time: u64,
++
++    #[stat(desc = "Number of runnable tasks in runqueues")]
++    pub nr_queued_task: u64,
++
++    #[stat(desc = "Number of active CPUs when core compaction is enabled")]
++    pub nr_active: u32,
++}
++
++impl SysStats {
++    pub fn format_header<W: Write>(w: &mut W) -> Result<()> {
++        writeln!(
++            w,
++            "| {} | {} | {} | {} |",
++            "mseq",
++            "avg_svc_time",
++            "nr_queued_task",
++            "nr_active",
++        )?;
++        Ok(())
++    }
++
++    fn format<W: Write>(&self, w: &mut W) -> Result<()> {
++        if self.mseq % 32 == 1 {
++            Self::format_header(w)?;
++        }
++
++        writeln!(
++            w,
++            "| {} | {} | {} | {} |",
++            self.mseq,
++            self.avg_svc_time,
++            self.nr_queued_task,
++            self.nr_active,
++        )?;
++        Ok(())
++    }
++
++}
++
+ #[derive(Clone, Debug, Default, Serialize, Deserialize, Stats)]
+ #[stat(top)]
+ pub struct SchedSample {
+-    #[stat(desc = "Sequence ID of task log")]
++    #[stat(desc = "Sequence ID of this message")]
+     pub mseq: u64,
+     #[stat(desc = "Process ID")]
+     pub pid: i32,
+@@ -149,6 +195,9 @@ pub struct SchedSamples {
+ #[derive(Debug)]
+ pub enum StatsReq {
+     NewSampler(ThreadId),
++    SysStatsReq {
++        tid: ThreadId,
++    },
+     SchedSamplesNr {
+         tid: ThreadId,
+         nr_samples: u64,
+@@ -157,7 +206,15 @@ pub enum StatsReq {
+ }
+ 
+ impl StatsReq {
+-    fn from_args(
++    fn from_args_stats(
++        tid: ThreadId,
++    ) -> Result<Self> {
++        Ok(Self::SysStatsReq {
++            tid,
++        })
++    }
++
++    fn from_args_samples(
+         tid: ThreadId,
+         nr_cpus_onln: u64,
+         args: &BTreeMap<String, String>,
+@@ -187,12 +244,12 @@ impl StatsReq {
+ pub enum StatsRes {
+     Ack,
+     Bye,
++    SysStats(SysStats),
+     SchedSamples(SchedSamples),
+ }
+ 
+ pub fn server_data(nr_cpus_onln: u64) -> StatsServerData<StatsReq, StatsRes> {
+-    let samples_open: Box<dyn StatsOpener<StatsReq, StatsRes>> =
+-        Box::new(move |(req_ch, res_ch)| {
++    let open: Box<dyn StatsOpener<StatsReq, StatsRes>> = Box::new(move |(req_ch, res_ch)| {
+             let tid = std::thread::current().id();
+             req_ch.send(StatsReq::NewSampler(tid))?;
+             match res_ch.recv()? {
+@@ -202,7 +259,31 @@ pub fn server_data(nr_cpus_onln: u64) -> StatsServerData<StatsReq, StatsRes> {
+ 
+             let read: Box<dyn StatsReader<StatsReq, StatsRes>> =
+                 Box::new(move |args, (req_ch, res_ch)| {
+-                    let req = StatsReq::from_args(tid, nr_cpus_onln, args)?;
++                    let req = StatsReq::from_args_stats(tid)?;
++                    req_ch.send(req)?;
++
++                    let stats = match res_ch.recv()? {
++                        StatsRes::SysStats(v) => v,
++                        StatsRes::Bye => bail!("preempted by another sampler"),
++                        res => bail!("invalid response: {:?}", &res),
++                    };
++
++                    stats.to_json()
++                });
++            Ok(read)
++        });
++
++    let samples_open: Box<dyn StatsOpener<StatsReq, StatsRes>> = Box::new(move |(req_ch, res_ch)| {
++            let tid = std::thread::current().id();
++            req_ch.send(StatsReq::NewSampler(tid))?;
++            match res_ch.recv()? {
++                StatsRes::Ack => {}
++                res => bail!("invalid response: {:?}", &res),
++            }
++
++            let read: Box<dyn StatsReader<StatsReq, StatsRes>> =
++                Box::new(move |args, (req_ch, res_ch)| {
++                    let req = StatsReq::from_args_samples(tid, nr_cpus_onln, args)?;
+                     req_ch.send(req)?;
+ 
+                     let samples = match res_ch.recv()? {
+@@ -217,6 +298,14 @@ pub fn server_data(nr_cpus_onln: u64) -> StatsServerData<StatsReq, StatsRes> {
+         });
+ 
+     StatsServerData::new()
++        .add_meta(SysStats::meta())
++        .add_ops(
++            "top",
++            StatsOps {
++                open: open,
++                close: None,
++            },
++        )
+         .add_meta(SchedSample::meta())
+         .add_ops(
+             "sched_samples",
+@@ -244,3 +333,13 @@ pub fn monitor_sched_samples(nr_samples: u64, shutdown: Arc<AtomicBool>) -> Resu
+         },
+     )
+ }
++
++pub fn monitor(intv: Duration, shutdown: Arc<AtomicBool>) -> Result<()> {
++    scx_utils::monitor_stats::<SysStats>(
++        &vec![],
++        intv,
++        || shutdown.load(Ordering::Relaxed),
++        |sysstats| sysstats.format(&mut std::io::stdout()),
++    );
++    Ok(())
++}
+
+From 51d632aec72800be6061686bbf7a5525aaf073ce Mon Sep 17 00:00:00 2001
+From: Changwoo Min <changwoo@igalia.com>
+Date: Wed, 4 Sep 2024 16:33:19 +0900
+Subject: [PATCH 4/4] scx_lavd: accmulate more system-wide statistics
+
+Signed-off-by: Changwoo Min <changwoo@igalia.com>
+---
+ scheds/rust/scx_lavd/src/bpf/intf.h     |  28 ++++-
+ scheds/rust/scx_lavd/src/bpf/main.bpf.c | 160 +++++++++++++++++++++---
+ 2 files changed, 173 insertions(+), 15 deletions(-)
+
+diff --git a/scheds/rust/scx_lavd/src/bpf/intf.h b/scheds/rust/scx_lavd/src/bpf/intf.h
+index 5029147d..03fe2aeb 100644
+--- a/scheds/rust/scx_lavd/src/bpf/intf.h
++++ b/scheds/rust/scx_lavd/src/bpf/intf.h
+@@ -81,6 +81,7 @@ enum consts {
+ 	LAVD_PREEMPT_TICK_MARGIN	= (100ULL * NSEC_PER_USEC),
+ 
+ 	LAVD_SYS_STAT_INTERVAL_NS	= (50ULL * NSEC_PER_MSEC),
++	LAVD_SYS_STAT_DECAY_TIMES	= (60ULL * LAVD_TIME_ONE_SEC) / LAVD_SYS_STAT_INTERVAL_NS,
+ 	LAVD_CC_PER_CORE_MAX_CTUIL	= 500, /* maximum per-core CPU utilization */
+ 	LAVD_CC_PER_TURBO_CORE_MAX_CTUIL = 750, /* maximum per-core CPU utilization for a turbo core */
+ 	LAVD_CC_NR_ACTIVE_MIN		= 1, /* num of mininum active cores */
+@@ -122,6 +123,16 @@ struct sys_stat {
+ 
+ 	volatile u32	nr_violation;	/* number of utilization violation */
+ 	volatile u32	nr_active;	/* number of active cores */
++
++	volatile u64	nr_sched;	/* total scheduling so far */
++	volatile u64	nr_migration;	/* number of task migration */
++	volatile u64	nr_preemption;	/* number of preemption */
++	volatile u64	nr_greedy;	/* number of greedy tasks scheduled */
++	volatile u64	nr_perf_cri;	/* number of performance-critical tasks scheduled */
++	volatile u64	nr_lat_cri;	/* number of latency-critical tasks scheduled */
++	volatile u64	nr_big;		/* scheduled on big core */
++	volatile u64	nr_pc_on_big;	/* performance-critical tasks scheduled on big core */
++	volatile u64	nr_lc_on_big;	/* latency-critical tasks scheduled on big core */
+ };
+ 
+ /*
+@@ -169,7 +180,7 @@ struct cpu_ctx {
+ 	 */
+ 	volatile u32	max_lat_cri;	/* maximum latency criticality */
+ 	volatile u32	sum_lat_cri;	/* sum of latency criticality */
+-	volatile u32	sched_nr;	/* number of schedules */
++	volatile u32	nr_sched;	/* number of schedules */
+ 
+ 	/*
+ 	 * Information used to keep track of performance criticality
+@@ -205,6 +216,15 @@ struct cpu_ctx {
+ 	struct bpf_cpumask __kptr *tmp_o_mask;	/* temporary cpu mask */
+ 	struct bpf_cpumask __kptr *tmp_t_mask;	/* temporary cpu mask */
+ 	struct bpf_cpumask __kptr *tmp_t2_mask;	/* temporary cpu mask */
++
++	/*
++	 * Information for statistics.
++	 */
++	volatile u32	nr_migration;	/* number of migrations */
++	volatile u32	nr_preemption;	/* number of migrations */
++	volatile u32	nr_greedy;	/* number of greedy tasks scheduled */
++	volatile u32	nr_perf_cri;
++	volatile u32	nr_lat_cri;
+ } __attribute__((aligned(CACHELINE_SIZE)));
+ 
+ /*
+@@ -242,12 +262,18 @@ struct task_ctx {
+ 	volatile s32 victim_cpu;
+ 	u16	slice_boost_prio;	/* how many times a task fully consumed the slice */
+ 	u8	wakeup_ft;		/* regular wakeup = 1, sync wakeup = 2 */
++
+ 	/*
+ 	 * Task's performance criticality
+ 	 */
+ 	u8	on_big;			/* executable on a big core */
+ 	u8	on_little;		/* executable on a little core */
+ 	u32	perf_cri;		/* performance criticality of a task */
++
++	/*
++	 * Information for statistics collection
++	 */
++	u32	cpu_id;			/* CPU ID scheduled on */
+ };
+ 
+ /*
+diff --git a/scheds/rust/scx_lavd/src/bpf/main.bpf.c b/scheds/rust/scx_lavd/src/bpf/main.bpf.c
+index 88c6e2db..3ed7627a 100644
+--- a/scheds/rust/scx_lavd/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_lavd/src/bpf/main.bpf.c
+@@ -240,6 +240,18 @@ const volatile bool	is_autopilot_on;
+ const volatile u32 	is_smt_active;
+ const volatile u8	verbose;
+ 
++/*
++ * Statistics
++ */
++volatile int		power_mode;
++volatile u64		last_power_mode_clk;
++volatile u64		performance_mode_ns;
++volatile u64		balanced_mode_ns;
++volatile u64		powersave_mode_ns;
++
++/*
++ * Exit infomation
++ */
+ UEI_DEFINE(uei);
+ 
+ #define debugln(fmt, ...)						\
+@@ -320,6 +332,7 @@ struct {
+ 
+ static u16 get_nice_prio(struct task_struct *p);
+ static int reinit_active_cpumask_for_performance(void);
++static void update_power_mode_time(void);
+ 
+ static u64 sigmoid_u64(u64 v, u64 max)
+ {
+@@ -582,7 +595,15 @@ struct sys_stat_ctx {
+ 	s32		max_lat_cri;
+ 	s32		avg_lat_cri;
+ 	u64		sum_lat_cri;
+-	u32		sched_nr;
++	u32		nr_sched;
++	u32		nr_migration;
++	u32		nr_preemption;
++	u32		nr_greedy;
++	u32		nr_perf_cri;
++	u32		nr_lat_cri;
++	u32		nr_big;
++	u32		nr_pc_on_big;
++	u32		nr_lc_on_big;
+ 	u64		sum_perf_cri;
+ 	u32		avg_perf_cri;
+ 	u64		new_util;
+@@ -618,6 +639,33 @@ static void collect_sys_stat(struct sys_stat_ctx *c)
+ 		c->load_actual += cpuc->load_actual;
+ 		c->load_run_time_ns += cpuc->load_run_time_ns;
+ 		c->tot_svc_time += cpuc->tot_svc_time;
++		cpuc->tot_svc_time = 0;
++
++		/*
++		 * Accumulate statistics.
++		 */
++		if (cpuc->big_core) {
++			c->nr_big += cpuc->nr_sched;
++			c->nr_pc_on_big += cpuc->nr_perf_cri;
++			cpuc->nr_perf_cri = 0;
++			c->nr_lc_on_big += cpuc->nr_lat_cri;
++			cpuc->nr_lat_cri = 0;
++		}
++
++		c->nr_migration += cpuc->nr_migration;
++		cpuc->nr_migration = 0;
++
++		c->nr_preemption += cpuc->nr_preemption;
++		cpuc->nr_preemption = 0;
++
++		c->nr_greedy += cpuc->nr_greedy;
++		cpuc->nr_greedy = 0;
++
++		c->nr_perf_cri += cpuc->nr_perf_cri;
++		cpuc->nr_perf_cri = 0;
++
++		c->nr_lat_cri += cpuc->nr_lat_cri;
++		cpuc->nr_lat_cri = 0;
+ 
+ 		/*
+ 		 * Accumulate task's latency criticlity information.
+@@ -629,8 +677,8 @@ static void collect_sys_stat(struct sys_stat_ctx *c)
+ 		c->sum_lat_cri += cpuc->sum_lat_cri;
+ 		cpuc->sum_lat_cri = 0;
+ 
+-		c->sched_nr += cpuc->sched_nr;
+-		cpuc->sched_nr = 0;
++		c->nr_sched += cpuc->nr_sched;
++		cpuc->nr_sched = 0;
+ 
+ 		if (cpuc->max_lat_cri > c->max_lat_cri)
+ 			c->max_lat_cri = cpuc->max_lat_cri;
+@@ -701,7 +749,7 @@ static void calc_sys_stat(struct sys_stat_ctx *c)
+ 		c->compute_total = 0;
+ 	c->new_util = (c->compute_total * LAVD_CPU_UTIL_MAX)/c->duration_total;
+ 
+-	if (c->sched_nr == 0) {
++	if (c->nr_sched == 0) {
+ 		/*
+ 		 * When a system is completely idle, it is indeed possible
+ 		 * nothing scheduled for an interval.
+@@ -711,13 +759,15 @@ static void calc_sys_stat(struct sys_stat_ctx *c)
+ 		c->avg_perf_cri = c->stat_cur->avg_perf_cri;
+ 	}
+ 	else {
+-		c->avg_lat_cri = c->sum_lat_cri / c->sched_nr;
+-		c->avg_perf_cri = c->sum_perf_cri / c->sched_nr;
++		c->avg_lat_cri = c->sum_lat_cri / c->nr_sched;
++		c->avg_perf_cri = c->sum_perf_cri / c->nr_sched;
+ 	}
+ }
+ 
+ static void update_sys_stat_next(struct sys_stat_ctx *c)
+ {
++	static int cnt = 0;
++
+ 	/*
+ 	 * Update the CPU utilization to the next version.
+ 	 */
+@@ -741,11 +791,45 @@ static void update_sys_stat_next(struct sys_stat_ctx *c)
+ 	stat_next->nr_violation =
+ 		calc_avg32(stat_cur->nr_violation, c->nr_violation);
+ 
+-	stat_next->avg_svc_time = (c->sched_nr == 0) ? 0 :
+-				  c->tot_svc_time / c->sched_nr;
++	stat_next->avg_svc_time = (c->nr_sched == 0) ? 0 :
++				  c->tot_svc_time / c->nr_sched;
+ 
+ 	stat_next->nr_queued_task =
+ 		calc_avg(stat_cur->nr_queued_task, c->nr_queued_task);
++
++
++	/*
++	 * Half the statistics every minitue so the statistics hold the
++	 * information on a few minutes.
++	 */
++	if (cnt++ == LAVD_SYS_STAT_DECAY_TIMES) {
++		cnt = 0;
++		stat_next->nr_sched >>= 1;
++		stat_next->nr_migration >>= 1;
++		stat_next->nr_preemption >>= 1;
++		stat_next->nr_greedy >>= 1;
++		stat_next->nr_perf_cri >>= 1;
++		stat_next->nr_lat_cri >>= 1;
++		stat_next->nr_big >>= 1;
++		stat_next->nr_pc_on_big >>= 1;
++		stat_next->nr_lc_on_big >>= 1;
++
++		__sync_fetch_and_sub(&performance_mode_ns, performance_mode_ns/2);
++		__sync_fetch_and_sub(&balanced_mode_ns, balanced_mode_ns/2);
++		__sync_fetch_and_sub(&powersave_mode_ns, powersave_mode_ns/2);
++	}
++
++	stat_next->nr_sched += c->nr_sched;
++	stat_next->nr_migration += c->nr_migration;
++	stat_next->nr_preemption += c->nr_preemption;
++	stat_next->nr_greedy += c->nr_greedy;
++	stat_next->nr_perf_cri += c->nr_perf_cri;
++	stat_next->nr_lat_cri += c->nr_lat_cri;
++	stat_next->nr_big += c->nr_big;
++	stat_next->nr_pc_on_big += c->nr_pc_on_big;
++	stat_next->nr_lc_on_big += c->nr_lc_on_big;
++
++	update_power_mode_time();
+ }
+ 
+ static void do_update_sys_stat(void)
+@@ -905,21 +989,48 @@ static void do_core_compaction(void)
+ 	bpf_rcu_read_unlock();
+ }
+ 
+-int do_set_power_profile(s32 power_mode, int util)
++static void update_power_mode_time(void)
+ {
+-	static s32 cur_mode = LAVD_PM_MAX;
++	u64 now = bpf_ktime_get_ns();
++	u64 delta;
++
++	if (last_power_mode_clk == 0)
++		last_power_mode_clk = now;
+ 
++	delta = last_power_mode_clk - now;
++	last_power_mode_clk = now;
++
++	switch (power_mode) {
++	case LAVD_PM_PERFORMANCE:
++		__sync_fetch_and_add(&performance_mode_ns, delta);
++		break;
++	case LAVD_PM_BALANCED:
++		__sync_fetch_and_add(&balanced_mode_ns, delta);
++		break;
++	case LAVD_PM_POWERSAVE:
++		__sync_fetch_and_add(&powersave_mode_ns, delta);
++		break;
++	}
++}
++
++
++static int do_set_power_profile(s32 pm, int util)
++{
+ 	/*
+ 	 * Skip setting the mode if alreay in the same mode.
+ 	 */
+-	if (cur_mode == power_mode)
++	if (power_mode == pm)
+ 		return 0;
+-	cur_mode = power_mode;
++
++	/*
++	 * Update power mode time
++	 */
++	update_power_mode_time();
+ 
+ 	/*
+ 	 * Change the power mode.
+ 	 */
+-	switch (power_mode) {
++	switch (pm) {
+ 	case LAVD_PM_PERFORMANCE:
+ 		no_core_compaction = true;
+ 		no_freq_scaling = true;
+@@ -1274,6 +1385,7 @@ static void update_stat_for_running(struct task_struct *p,
+ 				    struct task_ctx *taskc,
+ 				    struct cpu_ctx *cpuc)
+ {
++	struct sys_stat *stat_cur = get_sys_stat_cur();
+ 	u64 wait_period, interval;
+ 	u64 now = bpf_ktime_get_ns();
+ 	u64 wait_freq_ft, wake_freq_ft, perf_cri;
+@@ -1306,7 +1418,27 @@ static void update_stat_for_running(struct task_struct *p,
+ 	if (cpuc->max_lat_cri < taskc->lat_cri)
+ 		cpuc->max_lat_cri = taskc->lat_cri;
+ 	cpuc->sum_lat_cri += taskc->lat_cri;
+-	cpuc->sched_nr++;
++	cpuc->nr_sched++;
++
++	/*
++	 * Update statistics information.
++	 */
++	if (taskc->cpu_id != cpuc->cpu_id) {
++		taskc->cpu_id = cpuc->cpu_id;
++		cpuc->nr_migration++;
++	}
++
++	if (taskc->victim_cpu != LAVD_CPU_ID_NONE)
++		cpuc->nr_preemption++;
++	
++	if (is_lat_cri(taskc, stat_cur))
++		cpuc->nr_lat_cri++;
++
++	if (is_perf_cri(taskc, stat_cur))
++		cpuc->nr_perf_cri++;
++
++	if (is_greedy(taskc))
++		cpuc->nr_greedy++;
+ 
+ 	/*
+ 	 * It is clear there is no need to consider the suspended duration
