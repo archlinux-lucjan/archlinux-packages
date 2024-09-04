@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r203.g4513dfb
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,12 +21,14 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-e4d395d2d85d6e5259832b561a35f779c779b259 # scx_bpfland: add basic cpufreq support
-c458d6711f0a1f43b1365ca868f22ea2180d71aa # scx_bpfland: skip idle CPU selection for tasks with changing affinity
-17c43e0608f9521a9330129b2790d24415bdf098 # scx_bpfland: improve turbo domain CPU selection
-a9c5a0aba72ad644405e749d3325c6dd1e1dab6b # scx_bpfland: dynamically adjust cpufreq level in auto mode
+36154b45a0d797b4010b31c009b1acfe1410d9fd # scx_bpfland: add basic cpufreq support
+ca2094a60c2d34601179a06cd62c823db670a837 # scx_bpfland: skip idle CPU selection for tasks with changing affinity
+cbe4927380850bbc9b3ed4706be91e813a17190e # scx_bpfland: improve turbo domain CPU selection
+7835db7b58abdfc58c8485ca881eeb2567ba0234 # scx_bpfland: dynamically adjust cpufreq level in auto mode
 1de44d918c1f470a176dfd03104dc57518d8ca73 # scx_rusty: Support domain/core cookie policy
 4021ace1cb2a50e8004f3769923fe0d387d6d80d # scx_rustland_core: avoid critical failures due by missing task context
+f010eda5c076887ed37800f98baec956dee2a44d # meson: Remove scheds/rust/*/meson.build
+708aaaafb9a581141dd081ef1f1cf625c738ea34 # meson: Update rust/meson.build
 )
 
 _reverts=(
