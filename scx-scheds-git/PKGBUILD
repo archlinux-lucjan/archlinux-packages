@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r203.g4513dfb
-pkgrel=2
+pkgver=1.0.3.r206.g161790f
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,8 +27,6 @@ cbe4927380850bbc9b3ed4706be91e813a17190e # scx_bpfland: improve turbo domain CPU
 7835db7b58abdfc58c8485ca881eeb2567ba0234 # scx_bpfland: dynamically adjust cpufreq level in auto mode
 1de44d918c1f470a176dfd03104dc57518d8ca73 # scx_rusty: Support domain/core cookie policy
 4021ace1cb2a50e8004f3769923fe0d387d6d80d # scx_rustland_core: avoid critical failures due by missing task context
-f010eda5c076887ed37800f98baec956dee2a44d # meson: Remove scheds/rust/*/meson.build
-708aaaafb9a581141dd081ef1f1cf625c738ea34 # meson: Update rust/meson.build
 )
 
 _reverts=(
