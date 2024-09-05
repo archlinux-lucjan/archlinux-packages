@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r211.gafc7b54
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -22,7 +22,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 1de44d918c1f470a176dfd03104dc57518d8ca73 # scx_rusty: Support domain/core cookie policy
-4021ace1cb2a50e8004f3769923fe0d387d6d80d # scx_rustland_core: avoid critical failures due by missing task context
+53617042b36b01ba3ee11fba4a3e76af0357a892 # scx_rustland_core: avoid critical failures due by missing task context
 97eeb96886e0959253275bba70bae42b53000471 # openrc: drop separate logs
 )
 
