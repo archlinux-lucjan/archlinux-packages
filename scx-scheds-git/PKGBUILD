@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r213.g239b519
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,8 +25,8 @@ ca1c86eb9cf87baadcbd0602db2ab5a8fbdfc89c # scx_lavd: improve pick_idle_cpu() for
 6b717a3f3d913102a8d506f65ec21cc7ef75e0e4 # scx_lavd: add --help-stats option
 e5d27d05537cd90cc50f357d5d01b1b86ee5fbe8 # scx_lavd: print basic system status when --monior is given
 f490a55d542268f56fd8a203567d694928df0623 # scx_lavd: accmulate more system-wide statistics
-f31a25f7d9a3452ff18855cba3854c32ec8ca2a2 # scx_lavd: print more infor with --monitor
-a7d7c805b07d58342dc2b7f0e24b1df7130c8299 # scx_lavd: drop time slice boost for big cores
+d09f01da4bc5140e6acb2e5de0d411c96a4a5c1f # scx_lavd: print more info with --monitor
+e39d69df2faa815016505c481402394f69e44900 # scx_lavd: drop time slice boost for big cores
 76ad8804758de647e3d32ece72ed6defaf6aab25 # scx_layered: Fix stats formatting
 844c00fd26f7d1c4c8f462564735616071f9dbd2 # scx_bpfland: enable "auto" mode by default
 560b4ca12c63515f647d3c56d68352f2812893d7 # scx_bpfland: optimize producer/consumer workloads
