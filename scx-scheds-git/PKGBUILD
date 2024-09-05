@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r221.g41856aa
+pkgver=1.0.3.r223.gee97632
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,14 +19,12 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-1de44d918c1f470a176dfd03104dc57518d8ca73 # scx_rusty: Support domain/core cookie policy
 ca1c86eb9cf87baadcbd0602db2ab5a8fbdfc89c # scx_lavd: improve pick_idle_cpu() for pinned tasks
 6b717a3f3d913102a8d506f65ec21cc7ef75e0e4 # scx_lavd: add --help-stats option
 e5d27d05537cd90cc50f357d5d01b1b86ee5fbe8 # scx_lavd: print basic system status when --monior is given
 f490a55d542268f56fd8a203567d694928df0623 # scx_lavd: accmulate more system-wide statistics
 d09f01da4bc5140e6acb2e5de0d411c96a4a5c1f # scx_lavd: print more info with --monitor
 e39d69df2faa815016505c481402394f69e44900 # scx_lavd: drop time slice boost for big cores
-918cfc613d982b7354cc08e3fa7611ec152cf2a6 # scx_bpfland: optimize producer/consumer workloads
 )
 
 _reverts=(
