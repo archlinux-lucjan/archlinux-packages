@@ -1,7 +1,7 @@
-From 249573785659108ac1d75c0ae9851ad950db92c0 Mon Sep 17 00:00:00 2001
+From ca1c86eb9cf87baadcbd0602db2ab5a8fbdfc89c Mon Sep 17 00:00:00 2001
 From: Changwoo Min <changwoo@igalia.com>
 Date: Wed, 4 Sep 2024 10:52:22 +0900
-Subject: [PATCH 1/5] scx_lavd: improve pick_idle_cpu() for pinned tasks
+Subject: [PATCH 1/6] scx_lavd: improve pick_idle_cpu() for pinned tasks
 
 When a pinned task cannot run on either active or overflow sets, we try
 to stay on the previous CPU which is still okay to run on.
@@ -48,10 +48,10 @@ index fdf78b90..e9b5ee9e 100644
  	/*
  	 * Note that we don't need to kick the picked CPU here since the
 
-From b01d8f244ca68c163dd7dfc07174d07679c811b2 Mon Sep 17 00:00:00 2001
+From 6b717a3f3d913102a8d506f65ec21cc7ef75e0e4 Mon Sep 17 00:00:00 2001
 From: Changwoo Min <changwoo@igalia.com>
 Date: Wed, 4 Sep 2024 12:05:23 +0900
-Subject: [PATCH 2/5] scx_lavd: add --help-stats option
+Subject: [PATCH 2/6] scx_lavd: add --help-stats option
 
 Signed-off-by: Changwoo Min <changwoo@igalia.com>
 ---
@@ -157,10 +157,10 @@ index eabf5f8c..a5c4c433 100644
          &vec![
              ("target".into(), "sched_samples".into()),
 
-From dc22bb7ea1646f8ca436c06aa0f8d86aa9093b33 Mon Sep 17 00:00:00 2001
+From e5d27d05537cd90cc50f357d5d01b1b86ee5fbe8 Mon Sep 17 00:00:00 2001
 From: Changwoo Min <changwoo@igalia.com>
 Date: Wed, 4 Sep 2024 13:48:49 +0900
-Subject: [PATCH 3/5] scx_lavd: print basic system status when --monior is
+Subject: [PATCH 3/6] scx_lavd: print basic system status when --monior is
  given
 
 Signed-off-by: Changwoo Min <changwoo@igalia.com>
@@ -457,10 +457,10 @@ index a5c4c433..8c2f586b 100644
 +    Ok(())
 +}
 
-From 9ffc56defbe419f9a11997607056f348c8fe36b0 Mon Sep 17 00:00:00 2001
+From f490a55d542268f56fd8a203567d694928df0623 Mon Sep 17 00:00:00 2001
 From: Changwoo Min <changwoo@igalia.com>
 Date: Wed, 4 Sep 2024 16:33:19 +0900
-Subject: [PATCH 4/5] scx_lavd: accmulate more system-wide statistics
+Subject: [PATCH 4/6] scx_lavd: accmulate more system-wide statistics
 
 Signed-off-by: Changwoo Min <changwoo@igalia.com>
 ---
@@ -810,10 +810,10 @@ index 88c6e2db..d28a007f 100644
  
  static u64 calc_svc_time(struct task_struct *p, struct task_ctx *taskc)
 
-From d71c834f640438aa74533396d5ff364ac876ba9e Mon Sep 17 00:00:00 2001
+From f31a25f7d9a3452ff18855cba3854c32ec8ca2a2 Mon Sep 17 00:00:00 2001
 From: Changwoo Min <changwoo@igalia.com>
 Date: Thu, 5 Sep 2024 15:27:15 +0900
-Subject: [PATCH 5/5] scx_lavd: print more infor with --monitor
+Subject: [PATCH 5/6] scx_lavd: print more infor with --monitor
 
 Signed-off-by: Changwoo Min <changwoo@igalia.com>
 ---
@@ -824,7 +824,7 @@ Signed-off-by: Changwoo Min <changwoo@igalia.com>
  4 files changed, 173 insertions(+), 38 deletions(-)
 
 diff --git a/scheds/rust/Cargo.lock b/scheds/rust/Cargo.lock
-index afeab185..57ea5ba5 100644
+index 3ab368d2..955758d0 100644
 --- a/scheds/rust/Cargo.lock
 +++ b/scheds/rust/Cargo.lock
 @@ -527,6 +527,15 @@ version = "0.3.1"
@@ -1159,3 +1159,36 @@ index 8c2f586b..34d7af67 100644
                      let req = StatsReq::from_args_stats(tid)?;
                      req_ch.send(req)?;
  
+
+From a7d7c805b07d58342dc2b7f0e24b1df7130c8299 Mon Sep 17 00:00:00 2001
+From: Changwoo Min <changwoo@igalia.com>
+Date: Thu, 5 Sep 2024 16:00:02 +0900
+Subject: [PATCH 6/6] scx_lavd: drop time slice boost for big cores
+
+Unexpectedly, little cores, which have relative short time slices, have
+more chance to schedule performance-critical tasks. Hence it is better
+to keep the time slice same regardless the core types.
+
+Signed-off-by: Changwoo Min <changwoo@igalia.com>
+---
+ scheds/rust/scx_lavd/src/bpf/main.bpf.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/scheds/rust/scx_lavd/src/bpf/main.bpf.c b/scheds/rust/scx_lavd/src/bpf/main.bpf.c
+index d28a007f..6933ebdb 100644
+--- a/scheds/rust/scx_lavd/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_lavd/src/bpf/main.bpf.c
+@@ -1293,13 +1293,6 @@ static u64 calc_time_slice(struct task_struct *p, struct task_ctx *taskc,
+ 			  taskc->slice_boost_prio) / LAVD_SLICE_BOOST_MAX_STEP;
+ 	}
+ 
+-	/*
+-	 * Boost time slice based on CPU's capacity to assign a longer time
+-	 * slice for a more performant CPU for making each CPU's job processing
+-	 * throughput similar.
+-	 */
+-	slice = slice * cpuc->capacity / 1024;
+-
+ 	/*
+ 	 * If a task has yet to be scheduled (i.e., a freshly forked task or a
+ 	 * task just under sched_ext), don't give a fair amount of time slice
