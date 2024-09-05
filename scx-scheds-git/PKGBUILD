@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r211.gafc7b54
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -12,10 +12,8 @@ license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
-source=("git+https://github.com/sched-ext/scx"
-        'lavd-monitor.patch')
-sha256sums=('SKIP'
-            '14e9cb0ca3f2df01bfdb1db7f89ca051cc9120172ff714f32dee7496f1f6e48b')
+source=("git+https://github.com/sched-ext/scx")
+sha256sums=('SKIP')
 options=(!lto)
 provides=("scx-scheds")
 conflicts=("scx-scheds")
@@ -24,6 +22,12 @@ _backports=(
 1de44d918c1f470a176dfd03104dc57518d8ca73 # scx_rusty: Support domain/core cookie policy
 53617042b36b01ba3ee11fba4a3e76af0357a892 # scx_rustland_core: avoid critical failures due by missing task context
 97eeb96886e0959253275bba70bae42b53000471 # openrc: drop separate logs
+ca1c86eb9cf87baadcbd0602db2ab5a8fbdfc89c # scx_lavd: improve pick_idle_cpu() for pinned tasks
+6b717a3f3d913102a8d506f65ec21cc7ef75e0e4 # scx_lavd: add --help-stats option
+e5d27d05537cd90cc50f357d5d01b1b86ee5fbe8 # scx_lavd: print basic system status when --monior is given
+f490a55d542268f56fd8a203567d694928df0623 # scx_lavd: accmulate more system-wide statistics
+f31a25f7d9a3452ff18855cba3854c32ec8ca2a2 # scx_lavd: print more infor with --monitor
+a7d7c805b07d58342dc2b7f0e24b1df7130c8299 # scx_lavd: drop time slice boost for big cores
 )
 
 _reverts=(
