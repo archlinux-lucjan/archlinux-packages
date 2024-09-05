@@ -810,18 +810,18 @@ index 88c6e2db..d28a007f 100644
  
  static u64 calc_svc_time(struct task_struct *p, struct task_ctx *taskc)
 
-From 749ac3f3a8faba1c6a839c4c5ad9798486f998e7 Mon Sep 17 00:00:00 2001
+From d71c834f640438aa74533396d5ff364ac876ba9e Mon Sep 17 00:00:00 2001
 From: Changwoo Min <changwoo@igalia.com>
 Date: Thu, 5 Sep 2024 15:27:15 +0900
 Subject: [PATCH 5/5] scx_lavd: print more infor with --monitor
 
 Signed-off-by: Changwoo Min <changwoo@igalia.com>
 ---
- scheds/rust/Cargo.lock            | 10 ++++
- scheds/rust/scx_lavd/Cargo.toml   |  1 +
- scheds/rust/scx_lavd/src/main.rs  | 64 +++++++++++++++++++++--
- scheds/rust/scx_lavd/src/stats.rs | 84 +++++++++++++++++++++++++++----
- 4 files changed, 147 insertions(+), 12 deletions(-)
+ scheds/rust/Cargo.lock            |  10 +++
+ scheds/rust/scx_lavd/Cargo.toml   |   1 +
+ scheds/rust/scx_lavd/src/main.rs  |  64 +++++++++++++-
+ scheds/rust/scx_lavd/src/stats.rs | 136 ++++++++++++++++++++++--------
+ 4 files changed, 173 insertions(+), 38 deletions(-)
 
 diff --git a/scheds/rust/Cargo.lock b/scheds/rust/Cargo.lock
 index afeab185..57ea5ba5 100644
@@ -953,7 +953,7 @@ index f53b936b..e5e650d2 100644
              }
              StatsReq::SchedSamplesNr {
 diff --git a/scheds/rust/scx_lavd/src/stats.rs b/scheds/rust/scx_lavd/src/stats.rs
-index 8c2f586b..b3691fd6 100644
+index 8c2f586b..34d7af67 100644
 --- a/scheds/rust/scx_lavd/src/stats.rs
 +++ b/scheds/rust/scx_lavd/src/stats.rs
 @@ -11,8 +11,10 @@ use std::sync::atomic::Ordering;
@@ -1017,27 +1017,28 @@ index 8c2f586b..b3691fd6 100644
          writeln!(
              w,
 -            "| {} | {} | {} | {} |",
-+            "| {:8} | {:9} | {:9} | {:9} | {:9} | {:9} | {:9} | {:8} | {:8} | {:8} | {:8} | {:8} | {:8} | {:11} | {:12} | {:12} | {:12} | ",
-             "mseq",
+-            "mseq",
 -            "avg_svc_time",
 -            "nr_queued_task",
 -            "nr_active",
-+            "svc_time",
-+            "# q task",
-+            "# act cpu",
-+            "# sched",
-+            "migrate%",
-+            "preempt%",
-+            "greedy%",
-+            "perf-cr%",
-+            "lat-cr%",
-+            "big%",
-+            "pc/big%",
-+            "lc/big%",
-+            "power mode",
-+            "performance%",
-+            "balanced%",
-+            "powersave%",
++            "\x1b[93m| {:8} | {:9} | {:9} | {:9} | {:9} | {:9} | {:9} | {:8} | {:8} | {:8} | {:8} | {:8} | {:8} | {:11} | {:12} | {:12} | {:12} |\x1b[0m",
++            "MSEQ",
++            "SVC_TIME",
++            "# Q TASK",
++            "# ACT CPU",
++            "# SCHED",
++            "MIGRATE%",
++            "PREEMPT%",
++            "GREEDY%",
++            "PERF-CR%",
++            "LAT-CR%",
++            "BIG%",
++            "PC/BIG%",
++            "LC/BIG%",
++            "POWER MODE",
++            "PERFORMANCE%",
++            "BALANCED%",
++            "POWERSAVE%",
          )?;
          Ok(())
      }
@@ -1051,7 +1052,7 @@ index 8c2f586b..b3691fd6 100644
          writeln!(
              w,
 -            "| {} | {} | {} | {} |",
-+            "| {:8} | {:9} | {:9} | {:9} | {:9} | {:9} | {:9} | {:8} | {:8} | {:8} | {:8} | {:8} | {:8} | {:11} | {:12} | {:12} | {:12} | ",
++            "| {:8} | {:9} | {:9} | {:9} | {:9} | {:9} | {:9} | {:8} | {:8} | {:8} | {:8} | {:8} | {:8} | {:11} | {:12} | {:12} | {:12} |",
              self.mseq,
              self.avg_svc_time,
              self.nr_queued_task,
@@ -1080,7 +1081,67 @@ index 8c2f586b..b3691fd6 100644
  pub struct SchedSample {
      #[stat(desc = "Sequence ID of this message")]
      pub mseq: u64,
-@@ -146,7 +212,7 @@ impl SchedSample {
+@@ -111,42 +177,42 @@ impl SchedSample {
+     pub fn format_header<W: Write>(w: &mut W) -> Result<()> {
+         writeln!(
+             w,
+-            "| {:6} | {:7} | {:17} \
++            "\x1b[93m| {:6} | {:7} | {:17} \
+                    | {:5} | {:4} | {:4} \
+                    | {:14} | {:8} | {:7} \
+                    | {:8} | {:7} | {:8} \
+                    | {:7} | {:9} | {:9} \
+-                   | {:9} | {:9} | {:8} \
++                   | {:9} | {:9} |\033[0m {:8} \
+                    | {:8} | {:8} | {:8} \
+-                   | {:6} |",
+-            "mseq",
+-            "pid",
+-            "comm",
+-            "stat",
+-            "cpu",
+-            "vtmc",
+-            "vddln_ns",
+-            "slc_ns",
+-            "grdy_rt",
+-            "lat_cri",
+-            "avg_lc",
+-            "st_prio",
+-            "slc_bst",
+-            "run_freq",
+-            "run_tm_ns",
+-            "wait_freq",
+-            "wake_freq",
+-            "perf_cri",
+-            "avg_pc",
+-            "cpufreq",
+-            "cpu_util",
+-            "nr_act",
++                   | {:6} |\x1b[0m",
++            "MSEQ",
++            "PID",
++            "COMM",
++            "STAT",
++            "CPU",
++            "VTMC",
++            "VDDLN_NS",
++            "SLC_NS",
++            "GRDY_RT",
++            "LAT_CRI",
++            "AVG_LC",
++            "ST_PRIO",
++            "SLC_BST",
++            "RUN_FREQ",
++            "RUN_TM_NS",
++            "WAIT_FREQ",
++            "WAKE_FREQ",
++            "PERF_CRI",
++            "AVG_PC",
++            "CPUFREQ",
++            "CPU_UTIL",
++            "NR_ACT",
+         )?;
+         Ok(())
      }
  
      pub fn format<W: Write>(&self, w: &mut W) -> Result<()> {

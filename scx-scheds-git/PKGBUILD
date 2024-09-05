@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r211.gafc7b54
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -15,7 +15,7 @@ backup=('etc/default/scx')
 source=("git+https://github.com/sched-ext/scx"
         'lavd-monitor.patch')
 sha256sums=('SKIP'
-            'b03d0d49588ca6b3e2716b2d9cc3f60046902a2d668e8caec11852ed1df6446e')
+            '22f8a91d282513fba58001d1450b4843adf4300608d63eb74cb3b455431d6d7d')
 options=(!lto)
 provides=("scx-scheds")
 conflicts=("scx-scheds")
