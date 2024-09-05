@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.3.r219.g28050dc
+pkgver=1.0.3.r221.g41856aa
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -26,9 +26,7 @@ e5d27d05537cd90cc50f357d5d01b1b86ee5fbe8 # scx_lavd: print basic system status w
 f490a55d542268f56fd8a203567d694928df0623 # scx_lavd: accmulate more system-wide statistics
 d09f01da4bc5140e6acb2e5de0d411c96a4a5c1f # scx_lavd: print more info with --monitor
 e39d69df2faa815016505c481402394f69e44900 # scx_lavd: drop time slice boost for big cores
-76ad8804758de647e3d32ece72ed6defaf6aab25 # scx_layered: Fix stats formatting
 918cfc613d982b7354cc08e3fa7611ec152cf2a6 # scx_bpfland: optimize producer/consumer workloads
-cde5a39ae056910fb3fbe4a8647e41287fcad160 # scx-scheds: update bpflands suggested flags
 )
 
 _reverts=(
