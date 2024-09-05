@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.3.r213.g239b519
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 1de44d918c1f470a176dfd03104dc57518d8ca73 # scx_rusty: Support domain/core cookie policy
-97eeb96886e0959253275bba70bae42b53000471 # openrc: drop separate logs
 ca1c86eb9cf87baadcbd0602db2ab5a8fbdfc89c # scx_lavd: improve pick_idle_cpu() for pinned tasks
 6b717a3f3d913102a8d506f65ec21cc7ef75e0e4 # scx_lavd: add --help-stats option
 e5d27d05537cd90cc50f357d5d01b1b86ee5fbe8 # scx_lavd: print basic system status when --monior is given
