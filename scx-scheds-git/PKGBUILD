@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.4.r0.gfb35fdb
-pkgrel=6
+pkgver=1.0.4.r7.g9301d7d
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,9 +23,6 @@ _backports=(
 ebe9375b6a6593e71c6a4c8eff13bef7b13092b4 # scx_lavd: pretty printing of status
 351a1c6656ded0d76414d52a2f8288a327cf50c0 # scx_lavd: enable autopilot mode by default
 36df970a8f45de2fe97623e25f5ac9be9de70ac8 # scx_lavd: add debug print for turbo cores
-ed879bae28f2bf6a9b6bdcecd7eddee6b2935e30 # scx_rustland_core: expose enq_flags to user-space
-168fb7838797182a173bc01c95d0ea1b967f9733 # scx_rustland_core: introduce cache awareness
-8231f8586a42f9dc345a2eb62a1537a72c40e3cb # scx_rlfifo: better documentation and code readability
 )
 
 _reverts=(
