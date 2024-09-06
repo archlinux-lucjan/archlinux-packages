@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.4.r0.gfb35fdb
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,9 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+461cb9a3a0f9e2989e55bfd742e5a67d65862bcb # scx_lavd: fix calculation of greedy_ratio
+ebe9375b6a6593e71c6a4c8eff13bef7b13092b4 # scx_lavd: pretty printing of status
+91b7bd2db35dc94890464fa95095dfa6d415c48b # scx_lavd: enable autopilot mode by default
 )
 
 _reverts=(
