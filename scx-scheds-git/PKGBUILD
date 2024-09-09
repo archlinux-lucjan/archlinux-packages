@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.4.r16.g155a10d
+pkgver=1.0.4.r23.g134846c
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,6 +19,8 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+56bb9631363314dc2496c0b8291cba5665433282 # build: Use a single top-level rust workspace
+b2a71b166e9eb26da64842506cd076d14ae0d9c3 # build: Remove unused rust/meson.build
 )
 
 _reverts=(
