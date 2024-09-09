@@ -13,7 +13,7 @@ pkgname=(
   $pkgbase-compat
 )
 pkgver=2.2.1
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc='zlib replacement with optimizations for next generation systems'
 url='https://github.com/zlib-ng/zlib-ng'
 arch=('x86_64')
@@ -34,7 +34,7 @@ build() {
   cd "zlib-ng-${pkgver}"
 
   export CFLAGS+=" -fno-semantic-interposition"
-  export CXXLAGS+=" -fno-semantic-interposition"
+  export CXXFLAGS+=" -fno-semantic-interposition"
 
 	# WITH_UNALIGNED - unaligned access invokes undefined behaviour,
 	#   see https://github.com/gentoo/gentoo/pull/17167 for more info.
