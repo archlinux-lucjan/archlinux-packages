@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.4.r32.gc4c3659
-pkgrel=1
+pkgver=1.0.4.r43.g8ca45cf
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,8 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+d41f74f684355b8759844b6b7fa11f1ceec13dce # scx_bpfland: refine task wakeup logic
+17116e92d7c6998d330ac6a79a4f6cb472993fa5 # scx_bpfland: get rid of preferred domain
 )
 
 _reverts=(
