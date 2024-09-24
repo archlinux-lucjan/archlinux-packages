@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.4.r62.g4f98de3
+pkgver=1.0.4.r102.gb1bc403
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,7 +21,10 @@ conflicts=("scx-scheds")
 _backports=(
 e3609ac932a4e6eae91647c0a7d17d9f5fcee275 # scheds: introduce scx_fair
 5912314dc03c9d1e95a2a73f698fd997c1134772 # scx_fair: introduce lowlatency mode
-bba9d1e406b9a9eb993527a45040ae2688d31060 # scx_rustland_core: improve idle CPU selection API and logic
+1b44eca9d54d1fe02faa81722d5f105f0bd50b9a # scx_bpfland: prevent stall with sched_setaffinity()
+34bc6a2b649a1a3b8c1cccba63bf9e417f983c97 # Revert "scx_rustland_core: dispatch all kthreads directly from BPF"
+0a57b938468131b94a69bc7d76ef76e4be193a6b # scx_rustland_core: prevent mm stall
+d434ab4266cdd46526a899cb49e3be242d5aaa77 # scx_loader: Add initial automatic scheduler switching via --monitor-no-dbus
 )
 
 _reverts=(
