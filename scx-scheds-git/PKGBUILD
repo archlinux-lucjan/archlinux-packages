@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.4.r102.gb1bc403
+pkgver=1.0.4.r106.g652c923
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -25,6 +25,7 @@ e3609ac932a4e6eae91647c0a7d17d9f5fcee275 # scheds: introduce scx_fair
 34bc6a2b649a1a3b8c1cccba63bf9e417f983c97 # Revert "scx_rustland_core: dispatch all kthreads directly from BPF"
 0a57b938468131b94a69bc7d76ef76e4be193a6b # scx_rustland_core: prevent mm stall
 d434ab4266cdd46526a899cb49e3be242d5aaa77 # scx_loader: Add initial automatic scheduler switching via --monitor-no-dbus
+e4eaed07a8184c3399ea1a31c7cbea5de0425973 # Change monitor_no_dbus to auto, use enum-string conv, use log::info, use Tokio spawning
 )
 
 _reverts=(
