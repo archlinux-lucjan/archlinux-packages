@@ -4,7 +4,7 @@
 
 pkgname=armcord-lucjan-git
 pkgdesc="ArmCord custom client designed to enhance your Discord experience while keeping everything lightweight."
-pkgver=20240827.r1412.g58531e8
+pkgver=20240924.r1499.g6a61298
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/Armcord/ArmCord"
@@ -34,7 +34,7 @@ build() {
   pnpm install electron@beta
   pnpm run build && pnpm electron-builder --linux pacman
 
-  bsdtar -xf "dist/ArmCord-3.3.1-linux-x64.pacman" -C "$srcdir"
+  bsdtar -xf "dist/ArmCord-3.3.2-linux-x64.pacman" -C "$srcdir"
 }
 
 package() {
