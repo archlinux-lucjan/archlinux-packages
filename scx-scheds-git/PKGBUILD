@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.4.r134.g818e829
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+92b7be0ba755d0fe0418929fd767b5796ec2cec9 # scx_bpfland: prevent stall with sched_setaffinity()
 8bb295bb0ab5d5597d7d04c704fae56a62e81e93 # scx_loader: Add systemd service and on-DBUS launch
 )
 
