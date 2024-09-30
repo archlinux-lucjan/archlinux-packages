@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.4.r152.g896ff0e
-pkgrel=2
+pkgver=1.0.4.r156.g55913e7
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,9 +20,9 @@ conflicts=("scx-scheds")
 
 _backports=(
 302dadd1aed2ef2453e1f7b36446edd2c8e533a4 # Revert "scx_rustland_core: prevent deadlock with per-CPU DSQs and CPU affinity"
-448240de934ce3417ced3fa9f467b9032b4f03f4 # scx_bpfland: always give tasks a chance to run on an idle CPU
-5d50eb993cb82afe01b25f09196292a1198431c7 # scx_bpfland: keep tasks running on full-idle SMT cores
-dc8faf30d1a068da8a1bea8dd6e50360cc9229a8 # scx_bpfland: fix task_avg_nvcsw() return type
+fa063b4f48c3cf36961b7c6ae75b1478ed46cef1 # scx_bpfland: always give tasks a chance to run on an idle CPU
+2f78bbc4f77a79b15c8afe00c707aa0f7a0407d5 # scx_bpfland: keep tasks running on full-idle SMT cores
+784d5420373d12a33a09d2513629e4371aa2a217 # scx_bpfland: fix task_avg_nvcsw() return type
 d2e70332e919c9cd6fa0b7e50e72cb6a26fc3c41 # scheds: introduce scx_fair
 5f4079fa858aa420d819492139c748a3169a5c27 # scx_fair: introduce lowlatency mode
 a4b0b8be770e9845c74d896917bd28c2501675b2 # scx_fair: use cast_mask() from common.bpf.h
