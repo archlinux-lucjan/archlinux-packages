@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.4.r168.g073984f
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,6 +24,7 @@ d2e70332e919c9cd6fa0b7e50e72cb6a26fc3c41 # scheds: introduce scx_fair
 a4b0b8be770e9845c74d896917bd28c2501675b2 # scx_fair: use cast_mask() from common.bpf.h
 f2d99a33b64d6bc78aac842e4587d5a8fc1ec805 # scx_fair: always give tasks a chance to run on an idle CPU
 970fa284a5fa2da8ba668d624bb3fbaa0176d571 # WIP: scx_bpfland: rework lowlatency mode
+70236853ecf9593eaff00feb5e8cef55f2355973 # WIP: scx_bpfland: prevent direct dispatch from ops.enqueue()
 fb7bc0a8505db0e883b013465b35d70a08c53c3a # scx_lavd: fix incorrect preemtability test
 770a59f69d8b254a8c108b1fe1439855a2c4bf28 # scx_lavd: support CPU hotplug correctly
 )
