@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r13.g58fc3be
-pkgrel=2
+pkgver=1.0.5.r17.g8f0485b
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,6 +25,7 @@ a4b0b8be770e9845c74d896917bd28c2501675b2 # scx_fair: use cast_mask() from common
 f2d99a33b64d6bc78aac842e4587d5a8fc1ec805 # scx_fair: always give tasks a chance to run on an idle CPU
 e93bd50d8b814fd7bf11392b307d8f87afb9f4b6 # WIP: scx_bpfland: rework lowlatency mode
 d37327e291cb82e0987ea5e077a707cac23872ed # WIP: scx_bpfland: prevent direct dispatch from ops.enqueue()
+7c5c83a3a2f9f0ee69a9a45bb0a5d050653ae826 # scx_lavd: split main.bpf.c into multiple files
 )
 
 _reverts=(
