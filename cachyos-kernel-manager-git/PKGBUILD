@@ -2,8 +2,8 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=cachyos-kernel-manager-git
-pkgver=1.10.0.r1.g8cf0331
-pkgrel=1
+pkgver=1.10.0.r2.g2f5414b
+pkgrel=2
 epoch=1
 pkgdesc="Simple kernel manager"
 arch=(aarch64 x86_64 x86_64_v3)
@@ -22,7 +22,7 @@ options=(strip)
 
 _backports=(
 8cf0331b1a074df20987c110aec03414b86dc3ff # scx: refactor flags/modes
-0d0e69f6774edb321ceb6aef00d4228f94696388 # scx: use scx_loader to start/stop scheds
+ffa5b949a7e855445371294f31f640155c8a3dd3 # scx: use scx_loader to start/stop scheds
 )
 
 _reverts=(
