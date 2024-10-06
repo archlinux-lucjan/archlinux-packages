@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r43.ga673dcf
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -31,6 +31,7 @@ fa7551ecf2464fbc47a7a4dd5b0558083d8ab083 # scx_fair: apply minimum vruntime when
 e95e9da8d0982e2cf0a59a2f4aaddbe99d753a69 # scx_fair: do not scale the assigned time slice based on task priority
 39205fa37e6a69e3c68f618f87ddc7108bc4440f # scx_fair: make lowlatency default and drop it as an option
 c566be7713fda9eebaff5dd059ffd193435fdb86 # WIP: scx_fair: handle user-space futex critical sections
+7bd61f43342143838deb0dc1c5db280890c8143e # scx_loader: Add SwitchScheduler methods to DBUS interface
 )
 
 _reverts=(
