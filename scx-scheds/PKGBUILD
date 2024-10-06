@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -22,6 +22,7 @@ validpgpkeys=(
 )
 
 _backports=(
+5414d052f16f520da68cb831185678c7978a409a # Drop journald from libalpn hooks
 )
 
 _reverts=(
