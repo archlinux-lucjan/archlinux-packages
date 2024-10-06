@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r17.g8f0485b
+pkgver=1.0.5.r43.ga673dcf
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,13 +19,18 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-d2e70332e919c9cd6fa0b7e50e72cb6a26fc3c41 # scheds: introduce scx_fair
-5f4079fa858aa420d819492139c748a3169a5c27 # scx_fair: introduce lowlatency mode
-a4b0b8be770e9845c74d896917bd28c2501675b2 # scx_fair: use cast_mask() from common.bpf.h
-f2d99a33b64d6bc78aac842e4587d5a8fc1ec805 # scx_fair: always give tasks a chance to run on an idle CPU
-e93bd50d8b814fd7bf11392b307d8f87afb9f4b6 # WIP: scx_bpfland: rework lowlatency mode
-d37327e291cb82e0987ea5e077a707cac23872ed # WIP: scx_bpfland: prevent direct dispatch from ops.enqueue()
-7c5c83a3a2f9f0ee69a9a45bb0a5d050653ae826 # scx_lavd: split main.bpf.c into multiple files
+9a29547e5ba24166f4959afa54343b516eacde2b # scx_bpfland: rework lowlatency mode
+a58431bf57d0eb3c47e8354dd6d626657109bbd9 # scx_bpfland: prevent per-CPU DSQ stall
+5e0694ba70de7119570729300a2c80d0ad0785b2 # WIP: scx_bpfland: handle user-space futex critical sections
+09e2c9c9cea0303dfd206481e9fce1142eb5f4cd # scheds: introduce scx_fair
+0e1918d6fc2dc9d6f2fdcb3f0be997464a752f16 # scx_fair: introduce lowlatency mode
+da891320b18e35fb504a705fb78368b04ad887f7 # scx_fair: use cast_mask() from common.bpf.h
+9264a47d4f1d696b5e5e408fec793a56055dfcaa # scx_fair: always give tasks a chance to run on an idle CPU
+73b9a7cd05f5c431b215d4ddc3cd6b30bcd4b3d9 # scx_fair: introduce per-CPU DSQs
+fa7551ecf2464fbc47a7a4dd5b0558083d8ab083 # scx_fair: apply minimum vruntime when task is dispatched
+e95e9da8d0982e2cf0a59a2f4aaddbe99d753a69 # scx_fair: do not scale the assigned time slice based on task priority
+39205fa37e6a69e3c68f618f87ddc7108bc4440f # scx_fair: make lowlatency default and drop it as an option
+c566be7713fda9eebaff5dd059ffd193435fdb86 # WIP: scx_fair: handle user-space futex critical sections
 )
 
 _reverts=(
