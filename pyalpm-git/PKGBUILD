@@ -4,14 +4,15 @@
 
 _pkgname=pyalpm
 pkgname=$_pkgname-git
-pkgver=0.10.6.7.g54d9077
+pkgver=0.10.10.0.g440e29e
 pkgrel=1
 pkgdesc="Libalpm bindings for Python 3 (Git version)"
 arch=('x86_64')
 url="https://projects.archlinux.org/git/pyalpm.git"
 license=('GPL')
 depends=('python' 'pacman')
-makedepends=('git' 'python-setuptools' 'python-pytest' 'python-pkgconfig' 'python-pytest-pacman')
+makedepends=('git' 'python-setuptools' 'python-pkgconfig' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-pacman')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://gitlab.archlinux.org/archlinux/pyalpm.git")
@@ -28,16 +29,17 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$srcdir/$_pkgname"
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.10" pytest
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install --root=${pkgdir}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
