@@ -108,11 +108,6 @@
 │   └── PKGBUILD
 ├── kgtk-kf5-git
 │   └── PKGBUILD
-├── kmod-git
-│   ├── depmod.hook
-│   ├── depmod.script
-│   ├── depmod-search.conf
-│   └── PKGBUILD
 ├── krusader-git
 │   └── PKGBUILD
 ├── krusader-stable-git
@@ -270,4 +265,4 @@
 └── zstd-git
     └── PKGBUILD
 
-90 directories, 181 files
+89 directories, 177 files
