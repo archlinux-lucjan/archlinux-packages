@@ -3,7 +3,7 @@
 
 pkgname=cachyos-kernel-manager-git
 pkgver=1.10.0.r3.g9b4a3fd
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Simple kernel manager"
 arch=(aarch64 x86_64 x86_64_v3)
@@ -21,6 +21,7 @@ options=(strip)
 
 
 _backports=(
+dbda59d99b9b1d46946d42739cdf91abb12c471b # scx: use scx_loader to start/stop scheds
 )
 
 _reverts=(
