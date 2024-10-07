@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-stable-git
-pkgver=6.1.0.7.gbae9594a
+pkgver=7.0.0.3.g77361331
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('x86_64')
@@ -21,7 +21,7 @@ backup=(etc/pacman.conf
 provides=("pacman=$pkgver" 'libalpm.so')
 conflicts=('pacman')
 options=('strip' 'debug')
-source=(git+https://gitlab.archlinux.org/pacman/pacman#branch=release/6.1.x
+source=(git+https://gitlab.archlinux.org/pacman/pacman#branch=release/7.0.x
         pacman.conf
         makepkg.conf
         0001-add-support-for-x86_64_v-2-3-4-autodetection.patch
