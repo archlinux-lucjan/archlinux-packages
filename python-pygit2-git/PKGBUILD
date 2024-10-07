@@ -4,14 +4,14 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=python-pygit2-git
-pkgver=1.10.1.r1.g0ec4c82
+pkgver=1.15.1.r9.g6f06cba2
 pkgrel=1
 pkgdesc='Python bindings for libgit2'
 arch=('x86_64')
 url="https://github.com/libgit2/pygit2"
 license=('GPL2')
-depends=('libgit2' 'libgit2.so' 'python-cffi' 'python-six' 'python-cached-property')
-makedepends=('cython' 'python-build' 'python-cffi' 'python-installer' 'python-setuptools' 'git' 'python-six' 'python-wheel')
+depends=('glibc' 'libgit2' 'python' 'python-cffi')
+makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 checkdepends=('python-pytest-runner')
 provides=('python-libgit2' "python-pygit2=$pkgver")
 conflicts=('python-libgit2' 'python-pygit2')
@@ -20,34 +20,33 @@ sha256sums=('SKIP')
 
 pkgver() {
 
-  cd "pygit2"
-  git describe --long --tags | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "pygit2"
+	git describe --long --tags | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-
-  cd "pygit2"
-  # Disable tests that do stuff online
-  sed -i -e '/has_network/s/True/False/' test/utils.py
+	cd "pygit2"
+	# Disable tests that do stuff online
+	sed -e '/has_network/s/True/False/' -i test/utils.py
 }
 
 build() {
-  
-  cd "pygit2"
-  python -m build -wn
+	cd "pygit2"
+	python -m build -wn
 }
 
 check() {
-
-  cd "pygit2"
-
-  # Skipped tests fail because upstream test suite hasn't 100% adapted to libgit2 1.4.x
-  local _pyver=cpython-$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_pyver" pytest
+	cd "pygit2"
+	local _pyver=cpython-$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_pyver" pytest
 }
 
 package() {
+	depends+=(
+		'libgit2.so'
+	)
 
-  cd "pygit2"
-  LANG=en_US.UTF8 python -m installer -d "${pkgdir}" dist/*.whl
+	cd "pygit2"
+	LANG=en_US.UTF8 python -m installer -d "${pkgdir}" dist/*.whl
+	install -vDm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
