@@ -2,21 +2,21 @@
 # Maintainer: NextWork123 <nextworks@protonmail.com>
 # Maintainer: Vendicated <vendicated at riseup dot net>
 
-pkgname=armcord-lucjan-git
-pkgdesc="ArmCord custom client designed to enhance your Discord experience while keeping everything lightweight."
-pkgver=20240924.r1499.g6a61298
+pkgname=legcord-lucjan-git
+pkgdesc="Legcord custom client designed to enhance your Discord experience while keeping everything lightweight."
+pkgver=20241012.r1631.gd796052
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/Armcord/ArmCord"
+url="https://github.com/Legcord/Legcord"
 license=("custom:OSL-3.0")
 makedepends=("git" "nodejs" "pnpm" "libxcrypt-compat")
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
 )
-replaces=("cachyos-armcord-git")
-provides=("armcord")
-conflicts=("armcord")
+replaces=("cachyos-armcord-git" "armcord-lucjan-git")
+provides=("legcord")
+conflicts=("legcord")
 source=(
   "${pkgname}::git+${url}.git"
 )
@@ -34,7 +34,7 @@ build() {
   pnpm install electron@beta
   pnpm run build && pnpm electron-builder --linux pacman
 
-  bsdtar -xf "dist/ArmCord-3.3.2-linux-x64.pacman" -C "$srcdir"
+  bsdtar -xf "dist/Legcord-1.0.1-linux-x64.pacman" -C "$srcdir"
 }
 
 package() {
