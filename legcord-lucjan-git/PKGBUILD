@@ -5,7 +5,7 @@
 pkgname=legcord-lucjan-git
 pkgdesc="Legcord custom client designed to enhance your Discord experience while keeping everything lightweight."
 pkgver=20241012.r1631.gd796052
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/Legcord/Legcord"
 license=("custom:OSL-3.0")
@@ -30,7 +30,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
-  pnpm install --ignore-scripts
+  pnpm install --frozen-lockfile --ignore-scripts
   pnpm install electron@beta
   pnpm run build && pnpm electron-builder --linux pacman
 
