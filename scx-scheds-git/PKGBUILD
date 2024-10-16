@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r162.g730052a
+pkgver=1.0.5.r165.g58093ea
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -51,9 +51,6 @@ b07de1d7d54824fd7c7c07b39250160b92042c4d # scx_rustland: clarify EDF scheduling
 )
 
 _reverts=(
-a23f3566e3d2c4b9119d3eeed656a02e693b12d3 # scx_mitosis: Fix static assertion of scx_bpf_task_cgroup failing __weak check
-70670925553ee1fe0e92428c2bef7c88a7c0fdce # Add vmlinux.h for multiple arch
-f7cdf087541eaccffdc5042d45f633995479c600 # Use per-arch vmlinux.h
 )
 
 pkgver() {
