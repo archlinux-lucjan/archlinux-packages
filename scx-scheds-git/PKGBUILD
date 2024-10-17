@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r180.gb01ff79
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,8 +19,8 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-ac88b9e8fc0e5e3fce67a7122d8f1b5823698f5a # scx_bpfland: rework lowlatency mode to adjust tasks priority
-a2010314760326f464ce231adf9cbda42492b138 # scx_bpfland: tune default settings
+0bb6699546177301326ba81fdf672937f425239d # scx_bpfland: rework lowlatency mode to adjust tasks priority
+35d5917b823d1289df5f78bd11cd720389275743 # scx_bpfland: tune default settings
 539c33bd8bdc2c4efd5a0fd95d2cd6bc3416b7f2 # scheds: introduce scx_fair
 )
 
