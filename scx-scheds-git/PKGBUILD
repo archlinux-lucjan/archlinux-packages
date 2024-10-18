@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r191.gf37bc0d
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,9 +20,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 58fb11b5b9e49f98737552c3397ed25f4e5747bd # scheds: introduce scx_fair
-cc692f6e92a6b314e1fcc40a99a288fac55e8527 # scx_lavd: tune greedy ratio calculation
-625c5f2532cb40dd47ea595024580c07bf25c06b # scx_lavd: increase the state update interval
-b4da965ff6449836a1acf31d6b7e0d537784f6ab # scx_lavd: add missing reset_lock_futex_boost()
+e0d2a0fcc0cb09a942f244f09eeb129f8a83cb85 # scx_lavd: add missing reset_lock_futex_boost()
 a0946f20db0c985dafb8e493889658a9ea283c62 # Use per-arch vmlinux.h v2
 )
 
