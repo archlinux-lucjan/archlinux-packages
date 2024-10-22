@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r200.gfb3f1d0
+pkgver=1.0.5.r210.gd5b8aaf
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,9 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 58fb11b5b9e49f98737552c3397ed25f4e5747bd # scheds: introduce scx_fair
-420de70159b0cb51254b99391077969181475720 # scx_lavd: give more penalty to long-running tasks
-5a852dc3d913cdc6622302aab1bfa5ccaa197430 # scx_lavd: direct dispatch when there is an idle CPU
-5f19fa0bab6edee8e093a2f7d8040ea804ff686d # scx_lavd: refill time slice once for a lock holder
 )
 
 _reverts=(
