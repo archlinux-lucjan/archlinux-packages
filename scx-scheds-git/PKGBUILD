@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r210.gd5b8aaf
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,8 @@ conflicts=("scx-scheds")
 
 _backports=(
 58fb11b5b9e49f98737552c3397ed25f4e5747bd # scheds: introduce scx_fair
+89749ecad75081bfc1375cb8ac5138a35139cb53 # scx_lavd: fix/work around a verifier error
+5c88e4a329226872250315f491756b617cf4a6fb # Add script for generating per-arch vmlinux.h files
 )
 
 _reverts=(
