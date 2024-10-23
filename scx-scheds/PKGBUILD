@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -23,6 +23,8 @@ validpgpkeys=(
 
 _backports=(
 5414d052f16f520da68cb831185678c7978a409a # Drop journald from libalpn hooks
+ad37e2e4d2e36fe5ddc303da941d7f9339904809 # Set minimal meson version to silent new warnings
+748887b05827994d4ff3633d0229d6d41e25a9e2 # Downgrade version to 1.2.0
 )
 
 _reverts=(
