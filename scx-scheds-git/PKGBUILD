@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r220.g9d45a35
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -28,6 +28,8 @@ _backports=(
 9acf950b755319f3dfec560a2d29d64b56669761 # scx_lavd: change how to use the context information for latency criticality
 731a7871d71c3536c146c363ef25e15ceb5442d0 # scx_lavd: change the greedy penalty function
 b90ecd7e8fb04db7260c4d5dd51567009ded4b52 # scx_lavd: proactively kick a CPU at the ops.enqueue() path
+ad37e2e4d2e36fe5ddc303da941d7f9339904809 # Set minimal meson version to silent new warnings
+748887b05827994d4ff3633d0229d6d41e25a9e2 # Downgrade version to 1.2.0
 )
 
 _reverts=(
