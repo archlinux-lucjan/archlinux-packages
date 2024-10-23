@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r214.gfdca0c0
+pkgver=1.0.5.r220.g9d45a35
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,6 +20,14 @@ conflicts=("scx-scheds")
 
 _backports=(
 58fb11b5b9e49f98737552c3397ed25f4e5747bd # scheds: introduce scx_fair
+89749ecad75081bfc1375cb8ac5138a35139cb53 # scx_lavd: fix/work around a verifier error
+257a3db376321faff0c9154d4035af158331b8b6 # scx_lavd: add ops.cpu_release()
+47dd1b9582f717d925d5b8fcdfa44075e03d1c41 # scx_lavd: respect a chosen cpu even if it is not idle
+07ed8215110f2a767b1e88b8d7026535a4a91168 # scx_lavd: incorporate task's weight to latency criticality
+6fb57643fbf62a82ea2fb4007cd4f16899e6246c # scx_lavd: remove the time restriction in preemption
+9acf950b755319f3dfec560a2d29d64b56669761 # scx_lavd: change how to use the context information for latency criticality
+731a7871d71c3536c146c363ef25e15ceb5442d0 # scx_lavd: change the greedy penalty function
+b90ecd7e8fb04db7260c4d5dd51567009ded4b52 # scx_lavd: proactively kick a CPU at the ops.enqueue() path
 )
 
 _reverts=(
