@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r220.g9d45a35
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,6 +30,7 @@ _backports=(
 b90ecd7e8fb04db7260c4d5dd51567009ded4b52 # scx_lavd: proactively kick a CPU at the ops.enqueue() path
 ad37e2e4d2e36fe5ddc303da941d7f9339904809 # Set minimal meson version to silent new warnings
 748887b05827994d4ff3633d0229d6d41e25a9e2 # Downgrade version to 1.2.0
+cc8633996b29395b30ffb47bed1faff48c2dc49a # Revert "fix ci errors due to __str update in kfunc signature"
 )
 
 _reverts=(
