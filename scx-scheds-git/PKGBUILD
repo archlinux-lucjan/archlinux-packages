@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r238.g371020a
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 58fb11b5b9e49f98737552c3397ed25f4e5747bd # scheds: introduce scx_fair
+4f6947736f23ecc3134875589bd278aa51652787 # scx_lavd: fix uninitialized memory access comp_preemption_info()
 )
 
 _reverts=(
