@@ -110,8 +110,6 @@
 │   └── PKGBUILD
 ├── krusader-stable-git
 │   └── PKGBUILD
-├── kuser-frameworks-git
-│   └── PKGBUILD
 ├── leancrypto-git
 │   └── PKGBUILD
 ├── legcord-lucjan-git
@@ -258,4 +256,4 @@
 └── zstd-git
     └── PKGBUILD
 
-87 directories, 172 files
+86 directories, 171 files
