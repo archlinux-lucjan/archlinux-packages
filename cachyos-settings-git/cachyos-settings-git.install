@@ -1,0 +1,19 @@
+SERVICES=("systemd-resolved")
+
+post_install() {
+    echo "Enabling services..."
+    for service in "${SERVICES[@]}"; do
+        systemctl enable "$service"
+    done
+}
+
+post_upgrade() {
+    echo "Enabling services..."
+
+    for service in "${SERVICES[@]}"; do
+        if systemctl is-active "$service" >/dev/null; then
+            systemctl restart "$service"
+        fi
+
+    done
+}
