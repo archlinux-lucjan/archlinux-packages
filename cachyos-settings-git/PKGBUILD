@@ -4,7 +4,7 @@
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
 pkgver=20241028.r234.g79da231
-pkgrel=1
+pkgrel=2
 groups=('cachyos')
 arch=('any')
 license=('GPL')
@@ -13,7 +13,6 @@ source=("git+https://github.com/sirlucjan/$gitname")
 sha256sums=('SKIP')
 install="$pkgname.install"
 depends=(
-    'cachyos-ananicy-rules'
     'zram-generator'
     'systemd>=256'
 )
