@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r251.g6e35208
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,7 +23,7 @@ _backports=(
 b67d2d307ab99da0404eacf4ddf06f101d4ef056 # scx_bpfland: reduce idle CPU selection overhead
 142dd3cd95948e54dabc1113ef3e292a7031796e # WIP: scx_bpfland: never retry when checking for idle CPUs
 f56b79b19cc22fb24ddeb3d895c23794c2b9ef94 # scx_lavd: yield for preemption only when a task is ineligible
-db084d007af0552213472fc65d035548e8a0191e # scx_lavd: kick CPU explicitly at the ops.enqueue() path
+5b91a525bb2b7cd718a8bedd0443ff227b5ef954 # scx_lavd: kick CPU explicitly at the ops.enqueue() path
 )
 
 _reverts=(
