@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r256.g3dcaefc
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,7 +24,7 @@ _backports=(
 4765eadd725aa6c155c89688c4d4e52f78f00d7e # scx_bpfland: do not allow kthreads to preempt other tasks
 c68fe1c55b7bdf33871bea4343b401ba6b9871b1 # scx_bpfland: evaluate nvcsw without using kernel metrics
 36583a970a1dfb07ff93871494010c61ecab72a7 # scx_bpfland: use dynamic average nvcsw to classify interactive tasks
-e874285dbfcee18d285c917ba19bf8c5b3b71ee1 # scx_bpfland: get rid of the static MAX_LATENCY_WEIGHT
+7cc61866deb525060f5670d7e9a1f0533fb48c54 # scx_bpfland: get rid of MAX_LATENCY_WEIGHT
 )
 
 _reverts=(
