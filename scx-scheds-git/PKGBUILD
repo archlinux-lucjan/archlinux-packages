@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r256.g3dcaefc
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,6 +24,7 @@ _backports=(
 86add4e662666562e12af62bbedd4b8fe0558775 # scx_bpfland: do not allow kthreads to preempt other tasks
 e4364cc9cd09897d45c7039d54bb9de0abdbfea6 # scx_bpfland: use a pure vruntime scheduling policy in lowlatency mode
 e82207f682db32affc3fd94d4d3d1087fdbc9a04 # scx_bpfland: evaluate nvcsw without using kernel metrics
+85d265659309537a4ddb1f4c2660cac9a0cc594d # scx_bpfland: introduce --preempt-kthread
 )
 
 _reverts=(
