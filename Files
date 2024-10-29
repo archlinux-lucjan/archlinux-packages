@@ -8,6 +8,9 @@
 ├── betterbird-bin
 │   ├── betterbird.desktop
 │   └── PKGBUILD
+├── betterbird-dev-bin
+│   ├── betterbird.desktop
+│   └── PKGBUILD
 ├── cachy-chroot-git
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
@@ -257,4 +260,4 @@
 └── zstd-git
     └── PKGBUILD
 
-86 directories, 172 files
+87 directories, 174 files
