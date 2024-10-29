@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r256.g3dcaefc
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,11 +20,11 @@ conflicts=("scx-scheds")
 
 _backports=(
 58fb11b5b9e49f98737552c3397ed25f4e5747bd # scheds: introduce scx_fair
-523cee9af513ac2c45be9bfd4e39a5ea2bccb853 # scx_bpfland: reduce idle CPU selection overhead
-86add4e662666562e12af62bbedd4b8fe0558775 # scx_bpfland: do not allow kthreads to preempt other tasks
-e4364cc9cd09897d45c7039d54bb9de0abdbfea6 # scx_bpfland: use a pure vruntime scheduling policy in lowlatency mode
-e82207f682db32affc3fd94d4d3d1087fdbc9a04 # scx_bpfland: evaluate nvcsw without using kernel metrics
-79a9d18e7414dd91c8c785c68446675e1c48a5a5 # scx_bpfland: use dynamic average nvcsw to classify interactive tasks
+27cab6c2810ec102ba045a5c752e585cacc51216 # scx_bpfland: reduce idle CPU selection overhead
+4765eadd725aa6c155c89688c4d4e52f78f00d7e # scx_bpfland: do not allow kthreads to preempt other tasks
+c68fe1c55b7bdf33871bea4343b401ba6b9871b1 # scx_bpfland: evaluate nvcsw without using kernel metrics
+36583a970a1dfb07ff93871494010c61ecab72a7 # scx_bpfland: use dynamic average nvcsw to classify interactive tasks
+e874285dbfcee18d285c917ba19bf8c5b3b71ee1 # scx_bpfland: get rid of the static MAX_LATENCY_WEIGHT
 )
 
 _reverts=(
