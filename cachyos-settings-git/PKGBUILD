@@ -3,15 +3,14 @@
 
 pkgname=cachyos-settings-git
 gitname=CachyOS-Settings
-pkgver=20241028.r234.g79da231
-pkgrel=2
+pkgver=20241031.r235.gbf04e74
+pkgrel=1
 groups=('cachyos')
 arch=('any')
 license=('GPL')
 pkgdesc='CachyOS - Settings'
 source=("git+https://github.com/sirlucjan/$gitname")
 sha256sums=('SKIP')
-install="$pkgname.install"
 depends=(
     'zram-generator'
     'systemd>=256'
