@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r289.g060a166
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,6 +26,7 @@ dd558206b66e0af0b0636aa014e2887fa2d6087d # scx_bpfland: do not overly prioritize
 47bbaedb2f7231ffc5cfc6daa5cb966bcc4a3dbe # scx_bpfland: consider all tasks as regular if priority DSQ is congested
 1d3780aeb9942286233289db798ba8ac8d9e461d # WIP: scx_bpfland: strict domain affinity
 c1bddce6d5fd143e57880c1a433ca7786460b8f1 # scx_rusty: Add core type to domain
+7efe286af0dbd2ce1229a7d9a7c878304d97d8e0 # scx: sync default flags with CachyOS Kernel Manager
 )
 
 _reverts=(
