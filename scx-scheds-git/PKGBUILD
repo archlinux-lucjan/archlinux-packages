@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r286.g20c0372
-pkgrel=3
+pkgver=1.0.5.r289.g060a166
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,8 +25,6 @@ c95fbac2d1151b1f99b56623293578c65562715b # scx_bpfland: drop lowlatency mode
 dd558206b66e0af0b0636aa014e2887fa2d6087d # scx_bpfland: do not overly prioritize WAKE_SYNC tasks
 47bbaedb2f7231ffc5cfc6daa5cb966bcc4a3dbe # scx_bpfland: consider all tasks as regular if priority DSQ is congested
 1d3780aeb9942286233289db798ba8ac8d9e461d # WIP: scx_bpfland: strict domain affinity
-e1b880f7c30ba5de754f13defa541003d9f34c42 # scx_lavd: fix CI error for missing kernel symbols
-882212574acec91bd83ff31dc235e922c2cf792d # scx_lavd: fix a variable name to kill a warning
 c1bddce6d5fd143e57880c1a433ca7786460b8f1 # scx_rusty: Add core type to domain
 )
 
