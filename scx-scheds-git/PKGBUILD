@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r289.g060a166
-pkgrel=3
+pkgver=1.0.5.r291.gee1df85
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,7 +25,6 @@ c95fbac2d1151b1f99b56623293578c65562715b # scx_bpfland: drop lowlatency mode
 dd558206b66e0af0b0636aa014e2887fa2d6087d # scx_bpfland: do not overly prioritize WAKE_SYNC tasks
 47bbaedb2f7231ffc5cfc6daa5cb966bcc4a3dbe # scx_bpfland: consider all tasks as regular if priority DSQ is congested
 1d3780aeb9942286233289db798ba8ac8d9e461d # WIP: scx_bpfland: strict domain affinity
-c1bddce6d5fd143e57880c1a433ca7786460b8f1 # scx_rusty: Add core type to domain
 7efe286af0dbd2ce1229a7d9a7c878304d97d8e0 # scx: sync default flags with CachyOS Kernel Manager
 796d3245557f48fb08c52b950fc7bbe939fdecac # scx_lavd: improve readabilty
 517ef8944458615cbb63b49459b5f69897f134f3 # scx_lavd: drop all kernel lock tracing
