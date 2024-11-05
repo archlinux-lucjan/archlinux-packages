@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.5.r302.ge10a92f
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,7 +25,6 @@ e146350eb79dbf74acce8f7d93085247c283c793 # scx_bpfland: consider all tasks as re
 ce94b68f77141b07d0cbe9c1aff08cb36144bb72 # WIP: scx_bpfland: strict domain affinity
 7d278cdf37d9aa13ef45ac17a6ccab54daa7a07f # scheds: introduce scx_fair
 d535fea4abf40aa70e529829718c82132da3cf93 # scx_fair: use blocker/waker metrics to determine the latency weight
-ce0483474a682104e8fe74f199f88b4b2445fca2 # WIP: scx_fair: strict domain affinity
 )
 
 _reverts=(
