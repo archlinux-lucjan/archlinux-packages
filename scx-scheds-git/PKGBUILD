@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r295.gfae5396
+pkgver=1.0.5.r302.ge10a92f
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,14 +19,13 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-6059aab775429b8952d6afc37261a220a26e7c87 # scheds: introduce scx_fair
-26357c622ed9954cbd7e64298258485fba3e5b28 # scx_fair: use blocker/waker metrics to determine the latency weight
-c95fbac2d1151b1f99b56623293578c65562715b # scx_bpfland: drop lowlatency mode
-dd558206b66e0af0b0636aa014e2887fa2d6087d # scx_bpfland: do not overly prioritize WAKE_SYNC tasks
-47bbaedb2f7231ffc5cfc6daa5cb966bcc4a3dbe # scx_bpfland: consider all tasks as regular if priority DSQ is congested
-1d3780aeb9942286233289db798ba8ac8d9e461d # WIP: scx_bpfland: strict domain affinity
-796d3245557f48fb08c52b950fc7bbe939fdecac # scx_lavd: improve readabilty
-517ef8944458615cbb63b49459b5f69897f134f3 # scx_lavd: drop all kernel lock tracing
+e7664db60fc712cf25161304541f48ad4fdbc8cf # scx_bpfland: drop lowlatency mode
+222dc7fcb5903146be25164f445077f2b0e91d0b # scx_bpfland: do not overly prioritize WAKE_SYNC tasks
+e146350eb79dbf74acce8f7d93085247c283c793 # scx_bpfland: consider all tasks as regular if priority DSQ is congested
+ce94b68f77141b07d0cbe9c1aff08cb36144bb72 # WIP: scx_bpfland: strict domain affinity
+7d278cdf37d9aa13ef45ac17a6ccab54daa7a07f # scheds: introduce scx_fair
+d535fea4abf40aa70e529829718c82132da3cf93 # scx_fair: use blocker/waker metrics to determine the latency weight
+ce0483474a682104e8fe74f199f88b4b2445fca2 # WIP: scx_fair: strict domain affinity
 )
 
 _reverts=(
