@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.5.r308.g9cbe592
+pkgver=1.0.6.r7.gf402f11
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,12 +21,6 @@ conflicts=("scx-scheds")
 _backports=(
 7d278cdf37d9aa13ef45ac17a6ccab54daa7a07f # scheds: introduce scx_fair
 d535fea4abf40aa70e529829718c82132da3cf93 # scx_fair: use blocker/waker metrics to determine the latency weight
-eb99e45cede906ebaec3cf728f05af74cc4dab87 # scx_bpfland: consistent vruntime update
-f0c8de347759b371af83bb8ef83920525c91b860 # scx_bpfland: do not exclude exiting tasks
-8a655d94f5900ce10c9ae2c7cb35026fa600acde # scx_bpfland: do not overly prioritize WAKE_SYNC tasks
-064d6fb5602ae27b0fe5f761dea30195816884e2 # scx_bpfland: consider all tasks as regular if priority DSQ is congested
-efc41dd93631887e7677483e9fbf0b0550cc0e1f # scx_bpfland: strict domain affinity
-78101e46883674ed294a31f5af586e9e592f7673 # scx_bpfland: drop lowlatency mode and the priority DSQ
 )
 
 _reverts=(
