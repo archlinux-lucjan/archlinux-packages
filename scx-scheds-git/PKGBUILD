@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r7.gf402f11
+pkgver=1.0.6.r0.g607dfab
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
