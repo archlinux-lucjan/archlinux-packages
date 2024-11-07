@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r17.gd0111b3
-pkgrel=3
+pkgver=1.0.6.r29.g218cbea
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -12,18 +12,14 @@ license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
-source=("git+https://github.com/sched-ext/scx"
-0001-scx-implement-CO-RE-enum-readers-and-use-them-for-sc.patch)
-sha256sums=('SKIP'
-            '2653313f0461fb781d03f58d56fe6ab518b171a0e6083ae1b38a620c0cf90446')
+source=("git+https://github.com/sched-ext/scx")
+sha256sums=('SKIP')
 options=(!lto)
 provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-22cb9e9ce1888cf965219818010ac2258a9e8a66 # scx_lavd: update &cur_logical_clk, atomically
-7d278cdf37d9aa13ef45ac17a6ccab54daa7a07f # scheds: introduce scx_fair
-d535fea4abf40aa70e529829718c82132da3cf93 # scx_fair: use blocker/waker metrics to determine the latency weight
+96e77a83e1532e3d125972c417fa3d39ee979b29 # scheds: introduce scx_fair
 )
 
 _reverts=(
