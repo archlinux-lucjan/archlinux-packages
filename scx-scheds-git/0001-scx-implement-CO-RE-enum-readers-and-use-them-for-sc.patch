@@ -1,0 +1,26 @@
+From c5bc1209026c4ca9511ae20fbf550077acbfc91f Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Thu, 7 Nov 2024 08:38:46 +0100
+Subject: [PATCH] scx: implement CO:RE enum readers and use them for scx_fair
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ scheds/rust/scx_fair/src/main.rs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/scheds/rust/scx_fair/src/main.rs b/scheds/rust/scx_fair/src/main.rs
+index 4000089..4590871 100644
+--- a/scheds/rust/scx_fair/src/main.rs
++++ b/scheds/rust/scx_fair/src/main.rs
+@@ -35,6 +35,8 @@ use log::info;
+ use log::warn;
+ use scx_stats::prelude::*;
+ use scx_utils::build_id;
++use scx_utils::import_enums;
++use scx_utils::scx_enums;
+ use scx_utils::scx_ops_attach;
+ use scx_utils::scx_ops_load;
+ use scx_utils::scx_ops_open;
+-- 
+2.47.0
+
