@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r0.g607dfab
+pkgver=1.0.6.r17.gd0111b3
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,8 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-7d278cdf37d9aa13ef45ac17a6ccab54daa7a07f # scheds: introduce scx_fair
-d535fea4abf40aa70e529829718c82132da3cf93 # scx_fair: use blocker/waker metrics to determine the latency weight
+e9ba2d53faace8f8463929987d4d5296acc185f9 # scx_lavd: update &cur_logical_clk, atomically
 )
 
 _reverts=(
