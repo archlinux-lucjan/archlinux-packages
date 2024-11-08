@@ -231,7 +231,6 @@
 ├── scx-scheds
 │   └── PKGBUILD
 ├── scx-scheds-git
-│   ├── 0001-scx-implement-CO-RE-enum-readers-and-use-them-for-sc.patch
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
@@ -261,4 +260,4 @@
 └── zstd-git
     └── PKGBUILD
 
-87 directories, 175 files
+87 directories, 174 files
