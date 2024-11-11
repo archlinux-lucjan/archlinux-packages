@@ -176,6 +176,7 @@
 │   ├── native-clang
 │   └── PKGBUILD
 ├── mkinitcpio-git
+│   ├── 0001-mkinitcpio-drop-fallback-images.patch
 │   └── PKGBUILD
 ├── modprobed-db-git
 │   ├── PKGBUILD
@@ -260,4 +261,4 @@
 └── zstd-git
     └── PKGBUILD
 
-87 directories, 174 files
+87 directories, 175 files
