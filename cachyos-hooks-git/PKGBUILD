@@ -3,8 +3,8 @@
 
 pkgname=cachyos-hooks-git
 gitname=cachyos-hooks
-pkgver=20230328.r25.g1f68450
-pkgrel=4
+pkgver=20241113.r34.g54baf78
+pkgrel=1
 pkgdesc='Cachy OS Pacman Hooks'
 groups=('cachyos')
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 url="https://github.com/sirlucjan/$gitname"
 source=("git+https://github.com/sirlucjan/cachyos-hooks")
 sha512sums=('SKIP')
-depends=('libnotify')
+depends=('systemd')
 makedepends=('git')
 replaces=('cachyos-hooks' 'systemd-boot-pacman-hook')
 provides=('cachyos-hooks' 'systemd-boot-pacman-hook')
@@ -25,16 +25,13 @@ pkgver() {
 
 package() {
   cd $gitname
-  local hooks="$pkgdir/usr/share/libalpm/hooks"
-  local bin="$pkgdir/usr/bin"
 
-  install -Dm644 lsb-release.hook                 "$hooks/lsb-release.hook"
-  install -Dm644 os-release.hook                  "$hooks/os-release.hook"
-  install -Dm644 ${gitname}.hook                  "$hooks/${gitname}.hook"
-  install -Dm644 cachyos-reboot-required.hook     "$hooks/cachyos-reboot-required.hook"
-  install -Dm644 cachyos-systemd-boot.hook        "$hooks/95-cachyos-systemd-boot.hook"
-
-  install -Dm755 cachyos-reboot-required          "$bin/cachyos-reboot-required"
-  install -Dm755 cachyos-check-reboot-required    "$bin/cachyos-check-reboot-required"
-  install -Dm755 ${gitname}-runner                "$bin/${gitname}-runner"
+  install -Dm644 lsb-release.hook "$pkgdir/usr/share/libalpm/hooks/lsb-release.hook"
+  install -Dm644 os-release.hook "$pkgdir/usr/share/libalpm/hooks/os-release.hook"
+  install -Dm644 cachyos-hooks.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-hooks.hook"
+  install -Dm644 cachyos-reboot-required.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-reboot-required.hook"
+  install -Dm644 cachyos-systemd-boot.hook "$pkgdir/usr/share/libalpm/hooks/95-cachyos-systemd-boot.hook"
+  install -Dm755 cachyos-reboot-required "$pkgdir/usr/bin/cachyos-reboot-required"
+  install -Dm755 cachyos-check-reboot-required  "$pkgdir/usr/bin/cachyos-check-reboot-required"
+  install -Dm755 cachyos-hooks-runner "$pkgdir/usr/bin/cachyos-hooks-runner"
 }
