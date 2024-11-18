@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r64.g66223bf
-pkgrel=3
+pkgver=1.0.6.r67.ga7fcda8
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-678b10133dc6a7587e16e5068bc870a3f810a52a # scheds: introduce scx_flash
 3292be7b72fb866ec284b9cf832808e9f799c4e4 # scx_lavd: Factor the task's runtime more aggressively in a deadline calculation
 )
 
