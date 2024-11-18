@@ -2,7 +2,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=cachyos-kernel-manager-git
-pkgver=1.10.2.r0.g9107cab
+pkgver=1.10.2.r1.g2a3a7e7
 pkgrel=1
 epoch=1
 pkgdesc="Simple kernel manager"
@@ -21,7 +21,6 @@ options=(strip)
 
 
 _backports=(
-888b687bb96371e9c5a9e9b38eb25f5a47d6c794 # scx: use scx_loader to start/stop scheds
 )
 
 _reverts=(
