@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r89.g61f378c
+pkgver=1.0.6.r91.g489ce8a
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,6 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+d5d4f463f9ba4675b000a1c6d535d9d708d3d050 # scx_loader: add scx_flash as supported scheduler
 )
 
 _reverts=(
