@@ -2,14 +2,14 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=cachyos-kernel-manager-git
-pkgver=1.10.2.r1.g2a3a7e7
+pkgver=1.12.0.r0.gab2176b
 pkgrel=1
 epoch=1
 pkgdesc="Simple kernel manager"
 arch=(aarch64 x86_64 x86_64_v3)
 url="https://github.com/cachyos/kernel-manager"
 license=(GPL-3.0-or-later)
-depends=('qt6-base' 'polkit' 'chwd')
+depends=('qt6-base' 'polkit' 'chwd' 'scx-scheds')
 makedepends=('cmake' 'ninja' 'git' 'python' 'polkit-qt6' 'qt6-tools' 'cargo' 'lld' 'clang' 'llvm')
 source=("${pkgname}::git+$url.git"
         fix-installed-db.patch)
