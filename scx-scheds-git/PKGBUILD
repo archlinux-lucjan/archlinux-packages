@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r93.g8c09ae2
+pkgver=1.0.6.r115.g3951282
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,6 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+575c734b0153527da087dde83ad60d5383015782 # scx_lavd: Boost time slice more generously
 )
 
 _reverts=(
