@@ -126,8 +126,6 @@
 │   └── PKGBUILD
 ├── linux-api-headers-git
 │   └── PKGBUILD
-├── linux-api-headers-rc
-│   └── PKGBUILD
 ├── linux-api-headers-rc-git
 │   └── PKGBUILD
 ├── linux-firmware-git
@@ -261,4 +259,4 @@
 └── zstd-git
     └── PKGBUILD
 
-87 directories, 175 files
+86 directories, 174 files
