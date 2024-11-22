@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.6.r115.g3951282
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 575c734b0153527da087dde83ad60d5383015782 # scx_lavd: Boost time slice more generously
+7a10edb0d7415f500eea315da1ffaa5cf95d104d # meson: Install vmlinux.h and scx header files
 )
 
 _reverts=(
