@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r185.gf725424b
+pkgver=1.0.6.r187.g715adeda
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,6 +20,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 ac899561df73e5bbdfc54fa525578666a8ac714f # meson: install scx header files
+f105e75980707650adaa1685203f6169ebfae97d # topology: handle LLCs spanning multiple NUMA nodes
 )
 
 _reverts=(
