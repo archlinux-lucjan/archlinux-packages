@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r202.gc7b87eb3
+pkgver=1.0.6.r210.gc15d9ead
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,7 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 f105e75980707650adaa1685203f6169ebfae97d # topology: handle LLCs spanning multiple NUMA nodes
-944510d1fc10c31ffecc1e1099e2e1e4cbe1b899 # scx_loader: restart scheduler upon fail
 )
 
 _reverts=(
