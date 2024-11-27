@@ -200,9 +200,15 @@
 │   ├── 0001-add-update-message-notice.patch
 │   ├── 0001-Fix-package-signing.patch
 │   ├── 0001-fix-update-message-notice.patch
+│   ├── 78cd453.patch
+│   ├── alpm.sysusers
+│   ├── disable-always-stale.patch
+│   ├── fix-alpm-crate-for-aarch64.patch
 │   ├── makepkg.conf
 │   ├── pacman.conf
-│   └── PKGBUILD
+│   ├── PKGBUILD
+│   ├── rust.conf
+│   └── static_sqlite.patch
 ├── pak-gui-git
 │   └── PKGBUILD
 ├── pkgbuild-introspection-lucjan-git
@@ -249,4 +255,4 @@
 └── zstd-git
     └── PKGBUILD
 
-85 directories, 165 files
+85 directories, 171 files
