@@ -203,16 +203,6 @@
 │   ├── makepkg.conf
 │   ├── pacman.conf
 │   └── PKGBUILD
-├── pacman-stable-git
-│   ├── 0001-add-information-about-origin-db.patch
-│   ├── 0001-Add-new-variable-to-declare-package-architecture.patch
-│   ├── 0001-add-support-for-x86_64_v-2-3-4-autodetection.patch
-│   ├── 0001-add-update-message-notice.patch
-│   ├── 0001-Fix-package-signing.patch
-│   ├── 0001-fix-update-message-notice.patch
-│   ├── makepkg.conf
-│   ├── pacman.conf
-│   └── PKGBUILD
 ├── pak-gui-git
 │   └── PKGBUILD
 ├── pkgbuild-introspection-lucjan-git
@@ -259,4 +249,4 @@
 └── zstd-git
     └── PKGBUILD
 
-86 directories, 174 files
+85 directories, 165 files
