@@ -194,12 +194,6 @@
 ├── pacman-contrib-git
 │   └── PKGBUILD
 ├── pacman-git
-│   ├── 0001-add-information-about-origin-db.patch
-│   ├── 0001-Add-new-variable-to-declare-package-architecture.patch
-│   ├── 0001-add-support-for-x86_64_v-2-3-4-autodetection.patch
-│   ├── 0001-add-update-message-notice.patch
-│   ├── 0001-Fix-package-signing.patch
-│   ├── 0001-fix-update-message-notice.patch
 │   ├── 78cd453.patch
 │   ├── alpm.sysusers
 │   ├── disable-always-stale.patch
@@ -255,4 +249,4 @@
 └── zstd-git
     └── PKGBUILD
 
-85 directories, 171 files
+85 directories, 165 files
