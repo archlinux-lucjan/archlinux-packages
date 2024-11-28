@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.6.r236.g1f4bd50e
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,6 +23,7 @@ _backports=(
 fc49e98777c7d9aeb7344e917792a9a1fe929fc6 # scx_lavd: Decide load balancing plan across compute domains
 2df8d1034308d89423bbf9751b1be5f58063c26e # scx_lavd: Refactor consume_task()
 2c3b7394542ae8b1889a69d67d4f8a933c783df8 # scx_lavd: Perform load balancing at consume_task()
+003591dec5e2ed0e1f0a2e0478b15c0de38237f0 # scx_utils: remove use of deprecated bindgen API; require bindgen >=0.69
 )
 
 _reverts=(
