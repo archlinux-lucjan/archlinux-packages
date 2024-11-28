@@ -4,7 +4,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
 pkgname=mkinitcpio-git
-pkgver=39.1.r40.g110108f
+pkgver=39.1.r56.g815fb37
 pkgrel=1
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('awk' 'mkinitcpio-busybox' 'kmod' 'util-linux' 'libarchive' 'coreutils'
          'bash' 'binutils' 'diffutils' 'findutils' 'grep' 'gzip' 'filesystem' 'zstd' 'systemd')
 checkdepends=('bats' 'bats-assert' 'lzop')
-makedepends=('asciidoctor' 'git') # only when build from git source
+makedepends=('git' 'asciidoctor' 'meson')
 optdepends=('xz: Use lzma or xz compression for the initramfs image'
             'bzip2: Use bzip2 compression for the initramfs image'
             'lzop: Use lzo compression for the initramfs image'
@@ -64,10 +64,15 @@ prepare() {
   done
 }
 
-check() {
-  make -C mkinitcpio check
+build() {
+	meson setup --prefix=/usr --buildtype=plain mkinitcpio build
 }
 
+check() {
+	meson test -C build
+}
+
+
 package() {
-  make -C mkinitcpio DESTDIR="$pkgdir" install
+	meson install -C build --destdir "$pkgdir"
 }
