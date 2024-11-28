@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r220.g520116fe
+pkgver=1.0.6.r234.g97b29d36
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,7 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-0213af5e1778d39f1ffb62268064d1bbd1ffabee # scx_lavd: Limit the slice extension for a lock holder
 )
 
 _reverts=(
