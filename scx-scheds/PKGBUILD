@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.6
-pkgrel=4.2
+pkgrel=4.3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -28,7 +28,7 @@ _backports=(
 d5d4f463f9ba4675b000a1c6d535d9d708d3d050 # scx_loader: add scx_flash as supported scheduler
 ac899561df73e5bbdfc54fa525578666a8ac714f # meson: install scx header files
 944510d1fc10c31ffecc1e1099e2e1e4cbe1b899 # scx_loader: restart scheduler upon fail
-23e7ce6e901619a23c0d39a15a3ba409d1b02df9 # feat: enable LTO
+59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
 )
 
 _reverts=(
