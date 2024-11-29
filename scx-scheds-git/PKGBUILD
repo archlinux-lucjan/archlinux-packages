@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.6.r245.g5b57cdf3
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,7 +24,7 @@ e89af68a2a291b3e9064f950cfa3cf92ce508812 # scx_lavd: Log out the number of cross
 9bd78c4fc45a5b79f34522c2abbb316f482a8a2b # scx_lavd: Refactor consume_task()
 3241ee337dbf78004e1a2a5311acb8d7d2c1c743 # scx_lavd: Perform load balancing at consume_task()
 1a993f8b7b2bb24ca796bb441f35d809ac91a713 # scx_lavd: use bitfield to compact task_ctx and cpu_ctx size
-23e7ce6e901619a23c0d39a15a3ba409d1b02df9 # feat: enable LTO
+59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
 )
 
 _reverts=(
