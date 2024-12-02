@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r265.gc1690c3d
-pkgrel=2
+pkgver=1.0.6.r270.g91b147c8
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,7 +21,6 @@ conflicts=("scx-scheds")
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
 9626517990c7ddd53f80a00e1cbd443cace02df1 # enable using sccache
-e7cdfe25bb29987a5d09140592b31810023d4be6 # install rust etc. via rustup, update pinned ver
 )
 
 _reverts=(
