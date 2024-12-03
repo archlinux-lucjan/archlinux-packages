@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.6.r274.g4f5317cc
+pkgver=1.0.6.r277.gb7ceb29c
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,6 +20,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
+ba7b3099c68953f064c1729f8822b73866f3e8f8 # scx: Add scx_bpf_dump_header helper
 )
 
 _reverts=(
