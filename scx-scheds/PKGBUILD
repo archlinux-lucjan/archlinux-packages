@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.7
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -23,6 +23,11 @@ validpgpkeys=(
 
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
+ee0d293189488feeb3a92e2e43934344672e114f # scx_loader: provide library crate to be used by other crates
+22d45e6ddbea81efc17a91ca6d713a7e396cea52 # meson: Update bpftool usage in compile_scx_lib
+a72c24e7e5670b4533c4508d6d6c980d8487cb50 # meson: Add scx_lib dep to gen_bpf_o
+21cf3ccd1d263cf7aac3afe337911f18ba329dca # scx_lib: use the proper bpftool
+38035e009eef0a1f57a0e0ac24b4cda5d190ec16 # add rustfmt.toml to avoid lookup to $HOME/.rustfmt.toml
 )
 
 _reverts=(
