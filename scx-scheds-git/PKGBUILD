@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.7.r49.g7ad59c49
+pkgver=1.0.7.r62.g7e3d61f1
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,6 +20,11 @@ conflicts=("scx-scheds")
 
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
+7974ecd4048a17a4ef7da429265ff4479652f7ab # scx_bpfland: correctly handle nvcsw_max_thresh in task_weight()
+02337531017331c0d159de4f6d548a3a84353925 # scx_bpfland: always kick CPUs using SCX_KICK_IDLE
+4181240f3110e5a35fe980597f26ce5d2dc5bc42 # scx_bpfland: do not try to wake-up CPUs if the system is already busy
+29c92a136b68e8daa27216dcb03f859eab8db7fb # scx_bpfland: consider wakeups by per-CPU kthreads as synchronous
+4d151b80afb5e1f638949d7aaafd113e4d71891a # scx_bpfland: boost per-CPU tasks
 )
 
 _reverts=(
