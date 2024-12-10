@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.7.r62.g7e3d61f1
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,6 +25,7 @@ _backports=(
 4181240f3110e5a35fe980597f26ce5d2dc5bc42 # scx_bpfland: do not try to wake-up CPUs if the system is already busy
 29c92a136b68e8daa27216dcb03f859eab8db7fb # scx_bpfland: consider wakeups by per-CPU kthreads as synchronous
 ae26a235d7ba4bfc442bbde107d9e4035d093a84 # scx_bpfland: boost per-CPU tasks
+1fea36b08ad1aae0cc634bbbc912e7a947643461 # scx_bpfland: boost batch workload when nvcsw_max_thresh is disabled
 )
 
 _reverts=(
