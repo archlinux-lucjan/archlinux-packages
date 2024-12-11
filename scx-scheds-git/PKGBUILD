@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.7.r79.gc2e21ed8
-pkgrel=1
+pkgver=1.0.7.r81.g5960298a
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,6 +26,10 @@ d352015176b6b4a690f0fda1260a6bb362c067ea # scx_bpfland: do not try to wake-up CP
 7d8b8e75812ab62454c734683de4944938b3edc2 # scx_bpfland: consider wakeups by per-CPU kthreads as synchronous
 c8b246ea63d0ab1632c7358cf535cb5f49943ec6 # scx_bpfland: give per-CPU tasks a chance to be directly dispatched
 0bc6c5fb2d7394bf3d9862dba07e12299e22bff9 # scx_bpfland: boost batch workload when nvcsw_max_thresh is disabled
+73b6399e17ffe66ebc245ec722ec6f5dbaaa71ec # scx_utils: remove unused dependency handling
+7cd28f83bd4d2699a0918e68e5fcbc3a9789c24d # scx_utils: add option for compiling *.bpf.c files separately
+30ded3c5e41c5addc16534a4fdd715efd5663cd4 # scx_layered: refactor to compile each *.bpf.c as a separate unit
+261d8c09de6184c71dc091ad1c370653a30734d0 # scx_layered: add missing #include to timer.bpf.c
 )
 
 _reverts=(
