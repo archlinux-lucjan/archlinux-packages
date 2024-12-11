@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.7.r62.g7e3d61f1
-pkgrel=4
+pkgver=1.0.7.r79.gc2e21ed8
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,12 +20,12 @@ conflicts=("scx-scheds")
 
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
-7974ecd4048a17a4ef7da429265ff4479652f7ab # scx_bpfland: correctly handle nvcsw_max_thresh in task_weight()
-02337531017331c0d159de4f6d548a3a84353925 # scx_bpfland: always kick CPUs using SCX_KICK_IDLE
-4181240f3110e5a35fe980597f26ce5d2dc5bc42 # scx_bpfland: do not try to wake-up CPUs if the system is already busy
-29c92a136b68e8daa27216dcb03f859eab8db7fb # scx_bpfland: consider wakeups by per-CPU kthreads as synchronous
-ae26a235d7ba4bfc442bbde107d9e4035d093a84 # scx_bpfland: boost per-CPU tasks
-6a3cecfb2fee86fc4f36b6e1d8bc4e5e6646fa5f # scx_bpfland: boost batch workload when nvcsw_max_thresh is disabled
+d75710d22f068aae1cd4ae874493fa2c724784a2 # scx_bpfland: correctly handle nvcsw_max_thresh in task_weight()
+e71cc7dc3097ca5cb573618ef33698486c73e77e # scx_bpfland: always kick CPUs using SCX_KICK_IDLE
+d352015176b6b4a690f0fda1260a6bb362c067ea # scx_bpfland: do not try to wake-up CPUs if the system is already busy
+7d8b8e75812ab62454c734683de4944938b3edc2 # scx_bpfland: consider wakeups by per-CPU kthreads as synchronous
+c8b246ea63d0ab1632c7358cf535cb5f49943ec6 # scx_bpfland: give per-CPU tasks a chance to be directly dispatched
+0bc6c5fb2d7394bf3d9862dba07e12299e22bff9 # scx_bpfland: boost batch workload when nvcsw_max_thresh is disabled
 )
 
 _reverts=(
