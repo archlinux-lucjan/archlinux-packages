@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r23.g3eacf601
-pkgrel=2
+pkgver=1.0.8.r25.g60e4d621
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,7 +25,6 @@ c5e3cfa6575e01660cd31707564db25725378e80 # scx_lavd: Turn on frequency scaling i
 a8cd4e4822163b18db3bbbc002ae43252258c9ad # scx_bpfland: introduce --local-cpu-tasks
 19706c2686f7910bd1027e60b4f24ff79cfe07f5 # scx_bpfland: kick CPU after enqueue only when task is changing affinity
 d593f008efdee1d7208b874a5dbbb5a6b498e799 # scx_bpfland: keep tasks running on the same CPU in ops.dispatch()
-4c08e7584b73e761c7bf00cc9c20693113dedde5 # common.bpf.h: Suppress generated prototypes in vmlinux.h
 )
 
 _reverts=(
