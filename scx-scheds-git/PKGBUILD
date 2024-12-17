@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.7.r104.ge8e68e8e
-pkgrel=3
+pkgver=1.0.8.r18.g94dc1c1c
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,10 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
-cab8a2b576b1b33fb84a249e4e1afd9971784cda # scx_bpfland: introduce --local-cpu-tasks
-52b3691ce2686bcab1eef04c6dee8db32d7b8370 # scx_lavd: Reuse bpf_ktime_get_ns() as many as possible
-52f234d2311da2a36535adb5c3422501a7a1f8e4 # scx_rustland_core: Fix build warnings
-c3b0793a89cbde01eee689a0cc36e25165eed79d # scx_rustland_core: Select any idle CPU when task affinity changes
 )
 
 _reverts=(
