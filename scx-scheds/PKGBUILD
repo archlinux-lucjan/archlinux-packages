@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds
 _gitname=scx
-pkgver=1.0.7
-pkgrel=1.4
+pkgver=1.0.8
+pkgrel=1.1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('896434924faa43412c6e362978cf4c0a2e4437ec37fd3e5973ead39261e15e57')
+sha256sums=('0971802cf9648267554de6ccc82a3479c6cc7fe37bb55021ad93838441ece58e')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
@@ -23,20 +23,6 @@ validpgpkeys=(
 
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
-ee0d293189488feeb3a92e2e43934344672e114f # scx_loader: provide library crate to be used by other crates
-22d45e6ddbea81efc17a91ca6d713a7e396cea52 # meson: Update bpftool usage in compile_scx_lib
-a72c24e7e5670b4533c4508d6d6c980d8487cb50 # meson: Add scx_lib dep to gen_bpf_o
-21cf3ccd1d263cf7aac3afe337911f18ba329dca # scx_lib: use the proper bpftool
-38035e009eef0a1f57a0e0ac24b4cda5d190ec16 # add rustfmt.toml to avoid lookup to $HOME/.rustfmt.toml
-aeab91b0111cf4cf8d75f0889d2fd5f73a866111 # fix header install path for library
-d75710d22f068aae1cd4ae874493fa2c724784a2 # scx_bpfland: correctly handle nvcsw_max_thresh in task_weight()
-e71cc7dc3097ca5cb573618ef33698486c73e77e # scx_bpfland: always kick CPUs using SCX_KICK_IDLE
-d352015176b6b4a690f0fda1260a6bb362c067ea # scx_bpfland: do not try to wake-up CPUs if the system is already busy
-7d8b8e75812ab62454c734683de4944938b3edc2 # scx_bpfland: consider wakeups by per-CPU kthreads as synchronous
-c8b246ea63d0ab1632c7358cf535cb5f49943ec6 # scx_bpfland: give per-CPU tasks a chance to be directly dispatched
-0bc6c5fb2d7394bf3d9862dba07e12299e22bff9 # scx_bpfland: boost batch workload when nvcsw_max_thresh is disabled
-13ec357444b05c331cf5b86eb964c7b1578afc8f # scx_loader: add mode for server-oriented workloads
-74fd6e0a63c21edd35bff36e3568258122067b75 # scx_loader: fix recursion of type convertion
 )
 
 _reverts=(
