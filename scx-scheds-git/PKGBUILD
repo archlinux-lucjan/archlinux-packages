@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r18.g94dc1c1c
-pkgrel=1
+pkgver=1.0.8.r21.g4e3b2792
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,11 @@ conflicts=("scx-scheds")
 
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
+758fba63902502993b40efc9bd32de793e44d833 # scx_lavd: Properly reinitialize cpumask for autopilot mode
+c5e3cfa6575e01660cd31707564db25725378e80 # scx_lavd: Turn on frequency scaling in performance mode
+a8cd4e4822163b18db3bbbc002ae43252258c9ad # scx_bpfland: introduce --local-cpu-tasks
+19706c2686f7910bd1027e60b4f24ff79cfe07f5 # scx_bpfland: kick CPU after enqueue only when task is changing affinity
+d593f008efdee1d7208b874a5dbbb5a6b498e799 # scx_bpfland: keep tasks running on the same CPU in ops.dispatch()
 )
 
 _reverts=(
