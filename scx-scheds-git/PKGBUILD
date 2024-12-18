@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.8.r28.g5b10a44e
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,9 +21,8 @@ conflicts=("scx-scheds")
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
 ba80d5e20455c9cccf145a8546dc74cbf7490967 # scx_lavd: Add a fast path to pick_idle_cpu() when overloaded
-a8cd4e4822163b18db3bbbc002ae43252258c9ad # scx_bpfland: introduce --local-cpu-tasks
-19706c2686f7910bd1027e60b4f24ff79cfe07f5 # scx_bpfland: kick CPU after enqueue only when task is changing affinity
-d593f008efdee1d7208b874a5dbbb5a6b498e799 # scx_bpfland: keep tasks running on the same CPU in ops.dispatch()
+6f95cb9535fe3e879f29bb0ea48f2f1ff41ca3db # scx_bpfland: reduce CPU wakeups when enqueueing to the shared DSQ
+e4952da44de29a08fa374da6a7baca0cae5c6fef # scx_bpfland: prioritize tasks with migration disabled
 )
 
 _reverts=(
