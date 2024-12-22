@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r30.g16e13f96
-pkgrel=2
+pkgver=1.0.8.r42.g288c507a
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,10 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 59ad67152035319ecaa73e3c4e57ac0ab20a499a # feat: enable LTO
-b93cbca1f367d74a259d9f34feede2110a9177cb # scx_bpfland: reduce CPU wakeups when enqueueing to the shared DSQ
-26232be77af6d0aa49dabbedeab7557578a1ae12 # scx_bpfland: prioritize tasks with migration disabled
-1506621d9cf58fbb58fa7d440dd7e91b4ae79a81 # scx_bpfland: use cpumask_any_and_distribute directly in ops.select_cpu()
-549b26b802f3365d258b03aad2f64d9e0ee00bc2 # scx_lavd: Change the default time slice to 5 usec
 )
 
 _reverts=(
