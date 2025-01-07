@@ -2,8 +2,8 @@
 
 pkgname=vesktop-lucjan-git
 pkgdesc="Vesktop gives you the performance of web Discord and the comfort of Discord Desktop"
-pkgver=20241004.r370.gccff1ac
-pkgrel=2
+pkgver=20241205.r378.g6c4ecc0
+pkgrel=1
 arch=("x86_64")
 url="https://github.com/Vencord/Vesktop"
 license=("GPL-3.0 license")
@@ -32,7 +32,7 @@ build() {
   pnpm install electron@beta
   pnpm run build && pnpm electron-builder --linux pacman
 
-  bsdtar -xf "dist/vesktop-1.5.3.pacman" -C "$srcdir"
+  bsdtar -xf "dist/vesktop-1.5.4.pacman" -C "$srcdir"
 }
 
 package() {
