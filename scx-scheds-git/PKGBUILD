@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r107.g35c4d7d6
-pkgrel=1
+pkgver=1.0.8.r117.g115b5448
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,13 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+180f7744b7dc087a2b6b7abce8b45b0281fe9bf5 # scx_bpfland: proactively wake idle CPUs after task enqueue
+2c8ef748d6570f804f5de675ac4b1cfff96f933e # scx_bpfland: fix build warning
+30734e9daac771e66bf8ff2df5fe328f56b791ca # scx_bpfland: do not dispatch per-CPU kthreads directly by default
+aed0a13a5ebf1432a707739da3d312870779d6a5 # scx_bpfland: give queued tasks a chance to run on the same CPU
+765beb92e000415b0602032ae2793172e9f606ef # scx_bpfland: re-enqueue tasks when a CPU is taken by a higher sched class
+26f552fabc94ee483a06c9f7404af6a12783d912 # scheds: introduce scx_vder
+
 )
 
 _reverts=(
