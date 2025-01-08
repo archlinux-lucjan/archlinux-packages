@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r117.g115b5448
+pkgver=1.0.8.r119.g2202cc9e
 pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -25,7 +25,7 @@ _backports=(
 aed0a13a5ebf1432a707739da3d312870779d6a5 # scx_bpfland: give queued tasks a chance to run on the same CPU
 765beb92e000415b0602032ae2793172e9f606ef # scx_bpfland: re-enqueue tasks when a CPU is taken by a higher sched class
 26f552fabc94ee483a06c9f7404af6a12783d912 # scheds: introduce scx_vder
-
+52a888f80e6ce1a772736e1bff13d472ca603070 # lib: remove header install step now that headers are in scheds/include
 )
 
 _reverts=(
