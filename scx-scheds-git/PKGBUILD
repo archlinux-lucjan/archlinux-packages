@@ -22,7 +22,6 @@ _backports=(
 5506c99b40d95ee61948f0a32855f26a03f65ddc # scheds: introduce scx_vder
 30415627f4f0f5fa2ecf9b2ab2838baaef9dd2a4 # scx_vder: use a time slice inversely proportional to waiting tasks
 0d4f1f0dcd705f2adc3663041bd771c1fcd90e36 # scheds: Use crate version for --version
-
 )
 
 _reverts=(
