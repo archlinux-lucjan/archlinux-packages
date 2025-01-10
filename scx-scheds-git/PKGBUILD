@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r152.gd04c7fa6
-pkgrel=5
+pkgver=1.0.8.r156.g2d08bb22
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,7 +21,6 @@ conflicts=("scx-scheds")
 _backports=(
 5506c99b40d95ee61948f0a32855f26a03f65ddc # scheds: introduce scx_vder
 30415627f4f0f5fa2ecf9b2ab2838baaef9dd2a4 # scx_vder: use a time slice inversely proportional to waiting tasks
-a539f81e4663ccccb06bbf261986d65a9be11c2a # scheds: Use crate version for --version
 )
 
 _reverts=(
