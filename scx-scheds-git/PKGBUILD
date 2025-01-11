@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r156.g2d08bb22
-pkgrel=1
+pkgver=1.0.8.r158.g13c16ae5
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,6 +21,8 @@ conflicts=("scx-scheds")
 _backports=(
 5506c99b40d95ee61948f0a32855f26a03f65ddc # scheds: introduce scx_vder
 30415627f4f0f5fa2ecf9b2ab2838baaef9dd2a4 # scx_vder: use a time slice inversely proportional to waiting tasks
+0e4c07ac2494566b851fdde04bf69caf432d23f2 # scx_vder: introduce option -k
+35c1aac68c65ba47a6d829b820b1ea4fd51f75d3 # scx_vder: use left time slice budget before refilling it
 )
 
 _reverts=(
