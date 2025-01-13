@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r158.g13c16ae5
-pkgrel=2
+pkgver=1.0.8.r184.g4c68ef7e
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,10 +19,11 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-5506c99b40d95ee61948f0a32855f26a03f65ddc # scheds: introduce scx_vder
-30415627f4f0f5fa2ecf9b2ab2838baaef9dd2a4 # scx_vder: use a time slice inversely proportional to waiting tasks
-0e4c07ac2494566b851fdde04bf69caf432d23f2 # scx_vder: introduce option -k
-35c1aac68c65ba47a6d829b820b1ea4fd51f75d3 # scx_vder: use left time slice budget before refilling it
+03f6a12c9ae585b3c7eadd48eaca0fbe7a264c89 # scx_bpfland: avoid starvation of per-CPU tasks
+2f88dcdadfd0b21452283515c3f509ff26aee4f4 # scheds: introduce scx_vder
+7f52107f20997ab515cf9d455b3d03feae42c1cf # scx_vder: use a time slice inversely proportional to waiting tasks
+94c14a46ceefa5b6e1436721bad1b4c52fc80636 # scx_vder: introduce option -k
+fd134d9ae0bb26c4b483830bf1ea20438fb71435 # scx_vder: avoid starvation of per-CPU tasks
 )
 
 _reverts=(
