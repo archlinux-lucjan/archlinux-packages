@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r285.g4e66c7a6
+pkgver=1.0.8.r294.g01c33fa7
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,15 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-ccd344887d5b334d81aead5ed6b702b813e12a09 # scx_bpfland: Set max performance level with balance_performance
-d67090c7d76f37e28a9bedd1df59304f5493c203 # scx_bpfland: Avoid updating cpuperf target when not needed
-88c3434d2f88a29ea1daee9edabcd1ed23ceee3c # scx_bpfland: Do not scale slice lag with the task weight
-1d510fe0d4b89cc319b22aad825378694a1dd819 # scx_bpfland: Virtual deadline with partial execution vruntime
-58d12b28720e93953fd985e72a9f1c823c79bb13 # scx_bpfland: Allow tasks to overflow primary domain more aggressively
-110863800676e1f5df3ab9ec880d7cc831a3d1d8 # scx_bpfland: Get rid of the interactive task classification via nvcsw
-ce07ff58bd3fb68d5f08f61946378cf7bd01a5be # scx_bpfland: Introduce --local-pcpu to prioritize per-CPU tasks
-2fc3750d7690c26f37d593c9c5402d9a886e2a34 # scx_bpfland: Introduce --cpufreq to enable CPU frequency scaling
-ecd248e6e7d1fab5d7e97de0116b164f3cad2faf # scheds: introduce scx_vder
+4517702ef34c79e278cf44e8b705fc4cefb88440
 87ad1420a87776e20d71a0957b8247cd0834a74c # scx_lavd: Optimize have_idle_cpus()
 abb39ded1237c2fb060ebb0a5be91af6172d3142 # scx_lavd: Do not reserve an idle cpu at ops.enqueue()
 12ade6cf77f5a48241ec2adb4ccf8b479f287f1d # scx_lavd: Direct dispatch at ops.enqueue()
