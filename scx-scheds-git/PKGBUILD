@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r306.g3733815f
-pkgrel=1
+pkgver=1.0.8.r314.gbffe6e06
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,6 +21,7 @@ conflicts=("scx-scheds")
 _backports=(
 4517702ef34c79e278cf44e8b705fc4cefb88440 # scheds: introduce scx_vder
 7159da859f03f756e0b47ba0df868c9b68b68aa7 # scx_loader: Avoid race condition with start_scheduler
+4a9b3be1139be41fd0c9a6eec1c3f5cd133cff76 # meson.build: enable o3 by default
 )
 
 _reverts=(
