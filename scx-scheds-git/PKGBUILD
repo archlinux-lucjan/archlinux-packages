@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r296.ga1498ffc
-pkgrel=2
+pkgver=1.0.8.r306.g3733815f
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,11 +20,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 4517702ef34c79e278cf44e8b705fc4cefb88440 # scheds: introduce scx_vder
-87ad1420a87776e20d71a0957b8247cd0834a74c # scx_lavd: Optimize have_idle_cpus()
-abb39ded1237c2fb060ebb0a5be91af6172d3142 # scx_lavd: Do not reserve an idle cpu at ops.enqueue()
-12ade6cf77f5a48241ec2adb4ccf8b479f287f1d # scx_lavd: Direct dispatch at ops.enqueue()
 7159da859f03f756e0b47ba0df868c9b68b68aa7 # scx_loader: Avoid race condition with start_scheduler
-
 )
 
 _reverts=(
