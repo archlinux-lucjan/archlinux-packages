@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.8.r320.gdfe03fea
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 4517702ef34c79e278cf44e8b705fc4cefb88440 # scheds: introduce scx_vder
+17f30114dda4ff60d2bb853e2fb1c57738bd88b5 # scx_lavd: Conder the hardware resource sharing level in CPU ordering
 )
 
 _reverts=(
