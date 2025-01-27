@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r330.g83050fc7
-pkgrel=2
+pkgver=1.0.8.r344.g9d2796a4
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,8 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 4517702ef34c79e278cf44e8b705fc4cefb88440 # scheds: introduce scx_vder
-f783dfe2d13af8c31ba26f90d558290a873a1968 # scx_loader: Update performance profiles for scx_bpfland
-56cc03480bac1a3d63e0d49e676b2a056fe64b77 # scx_bpfland: Mark --local-kthreads/-k as experimental
 )
 
 _reverts=(
