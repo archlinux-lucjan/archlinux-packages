@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.8.r344.g9d2796a4
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,7 @@ conflicts=("scx-scheds")
 
 _backports=(
 4517702ef34c79e278cf44e8b705fc4cefb88440 # scheds: introduce scx_vder
+8880847b65752311bc49a78c4232b0330dad41a6 # scx_bpfland: enable task preemption
 )
 
 _reverts=(
