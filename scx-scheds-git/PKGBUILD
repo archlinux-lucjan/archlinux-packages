@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r362.gf7e7efe5
+pkgver=1.0.8.r366.g313e6bd0
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,6 +20,10 @@ conflicts=("scx-scheds")
 
 _backports=(
 4517702ef34c79e278cf44e8b705fc4cefb88440 # scheds: introduce scx_vder
+9b5637212aafafd70cd5bfd7f8e848e9eee4e90c # scx_rusty: Compact ascii diagram at the head of load_balance.rs
+4b250a517e5cb26585f8b41a19e5941dcb4dccaa # scx_rusty: load_balance: Clean up task_ctx pointer handling
+19e5f41912c8d923831aaf12e7f9a27c2f9f4201 # scx_rusty: load_balance: Derive Debug for Domain and NumaNode
+c01090105ca4e118f6b5440d8f0a8ab845542421 # scx_rusty: Add task_ctx.pid for debug visibility
 )
 
 _reverts=(
