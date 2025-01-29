@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.8.r366.g313e6bd0
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,6 +24,8 @@ _backports=(
 4b250a517e5cb26585f8b41a19e5941dcb4dccaa # scx_rusty: load_balance: Clean up task_ctx pointer handling
 19e5f41912c8d923831aaf12e7f9a27c2f9f4201 # scx_rusty: load_balance: Derive Debug for Domain and NumaNode
 c01090105ca4e118f6b5440d8f0a8ab845542421 # scx_rusty: Add task_ctx.pid for debug visibility
+4b01df54a3f00539ed6822839d96157478e74045 # scx_lavd: Use p->scx.dsq_vtime to store taskc->vdeadline_log_clk
+22057be29a4308861e0c05759fcc80c00a915e47 # scx_lavd: Preemption when ops.select_cpu() was skipped
 )
 
 _reverts=(
