@@ -114,8 +114,6 @@
 │   └── PKGBUILD
 ├── leancrypto-git
 │   └── PKGBUILD
-├── legcord-lucjan-git
-│   └── PKGBUILD
 ├── libgit2-git
 │   └── PKGBUILD
 ├── libgit2-stable-git
@@ -255,4 +253,4 @@
 └── zstd-git
     └── PKGBUILD
 
-84 directories, 172 files
+83 directories, 171 files
