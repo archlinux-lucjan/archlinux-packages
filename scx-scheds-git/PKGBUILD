@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r454.g51428e01
-pkgrel=3
+pkgver=1.0.8.r458.gaa7383b6
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,7 +24,6 @@ _backports=(
 116500978c864ad61ec526a22f92b23273abf60c # scx_qmap: Use is_enq_cpu_selected() for BPF compatability
 20a8858c5b627b8d1de69ba6aaa085d46ca10ded # scx_bpfland: Use is_enq_cpu_selected() for BPF compatability
 3b2d770cefc6fbda63544d5823c32a4b9430d3b7 # scx_lavd: Use is_enq_cpu_selected() for BPF compatability
-1a6aed26d06fc584272c1109770ed31083da769b # lib/sdt_alloc: move sdt_static definition to sdt_task.h header
 )
 
 _reverts=(
