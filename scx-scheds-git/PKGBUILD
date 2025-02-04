@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.8.r450.g8e9efbcd
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,7 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
+8bdcdb5dafa8a83ed9b0bb8da80a0890f55e04a0 # scx_lavd: Use time_delta() in a missing place
 )
 
 _reverts=(
