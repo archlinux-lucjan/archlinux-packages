@@ -230,8 +230,6 @@
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
-├── vesktop-lucjan-git
-│   └── PKGBUILD
 ├── zlib-ng-git
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
@@ -253,4 +251,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 171 files
+82 directories, 170 files
