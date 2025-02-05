@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds
 _gitname=scx
-pkgver=1.0.8
-pkgrel=1.2
+pkgver=1.0.9
+pkgrel=1.1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -15,14 +15,13 @@ makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('0971802cf9648267554de6ccc82a3479c6cc7fe37bb55021ad93838441ece58e')
+sha256sums=('4c1c8ef253c49939e0e69bcc27747098425f4cfc3e2f551a29a9bf5559226b50')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
 )
 
 _backports=(
-7300c7ceda27cd757a7b1961eab9bbf9c2946024 # feat: enable LTO
 )
 
 _reverts=(
