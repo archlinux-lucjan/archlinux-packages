@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.8.r458.gaa7383b6
+pkgver=1.0.9.r2.gfef8e5eb
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,11 +19,10 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-8bdcdb5dafa8a83ed9b0bb8da80a0890f55e04a0 # scx_lavd: Use time_delta() in a missing place
-360ae98868b21c62ea72c4bed2e109e70759d19a # scx_util: Add is_enq_cpu_selected() for BPF compatability
-116500978c864ad61ec526a22f92b23273abf60c # scx_qmap: Use is_enq_cpu_selected() for BPF compatability
-20a8858c5b627b8d1de69ba6aaa085d46ca10ded # scx_bpfland: Use is_enq_cpu_selected() for BPF compatability
-3b2d770cefc6fbda63544d5823c32a4b9430d3b7 # scx_lavd: Use is_enq_cpu_selected() for BPF compatability
+44ff501ab077c5f24e51f56de32c0fb710a71433 # scx_util: Add is_enq_cpu_selected() for BPF compatability
+d6ea8e408aed5d2be9e65ce3082d79a58a881b8b # scx_qmap: Use is_enq_cpu_selected() for BPF compatability
+04c4712602712ed2f6a2bff26d3c0a5e59a88c60 # scx_bpfland: Use is_enq_cpu_selected() for BPF compatability
+b1c59af611b511e85f27ea0770a4006337fc9ed6 # scx_lavd: Use is_enq_cpu_selected() for BPF compatability
 )
 
 _reverts=(
