@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.9.r2.gfef8e5eb
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,10 +19,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-44ff501ab077c5f24e51f56de32c0fb710a71433 # scx_util: Add is_enq_cpu_selected() for BPF compatability
-d6ea8e408aed5d2be9e65ce3082d79a58a881b8b # scx_qmap: Use is_enq_cpu_selected() for BPF compatability
-04c4712602712ed2f6a2bff26d3c0a5e59a88c60 # scx_bpfland: Use is_enq_cpu_selected() for BPF compatability
-b1c59af611b511e85f27ea0770a4006337fc9ed6 # scx_lavd: Use is_enq_cpu_selected() for BPF compatability
 )
 
 _reverts=(
