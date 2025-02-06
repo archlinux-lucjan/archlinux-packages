@@ -120,10 +120,6 @@
 │   └── PKGBUILD
 ├── libsignal-protocol-c-git
 │   └── PKGBUILD
-├── linux-api-headers-git
-│   └── PKGBUILD
-├── linux-api-headers-rc-git
-│   └── PKGBUILD
 ├── linux-firmware-git
 │   └── PKGBUILD
 ├── linux-usermode
@@ -251,4 +247,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 170 files
+80 directories, 168 files
