@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.9.r14.gc01587da
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,7 +21,7 @@ conflicts=("scx-scheds")
 _backports=(
 232a85a48e58117c1de176d3b228804f4ba639e0 # scheds: introduce scx_vder
 cf56d6bb521183a37e31c34d657e5d58d8f0f865 # scx_vder: pcpu DSQ
-1245da2e523eaa1286cf447d238a1b75de9d68cc # scx_p2dq: Add scx_p2dq scheduler
+c3fee904b7ea46b8c3dcf7c68f2d4e270f0d507f # scx_p2dq: Add scx_p2dq scheduler
 95c73c34852aa0a029a02072bd4258abb6b142ff # scripts: Add gen_enum_defs.py
 8b2a365f6699ffa5ead2eee2516df376e13d83ab # scx_utils: Add enum_defs.autogen.h
 d8b5336cf271402b4cdd5f4c88e41dfba9155ea6 # scx_utils: Include enum_defs.autogen.h
