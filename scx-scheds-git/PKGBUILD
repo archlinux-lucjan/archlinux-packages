@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r16.g686b8fde
+pkgver=1.0.9.r24.g30cbdeee
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,13 +21,6 @@ conflicts=("scx-scheds")
 _backports=(
 232a85a48e58117c1de176d3b228804f4ba639e0 # scheds: introduce scx_vder
 cf56d6bb521183a37e31c34d657e5d58d8f0f865 # scx_vder: pcpu DSQ
-95c73c34852aa0a029a02072bd4258abb6b142ff # scripts: Add gen_enum_defs.py
-8b2a365f6699ffa5ead2eee2516df376e13d83ab # scx_utils: Add enum_defs.autogen.h
-d8b5336cf271402b4cdd5f4c88e41dfba9155ea6 # scx_utils: Include enum_defs.autogen.h
-0dcd76fa772e3691e4232328a8e114e3010fc588 # scx_utils: Add __COMPAT_is_enq_cpu_selected() for BPF compatability
-0f051e5347703e6fc8d73771bf8af5d96db32f84 # scx_qmap: Use __COMPAT_is_enq_cpu_selected() for BPF compatability
-7b1b4152adddc43bc9daf39d6eedd7d7fc6df957 # scx_bpfland: Use __COMPAT_is_enq_cpu_selected() for BPF compatability
-1c2dff2407b97e0af52636c559914b95a2fd0316 # scx_lavd: Use __COMPAT_is_enq_cpu_selected() for BPF compatability
 )
 
 _reverts=(
