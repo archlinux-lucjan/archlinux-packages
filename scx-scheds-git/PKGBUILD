@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r24.g30cbdeee
+pkgver=1.0.9.r42.g897ca2ef
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,6 +21,18 @@ conflicts=("scx-scheds")
 _backports=(
 232a85a48e58117c1de176d3b228804f4ba639e0 # scheds: introduce scx_vder
 cf56d6bb521183a37e31c34d657e5d58d8f0f865 # scx_vder: pcpu DSQ
+b2fc124281164f07c0829197e759158e38d8b281 # scx_wd40: introduce wd40
+0bab6096e68b7c7dd20dfe54655bd745cbd4b9be # meson-scripts: ignore scx_wd40
+ae6eb6a80d784b06f992d08c1e3167687d0f73b5 # scx_wd40: update metadata and explain goals
+0c7132937211f7f5106523ed9676d19b3672012d # scx_wd40: remove cast_kern macro
+ebb3b516e5e4b7fa9d09d0a5e076752136c52220 # scx_wd40: remove Clang18 compatibility typedefs
+6b27238f96f3a6420877050bad9a9b89dd047b6e # scx_wd40: [non-functional-changes] refactor domain load balancing logic into separate compilation units
+041327853802efbce4dbe0293be10c59a2d8a9c0 # scx_wd40: factor out deadline scheduling logic
+16446dff5e2cddbc7cdf09fcc07d26f3ecf682ea # scx_wd40: factor out task placement
+69152b0f706ddb07783665c304ecae6c6c4c55d7 # scx_wd40: refactor logic out of BPF dispatch function
+a15ae5a717a9334b77c1b94af805f2739ce1de46 # scx_wd40: update scheduler name in initial diagnostic
+eb2cffa516a53caa09160f04fc638009a0f596aa # scx_wd40: factor out select_cpu path
+c49921ee24f6d12f98d155df5681067b194ba305 # scx_wd40: replace references to rusty in naming
 )
 
 _reverts=(
