@@ -1,0 +1,92 @@
+From 9a7e5adeae55ec4fd5fee49a137da7a551a6ed29 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Thu, 13 Feb 2025 21:08:02 +0100
+Subject: [PATCH] meson: install scx_wd40
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ Cargo.lock                             | 23 +++++++++++++++++++++++
+ Cargo.toml                             |  3 ++-
+ meson-scripts/install_rust_user_scheds |  4 ++--
+ meson.build                            |  2 +-
+ 4 files changed, 28 insertions(+), 4 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index c7e0c10b..f14d87b6 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2362,6 +2362,29 @@ dependencies = [
+  "static_assertions",
+ ]
+ 
++[[package]]
++name = "scx_wd40"
++version = "1.0.9"
++dependencies = [
++ "anyhow",
++ "chrono",
++ "clap",
++ "crossbeam",
++ "ctrlc",
++ "fb_procfs",
++ "libbpf-rs",
++ "libc",
++ "log",
++ "ordered-float",
++ "scx_stats",
++ "scx_stats_derive",
++ "scx_utils",
++ "serde",
++ "simplelog",
++ "sorted-vec",
++ "static_assertions",
++]
++
+ [[package]]
+ name = "scx_stats"
+ version = "1.0.9"
+diff --git a/Cargo.toml b/Cargo.toml
+index 85a939c2..1698c238 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -13,7 +13,8 @@ members = ["rust/scx_stats",
+            "scheds/rust/scx_rusty",
+            "scheds/rust/scx_p2dq",
+            "scheds/rust/scx_layered",
+-           "scheds/rust/scx_mitosis"]
++           "scheds/rust/scx_mitosis",
++           "scheds/rust/scx_wd40"]
+ resolver = "2"
+ 
+ [profile.release]
+diff --git a/meson-scripts/install_rust_user_scheds b/meson-scripts/install_rust_user_scheds
+index 63dbf835..30934709 100755
+--- a/meson-scripts/install_rust_user_scheds
++++ b/meson-scripts/install_rust_user_scheds
+@@ -7,8 +7,8 @@ for manifest in "$MESON_SOURCE_ROOT"/scheds/rust/*/Cargo.toml; do
+     target_dir="${MESON_BUILD_ROOT}"
+     name="${source_dir##*/}"
+ 
+-    # Skip scx_mitosis and scx_wd40
+-    if [ "$name" = "scx_mitosis" ] || [ "$name" = "scx_wd40" ]; then
++    # Skip scx_mitosis
++    if [ "$name" = "scx_mitosis" ]; then
+         echo "Skipping installation of $name"
+         continue
+     fi
+diff --git a/meson.build b/meson.build
+index 198caa57..0bc4f0f1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -351,7 +351,7 @@ if enable_rust
+ 
+   rust_scheds = ['scx_lavd', 'scx_bpfland', 'scx_rustland', 'scx_rlfifo',
+                  'scx_flash', 'scx_rusty',
+-                 'scx_layered', 'scx_mitosis']
++                 'scx_layered', 'scx_mitosis', 'scx_wd40']
+   rust_misc = ['scx_stats', 'scx_stats_derive', 'scx_utils',
+                'scx_rustland_core',
+                'scx_loader']
+-- 
+2.48.1
+
