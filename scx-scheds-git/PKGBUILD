@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r91.g4dcacacd
-pkgrel=2
+pkgver=1.0.9.r93.g4d550337
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,7 +25,7 @@ _backports=(
 a6e898e644131ace8a9e4ba7fc0ef2489debff6e # scx_vder: NUMA awareness
 cf99a5ab99823457cd9e7f0abb2a745713748f91 # scx_wd40: update Cargo.lock
 b22f7013051516cd19f57180269fb289d929a9ed # scx_wd40: arena-based cpumask library
-389808f67d05c23bd1dd5e95cf407795dc77bca3 # scx_p2dq: Update load balancing
+dbe60d031be45401f0745114df756cffffb54689 # scx_wd40: move domain CPU masks to arena-allocated domain struct
 6ac6e842d57fe14f3f314fb8d14d5b0cec3a0f2f # scx_loader: Add p2dq scheduler
 )
 
