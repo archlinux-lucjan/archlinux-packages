@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r89.gf17985ca
-pkgrel=3
+pkgver=1.0.9.r91.g4dcacacd
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,7 +25,6 @@ _backports=(
 a6e898e644131ace8a9e4ba7fc0ef2489debff6e # scx_vder: NUMA awareness
 cf99a5ab99823457cd9e7f0abb2a745713748f91 # scx_wd40: update Cargo.lock
 b22f7013051516cd19f57180269fb289d929a9ed # scx_wd40: arena-based cpumask library
-3932d28be31e62110ca48711f75e9eae90a71299 # scx_lavd: Avoid scx_bpf_kick_cpu(SCX_KICK_PREEMPT) for self-preemption
 )
 
 _reverts=(
