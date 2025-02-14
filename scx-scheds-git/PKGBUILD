@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r86.gcb4e4596
+pkgver=1.0.9.r89.gf17985ca
 pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,8 +21,8 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-232a85a48e58117c1de176d3b228804f4ba639e0 # scheds: introduce scx_vder
-cf56d6bb521183a37e31c34d657e5d58d8f0f865 # scx_vder: pcpu DSQ
+877451ab91db080726454f8f940808a9368019fd # scheds: introduce scx_vder
+a6e898e644131ace8a9e4ba7fc0ef2489debff6e # scx_vder: NUMA awareness
 cf99a5ab99823457cd9e7f0abb2a745713748f91 # scx_wd40: update Cargo.lock
 b22f7013051516cd19f57180269fb289d929a9ed # scx_wd40: arena-based cpumask library
 )
