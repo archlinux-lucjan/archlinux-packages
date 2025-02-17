@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.9.r120.gf26deb19
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,7 +21,6 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-d832cf761f61302890e01cc3e17dad63f8b5a79d # scx: Don't panic on missing enums in C schedulers
 213985f938fd724ba4d0978729504f3960baa1b7 # scheds: introduce scx_vder
 c858be7fda7e16093b2169376bb8b77da11efab5 # scx_vder: tickless mode
 )
