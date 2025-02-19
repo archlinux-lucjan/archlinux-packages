@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r130.gd7feb0f1
+pkgver=1.0.9.r154.g7b41b774
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -12,10 +12,8 @@ license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
-source=("git+https://github.com/sched-ext/scx"
-        "0001-meson-install-scx_wd40.patch")
-sha256sums=('SKIP'
-            '395f90eeaa801cdbaa1210a9ab2e0607b7fa77a92d3c81e0351fd2b0b804be29')
+source=("git+https://github.com/sched-ext/scx")
+sha256sums=('SKIP')
 options=(!lto)
 provides=("scx-scheds")
 conflicts=("scx-scheds")
@@ -23,6 +21,7 @@ conflicts=("scx-scheds")
 _backports=(
 d5d60ff909f001ec9f916d965b3642aecab867a7 # scheds: introduce scx_vder
 96a1492a9909584a5c168fe6518670a1b7b66be3 # scx_vder: tickless mode
+74263cf388b1ffc925056798ee8f57689c897413 # scheds: Introduce scx_tickless
 )
 
 _reverts=(
