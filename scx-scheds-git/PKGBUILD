@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r177.gd80a3a9e
+pkgver=1.0.9.r184.g7f5292e3
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -20,7 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 6cc02785343170cf460d76ad8501b3c0b4ada2c2 # scheds: Introduce scx_tickless
-a480d88035014f0e7081495771cd412e156ee0d2 # scx_bpfland: reduce task migrations
 )
 
 _reverts=(
