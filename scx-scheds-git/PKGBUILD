@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r190.gef7407e7
-pkgrel=2
+pkgver=1.0.9.r192.ga22c1e6a
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,6 @@ conflicts=("scx-scheds")
 
 _backports=(
 6cc02785343170cf460d76ad8501b3c0b4ada2c2 # scheds: Introduce scx_tickless
-393c77a01bb86d30c3df48af812f5ab6316b5bb9 # scx_bpfland: Always re-enqueue tasks that are running on a busy SMT core
 )
 
 _reverts=(
