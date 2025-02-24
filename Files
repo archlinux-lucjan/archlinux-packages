@@ -221,6 +221,8 @@
 ├── README.md
 ├── scxctl-git
 │   └── PKGBUILD
+├── scx-manager-git
+│   └── PKGBUILD
 ├── scx-scheds
 │   └── PKGBUILD
 ├── scx-scheds-git
@@ -249,4 +251,4 @@
 └── zstd-git
     └── PKGBUILD
 
-81 directories, 169 files
+82 directories, 170 files
