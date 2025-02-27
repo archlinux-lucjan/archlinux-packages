@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r244.gd0a9f34e
-pkgrel=2
+pkgver=1.0.9.r260.g33bab95f
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,8 @@ conflicts=("scx-scheds")
 
 _backports=(
 04c2cf1cf714576a0af9f34befea552b3f4e8b05 # scheds: Introduce scx_tickless
-db1118c4db467c6472985c7e0fe89faf2d0aa12d # scx_bpfland: use per-CPU DSQs
+9560be26a1b52a1dc2804935c02fd7a4dc2a00d4 # sched_ext: Introduce scx_bpf_nr_node_ids()
+bc96fcda4371510e75f768f1daee5c086ea1a80a # scx_bpfland: NUMA-aware scheduling
 )
 
 _reverts=(
