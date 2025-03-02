@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.9.r285.gdc8d8918
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,8 @@ provides=("scx-scheds")
 conflicts=("scx-scheds")
 
 _backports=(
-fb2d55a59a0d46abf4d1081fcf39355d31f13df8 # scheds: Introduce scx_tickless
+472cdf6c19dab82d3ac30e1013798b89d726bfe7 # scheds: Introduce scx_tickless
+d4d59531447151db71db185a86ed3ddd2fe4ef94 # scx_bpfland: fix cache domain detection
 )
 
 _reverts=(
