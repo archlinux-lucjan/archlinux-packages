@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.9.r305.g997faad2
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -22,7 +22,7 @@ _backports=(
 9a1d58ca5c34b23137bcbc59cf4af2f41c45bbb1 # scheds: Introduce scx_tickless
 8ad9fcf741468184234d47ae820c005c0f92c4b5 # scx_loader: Add scx_tickless scheduler
 0ae2ae1fb8e059a2f11df097ab7020b734af9b60 # ci: enable testing for scx_tickless
-f943da70fb1f29606b1486da5b8587b01a75afdf # scx_tickless: Dispatch tasks from BPF timers
+8dcd92f494d96181eebf233be261dbc4466422c9 # scx_tickless: Dispatch tasks from BPF timers
 fd96e46a490bdb150de58b7159ff6982f7faaf0e # scx_utils: Add a utility function to load a tracepoint conditionally.
 d9906cfd788b7577adb7449a15623d433d837357 # scx_lavd: Enable futex boost only when tracepoints are available.
 5206d6088af45bbf36deebc2d293c0455d018398 # scx_lavd: Add a command line option, no-futex-boost.
