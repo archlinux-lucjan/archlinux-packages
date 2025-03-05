@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.9.r311.g0102034c
+pkgver=1.0.9.r319.gfb111651
 pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -15,8 +15,8 @@ backup=('etc/default/scx')
 source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 options=(!lto)
-provides=("scx-scheds")
-conflicts=("scx-scheds")
+provides=("scx-scheds" "scxctl")
+conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 9a1d58ca5c34b23137bcbc59cf4af2f41c45bbb1 # scheds: Introduce scx_tickless
@@ -25,6 +25,12 @@ _backports=(
 8dcd92f494d96181eebf233be261dbc4466422c9 # scx_tickless: Dispatch tasks from BPF timers
 0befb50ee9bf0937b57cfd6eca717367c8b9e507 # scx_flash: Rely on the built-in idle CPU selection policy
 00c12cdc8c01b91d338fd54d5a62e306c4c571d7 # scx_flash: Redesign scheduling policy
+045db0ef813793583edf4b5ec574e40590cc287d # scxctl: Initial code merge
+e68d6c2eebce69715a17893beba8ec12b872282f # scxctl: Update repo link
+7ea0e74a74b4e2314c42bee1b905b152b5a68a05 # scxctl: Cleanup description
+527b2ea81fe460ba17cbe65f33dbea81ee443651 # scxctl: Relicense to GPL-2.0
+3956a43e1566c71e1e3f0e4f316ebf14e331c333 # scxctl: Sync version with scx version
+91554410fc21d50651009ff7ec3f1ab9607b0dbe # scxctl: Add to main Cargo build
 )
 
 _reverts=(
