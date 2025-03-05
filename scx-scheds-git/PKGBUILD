@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.9.r305.g997faad2
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,6 +26,7 @@ _backports=(
 fd96e46a490bdb150de58b7159ff6982f7faaf0e # scx_utils: Add a utility function to load a tracepoint conditionally.
 d9906cfd788b7577adb7449a15623d433d837357 # scx_lavd: Enable futex boost only when tracepoints are available.
 5206d6088af45bbf36deebc2d293c0455d018398 # scx_lavd: Add a command line option, no-futex-boost.
+7629dbeb5ca210438f305dd6c6fb9948f467e218 # scx_bpfland: Fix is_wake_sync()
 )
 
 _reverts=(
