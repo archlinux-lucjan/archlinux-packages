@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.9.r311.g0102034c
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,8 +23,8 @@ _backports=(
 8ad9fcf741468184234d47ae820c005c0f92c4b5 # scx_loader: Add scx_tickless scheduler
 0ae2ae1fb8e059a2f11df097ab7020b734af9b60 # ci: enable testing for scx_tickless
 8dcd92f494d96181eebf233be261dbc4466422c9 # scx_tickless: Dispatch tasks from BPF timers
-3488bb07bc67eac4397769f9601429ffdebef1c4 # scx_flash: Rely on the built-in idle CPU selection policy
-ae8f1502f3c512d9b7722f87397988fc72848e59 # scx_flash: Redesign scheduling policy
+0befb50ee9bf0937b57cfd6eca717367c8b9e507 # scx_flash: Rely on the built-in idle CPU selection policy
+00c12cdc8c01b91d338fd54d5a62e306c4c571d7 # scx_flash: Redesign scheduling policy
 )
 
 _reverts=(
