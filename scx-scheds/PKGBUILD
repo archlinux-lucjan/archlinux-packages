@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.10
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -14,6 +14,8 @@ depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
 options=(!lto)
+provides=("scxctl")
+conflicts=("scxctl")
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
 sha256sums=('e586b4b3bbc02b256a05023bf7d092655cbf41bd26575dd9062cc94f61b97a3f')
 validpgpkeys=(
@@ -22,6 +24,12 @@ validpgpkeys=(
 )
 
 _backports=(
+045db0ef813793583edf4b5ec574e40590cc287d # scxctl: Initial code merge
+e68d6c2eebce69715a17893beba8ec12b872282f # scxctl: Update repo link
+7ea0e74a74b4e2314c42bee1b905b152b5a68a05 # scxctl: Cleanup description
+527b2ea81fe460ba17cbe65f33dbea81ee443651 # scxctl: Relicense to GPL-2.0
+3956a43e1566c71e1e3f0e4f316ebf14e331c333 # scxctl: Sync version with scx version
+91554410fc21d50651009ff7ec3f1ab9607b0dbe # scxctl: Add to main Cargo build
 )
 
 _reverts=(
