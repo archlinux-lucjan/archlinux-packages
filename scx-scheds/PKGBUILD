@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.10
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -24,13 +24,13 @@ validpgpkeys=(
 )
 
 _backports=(
-045db0ef813793583edf4b5ec574e40590cc287d # scxctl: Initial code merge
-e68d6c2eebce69715a17893beba8ec12b872282f # scxctl: Update repo link
-7ea0e74a74b4e2314c42bee1b905b152b5a68a05 # scxctl: Cleanup description
-527b2ea81fe460ba17cbe65f33dbea81ee443651 # scxctl: Relicense to GPL-2.0
-3956a43e1566c71e1e3f0e4f316ebf14e331c333 # scxctl: Sync version with scx version
-91554410fc21d50651009ff7ec3f1ab9607b0dbe # scxctl: Add to main Cargo build
-bbe3c406ae86f5adbe7b8480380918f80f158abc # scxctl: bump version to 1.0.10
+5f999aa10d2ab984b303fae71d1f5eb5813480a2 # scxctl: Initial code merge
+d47691925c88e011fa8819fe26f34a58cff3db85 # scxctl: Update repo link
+ee5a0386c5fdb1be061e8c30a07558a78630f5f2 # scxctl: Cleanup description
+6ecf467faaac0f86c646bc1069305017469eb8de # scxctl: Relicense to GPL-2.0
+5b716c8594b0a749512ee3caeea6a02186c8500f # scxctl: Sync version with scx version
+7ebad1bad56f67999315ee605667dc137b65a9d8 # scxctl: Add to main Cargo build
+9c84ff68f8b75b6aeb53a4ca6d4deed2101d0784 # scxctl: bump version to 1.0.10
 )
 
 _reverts=(
