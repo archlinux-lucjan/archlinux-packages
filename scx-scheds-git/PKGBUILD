@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.10.r9.g0543264e
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -28,6 +28,9 @@ e68d6c2eebce69715a17893beba8ec12b872282f # scxctl: Update repo link
 3956a43e1566c71e1e3f0e4f316ebf14e331c333 # scxctl: Sync version with scx version
 91554410fc21d50651009ff7ec3f1ab9607b0dbe # scxctl: Add to main Cargo build
 bbe3c406ae86f5adbe7b8480380918f80f158abc # scxctl: bump version to 1.0.10.
+d8082973e27f7ed492e894faff963906ac5fbc15 # scx_lavd: Enable SCX_OPS_ENQ_LAST.
+6d1ee532616a0766967a60a3d222a3596ff6d81e # scx_lavd: Remove an unused argument in try_kick_cpu().
+092956fce5787da4e6ce1134ab18260a7bfc278c # scx_lavd: Optimize core compaction at ops.dispatch().
 )
 
 _reverts=(
