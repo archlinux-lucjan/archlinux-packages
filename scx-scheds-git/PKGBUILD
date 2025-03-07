@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r4.gbe2a45ce
+pkgver=1.0.10.r9.g0543264e
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -27,9 +27,7 @@ e68d6c2eebce69715a17893beba8ec12b872282f # scxctl: Update repo link
 527b2ea81fe460ba17cbe65f33dbea81ee443651 # scxctl: Relicense to GPL-2.0
 3956a43e1566c71e1e3f0e4f316ebf14e331c333 # scxctl: Sync version with scx version
 91554410fc21d50651009ff7ec3f1ab9607b0dbe # scxctl: Add to main Cargo build
-bbe3c406ae86f5adbe7b8480380918f80f158abc # scxctl: bump version to 1.0.10
-47329e1047c86f3a7cf3b0fef0bd45169bec81a7 # scx_utils: Add cpu_capacity to Cpu.
-3ebc1653bb4c1e95ef80e212e9c4f53968b74982 # scx_lavd: Use cpu_capacity from Topology.
+bbe3c406ae86f5adbe7b8480380918f80f158abc # scxctl: bump version to 1.0.10.
 )
 
 _reverts=(
