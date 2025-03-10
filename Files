@@ -219,8 +219,6 @@
 ├── rate-mirrors-git
 │   └── PKGBUILD
 ├── README.md
-├── scxctl-git
-│   └── PKGBUILD
 ├── scx-manager-git
 │   └── PKGBUILD
 ├── scx-scheds
@@ -251,4 +249,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 170 files
+81 directories, 169 files
