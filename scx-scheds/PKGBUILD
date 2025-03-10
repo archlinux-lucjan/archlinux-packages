@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.10
-pkgrel=1.4
+pkgrel=1.5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -31,6 +31,8 @@ ee5a0386c5fdb1be061e8c30a07558a78630f5f2 # scxctl: Cleanup description
 5b716c8594b0a749512ee3caeea6a02186c8500f # scxctl: Sync version with scx version
 7ebad1bad56f67999315ee605667dc137b65a9d8 # scxctl: Add to main Cargo build
 9c84ff68f8b75b6aeb53a4ca6d4deed2101d0784 # scxctl: bump version to 1.0.10
+9d945d65fc126e9b955491c483c469b2dbecd3f1 # scx_loader: add SchedMode/str converters
+d431b48e5281921e59328752f79f72b674f84d47 # scxctl: use scx_loader crate
 )
 
 _reverts=(
