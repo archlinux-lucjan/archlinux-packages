@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r41.g39957a3c
+pkgver=1.0.10.r47.g542cacb0
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,9 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-37eaecf4754d60baea4310140554f5672292a651 # scx_flash: Rely on the built-in idle CPU selection policy
-242c2929dea4e87b588c8ba6989b4b922bbb01bb # scx_flash: Redesign scheduling policy
-15f5f0314ac7759c4055719338547d8f0f48e1f0 # scx_flash: Use per-node DSQs
 )
 
 _reverts=(
