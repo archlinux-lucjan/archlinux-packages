@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r13.g16b99c3e
-pkgrel=2
+pkgver=1.0.10.r41.g39957a3c
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,15 +19,9 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-0befb50ee9bf0937b57cfd6eca717367c8b9e507 # scx_flash: Rely on the built-in idle CPU selection policy
-00c12cdc8c01b91d338fd54d5a62e306c4c571d7 # scx_flash: Redesign scheduling policy
-5f999aa10d2ab984b303fae71d1f5eb5813480a2 # scxctl: Initial code merge
-d47691925c88e011fa8819fe26f34a58cff3db85 # scxctl: Update repo link
-ee5a0386c5fdb1be061e8c30a07558a78630f5f2 # scxctl: Cleanup description
-6ecf467faaac0f86c646bc1069305017469eb8de # scxctl: Relicense to GPL-2.0
-5b716c8594b0a749512ee3caeea6a02186c8500f # scxctl: Sync version with scx version
-7ebad1bad56f67999315ee605667dc137b65a9d8 # scxctl: Add to main Cargo build
-9c84ff68f8b75b6aeb53a4ca6d4deed2101d0784 # scxctl: bump version to 1.0.10
+37eaecf4754d60baea4310140554f5672292a651 # scx_flash: Rely on the built-in idle CPU selection policy
+242c2929dea4e87b588c8ba6989b4b922bbb01bb # scx_flash: Redesign scheduling policy
+15f5f0314ac7759c4055719338547d8f0f48e1f0 # scx_flash: Use per-node DSQs
 )
 
 _reverts=(
