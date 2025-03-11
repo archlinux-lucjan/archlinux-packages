@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r47.g542cacb0
-pkgrel=1
+pkgver=1.0.10.r62.g22ed20d5
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+50a3e61f9ae46aca5a40fb5083c65e7b81511f65 # scx_bpfland: handle per-CPU tasks preempted by a higher scheduling class
 )
 
 _reverts=(
