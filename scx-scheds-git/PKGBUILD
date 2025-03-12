@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r71.gee7f7b17
+pkgver=1.0.10.r77.g8e33fa9a
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,7 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-50a3e61f9ae46aca5a40fb5083c65e7b81511f65 # scx_bpfland: handle per-CPU tasks preempted by a higher scheduling class
 74628bae8d50f787f3c8cde0478066bc2a4f8fb0 # scx_lavd: Prioritize an affinitized task.
 55ab437961557173079c58f837fa2f7194003107 # scx_lavd: Extend the overflow set at select_cpu() by core preference.
 36822f894e800cd42da70ebb9801245ea3d039de # scx_lavd: Extend the overflow set at dispatch by core preference.
