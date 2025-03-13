@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r77.g8e33fa9a
+pkgver=1.0.10.r96.gdb1fba6a
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,15 +19,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-74628bae8d50f787f3c8cde0478066bc2a4f8fb0 # scx_lavd: Prioritize an affinitized task.
-55ab437961557173079c58f837fa2f7194003107 # scx_lavd: Extend the overflow set at select_cpu() by core preference.
-36822f894e800cd42da70ebb9801245ea3d039de # scx_lavd: Extend the overflow set at dispatch by core preference.
-2b916c8db8674b59a4ca3c8efaa764cd0cd53096 # scx_lavd: Extend the overflow set at the enqueue path by core preference.
-54a9260ba645b0a64432b76e73545e3a8e913232 # scx_lavd: Tune probabilistic clearance of the overflow set.
-ba323c722eec9c51dae401115e27cbc69bbbe4cd # scx_lavd: Clean up cpdom_cpumask related code.
-7fddd8aff1931392943409632c0d2c0f100ab59f # scx_lavd: Maintain is_active in a compute domain.
-f8064f5a4ef9e2bb0a525de4948f469fc3e84e4d # scx_lavd: Keep online CPUs only in cpdom_cpumask.
-925dc25d3092e1d82dce06fa67c93e5d1e1c616c # scx_lavd: Consider active CPUs and core capacity at enqueue.
+cf5874ec4ecfd3e3b62b27a698215464ebf06266 # scx_flash: mitigate stalls from higher priority scheduling classes
 )
 
 _reverts=(
