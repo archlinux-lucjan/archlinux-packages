@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r209.gee7069e8
-pkgrel=2
+pkgver=1.0.10.r211.g8dd48da6
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,7 +21,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-7dcd0e8efdb4572e40ca8bf501a3a811ee8cdb1d # scx_bpfland: Enable SCX_OPS_ALLOW_QUEUED_WAKEUP
 )
 
 _reverts=(
