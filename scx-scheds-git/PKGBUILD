@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r230.g54c42ed1
+pkgver=1.0.10.r232.ge91c8714
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,7 +21,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-7ee461de71b82e932d1af2ad7dd1d1ae848f6171 # Fix sched-extGH-1524: update minimum rust version toolchain (i.e. scxctl)
 )
 
 _reverts=(
