@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r240.g49709b11
+pkgver=1.0.10.r252.g8f9ecadd
 pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,12 +21,14 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-27dda49b831cd9c37ec252ece3004b8be3ac68f4 # scx_bpfland: Introduce per-CPU DSQs
-1838521f41349cfecfc3d1210e31f7a5c1226042 # scx_bpfland: Be more conservative at picking idle CPUs in the same node
-9a6462535c739e5e4f0e8f53822f01ca0b24a08e # scx_bpfland: Re-introduce per-node DSQs
-13ac2dff9205ce7448b095119859f3e5ba26b368 # scx_bpfland: Switch to per-node DSQs when system is busy
-fd02fead6493bdbc981c8918003a86f9e81c7660 # scx_bpfland: Use --local-cpu to force per-CPU DSQs mode
-196d699a11f869598a29d0894e998eadaddb63c2 # scx_bpfland: Normalize task weight
+c7c81705976c02e4ffcf7e8fbcc64cdcf20fcd8c # scx_bpfland: Introduce per-CPU DSQs
+a74fed09a20c0bc1bdafa42995922a3311d276b0 # scx_bpfland: Be more conservative at picking idle CPUs in the same node
+a3584391d5a783e5030b8bbd02279cc135bca204 # scx_bpfland: Re-introduce per-node DSQs
+4c23ed60fcda27790eb2a94584c97d8c9457d3f1 # scx_bpfland: Switch to per-node DSQs when system is busy
+6d0378ab939d428cba8b329fe3ffca0745f67788 # scx_bpfland: Use --local-cpu to enable per-CPU DSQs mode
+9b0b553df2d37732b0c5f98d9d4760ad976f1d85 # scx_bpfland: Normalize task weight
+8c86efdc4b553623ed146adbccbfa9563678266d # scx_bpfland: Get rid of deprecated options
+821460191e0050061a687780694cb52e1edb6085 # scx_bpfland: Re-enable proactive CPU wake-up when using per-node DSQs
 )
 
 _reverts=(
