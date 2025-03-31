@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r279.gd7776c4f
+pkgver=1.0.10.r284.g7ba4253d
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,7 +21,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-9e0363af4ac00bab6a8f58dc02a660afb9199fca # scx_bpfland: Introduce an option to disable SMT awareness
 )
 
 _reverts=(
