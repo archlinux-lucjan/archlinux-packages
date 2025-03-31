@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.10.r254.g01a1bfcf
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,14 +21,10 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-c7c81705976c02e4ffcf7e8fbcc64cdcf20fcd8c # scx_bpfland: Introduce per-CPU DSQs
-a74fed09a20c0bc1bdafa42995922a3311d276b0 # scx_bpfland: Be more conservative at picking idle CPUs in the same node
-a3584391d5a783e5030b8bbd02279cc135bca204 # scx_bpfland: Re-introduce per-node DSQs
-4c23ed60fcda27790eb2a94584c97d8c9457d3f1 # scx_bpfland: Switch to per-node DSQs when system is busy
-6d0378ab939d428cba8b329fe3ffca0745f67788 # scx_bpfland: Use --local-cpu to enable per-CPU DSQs mode
-9b0b553df2d37732b0c5f98d9d4760ad976f1d85 # scx_bpfland: Normalize task weight
-8c86efdc4b553623ed146adbccbfa9563678266d # scx_bpfland: Get rid of deprecated options
-821460191e0050061a687780694cb52e1edb6085 # scx_bpfland: Re-enable proactive CPU wake-up when using per-node DSQs
+76aa73c8ef0abb2df43c78cff39ee1d3cae71e69 # scx_utils: topology: Introduce pm_qos_resume_latency_us
+e152bc31764209356acb700a0649946a240e83b6 # scx_bpfland: Restore the correct value of pm_qos_resume_latency_us
+00f1149bddca79e0dcd5aa695a237a33a5254c2f # scx_bpfland: Be more conservative at picking idle CPUs in the same node
+dd1e7b909e5014c7c324f60ec2298401d69e6bb9 # scx_bpfland: Handle ttwu_queue case in ops.enqueue()
 ec3975f5296ca1c314c9d56040da45227beb4e46 # scx_lavd: Setting the flags in the main.rs.
 67fa264a976a821733d857af76ec6e87d87ce8b7 # scx_lavd: Improve handling of per-CPU tasks.
 627a912693e75df5095e245d3d2dc25b64f7890c # scx_lavd: Override SCX_SLICE_DFL at ops.running().
