@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r263.g98688439
+pkgver=1.0.10.r275.gc0f82008
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,9 +21,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-00f1149bddca79e0dcd5aa695a237a33a5254c2f # scx_bpfland: Be more conservative at picking idle CPUs in the same node
-dd1e7b909e5014c7c324f60ec2298401d69e6bb9 # scx_bpfland: Handle ttwu_queue case in ops.enqueue()
-57812f32df918f552642a968fc01718c04f13770 # scx_bpfland: Avoid migration attempt for per-CPU tasks
 )
 
 _reverts=(
