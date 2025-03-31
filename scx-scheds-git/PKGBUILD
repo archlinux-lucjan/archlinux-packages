@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.10.r254.g01a1bfcf
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,8 +21,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-76aa73c8ef0abb2df43c78cff39ee1d3cae71e69 # scx_utils: topology: Introduce pm_qos_resume_latency_us
-e152bc31764209356acb700a0649946a240e83b6 # scx_bpfland: Restore the correct value of pm_qos_resume_latency_us
 00f1149bddca79e0dcd5aa695a237a33a5254c2f # scx_bpfland: Be more conservative at picking idle CPUs in the same node
 dd1e7b909e5014c7c324f60ec2298401d69e6bb9 # scx_bpfland: Handle ttwu_queue case in ops.enqueue()
 ec3975f5296ca1c314c9d56040da45227beb4e46 # scx_lavd: Setting the flags in the main.rs.
