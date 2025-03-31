@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r252.g8f9ecadd
-pkgrel=2
+pkgver=1.0.10.r254.g01a1bfcf
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -29,6 +29,13 @@ a3584391d5a783e5030b8bbd02279cc135bca204 # scx_bpfland: Re-introduce per-node DS
 9b0b553df2d37732b0c5f98d9d4760ad976f1d85 # scx_bpfland: Normalize task weight
 8c86efdc4b553623ed146adbccbfa9563678266d # scx_bpfland: Get rid of deprecated options
 821460191e0050061a687780694cb52e1edb6085 # scx_bpfland: Re-enable proactive CPU wake-up when using per-node DSQs
+ec3975f5296ca1c314c9d56040da45227beb4e46 # scx_lavd: Setting the flags in the main.rs.
+67fa264a976a821733d857af76ec6e87d87ce8b7 # scx_lavd: Improve handling of per-CPU tasks.
+627a912693e75df5095e245d3d2dc25b64f7890c # scx_lavd: Override SCX_SLICE_DFL at ops.running().
+aa09ecaa7044d4472384c11fdc6f4baf4e1b7446 # scx_lavd: Enable SCX_OPS_ENQ_MIGRATION_DISABLED.
+6010d6a06d0dff3038cb7c6ff6c276eab323681d # scx_lavd: Add a fast path for per-CPU task at ops.dispatch().
+9604d998df5cfa72d7c224ea0fc9a387d9fa24e0 # scx_lavd: Directly dispatch a task when a system is idle enough.
+8255f94e68d29277422220a80a03d0aeeef8be58 # scx_lavd: Remove try_get_task_ctx() and try_get_cpu_ctx().
 )
 
 _reverts=(
