@@ -224,6 +224,8 @@
 ├── scx-scheds
 │   └── PKGBUILD
 ├── scx-scheds-git
+│   ├── 0001-meson-install-scx_wd40.patch
+│   ├── 0002-scx_loader-Add-chaos-scheduler.patch
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
@@ -249,4 +251,4 @@
 └── zstd-git
     └── PKGBUILD
 
-81 directories, 169 files
+81 directories, 171 files
