@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.10.r296.g8465d76a
+pkgver=1.0.10.r298.g168c6cd9
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -22,7 +22,6 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 fef07257aa6788e5a34e7f5885d281ff60e4b8ce # scx_chaos: init with basic functionality
-a605fc37b014e262e2034ccb78079358ca7eab88 # scx_bpfland: Fix direct dispatch migration
 4720a6afa5c6eae39ca7d3437d39b6dd68581b0c # scx_lavd: Revise task affinity testing.
 499da355bbc99a57428dfec3d292190e917c9573 # scx_p2dq: Fix affinitized task handling
 a142f48ea3a97b89cb4b2e46f68fe323df829c32 # Remove unused libbpf-rs and scx_utils imports
