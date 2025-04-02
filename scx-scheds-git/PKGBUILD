@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.10.r323.g4c724572
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,6 +23,8 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+363d8b3087e9003cca87e819441659179983839c # scx_bpfland: Introduce node load balancing
+b1adee52cce2829f8d05267969d1f291ba363c79 # scx_bpfland: Introduce --disable-numa
 )
 
 _reverts=(
