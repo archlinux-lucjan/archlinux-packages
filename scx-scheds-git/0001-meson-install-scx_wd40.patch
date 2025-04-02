@@ -1,6 +1,6 @@
-From d08ae8affe1b1eb2a9a359b5dc5ccdb7b525921c Mon Sep 17 00:00:00 2001
+From e9dccf3c2bbe0759284ea2776a6e5e79b50a8a96 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Mon, 31 Mar 2025 18:18:58 +0200
+Date: Wed, 2 Apr 2025 13:20:04 +0200
 Subject: [PATCH 1/2] meson: install scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -9,12 +9,12 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  Cargo.toml                             |  3 ++-
  meson-scripts/install_rust_user_scheds |  4 ++--
  meson.build                            |  2 +-
- rust/scx_loader/configuration.md       |  6 ++++++
+ rust/scx_loader/configuration.md       | 12 ++++++++++--
  rust/scx_loader/src/config.rs          | 13 +++++++++++++
  rust/scx_loader/src/lib.rs             |  4 ++++
  rust/scx_loader/src/main.rs            |  1 +
  scheds/rust/scx_wd40/Cargo.toml        |  2 --
- 9 files changed, 52 insertions(+), 6 deletions(-)
+ 9 files changed, 56 insertions(+), 8 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
 index 88e169e8..b1925faa 100644
@@ -93,10 +93,10 @@ index d83fcbc5..f831c5e5 100644
                 'scx_rustland_core',
                 'scx_loader']
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index fd101794..423feb28 100644
+index fd101794..a8bbc5f4 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
-@@ -54,6 +54,12 @@ auto_mode = []
+@@ -54,12 +54,18 @@ auto_mode = []
  gaming_mode = ["-f 5000 -s 5000"]
  lowlatency_mode = ["-f 5000 -s 1000"]
  powersave_mode = ["-f 50 -p"]
@@ -109,6 +109,31 @@ index fd101794..423feb28 100644
  ```
  
  **`default_sched`:**
+ 
+ * This field specifies the scheduler that will be started automatically when `scx_loader` starts (e.g., on boot).
+-* It should be set to the name of a supported scheduler (e.g., `"scx_bpfland"`, `"scx_rusty"`, `"scx_lavd"`, `"scx_flash", `"scx_p2dq"``).
++* It should be set to the name of a supported scheduler (e.g., `"scx_bpfland"`, `"scx_rusty"`, `"scx_lavd"`, `"scx_flash"`, `"scx_p2dq"`, `"scx_wd40"`).
+ * If this field is not present or is set to an empty string, no scheduler will be started automatically.
+ 
+ **`default_mode`:**
+@@ -70,7 +76,7 @@ powersave_mode = ["-f 50 -p"]
+ 
+ **`[scheds.scx_name]`:**
+ 
+-* This section defines the custom flags for a specific scheduler. Replace `scx_name` with the actual name of the scheduler (e.g., `scx_bpfland`, `scx_rusty`, `scx_lavd`, `scx_flash`, `scx_p2dq`).
++* This section defines the custom flags for a specific scheduler. Replace `scx_name` with the actual name of the scheduler (e.g., `scx_bpfland`, `scx_rusty`, `scx_lavd`, `scx_flash`, `scx_p2dq`, `scx_wd40`).
+ 
+ **`auto_mode`, `gaming_mode`, `lowlatency_mode`, `powersave_mode`, `server_mode`:**
+ 
+@@ -97,6 +103,8 @@ The example configuration above shows how to set custom flags for different sche
+ * For `scx_p2dq`:
+     * Low Latency mode: `-y`
+     * Server mode: `--keep-running`
++* For `scx_wd40`:
++    * No custom flags are defined, so the default flags for each mode will be used.
+ 
+ ## Fallback Behavior
+ 
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
 index 448ba9d6..35fc5683 100644
 --- a/rust/scx_loader/src/config.rs
