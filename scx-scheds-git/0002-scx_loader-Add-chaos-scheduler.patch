@@ -1,25 +1,24 @@
-From aa7d4571451d269dcc2d6f563b5eabac3e874af9 Mon Sep 17 00:00:00 2001
+From e2f879754f2c7a7a507500bdc5bf1e387c6412d0 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Tue, 1 Apr 2025 21:14:01 +0200
+Date: Wed, 2 Apr 2025 13:31:39 +0200
 Subject: [PATCH 2/2] scx_loader: Add chaos scheduler
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
- rust/scx_loader/configuration.md | 14 ++++++++++++--
+ rust/scx_loader/configuration.md | 13 +++++++++++--
  rust/scx_loader/src/config.rs    | 18 ++++++++++++++++++
  rust/scx_loader/src/lib.rs       |  4 ++++
  rust/scx_loader/src/main.rs      |  1 +
- 4 files changed, 35 insertions(+), 2 deletions(-)
+ 4 files changed, 34 insertions(+), 2 deletions(-)
 
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index a8bbc5f4..3a3fae2c 100644
+index a8bbc5f4..c427f5de 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
-@@ -60,12 +60,19 @@ auto_mode = []
+@@ -60,12 +60,18 @@ auto_mode = []
  gaming_mode = []
  lowlatency_mode = []
  powersave_mode = []
-+
 +
 +[scheds.scx_chaos]
 +auto_mode = []
@@ -36,7 +35,7 @@ index a8bbc5f4..3a3fae2c 100644
  * If this field is not present or is set to an empty string, no scheduler will be started automatically.
  
  **`default_mode`:**
-@@ -76,7 +83,7 @@ powersave_mode = []
+@@ -76,7 +82,7 @@ powersave_mode = []
  
  **`[scheds.scx_name]`:**
  
@@ -45,7 +44,7 @@ index a8bbc5f4..3a3fae2c 100644
  
  **`auto_mode`, `gaming_mode`, `lowlatency_mode`, `powersave_mode`, `server_mode`:**
  
-@@ -105,6 +112,9 @@ The example configuration above shows how to set custom flags for different sche
+@@ -105,6 +111,9 @@ The example configuration above shows how to set custom flags for different sche
      * Server mode: `--keep-running`
  * For `scx_wd40`:
      * No custom flags are defined, so the default flags for each mode will be used.
