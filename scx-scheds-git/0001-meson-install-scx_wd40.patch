@@ -1,4 +1,4 @@
-From 0c93038c570c3e3e4ee8e606f1d5d49b48cfe157 Mon Sep 17 00:00:00 2001
+From d08ae8affe1b1eb2a9a359b5dc5ccdb7b525921c Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Mon, 31 Mar 2025 18:18:58 +0200
 Subject: [PATCH 1/2] meson: install scx_wd40
