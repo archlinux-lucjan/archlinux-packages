@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r55.g76e04cde
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,6 +24,14 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 2dfc5d9702b4d35315e7b7dd138b6425e1c7032d # scx_bpfland: Normalize task weight
+520c330c19fbd9ce629ddbac30001be17c630518 # scx_p2dq: Refactor load balancing
+5047119c4535eeb258cad479458fbe83675ef06d # scx_lavd: Remove @p from calc_time_slice().
+25e13db6ec890c09694e0328b1dc8f890c5b7f83 # scx_lavd: Calculate the base time slice once every state is updated.
+8d02d4030b77386e4b93bd8c6871ecdf197ccc5c # scx_lavd: Further prioritize kworkers.
+282f9d8fdb84792c35ec01035cb8c4f157d0140f # scx_lavd: Relax the atomic visibility of sys_stat.
+791b5b1e7f52e7c3cc8688aefa2f25fc32b65001 # scx_lavd: Early reject preemption effort.
+75d98d2c5211e3f7ee572cd60579983d2aa3d634 # scx_lavd: Optimize switching to the performance mode.
+8ae7a09738a57a44abb0605badda9b370686a97c # scx_lavd: Try to yield only for non-latency-critical tasks.
 )
 
 _reverts=(
