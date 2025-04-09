@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r83.gd6db7818
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,6 +24,14 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 cc76100db4264e469ecea274114a5d00b326f46f # scx_bpfland: Rework preemption behavior
+0cdb5fb6c572ec4b425c0aacfdb0060635625f61 # lib: remove unused include/ directory
+4e14d3eadb1c108881b85688bfd3c29a09360dca # scx_rusty: copy allocator header into local code
+f78591e1bef9f6c621d95fad3c28fe21bd3b74fb # lib/sdt_alloc: rename sdt_static_* functions to scx_static_*
+69461a74aa5ba206b2706160488999ea0154cd43 # lib/sdt_alloc: rename sdt_alloc_* functions to scx_alloc_*
+2816410c001984946c4727ca8c32dc733e404887 # lib/sdt_task: rename sdt_task_* functions to sdt_*
+defe57cf96b4c92128323ef26cdb61045be86942 # lib/sdt_alloc: remove (unused, always_inline) attributes
+4394c57cdf96dd46f6ae60e55b9f7491a51be8b1 # lib/sdt_alloc: remove sdt_* prefix from arena-related helper
+e583f96a3d769472458cba8e72fa3b36e1fafb40 # lib/sdt_alloc: remove sdt_* prefix from internal variables/functions
 )
 
 _reverts=(
