@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r71.g14226a16
+pkgver=1.0.11.r77.gff4cfd01
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,7 +23,8 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-2dfc5d9702b4d35315e7b7dd138b6425e1c7032d # scx_bpfland: Normalize task weight
+230005d99fd4b0bef95fa8d38fed9eaa11185f43 # scx_bpfland: Normalize task weight
+85bebffd3dda6a9b29b742a089a638bf8871b25b # scx_bpfland: Rethink preemption
 )
 
 _reverts=(
