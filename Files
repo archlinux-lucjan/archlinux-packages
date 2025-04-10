@@ -212,6 +212,11 @@
 ├── pkgfile-git
 │   ├── PKGBUILD
 │   └── pkgfile.install
+├── plasma-login-manager-git
+│   ├── PKGBUILD
+│   ├── plasmalogin
+│   ├── plasmalogin-autologin
+│   └── plasmalogin-greeter
 ├── pyalpm-git
 │   └── PKGBUILD
 ├── python-pygit2-git
@@ -253,4 +258,4 @@
 └── zstd-git
     └── PKGBUILD
 
-81 directories, 173 files
+82 directories, 177 files

@@ -1,0 +1,84 @@
+# Maintainer: Peter Jung <ptr1337@cachyos.org>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=plasma-login-manager-git
+gitname=plasma-login-manager
+pkgver=20250403.r1706.g54822b3
+pkgrel=1
+pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with a new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
+arch=(x86_64)
+url='https://invent.kde.org/davidedmundson/plasma-login-manager'
+license=(GPL-2.0-or-later)
+#groups=(plasma)
+depends=(
+  bash
+  gcc-libs
+  glibc
+  kauth
+  kcmutils
+  kconfig
+  kcoreaddons
+  kdbusaddons
+  ki18n
+  kio
+  kirigami
+  kpackage
+  kservice
+  kwindowsystem
+  layer-shell-qt
+  libplasma
+  libxau
+  pam
+  plasma-workspace
+  qt6-base
+  qt6-declarative
+  systemd-libs
+)
+makedepends=(
+  cmake
+  extra-cmake-modules
+  git
+)
+provides=('plasma-login-manager')
+conflicts=('plasma-login-manager')
+source=("git+https://invent.kde.org/davidedmundson/plasma-login-manager.git"
+        'plasmalogin'
+        'plasmalogin-autologin'
+        'plasmalogin-greeter')
+sha256sums=('SKIP'
+            'd7394292a65ae463926c2c3d2cb4e67bbfeb20995450c8e4c92fe5a28e7c4254'
+            '1a84cf752782b03b53f66188013bf7e4af4f5e6feb7266bfe58c3faaa20777b4'
+            '3406bce46be8450e28ddbccfbcd0e1f8fa585d57da8833ff7294cf3aee84bb46')
+
+pkgver() {
+  cd "${gitname}"
+  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -B build -S "${gitname}" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DBUILD_TESTING=OFF \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cmake --build build
+}
+
+check() {
+  cd build
+  # If tests were enabled (-DBUILD_TESTING=ON), run them:
+  # make test
+  # or
+  # ctest --output-on-failure
+}
+
+package() {
+  DESTDIR="${pkgdir}" cmake --install build
+
+  # Install PAM configuration files from source directory
+  install -Dm644 "${srcdir}/plasmalogin" "${pkgdir}/etc/pam.d/plasmalogin"
+  install -Dm644 "${srcdir}/plasmalogin-autologin" "${pkgdir}/etc/pam.d/plasmalogin-autologin"
+  install -Dm644 "${srcdir}/plasmalogin-greeter" "${pkgdir}/etc/pam.d/plasmalogin-greeter"
+}
+
+# vim: set ts=2 sw=2 et:
