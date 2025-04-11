@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r106.gd9ffa0dc
-pkgrel=2
+pkgver=1.0.11.r110.g807b72a5
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -16,15 +16,14 @@ source=("git+https://github.com/sched-ext/scx"
         '0001-meson-install-scx_wd40.patch'
         '0002-scx_loader-Add-chaos-scheduler.patch')
 sha256sums=('SKIP'
-            'fa2f888698950a1c197ddc42be33636185166c680cf37454f034789eba745460'
-            '16b22c360bb5c397533d3d032d60f8e23f39ea9cda7ef2e212152d4f49efdd1f')
+            'bf9de7c914f631a61736f118111fd307a9c0283c37a96e7156b5109efc2c2d4d'
+            'aad7f8ee5bf694aeb2e1bdd38824eda25d190a41ad1b28c72a5725cf7bf431db')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 246ff582afc59c045bd077dc846b4d247b720105 # chaos: add --ppid-required flag
-be78043abb06f2fa5f0869800950294f59128b7c # wd40: fixups for getting single unit compilation working
 )
 
 _reverts=(

@@ -1,12 +1,12 @@
-From ed169d1de496f00ba0767d2624a3961137eb074d Mon Sep 17 00:00:00 2001
+From ea0e3d3cc62f898b7b4592bc4d93d8794e2e03a0 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 2 Apr 2025 13:30:56 +0200
+Date: Fri, 11 Apr 2025 21:27:02 +0200
 Subject: [PATCH 1/2] meson: install scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
  Cargo.lock                             | 23 +++++++++++++++++++++++
- Cargo.toml                             |  3 ++-
+ Cargo.toml                             |  1 +
  meson-scripts/install_rust_user_scheds |  4 ++--
  meson.build                            |  2 +-
  rust/scx_loader/configuration.md       | 12 ++++++++++--
@@ -14,13 +14,13 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  rust/scx_loader/src/lib.rs             |  4 ++++
  rust/scx_loader/src/main.rs            |  1 +
  scheds/rust/scx_wd40/Cargo.toml        |  2 --
- 9 files changed, 56 insertions(+), 8 deletions(-)
+ 9 files changed, 55 insertions(+), 7 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index f58ea5cd..7922db22 100644
+index 2cef3058..213f1f48 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2494,6 +2494,29 @@ dependencies = [
+@@ -2492,6 +2492,29 @@ dependencies = [
   "static_assertions",
  ]
  
@@ -51,19 +51,17 @@ index f58ea5cd..7922db22 100644
  name = "scx_stats"
  version = "1.0.11"
 diff --git a/Cargo.toml b/Cargo.toml
-index 0cddba87..47945b9f 100644
+index b6d1d731..274102a8 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -15,7 +15,8 @@ members = ["rust/scx_stats",
-            "scheds/rust/scx_p2dq",
-            "scheds/rust/scx_tickless",
+@@ -17,6 +17,7 @@ members = ["rust/scx_stats",
             "scheds/rust/scx_layered",
--           "scheds/rust/scx_mitosis", "scheds/rust/scx_chaos"]
-+           "scheds/rust/scx_mitosis", "scheds/rust/scx_chaos",
-+           "scheds/rust/scx_wd40"]
+            "scheds/rust/scx_mitosis", 
+            "scheds/rust/scx_chaos",
++           "scheds/rust/scx_wd40",
+            "tools/vmlinux_docify"]
  resolver = "2"
  
- [profile.release]
 diff --git a/meson-scripts/install_rust_user_scheds b/meson-scripts/install_rust_user_scheds
 index 63dbf835..30934709 100755
 --- a/meson-scripts/install_rust_user_scheds
