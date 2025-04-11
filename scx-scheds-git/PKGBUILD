@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r106.gd9ffa0dc
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,6 +24,7 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 246ff582afc59c045bd077dc846b4d247b720105 # chaos: add --ppid-required flag
+be78043abb06f2fa5f0869800950294f59128b7c # wd40: fixups for getting single unit compilation working
 )
 
 _reverts=(
