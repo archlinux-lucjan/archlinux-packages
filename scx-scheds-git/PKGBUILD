@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r98.g58da3bc9
-pkgrel=2
+pkgver=1.0.11.r104.g6172b24a
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -28,6 +28,7 @@ _backports=(
 
 _reverts=(
 131828a04ada00d5a8da527398dbe607d8e63cc3 # include/scx: Bump _Q_MAX_CPUs for arena spinlocks
+45dcab58e2f93eb5b94e0fdd86bab953dbbddfdc # scx_bpfland: Normalize task weight
 )
 
 pkgver() {
