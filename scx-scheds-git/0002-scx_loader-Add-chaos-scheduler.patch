@@ -1,4 +1,4 @@
-From 0f05e20753f42d2edd35f68db5a986c0715d142e Mon Sep 17 00:00:00 2001
+From 49eb57a835c89d53e97bd6365ed97863881753ad Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 2 Apr 2025 13:31:39 +0200
 Subject: [PATCH 2/2] scx_loader: Add chaos scheduler
