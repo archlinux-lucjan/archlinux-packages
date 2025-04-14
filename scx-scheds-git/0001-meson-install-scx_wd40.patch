@@ -1,6 +1,6 @@
-From ea0e3d3cc62f898b7b4592bc4d93d8794e2e03a0 Mon Sep 17 00:00:00 2001
+From bb9cca92f315a80638ca34c9b780c21946d0d217 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 11 Apr 2025 21:27:02 +0200
+Date: Mon, 14 Apr 2025 14:04:15 +0200
 Subject: [PATCH 1/2] meson: install scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -17,10 +17,10 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  9 files changed, 55 insertions(+), 7 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index 2cef3058..213f1f48 100644
+index b66d604d..749c10f1 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2492,6 +2492,29 @@ dependencies = [
+@@ -2494,6 +2494,29 @@ dependencies = [
   "static_assertions",
  ]
  
