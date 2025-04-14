@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r119.g7469def9
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,6 +25,8 @@ conflicts=("scx-scheds" "scxctl")
 _backports=(
 246ff582afc59c045bd077dc846b4d247b720105 # chaos: add --ppid-required flag
 19df57e12c5103feed31a0495dd15e75410a8d8f # scx_bpfland: Avoid unnecessary cpumask updates
+ebbc8b98ee06c47f65f30910643c5bcef734773c # scx_bpfland: Rework sync wakeup
+923e8c151b1cadafadf9b8fc62d3beab58440268 # scx_bpfland: Rework idle CPU selection on wakeup events
 )
 
 _reverts=(
