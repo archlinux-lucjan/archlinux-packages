@@ -5,8 +5,8 @@
 
 pkgname=lucjan-keyring-git
 _pkgname=lucjan-keyring
-pkgver=20230823.0.g72ac217
-pkgrel=2
+pkgver=20240130.0.g3d7d28d
+pkgrel=1
 pkgdesc="Lucjan's PGP keyring"
 arch=('any')
 conflicts=('lucjan-keyring')
@@ -17,6 +17,7 @@ install="${_pkgname}.install"
 source=(
         "git+https://github.com/archlinux-lucjan/lucjan-keyring.git"
         #"git+https://gitlab.com/archlinux-lucjan/lucjan-keyring.git"
+        #"git+https://codeberg.org/archlinux-lucjan/lucjan-keyring.git"
         )
 sha256sums=('SKIP')
 
