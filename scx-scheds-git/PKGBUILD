@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r110.g807b72a5
+pkgver=1.0.11.r117.ge1cdd3c3
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -24,6 +24,8 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 246ff582afc59c045bd077dc846b4d247b720105 # chaos: add --ppid-required flag
+4840d2246c0a4cdc5f9e6f8a48d35fe390d6b66d # scx_bpfland: Avoid unnecessary cpumask updates
+e74452cb09fe20141220a12d618d88756421a538 # scx_bpfland: Skip migration attempts for migration-disabled tasks
 )
 
 _reverts=(
