@@ -13,6 +13,8 @@
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
 │   └── PKGBUILD
+├── cachyos-control-settings-git
+│   └── PKGBUILD
 ├── cachyos-hooks-git
 │   └── PKGBUILD
 ├── cachyos-kernel-manager-git
@@ -258,4 +260,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 177 files
+83 directories, 178 files

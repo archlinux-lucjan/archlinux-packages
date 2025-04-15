@@ -1,0 +1,56 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=cachyos-control-settings-git
+gitname=cachyos-control-settings
+pkgver=20250414.r2.g9f810e9
+pkgrel=1
+pkgdesc="GTK4 GUI tool for configuring and optimizing CachyOS"
+arch=('any')
+url="https://cachyos.org"
+license=('GPL3')
+depends=('python' 'gtk4' 'libadwaita' 'python-psutil' 'python-gobject')
+makedepends=('git')
+source=("git+https://github.com/VoidLazav/cachyos-control-settings")
+conflicts=('cachyos-control-settings')
+provides=('cachyos-control-settings')
+
+pkgver() {
+  cd "${gitname}"
+  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${gitname}"
+  install -dm755 "$pkgdir/usr/share/cachyos-control-settings"
+
+  for i in app core gui locales tabs utils assets; do
+    cp -r "$srcdir/$gitname/$i" "$pkgdir/usr/share/cachyos-control-settings/"
+  done
+  install -m644 gettext_setup.py "$pkgdir/usr/share/cachyos-control-settings/"
+  install -m644 main.py "$pkgdir/usr/share/cachyos-control-settings/"
+  install -m644 README.md "$pkgdir/usr/share/cachyos-control-settings/"
+  install -m644 requirements.txt "$pkgdir/usr/share/cachyos-control-settings/"
+
+  # Launcher bin
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/cachyos-control-settings" <<EOF
+#!/bin/bash
+exec python3 /usr/share/cachyos-control-settings/main.py "\$@"
+EOF
+
+  install -Dm644 "assets/logo.png" "$pkgdir/usr/share/pixmaps/cachyos.png"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/cachyos-control-settings.desktop" <<EOF
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CachyOS Control Settings
+GenericName=System Optimizer
+Comment=Configure, tune, and monitor your CachyOS system
+Exec=cachyos-control-settings
+Icon=cachyos
+Terminal=false
+Categories=Settings;System;Utility;
+StartupNotify=true
+EOF
+}
+sha256sums=('SKIP')
