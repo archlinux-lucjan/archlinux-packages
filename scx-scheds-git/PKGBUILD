@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r159.gffe9ff93
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -12,12 +12,8 @@ license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
-source=("git+https://github.com/sched-ext/scx"
-        '0001-meson-install-scx_wd40.patch'
-        '0002-scx_loader-Add-chaos-scheduler.patch')
-sha256sums=('SKIP'
-            '6debb987cc0de96ac1ee742d22ce4eb54befa46df8a15d9c6511b146200b74a8'
-            '8300e86f2b76be506102c85704b3196dbd531e2887853e6611c6da9917e0fc1a')
+source=("git+https://github.com/sched-ext/scx")
+sha256sums=('SKIP')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
@@ -30,7 +26,6 @@ a13d6e5760bebfcb9a6788ddd23f3d733fb2da04 # scx_lavd: Print scaled CPU utilizatio
 )
 
 _reverts=(
-131828a04ada00d5a8da527398dbe607d8e63cc3 # include/scx: Bump _Q_MAX_CPUs for arena spinlocks
 )
 
 pkgver() {
