@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r145.ga84b9d49
+pkgver=1.0.11.r147.g83282987
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -25,6 +25,8 @@ conflicts=("scx-scheds" "scxctl")
 _backports=(
 338e277db28f817ca11aa1c89d7fd1270fa85a21 # scx_bpfland: Rework sync wakeup
 bdee43e6beeb4e8231f81481fb487eaf48085e49 # scx_bpfland: Attempt task migration on remote IRQ wakeup
+6923897b498086ec9dac2869d4a2e7df5816d25d # scx_lavd: Calculate scaled and invariant CPU utilization.
+a13d6e5760bebfcb9a6788ddd23f3d733fb2da04 # scx_lavd: Print scaled CPU utilization with --monitor-sched-samples.
 )
 
 _reverts=(
