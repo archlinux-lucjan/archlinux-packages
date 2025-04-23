@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r241.gdbc9d580
+pkgver=1.0.11.r252.gb50fec7a
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,8 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-4e36ad2f4fa44c2243a6ef52c45c796fe05b9cf7 # scx_utils: Look up a performance domain from a CPU ID.
-2c6abe8ae186c5037e3f192841a28107f14b05a7 # scx_lavd: Group CPUs in the same performance domain.
 )
 
 _reverts=(
