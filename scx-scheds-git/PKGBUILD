@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r274.g359fb933
+pkgver=1.0.11.r276.g2d73c64d
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -21,10 +21,13 @@ conflicts=("scx-scheds" "scxctl")
 _backports=(
 c5797981f000814d8d82badf9df3ce7e1a02de65 # scx_utils: Add perf module
 9203e0f4fb96e573235e739c8334403eac652050 # scxtop: Replace perf-event-open-sys2 with perf
-51ce67c4e5e9657ff8afaeb9cedec088c11f505b # scx_rustland_core: Never refill task slice in ops.running()
-80cfdbfd50d429b39c5b42f823acf946deaf04c5 # scx_rustland_core: Expose exec_runtime to user-space
-a22e0c576aa20fdc3fbb1a7ef7f13701b8b16254 # scx_rustland_core: Provide builtin_idle init parameter
-47b1366e4dc38b66f8fef8563c4c24e5cecca3f3 # scx_rustland: Virtual deadline with partial execution runtime
+4d2e6651f444623cf7294998247a5acea4e1654e # scx_rustland_core: Expose exec_runtime to user-space
+426b83af9b882b6651c04a5984ede886a05e6994 # scx_rustland_core: Never refill task slice in ops.running()
+67c058c1ba802490764275fe319e3fafd357faed # scx_rustland_core: Remove prioritization of faulting tasks
+3256fc9d1fe3fe615e1b1ce4d3675d6f6d00f348 # scx_rustland_core: Provide builtin_idle init parameter
+626f5b4cb4f607f6be92a413aaeb4a852c621c90 # scx_rustland_core: Improve user-space scheduler wakeup
+1bec090c3b52868096a7d5c6efb3459aa9575155 # scx_rustland_core: Code refactoring
+a643eacc54e6e0521448591bf405edf73cc4f5a7 # scx_rustland: Virtual deadline with partial execution runtime
 )
 
 _reverts=(
