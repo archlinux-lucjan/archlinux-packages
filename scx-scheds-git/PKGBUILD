@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r276.g2d73c64d
+pkgver=1.0.11.r282.ga3c9be75
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,8 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-c5797981f000814d8d82badf9df3ce7e1a02de65 # scx_utils: Add perf module
-9203e0f4fb96e573235e739c8334403eac652050 # scxtop: Replace perf-event-open-sys2 with perf
 4d2e6651f444623cf7294998247a5acea4e1654e # scx_rustland_core: Expose exec_runtime to user-space
 426b83af9b882b6651c04a5984ede886a05e6994 # scx_rustland_core: Never refill task slice in ops.running()
 67c058c1ba802490764275fe319e3fafd357faed # scx_rustland_core: Remove prioritization of faulting tasks
