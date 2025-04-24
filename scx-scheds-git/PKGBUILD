@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r252.gb50fec7a
+pkgver=1.0.11.r271.g4ff76915
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,6 +19,8 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+c5797981f000814d8d82badf9df3ce7e1a02de65 # scx_utils: Add perf module
+9203e0f4fb96e573235e739c8334403eac652050 # scxtop: Replace perf-event-open-sys2 with perf
 )
 
 _reverts=(
