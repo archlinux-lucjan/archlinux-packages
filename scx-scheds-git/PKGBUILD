@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r282.ga3c9be75
+pkgver=1.0.11.r294.g18535662
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,13 +19,11 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-4d2e6651f444623cf7294998247a5acea4e1654e # scx_rustland_core: Expose exec_runtime to user-space
-426b83af9b882b6651c04a5984ede886a05e6994 # scx_rustland_core: Never refill task slice in ops.running()
-67c058c1ba802490764275fe319e3fafd357faed # scx_rustland_core: Remove prioritization of faulting tasks
-3256fc9d1fe3fe615e1b1ce4d3675d6f6d00f348 # scx_rustland_core: Provide builtin_idle init parameter
-626f5b4cb4f607f6be92a413aaeb4a852c621c90 # scx_rustland_core: Improve user-space scheduler wakeup
-1bec090c3b52868096a7d5c6efb3459aa9575155 # scx_rustland_core: Code refactoring
-a643eacc54e6e0521448591bf405edf73cc4f5a7 # scx_rustland: Virtual deadline with partial execution runtime
+f74e646ed30ae6a4030c38d588554ce86843396d # rust: set lto to thin
+911eac42877d78b280eb748f52ef502b0a1dd872 # migrate to rust 2024, minimal fixes to build all
+ef1f81d772e4b2ca8929df1b848f36b12154fec6 # cargo fix pt 1
+fc99bf6619e259f8423d32de05f2450dbd5d4aa5 # cargo fix pt 2
+82982b0829240075081decfa16bda51039aa91f4 # fmt
 )
 
 _reverts=(
