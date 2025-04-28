@@ -3,7 +3,7 @@
 
 pkgname=plasma-login-manager-git
 gitname=plasma-login-manager
-pkgver=20250428.r1715.gaf6fb82
+pkgver=0.21.0.r1716.gbc6341a
 pkgrel=1
 pkgdesc='Plasma Login provides a display manager for KDE Plasma, forked from SDDM and with a new frontend providing a greeter, wallpaper plugin integration and System Settings module (KCM).'
 arch=(x86_64)
@@ -52,7 +52,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${gitname}"
-  echo "$(git show --format='%cI' -q master | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
