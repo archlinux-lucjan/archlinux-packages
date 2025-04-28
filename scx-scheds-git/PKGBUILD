@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r352.gd347c284
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,10 +19,9 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-fb42f71b1ab88e83496f05634da6ecc3859d4c19 # scx_rustland_core: Periodically kick idle CPUs
-0ec8ba4e92c17c4815879d51e1d1cf3fbaaf1dca # scx_rustland_core: Restore prioritization of faulting tasks
-9abb2a2bd889d7ce275ebcf1ea72592bc94c7938 # scx_rustland: Update default time slice settings
-154b3cb048012d178343cbbf3ff129345f14ad79 # scx_rustland: Update Documentation
+d0a71cf8f2266c9c052f9df8c11d9243f5a55010 # scx_rustland_core: Periodically wakeup user-space scheduler
+adcd7d0e2d14eaa4f3febe894c110a64e1340b95 # scx_rustland: Update default time slice settings
+062c8cb57586042181c5e80d0f3164b5ae8f662a # scx_rustland: Update Documentation
 )
 
 _reverts=(
