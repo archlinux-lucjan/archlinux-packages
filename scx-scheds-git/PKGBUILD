@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r339.g514e28f7
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,8 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+e34ac5dadafdbc564b76933f52d4294c69d18346 # scx_utils: Move sched_prio_to_weight[] to common.bpf.h.
+b9e9af365945c10927f0f37161fa35b866415e71 # scx_lavd: Properly handle task's niceness.
 )
 
 _reverts=(
