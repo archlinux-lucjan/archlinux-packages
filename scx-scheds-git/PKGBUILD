@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r302.g5d352156
+pkgver=1.0.11.r339.g514e28f7
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,10 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-b4170148639b7b2ea1669514cfd786328bfd8ad2 # migrate to rust 2024, minimal fixes to build all
-69cc9ad6e323347592ae65bf51de462c72cc7484 # cargo fix pt 1
-910b179c551450e90ff45114bc865efd4a2ad604 # cargo fix pt 2
-831a4c132eaf275ae186a8f282edafa4cffa4477 # fmt
 )
 
 _reverts=(
