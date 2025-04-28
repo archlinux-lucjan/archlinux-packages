@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r342.geb8f19de
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,6 +20,8 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 509b0e5a2a3d81f3f989f7ab77fef4d50161f0ed # scx_rustland_core: Improve CPU utilization
+9fef8ba054d07e77967b40f79965ff523f346b53 # scx_rustland: Update default time slice settings
+0d4fb10817f10b25477230f401b7ebdbc5fa8deb # scx_rustland: Update Documentation
 )
 
 _reverts=(
