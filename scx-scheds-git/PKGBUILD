@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r380.g09277a3c
+pkgver=1.0.11.r382.ga0a906fd
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,7 +23,6 @@ f0ec15505675aef3b33373cd79fd9f3d0deeefea # scx_lavd: Optimize ops.dispatch() for
 6b2fe0560e2fe4155e9e7402ead8d65a8e508ab6 # scx_lavd: Decay CPU utilization slower.
 09c1d2deb54e852ea7f597396456ef24225991de # scx_lavd: Optimize math in deadline calculation.
 862f1b06c21ab454a292c9c090b0e9ef32783b78 # scx_lavd: Drop slice boost.
-3b64ad5aa26bf47c2a7612f823a310d38ee4c28b # scx_rustland_core: Reuse task vtime during direct dispatch
 de9821092b4c07d49cd51460252f19cb693407f7 # scx_rustland: Evaluate used time slice based on partial exec runtime
 )
 
