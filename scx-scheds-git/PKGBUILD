@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.11.r382.ga0a906fd
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,10 +19,10 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-f35fb79722cb18c526635675c8d39cddcff9f9ef # scx_lavd: Optimize ops.dispatch() for common cases.
-f33072d8017ef0d1d097ff6a54880908c356e1a7 # scx_lavd: Decay CPU utilization slower.
-710b00d4375716617a6131fa5582893aef4e7369 # scx_lavd: Optimize math in deadline calculation.
-91735649af7a18190aefd2ce15f2551af8793d65 # scx_lavd: Drop slice boost.
+537c6933bee8b709f609d6c9d3382dffdf1f2aa0 # scx_lavd: Optimize ops.dispatch() for common cases.
+91c9305e0a2f4fab3156715aaffac50a75f23540 # scx_lavd: Decay CPU utilization slower.
+8cec577e5a84eb1f553bf90e758df9b5e63b80ea # scx_lavd: Optimize math in deadline calculation.
+c17f3b8239810151ed9aea17e9bc8b89935bd1d4 # scx_lavd: Drop slice boost.
 004d9473885762af2d804db9836af41a59397f4a # scx_rustland: Evaluate used time slice based on partial exec runtime
 )
 
