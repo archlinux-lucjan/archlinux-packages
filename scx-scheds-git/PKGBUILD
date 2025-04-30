@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.11.r382.ga0a906fd
-pkgrel=5
+pkgver=1.0.11.r387.g0276f8b5
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,10 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-537c6933bee8b709f609d6c9d3382dffdf1f2aa0 # scx_lavd: Optimize ops.dispatch() for common cases.
-91c9305e0a2f4fab3156715aaffac50a75f23540 # scx_lavd: Decay CPU utilization slower.
-8cec577e5a84eb1f553bf90e758df9b5e63b80ea # scx_lavd: Optimize math in deadline calculation.
-c17f3b8239810151ed9aea17e9bc8b89935bd1d4 # scx_lavd: Drop slice boost.
 004d9473885762af2d804db9836af41a59397f4a # scx_rustland: Evaluate used time slice based on partial exec runtime
 )
 
