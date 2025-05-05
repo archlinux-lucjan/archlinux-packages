@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.11
-pkgrel=1.7
+pkgrel=1.8
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -25,6 +25,7 @@ validpgpkeys=(
 
 _backports=(
 0a26f00bf830aed2ceda5557c15fb374188d92ec # rust: set lto to thin
+07376c84371d4a9501b6e403769728dcc2dd5f2a # scxctl: simplifications through using rust idioms.
 )
 
 _reverts=(
