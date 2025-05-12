@@ -5,12 +5,12 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.12
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
 license=('GPL-2.0-only')
-depends=('libelf' 'zlib' 'jq')
+depends=('libelf' 'zlib' 'jq' 'protobuf' 'libseccomp' 'bpf' 'libbpf')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
 options=(!lto)
@@ -24,6 +24,7 @@ validpgpkeys=(
 )
 
 _backports=(
+afbdf1f50005f22b8ed2e7ab967e81e0073bfa33 # scxctl: list command panic on failure fix
 )
 
 _reverts=(
@@ -56,7 +57,12 @@ prepare() {
 
 build() {
   cd $_gitname
-  arch-meson . build -D openrc=disabled -D cargo_home="$srcdir"/scx
+  arch-meson . build -D openrc=disabled \
+    -D libbpf_a=disabled \
+    -D bpftool=disabled \
+    -D b_lto=true \
+    -D b_lto_mode=thin \
+    -D cargo_home="$srcdir"/scx
   meson compile -C build
 }
 
