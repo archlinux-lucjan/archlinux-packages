@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r46.g97df3e1c
+pkgver=1.0.12.r51.gafdf695b
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,8 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-ef13ab4aab43c5b67b2fd34c16e78edbfd2a1644 # scx_lavd: Refactor the load balancing.
-a28de627eeee401e4b4cefb3798c49d36b3fd536 # scx_lavd: Make the load balancing core compaction- and capacity-aware.
 )
 
 _reverts=(
