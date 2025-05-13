@@ -3,7 +3,7 @@
 
 pkgname=cachyos-hooks-git
 gitname=cachyos-hooks
-pkgver=20241113.r34.g54baf78
+pkgver=20250513.r45.g3f7f531
 pkgrel=1
 pkgdesc='Cachy OS Pacman Hooks'
 groups=('cachyos')
@@ -32,6 +32,5 @@ package() {
   install -Dm644 cachyos-reboot-required.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-reboot-required.hook"
   install -Dm644 cachyos-systemd-boot.hook "$pkgdir/usr/share/libalpm/hooks/95-cachyos-systemd-boot.hook"
   install -Dm755 cachyos-reboot-required "$pkgdir/usr/bin/cachyos-reboot-required"
-  install -Dm755 cachyos-check-reboot-required  "$pkgdir/usr/bin/cachyos-check-reboot-required"
   install -Dm755 cachyos-hooks-runner "$pkgdir/usr/bin/cachyos-hooks-runner"
 }
