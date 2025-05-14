@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r51.gafdf695b
+pkgver=1.0.12.r63.ged4296e7
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,6 +19,8 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+2b50d7c0ed0909e89bce770d0bf077dc8632ed67 # scx_lavd: Donate tasks at ops.select_cpu() and ops.enqueue().
+ec13c86a9669b42ecf06f258a326c79deda62d3f # scx_lavd: Don't print unnecessary CPU preference orders.
 )
 
 _reverts=(
