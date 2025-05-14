@@ -3,7 +3,7 @@
 
 pkgname=cachyos-hooks-git
 gitname=cachyos-hooks
-pkgver=20250513.r45.g3f7f531
+pkgver=20250514.r49.g9353a56
 pkgrel=1
 pkgdesc='Cachy OS Pacman Hooks'
 groups=('cachyos')
@@ -28,9 +28,9 @@ package() {
 
   install -Dm644 lsb-release.hook "$pkgdir/usr/share/libalpm/hooks/lsb-release.hook"
   install -Dm644 os-release.hook "$pkgdir/usr/share/libalpm/hooks/os-release.hook"
-  install -Dm644 cachyos-hooks.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-hooks.hook"
+  install -Dm644 cachyos-branding.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-branding.hook"
   install -Dm644 cachyos-reboot-required.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-reboot-required.hook"
   install -Dm644 cachyos-systemd-boot.hook "$pkgdir/usr/share/libalpm/hooks/95-cachyos-systemd-boot.hook"
   install -Dm755 cachyos-reboot-required "$pkgdir/usr/bin/cachyos-reboot-required"
-  install -Dm755 cachyos-hooks-runner "$pkgdir/usr/bin/cachyos-hooks-runner"
+  install -Dm755 cachyos-branding "$pkgdir/usr/bin/cachyos-branding"
 }
