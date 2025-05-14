@@ -3,7 +3,7 @@
 
 pkgname=cachyos-hooks-git
 gitname=cachyos-hooks
-pkgver=20250514.r49.g9353a56
+pkgver=20250514.r50.g1397e7a
 pkgrel=1
 pkgdesc='Cachy OS Pacman Hooks'
 groups=('cachyos')
@@ -31,6 +31,8 @@ package() {
   install -Dm644 cachyos-branding.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-branding.hook"
   install -Dm644 cachyos-reboot-required.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-reboot-required.hook"
   install -Dm644 cachyos-systemd-boot.hook "$pkgdir/usr/share/libalpm/hooks/95-cachyos-systemd-boot.hook"
+  install -Dm644 cachyos-plymouth-initramfs.hook "$pkgdir/usr/share/libalpm/hooks/cachyos-plymouth-initramfs.hook"
   install -Dm755 cachyos-reboot-required "$pkgdir/usr/bin/cachyos-reboot-required"
   install -Dm755 cachyos-branding "$pkgdir/usr/bin/cachyos-branding"
+  install -Dm755 update-initramfs "$pkgdir/usr/bin/update-initramfs"
 }
