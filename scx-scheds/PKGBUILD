@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.12
-pkgrel=2.1
+pkgrel=2.2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -25,6 +25,7 @@ validpgpkeys=(
 
 _backports=(
 afbdf1f50005f22b8ed2e7ab967e81e0073bfa33 # scxctl: list command panic on failure fix
+8bcce16b2f922df2f71dc1698b98e96cd89361f4 # scx_loader: Add rustland scheduler
 )
 
 _reverts=(
