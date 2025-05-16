@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r95.g54ca51a9
+pkgver=1.0.12.r97.g2a5a1d2a
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,7 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-f3f24feb7bf04d7adee05f0a8c3b4a77e83eeb7e # scx_rustland: Introduce a congestion threshold
 )
 
 _reverts=(
