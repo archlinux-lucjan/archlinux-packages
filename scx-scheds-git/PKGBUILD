@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r85.g4ca1c980
-pkgrel=2
+pkgver=1.0.12.r87.gb6a35cff
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,7 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-ea5b2b99e4400be97f2a6d37bdf1c788713b2ec6 # scx_lavd: Find an alternative domain beyond the current node/LLC.
 )
 
 _reverts=(
