@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r93.g6055a400
+pkgver=1.0.12.r95.g54ca51a9
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,10 +19,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-cd0ef85c89f11e57b0f11bbe75d3177035f9149b # scx_rustland: Introduce a congestion threshold
-976951e68a213c60c2dff910bc21aee2284ec147 # scx_rlfifo: Make the scheduler more viable
-ed4ab5a11de2a0f39ab9319a80f66b421ad3cc12 # scx_rustland: Introduce --nr-waiting-max
-4b3152d769d484eba912c18768a28ff78876afe8 # scx_rustland: Introduce --dl-weight
+f3f24feb7bf04d7adee05f0a8c3b4a77e83eeb7e # scx_rustland: Introduce a congestion threshold
 )
 
 _reverts=(
