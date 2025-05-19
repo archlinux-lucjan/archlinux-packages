@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r147.g80d068aa
-pkgrel=2
+pkgver=1.0.12.r149.g3645e4f3
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,12 +19,11 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-88373a2b0eaf038c07bb3f41b3d09d0e6a34380b # scx_rustland_core: Initialize task dsq_vtime and slice
-a6895c2e29f7a22ae84eb5530a745fb2f0c79b38 # scx_rustland_core: Avoid unnecessary CPU wakeup attempts
-9ff9d98acd60b551b49b327da7bfbcb5de8d2b94 # scx_rustland_core: Make usersched_needed per-CPU
-06ad9924f2b69368943206f6e6de45faabdfb38a # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
-989e65fadab741ca0ecf8b5f17c28b6b25c18c97 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
-6b2789bea5a907f3a6b618cf9ddfe6de3e2d79f4 # scx_rustland_core: Avoid duplicate dispatch of user-space scheduler
+be8b992b7b778c7ae3958bf7e5ff7bf7a412468b # scx_rustland_core: Initialize task dsq_vtime and slice
+80a1bf03410328a7254ef2d55da458600b4c6b6b # scx_rustland_core: Avoid unnecessary CPU wakeup attempts
+a450d957d6f46fd7a77980b82874cc52b4e50c81 # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
+b5b649f402bf841e4673623582581d28d476e283 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
+191498ecea20d3a0a517c828d1a508e9b536928a # scx_rustland_core: Avoid duplicate dispatch of user-space scheduler
 )
 
 _reverts=(
