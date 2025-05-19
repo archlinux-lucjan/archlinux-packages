@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (C) 2022-2024 CachyOS team
+# Copyright (C) 2022-2025 CachyOS team
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -89,7 +89,7 @@ rate_mirror_ex() {
 
     TMPFILE="$(mktemp)"
 
-    _rate_mirrors_flags=("--allow-root" "--save=${TMPFILE}" "${name}" "--fetch-mirrors-timeout=300000")
+    _rate_mirrors_flags=("--allow-root" "--save=${TMPFILE}" "${name}" "--fetch-mirrors-timeout=300000" "--completion=1" "--max-delay=10000")
     if [[ -n "${special_arch}" ]]; then
         _rate_mirrors_flags+=("--arch=${special_arch}")
     fi
@@ -114,3 +114,9 @@ MIRRORS_DEFAULT_DIR="/etc/pacman.d"
 
 rate_mirror_ex chaotic-aur "${MIRRORS_DEFAULT_DIR}/chaotic-mirrorlist"
 rate_mirror_ex archlinuxcn "${MIRRORS_DEFAULT_DIR}/archlinuxcn-mirrorlist"
+
+# In the case of a more restrictive umask setting ( 0077 for example ), give read-permissions back to 'Group/Other'.
+# This fixes a case where the third party package wrapper Aura ( https://github.com/fosskers/aura ) tries to parse
+# /etc/pacman.conf and can't read the "include"ded mirror files. By default, Aura intentionally runs without root
+# permissions for most non-modify operations.
+chmod go+r "${MIRRORS_DEFAULT_DIR}"/*mirrorlist*
