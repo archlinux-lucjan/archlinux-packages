@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r149.g3645e4f3
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,11 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-be8b992b7b778c7ae3958bf7e5ff7bf7a412468b # scx_rustland_core: Initialize task dsq_vtime and slice
-80a1bf03410328a7254ef2d55da458600b4c6b6b # scx_rustland_core: Avoid unnecessary CPU wakeup attempts
-a450d957d6f46fd7a77980b82874cc52b4e50c81 # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
-b5b649f402bf841e4673623582581d28d476e283 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
-191498ecea20d3a0a517c828d1a508e9b536928a # scx_rustland_core: Avoid duplicate dispatch of user-space scheduler
 )
 
 _reverts=(
