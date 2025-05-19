@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r134.g113030db
-pkgrel=2
+pkgver=1.0.12.r145.g636ed546
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,15 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-3fdd943b7e47f1bba640ebc035f64d7a2ee908c0 # scx_rustland_core: Optimize idle CPU selection
-ceffc1aec58b6063f8ff40a983bc5c22deea8aa6 # scx_rustland_core: Always dispatch kswapd directly
-412e607df87a2c2f1c0e70611b6dd897241bb056 # scx_rustland_core: Expose start_ts and stop_ts
-d9295fcf455f2525c8e8f5d9f82ca8fd7577f3ba # scx_rustland_core: remove redundant attributes in QueuedTask
-af75627e664721b612d3a0c403e6459a921a9a4b # scx_rustland_core: Bump up major version number
-7cd1f754edaee0a6913cede09dedc31d2583b37f # scx_rustland: Improve accuracy of time slice measurement
-80e1362ef2aa14a5ef1247db762859e5a1ff7e73 # scx_rustland: Get rid of TaskInfoMap
-cf6beca33b0eef8b4ff592de50a3467a97d7c6ff # scx_rustland: Revert congestion threshold
-f1dc7cefdd6e09db926a83d092ebfa9ee6086020 # scx_rustland: Slightly penalize newly created tasks
 )
 
 _reverts=(
