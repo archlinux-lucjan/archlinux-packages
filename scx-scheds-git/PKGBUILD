@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r176.g83f651bf
-pkgrel=1
+pkgver=1.0.12.r182.g9cd711a0
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,14 +19,17 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-f48f526198f74180f28d1497e5b9717b24cd990d # scx_rustland_core: Initialize task dsq_vtime and slice
-fc3f923d336da9e183d4e342bf09597db7a9051e # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
-b13217d600b278d7e2ccddd0a334855a756d0fa4 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
-864b65ff7f75d1398bf336fcc4a7d9e34bacea7a # scx_rustland_core: Use BPF_RB_NO_WAKEUP
-c150242037f50d8b3b05d433be82c348ad473ae9 # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
-6b9c4f4600c22707b9ccfef022cc98cf0c2476c8 # scx_rustland_core: Make usersched_needed per-CPU
-7b0b5d1122738f04161ed781390a96779e627ff0 # scx_rustland_core: Drop cpumask generation counter
-fe8874c712bde205f20ff6291acae70af15135bc # scx_rustland_core: Expose nr_cpus_allowed to user-space
+8619ad3f82d410596709388cd92b9572b8ea807b # scx_rustland_core: Initialize task dsq_vtime and slice
+8feefb968d6abbb9964f811047a922a32ee3a3be # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
+da944f38406bba3ee87df6103c47b7e54f5013db # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
+1a7c377c2b81e6e6690cfadb0445a6fd80b6b179 # scx_rustland_core: Use BPF_RB_NO_WAKEUP
+4aee6502671abd21ea998e29ace6bf4b3fc04bde # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
+c0a72d436d68342828158ed47423ab2f06b3c146 # scx_rustland_core: Make usersched_needed per-CPU
+5ad897ec257ed016cc9bceabfb32be33fa5f71a3 # scx_rustland_core: Use default built-in idle policy for sync wakeup
+789c5d80eaf46ea4787923b9e0967f3d4726536a # scx_rustland_core: Do not allow per-CPU kthreads to preempt other tasks
+a550831bcb19fc84ec82fe03ada86852588c60b6 # scx_rustland_core: Use SCX_LOCAL_DSQ / SCX_LOCAL_DSQ_ON consistently
+30761a4843e4117737ab72e2fe187fa09ddde346 # scx_rustland_core: Drop cpumask generation counter
+0332cefcdea969c8a1c8cc49f638da3ebc1ba3aa # scx_rustland_core: Expose nr_cpus_allowed to user-space
 2168a410f379142d2af729b291a64141b2ecc40d # lib: split generic bitmap ops from cpumask-related routines
 42d5858eb1328a1652c07ad8dc14f426c96bf354 # lib: introduce topology library
 c5cb9b4c0e8d7ebab3cefee866ba9294a5446736 # scx_p2dq: use-arena backed topology in BPF
