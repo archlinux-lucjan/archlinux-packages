@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r163.ge01295b5
-pkgrel=2
+pkgver=1.0.12.r172.gbca52cde
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,9 +24,7 @@ fca96269724b1b6e1121d9873e5ab37ffde445f5 # scx_rustland_core: Dispatch per-CPU t
 75143cf710de34769c9327860356b5fa433de9cb # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
 42d6d7fcefa902a28c9149eada637ce70db58617 # scx_rustland_core: Use BPF_RB_NO_WAKEUP
 70a0009f2709a7e77ca1a4684a3cc6ecb4652291 # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
-166f4586914083b0a1053cca703d72ee39e44ae5 # scx_rustland_core: Make usersched_needed per-CPU
-8ee01489ccea0d95a72053d92f7f808677332614 # scx_lavd: Change the moving average more slowly.
-0b51a2bacf9d3c788965f38d4b5d2c0060db72cc # scx_lavd: Count runtime only once in lat_cri calculation.
+166f4586914083b0a1053cca703d72ee39e44ae5 # scx_rustland_core: Make usersched_needed per-CPU.
 )
 
 _reverts=(
