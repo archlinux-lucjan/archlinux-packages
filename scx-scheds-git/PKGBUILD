@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r174.gd247349f
-pkgrel=6
+pkgver=1.0.12.r176.g83f651bf
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,8 +27,6 @@ c150242037f50d8b3b05d433be82c348ad473ae9 # scx_rustland_core: Introduce a separa
 6b9c4f4600c22707b9ccfef022cc98cf0c2476c8 # scx_rustland_core: Make usersched_needed per-CPU
 7b0b5d1122738f04161ed781390a96779e627ff0 # scx_rustland_core: Drop cpumask generation counter
 fe8874c712bde205f20ff6291acae70af15135bc # scx_rustland_core: Expose nr_cpus_allowed to user-space
-2592c28278cf61e35c16ccb5cbd3e44f93830243 # scx_rustland_core: Re-introduce prioritization of faulting tasks
-f949cd54b4328fd0d83766cb5d84de2aa7124c61 # scx_rustland: Dispatch per-CPU tasks directly
 2168a410f379142d2af729b291a64141b2ecc40d # lib: split generic bitmap ops from cpumask-related routines
 42d5858eb1328a1652c07ad8dc14f426c96bf354 # lib: introduce topology library
 c5cb9b4c0e8d7ebab3cefee866ba9294a5446736 # scx_p2dq: use-arena backed topology in BPF
