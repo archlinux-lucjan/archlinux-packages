@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r172.gbca52cde
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,7 +24,7 @@ fc3f923d336da9e183d4e342bf09597db7a9051e # scx_rustland_core: Dispatch per-CPU t
 b13217d600b278d7e2ccddd0a334855a756d0fa4 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
 864b65ff7f75d1398bf336fcc4a7d9e34bacea7a # scx_rustland_core: Use BPF_RB_NO_WAKEUP
 c150242037f50d8b3b05d433be82c348ad473ae9 # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
-503f868df4f92ad9470bfb5ada738f9284c145e4 # scx_rustland_core: Make usersched_needed per-CPU
+8337d310a64ee05d391feb0390395d00c81bf3bd # scx_rustland_core: Make usersched_needed per-CPU
 )
 
 _reverts=(
