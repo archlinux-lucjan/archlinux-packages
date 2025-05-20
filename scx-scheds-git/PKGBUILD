@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r149.g3645e4f3
-pkgrel=2
+pkgver=1.0.12.r163.ge01295b5
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,6 +19,14 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+01985341f5bd3665b7bb9e1d93dc45773aefa7c0 # scx_rustland_core: Initialize task dsq_vtime and slice
+dce988cdce19a250aa221a5872c8758396e81254 # scx_rustland_core: Avoid unnecessary CPU wakeup attempts
+4a6e1cc5480189ae341a0d79c2a562ff7075a780 # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
+2ffbef19709187d06c094a4e946368f218f678c0 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
+4e5b499e97d135d6edd5ab87a5067b7170f187db # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
+23920fd9eabe76ce7ffccae27649bc254c4fa90f # scx_rustland_core: Avoid direct dispatch with tasks in the SHARED_DSQ
+8ee01489ccea0d95a72053d92f7f808677332614 # scx_lavd: Change the moving average more slowly.
+0b51a2bacf9d3c788965f38d4b5d2c0060db72cc # scx_lavd: Count runtime only once in lat_cri calculation.
 )
 
 _reverts=(
