@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r172.gbca52cde
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,12 +19,12 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-5d1b0cbaeb73fc736de6c94be10055b2d5587a3d # scx_rustland_core: Initialize task dsq_vtime and slice
-fca96269724b1b6e1121d9873e5ab37ffde445f5 # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
-75143cf710de34769c9327860356b5fa433de9cb # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
-42d6d7fcefa902a28c9149eada637ce70db58617 # scx_rustland_core: Use BPF_RB_NO_WAKEUP
-70a0009f2709a7e77ca1a4684a3cc6ecb4652291 # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
-166f4586914083b0a1053cca703d72ee39e44ae5 # scx_rustland_core: Make usersched_needed per-CPU.
+5990862ca8012de92722a95cf459edbb6f907306 # scx_rustland_core: Initialize task dsq_vtime and slice
+785e30595047380857eb7767fb708fe3f60070aa # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
+2ba7bd0396d0ada2f78d6117b828ec0ffb00592d # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
+cf30e88203cdeb60cf4c2cbb07f812ee47172fca # scx_rustland_core: Use BPF_RB_NO_WAKEUP
+f561d2d1cc7230dbe05c4698361f61ec4a2d16dc # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
+ff84c3e674d35df2a9c7863d8205a34302154d7f # scx_rustland_core: Make usersched_needed per-CPU
 )
 
 _reverts=(
