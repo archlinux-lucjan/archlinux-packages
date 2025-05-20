@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r182.g9cd711a0
-pkgrel=2
+pkgver=1.0.12.r184.g5fa9f1b4
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,6 +30,7 @@ c0a72d436d68342828158ed47423ab2f06b3c146 # scx_rustland_core: Make usersched_nee
 a550831bcb19fc84ec82fe03ada86852588c60b6 # scx_rustland_core: Use SCX_LOCAL_DSQ / SCX_LOCAL_DSQ_ON consistently
 30761a4843e4117737ab72e2fe187fa09ddde346 # scx_rustland_core: Drop cpumask generation counter
 0332cefcdea969c8a1c8cc49f638da3ebc1ba3aa # scx_rustland_core: Expose nr_cpus_allowed to user-space
+687675c6a016f2ec07b3b1ac4479da2f0b5df7ad # scx_rustland: Introduce --percpu-local
 2168a410f379142d2af729b291a64141b2ecc40d # lib: split generic bitmap ops from cpumask-related routines
 42d5858eb1328a1652c07ad8dc14f426c96bf354 # lib: introduce topology library
 c5cb9b4c0e8d7ebab3cefee866ba9294a5446736 # scx_p2dq: use-arena backed topology in BPF
