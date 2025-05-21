@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r201.gfd0dd6b4
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,19 +19,17 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-8619ad3f82d410596709388cd92b9572b8ea807b # scx_rustland_core: Initialize task dsq_vtime and slice
-8feefb968d6abbb9964f811047a922a32ee3a3be # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
-da944f38406bba3ee87df6103c47b7e54f5013db # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
-1a7c377c2b81e6e6690cfadb0445a6fd80b6b179 # scx_rustland_core: Use BPF_RB_NO_WAKEUP
-4aee6502671abd21ea998e29ace6bf4b3fc04bde # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
-c0a72d436d68342828158ed47423ab2f06b3c146 # scx_rustland_core: Make usersched_needed per-CPU
-5ad897ec257ed016cc9bceabfb32be33fa5f71a3 # scx_rustland_core: Use default built-in idle policy for sync wakeup
-789c5d80eaf46ea4787923b9e0967f3d4726536a # scx_rustland_core: Do not allow per-CPU kthreads to preempt other tasks
-a550831bcb19fc84ec82fe03ada86852588c60b6 # scx_rustland_core: Use SCX_LOCAL_DSQ / SCX_LOCAL_DSQ_ON consistently
-30761a4843e4117737ab72e2fe187fa09ddde346 # scx_rustland_core: Drop cpumask generation counter
-0332cefcdea969c8a1c8cc49f638da3ebc1ba3aa # scx_rustland_core: Expose nr_cpus_allowed to user-space
-687675c6a016f2ec07b3b1ac4479da2f0b5df7ad # scx_rustland: Introduce --percpu-local
-f7e7d0310dc3dccd3061dba461885b9d3cd80098 # scx_rustland: Show version info
+db9a1a1d98cb255a89119ffe5e0b5dc84b5664d7 # scx_rustland_core: Initialize task dsq_vtime and slice
+25f65d0184acc3caa8b5597bac791cd18aa139ad # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
+ba6bdcc53f103697ea1680ea24d24dc22c7104e8 # scx_rustland_core: Use BPF_RB_NO_WAKEUP
+f28b35e11b3e665c6511f68d2b0bfa76fef8f5c2 # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
+9e968604d0cc95e0c8a0486ebdf41f775dff504b # scx_rustland_core: Use default built-in idle policy for sync wakeup
+6bd8b0ad7e0e3c1e349570598c6e13b6c4fc30e5 # scx_rustland_core: Do not allow per-CPU kthreads to preempt other tasks
+9418c53a23430c5b2c6fffddc1176afd46635aa1 # scx_rustland_core: Use SCX_LOCAL_DSQ / SCX_LOCAL_DSQ_ON consistently
+5a06e13053f9177576538f958b22fb8fdab04a9c # scx_rustland_core: Drop cpumask generation counter
+f606894a8e6f7a7b4c70aee8d020231b7e45c3cb # scx_rustland_core: Expose nr_cpus_allowed to user-space
+b4a98159c7eed862bd41b493a6e666371682a16d # scx_rustland: Introduce --percpu-local
+02c572e2b27b8460da4a0c0478c73b8a69a61d4e # scx_rustland: Show version info
 )
 
 _reverts=(
