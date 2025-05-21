@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r205.g0735fc13
+pkgver=1.0.12.r221.g27707e42
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,13 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-434b1c46e992e90c69e29763bfc7d451fa58b5ea # scx_rustland_core: Initialize task dsq_vtime and slice
-197b48eda19de7d003ed4cc850eb8b4ec48400d9 # scx_rustland_core: Use BPF_RB_NO_WAKEUP
-4dc10630ad03449cd76cd770f2b4f7c34e81bede # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
-34fc53e24c4b0398b2daa3629bb1fbaf30ab88ce # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
-a10ae2f65ed088ccb73cc4412507b606b7fb8d6a # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
-0241c4fba9489e15d28dc0906e63094964c1f114 # scx_rustland_core: Do not allow per-CPU kthreads to preempt other tasks
-c0507d8f2b342df63332c6eddb03a1a7edc388e6 # scx_rustland_core: Use SCX_LOCAL_DSQ / SCX_LOCAL_DSQ_ON consistently
 )
 
 _reverts=(
