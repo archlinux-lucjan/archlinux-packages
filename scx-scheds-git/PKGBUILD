@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r201.gfd0dd6b4
-pkgrel=8
+pkgver=1.0.12.r203.g4ca0a063
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -29,7 +29,6 @@ e9b2a3d5c932a5921976d370a843e94664b6629f # scx_rustland_core: Introduce a separa
 c7f06ab74cbdbb0992129323280b91f76d74175e # scx_rustland_core: Drop cpumask generation counter
 6dceee635a5229aa82948248e9a26f05878c9c9a # scx_rustland_core: Expose nr_cpus_allowed to user-space
 df316a0e01113a4525bea963123fd48117d8438a # scx_rustland: Introduce --percpu-local
-a1f79cdf77bfd140255e8a1790edf22628411896 # scx_rustland: Show version info
 )
 
 _reverts=(
