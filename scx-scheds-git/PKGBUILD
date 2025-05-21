@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r201.gfd0dd6b4
-pkgrel=7
+pkgrel=8
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,17 +19,17 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-b10f674d5901fdf239384c59cad67c796fc91bcf # scx_rustland_core: Initialize task dsq_vtime and slice
-1f0687aec15216eb94a8e1e1c807ff3a33532d74 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
-6963b7f3dba768abba0a34647e4b5b4fb0182f8e # scx_rustland_core: Use BPF_RB_NO_WAKEUP
-7982c027c4daebe6214ec1b1c64a33ddfb1e49ba # scx_rustland_core: Do not allow per-CPU kthreads to preempt other tasks
-b23c80cfdaf0bebf5f5647e19d512c32072a9e39 # scx_rustland_core: Drop cpumask generation counter
-37a93afc0c333c494db52ee51cfbfef8a07d16f5 # scx_rustland_core: Expose nr_cpus_allowed to user-space
-a0b3a888b3ee1ccbb099febc9b66f80b312140d1 # scx_rustland: Introduce --percpu-local
-22f4bc6d5aaa444b9c0cadd61f2d88b7e24822ec # scx_rustland: Show version info
-97090561178462f177fb024e8d115b4ec9c602dc # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
-4cbfb1964fa7faad26fa21485219fb75e45af3ac # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
-39516070f8b2ac9b91a98b4da7d67aa85bd58e20 # scx_rustland_core: Use default built-in idle policy for sync wakeup
+db9a1a1d98cb255a89119ffe5e0b5dc84b5664d7 # scx_rustland_core: Initialize task dsq_vtime and slice
+32ed1dcc36f88fe4a13748378c4c2eca6aa0a49b # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
+81c27af2a27af140492cb76f2cca4ae0aa9462f9 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
+682bcbc01081d36f71593f04ccbcaf452fbcfa21 # scx_rustland_core: Use BPF_RB_NO_WAKEUP
+e9b2a3d5c932a5921976d370a843e94664b6629f # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
+3a35f9bc6b082b765b6eb4df3e9586cd4b386050 # scx_rustland_core: Do not allow per-CPU kthreads to preempt other tasks
+05a6f12425b423964c615a5953afca0f52daa244 # scx_rustland_core: Use SCX_LOCAL_DSQ / SCX_LOCAL_DSQ_ON consistently
+c7f06ab74cbdbb0992129323280b91f76d74175e # scx_rustland_core: Drop cpumask generation counter
+6dceee635a5229aa82948248e9a26f05878c9c9a # scx_rustland_core: Expose nr_cpus_allowed to user-space
+df316a0e01113a4525bea963123fd48117d8438a # scx_rustland: Introduce --percpu-local
+a1f79cdf77bfd140255e8a1790edf22628411896 # scx_rustland: Show version info
 )
 
 _reverts=(
