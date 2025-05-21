@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r201.gfd0dd6b4
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,17 +20,13 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 b10f674d5901fdf239384c59cad67c796fc91bcf # scx_rustland_core: Initialize task dsq_vtime and slice
-8d100a3c91f6d12d7f57de530052e10458edf77c # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
-664f273e400e06ecd7539e73c4bcf79a6b2f0f6d # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
-7dbdb6ac7dc4aff2f8c3dd34105bd8e51cb3ea4d # scx_rustland_core: Use BPF_RB_NO_WAKEUP
-f2e5d8b5971584a96ad1939010d67a02ea1b5a37 # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
-ee0a6b91d8dacbe04fd38b04c2b1cdec2960dc49 # scx_rustland_core: Use default built-in idle policy for sync wakeup
-af9590c10e978467c19f326f5d4f8c25aaad7e83 # scx_rustland_core: Do not allow per-CPU kthreads to preempt other tasks
-cf2a3f514ea5af574ab87cc2f01359521377d030 # scx_rustland_core: Use SCX_LOCAL_DSQ / SCX_LOCAL_DSQ_ON consistently
-978d998cf1eb620301add67a18967fa6f350aed1 # scx_rustland_core: Drop cpumask generation counter
-17247b5ec33c13d7750e67f660efb358aa6ce1ca # scx_rustland_core: Expose nr_cpus_allowed to user-space
-74fa8fda23662d9ee9b3ae70e7c250c799af1982 # scx_rustland: Introduce --percpu-local
-b50ad8572f64475289ee37ae58002c2c92da27ea # scx_rustland: Show version info
+1f0687aec15216eb94a8e1e1c807ff3a33532d74 # scx_rustland_core: Avoid sched_setscheduler() in non-partial mode
+6963b7f3dba768abba0a34647e4b5b4fb0182f8e # scx_rustland_core: Use BPF_RB_NO_WAKEUP
+7982c027c4daebe6214ec1b1c64a33ddfb1e49ba # scx_rustland_core: Do not allow per-CPU kthreads to preempt other tasks
+b23c80cfdaf0bebf5f5647e19d512c32072a9e39 # scx_rustland_core: Drop cpumask generation counter
+37a93afc0c333c494db52ee51cfbfef8a07d16f5 # scx_rustland_core: Expose nr_cpus_allowed to user-space
+a0b3a888b3ee1ccbb099febc9b66f80b312140d1 # scx_rustland: Introduce --percpu-local
+22f4bc6d5aaa444b9c0cadd61f2d88b7e24822ec # scx_rustland: Show version info
 )
 
 _reverts=(
