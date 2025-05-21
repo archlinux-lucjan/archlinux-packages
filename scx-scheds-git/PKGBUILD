@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r201.gfd0dd6b4
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -28,6 +28,8 @@ b23c80cfdaf0bebf5f5647e19d512c32072a9e39 # scx_rustland_core: Drop cpumask gener
 a0b3a888b3ee1ccbb099febc9b66f80b312140d1 # scx_rustland: Introduce --percpu-local
 22f4bc6d5aaa444b9c0cadd61f2d88b7e24822ec # scx_rustland: Show version info
 97090561178462f177fb024e8d115b4ec9c602dc # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
+4cbfb1964fa7faad26fa21485219fb75e45af3ac # scx_rustland_core: Dispatch per-CPU tasks to their only usable CPU
+39516070f8b2ac9b91a98b4da7d67aa85bd58e20 # scx_rustland_core: Use default built-in idle policy for sync wakeup
 )
 
 _reverts=(
