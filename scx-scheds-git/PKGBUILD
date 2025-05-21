@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r201.gfd0dd6b4
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,6 +27,7 @@ b23c80cfdaf0bebf5f5647e19d512c32072a9e39 # scx_rustland_core: Drop cpumask gener
 37a93afc0c333c494db52ee51cfbfef8a07d16f5 # scx_rustland_core: Expose nr_cpus_allowed to user-space
 a0b3a888b3ee1ccbb099febc9b66f80b312140d1 # scx_rustland: Introduce --percpu-local
 22f4bc6d5aaa444b9c0cadd61f2d88b7e24822ec # scx_rustland: Show version info
+97090561178462f177fb024e8d115b4ec9c602dc # scx_rustland_core: Introduce a separate DSQ for the user-space scheduler
 )
 
 _reverts=(
