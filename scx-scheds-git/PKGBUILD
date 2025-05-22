@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r242.g3d049639
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -21,12 +21,13 @@ conflicts=("scx-scheds" "scxctl")
 _backports=(
 62c606b6d1d9224797497aba43d72f5587aa0f4b # scx_rustland_core: Drop cpumask generation counter
 345cf5199a6ff10e91eac2b9d21beb89d3f0a476 # scx_rustland_core: Expose nr_cpus_allowed to user-space
-61be3fdf10618add15ad22d7b65bee5bb3326006 # scx_rustland: Introduce --percpu-local
-7358c03c57253db2e11e2253030a287dfd4f87d1 # scx_rustland_core: Idle CPU selection policy refactoring
-8e37d7224047329810ad5b59562c6f16235a5200 # scx_rustland_core: Resume usage of per-CPU DSQs
-7d0a143bb0b4559564b0c9fba05a26844628a123 # scx_rustland_core: Refactor dispatch_task()
-a90e0baea513f12810f6923b6671f37fa4f06311 # scx_rustland_core: Coding style fixes
-3283f7bb5ec0af054434854c361d68a13f69907f # scx_rustland_core: Use RingBuffer:consume_raw_n()
+9aad2ad1874f77fc4af7d9f2e85502e951387c76 # scx_rustland: Introduce --percpu-local
+cc27383b8cbb390916bab4b9e4d9781055640c30 # scx_rustland_core: Disable huge pages for the user-space scheduler
+d9b3f679b41ea02832d825b87f2e135ba5828acd # scx_rustland_core: Idle CPU selection policy refactoring
+d8a335c1fef507479cfa71a6f7280c3a95ee5335 # scx_rustland_core: Resume usage of per-CPU DSQs
+ee77368d5ac7140e41431a8435aeec982558f005 # scx_rustland_core: Refactor dispatch_task()
+3e2864ddfb85404da3728641712a3f6a2196ff3e # scx_rustland_core: Coding style fixes
+b4b7cded8853e98e39f80de3c94b67e61ae03fe6 # scx_rustland_core: Use RingBuffer:consume_raw_n()
 )
 
 _reverts=(
