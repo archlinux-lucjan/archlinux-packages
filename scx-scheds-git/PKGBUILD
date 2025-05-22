@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r221.g27707e42
+pkgver=1.0.12.r242.g3d049639
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,6 +19,14 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+62c606b6d1d9224797497aba43d72f5587aa0f4b # scx_rustland_core: Drop cpumask generation counter
+345cf5199a6ff10e91eac2b9d21beb89d3f0a476 # scx_rustland_core: Expose nr_cpus_allowed to user-space
+61be3fdf10618add15ad22d7b65bee5bb3326006 # scx_rustland: Introduce --percpu-local
+7358c03c57253db2e11e2253030a287dfd4f87d1 # scx_rustland_core: Idle CPU selection policy refactoring
+8e37d7224047329810ad5b59562c6f16235a5200 # scx_rustland_core: Resume usage of per-CPU DSQs
+7d0a143bb0b4559564b0c9fba05a26844628a123 # scx_rustland_core: Refactor dispatch_task()
+a90e0baea513f12810f6923b6671f37fa4f06311 # scx_rustland_core: Coding style fixes
+3283f7bb5ec0af054434854c361d68a13f69907f # scx_rustland_core: Use RingBuffer:consume_raw_n()
 )
 
 _reverts=(
