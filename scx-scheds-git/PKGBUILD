@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r315.g490d95fe
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,9 +20,9 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 54ebb1f0940a25b3428a7fb292b5b2389989337c # scx_bpfland: Ignore sync wakeup with short-running wakers
-c32d7c829860792f444c8fbf934483180df9e125 # scx_bpfland: Allow cross-LLC migrations on sync wakeups
-79cdf2981990803829426df5d3a63d6dd3e15f5b # scx_bpfland: Ignore empty cpumask when searching for an idle CPU
-47d483796e45317fadf97f093afb1370b7716779 # scx_bpfland: Use slice_lag to determine max runtime budget
+1d3ea2f69558134edf77ce0e3a04aa2783395417 # scx_bpfland: Allow cross-LLC migrations on sync wakeups
+4c154f481b74e16fd503ba4aaa1d38952243dcff # scx_bpfland: Use slice_lag to determine max runtime budget
+31e1e1615750585c8f8b914dd6c2a6245c179a6a # scx_bpfland: Introduce --throttle-us
 )
 
 _reverts=(
