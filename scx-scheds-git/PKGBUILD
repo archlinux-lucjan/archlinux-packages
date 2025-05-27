@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r340.g22a1afef
+pkgver=1.0.12.r351.g656ab0b9
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,7 +19,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-def666146a53d0733a76b5b873ed227e2be296b5 # scx_bpfland: Introduce --throttle-us
 )
 
 _reverts=(
