@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r357.g7885b82b
-pkgrel=2
+pkgver=1.0.12.r361.gcad46104
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,9 +19,8 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-f314155b6b19acb5d8fca12ddf05487416334784 # scx_bpfland: Rely on scx_bpf_task_cpu() when updating task domain
-a0e91f1ee9037db9802182a65653520a99f5dbd2 # scx_bpfland: Reduce sync wakeup migrations rate
-7f5c5ab1d4b060027aa6fa5f19247b65a94b6652 # scx_bpfland: Use all CPUs as primary domain by default
+e44e5ec1fa3f6a8fa840826ea8ca0ac65178fd96 # scx_utils: autopower: Introduce balanced_power and balanced_performance
+64f9553af3c788869a0be24addee22d47320deb2 # scx_bpfland: Support balance_power and balance_performance modes
 )
 
 _reverts=(
