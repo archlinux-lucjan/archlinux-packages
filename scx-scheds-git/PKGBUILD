@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r361.gcad46104
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,7 +20,7 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 e44e5ec1fa3f6a8fa840826ea8ca0ac65178fd96 # scx_utils: autopower: Introduce balanced_power and balanced_performance
-64f9553af3c788869a0be24addee22d47320deb2 # scx_bpfland: Support balance_power and balance_performance modes
+a790a6fbf2652d02fc0aee54b897c135a4657fc8 # scx_bpfland: Support balance_power and balance_performance modes
 )
 
 _reverts=(
