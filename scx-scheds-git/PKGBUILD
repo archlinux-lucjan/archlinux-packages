@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r480.g297899f8
+pkgver=1.0.12.r482.ge511ee9b
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-73eb655c9599d8a66cc7a50e22077b59090f58a3 # scx_bpfland: Rethink sync wakeup logic
+3b542e7f07d5be7e75d43cc9421ecb71d1787048 # scx_bpfland: Rethink sync wakeup logic
 )
 
 _reverts=(
