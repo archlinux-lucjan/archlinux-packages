@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r418.g08f6e97a
+pkgver=1.0.12.r474.gbdbe2418
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,6 +19,10 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+7f445aebe3ff660f1862a71710cf06507220a0fd # scx_bpfland: Rethink sync wakeup logic
+88a7a5e9a414fa52b785039f835dc7b365f562d3 # scx_bpfland: Always scale task's time budget by its normalized weight
+d59a6e816f92e8a438cf809a9084d050762e5275 # scx_bpfland: Do not allow negative slice_lag
+e1bfd07b3267fbacbdf4223725e44bedcdeddc29 # scx_bpfland: Drop deprecated option --nvcsw-max-thresh
 )
 
 _reverts=(
