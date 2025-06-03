@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r503.gc77fcdc3
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,8 +19,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-0e9a9fec9b93d59895195c202293b3d105fd8c07 # scx_bpfland: Rework sync wakeup logic (again)
-f287a62a6f4b246ddbb80a6cd714de50d8c50705 # scx_bpfland: Cache empty L2 / L3 cpumask state
+6e405060169bc3bb5de616df47ca75fb5f6e192d # scx_bpfland: Rework sync wakeup logic (again)
 )
 
 _reverts=(
