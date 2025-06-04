@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r508.g525209d8
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -12,16 +12,19 @@ license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq' 'protobuf' 'libseccomp' 'bpf' 'libbpf')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
-source=("git+https://github.com/sched-ext/scx")
-sha256sums=('SKIP')
+source=("git+https://github.com/sched-ext/scx"
+        '0001-meson-install-scx_wd40.patch'
+        '0002-scx_loader-Add-chaos-scheduler.patch')
+sha256sums=('SKIP'
+            'a499c31d8e85ea22e0f0b9306de5d21fb6a755024b011e5c90a3468f6f4cf819'
+            '5da8bbf9f7661750babc3c7b0adcf6d4466ba454119d060aab332c01ad192588')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-c7cd1584c0c313879b4b74fe00d0659c6d7bc617 # scx_bpfland: Rework sync wakeup logic (again)
-c50784f5d9999705bca4483b3ce39a85d83965d3 # scx_bpfland: Cache empty cpumask state
-89586d52a4090767817a1609b8b52e93c5729437 # scx_bpfland: do not prioritize per-CPU tasks
+51a000774f8b70020ef452871322c484ee37aa58 # scx_bpfland: Rework sync wakeup logic (again)
+fadce2981fc0135e95938d0051eaa16a5af5f702 # scx_bpfland: Improve locality when picking idle CPU from primary domain
 e8f64b018bf50d1ff04d49e28d2d7fff32041787 # scx_wd40: update setup_topology_node to match new signature
 af119ec13f505f184604cc30132893238baed121 # scx_wd40: print diagnostic using info!()
 98a4a8e1042d6832036e8ffdc932912824ad09e5 # scx_wd40: annotate topology nodes with ID

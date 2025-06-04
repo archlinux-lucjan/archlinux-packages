@@ -1,0 +1,143 @@
+From e5ab7126079fc318c6d2ab83e881816844b7a2cf Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Wed, 4 Jun 2025 08:54:02 +0200
+Subject: [PATCH 2/2] scx_loader: Add chaos scheduler
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ rust/scx_loader/configuration.md | 13 +++++++++++--
+ rust/scx_loader/src/config.rs    | 18 ++++++++++++++++++
+ rust/scx_loader/src/lib.rs       |  4 ++++
+ rust/scx_loader/src/main.rs      |  1 +
+ 4 files changed, 34 insertions(+), 2 deletions(-)
+
+diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
+index ab138dad..82634834 100644
+--- a/rust/scx_loader/configuration.md
++++ b/rust/scx_loader/configuration.md
+@@ -66,12 +66,18 @@ auto_mode = []
+ gaming_mode = []
+ lowlatency_mode = []
+ powersave_mode = []
++
++[scheds.scx_chaos]
++auto_mode = []
++gaming_mode = []
++lowlatency_mode = ["-y"]
++powersave_mode = []
+ ```
+ 
+ **`default_sched`:**
+ 
+ * This field specifies the scheduler that will be started automatically when `scx_loader` starts (e.g., on boot).
+-* It should be set to the name of a supported scheduler (e.g., `"scx_bpfland"`, `"scx_rusty"`, `"scx_lavd"`, `"scx_flash"`, `"scx_p2dq"`, `"scx_rustland"`, `"scx_wd40"`).
++* It should be set to the name of a supported scheduler (e.g., `"scx_bpfland"`, `"scx_rusty"`, `"scx_lavd"`, `"scx_flash"`, `"scx_p2dq"`, `"scx_rustland"`, `"scx_wd40"`, `"scx_chaos"`).
+ * If this field is not present or is set to an empty string, no scheduler will be started automatically.
+ 
+ **`default_mode`:**
+@@ -82,7 +88,7 @@ powersave_mode = []
+ 
+ **`[scheds.scx_name]`:**
+ 
+-* This section defines the custom flags for a specific scheduler. Replace `scx_name` with the actual name of the scheduler (e.g., `scx_bpfland`, `scx_rusty`, `scx_lavd`, `scx_flash`, `scx_p2dq`, `scx_rustland`, `scx_wd40`).
++* This section defines the custom flags for a specific scheduler. Replace `scx_name` with the actual name of the scheduler (e.g., `scx_bpfland`, `scx_rusty`, `scx_lavd`, `scx_flash`, `scx_p2dq`, `scx_rustland`, `scx_wd40`, `scx_chaos`).
+ 
+ **`auto_mode`, `gaming_mode`, `lowlatency_mode`, `powersave_mode`, `server_mode`:**
+ 
+@@ -113,6 +119,9 @@ The example configuration above shows how to set custom flags for different sche
+     * No custom flags are defined, so the default flags for each mode will be used.
+ * For `scx_wd40`:
+     * No custom flags are defined, so the default flags for each mode will be used.
++* For `scx_chaos`:
++    * Low Latency mode: `-y`
++    * Server mode: `--keep-running`    
+ 
+ ## Fallback Behavior
+ 
+diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
+index cd9ef91e..8b9b9c95 100644
+--- a/rust/scx_loader/src/config.rs
++++ b/rust/scx_loader/src/config.rs
+@@ -109,6 +109,10 @@ pub fn get_default_config() -> Config {
+                 "scx_wd40".to_string(),
+                 get_default_sched_for_config(&SupportedSched::WD40),
+             ),
++            (
++                "scx_chaos".to_string(),
++                get_default_sched_for_config(&SupportedSched::Chaos),
++            ),
+         ]),
+     }
+ }
+@@ -228,6 +232,13 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
+         SupportedSched::Rustland => vec![],
+         // scx_wd40 doesn't support any of these modes
+         SupportedSched::WD40 => vec![],
++        SupportedSched::Chaos => match sched_mode {
++            SchedMode::Gaming => vec![],
++            SchedMode::LowLatency => vec!["-y"],
++            SchedMode::PowerSave => vec![],
++            SchedMode::Server => vec!["--keep-running"],
++            SchedMode::Auto => vec![],
++        },
+     }
+ }
+ 
+@@ -295,6 +306,13 @@ gaming_mode = []
+ lowlatency_mode = []
+ powersave_mode = []
+ server_mode = []
++
++[scheds.scx_chaos]
++auto_mode = []
++gaming_mode = []
++lowlatency_mode = ["-y"]
++powersave_mode = []
++server_mode = ["--keep-running"]
+ "#;
+ 
+         let parsed_config = parse_config_content(config_str).expect("Failed to parse config");
+diff --git a/rust/scx_loader/src/lib.rs b/rust/scx_loader/src/lib.rs
+index 3d225275..fcf8c49d 100644
+--- a/rust/scx_loader/src/lib.rs
++++ b/rust/scx_loader/src/lib.rs
+@@ -36,6 +36,8 @@ pub enum SupportedSched {
+     Rustland,
+     #[serde(rename = "scx_wd40")]
+     WD40,
++    #[serde(rename = "scx_chaos")]
++    Chaos,
+ }
+ 
+ impl FromStr for SupportedSched {
+@@ -51,6 +53,7 @@ impl FromStr for SupportedSched {
+             "scx_rustland" => Ok(SupportedSched::Rustland),
+             "scx_rusty" => Ok(SupportedSched::Rusty),
+             "scx_wd40" => Ok(SupportedSched::WD40),
++            "scx_chaos" => Ok(SupportedSched::Chaos),
+             _ => Err(anyhow::anyhow!("{scx_name} is not supported")),
+         }
+     }
+@@ -74,6 +77,7 @@ impl From<SupportedSched> for &str {
+             SupportedSched::Rustland => "scx_rustland",
+             SupportedSched::Rusty => "scx_rusty",
+             SupportedSched::WD40 => "scx_wd40",
++            SupportedSched::Chaos => "scx_chaos",
+         }
+     }
+ }
+diff --git a/rust/scx_loader/src/main.rs b/rust/scx_loader/src/main.rs
+index 1363a0c6..f98be4ce 100644
+--- a/rust/scx_loader/src/main.rs
++++ b/rust/scx_loader/src/main.rs
+@@ -90,6 +90,7 @@ impl ScxLoader {
+     async fn supported_schedulers(&self) -> Vec<&str> {
+         vec![
+             "scx_bpfland",
++            "scx_chaos",
+             "scx_flash",
+             "scx_lavd",
+             "scx_p2dq",
+-- 
+2.49.0
+
