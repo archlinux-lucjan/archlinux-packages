@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r508.g525209d8
-pkgrel=6
+pkgver=1.0.12.r518.g6321abcd
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,13 +24,6 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 2d31ef74814a686b2762cef278b8f295199577f5 # scx_bpfland: Rework sync wakeup logic (again)
-e8f64b018bf50d1ff04d49e28d2d7fff32041787 # scx_wd40: update setup_topology_node to match new signature
-af119ec13f505f184604cc30132893238baed121 # scx_wd40: print diagnostic using info!()
-98a4a8e1042d6832036e8ffdc932912824ad09e5 # scx_wd40: annotate topology nodes with ID
-04d2fe05fda1b8c5cadf9954cd4ffcfed3208268 # lib/topology: store topology pointers as u64
-80448656ac516b605c4710734db50b9102598eab # scx_wd40: remove cpu_dom_id_map
-0ce0c5f4e61afb46d1f559d6d9ca7262f2e30fbb # scx_wd40: attach domains to topology arrays
-56820daeef8be6be8f709decc257fd4834c34b2f # lib/topology: fix overly restrictive bounds checking
 )
 
 _reverts=(
