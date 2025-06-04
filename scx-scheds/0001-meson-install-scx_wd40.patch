@@ -1,0 +1,226 @@
+From 8bd0b4811ca2155eb8f0cfc8924ee6dfff7b9bf5 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Wed, 4 Jun 2025 08:44:04 +0200
+Subject: [PATCH 1/2] meson: install scx_wd40
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ Cargo.lock                             | 23 +++++++++++++++++++++++
+ Cargo.toml                             |  1 +
+ meson-scripts/install_rust_user_scheds |  4 ++--
+ meson.build                            |  2 +-
+ rust/scx_loader/configuration.md       | 12 ++++++++++--
+ rust/scx_loader/src/config.rs          | 13 +++++++++++++
+ rust/scx_loader/src/lib.rs             |  4 ++++
+ rust/scx_loader/src/main.rs            |  1 +
+ scheds/rust/scx_wd40/Cargo.toml        |  2 --
+ 9 files changed, 55 insertions(+), 7 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index b3391e2d..016a20e6 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2969,6 +2969,29 @@ dependencies = [
+  "static_assertions",
+ ]
+ 
++[[package]]
++name = "scx_wd40"
++version = "1.0.12"
++dependencies = [
++ "anyhow",
++ "chrono",
++ "clap",
++ "crossbeam",
++ "ctrlc",
++ "fb_procfs",
++ "libbpf-rs",
++ "libc",
++ "log",
++ "ordered-float",
++ "scx_stats",
++ "scx_stats_derive",
++ "scx_utils",
++ "serde",
++ "simplelog",
++ "sorted-vec",
++ "static_assertions",
++]
++
+ [[package]]
+ name = "scx_stats"
+ version = "1.0.12"
+diff --git a/Cargo.toml b/Cargo.toml
+index e411f6c7..0c47e762 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -17,6 +17,7 @@ members = [
+     "scheds/rust/scx_rustland",
+     "scheds/rust/scx_rusty",
+     "scheds/rust/scx_tickless",
++    "scheds/rust/scx_wd40",
+     "tools/scxctl",
+     "tools/scxtop",
+     "tools/vmlinux_docify",
+diff --git a/meson-scripts/install_rust_user_scheds b/meson-scripts/install_rust_user_scheds
+index 63dbf835..30934709 100755
+--- a/meson-scripts/install_rust_user_scheds
++++ b/meson-scripts/install_rust_user_scheds
+@@ -7,8 +7,8 @@ for manifest in "$MESON_SOURCE_ROOT"/scheds/rust/*/Cargo.toml; do
+     target_dir="${MESON_BUILD_ROOT}"
+     name="${source_dir##*/}"
+ 
+-    # Skip scx_mitosis and scx_wd40
+-    if [ "$name" = "scx_mitosis" ] || [ "$name" = "scx_wd40" ]; then
++    # Skip scx_mitosis
++    if [ "$name" = "scx_mitosis" ]; then
+         echo "Skipping installation of $name"
+         continue
+     fi
+diff --git a/meson.build b/meson.build
+index 02193018..600093c4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -360,7 +360,7 @@ if enable_rust
+ 
+   rust_scheds = ['scx_lavd', 'scx_bpfland', 'scx_rustland', 'scx_rlfifo',
+                  'scx_flash', 'scx_rusty', 'scx_p2dq',
+-                 'scx_layered', 'scx_mitosis', 'scx_tickless', 'scx_chaos']
++                 'scx_layered', 'scx_mitosis', 'scx_tickless', 'scx_chaos', 'scx_wd40']
+   rust_misc = ['scx_stats', 'scx_stats_derive', 'scx_utils',
+                'scx_rustland_core',
+                'scx_loader']
+diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
+index ae1fc0ef..ab138dad 100644
+--- a/rust/scx_loader/configuration.md
++++ b/rust/scx_loader/configuration.md
+@@ -60,12 +60,18 @@ auto_mode = []
+ gaming_mode = []
+ lowlatency_mode = []
+ powersave_mode = []
++
++[scheds.scx_wd40]
++auto_mode = []
++gaming_mode = []
++lowlatency_mode = []
++powersave_mode = []
+ ```
+ 
+ **`default_sched`:**
+ 
+ * This field specifies the scheduler that will be started automatically when `scx_loader` starts (e.g., on boot).
+-* It should be set to the name of a supported scheduler (e.g., `"scx_bpfland"`, `"scx_rusty"`, `"scx_lavd"`, `"scx_flash"`, `"scx_p2dq"`, `"scx_rustland"`).
++* It should be set to the name of a supported scheduler (e.g., `"scx_bpfland"`, `"scx_rusty"`, `"scx_lavd"`, `"scx_flash"`, `"scx_p2dq"`, `"scx_rustland"`, `"scx_wd40"`).
+ * If this field is not present or is set to an empty string, no scheduler will be started automatically.
+ 
+ **`default_mode`:**
+@@ -76,7 +82,7 @@ powersave_mode = []
+ 
+ **`[scheds.scx_name]`:**
+ 
+-* This section defines the custom flags for a specific scheduler. Replace `scx_name` with the actual name of the scheduler (e.g., `scx_bpfland`, `scx_rusty`, `scx_lavd`, `scx_flash`, `scx_p2dq`, `scx_rustland`).
++* This section defines the custom flags for a specific scheduler. Replace `scx_name` with the actual name of the scheduler (e.g., `scx_bpfland`, `scx_rusty`, `scx_lavd`, `scx_flash`, `scx_p2dq`, `scx_rustland`, `scx_wd40`).
+ 
+ **`auto_mode`, `gaming_mode`, `lowlatency_mode`, `powersave_mode`, `server_mode`:**
+ 
+@@ -105,6 +111,8 @@ The example configuration above shows how to set custom flags for different sche
+     * Server mode: `--keep-running`
+ * For `scx_rustland`:
+     * No custom flags are defined, so the default flags for each mode will be used.
++* For `scx_wd40`:
++    * No custom flags are defined, so the default flags for each mode will be used.
+ 
+ ## Fallback Behavior
+ 
+diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
+index a1a6700e..cd9ef91e 100644
+--- a/rust/scx_loader/src/config.rs
++++ b/rust/scx_loader/src/config.rs
+@@ -105,6 +105,10 @@ pub fn get_default_config() -> Config {
+                 "scx_rustland".to_string(),
+                 get_default_sched_for_config(&SupportedSched::Rustland),
+             ),
++            (
++                "scx_wd40".to_string(),
++                get_default_sched_for_config(&SupportedSched::WD40),
++            ),
+         ]),
+     }
+ }
+@@ -222,6 +226,8 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
+         },
+         // scx_rustland doesn't support any of these modes
+         SupportedSched::Rustland => vec![],
++        // scx_wd40 doesn't support any of these modes
++        SupportedSched::WD40 => vec![],
+     }
+ }
+ 
+@@ -282,6 +288,13 @@ gaming_mode = []
+ lowlatency_mode = []
+ powersave_mode = []
+ server_mode = []
++
++[scheds.scx_wd40]
++auto_mode = []
++gaming_mode = []
++lowlatency_mode = []
++powersave_mode = []
++server_mode = []
+ "#;
+ 
+         let parsed_config = parse_config_content(config_str).expect("Failed to parse config");
+diff --git a/rust/scx_loader/src/lib.rs b/rust/scx_loader/src/lib.rs
+index 9e0911ab..3d225275 100644
+--- a/rust/scx_loader/src/lib.rs
++++ b/rust/scx_loader/src/lib.rs
+@@ -34,6 +34,8 @@ pub enum SupportedSched {
+     Tickless,
+     #[serde(rename = "scx_rustland")]
+     Rustland,
++    #[serde(rename = "scx_wd40")]
++    WD40,
+ }
+ 
+ impl FromStr for SupportedSched {
+@@ -48,6 +50,7 @@ impl FromStr for SupportedSched {
+             "scx_tickless" => Ok(SupportedSched::Tickless),
+             "scx_rustland" => Ok(SupportedSched::Rustland),
+             "scx_rusty" => Ok(SupportedSched::Rusty),
++            "scx_wd40" => Ok(SupportedSched::WD40),
+             _ => Err(anyhow::anyhow!("{scx_name} is not supported")),
+         }
+     }
+@@ -70,6 +73,7 @@ impl From<SupportedSched> for &str {
+             SupportedSched::Tickless => "scx_tickless",
+             SupportedSched::Rustland => "scx_rustland",
+             SupportedSched::Rusty => "scx_rusty",
++            SupportedSched::WD40 => "scx_wd40",
+         }
+     }
+ }
+diff --git a/rust/scx_loader/src/main.rs b/rust/scx_loader/src/main.rs
+index f2ca9935..1363a0c6 100644
+--- a/rust/scx_loader/src/main.rs
++++ b/rust/scx_loader/src/main.rs
+@@ -96,6 +96,7 @@ impl ScxLoader {
+             "scx_tickless",
+             "scx_rustland",
+             "scx_rusty",
++            "scx_wd40",
+         ]
+     }
+ 
+diff --git a/scheds/rust/scx_wd40/Cargo.toml b/scheds/rust/scx_wd40/Cargo.toml
+index ca8f2e2f..374b3478 100644
+--- a/scheds/rust/scx_wd40/Cargo.toml
++++ b/scheds/rust/scx_wd40/Cargo.toml
+@@ -33,5 +33,3 @@ enable_backtrace = []
+ 
+ [lints.clippy]
+ non_canonical_partial_ord_impl = "allow"
+-
+-[workspace]
+-- 
+2.49.0
+
