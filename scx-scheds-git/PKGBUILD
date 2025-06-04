@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r508.g525209d8
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,7 +23,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-8b90e93abd82e736389250110c90089f0b119a73 # scx_bpfland: Rework sync wakeup logic (again)
+2d31ef74814a686b2762cef278b8f295199577f5 # scx_bpfland: Rework sync wakeup logic (again)
 e8f64b018bf50d1ff04d49e28d2d7fff32041787 # scx_wd40: update setup_topology_node to match new signature
 af119ec13f505f184604cc30132893238baed121 # scx_wd40: print diagnostic using info!()
 98a4a8e1042d6832036e8ffdc932912824ad09e5 # scx_wd40: annotate topology nodes with ID
