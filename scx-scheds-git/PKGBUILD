@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r518.g6321abcd
+pkgver=1.0.12.r538.gc779327d
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,7 +23,11 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-2d31ef74814a686b2762cef278b8f295199577f5 # scx_bpfland: Rework sync wakeup logic (again)
+6111b4c690dceb85879c020794c2a2033ae5fb32 # scx_flash: Re-align with scx_bpfland
+7acac6442f5ac5591597a320615b099041a60657 # scx_flash: Do not allow negative slice_lag
+748ad5872abff29b46b222faf6fd6951843d5db7 # scx_flash: Rework direct dispatch logic
+5878757fe4c0827848b6e7b855c535611c49bdae # scx_flash: Always scale task's execution time by its normalized weight
+c391377f28c29dc211322fc4baf9c11305d89aab # scx_flash: Reintroduce voluntary context switch-based prioritization
 )
 
 _reverts=(
