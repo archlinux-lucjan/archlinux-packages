@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r544.g316ba0e6
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,14 +23,14 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-237f347fe3d54f48ff3662e506c8d95d8973c090 # scx_flash: Re-align with scx_bpfland
-677edfcf5eedcb0f99c526e0705a35a6a20e3ec9 # scx_flash: Do not allow negative slice_lag
-5bf77c9c7cde425c1954ceab2aa5ebe6983c2d55 # scx_flash: Rework direct dispatch logic
-5d25952f10404542a58680b0cd2940e1d6d7e3cf # scx_flash: Always scale task's execution time by its normalized weight
-8f7bd412479f4c91189de18304f734c7cec16525 # scx_flash: Reintroduce voluntary context switch-based prioritization
-7b33a265e47c4c8cc0381f6d35d018e283b3af6b # scx_flash: Port --local-pcpu option from scx_bpfland
-f1410e5fea42253d6167b10c62b85b0e26041fbf # scx_loader: Update performance profiles for scx_flash
-d558d9ceda14a671b783bf1c0727b415773ef15f # scx_flash: Introduce --native-priority
+b5dde90e0959767686c79681ef9a9d76f80ea68b # scx_flash: Re-align with scx_bpfland
+f503a8c665650880afd01c9d2a4a20db6d79e9eb # scx_flash: Do not allow negative slice_lag
+427bd9d7fdd2ed23ad7150f5392ce7fefff962c2 # scx_flash: Rework direct dispatch logic
+c893c6b012501f602602e599669cf9d202546035 # scx_flash: Always scale task's execution time by its normalized weight
+a3f34a5ecc0655c6231dac32b0a72e9f067612a0 # scx_flash: Reintroduce voluntary context switch-based prioritization
+6f6a698efe61966ffe26ef58b81ac81b0857f189 # scx_flash: Port --local-pcpu option from scx_bpfland
+ceb9ab355330d9df89f4e422c3ddab59a1605b52 # scx_loader: Update performance profiles for scx_flash
+99947406a66e53435108e538ae70486ba0930bf1 # scx_flash: Introduce --native-priority
 )
 
 _reverts=(
