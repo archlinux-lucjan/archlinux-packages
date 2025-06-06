@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r544.g316ba0e6
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,6 +30,7 @@ _backports=(
 8f7bd412479f4c91189de18304f734c7cec16525 # scx_flash: Reintroduce voluntary context switch-based prioritization
 7b33a265e47c4c8cc0381f6d35d018e283b3af6b # scx_flash: Port --local-pcpu option from scx_bpfland
 f1410e5fea42253d6167b10c62b85b0e26041fbf # scx_loader: Update performance profiles for scx_flash
+d558d9ceda14a671b783bf1c0727b415773ef15f # scx_flash: Introduce --native-priority
 )
 
 _reverts=(
