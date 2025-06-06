@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r544.g316ba0e6
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -16,8 +16,8 @@ source=("git+https://github.com/sched-ext/scx"
         '0001-meson-install-scx_wd40.patch'
         '0002-scx_loader-Add-chaos-scheduler.patch')
 sha256sums=('SKIP'
-            '91f7ac83ec4cee228124f53e1261f0f3d187724222dc032df0f9339567f9f415'
-            '6ed7f3464d4f8f280cb1a6642a638c143358e8825d06e6da403ff39923f513a4')
+            '026dedc85c5024030c5cc923d1b89d3a48eb827fa8b9897323698ee6f974ecd4'
+            'ecd776ee93d99884bfd82b09e5a8d1c16941540fc59aafd36ad25b6392b6eb75')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
@@ -28,7 +28,8 @@ _backports=(
 5bf77c9c7cde425c1954ceab2aa5ebe6983c2d55 # scx_flash: Rework direct dispatch logic
 5d25952f10404542a58680b0cd2940e1d6d7e3cf # scx_flash: Always scale task's execution time by its normalized weight
 8f7bd412479f4c91189de18304f734c7cec16525 # scx_flash: Reintroduce voluntary context switch-based prioritization
-f9e6fc112595f11c39a8a0334d4c3a8abc43d666 # scx_loader: Update performance profiles for scx_flash
+7b33a265e47c4c8cc0381f6d35d018e283b3af6b # scx_flash: Port --local-pcpu option from scx_bpfland
+f1410e5fea42253d6167b10c62b85b0e26041fbf # scx_loader: Update performance profiles for scx_flash
 )
 
 _reverts=(

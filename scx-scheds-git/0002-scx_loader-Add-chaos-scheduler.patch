@@ -1,6 +1,6 @@
-From 604d355fae24eb4e63f7f17f9a04fd872470880f Mon Sep 17 00:00:00 2001
+From a58c44eb65edbfc38ddfeef54193be94ee360ff1 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 6 Jun 2025 07:57:42 +0200
+Date: Fri, 6 Jun 2025 08:25:28 +0200
 Subject: [PATCH 2/2] scx_loader: Add chaos scheduler
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -55,7 +55,7 @@ index 78902e26..1869bcf1 100644
  ## Fallback Behavior
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index f5134dd0..ecde7476 100644
+index c67ab6bb..b015ac1c 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
 @@ -109,6 +109,10 @@ pub fn get_default_config() -> Config {

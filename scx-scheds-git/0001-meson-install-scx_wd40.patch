@@ -1,6 +1,6 @@
-From 6b36df04b87a63e4c976f88951715a4780203de4 Mon Sep 17 00:00:00 2001
+From 165e4f9487e3b6a294020ae3c26f51c5c5f0c433 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 6 Jun 2025 07:57:24 +0200
+Date: Fri, 6 Jun 2025 08:25:13 +0200
 Subject: [PATCH 1/2] meson: install scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -133,7 +133,7 @@ index c228d2ee..78902e26 100644
  ## Fallback Behavior
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index 250b0cb2..f5134dd0 100644
+index 17afc196..c67ab6bb 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
 @@ -105,6 +105,10 @@ pub fn get_default_config() -> Config {
