@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r538.gc779327d
-pkgrel=1
+pkgver=1.0.12.r544.g316ba0e6
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -16,18 +16,19 @@ source=("git+https://github.com/sched-ext/scx"
         '0001-meson-install-scx_wd40.patch'
         '0002-scx_loader-Add-chaos-scheduler.patch')
 sha256sums=('SKIP'
-            'b2a62369bc36f82a43f8387bc7689d246b62e29e931f244afb7331c9b66fd01a'
-            '4247b9f34285cf0fa63a251b4800c253424d752087527055d07f3d333d231d3b')
+            '91f7ac83ec4cee228124f53e1261f0f3d187724222dc032df0f9339567f9f415'
+            '6ed7f3464d4f8f280cb1a6642a638c143358e8825d06e6da403ff39923f513a4')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-6111b4c690dceb85879c020794c2a2033ae5fb32 # scx_flash: Re-align with scx_bpfland
-7acac6442f5ac5591597a320615b099041a60657 # scx_flash: Do not allow negative slice_lag
-748ad5872abff29b46b222faf6fd6951843d5db7 # scx_flash: Rework direct dispatch logic
-5878757fe4c0827848b6e7b855c535611c49bdae # scx_flash: Always scale task's execution time by its normalized weight
-c391377f28c29dc211322fc4baf9c11305d89aab # scx_flash: Reintroduce voluntary context switch-based prioritization
+237f347fe3d54f48ff3662e506c8d95d8973c090 # scx_flash: Re-align with scx_bpfland
+677edfcf5eedcb0f99c526e0705a35a6a20e3ec9 # scx_flash: Do not allow negative slice_lag
+5bf77c9c7cde425c1954ceab2aa5ebe6983c2d55 # scx_flash: Rework direct dispatch logic
+5d25952f10404542a58680b0cd2940e1d6d7e3cf # scx_flash: Always scale task's execution time by its normalized weight
+8f7bd412479f4c91189de18304f734c7cec16525 # scx_flash: Reintroduce voluntary context switch-based prioritization
+f9e6fc112595f11c39a8a0334d4c3a8abc43d666 # scx_loader: Update performance profiles for scx_flash
 )
 
 _reverts=(

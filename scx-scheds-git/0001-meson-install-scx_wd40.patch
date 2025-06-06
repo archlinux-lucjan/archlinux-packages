@@ -1,6 +1,6 @@
-From 8bd0b4811ca2155eb8f0cfc8924ee6dfff7b9bf5 Mon Sep 17 00:00:00 2001
+From 6b36df04b87a63e4c976f88951715a4780203de4 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 4 Jun 2025 08:44:04 +0200
+Date: Fri, 6 Jun 2025 07:57:24 +0200
 Subject: [PATCH 1/2] meson: install scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -91,7 +91,7 @@ index 02193018..600093c4 100644
                 'scx_rustland_core',
                 'scx_loader']
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index ae1fc0ef..ab138dad 100644
+index c228d2ee..78902e26 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
 @@ -60,12 +60,18 @@ auto_mode = []
@@ -133,7 +133,7 @@ index ae1fc0ef..ab138dad 100644
  ## Fallback Behavior
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index a1a6700e..cd9ef91e 100644
+index 250b0cb2..f5134dd0 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
 @@ -105,6 +105,10 @@ pub fn get_default_config() -> Config {
@@ -147,7 +147,7 @@ index a1a6700e..cd9ef91e 100644
          ]),
      }
  }
-@@ -222,6 +226,8 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
+@@ -229,6 +233,8 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
          },
          // scx_rustland doesn't support any of these modes
          SupportedSched::Rustland => vec![],
@@ -156,7 +156,7 @@ index a1a6700e..cd9ef91e 100644
      }
  }
  
-@@ -282,6 +288,13 @@ gaming_mode = []
+@@ -289,6 +295,13 @@ gaming_mode = []
  lowlatency_mode = []
  powersave_mode = []
  server_mode = []
