@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r585.g78c11111
+pkgver=1.0.12.r589.gd4601e7d
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -28,6 +28,7 @@ _backports=(
 921f1feee5b88cd6dc0274d79edc3466de7bd898 # scx_flash: Introduce --run-lag
 184be22df1fbf115514441873be053f24010dd0e # scx_flash: Drop deadline from task context
 1686aa0e1bf85a9d69a590fc88ac846cefdee78e # scx_flash: Update help
+b0b4e70e3a4025c9f62d2d7f3fd2831424db3163 # scx_flash: Use native Linux task priorities by default
 )
 
 _reverts=(
