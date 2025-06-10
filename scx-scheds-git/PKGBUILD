@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r599.g59f4b4a6
-pkgrel=2
+pkgver=1.0.12.r607.g9583545a
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,7 +23,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-4a50f2f8c5478bf0de25effc08c4f737e51b7754 # scx_flash: Rework direct dispatch
 715bd098b82a319ed00438d43274ef752849354f # scx_flash: Always update task domain before proactive wakeup
 921f1feee5b88cd6dc0274d79edc3466de7bd898 # scx_flash: Introduce --run-lag
 184be22df1fbf115514441873be053f24010dd0e # scx_flash: Drop deadline from task context
