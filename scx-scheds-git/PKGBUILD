@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r611.g51cfda77
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -29,6 +29,7 @@ _backports=(
 1686aa0e1bf85a9d69a590fc88ac846cefdee78e # scx_flash: Update help
 b0b4e70e3a4025c9f62d2d7f3fd2831424db3163 # scx_flash: Use native Linux task priorities by default
 77a37c363344b27f5bccbf4691aba391e9de9f64 # lib: remove scx_bpf_error calls and replace with bpf_printk
+dbb0590ccb90753d1e91b6dab36b3025cc566bb2 # scx_p2dq: Add affinitized per CPU DSQs
 )
 
 _reverts=(
