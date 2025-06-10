@@ -1,4 +1,4 @@
-From 8bd0b4811ca2155eb8f0cfc8924ee6dfff7b9bf5 Mon Sep 17 00:00:00 2001
+From 77ce83209e45cd492cfe07f2e1efc160454ddd08 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 4 Jun 2025 08:44:04 +0200
 Subject: [PATCH 1/2] meson: install scx_wd40
@@ -17,10 +17,10 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  9 files changed, 55 insertions(+), 7 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index b3391e2d..016a20e6 100644
+index 191714cf..07e94200 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2969,6 +2969,29 @@ dependencies = [
+@@ -2553,6 +2553,29 @@ dependencies = [
   "static_assertions",
  ]
  
@@ -78,10 +78,10 @@ index 63dbf835..30934709 100755
          continue
      fi
 diff --git a/meson.build b/meson.build
-index 02193018..600093c4 100644
+index 8d9c7cdf..9f901c92 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -360,7 +360,7 @@ if enable_rust
+@@ -359,7 +359,7 @@ if enable_rust
  
    rust_scheds = ['scx_lavd', 'scx_bpfland', 'scx_rustland', 'scx_rlfifo',
                   'scx_flash', 'scx_rusty', 'scx_p2dq',
