@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r636.g941bff48
+pkgver=1.0.12.r640.g06174646
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -25,7 +25,6 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-fbaa88d62388a465fce32bef8aa96ffaabb900f3 # scx_utils: Tune the capacity gap threshold for correct detection of big/LITTLE.
 )
 
 _reverts=(
