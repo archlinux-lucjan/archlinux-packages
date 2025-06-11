@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r613.g46fcc6d4
-pkgrel=1
+pkgver=1.0.12.r621.g41160ea2
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -14,20 +14,18 @@ makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 backup=('etc/default/scx')
 source=("git+https://github.com/sched-ext/scx"
         '0001-meson-install-scx_wd40.patch'
-        '0002-scx_loader-Add-chaos-scheduler.patch')
+        '0002-scx_loader-Add-chaos-scheduler.patch'
+        '0003-chaos-fixes.patch')
 sha256sums=('SKIP'
             '026dedc85c5024030c5cc923d1b89d3a48eb827fa8b9897323698ee6f974ecd4'
-            'ecd776ee93d99884bfd82b09e5a8d1c16941540fc59aafd36ad25b6392b6eb75')
+            'ecd776ee93d99884bfd82b09e5a8d1c16941540fc59aafd36ad25b6392b6eb75'
+            '9dacc1965662e0692c8b31166c745f79ba46d5024f0e4a39e733cc8af7dc3b6c')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-715bd098b82a319ed00438d43274ef752849354f # scx_flash: Always update task domain before proactive wakeup
-921f1feee5b88cd6dc0274d79edc3466de7bd898 # scx_flash: Introduce --run-lag
-184be22df1fbf115514441873be053f24010dd0e # scx_flash: Drop deadline from task context
-1686aa0e1bf85a9d69a590fc88ac846cefdee78e # scx_flash: Update help
-b0b4e70e3a4025c9f62d2d7f3fd2831424db3163 # scx_flash: Use native Linux task priorities by default
+120e1329a165f894eb58ee788ddc8cb089fa8f32 # scx_flash: Always update task domain before proactive wakeup
 )
 
 _reverts=(
