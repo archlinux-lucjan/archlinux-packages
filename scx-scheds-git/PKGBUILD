@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.12.r625.ga6367fe4
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -26,6 +26,9 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 120e1329a165f894eb58ee788ddc8cb089fa8f32 # scx_flash: Always update task domain before proactive wakeup
+d2e8a2a4df47e599691dd09ec1b4bc66a3488ab2 # scx_flash: Introduce --run-lag
+fa83736867128615c348b99aa97d80de2b862630 # scx_flash: Drop deadline from task context
+62c43cde8b3a8525df63ce59d9f8e0c29ec3e52e # scx_flash: Update help
 d0236c4e094ee709bf66c27ef8ea658bb3eb6b02 # scx_utils: Refactor finding a CPU capacity source.
 1f949cbe4ec7dcaf8faa90c79e5f67df1cb3f9d0 # scx_utils: Improve detection of heterogeneous architectures (big/LITTLE).
 d299b7905d9aadaaed6268a6bc6ba6fee34f7218 # scx_lavd: Rely on Topology for core type determination.
