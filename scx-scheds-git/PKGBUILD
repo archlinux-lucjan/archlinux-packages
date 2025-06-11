@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r632.ge9b58dd5
+pkgver=1.0.12.r636.g941bff48
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -25,9 +25,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-c6474ca2d380cadad395a4073c6abd72913cd521 # scx_utils: Refactor finding a CPU capacity source.
-079d40d2a8aed4c46ac99653048f689fc9f9cec8 # scx_utils: Improve detection of heterogeneous architectures (big/LITTLE).
-7f0e4b94ec4b6f9345ddc4b8e73defd9bf85ba1c # scx_lavd: Rely on Topology for core type determination.
+fbaa88d62388a465fce32bef8aa96ffaabb900f3 # scx_utils: Tune the capacity gap threshold for correct detection of big/LITTLE.
 )
 
 _reverts=(
