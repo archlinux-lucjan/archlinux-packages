@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r644.ga04639ed
+pkgver=1.0.12.r650.g3f39272e
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-5b8295d72150d802b3c4f10f16d7b01c05458853 # scx_flash: Prevent potential ops.enqueue() stall
+6933ff56e8a8e01ee20d35a09d857ec0ae3d7b44 # scx_flash: Prevent potential ops.enqueue() stall
 )
 
 _reverts=(
