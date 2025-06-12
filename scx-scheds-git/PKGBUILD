@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r689.gbb6eeb40
-pkgrel=1
+pkgver=1.0.12.r691.g44630a48
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,6 +23,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
+07c57794b7ca8034fc751020745492dcb4cd1b8e # scx_flash: Introduce "turbo" mode
 )
 
 _reverts=(
