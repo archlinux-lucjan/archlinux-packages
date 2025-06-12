@@ -1,6 +1,6 @@
-From ac2408dc944c37004c8d9a8c9c62bc8a71f56635 Mon Sep 17 00:00:00 2001
+From 2bc7197c8e78a2b99c8a78eae9fd68e193354a51 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Thu, 12 Jun 2025 15:33:52 +0200
+Date: Thu, 12 Jun 2025 20:54:01 +0200
 Subject: [PATCH 1/2] meson: install scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -17,16 +17,16 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  9 files changed, 55 insertions(+), 7 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index b3391e2d..016a20e6 100644
+index 8e5b537a..691892ba 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2969,6 +2969,29 @@ dependencies = [
+@@ -2973,6 +2973,29 @@ dependencies = [
   "static_assertions",
  ]
  
 +[[package]]
 +name = "scx_wd40"
-+version = "1.0.12"
++version = "1.0.13"
 +dependencies = [
 + "anyhow",
 + "chrono",
@@ -49,7 +49,7 @@ index b3391e2d..016a20e6 100644
 +
  [[package]]
  name = "scx_stats"
- version = "1.0.12"
+ version = "1.0.13"
 diff --git a/Cargo.toml b/Cargo.toml
 index e411f6c7..0c47e762 100644
 --- a/Cargo.toml
@@ -78,7 +78,7 @@ index 63dbf835..30934709 100755
          continue
      fi
 diff --git a/meson.build b/meson.build
-index 02193018..600093c4 100644
+index 8283bdde..69220a09 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -360,7 +360,7 @@ if enable_rust
@@ -212,7 +212,7 @@ index f2ca9935..1363a0c6 100644
      }
  
 diff --git a/scheds/rust/scx_wd40/Cargo.toml b/scheds/rust/scx_wd40/Cargo.toml
-index ca8f2e2f..374b3478 100644
+index c3f94c38..4888946d 100644
 --- a/scheds/rust/scx_wd40/Cargo.toml
 +++ b/scheds/rust/scx_wd40/Cargo.toml
 @@ -33,5 +33,3 @@ enable_backtrace = []
