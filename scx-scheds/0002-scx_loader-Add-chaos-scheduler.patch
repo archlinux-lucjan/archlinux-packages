@@ -1,6 +1,6 @@
-From 687a6d43ba14b3106e432052c27dab56a93777bd Mon Sep 17 00:00:00 2001
+From df1a86e6ddcbd6cdfd3816eb80903b210b0b3bc0 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 4 Jun 2025 08:54:02 +0200
+Date: Thu, 12 Jun 2025 20:54:22 +0200
 Subject: [PATCH 2/2] scx_loader: Add chaos scheduler
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -12,7 +12,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  4 files changed, 34 insertions(+), 2 deletions(-)
 
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index ab138dad..89509207 100644
+index 78902e26..1869bcf1 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
 @@ -66,12 +66,18 @@ auto_mode = []
@@ -55,7 +55,7 @@ index ab138dad..89509207 100644
  ## Fallback Behavior
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index cd9ef91e..8b9b9c95 100644
+index c67ab6bb..b015ac1c 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
 @@ -109,6 +109,10 @@ pub fn get_default_config() -> Config {
@@ -69,7 +69,7 @@ index cd9ef91e..8b9b9c95 100644
          ]),
      }
  }
-@@ -228,6 +232,13 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
+@@ -235,6 +239,13 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
          SupportedSched::Rustland => vec![],
          // scx_wd40 doesn't support any of these modes
          SupportedSched::WD40 => vec![],
@@ -83,7 +83,7 @@ index cd9ef91e..8b9b9c95 100644
      }
  }
  
-@@ -295,6 +306,13 @@ gaming_mode = []
+@@ -302,6 +313,13 @@ gaming_mode = []
  lowlatency_mode = []
  powersave_mode = []
  server_mode = []
