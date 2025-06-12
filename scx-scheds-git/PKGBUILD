@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.12.r675.g92ad60f6
+pkgver=1.0.12.r689.gbb6eeb40
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -16,14 +16,13 @@ source=("git+https://github.com/sched-ext/scx"
         '0001-meson-install-scx_wd40.patch'
         '0002-scx_loader-Add-chaos-scheduler.patch')
 sha256sums=('SKIP'
-            '026dedc85c5024030c5cc923d1b89d3a48eb827fa8b9897323698ee6f974ecd4'
-            'ecd776ee93d99884bfd82b09e5a8d1c16941540fc59aafd36ad25b6392b6eb75')
+            '5b973e2a0dc46a5b6c60db68ee5f4d8f2fe5db04a49b54d23d5596e0761d6a21'
+            '227395ffd5de33225b0e82e56e149115666159043b653ecb61e23b55da8f54d5')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-42d77c5d93059e6f23b6f93dccdc73bf3c90326c # scx_chaos: Add stats interface for chaos injection metrics
 )
 
 _reverts=(
