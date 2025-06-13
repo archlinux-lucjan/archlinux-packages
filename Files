@@ -231,6 +231,7 @@
 ├── scx-scheds
 │   ├── 0001-meson-install-scx_wd40.patch
 │   ├── 0002-scx_loader-Add-chaos-scheduler.patch
+│   ├── 0003-meson-install-scx_mitosis.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   ├── 0001-meson-install-scx_wd40.patch
@@ -261,4 +262,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 179 files
+83 directories, 180 files
