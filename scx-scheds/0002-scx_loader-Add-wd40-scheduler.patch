@@ -1,7 +1,7 @@
 From 27aacfb91a65688cc65230a61c48005041d0f90e Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 13 Jun 2025 15:50:55 +0200
-Subject: [PATCH 2/3] scx_loader: Add wd40 scheduler
+Subject: [PATCH 2/4] scx_loader: Add wd40 scheduler
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
