@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r6.gf4f0e180
-pkgrel=4
+pkgver=1.0.13.r32.gcedfa76f
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,10 +27,9 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-b0b29817b87dc18a43444e73fa44ece6771e4dd2 # scx_flash: Introduce "turbo" mode
-003db1e3ef0c8a8b96541c883626b046af5f17b6 # scx_flash: Introduce --rr-sched
-e6ce7df97122e7922da0319d9c13585627a412ec # scx_flash: Introduce --strict-domain
-0ae0f6068d0495707b69c7bb58479c3f13500614 # scx_flash: Introduce --builtin-idle
+a60d7e5a6151b6b5e39901d7c4de3cc4e6bfa9a3 # scx_flash: Introduce --strict-domain
+4750cdd1ec75d3dfc209012975e076acdb86b3df # scx_flash: Introduce --builtin-idle
+3899397d3624351eb2861c4d78c4ef2cd3ad06e6 # scx_flash: Introduce --cpu-runqueue
 )
 
 _reverts=(
