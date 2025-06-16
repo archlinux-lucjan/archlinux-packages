@@ -1,4 +1,4 @@
-From 57311f23f851365f13a26692a2ebd1b1d8a1509c Mon Sep 17 00:00:00 2001
+From ccf9d3ac90ca6756a1cf69f80bfa6aa3e5ae48e5 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 13 Jun 2025 17:19:48 +0200
 Subject: [PATCH 1/2] meson: install scx_mitosis and scx_wd40
@@ -13,10 +13,10 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  5 files changed, 25 insertions(+), 9 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index 8e5b537a..691892ba 100644
+index 6c9d7b1d..f6bd0c62 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2973,6 +2973,29 @@ dependencies = [
+@@ -2982,6 +2982,29 @@ dependencies = [
   "static_assertions",
  ]
  
@@ -47,10 +47,10 @@ index 8e5b537a..691892ba 100644
  name = "scx_stats"
  version = "1.0.13"
 diff --git a/Cargo.toml b/Cargo.toml
-index e411f6c7..0c47e762 100644
+index 44c6c03c..42d0a9a1 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -17,6 +17,7 @@ members = [
+@@ -18,6 +18,7 @@ members = [
      "scheds/rust/scx_rustland",
      "scheds/rust/scx_rusty",
      "scheds/rust/scx_tickless",
