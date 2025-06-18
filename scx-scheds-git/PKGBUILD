@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r99.gba25133e
+pkgver=1.0.13.r101.g24b1b9f3
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,8 +23,10 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-ce06e8e6d7cc74489cf5935cf3ac3d081a1f356e # scx_flash: Introduce --strict-domain
-290e984f4b3c674ebef6ddef89e1e5e92a9f373f # scx_flash: Introduce --builtin-idle
+4299950c9875e2099ef64fa26d541adce0ecfd26 # scx_flash: Reduce migrations with per-CPU DSQs enabled
+1dc642a0ffa765acfb143dc693cdd1750cc5eb77 # scx_flash: Introduce --strict-domain
+c79822805d705e1a69b6ed71e2c324c222462be5 # scx_flash: Introduce --builtin-idle
+a1de27b279bd4d1a117e58985e7faf31526f57da # scx_p2dq: Bump p2dq version
 )
 
 _reverts=(
