@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r103.ge4791ca9
-pkgrel=2
+pkgver=1.0.13.r139.gb6d64662
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,9 +23,10 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-352a907b08413523230a22f7346f49327543d894 # scx_flash: Reduce migrations with per-CPU DSQs enabled
-75aaa842bd67a29e548e68af54007c2b5b26c295 # scx_flash: Introduce --strict-domain
-f0208d82a1259ddfde460144a4944ba5d3b379a9 # scx_flash: Introduce --builtin-idle
+9890ebec37ebc1e52f77057ecc57a5fed67926ef # scx_flash: Always enable per-CPU DSQs
+3d42f8f5fee40e3db726f8206322ba1ffb22db2f # scx_flash: Allow to exclusively enable per-CPUs or per-node DSQs
+1a4f6e87dd449c7667b848d08f0c6dd730ab7643 # scx_flash: Disable voluntary context switch rate tracking by default
+8e631f635bb16b3ac528715f8ce8c00043494633 # scx_flash: Introduce tickless mode
 )
 
 _reverts=(
