@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r171.ga33af09d
-pkgrel=3
+pkgver=1.0.13.r173.gd3da6ca3
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,12 +23,13 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-7f3aab6347427d17ba096dc808a3589e15450d04 # scx_flash: Update nvcsw statistics only on task sleep
-26fc38bd107f407b3ac1c7b4e04356bccee61781 # scx_flash: Reduce impact of nvcsw on sleeping time budget
-e52e80faf8398a1b16633c264b532fabc6e94541 # scx_flash: Always prefer reusing the same CPU
-696863dc592eb085d7b23d1364dd75e3f76efcfc # scx_flash: Save some cpumask ops when primary domain includes all CPUs
-2c5eb2e3303d66337130a60ca75ca9d1d7dbd365 # scx_flash: Increase maximum accounted runtime by 10x
-1aa2b61a5682ef2913f5179f402931facd68b5e8 # scx_flash: Do not normalize run lag
+ef17e0d91315e15ad896c3153ff6c8a6744002cb # scx_flash: Update nvcsw statistics only on task sleep
+2e009133542df9f03441ceb9ae2c2c74a98c0a98 # scx_flash: Reduce impact of nvcsw on sleeping time budget
+4c2b90ba250620539e2496369770451c80c3d55f # scx_flash: Always prefer reusing the same CPU
+7f128bc38e2bc15a35e7c74a09558bf9679658cd # scx_flash: Save some cpumask ops when primary domain includes all CPUs
+fb6cef929c47791eae8d81b038286a991fd8ae5a # scx_flash: Increase maximum accounted runtime by 10x
+8f248d9bf1db397393004b09de1c7193dd9ff94b # scx_flash: Do not normalize run lag
+0f90a4a3e46efc682c86e56711add1ea8a9c9b82 # scx_flash: Do not prioritize per-CPU kthreads by default
 )
 
 _reverts=(
