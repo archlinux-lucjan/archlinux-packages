@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r158.g3859f066
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -28,7 +28,7 @@ d36784571fc5076d1559ac4b79729968abdca159 # scx_flash: Introduce tickless mode
 38563ff5ed1ffbbad39a54b08757d34873db646a # scx_flash: Reduce impact of nvcsw on sleeping time budget
 c1cb088a0ff9fd1ac2c09e6a23209e80d0643dbd # scx_flash: Re-enable voluntary context switch rate prioritization
 d3b2730917ebebec218dfe64608cf72e96e80b5c # scx_flash: Always prefer reusing the same CPU
-38761ccae82113511ebf091e9d6faa459d382204 # scx_flash: Save some cpumask ops when primary domain includes all CPUs
+7829d06974bf886e385833e9ecdc31fe23749046 # scx_flash: Save some cpumask ops when primary domain includes all CPUs
 )
 
 _reverts=(
