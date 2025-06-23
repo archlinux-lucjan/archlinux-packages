@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r171.ga33af09d
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,9 +27,8 @@ _backports=(
 26fc38bd107f407b3ac1c7b4e04356bccee61781 # scx_flash: Reduce impact of nvcsw on sleeping time budget
 e52e80faf8398a1b16633c264b532fabc6e94541 # scx_flash: Always prefer reusing the same CPU
 696863dc592eb085d7b23d1364dd75e3f76efcfc # scx_flash: Save some cpumask ops when primary domain includes all CPUs
-6d5ba74035f34b1fd5b1cd6d431161cb97f0dfc5 # scx_flash: Always rebalance per-CPU DSQs
-66ea935a5925674b6a512798b505112d1eba5527 # scx_flash: Increase maximum accounted runtime by 10x
-365fc76e5699d30d36b38975063a34ecdb324cae # WIP: scx_flash: Fix Lucjan audio cracking without regressing everything else
+2c5eb2e3303d66337130a60ca75ca9d1d7dbd365 # scx_flash: Increase maximum accounted runtime by 10x
+1aa2b61a5682ef2913f5179f402931facd68b5e8 # scx_flash: Do not normalize run lag
 )
 
 _reverts=(
