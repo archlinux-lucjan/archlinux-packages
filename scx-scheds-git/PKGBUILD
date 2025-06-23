@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r171.ga33af09d
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,13 +23,13 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-5cd8b0b97d13e150e7da30fa05e3dbe03d497185 # scx_flash: Update nvcsw statistics only on task sleep
-5fc64ac0ef08e7f3308c977c946efebfda06f399 # scx_flash: Reduce impact of nvcsw on sleeping time budget
-e08ccf7cd9dd4343588a42553d9c673ca773baa5 # scx_flash: Always prefer reusing the same CPU
-d582c2389b8ec0524d9ee807ac526c15ff290019 # scx_flash: Save some cpumask ops when primary domain includes all CPUs
-fc863ee55dd8137578652008cf2d90eb879bab12 # scx_flash: Always rebalance per-CPU DSQs
-4e2b84a859b49d1523d0e15600a07cf23de50ea6 # scx_flash: Increase maximum accounted runtime by 10x
-de354c7a4fe960edba21e4b8dfae43b3e2c22a38 # WIP: scx_flash: Fix Lucjan audio cracking without regressing everything else
+7f3aab6347427d17ba096dc808a3589e15450d04 # scx_flash: Update nvcsw statistics only on task sleep
+26fc38bd107f407b3ac1c7b4e04356bccee61781 # scx_flash: Reduce impact of nvcsw on sleeping time budget
+e52e80faf8398a1b16633c264b532fabc6e94541 # scx_flash: Always prefer reusing the same CPU
+696863dc592eb085d7b23d1364dd75e3f76efcfc # scx_flash: Save some cpumask ops when primary domain includes all CPUs
+6d5ba74035f34b1fd5b1cd6d431161cb97f0dfc5 # scx_flash: Always rebalance per-CPU DSQs
+66ea935a5925674b6a512798b505112d1eba5527 # scx_flash: Increase maximum accounted runtime by 10x
+365fc76e5699d30d36b38975063a34ecdb324cae # WIP: scx_flash: Fix Lucjan audio cracking without regressing everything else
 )
 
 _reverts=(
