@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r160.g65ed48ac
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -31,12 +31,12 @@ d3b2730917ebebec218dfe64608cf72e96e80b5c # scx_flash: Always prefer reusing the 
 7829d06974bf886e385833e9ecdc31fe23749046 # scx_flash: Save some cpumask ops when primary domain includes all CPUs
 d160f1ad6d9b01b7dd1526705298d01373f32192 # scx_flash: Always rebalance per-CPU DSQs
 b6642c4bea11d81fa9671a64db1bd29fda41ca6b # scx_flash: Increase maximum accounted runtime by 10x
-d53a1414b114ada85268bc7dc4d7de4e70be9e20 # scx_utils: Look up a performance state by CPU utilization.
-5491900e828c52ef02c204f98169d7747d328e9a # scx_utils: Add Eq, Hash, and Ord traits to PerfDomain/State.
-6e990a672fcf20c8024aa60f0e31760f1346d847 # scx_utils: Add get_total_performance() to EnergyModel.
-c307403630035e03c63b980bcfc2d1d87d4edf30 # scx_lavd: Add EnergyModelOptimizer.
-0022b66b653542397eb8c1203d2c54eab3c15dea # scx_lavd: Generate a fake perf_cpuset_table when the energy model is not available.
-8cdeda57e2c2024d332dc04954113beb8f4fa349 # scx_lavd: Use perf_cpu_order for the BPF scheduler.
+e8d36b48e101c05ed51097f52049766cb2fbb88e # scx_utils: Look up a performance state by CPU utilization.
+fad8c4bf91bc68b804e9ed2031c1cb002587003c # scx_utils: Add Eq, Hash, and Ord traits to PerfDomain/State.
+f6c198ed15276eccfcab4db0cd222a569fb0a3ff # scx_utils: Add get_total_performance() to EnergyModel.
+724df5bcbfe9754cf61d0c707fc24c0128fa2633 # scx_lavd: Add EnergyModelOptimizer.
+424caeb713d2d0679c350ae466c9e62090cd4973 # scx_lavd: Generate a fake perf_cpuset_table when the energy model is not available.
+8e13020ff181a8f03089158d95c4159875e20c64 # scx_lavd: Use perf_cpu_order for the BPF scheduler.
 f571c5d36eb4426dc72aa5172df418ea546207f0 # scx_p2dq: Refactor dispatch path
 )
 
