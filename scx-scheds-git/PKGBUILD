@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r158.g3859f066
-pkgrel=8
+pkgver=1.0.13.r160.g65ed48ac
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,6 +30,7 @@ c1cb088a0ff9fd1ac2c09e6a23209e80d0643dbd # scx_flash: Re-enable voluntary contex
 d3b2730917ebebec218dfe64608cf72e96e80b5c # scx_flash: Always prefer reusing the same CPU
 7829d06974bf886e385833e9ecdc31fe23749046 # scx_flash: Save some cpumask ops when primary domain includes all CPUs
 d160f1ad6d9b01b7dd1526705298d01373f32192 # scx_flash: Always rebalance per-CPU DSQs
+b6642c4bea11d81fa9671a64db1bd29fda41ca6b # scx_flash: Increase maximum accounted runtime by 10x
 d53a1414b114ada85268bc7dc4d7de4e70be9e20 # scx_utils: Look up a performance state by CPU utilization.
 5491900e828c52ef02c204f98169d7747d328e9a # scx_utils: Add Eq, Hash, and Ord traits to PerfDomain/State.
 6e990a672fcf20c8024aa60f0e31760f1346d847 # scx_utils: Add get_total_performance() to EnergyModel.
