@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r173.gd3da6ca3
+pkgver=1.0.13.r190.g4e20617b
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=("git+https://github.com/sched-ext/scx"
         '0001-meson-install-scx_mitosis-and-scx_wd40.patch'
         '0002-scx_loader-Add-missing-schedulers.patch')
 sha256sums=('SKIP'
-            'd8228564905b8de1649b4643a7366388c2514a0e64d7dd25fbfc75960b3beca5'
-            'cf5f810bfa7d328c04a4df874b37a4cc3047f03dcd7bf287826844fa85cfdc6c')
+            '09c571ccdf5ca448b0aa75886cf45d2bc8894d9368ededfdc50bac87b14b24a6'
+            'fa12a9545cb415f3f074da7606d09cf532abdc373f1f68ed973f574c9a901110')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")

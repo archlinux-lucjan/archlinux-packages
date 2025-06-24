@@ -1,4 +1,4 @@
-From ff6ef26f6a87d45a569b0eb3d9c5495b38c5a820 Mon Sep 17 00:00:00 2001
+From a5eb8419aa8b4c573d3c78d90173a0e5ff6bf2f8 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Mon, 23 Jun 2025 17:12:42 +0200
 Subject: [PATCH 1/2] meson: install scx_mitosis and scx_wd40
@@ -76,10 +76,10 @@ index 63dbf835..7469215f 100755
      if [ ${#bins[@]} -lt 1 ]; then
          echo "Cannot find a binary for $name under $target_dir" 1>&2
 diff --git a/meson.build b/meson.build
-index 8283bdde..69220a09 100644
+index 1fc78a18..38fbd030 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -360,7 +360,7 @@ if enable_rust
+@@ -371,7 +371,7 @@ if enable_rust
  
    rust_scheds = ['scx_lavd', 'scx_bpfland', 'scx_rustland', 'scx_rlfifo',
                   'scx_flash', 'scx_rusty', 'scx_p2dq',
