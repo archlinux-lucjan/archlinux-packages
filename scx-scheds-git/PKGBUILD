@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r190.g4e20617b
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,6 +30,7 @@ ef17e0d91315e15ad896c3153ff6c8a6744002cb # scx_flash: Update nvcsw statistics on
 fb6cef929c47791eae8d81b038286a991fd8ae5a # scx_flash: Increase maximum accounted runtime by 10x
 8f248d9bf1db397393004b09de1c7193dd9ff94b # scx_flash: Do not normalize run lag
 0f90a4a3e46efc682c86e56711add1ea8a9c9b82 # scx_flash: Do not prioritize per-CPU kthreads by default
+1881d0806e70e1aef3bc196743b1d8c4f007d420 # meson.build: Suppress warning
 )
 
 _reverts=(
