@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r200.g5d455826
+pkgver=1.0.13.r215.g075b1a30
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -30,6 +30,8 @@ ef17e0d91315e15ad896c3153ff6c8a6744002cb # scx_flash: Update nvcsw statistics on
 fb6cef929c47791eae8d81b038286a991fd8ae5a # scx_flash: Increase maximum accounted runtime by 10x
 8f248d9bf1db397393004b09de1c7193dd9ff94b # scx_flash: Do not normalize run lag
 0f90a4a3e46efc682c86e56711add1ea8a9c9b82 # scx_flash: Do not prioritize per-CPU kthreads by default
+76ec14211e54a4b2926974d0f0f4c5080e0fb001 # Revert "meson.build: Suppress warning"
+b3398776c0524434d654a6edf6e0291ca9a5e9e3 # lib: Suppress a possibly uninitialized variable warning.
 )
 
 _reverts=(
