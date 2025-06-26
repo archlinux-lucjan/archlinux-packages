@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r253.gd91715fb
-pkgrel=2
+pkgver=1.0.13.r257.g07127d53
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -29,6 +29,7 @@ d29f9aa690ca1ab59a1e5165d09f258ac0fb713b # scx_flash: Introduce --interactive-us
 3306b887f06c62312fc4b360bf40dc1b0cf0021e # scx_flash: Prevent priority inversion between per-CPU and per-node DSQs
 ca690c006d2d10bf1f4b79fbfcb889a817837909 # scx_flash: Apply average nvcsw to task's weight
 57d0636405c8f14dcd5d39eaf13318a16796e8f5 # scx_flash: Re-enable voluntary context switch prioritization by default
+55c2f057193be59d093513d65918e072f2d91bf0 # scx_flash: Enable tickless mode by default
 )
 
 _reverts=(
