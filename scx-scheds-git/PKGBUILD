@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r249.g7bac518a
+pkgver=1.0.13.r253.gd91715fb
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,11 +23,10 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-d0fa8d1109afec2a29f22cb1783f9e131ae79322 # scx_flash: Remove the tickless timer
-53bb10ab535adf75581204ac3f5205d7d5dc6c73 # scx_flash: Introduce --interactive-us-lag
-e99cafb6bc17a37dff41bbc4236b232cafa7aa2e # scx_flash: Get rid of -N and -C options
-8a682652cf57488747ca092f9e354cdbb336193f # scx_flash: Apply average nvcsw to task's weight
-136cd81f76ac66dad4bc2c015204a4f47f26b5f6 # scx_flash: Prevent priority inversion between per-CPU and per-node DSQs
+499513b99523fa70d9b504c9171eca714313f5f7 # scx_flash: Remove the tickless timer
+d29f9aa690ca1ab59a1e5165d09f258ac0fb713b # scx_flash: Introduce --interactive-us-lag
+97dac7b6fea6290e245b27f3f03731983ac1bb1e # scx_flash: Get rid of -N and -C options
+3306b887f06c62312fc4b360bf40dc1b0cf0021e # scx_flash: Prevent priority inversion between per-CPU and per-node DSQs
 )
 
 _reverts=(
