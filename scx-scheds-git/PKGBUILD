@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r245.gc437a4e4
-pkgrel=6
+pkgver=1.0.13.r249.g7bac518a
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -27,6 +27,7 @@ d0fa8d1109afec2a29f22cb1783f9e131ae79322 # scx_flash: Remove the tickless timer
 53bb10ab535adf75581204ac3f5205d7d5dc6c73 # scx_flash: Introduce --interactive-us-lag
 e99cafb6bc17a37dff41bbc4236b232cafa7aa2e # scx_flash: Get rid of -N and -C options
 8a682652cf57488747ca092f9e354cdbb336193f # scx_flash: Apply average nvcsw to task's weight
+136cd81f76ac66dad4bc2c015204a4f47f26b5f6 # scx_flash: Prevent priority inversion between per-CPU and per-node DSQs
 )
 
 _reverts=(
