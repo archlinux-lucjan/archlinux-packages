@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r245.gc437a4e4
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,7 +23,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-7d481d983eb31013a32d7eb7e9eeb6340264063d # scx_flash: Remove the tickless timer
+930924b0e7fe94f79eb89af92edebda3a0023250 # scx_flash: Remove the tickless timer
 )
 
 _reverts=(
