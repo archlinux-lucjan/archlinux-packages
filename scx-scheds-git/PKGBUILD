@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r273.gebf1a268
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,10 +23,12 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-66e40af828a767a98de332ea193251d4fa689bff # scx_flash: Remove the tickless timer
-d4fcc4141f6a2b312d6d8651e3eb3c2d7e72f68e # scx_flash: Introduce --interactive-us-lag
-a08731023ba7f9dac35079b0bfeaaaaea9f4ac9e # scx_flash: Get rid of -N and -C options
-e7b881962cda244705674a400c955bc6c887820a # scx_flash: Enable per-CPU kthread prioritization by default
+cd6cfb109bf94954ab1ed6392b4422cf36c94384 # scx_flash: Remove the tickless timer
+5ce5fac1e292a961f7f93f743a5330c6956404df # scx_flash: Introduce --interactive-us-lag
+1b6fb03ec61033807cf230984098180005162b94 # scx_flash: Get rid of -N and -C options
+3c084079f3ba6ba29f2fd8ddf026bba5aed1b759 # scx_flash: Enable per-CPU kthread prioritization by default
+e6e43276e12ba3b248a40db5f26350c3260e0a73 # scx_flash: Simplify nvcsw evaluation
+693cd3e4d37d9635a4ad9900f428d351b5c1f204 # scx_flash: Re-enable voluntary context switch prioritization by default
 )
 
 _reverts=(
