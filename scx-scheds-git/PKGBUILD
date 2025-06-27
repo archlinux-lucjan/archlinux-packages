@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r273.gebf1a268
-pkgrel=7
+pkgrel=8
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,14 +24,15 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 cd6cfb109bf94954ab1ed6392b4422cf36c94384 # scx_flash: Remove the tickless timer
-5ce5fac1e292a961f7f93f743a5330c6956404df # scx_flash: Introduce --interactive-us-lag
-1b6fb03ec61033807cf230984098180005162b94 # scx_flash: Get rid of -N and -C options
-3c084079f3ba6ba29f2fd8ddf026bba5aed1b759 # scx_flash: Enable per-CPU kthread prioritization by default
-e6e43276e12ba3b248a40db5f26350c3260e0a73 # scx_flash: Simplify nvcsw evaluation
-693cd3e4d37d9635a4ad9900f428d351b5c1f204 # scx_flash: Re-enable voluntary context switch prioritization by default
-5d43ead0fb4451a1fe72417fb3cc4644115b35f9 # scx_flash: Rely on the built-in idle CPU selection policy if available
-d3d29d51f0cfca3d276fc65b7a23063cd4c8831b # scx_flash: Introduce --no-builtin-idle
-2236a345933ca82bc66daeeb1f9ec85e19caaefc # scx_flash: Introduce --sticky-cpu
+9b823da03f05d4f2ed3c41d50752dde50bcf1bf3 # scx_flash: Fix no-SMT sync wakeup logic
+1cae37ae693ff9be554d0a04d1b9262fe05319a7 # scx_flash: Introduce --interactive-us-lag
+965c5057985829deeaf10bb008abc6a0126ba65b # scx_flash: Get rid of -N and -C options
+74c0533a4401ef6a681b93940ca340d45dec6576 # scx_flash: Enable per-CPU kthread prioritization by default
+7c9f9dace15731863cffc1b82ccbb855bce9f888 # scx_flash: Simplify nvcsw evaluation
+aa6a620111d0736a825dd9e13c9bf219947fd306 # scx_flash: Re-enable voluntary context switch prioritization by default
+bd88087db674d91dd33dbd58aa97d898dee9087e # scx_flash: Rely on the built-in idle CPU selection policy if available
+e0f04c6e82585ce14d6e8fb2916786f79e48565f # scx_flash: Introduce --no-builtin-idle
+f6074fb587bf4b5cd45eedd35f2650d99be1add1 # scx_flash: Introduce --no-sticky-cpu
 )
 
 _reverts=(
