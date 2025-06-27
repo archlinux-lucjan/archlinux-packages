@@ -1,22 +1,22 @@
-From 8cd79f6ba2c911d9d54d7daddee388547475293e Mon Sep 17 00:00:00 2001
+From 753f652d5dcbae6413595fbf17189a1c0687cb26 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Mon, 23 Jun 2025 17:12:42 +0200
+Date: Fri, 27 Jun 2025 08:24:40 +0200
 Subject: [PATCH 1/2] meson: install scx_mitosis and scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
- Cargo.lock                             | 23 +++++++++++++++++++++++
+ Cargo.lock                             | 24 ++++++++++++++++++++++++
  Cargo.toml                             |  1 +
  meson-scripts/install_rust_user_scheds |  6 ------
  meson.build                            |  2 +-
  scheds/rust/scx_wd40/Cargo.toml        |  2 --
- 5 files changed, 25 insertions(+), 9 deletions(-)
+ 5 files changed, 26 insertions(+), 9 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index ae2315f0..c7cf34e7 100644
+index ae2315f0..97302a20 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -3002,6 +3002,29 @@ dependencies = [
+@@ -3002,6 +3002,30 @@ dependencies = [
   "static_assertions",
  ]
  
@@ -33,6 +33,7 @@ index ae2315f0..c7cf34e7 100644
 + "libbpf-rs",
 + "libc",
 + "log",
++ "nix 0.29.0",
 + "ordered-float",
 + "scx_stats",
 + "scx_stats_derive",
