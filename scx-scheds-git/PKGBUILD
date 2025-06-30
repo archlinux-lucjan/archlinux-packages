@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r318.g5f8a603a
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -31,9 +31,9 @@ afdfa8325be1cd3c3b460a5ec65016d0e7f0b094 # scx_flash: Get rid of optional DSQs
 362e3ded78ad39e7b6516364a27ac598298768e8 # scx_flash: Use per-CPU DSQs in function of CPU utilization
 56ca82240214cff944d1a0c95afce4e2820c0cec # scx_flash: Simplify nvcsw evaluation
 aa827f1801becdd9243096229748bcb78d7515ec # scx_flash: Re-enable voluntary context switch prioritization by default
-fd44898120895f646cf0860e9fbcb0967942bb03 # scx_flash: Introduce --cpu-busy-thresh
-a97dee6d836ab86b05c5b5ca3ca30ec30f4a1d54 # scx_flash: Tune default options for latency
-8894f0ea6325e831767b11f4e6978e116d4a5cf4 # scx_loader: Update performance profiles for scx_flash
+156acfeffd53b747f570b655e180c194ff8f73c1 # scx_flash: Introduce --cpu-busy-thresh
+897d5ece152767716f7c3db225a9852e9d3d119f # scx_flash: Tune default options for latency
+91d3502d2b4767002b37475ba07129aad7be378f # scx_loader: Update performance profiles for scx_flash
 )
 
 _reverts=(
