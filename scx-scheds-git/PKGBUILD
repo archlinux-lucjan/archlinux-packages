@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r281.gdaa8d4ea
+pkgver=1.0.13.r318.g5f8a603a
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -16,22 +16,22 @@ source=("git+https://github.com/sched-ext/scx"
         '0001-meson-install-scx_mitosis-and-scx_wd40.patch'
         '0002-scx_loader-Add-missing-schedulers.patch')
 sha256sums=('SKIP'
-            'c695654f073f3d392874b17c987473591456aacae132684a98f7f69332f9b810'
-            '34fb4e422e22b403d280b1b7327f04757bdb4e008975645a528ff01d149ca638')
+            '9279b264b4672256ff44de831cf0e494a86889afbcd38fdde204846c30a95850'
+            '275cbf24bb79a35dede7bfec5f2bc7adf4e38d12cc15e18d90e59509fa39583f')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-2728a339d95cad5c6fe510f9921a009ca564e3b9 # scx_flash: Fix no-SMT sync wakeup logic
-1cae37ae693ff9be554d0a04d1b9262fe05319a7 # scx_flash: Introduce --interactive-us-lag
-965c5057985829deeaf10bb008abc6a0126ba65b # scx_flash: Get rid of -N and -C options
-74c0533a4401ef6a681b93940ca340d45dec6576 # scx_flash: Enable per-CPU kthread prioritization by default
-7c9f9dace15731863cffc1b82ccbb855bce9f888 # scx_flash: Simplify nvcsw evaluation
-aa6a620111d0736a825dd9e13c9bf219947fd306 # scx_flash: Re-enable voluntary context switch prioritization by default
-bd88087db674d91dd33dbd58aa97d898dee9087e # scx_flash: Rely on the built-in idle CPU selection policy if available
-e0f04c6e82585ce14d6e8fb2916786f79e48565f # scx_flash: Introduce --no-builtin-idle
-f6074fb587bf4b5cd45eedd35f2650d99be1add1 # scx_flash: Introduce --no-sticky-cpu
+179bb1b3d3f03757959ca502355408fc86a648da # scx_flash: Smooth target performance level
+02c9f1a2b725d9e5bfaa4b5a845d372af774b89d # scx_flash: Get rid of optional DSQs
+d97bad870919fdce01c7ce4ce05fcb09dc9f01c7 # scx_flash: Introduce --sticky-cpu
+95a16acf21ee70a2fc97d438b2049af624d2b7ff # scx_flash: Use per-CPU DSQs in function of CPU utilization
+2fc634e4371ca8091d9d5e737c3dc05a2c3d0447 # scx_flash: Introduce --cpu-busy-thresh
+46ec0d604187655e0360b125dadf7b1ae7a21c2d # scx_flash: Simplify nvcsw evaluation
+95589ce1ccbedfc19af812557e0178dabcca36ed # scx_flash: Re-enable voluntary context switch prioritization by default
+e404b9690bbeb61a400d332bd0dc8a71964be55d # scx_flash: Tune default options for latency
+e3309b5071a610161c9f6f6a57e3cda834544f68 # scx_loader: Update performance profiles for scx_flash
 )
 
 _reverts=(
