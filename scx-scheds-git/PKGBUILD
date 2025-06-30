@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r318.g5f8a603a
-pkgrel=3
+pkgver=1.0.13.r324.g82051dd6
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,17 +23,17 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-258ea6454e068ed555c4e88703b2cf7967931f7a # scx_flash: Clarify --local-pcpu implementation
-67f67e801d2dbe640e18ffaa2d8c96ad0bb238a5 # scx_flash: Soften primary domain affinity to favor full-idle SMT cores
-a5265cd96b3f2f01cd2b882f087cc42e56e5aad5 # scx_flash: Smooth target performance level
-afdfa8325be1cd3c3b460a5ec65016d0e7f0b094 # scx_flash: Get rid of optional DSQs
-2e559cd5daea63ea66fbe164d32e5f7857d41f0f # scx_flash: Introduce --sticky-cpu
-362e3ded78ad39e7b6516364a27ac598298768e8 # scx_flash: Use per-CPU DSQs in function of CPU utilization
-56ca82240214cff944d1a0c95afce4e2820c0cec # scx_flash: Simplify nvcsw evaluation
-aa827f1801becdd9243096229748bcb78d7515ec # scx_flash: Re-enable voluntary context switch prioritization by default
-156acfeffd53b747f570b655e180c194ff8f73c1 # scx_flash: Introduce --cpu-busy-thresh
-897d5ece152767716f7c3db225a9852e9d3d119f # scx_flash: Tune default options for latency
-91d3502d2b4767002b37475ba07129aad7be378f # scx_loader: Update performance profiles for scx_flash
+fd9dd757c091d9e9376a86240647964e1eefc934 # scx_flash: Clarify --local-pcpu implementation
+4e43d52e23bb5a4ff8a2aaf3ad74087ec97aa32f # scx_flash: Soften primary domain affinity to favor full-idle SMT cores
+8e8cc8c17926b99cfa16b4227a56680a6b589eae # scx_flash: Smooth target performance level
+a5ab911464e283af134e806d35515b511728f6dd # scx_flash: Get rid of optional DSQs
+8fb1384b936a39982920f830fe6b67d528cfce8f # scx_flash: Introduce --sticky-cpu
+39c1dcdd68a349fe1cdd019c7389a90d468846df # scx_flash: Use per-CPU DSQs in function of CPU utilization
+ea07c19f73261affd0dc5943d8bc79329ab7a755 # scx_flash: Simplify nvcsw evaluation
+83d75c0c4343e6188ad7025fb2cf32889cb69c25 # scx_flash: Re-enable voluntary context switch prioritization by default
+fb7e04f8eb14c5aa5d0788517023fea75c9fb766 # scx_flash: Introduce --cpu-busy-thresh
+1061af6cb03fbd7bd06d0746f7074a9f9fda13bc # scx_flash: Tune default options for latency
+f4aff2e72944793d1ce8b353ef6f48a65a92aed4 # scx_loader: Update performance profiles for scx_flash
 )
 
 _reverts=(
