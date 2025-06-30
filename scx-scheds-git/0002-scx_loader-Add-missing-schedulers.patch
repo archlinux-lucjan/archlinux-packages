@@ -1,4 +1,4 @@
-From dd4c7154d7bd5acd34b7ec8069bcefef7997afd3 Mon Sep 17 00:00:00 2001
+From a07c18f015b7e270afb2f1b47f994610b4c22455 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 27 Jun 2025 08:32:03 +0200
 Subject: [PATCH 2/2] scx_loader: Add missing schedulers
@@ -12,7 +12,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  4 files changed, 86 insertions(+), 2 deletions(-)
 
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index 592ff179..fabc7098 100644
+index 6588ee88..7ab6e268 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
 @@ -60,12 +60,30 @@ auto_mode = []
@@ -71,7 +71,7 @@ index 592ff179..fabc7098 100644
  ## Fallback Behavior
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index d68b1f66..f195efc7 100644
+index 12aa5fab..30dc6b29 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
 @@ -105,6 +105,18 @@ pub fn get_default_config() -> Config {
@@ -93,7 +93,7 @@ index d68b1f66..f195efc7 100644
          ]),
      }
  }
-@@ -241,6 +253,17 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
+@@ -238,6 +250,17 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
          },
          // scx_rustland doesn't support any of these modes
          SupportedSched::Rustland => vec![],
@@ -111,7 +111,7 @@ index d68b1f66..f195efc7 100644
      }
  }
  
-@@ -301,6 +324,27 @@ gaming_mode = []
+@@ -298,6 +321,27 @@ gaming_mode = []
  lowlatency_mode = []
  powersave_mode = []
  server_mode = []
