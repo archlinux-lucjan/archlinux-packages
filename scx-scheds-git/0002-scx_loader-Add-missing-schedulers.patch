@@ -1,4 +1,4 @@
-From b36778db3845d531c515ff6376165ed505a189f7 Mon Sep 17 00:00:00 2001
+From 7531919edd63cee952e0e1505ab56266226c6e5d Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Mon, 30 Jun 2025 22:44:19 +0200
 Subject: [PATCH 2/2] scx_loader: Add missing schedulers
