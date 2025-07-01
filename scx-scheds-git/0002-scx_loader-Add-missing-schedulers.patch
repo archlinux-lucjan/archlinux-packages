@@ -1,6 +1,6 @@
-From 7531919edd63cee952e0e1505ab56266226c6e5d Mon Sep 17 00:00:00 2001
+From 2c17821f29675ee8f84aa32f1ff16bc06a10d361 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Mon, 30 Jun 2025 22:44:19 +0200
+Date: Tue, 1 Jul 2025 17:24:04 +0200
 Subject: [PATCH 2/2] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -71,7 +71,7 @@ index 6588ee88..7ab6e268 100644
  ## Fallback Behavior
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index 12aa5fab..30dc6b29 100644
+index 149fff69..4261962e 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
 @@ -105,6 +105,18 @@ pub fn get_default_config() -> Config {
