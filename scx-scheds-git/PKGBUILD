@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r405.g65961bf6
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,10 +23,10 @@ d1c7d45e5cc8b3dcce4feb1bda6a2050e64bfa36 # meson: install scx_mitosis and scx_wd
 4edc7b6c38735c0f3cea85e65b80ad07861cd24b # scx_loader: Add wd40 scheduler
 2b6f2ca7db0ff34ecee3ed9542477a5e3df41203 # scx_loader: Add chaos scheduler
 374de0f3f7d54ffb00670bdbf4151b4aa0c01bee # scx_loader: Add mitosis scheduler
-3dde2b4253b8c0ed13c35ab4619aa44d84016f3b # scx_flash: Disable NUMA optimizations on non-NUMA systems
-9000664c5ce5aa2d34b5cd75c837ca5d2b6acd77 # scx_flash: Clarify help about --sticky-cpu
-232a82ae39df38bca2f093fdf2b041e97818dadd # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
-5b265f93ae522f80ad8caf25fcecaf4a44d97929 # scx_loader: Update profiles for scx_flash with direct dispatch
+c6a6678bf6e7c32d3634be257238c591e62ad27d # scx_flash: Disable NUMA optimizations on non-NUMA systems
+ec55c5fb050fbe182dcb1f4cbd69a2d60ca7e450 # scx_flash: Clarify help about --sticky-cpu
+e97a6e4f57689d8147ce1093b2498bee26375db6 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
+cc8b7be5fa725a24ac4401f67c97e71efdff4278 # scx_loader: Update profiles for scx_flash with direct dispatch
 )
 
 _reverts=(
