@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.13
-pkgrel=1.6
+pkgrel=1.7
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -16,18 +16,18 @@ backup=('etc/default/scx')
 options=(!lto)
 provides=("scxctl")
 conflicts=("scxctl")
-source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
-        '0001-meson-install-scx_mitosis-and-scx_wd40.patch'
-        '0002-scx_loader-Add-missing-schedulers.patch')
-sha256sums=('c36e8e0248be570fdfe8e4aa2d34e648e6e174096859f4a788631fdc83c014c7'
-            '8f808cc5dcafa6fcc9972cfe3610aaff8373fd73d1004d236b0f81da38ab291d'
-            'd3eb775728d651bd275a5289b2e603b03cbc222da34a134b5dabb1a8248811e1')
+source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
+sha256sums=('c36e8e0248be570fdfe8e4aa2d34e648e6e174096859f4a788631fdc83c014c7')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
 )
 
 _backports=(
+6cc69ff8504f90fb10aa92eb89aca6402be8363d # meson: install scx_mitosis and scx_wd40
+08086ff5627b2724442b09d63cf79bd2ca6e8196 # scx_loader: Add wd40 scheduler
+fca92babefcc3a4a507b1083ba0d5c630b2235b7 # scx_loader: Add chaos scheduler
+cd9591f505663e6acba0f3cbfef71037a3960b8d # scx_loader: Add mitosis scheduler
 )
 
 _reverts=(
