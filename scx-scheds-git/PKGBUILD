@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r393.g1137eec4
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,8 +23,9 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-8760b3f9fb166458a4d77fdfaf972e603be93504 # scx_flash: Tune default options for latency
-493118f98d8a98e6b2a829ee759f6718086bd603 # scx_loader: Update performance profiles for scx_flash
+07fcfa4011156b0e1d2fb016063747a0ba825c41 # scx_flash: Fix typo in help for --rr-sched
+1d6c2f756de79e8cd211a9bd85f133cfaab4605c # scx_flash: Tune default options for latency
+4ce0fb1cedfed9669fd12c5948fdff91dd86e2f4 # scx_loader: Update performance profiles for scx_flash
 )
 
 _reverts=(
