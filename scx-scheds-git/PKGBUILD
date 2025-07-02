@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r393.g1137eec4
-pkgrel=2
+pkgver=1.0.13.r397.gd98fd8e7
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -16,16 +16,13 @@ source=("git+https://github.com/sched-ext/scx"
         '0001-meson-install-scx_mitosis-and-scx_wd40.patch'
         '0002-scx_loader-Add-missing-schedulers.patch')
 sha256sums=('SKIP'
-            '5866c8979ac2dd6e15ef90ecce761cce75c93435e26f7739e926fb1b1cdfa29a'
-            '8b615c1ab99c04a7cd42665b44e5172b82d7f5d384d9733063583c7ef770d41f')
+            'accdcca73fa82f48eae1fa79f4ceefda032f543fe725efa4030a8c6899790489'
+            'a32267e33a6e3edea54869f7fe256c7bf99c403b8814cab55b9153239ff98df9')
 options=(!lto)
 provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-07fcfa4011156b0e1d2fb016063747a0ba825c41 # scx_flash: Fix typo in help for --rr-sched
-1d6c2f756de79e8cd211a9bd85f133cfaab4605c # scx_flash: Tune default options for latency
-4ce0fb1cedfed9669fd12c5948fdff91dd86e2f4 # scx_loader: Update performance profiles for scx_flash
 )
 
 _reverts=(
