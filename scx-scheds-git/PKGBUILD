@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r415.g63191084
+pkgver=1.0.13.r417.g3f695f4c
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,10 +23,9 @@ d1c7d45e5cc8b3dcce4feb1bda6a2050e64bfa36 # meson: install scx_mitosis and scx_wd
 4edc7b6c38735c0f3cea85e65b80ad07861cd24b # scx_loader: Add wd40 scheduler
 2b6f2ca7db0ff34ecee3ed9542477a5e3df41203 # scx_loader: Add chaos scheduler
 374de0f3f7d54ffb00670bdbf4151b4aa0c01bee # scx_loader: Add mitosis scheduler
-ec55c5fb050fbe182dcb1f4cbd69a2d60ca7e450 # scx_flash: Clarify help about --sticky-cpu
-e97a6e4f57689d8147ce1093b2498bee26375db6 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
-cc8b7be5fa725a24ac4401f67c97e71efdff4278 # scx_loader: Update profiles for scx_flash with direct dispatch
-e4f85205a8ff25d7e7d53b21061dd29470e369f6 # scx_flash: Handle empty NUMA nodes
+3f3079642892004e858fd98183b605f8012be5a3 # scx_flash: Clarify help about --sticky-cpu
+f4427c94515b3fff8e7c05aac3b4e4cd774478b6 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
+41fb231b4044aafd7607ab258234b24919f0adf9 # scx_loader: Update profiles for scx_flash with direct dispatch
 )
 
 _reverts=(
