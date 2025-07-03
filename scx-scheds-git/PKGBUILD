@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r417.g3f695f4c
-pkgrel=2
+pkgver=1.0.13.r419.g407b7741
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,8 +25,10 @@ d1c7d45e5cc8b3dcce4feb1bda6a2050e64bfa36 # meson: install scx_mitosis and scx_wd
 374de0f3f7d54ffb00670bdbf4151b4aa0c01bee # scx_loader: Add mitosis scheduler
 3f3079642892004e858fd98183b605f8012be5a3 # scx_flash: Clarify help about --sticky-cpu
 a9d5e49360819a66504a5cf3ce006d3efe2da839 # scx_flash: Track precise CPU load
-af0aabcb326c2fd0c610dff2ee9a4bbb780f9ec7 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
-81fcbffd2f62a62eee34ec060f69d02f77288187 # scx_loader: Update profiles for scx_flash with direct dispatch
+8e0a3c7901f61c238d260e8cc2200924cdd21ade # scx_flash: Normalize CPU utilization in the capacity range
+87c937d1105a085e363c1679681271c7ebebbbc8 # scx_flash: Introduce --slice-lag-scaling
+27559a489166a3fbd63aa48b177cbb371c699b9b # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
+3be805453b751dd9c1b62020d474638fc1a5a479 # scx_loader: Update profiles for scx_flash with direct dispatch
 )
 
 _reverts=(
