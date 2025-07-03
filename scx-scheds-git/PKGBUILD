@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r411.g68b0470b
+pkgver=1.0.13.r415.g63191084
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -26,6 +26,7 @@ d1c7d45e5cc8b3dcce4feb1bda6a2050e64bfa36 # meson: install scx_mitosis and scx_wd
 ec55c5fb050fbe182dcb1f4cbd69a2d60ca7e450 # scx_flash: Clarify help about --sticky-cpu
 e97a6e4f57689d8147ce1093b2498bee26375db6 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
 cc8b7be5fa725a24ac4401f67c97e71efdff4278 # scx_loader: Update profiles for scx_flash with direct dispatch
+e4f85205a8ff25d7e7d53b21061dd29470e369f6 # scx_flash: Handle empty NUMA nodes
 )
 
 _reverts=(
