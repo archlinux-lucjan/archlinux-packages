@@ -1,0 +1,104 @@
+From 1f390170da75df92b902df2d00257c92212da819 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Fri, 27 Jun 2025 08:24:40 +0200
+Subject: [PATCH 1/2] meson: install scx_mitosis and scx_wd40
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ Cargo.lock                             | 24 ++++++++++++++++++++++++
+ Cargo.toml                             |  1 +
+ meson-scripts/install_rust_user_scheds |  6 ------
+ meson.build                            |  2 +-
+ scheds/rust/scx_wd40/Cargo.toml        |  2 --
+ 5 files changed, 26 insertions(+), 9 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 8e5b537a..79ab3dde 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2973,6 +2973,30 @@ dependencies = [
+  "static_assertions",
+ ]
+ 
++[[package]]
++name = "scx_wd40"
++version = "1.0.13"
++dependencies = [
++ "anyhow",
++ "chrono",
++ "clap",
++ "crossbeam",
++ "ctrlc",
++ "fb_procfs",
++ "libbpf-rs",
++ "libc",
++ "log",
++ "nix 0.29.0",
++ "ordered-float",
++ "scx_stats",
++ "scx_stats_derive",
++ "scx_utils",
++ "serde",
++ "simplelog",
++ "sorted-vec",
++ "static_assertions",
++]
++
+ [[package]]
+ name = "scx_stats"
+ version = "1.0.13"
+diff --git a/Cargo.toml b/Cargo.toml
+index e411f6c7..0c47e762 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -17,6 +17,7 @@ members = [
+     "scheds/rust/scx_rustland",
+     "scheds/rust/scx_rusty",
+     "scheds/rust/scx_tickless",
++    "scheds/rust/scx_wd40",
+     "tools/scxctl",
+     "tools/scxtop",
+     "tools/vmlinux_docify",
+diff --git a/meson-scripts/install_rust_user_scheds b/meson-scripts/install_rust_user_scheds
+index 63dbf835..7469215f 100755
+--- a/meson-scripts/install_rust_user_scheds
++++ b/meson-scripts/install_rust_user_scheds
+@@ -7,12 +7,6 @@ for manifest in "$MESON_SOURCE_ROOT"/scheds/rust/*/Cargo.toml; do
+     target_dir="${MESON_BUILD_ROOT}"
+     name="${source_dir##*/}"
+ 
+-    # Skip scx_mitosis and scx_wd40
+-    if [ "$name" = "scx_mitosis" ] || [ "$name" = "scx_wd40" ]; then
+-        echo "Skipping installation of $name"
+-        continue
+-    fi
+-
+     bins=($(ls -t "${target_dir}/"*"/${name}"))
+     if [ ${#bins[@]} -lt 1 ]; then
+         echo "Cannot find a binary for $name under $target_dir" 1>&2
+diff --git a/meson.build b/meson.build
+index 8283bdde..69220a09 100644
+--- a/meson.build
++++ b/meson.build
+@@ -360,7 +360,7 @@ if enable_rust
+ 
+   rust_scheds = ['scx_lavd', 'scx_bpfland', 'scx_rustland', 'scx_rlfifo',
+                  'scx_flash', 'scx_rusty', 'scx_p2dq',
+-                 'scx_layered', 'scx_mitosis', 'scx_tickless', 'scx_chaos']
++                 'scx_layered', 'scx_mitosis', 'scx_tickless', 'scx_chaos', 'scx_wd40']
+   rust_misc = ['scx_stats', 'scx_stats_derive', 'scx_utils',
+                'scx_rustland_core',
+                'scx_loader']
+diff --git a/scheds/rust/scx_wd40/Cargo.toml b/scheds/rust/scx_wd40/Cargo.toml
+index c3f94c38..4888946d 100644
+--- a/scheds/rust/scx_wd40/Cargo.toml
++++ b/scheds/rust/scx_wd40/Cargo.toml
+@@ -33,5 +33,3 @@ enable_backtrace = []
+ 
+ [lints.clippy]
+ non_canonical_partial_ord_impl = "allow"
+-
+-[workspace]
+-- 
+2.50.0
+
