@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r425.g2b26d3e1
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,11 +24,11 @@ d1c7d45e5cc8b3dcce4feb1bda6a2050e64bfa36 # meson: install scx_mitosis and scx_wd
 2b6f2ca7db0ff34ecee3ed9542477a5e3df41203 # scx_loader: Add chaos scheduler
 374de0f3f7d54ffb00670bdbf4151b4aa0c01bee # scx_loader: Add mitosis scheduler
 fbe59d02614d4019646f04d009da1ce485bc51d1 # scx_flash: Clarify help about --sticky-cpu
-a9d5e49360819a66504a5cf3ce006d3efe2da839 # scx_flash: Track precise CPU load
-8e0a3c7901f61c238d260e8cc2200924cdd21ade # scx_flash: Normalize CPU utilization in the capacity range
-87c937d1105a085e363c1679681271c7ebebbbc8 # scx_flash: Introduce --slice-lag-scaling
-27559a489166a3fbd63aa48b177cbb371c699b9b # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
-3be805453b751dd9c1b62020d474638fc1a5a479 # scx_loader: Update profiles for scx_flash with direct dispatch
+1edd80d85607b705bd766ef08f13fd3d306fea9d # scx_flash: Track precise CPU load
+4371afe63d1b9dae4a8a33e750ead10092165325 # scx_flash: Normalize CPU utilization in the capacity range
+0479840278a67a28558b7d31ca45497d32fe7fab # scx_flash: Introduce --slice-lag-scaling
+8fb41770e9200255d0235e940836f3c890ebacd9 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
+55c735669e94f16986a8ac49d35252a12446a62f # scx_loader: Update profiles for scx_flash with direct dispatch
 )
 
 _reverts=(
