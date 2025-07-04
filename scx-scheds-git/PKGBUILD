@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r419.g407b7741
+pkgver=1.0.13.r425.g2b26d3e1
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,7 +23,7 @@ d1c7d45e5cc8b3dcce4feb1bda6a2050e64bfa36 # meson: install scx_mitosis and scx_wd
 4edc7b6c38735c0f3cea85e65b80ad07861cd24b # scx_loader: Add wd40 scheduler
 2b6f2ca7db0ff34ecee3ed9542477a5e3df41203 # scx_loader: Add chaos scheduler
 374de0f3f7d54ffb00670bdbf4151b4aa0c01bee # scx_loader: Add mitosis scheduler
-3f3079642892004e858fd98183b605f8012be5a3 # scx_flash: Clarify help about --sticky-cpu
+fbe59d02614d4019646f04d009da1ce485bc51d1 # scx_flash: Clarify help about --sticky-cpu
 a9d5e49360819a66504a5cf3ce006d3efe2da839 # scx_flash: Track precise CPU load
 8e0a3c7901f61c238d260e8cc2200924cdd21ade # scx_flash: Normalize CPU utilization in the capacity range
 87c937d1105a085e363c1679681271c7ebebbbc8 # scx_flash: Introduce --slice-lag-scaling
