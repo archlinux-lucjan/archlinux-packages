@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r444.g77229cbd
-pkgrel=3
+pkgver=1.0.13.r458.g6d8c937b
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,19 +19,11 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-b0f6b18fae863264d972fe754c6a7429403e5e95 # scx_flash: Track precise CPU load
-5b9969d9777243ec7da9a378092f30ce807a606c # scx_flash: Normalize CPU utilization in the capacity range
-19b97c28b6de43d7f7f1697877ff4e92c245f0c8 # scx_flash: Introduce --slice-lag-scaling
-93315f3b95399c9fdb6b001fe73f6eb0f3f3e24b # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
-977c1ce918a3f6ffe9b8dbbc335bc566186d3221 # scx_flash: Introduce --no-builtin-idle
-d4ecdc700838650e5632212541448dc14d9132cf # scx_flash: Refactoring to avoid unnecessary task lookup
-50800b37a6ec27491c0c024ec0200e95142d51e4 # scx_flash: Always direct dispatch in round-robin mode
-fe8dbdfe26d1972e7509c40970fcf3f396f552af # scx_flash: Always scale time slice in function of the waiting tasks
-5f50c6a22999cc9ca72bf3f0bffc3ccba85346e2 # scx_loader: Update profiles for scx_flash with direct dispatch
-4d8fb5409c7ca62ecc1f6509d6abf923707cedb1 # meson: install scx_mitosis and scx_wd40
-ab28abe933d467b306b0b4aacb422804aa23260f # scx_loader: Add wd40 scheduler
-f185f267a4e0b5bb009456d5ee220d92bdd9d255 # scx_loader: Add chaos scheduler
-7aedc95559c808ecb64bbf23871f08bc4546edfd # scx_loader: Add mitosis scheduler
+ff401f2cb09d8cce4fc486c7a8708ff08a3c22bd # meson: install scx_mitosis and scx_wd40
+4fd01fb20a0c24319c54333d11f67b97e055cdec # scx_loader: Add wd40 scheduler
+72bfe290c5462cd60e50db9bd3f4d30498256f2c # scx_loader: Add chaos scheduler
+1c62b7dfbc8e319f90322a0a2a2b642c8e75852e # scx_loader: Add mitosis scheduler
+
 )
 
 _reverts=(
