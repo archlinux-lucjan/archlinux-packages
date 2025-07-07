@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.13
-pkgrel=1.9
+pkgrel=1.10
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -17,11 +17,13 @@ options=(!lto)
 provides=("scxctl")
 conflicts=("scxctl")
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
-        '0001-meson-install-scx_mitosis-and-scx_wd40.patch'
-        '0002-scx_loader-Add-missing-schedulers.patch')
+        '0001-scx_loader-refactor-hardcoded-scheduler-names.patch'
+        '0002-meson-install-scx_mitosis-and-scx_wd40.patch'
+        '0003-scx_loader-Add-missing-schedulers.patch')
 sha256sums=('c36e8e0248be570fdfe8e4aa2d34e648e6e174096859f4a788631fdc83c014c7'
-            '8f808cc5dcafa6fcc9972cfe3610aaff8373fd73d1004d236b0f81da38ab291d'
-            'd3eb775728d651bd275a5289b2e603b03cbc222da34a134b5dabb1a8248811e1')
+            'f3ae0cd183f672f9955f3eb91026342b3a288c8c81156b2bd2868a65eb927592'
+            'ed51af4b34a3ef6541b516f8fc5d201d2658505134d72a73a641c78aaacc8604'
+            '59a28bc522cbb2db52febfc7e3baa646d63228307f84e4cd739ad671202f06c5')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
