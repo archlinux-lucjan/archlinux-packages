@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r433.g2fdf42d2
+pkgver=1.0.13.r444.g77229cbd
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,11 +19,15 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-1edd80d85607b705bd766ef08f13fd3d306fea9d # scx_flash: Track precise CPU load
-4371afe63d1b9dae4a8a33e750ead10092165325 # scx_flash: Normalize CPU utilization in the capacity range
-0479840278a67a28558b7d31ca45497d32fe7fab # scx_flash: Introduce --slice-lag-scaling
-8fb41770e9200255d0235e940836f3c890ebacd9 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
-55c735669e94f16986a8ac49d35252a12446a62f # scx_loader: Update profiles for scx_flash with direct dispatch
+f182f903604ea355ceeb26de9899bcc827111737 # scx_flash: Track precise CPU load
+ace1ae5a67c6900bfba752245cd16a611bbf4038 # scx_flash: Normalize CPU utilization in the capacity range
+e494cea7ba4cfaffde9d44bd53652e6eae538cf7 # scx_flash: Introduce --slice-lag-scaling
+5274e69c4cf0341a74b2f2bc8e76a573eb9fb2b8 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
+6721507ac9246661b705b6d2496d2cd3682444fe # scx_flash: Introduce --no-builtin-idle
+4e3330cf4aaedaf2495f25ed133b767d690a0135 # scx_flash: Refactoring to avoid unnecessary task lookup
+18da4930ef925cad8eb0ad179b7cd2821c9612e8 # scx_flash: Always direct dispatch in round-robin mode
+11499a2f73705732d6a750425ebd1a54912f531f # scx_flash: Always scale time slice in function of the waiting tasks
+b7ce64e62038d6174094d614b4500212e16e7091 # scx_loader: Update profiles for scx_flash with direct dispatch
 4d8fb5409c7ca62ecc1f6509d6abf923707cedb1 # meson: install scx_mitosis and scx_wd40
 ab28abe933d467b306b0b4aacb422804aa23260f # scx_loader: Add wd40 scheduler
 f185f267a4e0b5bb009456d5ee220d92bdd9d255 # scx_loader: Add chaos scheduler
