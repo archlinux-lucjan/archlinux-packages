@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.13.r444.g77229cbd
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,15 +19,15 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-f182f903604ea355ceeb26de9899bcc827111737 # scx_flash: Track precise CPU load
-ace1ae5a67c6900bfba752245cd16a611bbf4038 # scx_flash: Normalize CPU utilization in the capacity range
-e494cea7ba4cfaffde9d44bd53652e6eae538cf7 # scx_flash: Introduce --slice-lag-scaling
-5274e69c4cf0341a74b2f2bc8e76a573eb9fb2b8 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
-6721507ac9246661b705b6d2496d2cd3682444fe # scx_flash: Introduce --no-builtin-idle
-4e3330cf4aaedaf2495f25ed133b767d690a0135 # scx_flash: Refactoring to avoid unnecessary task lookup
-18da4930ef925cad8eb0ad179b7cd2821c9612e8 # scx_flash: Always direct dispatch in round-robin mode
-11499a2f73705732d6a750425ebd1a54912f531f # scx_flash: Always scale time slice in function of the waiting tasks
-b7ce64e62038d6174094d614b4500212e16e7091 # scx_loader: Update profiles for scx_flash with direct dispatch
+b0f6b18fae863264d972fe754c6a7429403e5e95 # scx_flash: Track precise CPU load
+5b9969d9777243ec7da9a378092f30ce807a606c # scx_flash: Normalize CPU utilization in the capacity range
+917e3cf8139a337d9c0b354e9ddb987c5ef985e0 # scx_flash: Introduce --slice-lag-scaling
+3e554b313f076062b7b87cda3d021fb32c092714 # scx_flash: Add --direct-dispatch and revise --local-pcpu behavior
+88a872b0c2109545501aeebdcb65e045cfdb1bd3 # scx_flash: Introduce --no-builtin-idle
+701bc4dfdb21b7d87e5aa5911eeb3b8688010f8e # scx_flash: Refactoring to avoid unnecessary task lookup
+b68dcbe0dee9d06a92769961f4b0eaa52cfeda3c # scx_flash: Always direct dispatch in round-robin mode
+1a0cbc4ef94bb1fd9ecad3fd7bcf2ee659ef40dc # scx_flash: Always scale time slice in function of the waiting tasks
+c6d74281ae4e0049aafe894cf855ab118eea20f1 # scx_loader: Update profiles for scx_flash with direct dispatch
 4d8fb5409c7ca62ecc1f6509d6abf923707cedb1 # meson: install scx_mitosis and scx_wd40
 ab28abe933d467b306b0b4aacb422804aa23260f # scx_loader: Add wd40 scheduler
 f185f267a4e0b5bb009456d5ee220d92bdd9d255 # scx_loader: Add chaos scheduler
