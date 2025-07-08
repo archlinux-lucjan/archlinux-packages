@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.14.r3.gb20dd4dc
+pkgver=1.0.14.r7.g2f13624e
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -23,7 +23,6 @@ _backports=(
 8b7e4299f495a5f167aaeda51a8d8d7180b8706d # scx_loader: Add wd40 scheduler
 f3bd376bd824ed47a0a6f9658a00d8139db75ead # scx_loader: Add chaos scheduler
 8e51530223d9d80ce6ac1aa4c71e81fa96881f47 # scx_loader: Add mitosis scheduler
-c25ecbba4f75f83e03acf2267a93eb0b071a4388 # /etc/default/scx: set scx_flash as default scheduler
 )
 
 _reverts=(
