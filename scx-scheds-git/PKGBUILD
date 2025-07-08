@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.13.r484.g6cc80ace
+pkgver=1.0.13.r465.g1e6d7f1d
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -24,7 +24,7 @@ ff401f2cb09d8cce4fc486c7a8708ff08a3c22bd # meson: install scx_mitosis and scx_wd
 72bfe290c5462cd60e50db9bd3f4d30498256f2c # scx_loader: Add chaos scheduler
 1c62b7dfbc8e319f90322a0a2a2b642c8e75852e # scx_loader: Add mitosis scheduler
 a39e1f713e215ec7d91fa5c3aceb23b8da137bc3 # /etc/default/scx: set scx_flash as default scheduler
-362dccf8bb97235df426e20f0fa440eb34039251 # p2dq/chaos: switch more enqueue cases to be async
+
 )
 
 _reverts=(
