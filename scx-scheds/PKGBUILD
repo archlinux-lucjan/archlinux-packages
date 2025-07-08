@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.14
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -16,8 +16,7 @@ backup=('etc/default/scx')
 options=(!lto)
 provides=("scxctl")
 conflicts=("scxctl")
-source=(#"git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
-        "git+https://github.com/sched-ext/scx#tag=v$pkgver"
+source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
         '0001-meson-install-scx_mitosis-and-scx_wd40.patch'
         '0002-scx_loader-Add-missing-schedulers.patch'
         '0003-etc-default-scx-set-scx_flash-as-default-scheduler.patch')
@@ -28,6 +27,7 @@ sha256sums=('f469c6396455572832bff13a3ede140f42b3293f4239364947e5a785d3a00714'
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
+  A8775C60262EEF2AA34A864F5DAD005C4BFEA770  # Jake Hilton
 )
 
 _backports=(
