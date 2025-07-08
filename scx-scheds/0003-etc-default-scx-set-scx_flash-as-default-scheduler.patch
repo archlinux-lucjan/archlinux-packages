@@ -1,0 +1,31 @@
+From 049c07a1017baf951dbfecc8ba2f9eb8c529109c Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Tue, 8 Jul 2025 19:14:15 +0200
+Subject: [PATCH 3/3] /etc/default/scx: set scx_flash as default scheduler
+
+After the latest changes made before the release of version 1.0.14,
+scx_flash began to outperform scx_bpfland in terms of performance.
+The start of work on the new 1.0.15 release is a good time to
+try to make scx_flash the new suggested scheduler.
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ services/scx | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/services/scx b/services/scx
+index f899dfc9..ffac1756 100644
+--- a/services/scx
++++ b/services/scx
+@@ -1,5 +1,5 @@
+-# List of scx_schedulers: scx_bpfland scx_central scx_flash scx_lavd scx_layered scx_nest scx_qmap scx_rlfifo scx_rustland scx_rusty scx_simple scx_userland scx_p2dq scx_tickless
+-SCX_SCHEDULER=scx_bpfland
++# List of scx_schedulers: scx_bpfland scx_central scx_flash scx_lavd scx_layered scx_nest scx_p2dq scx_qmap scx_rlfifo scx_rustland scx_rusty scx_simple scx_tickless scx_userland
++SCX_SCHEDULER=scx_flash
+ 
+ # Set custom flags for each scheduler, below is an example of how to use
+-#SCX_FLAGS='-p -m performance'
++#SCX_FLAGS='-m performance -D -L'
+-- 
+2.50.0
+

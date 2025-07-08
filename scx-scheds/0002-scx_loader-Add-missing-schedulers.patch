@@ -1,7 +1,7 @@
-From a5a9a4f60379701e647518f48f5b070d649aaad3 Mon Sep 17 00:00:00 2001
+From 6c223aff88827b9b0da3ba77d6bee9e8d526ce8f Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Mon, 7 Jul 2025 16:57:54 +0200
-Subject: [PATCH 3/3] scx_loader: Add missing schedulers
+Date: Tue, 8 Jul 2025 19:32:29 +0200
+Subject: [PATCH 2/3] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -12,7 +12,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  4 files changed, 77 insertions(+), 2 deletions(-)
 
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index c228d2ee..5ebb5810 100644
+index 6588ee88..7ab6e268 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
 @@ -60,12 +60,30 @@ auto_mode = []
@@ -71,7 +71,7 @@ index c228d2ee..5ebb5810 100644
  ## Fallback Behavior
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index 6286c78c..60135963 100644
+index 2f27ed99..6f446594 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
 @@ -81,6 +81,9 @@ pub fn get_default_config() -> Config {
@@ -84,7 +84,7 @@ index 6286c78c..60135963 100644
      ];
      let scheds_map = HashMap::from(supported_scheds.map(|x| init_default_config_entry(x)));
      Config {
-@@ -210,6 +213,17 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
+@@ -221,6 +224,17 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
          },
          // scx_rustland doesn't support any of these modes
          SupportedSched::Rustland => vec![],
@@ -102,7 +102,7 @@ index 6286c78c..60135963 100644
      }
  }
  
-@@ -279,6 +293,27 @@ gaming_mode = []
+@@ -290,6 +304,27 @@ gaming_mode = []
  lowlatency_mode = []
  powersave_mode = []
  server_mode = []

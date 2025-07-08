@@ -1,7 +1,7 @@
-From a0504e49ae11ff67c571266fd587999ef661d529 Mon Sep 17 00:00:00 2001
+From 8b12e1c8dd02f158ac5e435cb21237e3f63ca69f Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 4 Jul 2025 18:43:11 +0200
-Subject: [PATCH 2/3] meson: install scx_mitosis and scx_wd40
+Date: Tue, 8 Jul 2025 19:32:10 +0200
+Subject: [PATCH 1/3] meson: install scx_mitosis and scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -13,10 +13,10 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  5 files changed, 26 insertions(+), 9 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index 8e5b537a..79ab3dde 100644
+index 3305aa77..cb6f6531 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2973,6 +2973,30 @@ dependencies = [
+@@ -2978,6 +2978,30 @@ dependencies = [
   "static_assertions",
  ]
  
@@ -46,12 +46,12 @@ index 8e5b537a..79ab3dde 100644
 +
  [[package]]
  name = "scx_stats"
- version = "1.0.13"
+ version = "1.0.14"
 diff --git a/Cargo.toml b/Cargo.toml
-index e411f6c7..0c47e762 100644
+index 44c6c03c..42d0a9a1 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -17,6 +17,7 @@ members = [
+@@ -18,6 +18,7 @@ members = [
      "scheds/rust/scx_rustland",
      "scheds/rust/scx_rusty",
      "scheds/rust/scx_tickless",
@@ -77,10 +77,10 @@ index 63dbf835..7469215f 100755
      if [ ${#bins[@]} -lt 1 ]; then
          echo "Cannot find a binary for $name under $target_dir" 1>&2
 diff --git a/meson.build b/meson.build
-index 8283bdde..69220a09 100644
+index db4df968..83f6fa36 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -360,7 +360,7 @@ if enable_rust
+@@ -370,7 +370,7 @@ if enable_rust
  
    rust_scheds = ['scx_lavd', 'scx_bpfland', 'scx_rustland', 'scx_rlfifo',
                   'scx_flash', 'scx_rusty', 'scx_p2dq',
@@ -90,7 +90,7 @@ index 8283bdde..69220a09 100644
                 'scx_rustland_core',
                 'scx_loader']
 diff --git a/scheds/rust/scx_wd40/Cargo.toml b/scheds/rust/scx_wd40/Cargo.toml
-index c3f94c38..4888946d 100644
+index ed925f28..dfd372dc 100644
 --- a/scheds/rust/scx_wd40/Cargo.toml
 +++ b/scheds/rust/scx_wd40/Cargo.toml
 @@ -33,5 +33,3 @@ enable_backtrace = []
