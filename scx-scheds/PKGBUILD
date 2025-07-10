@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.14
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
         '0002-scx_loader-Add-missing-schedulers.patch'
         '0003-etc-default-scx-set-scx_flash-as-default-scheduler.patch')
 sha256sums=('f469c6396455572832bff13a3ede140f42b3293f4239364947e5a785d3a00714'
-            '4e65504781e3cf20d5f65d82f9629c87df1122073d1b4440368a92c7d692afa5'
-            '7a05ea1c3a131d0af8bb74738713e2c741543f52fc6ff6a746eb167327299d5e'
-            'bbef69a3447a82aeccf1e44bb5314b1d1402f61ffed1074f355a2f79fd669f51')
+            '3ca94b2c914bf530e03c6ae20c4da0215efe9890a98cf433c7e68b5322e47589'
+            'd51ceea682050380d14c80b16e4db7fff4ce881061732e05ec0e21b9f2f98982'
+            'ed100d355938b7e585ee7e610388f6854060a992779a206b7c87247db33324aa')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
