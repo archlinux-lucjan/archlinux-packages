@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.14.r31.g813fd29a
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -20,10 +20,11 @@ conflicts=("scx-scheds" "scxctl")
 
 _backports=(
 86218c7060409598c7c40b76be77918a3a84c71a # scx_loader: set scx_flash as default scheduler
-34a079eae61394e6e3a9a866f12b4c426ec381e2 # meson: install scx_mitosis and scx_wd40
-f49467143ff231210490c3076c59ad63c34d3e6a # scx_loader: Add wd40 scheduler
-a0aeba5ad7adb2fc9e3ff97aeeb1698902a76d35 # scx_loader: Add mitosis scheduler
-c923b52beff50a628a1683b528e5314a187db7b0 # scx_loader: Add chaos scheduler
+b0d53836525277fd556fcecd6e78a5630a408b98 # scx_loader: sync suggested flags with config.rs
+6165b7ff26ed543f9fefa786f8e0887df87667b2 # meson: install scx_mitosis and scx_wd40
+39e2330de7ef08f15d6f729972ddc4788fe9feea # scx_loader: Add wd40 scheduler
+06b954e5e2797b5fb04bc0b2d6b40905e59a791b # scx_loader: Add mitosis scheduler
+930697b4acd1e830c87155921df5bd854ef263b9 # scx_loader: Add chaos scheduler
 )
 
 _reverts=(
