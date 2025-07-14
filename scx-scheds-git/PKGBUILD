@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.14.r60.gcde9d096
-pkgrel=4
+pkgver=1.0.14.r71.g6f4aed20
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,12 +19,13 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-60506ecaa44c27d5b6336b41c386bd0ed79d4a55 # scheds: Introduce scx_cosmos
-2f15f011010b32cb691145e19a9aed11b7fe5efb # scx_loader: Add cosmos scheduler
-2c460d5a46d10c301732a170135926c97c685035 # meson: install scx_mitosis and scx_wd40
-09b40399726d50c511ab26655ba552855aba0cc0 # scx_loader: Add wd40 scheduler
-fda9c6fb19a48edacc8f956f122324dd9cb5b332 # scx_loader: Add mitosis scheduler
-8c79d5eac8f975450dc1945d75db67771033c7bb # scx_loader: Add chaos scheduler
+933b75188d7091adedda13f2a738db9b77885f6c # scheds: Introduce scx_cosmos
+3ae0d3738d45ca5233923227e517c2050b8305e6 # scx_loader: Add cosmos scheduler
+411317e3334fd50ef9cd4ff508f3e2edf6a7b494 # scx_cosmos: Introduce --no-sticky-cpu
+9e86470290ffac8a03f587083ea2e21020868175 # meson: install scx_mitosis and scx_wd40
+ee7c4449d70477b74c7b5048da12f323daf1f227 # scx_loader: Add wd40 scheduler
+51afbb5c5936270da6fbb9d858ad5dcf4729759b # scx_loader: Add mitosis scheduler
+1c77549893c36a9ff6d860765ebb6285b02a05e7 # scx_loader: Add chaos scheduler
 )
 
 _reverts=(
