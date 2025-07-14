@@ -1,12 +1,7 @@
-From a9232061d901d1ca404a4606869a78089a86c6e2 Mon Sep 17 00:00:00 2001
+From 07625a0be007905c9083260f027a73bacd948dba Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Tue, 8 Jul 2025 19:14:15 +0200
-Subject: [PATCH 3/3] /etc/default/scx: set scx_flash as default scheduler
-
-After the latest changes made before the release of version 1.0.14,
-scx_flash began to outperform scx_bpfland in terms of performance.
-The start of work on the new 1.0.15 release is a good time to
-try to make scx_flash the new suggested scheduler.
+Date: Mon, 14 Jul 2025 08:26:42 +0200
+Subject: [PATCH 1/4] /etc/default/scx: set scx_flash as default scheduler
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -27,5 +22,5 @@ index f899dfc9..ffac1756 100644
 -#SCX_FLAGS='-p -m performance'
 +#SCX_FLAGS='-m performance -D -L'
 -- 
-2.50.0
+2.50.1
 
