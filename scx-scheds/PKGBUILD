@@ -1,0 +1,80 @@
+# Maintainer: Tejun Heo <tj@kernel.org>
+# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=scx-scheds
+_gitname=scx
+pkgver=1.0.14
+pkgrel=1.4
+pkgdesc='sched_ext schedulers and tools'
+url='https://github.com/sched-ext/scx'
+arch=('x86_64')
+license=('GPL-2.0-only')
+depends=('libelf' 'zlib' 'jq' 'protobuf' 'libseccomp' 'bpf' 'libbpf')
+makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
+backup=('etc/default/scx')
+options=(!lto)
+provides=("scxctl")
+conflicts=("scxctl")
+source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
+        '0001-etc-default-scx-set-scx_flash-as-default-scheduler.patch'
+        '0002-scx_loader-set-scx_flash-as-default-scheduler.patch'
+        '0003-meson-install-scx_mitosis-and-scx_wd40.patch'
+        '0004-scx_loader-Add-missing-schedulers.patch')
+sha256sums=('f469c6396455572832bff13a3ede140f42b3293f4239364947e5a785d3a00714'
+            'b092a596759f2ad6f77306ca0cd831174f8cef791c7326030f52ccd8ca2e8626'
+            '331dcc3099d913d515b00ee64458a8b4efdd9bd834418601e9ded44e8ca040b9'
+            '88bfc3070a75a90323f68dc0be2beb30cfa8f5741b2d1cdd77e81d76445fe509'
+            '277e37808ed1c08e48ea7ba1167219b5527bc9742e727896530a3dcddcead4a0')
+validpgpkeys=(
+  697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
+  F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
+  A8775C60262EEF2AA34A864F5DAD005C4BFEA770  # Jake Hilton
+)
+
+_backports=(
+)
+
+_reverts=(
+)
+
+prepare() {
+ cd $_gitname
+
+ local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+}
+
+build() {
+  cd $_gitname
+  arch-meson . build -D openrc=disabled \
+    -D libbpf_a=disabled \
+    -D bpftool=disabled \
+    -D b_lto=true \
+    -D b_lto_mode=thin \
+    -D cargo_home="$srcdir"/scx
+  meson compile -C build
+}
+
+package() {
+  cd $_gitname
+  meson install -C build --destdir "${pkgdir}"
+}
