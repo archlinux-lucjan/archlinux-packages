@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.14.r114.gf7d125bc
+pkgver=1.0.14.r126.g59dd3371
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-2019ae68ae1cc7381cf5b5d5ea940fac556cfc42 # scx_loader: Add chaos scheduler
+c588709fc1473d8c93eb56afc9ad04b291e95874 # scx_loader: Add chaos scheduler
 )
 
 _reverts=(
