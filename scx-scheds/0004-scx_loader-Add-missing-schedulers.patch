@@ -1,6 +1,6 @@
-From 0814898fcef68885df8ce73b0274462d1b142ca5 Mon Sep 17 00:00:00 2001
+From bd596f5f56aab754fabe677b7581606fec0fb5a2 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Mon, 14 Jul 2025 08:28:14 +0200
+Date: Fri, 18 Jul 2025 14:01:57 +0200
 Subject: [PATCH 4/4] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -12,7 +12,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  4 files changed, 78 insertions(+)
 
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index 5fe4e806..14841fdf 100644
+index 690df8b2..fe25fd0b 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
 @@ -67,6 +67,27 @@ gaming_mode = ["-f", "5000", "-s", "5000"]

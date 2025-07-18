@@ -1,6 +1,6 @@
-From e684fc383e4b8b2e37fdd0a3cd4e6dda1073ae05 Mon Sep 17 00:00:00 2001
+From ab81e35a4590340f062e9034d622a5a08bed45f6 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Mon, 14 Jul 2025 08:27:12 +0200
+Date: Fri, 18 Jul 2025 14:00:44 +0200
 Subject: [PATCH 2/4] scx_loader: set scx_flash as default scheduler
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -9,7 +9,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  1 file changed, 55 insertions(+), 39 deletions(-)
 
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index 6588ee88..5fe4e806 100644
+index 6588ee88..690df8b2 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
 @@ -16,50 +16,57 @@ If no configuration file is found at any of these paths, `scx_loader` will use t
@@ -128,10 +128,10 @@ index 6588ee88..5fe4e806 100644
 +    * Power Save mode: `-m powersave -I 10000 -t 10000 -s 10000 -S 1000`
 +    * Server mode: `-m all -s 20000 -S 1000 -I -1 -D -L`
 +* For `scx_tickless`:
-+    * Gaming_mode = `-f 5000 -s 5000`
-+    * Lowlatency mode = `-f 5000 -s 1000`
-+    * Powersave_mode = `-f 50 -p`
-+    * Server mode = `-f 100`
++    * Gaming mode: `-f 5000 -s 5000`
++    * Low Latency mode: `-f 5000 -s 1000`
++    * Power Save mode: `-f 50 -p`
++    * Server mode: `-f 100`
  * For `scx_p2dq`:
      * Low Latency mode: `-y`
      * Server mode: `--keep-running`

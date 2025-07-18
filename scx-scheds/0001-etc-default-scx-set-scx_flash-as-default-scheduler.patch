@@ -1,6 +1,6 @@
-From 07625a0be007905c9083260f027a73bacd948dba Mon Sep 17 00:00:00 2001
+From c525be2662b4184f76698dde87318ec05d009e6b Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Mon, 14 Jul 2025 08:26:42 +0200
+Date: Fri, 18 Jul 2025 13:59:52 +0200
 Subject: [PATCH 1/4] /etc/default/scx: set scx_flash as default scheduler
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
