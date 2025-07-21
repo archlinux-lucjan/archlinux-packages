@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.14.r182.gc4219635
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,6 +23,7 @@ d68f8a1bb3e86cf9ae91400152a9f7c2b21bd107 # scx_loader: Add chaos scheduler
 db2391fa11803c1e714a87a323db47fda022c4fc # meson: install scx_mitosis and scx_wd40
 aba18575b54f07dc3ed1beb1d4ace1f198ca4234 # scx_loader: Add mitosis scheduler
 a981ba1264b1a7fb1d39451aa522e38b96595990 # scx_loader: Add wd40 scheduler
+60d33ea4140454bfb038fc54ebcc188ed50aebf4 # scx_flash: Re-introduce tickless timer
 )
 
 _reverts=(
