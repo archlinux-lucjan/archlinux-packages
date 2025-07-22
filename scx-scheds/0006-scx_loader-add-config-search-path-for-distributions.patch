@@ -1,7 +1,7 @@
-From 2e5457bcdb4d042f118c8507eb51026736f172d6 Mon Sep 17 00:00:00 2001
+From ec8bd71e19aa4586c936196f784d6aae2ae8d48b Mon Sep 17 00:00:00 2001
 From: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 Date: Thu, 17 Jul 2025 01:21:49 +0400
-Subject: [PATCH 6/6] scx_loader: add config search path for distributions
+Subject: [PATCH 6/7] scx_loader: add config search path for distributions
 
 that allows distributions to ship with default config at:
 - /usr/share/scx_loader/config.toml

@@ -1,0 +1,97 @@
+From b323552338c1679c77dde8521b899ea5973b27f6 Mon Sep 17 00:00:00 2001
+From: Reilly Brogan <reilly@reillybrogan.com>
+Date: Wed, 16 Jul 2025 18:47:00 -0500
+Subject: [PATCH 7/7] scx_loader: Support build-time configuration of vendordir
+
+Some Linux distributions have specific directories for package-shipped default config files. For example Solus, AerynOS, and Clear all use `/usr/share/defaults`, while SUSE uses `/usr/etc`. Rather than hardcoding `/usr/share/scx_loader/config.toml` as the config file location instead allow it to be set at build-time.
+
+Signed-off-by: Reilly Brogan <reilly@reillybrogan.com>
+---
+ meson.build                      | 2 ++
+ meson.options                    | 2 ++
+ rust/scx_loader/configuration.md | 4 ++--
+ rust/scx_loader/src/config.rs    | 5 +++--
+ services/systemd/meson.build     | 4 ++--
+ 5 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index db4df968..a7465b84 100644
+--- a/meson.build
++++ b/meson.build
+@@ -366,6 +366,8 @@ if enable_rust
+     cargo_env.set('CARGO_HOME', get_option('cargo_home'))
+   endif
+ 
++  cargo_env.set('MESON_VENDORDIR', get_option('vendordir'))
++
+   run_target('fetch', command: [cargo_fetch, cargo], env: cargo_env)
+ 
+   rust_scheds = ['scx_lavd', 'scx_bpfland', 'scx_rustland', 'scx_rlfifo',
+diff --git a/meson.options b/meson.options
+index 32f3cff3..5f0aa1e3 100644
+--- a/meson.options
++++ b/meson.options
+@@ -24,6 +24,8 @@ option('veristat_diff_dir', type: 'string', value: '',
+        description: 'veristat diff dir')
+ option('kernel_headers', type: 'string', value: '',
+        description: 'kernel headers to build the schedulers')
++option('vendordir', type: 'string', value: '/usr/share',
++       description: 'Default location for package-managed config files')
+ option(
+   'systemd',
+   type: 'feature',
+diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
+index 0840536a..b1fec754 100644
+--- a/rust/scx_loader/configuration.md
++++ b/rust/scx_loader/configuration.md
+@@ -8,8 +8,8 @@ The `scx_loader` can be configured using a TOML file. This file allows you to cu
+ 
+ 1. `/etc/scx_loader/config.toml`
+ 2. `/etc/scx_loader.toml`
+-3. `/usr/share/scx_loader/config.toml`
+-4. `/usr/share/scx_loader.toml`
++3. `$VENDORDIR/scx_loader/config.toml` (`$VENDORDIR` is `/usr/share` by default, though your distribution may customize this)
++4. `$VENDORDIR/scx_loader.toml` (`$VENDORDIR` is `/usr/share` by default, though your distribution may customize this)
+ 
+ If no configuration file is found at any of these paths, `scx_loader` will use the built-in default configuration.
+ 
+diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
+index 8247157d..e150ab5b 100644
+--- a/rust/scx_loader/src/config.rs
++++ b/rust/scx_loader/src/config.rs
+@@ -48,14 +48,15 @@ pub fn parse_config_file(filepath: &str) -> Result<Config> {
+ }
+ 
+ pub fn get_config_path() -> Result<String> {
++    let vendordir = option_env!("MESON_VENDORDIR").unwrap_or("/usr/share");
+     // Search in system directories
+     let check_paths = [
+         // locations for user config
+         "/etc/scx_loader/config.toml".to_owned(),
+         "/etc/scx_loader.toml".to_owned(),
+         // locations for distributions to ship default configuration
+-        "/usr/share/scx_loader/config.toml".to_owned(),
+-        "/usr/share/scx_loader.toml".to_owned(),
++        format!("{vendordir}/scx_loader/config.toml").to_owned(),
++        format!("{vendordir}/scx_loader.toml").to_owned(),
+     ];
+     for check_path in check_paths {
+         if !Path::new(&check_path).exists() {
+diff --git a/services/systemd/meson.build b/services/systemd/meson.build
+index 92ed1e51..ac856b1e 100644
+--- a/services/systemd/meson.build
++++ b/services/systemd/meson.build
+@@ -10,8 +10,8 @@ install_data('scx_loader.service', install_dir: systemd_system_unit_dir)
+ # Install the 'org.scx.Loader.service' file to the dbus system services directory
+ install_data('org.scx.Loader.service', install_dir: '/usr/share/dbus-1/system-services')
+ 
+-# Install the default 'scx_loader' config file to the '/usr/share/scx_loader' directory
+-install_data('../scx_loader.toml', rename: 'config.toml', install_dir: '/usr/share/scx_loader')
++# Install the default 'scx_loader' config file to the '$VENDORDIR/scx_loader' directory
++install_data('../scx_loader.toml', rename: 'config.toml', install_dir: get_option('vendordir') + '/scx_loader')
+ 
+ # Install the 'scx' file to the '/etc/default' directory
+ install_data('../scx', install_dir: '/etc/default')
+-- 
+2.50.1
+
