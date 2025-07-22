@@ -239,6 +239,7 @@
 │   ├── 0004-scx_loader-Add-missing-schedulers.patch
 │   ├── 0005-scx_loader-add-bundled-configuration-like-for-scx.se.patch
 │   ├── 0006-scx_loader-add-config-search-path-for-distributions.patch
+│   ├── 0007-scx_loader-Support-build-time-configuration-of-vendo.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -266,4 +267,4 @@
 └── zstd-git
     └── PKGBUILD
 
-84 directories, 183 files
+84 directories, 184 files
