@@ -237,6 +237,8 @@
 │   ├── 0002-scx_loader-set-scx_flash-as-default-scheduler.patch
 │   ├── 0003-meson-install-scx_mitosis-and-scx_wd40.patch
 │   ├── 0004-scx_loader-Add-missing-schedulers.patch
+│   ├── 0005-scx_loader-add-bundled-configuration-like-for-scx.se.patch
+│   ├── 0006-scx_loader-add-config-search-path-for-distributions.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -264,4 +266,4 @@
 └── zstd-git
     └── PKGBUILD
 
-84 directories, 181 files
+84 directories, 183 files
