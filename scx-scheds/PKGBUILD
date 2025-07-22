@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.14
-pkgrel=1.5
+pkgrel=1.6
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -20,12 +20,16 @@ source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
         '0001-etc-default-scx-set-scx_flash-as-default-scheduler.patch'
         '0002-scx_loader-set-scx_flash-as-default-scheduler.patch'
         '0003-meson-install-scx_mitosis-and-scx_wd40.patch'
-        '0004-scx_loader-Add-missing-schedulers.patch')
+        '0004-scx_loader-Add-missing-schedulers.patch'
+        '0005-scx_loader-add-bundled-configuration-like-for-scx.se.patch'
+        '0006-scx_loader-add-config-search-path-for-distributions.patch')
 sha256sums=('f469c6396455572832bff13a3ede140f42b3293f4239364947e5a785d3a00714'
-            '0ab38e1ae20808fa4d79a18b9531910f1b4ed0c73abe3c6c9c84dc48bf975ae8'
-            '9d62cf9c422aa6acd4b1f3ea0f5579bfca9246f0c7da3a2a62822f5a182f08de'
-            '984399cb32a08295a76b1081d4fcc467088b28f62f546fbd73119373db30fbf4'
-            'b8b08450b34aff7fa7a82d3bb1cb980ef5788ac4deeb50710542bfe000c8b11c')
+            '7338535decfe8a44ecf16e598872ca9029854177f5d476484cd118794d71b75f'
+            '53123de8ce519e4103684644399aba8218e425acf39751d357a1c6ee2c2c4918'
+            '46db4624c1300f59eb153a3a40c14ccad97e9962d9f29e65bebd3b5311d9fd83'
+            'ce211d39abdac024c1c7d0325e70f3a26584a0025c8a80662888afda3df9fc9e'
+            '454ccbf31f3af191655e2fec687af8af17681cf18d1fbf9340744f2dabd8c5a1'
+            'a80f87033232dee0a1a226b355153191e9f85c4d09877a3202333b9b5f1ebff1')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
