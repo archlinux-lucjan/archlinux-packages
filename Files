@@ -235,12 +235,12 @@
 ├── scx-scheds
 │   ├── 0001-etc-default-scx-set-scx_flash-as-default-scheduler.patch
 │   ├── 0002-scx_loader-set-scx_flash-as-default-scheduler.patch
-│   ├── 0003-meson-install-scx_mitosis-and-scx_wd40.patch
-│   ├── 0004-scx_loader-Add-missing-schedulers.patch
-│   ├── 0005-scx_loader-add-bundled-configuration-like-for-scx.se.patch
-│   ├── 0006-scx_loader-add-config-search-path-for-distributions.patch
-│   ├── 0007-scx_loader-Support-build-time-configuration-of-vendo.patch
-│   ├── 0008-meson-drop-libalpm-support.patch
+│   ├── 0003-scx_loader-add-bundled-configuration-like-for-scx.se.patch
+│   ├── 0004-scx_loader-add-config-search-path-for-distributions.patch
+│   ├── 0005-scx_loader-Support-build-time-configuration-of-vendo.patch
+│   ├── 0006-meson-drop-libalpm-support.patch
+│   ├── 0007-meson-install-scx_mitosis-and-scx_wd40.patch
+│   ├── 0008-scx_loader-Add-missing-schedulers.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
