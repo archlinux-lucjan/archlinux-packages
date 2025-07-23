@@ -1,7 +1,7 @@
-From 5d8963f3148a6b943f2cea44dcdd41d5423ebafc Mon Sep 17 00:00:00 2001
+From 7f80e1a418b059358faf3a08f605129e4e9392ff Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 18 Jul 2025 14:01:57 +0200
-Subject: [PATCH 4/8] scx_loader: Add missing schedulers
+Subject: [PATCH 8/8] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -12,10 +12,10 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  4 files changed, 78 insertions(+)
 
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index 690df8b2..fe25fd0b 100644
+index 68fcfc9f..b1fec754 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
-@@ -67,6 +67,27 @@ gaming_mode = ["-f", "5000", "-s", "5000"]
+@@ -69,6 +69,27 @@ gaming_mode = ["-f", "5000", "-s", "5000"]
  lowlatency_mode = ["-f", "5000", "-s", "1000"]
  powersave_mode = ["-f", "50", "-p"]
  server_mode = ["-f", "100"]
@@ -43,7 +43,7 @@ index 690df8b2..fe25fd0b 100644
  ```
  
  **`default_sched`:**
-@@ -121,6 +142,13 @@ The example configuration above shows how to set custom flags for different sche
+@@ -123,6 +144,13 @@ The example configuration above shows how to set custom flags for different sche
      * Server mode: `--keep-running`
  * For `scx_rustland`:
      * No custom flags are defined, so the default flags for each mode will be used.
@@ -58,10 +58,10 @@ index 690df8b2..fe25fd0b 100644
  ## Fallback Behavior
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index 2f27ed99..e93158c8 100644
+index d082bf67..e150ab5b 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
-@@ -81,6 +81,9 @@ pub fn get_default_config() -> Config {
+@@ -86,6 +86,9 @@ pub fn get_default_config() -> Config {
          SupportedSched::P2DQ,
          SupportedSched::Tickless,
          SupportedSched::Rustland,
@@ -71,7 +71,7 @@ index 2f27ed99..e93158c8 100644
      ];
      let scheds_map = HashMap::from(supported_scheds.map(|x| init_default_config_entry(x)));
      Config {
-@@ -221,6 +224,17 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
+@@ -226,6 +229,17 @@ fn get_default_scx_flags_for_mode(scx_sched: &SupportedSched, sched_mode: SchedM
          },
          // scx_rustland doesn't support any of these modes
          SupportedSched::Rustland => vec![],
@@ -89,7 +89,7 @@ index 2f27ed99..e93158c8 100644
      }
  }
  
-@@ -290,6 +304,27 @@ gaming_mode = []
+@@ -295,6 +309,27 @@ gaming_mode = []
  lowlatency_mode = []
  powersave_mode = []
  server_mode = []

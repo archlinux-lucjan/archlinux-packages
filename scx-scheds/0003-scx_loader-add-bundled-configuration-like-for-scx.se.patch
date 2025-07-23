@@ -1,7 +1,7 @@
-From 0689fcf33aeaaf3dc73086c001391e6f915f9e30 Mon Sep 17 00:00:00 2001
+From b82700a91d0bcc28ede15960192d63fdbcf47a51 Mon Sep 17 00:00:00 2001
 From: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 Date: Thu, 17 Jul 2025 02:29:07 +0400
-Subject: [PATCH 5/8] scx_loader: add bundled configuration like for
+Subject: [PATCH 3/8] scx_loader: add bundled configuration like for
  scx.service
 
 ---

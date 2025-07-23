@@ -1,7 +1,7 @@
-From 2adec0f2d11f33932f16c352d3425d7f37850089 Mon Sep 17 00:00:00 2001
+From baf3a32b0f42f2068220d893fc6f7713dc73492d Mon Sep 17 00:00:00 2001
 From: Reilly Brogan <reilly@reillybrogan.com>
 Date: Wed, 16 Jul 2025 18:47:00 -0500
-Subject: [PATCH 7/8] scx_loader: Support build-time configuration of vendordir
+Subject: [PATCH 5/8] scx_loader: Support build-time configuration of vendordir
 
 Some Linux distributions have specific directories for package-shipped default config files. For example Solus, AerynOS, and Clear all use `/usr/share/defaults`, while SUSE uses `/usr/etc`. Rather than hardcoding `/usr/share/scx_loader/config.toml` as the config file location instead allow it to be set at build-time.
 
@@ -41,7 +41,7 @@ index 32f3cff3..5f0aa1e3 100644
    'systemd',
    type: 'feature',
 diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index 0840536a..b1fec754 100644
+index e5dc31ca..68fcfc9f 100644
 --- a/rust/scx_loader/configuration.md
 +++ b/rust/scx_loader/configuration.md
 @@ -8,8 +8,8 @@ The `scx_loader` can be configured using a TOML file. This file allows you to cu
@@ -56,7 +56,7 @@ index 0840536a..b1fec754 100644
  If no configuration file is found at any of these paths, `scx_loader` will use the built-in default configuration.
  
 diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
-index 8247157d..e150ab5b 100644
+index 8f8d84fb..d082bf67 100644
 --- a/rust/scx_loader/src/config.rs
 +++ b/rust/scx_loader/src/config.rs
 @@ -48,14 +48,15 @@ pub fn parse_config_file(filepath: &str) -> Result<Config> {

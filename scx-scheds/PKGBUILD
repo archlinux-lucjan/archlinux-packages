@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.14
-pkgrel=1.8
+pkgrel=1.9
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -19,21 +19,21 @@ conflicts=("scxctl")
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
         '0001-etc-default-scx-set-scx_flash-as-default-scheduler.patch'
         '0002-scx_loader-set-scx_flash-as-default-scheduler.patch'
-        '0003-meson-install-scx_mitosis-and-scx_wd40.patch'
-        '0004-scx_loader-Add-missing-schedulers.patch'
-        '0005-scx_loader-add-bundled-configuration-like-for-scx.se.patch'
-        '0006-scx_loader-add-config-search-path-for-distributions.patch'
-        '0007-scx_loader-Support-build-time-configuration-of-vendo.patch'
-        '0008-meson-drop-libalpm-support.patch')
+        '0003-scx_loader-add-bundled-configuration-like-for-scx.se.patch'
+        '0004-scx_loader-add-config-search-path-for-distributions.patch'
+        '0005-scx_loader-Support-build-time-configuration-of-vendo.patch'
+        '0006-meson-drop-libalpm-support.patch'
+        '0007-meson-install-scx_mitosis-and-scx_wd40.patch'
+        '0008-scx_loader-Add-missing-schedulers.patch')
 sha256sums=('f469c6396455572832bff13a3ede140f42b3293f4239364947e5a785d3a00714'
-            '2a6c2ea616c52c5c28e9c54644bffe39aa659da874b0c080df5833261aa1b1be'
-            '6ecb8db02addf01f530b4e80a23e5978f42aa20d7b52f2e180f7514a2e3ca4d6'
-            '552c57d451036649c47abebe26200e115bfaa730e9115fe73b0d062d7605535d'
-            'b3aa1d34550c3382391c8b0e8357e9cc60797049c13c7c45a2c435fc7b749b59'
-            '89300e883eb7871484add4e176d7878dba716a43a3cdd6330cc610e0c307e3a8'
-            'b6370da4d167285b47bedc177b179bab3a4928523d4f4a08022ec36a88b48a1e'
-            'e4cd6e2314ecf088bc0d8270b67883d55a9ab74a7e785e1f5e78a5d3d0bfcd5c'
-            '6d995d8508661eed03e116ba2f189299d3cacb6b7d04fb4d01c574812f22064a')
+            'b43937de3428b1c17f86e549826efc1b191b45264bb14b4cd690de0fb4e325bd'
+            'd4beaa33ed5719f813dc76596795560c7444885d5a6a0588f4272582fb29453f'
+            '74bc8c4d9a50e20e38befa43ac91852d94c049d9f8baaa1337e93ff1d6ced3c0'
+            '3ded0b0b9c2b5783aeb685a4321dc322c69964260549181871bd53dbab90f91a'
+            '339136217c3cadde1f69ea723090ba56614ffe94ffe393064d9fab77b0e43be6'
+            'be91738ff1e644042bff44eb7d8d8f6bd4040f918167e7cb4a972bee34d9c15c'
+            '1269e0ddcf3ee70c5d6087f88b06457e7d35bc02ca92df3f03121e58bfb2b317'
+            '2b0cef525a8a463febd8af334f002470fde14a92871bae0949ca642bff1cfb74')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet

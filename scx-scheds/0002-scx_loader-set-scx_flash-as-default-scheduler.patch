@@ -1,4 +1,4 @@
-From 6cfcb196144bde78b07ff78ee939f1de6ab11ce1 Mon Sep 17 00:00:00 2001
+From c7c1bc6f78872f51a2ae9bfa890106f5c4330f27 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 18 Jul 2025 14:00:44 +0200
 Subject: [PATCH 2/8] scx_loader: set scx_flash as default scheduler
