@@ -240,6 +240,7 @@
 │   ├── 0005-scx_loader-add-bundled-configuration-like-for-scx.se.patch
 │   ├── 0006-scx_loader-add-config-search-path-for-distributions.patch
 │   ├── 0007-scx_loader-Support-build-time-configuration-of-vendo.patch
+│   ├── 0008-meson-drop-libalpm-support.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -267,4 +268,4 @@
 └── zstd-git
     └── PKGBUILD
 
-84 directories, 184 files
+84 directories, 185 files
