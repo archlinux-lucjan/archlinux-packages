@@ -1,0 +1,163 @@
+From 3a1d27b48d99032930fe52ec8f70f05ddde2a175 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Wed, 23 Jul 2025 11:15:32 +0200
+Subject: [PATCH 8/8] meson: drop libalpm support
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ libalpm/openrc/90-scx-scheds-upgrade.hook  | 18 ------------------
+ libalpm/openrc/meson.build                 |  4 ----
+ libalpm/openrc/scx-openrc-restart          | 11 -----------
+ libalpm/systemd/90-scx-scheds-upgrade.hook | 17 -----------------
+ libalpm/systemd/meson.build                |  4 ----
+ libalpm/systemd/scx-systemd-restart        | 12 ------------
+ meson.build                                | 10 ----------
+ meson.options                              |  6 ------
+ 8 files changed, 82 deletions(-)
+ delete mode 100644 libalpm/openrc/90-scx-scheds-upgrade.hook
+ delete mode 100644 libalpm/openrc/meson.build
+ delete mode 100755 libalpm/openrc/scx-openrc-restart
+ delete mode 100644 libalpm/systemd/90-scx-scheds-upgrade.hook
+ delete mode 100644 libalpm/systemd/meson.build
+ delete mode 100755 libalpm/systemd/scx-systemd-restart
+
+diff --git a/libalpm/openrc/90-scx-scheds-upgrade.hook b/libalpm/openrc/90-scx-scheds-upgrade.hook
+deleted file mode 100644
+index 52c5e1ca..00000000
+--- a/libalpm/openrc/90-scx-scheds-upgrade.hook
++++ /dev/null
+@@ -1,18 +0,0 @@
+-[Trigger]
+-Type = Path
+-Operation = Upgrade
+-Target = etc/conf.d/scx
+-Target = etc/default/scx
+-Target = etc/init.d/scx
+-Target = usr/bin/scx_*
+-
+-[Trigger]
+-Type = Package
+-Operation = Upgrade
+-Target = scx-scheds*
+-
+-[Action]
+-Description = Checking scx_scheduler...
+-When = PostTransaction
+-Exec = /usr/share/libalpm/scripts/scx-openrc-restart
+-NeedsTargets
+diff --git a/libalpm/openrc/meson.build b/libalpm/openrc/meson.build
+deleted file mode 100644
+index 83ee99c4..00000000
+--- a/libalpm/openrc/meson.build
++++ /dev/null
+@@ -1,4 +0,0 @@
+-# Install the 'scx-openrc-restart' file to the '/usr/share/libalpm/scripts' directory
+-install_data('scx-openrc-restart', install_dir: '/usr/share/libalpm/scripts')
+-# Install the '90-scx-scheds-upgrade.hook' file to the '/usr/share/libalpm/hooks' directory
+-install_data('90-scx-scheds-upgrade.hook', install_dir: '/usr/share/libalpm/hooks')
+diff --git a/libalpm/openrc/scx-openrc-restart b/libalpm/openrc/scx-openrc-restart
+deleted file mode 100755
+index c3a9ad8f..00000000
+--- a/libalpm/openrc/scx-openrc-restart
++++ /dev/null
+@@ -1,11 +0,0 @@
+-#!/usr/bin/env bash
+-# SPDX-License-Identifier: GPL-2.0-only
+-
+-# Check the status of the service
+-if /etc/init.d/scx status > /dev/null; then
+-    echo "The service is active. Restarting..."
+-    /usr/bin/rc-service scx restart
+-    echo "Service has been restarted."
+-else
+-    echo "The service is not active."
+-fi
+diff --git a/libalpm/systemd/90-scx-scheds-upgrade.hook b/libalpm/systemd/90-scx-scheds-upgrade.hook
+deleted file mode 100644
+index f9ee81b1..00000000
+--- a/libalpm/systemd/90-scx-scheds-upgrade.hook
++++ /dev/null
+@@ -1,17 +0,0 @@
+-[Trigger]
+-Type = Path
+-Operation = Upgrade
+-Target = etc/default/scx
+-Target = usr/bin/scx_*
+-Target = usr/lib/systemd/system/scx.service
+-
+-[Trigger]
+-Type = Package
+-Operation = Upgrade
+-Target = scx-scheds*
+-
+-[Action]
+-Description = Checking scx_scheduler...
+-When = PostTransaction
+-Exec = /usr/share/libalpm/scripts/scx-systemd-restart
+-NeedsTargets
+diff --git a/libalpm/systemd/meson.build b/libalpm/systemd/meson.build
+deleted file mode 100644
+index 34dc6225..00000000
+--- a/libalpm/systemd/meson.build
++++ /dev/null
+@@ -1,4 +0,0 @@
+-# Install the 'scx-systemd-restart' file to the '/usr/share/libalpm/scripts' directory
+-install_data('scx-systemd-restart', install_dir: '/usr/share/libalpm/scripts')
+-# Install the '90-scx-scheds-upgrade.hook' file to the '/usr/share/libalpm/hooks' directory
+-install_data('90-scx-scheds-upgrade.hook', install_dir: '/usr/share/libalpm/hooks')
+diff --git a/libalpm/systemd/scx-systemd-restart b/libalpm/systemd/scx-systemd-restart
+deleted file mode 100755
+index 7c2e93f6..00000000
+--- a/libalpm/systemd/scx-systemd-restart
++++ /dev/null
+@@ -1,12 +0,0 @@
+-#!/usr/bin/env bash
+-# SPDX-License-Identifier: GPL-2.0-only
+-
+-# Check the status of the service
+-if systemctl is-active --quiet scx.service; then
+-    echo "The service is active. Restarting..."
+-    systemctl daemon-reload
+-    systemctl restart scx.service
+-    echo "Service has been restarted."
+-else
+-    echo "The service is not active."
+-fi
+diff --git a/meson.build b/meson.build
+index a7465b84..791f25ac 100644
+--- a/meson.build
++++ b/meson.build
+@@ -504,13 +504,3 @@ openrc = dependency('openrc', required: get_option('openrc'))
+ if openrc.found()
+   subdir('services/openrc')
+ endif
+-
+-libalpm = dependency('libalpm', required: get_option('libalpm'))
+-
+-if libalpm.found() and systemd.found()
+-  subdir('libalpm/systemd')
+-endif
+-
+-if libalpm.found() and openrc.found()
+-  subdir('libalpm/openrc')
+-endif
+diff --git a/meson.options b/meson.options
+index 5f0aa1e3..da27bbd8 100644
+--- a/meson.options
++++ b/meson.options
+@@ -38,12 +38,6 @@ option(
+   value: 'auto',
+   description: 'openrc init.d service file'
+ )
+-option(
+-  'libalpm',
+-  type: 'feature',
+-  value: 'auto',
+-  description: 'install pacman hooks'
+-)
+ option(
+   'build_outside_src',
+   type: 'boolean',
+-- 
+2.50.1
+

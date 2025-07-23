@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.14
-pkgrel=1.7
+pkgrel=1.8
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -23,15 +23,17 @@ source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
         '0004-scx_loader-Add-missing-schedulers.patch'
         '0005-scx_loader-add-bundled-configuration-like-for-scx.se.patch'
         '0006-scx_loader-add-config-search-path-for-distributions.patch'
-        '0007-scx_loader-Support-build-time-configuration-of-vendo.patch')
+        '0007-scx_loader-Support-build-time-configuration-of-vendo.patch'
+        '0008-meson-drop-libalpm-support.patch')
 sha256sums=('f469c6396455572832bff13a3ede140f42b3293f4239364947e5a785d3a00714'
-            '99a3635d0ece9b86d8a9d79ce209f281fa36c7ae5c0af215a8a759bfe2f3a0e2'
-            'a039d7388a429a60bef6047d8ae32a49c7fd746446392e9f5c407d0a30c73457'
-            'd71da307b56dc07a25e03912840c6dbfa815185db59d82498fcbd34e81f00109'
-            '5d560c1b0db6afa09c35fc0899476aad6ca678672f0fbf45e7557564eb5366aa'
-            '99f3b33a6c55b5bb54d35ae0e5719d0b077a94de3d88a4bd84961baeb7ebccc2'
-            'ef7195655afcc919f64b5e560d75ea4fb7a8d41b1653a926f02f19010dffd14a'
-            '1ac61481fbaa562b39e14879120c658936413575f3b78b68e82cf52ca543122a')
+            '2a6c2ea616c52c5c28e9c54644bffe39aa659da874b0c080df5833261aa1b1be'
+            '6ecb8db02addf01f530b4e80a23e5978f42aa20d7b52f2e180f7514a2e3ca4d6'
+            '552c57d451036649c47abebe26200e115bfaa730e9115fe73b0d062d7605535d'
+            'b3aa1d34550c3382391c8b0e8357e9cc60797049c13c7c45a2c435fc7b749b59'
+            '89300e883eb7871484add4e176d7878dba716a43a3cdd6330cc610e0c307e3a8'
+            'b6370da4d167285b47bedc177b179bab3a4928523d4f4a08022ec36a88b48a1e'
+            'e4cd6e2314ecf088bc0d8270b67883d55a9ab74a7e785e1f5e78a5d3d0bfcd5c'
+            '6d995d8508661eed03e116ba2f189299d3cacb6b7d04fb4d01c574812f22064a')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
