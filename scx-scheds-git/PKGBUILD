@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.14.r291.g00b5d4b5
-pkgrel=4
+pkgver=1.0.14.r293.ga3777e2d
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,11 +19,10 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-e731bbf6cebb08a96f836c149027969581701069 # scx_loader: move to tools
-065689f34c82eb2f577c39ec773d53189f88d30c # scx_loader: Add chaos scheduler
-f7c392807d332bda150b5cf4e1009c9d1c6d5832 # meson: install scx_mitosis and scx_wd40
-d81918ee918a59d97383901888404a1bd991b95f # scx_loader: Add mitosis scheduler
-1a8047141f94188a6bd289793cffb7f3cd4c90d5 # scx_loader: Add wd40 scheduler
+02cf5449c7fa6f4a52cb528b547c1ce58456a09b # scx_loader: Add chaos scheduler
+bc348084f84e33c00808003a3c66aa0c08a986a8 # meson: install scx_mitosis and scx_wd40
+7534235f78bf0a0088777d80b012784a6345aabc # scx_loader: Add mitosis scheduler
+cf3bdba1317e63c2272f68ec00910db86e892720 # scx_loader: Add wd40 scheduler
 1803962bf559c312217ed1066e5b0a0a906838c7 # scx_tickless: Improve per-CPU tasks handling
 83e07cd329175b6956c115efa1e48c5f821757e9 # scx_cosmos: Allow disabling deferred wakeups
 )
