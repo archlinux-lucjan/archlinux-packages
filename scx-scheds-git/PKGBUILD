@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.14.r293.ga3777e2d
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -25,6 +25,7 @@ bc348084f84e33c00808003a3c66aa0c08a986a8 # meson: install scx_mitosis and scx_wd
 cf3bdba1317e63c2272f68ec00910db86e892720 # scx_loader: Add wd40 scheduler
 1803962bf559c312217ed1066e5b0a0a906838c7 # scx_tickless: Improve per-CPU tasks handling
 83e07cd329175b6956c115efa1e48c5f821757e9 # scx_cosmos: Allow disabling deferred wakeups
+aef0cce261f9fab162ea83a6a8bcac4a9ed89ece # rust/scx_utils: disable rustfmt for generated skeleton
 )
 
 _reverts=(
