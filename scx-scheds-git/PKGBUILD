@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.14.r291.g00b5d4b5
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -24,6 +24,8 @@ e731bbf6cebb08a96f836c149027969581701069 # scx_loader: move to tools
 f7c392807d332bda150b5cf4e1009c9d1c6d5832 # meson: install scx_mitosis and scx_wd40
 d81918ee918a59d97383901888404a1bd991b95f # scx_loader: Add mitosis scheduler
 1a8047141f94188a6bd289793cffb7f3cd4c90d5 # scx_loader: Add wd40 scheduler
+1803962bf559c312217ed1066e5b0a0a906838c7 # scx_tickless: Improve per-CPU tasks handling
+83e07cd329175b6956c115efa1e48c5f821757e9 # scx_cosmos: Allow disabling deferred wakeups
 )
 
 _reverts=(
