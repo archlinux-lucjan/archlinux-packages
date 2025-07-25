@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.14.r289.g48093ff5
+pkgver=1.0.14.r291.g00b5d4b5
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,10 +19,11 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-767156a02089dce9d9578a26a2a052189732ee37 # scx_loader: Add chaos scheduler
-92791c81190e311503ba1f04f178ffa6afc23b9c # meson: install scx_mitosis and scx_wd40
-c9a6c3a4926cb0122a97927d0e988d278cf9f6f6 # scx_loader: Add mitosis scheduler
-ff88be95f8cb9883579bdf8bc6ab8035dbb7d9a5 # scx_loader: Add wd40 scheduler
+1bf7131ff1087792429a637d92c33cd41edc2de9 # scx_loader: move to tools
+1441eede1cf1e0bbc302e38657215a7a99f088a1 # scx_loader: Add chaos scheduler
+805c58561ad37de89ae21a8225a111e7a5c7946d # meson: install scx_mitosis and scx_wd40
+30a87b16fb38d7666049e327e43d05e4c499c588 # scx_loader: Add mitosis scheduler
+e85867f1345cf04edce9bb2ac64e4a0e851a673e # scx_loader: Add wd40 scheduler
 1803962bf559c312217ed1066e5b0a0a906838c7 # scx_tickless: Improve per-CPU tasks handling
 )
 
