@@ -1,6 +1,6 @@
-From 42c9ec0d9877eed0d810728c459dd9029ccb4ee6 Mon Sep 17 00:00:00 2001
+From 6f3bbf4ed4d81882412e7cfa41413e3f458f89c3 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 18 Jul 2025 14:01:41 +0200
+Date: Fri, 25 Jul 2025 15:49:17 +0200
 Subject: [PATCH 7/8] meson: install scx_mitosis and scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -47,19 +47,19 @@ index 3305aa77..cb6f6531 100644
  name = "scx_stats"
  version = "1.0.14"
 diff --git a/Cargo.toml b/Cargo.toml
-index 44c6c03c..42d0a9a1 100644
+index 00912c5d..7270c669 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -18,6 +18,7 @@ members = [
+@@ -17,6 +17,7 @@ members = [
      "scheds/rust/scx_rustland",
      "scheds/rust/scx_rusty",
      "scheds/rust/scx_tickless",
 +    "scheds/rust/scx_wd40",
+     "tools/scx_loader",
      "tools/scxctl",
      "tools/scxtop",
-     "tools/vmlinux_docify",
 diff --git a/meson-scripts/install_rust_user_scheds b/meson-scripts/install_rust_user_scheds
-index 63dbf835..7469215f 100755
+index 31591ad4..c5a07855 100755
 --- a/meson-scripts/install_rust_user_scheds
 +++ b/meson-scripts/install_rust_user_scheds
 @@ -7,12 +7,6 @@ for manifest in "$MESON_SOURCE_ROOT"/scheds/rust/*/Cargo.toml; do

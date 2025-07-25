@@ -1,24 +1,112 @@
-From 7f80e1a418b059358faf3a08f605129e4e9392ff Mon Sep 17 00:00:00 2001
+From 9bd788633aef501477a44a5034b825a37fa4df19 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Fri, 18 Jul 2025 14:01:57 +0200
+Date: Fri, 25 Jul 2025 15:51:29 +0200
 Subject: [PATCH 8/8] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
- rust/scx_loader/configuration.md | 28 +++++++++++++++++++++++++
- rust/scx_loader/src/config.rs    | 35 ++++++++++++++++++++++++++++++++
- rust/scx_loader/src/lib.rs       | 12 +++++++++++
- rust/scx_loader/src/main.rs      |  3 +++
- 4 files changed, 78 insertions(+)
+ tools/scx_loader/configuration.md | 122 ++++++++++++++++++++----------
+ tools/scx_loader/src/config.rs    |  35 +++++++++
+ tools/scx_loader/src/lib.rs       |  12 +++
+ tools/scx_loader/src/main.rs      |   3 +
+ 4 files changed, 133 insertions(+), 39 deletions(-)
 
-diff --git a/rust/scx_loader/configuration.md b/rust/scx_loader/configuration.md
-index 68fcfc9f..b1fec754 100644
---- a/rust/scx_loader/configuration.md
-+++ b/rust/scx_loader/configuration.md
-@@ -69,6 +69,27 @@ gaming_mode = ["-f", "5000", "-s", "5000"]
- lowlatency_mode = ["-f", "5000", "-s", "1000"]
- powersave_mode = ["-f", "50", "-p"]
- server_mode = ["-f", "100"]
+diff --git a/tools/scx_loader/configuration.md b/tools/scx_loader/configuration.md
+index 5d03a972..b1fec754 100644
+--- a/tools/scx_loader/configuration.md
++++ b/tools/scx_loader/configuration.md
+@@ -18,50 +18,78 @@ If no configuration file is found at any of these paths, `scx_loader` will use t
+ The configuration file has the following structure:
+ 
+ ```toml
+-default_sched = "scx_bpfland"
++default_sched = "scx_flash"
+ default_mode = "Auto"
+ 
+-[scheds.scx_bpfland]
+-auto_mode = []
+-gaming_mode = ["-m", "performance"]
+-lowlatency_mode = ["-s", "5000", "-S", "500", "-l", "5000", "-m", "performance"]
+-powersave_mode = ["-m", "powersave"]
+-
+-[scheds.scx_rusty]
+-auto_mode = []
+-gaming_mode = []
+-lowlatency_mode = []
+-powersave_mode = []
+-
+-[scheds.scx_lavd]
+-auto_mode = []
+-gaming_mode = ["--performance"]
+-lowlatency_mode = ["--performance"]
+-powersave_mode = ["--powersave"]
+-
+-[scheds.scx_flash]
+-auto_mode = []
+-gaming_mode = ["-m", "all", "-w", "-p"]
+-lowlatency_mode = ["-m", "performance", "-w", "-p", "-C", "0"]
+-powersave_mode = ["-m", "powersave", "-I", "10000", "-t", "10000", "-s", "10000", "-S", "1000"]
+-
+-[scheds.scx_p2dq]
+-auto_mode = []
+-gaming_mode = []
+-lowlatency_mode = ["-y"]
+-powersave_mode = []
+-
+-[scheds.scx_tickless]
+-auto_mode = []
+-gaming_mode = ["-f 5000 -s 5000"]
+-lowlatency_mode = ["-f 5000 -s 1000"]
+-powersave_mode = ["-f 50 -p"]
+-
+ [scheds.scx_rustland]
+ auto_mode = []
+ gaming_mode = []
+ lowlatency_mode = []
+ powersave_mode = []
++server_mode = []
++
++[scheds.scx_lavd]
++auto_mode = []
++gaming_mode = ["--performance"]
++lowlatency_mode = ["--performance"]
++powersave_mode = ["--powersave"]
++server_mode = []
++
++[scheds.scx_flash]
++auto_mode = []
++gaming_mode = ["-m", "all"]
++lowlatency_mode = ["-m", "performance", "-w", "-C", "0"]
++powersave_mode = ["-m", "powersave", "-I", "10000", "-t", "10000", "-s", "10000", "-S", "1000"]
++server_mode = ["-m", "all", "-s", "20000", "-S", "1000", "-I", "-1", "-D", "-L"]
++
++[scheds.scx_p2dq]
++auto_mode = []
++gaming_mode = []
++lowlatency_mode = ["-y"]
++powersave_mode = []
++server_mode = ["--keep-running"]
++
++[scheds.scx_rusty]
++auto_mode = []
++gaming_mode = []
++lowlatency_mode = []
++powersave_mode = []
++server_mode = []
++
++[scheds.scx_bpfland]
++auto_mode = []
++gaming_mode = ["-m", "performance"]
++lowlatency_mode = ["-s", "5000", "-S", "500", "-l", "5000", "-m", "performance"]
++powersave_mode = ["-m", "powersave"]
++server_mode = ["-p"]
++
++[scheds.scx_tickless]
++auto_mode = []
++gaming_mode = ["-f", "5000", "-s", "5000"]
++lowlatency_mode = ["-f", "5000", "-s", "1000"]
++powersave_mode = ["-f", "50", "-p"]
++server_mode = ["-f", "100"]
 +
 +[scheds.scx_wd40]
 +auto_mode = []
@@ -43,7 +131,33 @@ index 68fcfc9f..b1fec754 100644
  ```
  
  **`default_sched`:**
-@@ -123,6 +144,13 @@ The example configuration above shows how to set custom flags for different sche
+@@ -92,8 +120,9 @@ The example configuration above shows how to set custom flags for different sche
+ 
+ * For `scx_bpfland`:
+     * Gaming mode: `-m performance`
+-    * Low Latency mode: `-s 5000 -S 500 -l 5000`
++    * Low Latency mode: `-s 5000 -S 500 -l 5000 -m performance`
+     * Power Save mode: `-m powersave`
++    * Server mode: `-p`
+ * For `scx_rusty`:
+     * No custom flags are defined, so the default flags for each mode will be used.
+ * For `scx_lavd`:
+@@ -101,12 +130,27 @@ The example configuration above shows how to set custom flags for different sche
+     * Low Latency mode: `--performance`
+     * Power Save mode: `--powersave`
+ * For `scx_flash`:
+-    * No custom flags are defined, so the default flags for each mode will be used.
++    * Gaming mode: `-m all`
++    * Low Latency mode: `-m performance -w -C 0`
++    * Power Save mode: `-m powersave -I 10000 -t 10000 -s 10000 -S 1000`
++    * Server mode: `-m all -s 20000 -S 1000 -I -1 -D -L`
++* For `scx_tickless`:
++    * Gaming mode: `-f 5000 -s 5000`
++    * Low Latency mode: `-f 5000 -s 1000`
++    * Power Save mode: `-f 50 -p`
++    * Server mode: `-f 100`
+ * For `scx_p2dq`:
+     * Low Latency mode: `-y`
      * Server mode: `--keep-running`
  * For `scx_rustland`:
      * No custom flags are defined, so the default flags for each mode will be used.
@@ -57,10 +171,10 @@ index 68fcfc9f..b1fec754 100644
  
  ## Fallback Behavior
  
-diff --git a/rust/scx_loader/src/config.rs b/rust/scx_loader/src/config.rs
+diff --git a/tools/scx_loader/src/config.rs b/tools/scx_loader/src/config.rs
 index d082bf67..e150ab5b 100644
---- a/rust/scx_loader/src/config.rs
-+++ b/rust/scx_loader/src/config.rs
+--- a/tools/scx_loader/src/config.rs
++++ b/tools/scx_loader/src/config.rs
 @@ -86,6 +86,9 @@ pub fn get_default_config() -> Config {
          SupportedSched::P2DQ,
          SupportedSched::Tickless,
@@ -117,10 +231,10 @@ index d082bf67..e150ab5b 100644
  "#;
  
          let parsed_config = parse_config_content(config_str).expect("Failed to parse config");
-diff --git a/rust/scx_loader/src/lib.rs b/rust/scx_loader/src/lib.rs
+diff --git a/tools/scx_loader/src/lib.rs b/tools/scx_loader/src/lib.rs
 index 9e0911ab..4fd8c07b 100644
---- a/rust/scx_loader/src/lib.rs
-+++ b/rust/scx_loader/src/lib.rs
+--- a/tools/scx_loader/src/lib.rs
++++ b/tools/scx_loader/src/lib.rs
 @@ -34,6 +34,12 @@ pub enum SupportedSched {
      Tickless,
      #[serde(rename = "scx_rustland")]
@@ -166,10 +280,10 @@ index 9e0911ab..4fd8c07b 100644
          }
      }
  }
-diff --git a/rust/scx_loader/src/main.rs b/rust/scx_loader/src/main.rs
+diff --git a/tools/scx_loader/src/main.rs b/tools/scx_loader/src/main.rs
 index f2ca9935..346ca750 100644
---- a/rust/scx_loader/src/main.rs
-+++ b/rust/scx_loader/src/main.rs
+--- a/tools/scx_loader/src/main.rs
++++ b/tools/scx_loader/src/main.rs
 @@ -90,12 +90,15 @@ impl ScxLoader {
      async fn supported_schedulers(&self) -> Vec<&str> {
          vec![

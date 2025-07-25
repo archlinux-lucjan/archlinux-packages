@@ -1,0 +1,163 @@
+From b2bc32d428aa3255c50822a6dbac12d00937bb23 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Fri, 25 Jul 2025 15:46:12 +0200
+Subject: [PATCH 6/8] scx_loader: move to tools
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ Cargo.toml                                     |  2 +-
+ meson-scripts/install_rust_user_scheds         | 10 +++++-----
+ meson.build                                    |  3 +--
+ rust/scx_loader/LICENSE                        |  1 -
+ {rust => tools}/scx_loader/Cargo.toml          |  0
+ {rust => tools}/scx_loader/README.md           |  0
+ {rust => tools}/scx_loader/configuration.md    |  0
+ {rust => tools}/scx_loader/meson.build         |  0
+ {rust => tools}/scx_loader/org.scx.Loader.conf |  0
+ {rust => tools}/scx_loader/org.scx.Loader.xml  |  0
+ {rust => tools}/scx_loader/src/config.rs       |  0
+ {rust => tools}/scx_loader/src/dbus.rs         |  0
+ {rust => tools}/scx_loader/src/lib.rs          |  0
+ {rust => tools}/scx_loader/src/logger.rs       |  0
+ {rust => tools}/scx_loader/src/main.rs         |  0
+ tools/scxctl/Cargo.toml                        |  2 +-
+ 16 files changed, 8 insertions(+), 10 deletions(-)
+ delete mode 120000 rust/scx_loader/LICENSE
+ rename {rust => tools}/scx_loader/Cargo.toml (100%)
+ rename {rust => tools}/scx_loader/README.md (100%)
+ rename {rust => tools}/scx_loader/configuration.md (100%)
+ rename {rust => tools}/scx_loader/meson.build (100%)
+ rename {rust => tools}/scx_loader/org.scx.Loader.conf (100%)
+ rename {rust => tools}/scx_loader/org.scx.Loader.xml (100%)
+ rename {rust => tools}/scx_loader/src/config.rs (100%)
+ rename {rust => tools}/scx_loader/src/dbus.rs (100%)
+ rename {rust => tools}/scx_loader/src/lib.rs (100%)
+ rename {rust => tools}/scx_loader/src/logger.rs (100%)
+ rename {rust => tools}/scx_loader/src/main.rs (100%)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 44c6c03c..00912c5d 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -1,7 +1,6 @@
+ [workspace]
+ members = [
+     "rust/scx_lib_selftests",
+-    "rust/scx_loader",
+     "rust/scx_rustland_core",
+     "rust/scx_stats",
+     "rust/scx_stats/scx_stats_derive",
+@@ -18,6 +17,7 @@ members = [
+     "scheds/rust/scx_rustland",
+     "scheds/rust/scx_rusty",
+     "scheds/rust/scx_tickless",
++    "tools/scx_loader",
+     "tools/scxctl",
+     "tools/scxtop",
+     "tools/vmlinux_docify",
+diff --git a/meson-scripts/install_rust_user_scheds b/meson-scripts/install_rust_user_scheds
+index 63dbf835..31591ad4 100755
+--- a/meson-scripts/install_rust_user_scheds
++++ b/meson-scripts/install_rust_user_scheds
+@@ -47,11 +47,6 @@ for manifest in "$MESON_SOURCE_ROOT"/rust/*/Cargo.toml; do
+         echo "Found multiple binaries for $name under $target_dir, installing the latest which may not be what you want" 1>&2
+     fi
+ 
+-    # Install bus spec for scx_loader
+-    if [ "$name" = "scx_loader" ]; then
+-        install -D -m 0644 "${source_dir}/org.scx.Loader.conf" "${DESTDIR}/usr/share/dbus-1/system.d/org.scx.Loader.conf"
+-    fi
+-
+     install -D "${bins[0]}" "${DESTDIR}/${MESON_INSTALL_PREFIX}/bin/${name}"
+ done
+ 
+@@ -71,5 +66,10 @@ for manifest in "$MESON_SOURCE_ROOT"/tools/*/Cargo.toml; do
+         echo "Found multiple binaries for $name under $target_dir, installing the latest which may not be what you want" 1>&2
+     fi
+ 
++    # Install bus spec for scx_loader
++    if [ "$name" = "scx_loader" ]; then
++        install -D -m 0644 "${source_dir}/org.scx.Loader.conf" "${DESTDIR}/usr/share/dbus-1/system.d/org.scx.Loader.conf"
++    fi
++
+     install -D "${bins[0]}" "${DESTDIR}/${MESON_INSTALL_PREFIX}/bin/${name}"
+ done
+diff --git a/meson.build b/meson.build
+index 791f25ac..56d4308a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -374,8 +374,7 @@ if enable_rust
+                  'scx_flash', 'scx_rusty', 'scx_p2dq',
+                  'scx_layered', 'scx_mitosis', 'scx_tickless', 'scx_chaos']
+   rust_misc = ['scx_stats', 'scx_stats_derive', 'scx_utils',
+-               'scx_rustland_core',
+-               'scx_loader']
++               'scx_rustland_core']
+ 
+   sched_deps = [libbpf, bpftool_target]
+   cargo_cmd = [cargo, 'build', '--manifest-path=@INPUT@', '--target-dir=@OUTDIR@',
+diff --git a/rust/scx_loader/LICENSE b/rust/scx_loader/LICENSE
+deleted file mode 120000
+index 30cff740..00000000
+--- a/rust/scx_loader/LICENSE
++++ /dev/null
+@@ -1 +0,0 @@
+-../../LICENSE
+\ No newline at end of file
+diff --git a/rust/scx_loader/Cargo.toml b/tools/scx_loader/Cargo.toml
+similarity index 100%
+rename from rust/scx_loader/Cargo.toml
+rename to tools/scx_loader/Cargo.toml
+diff --git a/rust/scx_loader/README.md b/tools/scx_loader/README.md
+similarity index 100%
+rename from rust/scx_loader/README.md
+rename to tools/scx_loader/README.md
+diff --git a/rust/scx_loader/configuration.md b/tools/scx_loader/configuration.md
+similarity index 100%
+rename from rust/scx_loader/configuration.md
+rename to tools/scx_loader/configuration.md
+diff --git a/rust/scx_loader/meson.build b/tools/scx_loader/meson.build
+similarity index 100%
+rename from rust/scx_loader/meson.build
+rename to tools/scx_loader/meson.build
+diff --git a/rust/scx_loader/org.scx.Loader.conf b/tools/scx_loader/org.scx.Loader.conf
+similarity index 100%
+rename from rust/scx_loader/org.scx.Loader.conf
+rename to tools/scx_loader/org.scx.Loader.conf
+diff --git a/rust/scx_loader/org.scx.Loader.xml b/tools/scx_loader/org.scx.Loader.xml
+similarity index 100%
+rename from rust/scx_loader/org.scx.Loader.xml
+rename to tools/scx_loader/org.scx.Loader.xml
+diff --git a/rust/scx_loader/src/config.rs b/tools/scx_loader/src/config.rs
+similarity index 100%
+rename from rust/scx_loader/src/config.rs
+rename to tools/scx_loader/src/config.rs
+diff --git a/rust/scx_loader/src/dbus.rs b/tools/scx_loader/src/dbus.rs
+similarity index 100%
+rename from rust/scx_loader/src/dbus.rs
+rename to tools/scx_loader/src/dbus.rs
+diff --git a/rust/scx_loader/src/lib.rs b/tools/scx_loader/src/lib.rs
+similarity index 100%
+rename from rust/scx_loader/src/lib.rs
+rename to tools/scx_loader/src/lib.rs
+diff --git a/rust/scx_loader/src/logger.rs b/tools/scx_loader/src/logger.rs
+similarity index 100%
+rename from rust/scx_loader/src/logger.rs
+rename to tools/scx_loader/src/logger.rs
+diff --git a/rust/scx_loader/src/main.rs b/tools/scx_loader/src/main.rs
+similarity index 100%
+rename from rust/scx_loader/src/main.rs
+rename to tools/scx_loader/src/main.rs
+diff --git a/tools/scxctl/Cargo.toml b/tools/scxctl/Cargo.toml
+index d3cbc1b2..74fc4a58 100644
+--- a/tools/scxctl/Cargo.toml
++++ b/tools/scxctl/Cargo.toml
+@@ -17,4 +17,4 @@ license = "GPL-2.0-only"
+ clap = { version = "4.5.28", features = ["derive"] }
+ colored = "3.0.0"
+ zbus = "5.3.1"
+-scx_loader = { path = "../../rust/scx_loader", version="1.0.14" }
++scx_loader = { path = "../../tools/scx_loader", version="1.0.14" }
+-- 
+2.50.1
+
