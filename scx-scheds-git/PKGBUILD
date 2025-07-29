@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.14.r353.g93835475
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -23,6 +23,7 @@ _backports=(
 84a236d5915e1e9dad7632c124a205965577d803 # meson: install scx_mitosis and scx_wd40
 1e26e68760cba1362b9f37b3ee3f235cf5c938be # scx_loader: Add mitosis scheduler
 e6ccdae6f2ede99d06ab16480c529adf522828cf # scx_loader: Add wd40 scheduler
+ea326cc57e0b1264167b20ffd213d3aaaa31f020 # scx_cosmos: Enable long option --flat-idle-scan
 )
 
 _reverts=(
