@@ -239,8 +239,9 @@
 │   ├── 0004-scx_loader-Support-build-time-configuration-of-vendo.patch
 │   ├── 0005-meson-drop-libalpm-support.patch
 │   ├── 0006-scx_loader-move-to-tools.patch
-│   ├── 0007-meson-install-scx_mitosis-and-scx_wd40.patch
-│   ├── 0008-scx_loader-Add-missing-schedulers.patch
+│   ├── 0007-scx.service-drop-ConditionPathIsDirectory.patch
+│   ├── 0008-meson-install-scx_mitosis-and-scx_wd40.patch
+│   ├── 0009-scx_loader-Add-missing-schedulers.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -268,4 +269,4 @@
 └── zstd-git
     └── PKGBUILD
 
-84 directories, 185 files
+84 directories, 186 files
