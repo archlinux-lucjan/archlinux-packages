@@ -1,0 +1,24 @@
+From b0bb04ceeeac79b03fac4d85b40ab4c0fcb96aa4 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Tue, 29 Jul 2025 22:40:47 +0200
+Subject: [PATCH 7/9] scx.service: drop ConditionPathIsDirectory
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ services/systemd/scx.service | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/services/systemd/scx.service b/services/systemd/scx.service
+index d27bb89a..70be6975 100644
+--- a/services/systemd/scx.service
++++ b/services/systemd/scx.service
+@@ -1,6 +1,5 @@
+ [Unit]
+ Description=Start scx_scheduler
+-ConditionPathIsDirectory=/sys/kernel/sched_ext
+ StartLimitIntervalSec=30
+ StartLimitBurst=2
+ 
+-- 
+2.50.1
+
