@@ -1,0 +1,49 @@
+From 657e9e66c43836ef2bf2e61cee8da5239600edb6 Mon Sep 17 00:00:00 2001
+From: Joe Maples <joe@maples.dev>
+Date: Wed, 30 Jul 2025 19:31:30 -0400
+Subject: [PATCH 11/13] scxctl: Add restart command
+
+---
+ tools/scxctl/src/cli.rs  | 2 ++
+ tools/scxctl/src/main.rs | 7 +++++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/tools/scxctl/src/cli.rs b/tools/scxctl/src/cli.rs
+index e6c593ac..77f38e95 100644
+--- a/tools/scxctl/src/cli.rs
++++ b/tools/scxctl/src/cli.rs
+@@ -75,4 +75,6 @@ pub enum Commands {
+     },
+     #[command(about = "Stop the current scheduler")]
+     Stop,
++    #[command(about = "Restart the current scheduler with original configuration")]
++    Restart,
+ }
+diff --git a/tools/scxctl/src/main.rs b/tools/scxctl/src/main.rs
+index 29183f36..a2c2b07b 100644
+--- a/tools/scxctl/src/main.rs
++++ b/tools/scxctl/src/main.rs
+@@ -128,6 +128,12 @@ fn cmd_stop(scx_loader: LoaderClientProxyBlocking) -> Result<(), Box<dyn std::er
+     Ok(())
+ }
+ 
++fn cmd_restart(scx_loader: LoaderClientProxyBlocking) -> Result<(), Box<dyn std::error::Error>> {
++    scx_loader.restart_scheduler()?;
++    println!("restarted");
++    Ok(())
++}
++
+ fn main() -> Result<(), Box<dyn std::error::Error>> {
+     let cli = Cli::parse();
+     let conn = Connection::system()?;
+@@ -139,6 +145,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+         Commands::Start { args } => cmd_start(scx_loader, args.sched, args.mode, args.args)?,
+         Commands::Switch { args } => cmd_switch(scx_loader, args.sched, args.mode, args.args)?,
+         Commands::Stop => cmd_stop(scx_loader)?,
++        Commands::Restart => cmd_restart(scx_loader)?,
+     }
+ 
+     Ok(())
+-- 
+2.50.1
+

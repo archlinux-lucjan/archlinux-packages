@@ -1,7 +1,8 @@
-From 80addcefd06f9bbb809917b0fb6d975a273b305a Mon Sep 17 00:00:00 2001
+From 6b376b5cb53ed2251186bd253c40d4c69307f99c Mon Sep 17 00:00:00 2001
 From: Reilly Brogan <reilly@reillybrogan.com>
 Date: Wed, 16 Jul 2025 18:47:00 -0500
-Subject: [PATCH 4/9] scx_loader: Support build-time configuration of vendordir
+Subject: [PATCH 04/13] scx_loader: Support build-time configuration of
+ vendordir
 
 Some Linux distributions have specific directories for package-shipped default config files. For example Solus, AerynOS, and Clear all use `/usr/share/defaults`, while SUSE uses `/usr/etc`. Rather than hardcoding `/usr/share/scx_loader/config.toml` as the config file location instead allow it to be set at build-time.
 

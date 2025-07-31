@@ -1,7 +1,7 @@
-From bb73a4afd873af1d773880b7d05c32612ab46c67 Mon Sep 17 00:00:00 2001
+From fef9c324f0258d643fb03b12443b748ca0b49c8f Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 25 Jul 2025 15:51:29 +0200
-Subject: [PATCH 9/9] scx_loader: Add missing schedulers
+Subject: [PATCH 13/13] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -281,10 +281,10 @@ index 9e0911ab..4fd8c07b 100644
      }
  }
 diff --git a/tools/scx_loader/src/main.rs b/tools/scx_loader/src/main.rs
-index f2ca9935..346ca750 100644
+index e9878e20..d6bc67e3 100644
 --- a/tools/scx_loader/src/main.rs
 +++ b/tools/scx_loader/src/main.rs
-@@ -90,12 +90,15 @@ impl ScxLoader {
+@@ -101,12 +101,15 @@ impl ScxLoader {
      async fn supported_schedulers(&self) -> Vec<&str> {
          vec![
              "scx_bpfland",
@@ -299,7 +299,7 @@ index f2ca9935..346ca750 100644
 +            "scx_wd40",
          ]
      }
- 
+     async fn start_scheduler(
 -- 
 2.50.1
 

@@ -238,8 +238,12 @@
 │   ├── 0005-meson-drop-libalpm-support.patch
 │   ├── 0006-scx_loader-move-to-tools.patch
 │   ├── 0007-scx.service-drop-ConditionPathIsDirectory.patch
-│   ├── 0008-meson-install-scx_mitosis-and-scx_wd40.patch
-│   ├── 0009-scx_loader-Add-missing-schedulers.patch
+│   ├── 0008-scx_loader-add-CurrentSchedulerArgs-property.patch
+│   ├── 0009-scxctl-Handle-CurrentSchedulerArgs-property.patch
+│   ├── 0010-scx_loader-add-Restart-method.patch
+│   ├── 0011-scxctl-Add-restart-command.patch
+│   ├── 0012-meson-install-scx_mitosis-and-scx_wd40.patch
+│   ├── 0013-scx_loader-Add-missing-schedulers.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -267,4 +271,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 185 files
+83 directories, 189 files

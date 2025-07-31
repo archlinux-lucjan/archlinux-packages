@@ -1,0 +1,141 @@
+From 9cc1f64de49c7e8f240e64a0d68e349fa5e0ff4a Mon Sep 17 00:00:00 2001
+From: Joe Maples <joe@maples.dev>
+Date: Wed, 30 Jul 2025 19:07:33 -0400
+Subject: [PATCH 08/13] scx_loader: add CurrentSchedulerArgs property
+
+---
+ tools/scx_loader/org.scx.Loader.xml |  8 ++++++++
+ tools/scx_loader/src/dbus.rs        |  6 ++++++
+ tools/scx_loader/src/main.rs        | 18 +++++++++++++++---
+ 3 files changed, 29 insertions(+), 3 deletions(-)
+
+diff --git a/tools/scx_loader/org.scx.Loader.xml b/tools/scx_loader/org.scx.Loader.xml
+index d6ffeb56..fcee3b37 100644
+--- a/tools/scx_loader/org.scx.Loader.xml
++++ b/tools/scx_loader/org.scx.Loader.xml
+@@ -30,6 +30,14 @@
+     -->
+     <property name="SchedulerMode" type="u" access="read"/>
+ 
++    <!--
++        CurrentSchedulerArgs:
++
++        The arguments used for the currently running scheduler. If no scheduler
++        is active or the scheduler was started with a predefined mode (not custom
++        arguments), this property will return an empty array.
++    -->
++    <property name="CurrentSchedulerArgs" type="as" access="read"/>
+     <!--
+         SupportedSchedulers:
+ 
+diff --git a/tools/scx_loader/src/dbus.rs b/tools/scx_loader/src/dbus.rs
+index ed688bc4..5b36e6b1 100644
+--- a/tools/scx_loader/src/dbus.rs
++++ b/tools/scx_loader/src/dbus.rs
+@@ -54,6 +54,12 @@ pub trait LoaderClient {
+     #[zbus(property)]
+     fn scheduler_mode(&self) -> zbus::Result<SchedMode>;
+ 
++    /// The arguments used for the currently running scheduler. If no scheduler
++    /// is active or the scheduler was started with a predefined mode (not custom
++    /// arguments), this property will return an empty array.
++    #[zbus(property)]
++    fn current_scheduler_args(&self) -> zbus::Result<Vec<String>>;
++
+     /// A list of the schedulers currently supported by the Scheduler Loader.
+     /// The names of the supported schedulers will be listed as strings in
+     /// this array.
+diff --git a/tools/scx_loader/src/main.rs b/tools/scx_loader/src/main.rs
+index f2ca9935..1325d7fc 100644
+--- a/tools/scx_loader/src/main.rs
++++ b/tools/scx_loader/src/main.rs
+@@ -56,6 +56,7 @@ enum RunnerMessage {
+ struct ScxLoader {
+     current_scx: Option<SupportedSched>,
+     current_mode: SchedMode,
++    current_args: Option<Vec<String>>,
+     channel: UnboundedSender<ScxMessage>,
+ }
+ 
+@@ -85,6 +86,12 @@ impl ScxLoader {
+         self.current_mode.clone()
+     }
+ 
++    /// Get arguments used for currently running scheduler
++    #[zbus(property)]
++    async fn current_scheduler_args(&self) -> Vec<String> {
++        self.current_args.clone().unwrap_or_default()
++    }
++
+     /// Get list of supported schedulers
+     #[zbus(property)]
+     async fn supported_schedulers(&self) -> Vec<&str> {
+@@ -98,7 +105,6 @@ impl ScxLoader {
+             "scx_rusty",
+         ]
+     }
+-
+     async fn start_scheduler(
+         &mut self,
+         scx_name: SupportedSched,
+@@ -112,6 +118,7 @@ impl ScxLoader {
+         )));
+         self.current_scx = Some(scx_name);
+         self.current_mode = sched_mode;
++        self.current_args = None;
+ 
+         Ok(())
+     }
+@@ -125,10 +132,11 @@ impl ScxLoader {
+ 
+         let _ = self
+             .channel
+-            .send(ScxMessage::StartSchedArgs((scx_name.clone(), scx_args)));
++            .send(ScxMessage::StartSchedArgs((scx_name.clone(), scx_args.clone())));
+         self.current_scx = Some(scx_name);
+         // reset mode to auto
+         self.current_mode = SchedMode::Auto;
++        self.current_args = Some(scx_args);
+ 
+         Ok(())
+     }
+@@ -146,6 +154,7 @@ impl ScxLoader {
+         )));
+         self.current_scx = Some(scx_name);
+         self.current_mode = sched_mode;
++        self.current_args = None;
+ 
+         Ok(())
+     }
+@@ -159,10 +168,11 @@ impl ScxLoader {
+ 
+         let _ = self
+             .channel
+-            .send(ScxMessage::SwitchSchedArgs((scx_name.clone(), scx_args)));
++            .send(ScxMessage::SwitchSchedArgs((scx_name.clone(), scx_args.clone())));
+         self.current_scx = Some(scx_name);
+         // reset mode to auto
+         self.current_mode = SchedMode::Auto;
++        self.current_args = Some(scx_args);
+ 
+         Ok(())
+     }
+@@ -174,6 +184,7 @@ impl ScxLoader {
+             log::info!("stopping {scx_name:?}..");
+             let _ = self.channel.send(ScxMessage::StopSched);
+             self.current_scx = None;
++            self.current_args = None;
+         }
+ 
+         Ok(())
+@@ -286,6 +297,7 @@ async fn main() -> Result<()> {
+             ScxLoader {
+                 current_scx: None,
+                 current_mode: SchedMode::Auto,
++                current_args: None,
+                 channel: channel.clone(),
+             },
+         )
+-- 
+2.50.1
+

@@ -1,7 +1,7 @@
-From a62f6e2df0864e62d00a391c948434baf1fd5735 Mon Sep 17 00:00:00 2001
+From 822a6ed02740304b09a2975d293dc5c3c6e3a166 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 23 Jul 2025 11:15:32 +0200
-Subject: [PATCH 5/9] meson: drop libalpm support
+Subject: [PATCH 05/13] meson: drop libalpm support
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---

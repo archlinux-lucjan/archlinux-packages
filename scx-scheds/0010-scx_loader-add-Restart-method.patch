@@ -1,0 +1,147 @@
+From defd7d84072441b796f316f48466dfca5d56da61 Mon Sep 17 00:00:00 2001
+From: Joe Maples <joe@maples.dev>
+Date: Wed, 30 Jul 2025 19:29:40 -0400
+Subject: [PATCH 10/13] scx_loader: add Restart method
+
+---
+ tools/scx_loader/org.scx.Loader.xml | 11 ++++++
+ tools/scx_loader/src/dbus.rs        |  5 +++
+ tools/scx_loader/src/main.rs        | 57 +++++++++++++++++++++++++++++
+ 3 files changed, 73 insertions(+)
+
+diff --git a/tools/scx_loader/org.scx.Loader.xml b/tools/scx_loader/org.scx.Loader.xml
+index fcee3b37..16ae7f43 100644
+--- a/tools/scx_loader/org.scx.Loader.xml
++++ b/tools/scx_loader/org.scx.Loader.xml
+@@ -114,5 +114,16 @@
+     -->
+     <method name="StopScheduler">
+     </method>
++
++    <!--
++        RestartScheduler:
++
++        Restarts the currently running scheduler with its original configuration.
++        This method will stop the currently running scheduler and then restart 
++        it with the same scheduler and arguments/mode that were used originally.
++        Returns an error if no scheduler is currently running.
++    -->
++    <method name="RestartScheduler">
++    </method>
+   </interface>
+ </node>
+diff --git a/tools/scx_loader/src/dbus.rs b/tools/scx_loader/src/dbus.rs
+index 5b36e6b1..0bb574b0 100644
+--- a/tools/scx_loader/src/dbus.rs
++++ b/tools/scx_loader/src/dbus.rs
+@@ -42,6 +42,11 @@ pub trait LoaderClient {
+         scx_args: &[String],
+     ) -> zbus::Result<()>;
+ 
++    /// Restarts the currently running scheduler with its original configuration.
++    /// This method will stop the currently running scheduler and then restart
++    /// it with the same scheduler and arguments/mode that were used originally.
++    fn restart_scheduler(&self) -> zbus::Result<()>;
++
+     /// The name of the currently running scheduler. If no scheduler is active,
+     /// this property will be set to "unknown".
+     #[zbus(property)]
+diff --git a/tools/scx_loader/src/main.rs b/tools/scx_loader/src/main.rs
+index 1325d7fc..e9878e20 100644
+--- a/tools/scx_loader/src/main.rs
++++ b/tools/scx_loader/src/main.rs
+@@ -41,6 +41,8 @@ enum ScxMessage {
+     SwitchSched((SupportedSched, SchedMode)),
+     /// Switch to another scheduler with the given scx arguments
+     SwitchSchedArgs((SupportedSched, Vec<String>)),
++    /// Restart the currently running scheduler with original configuration
++    RestartSched((SupportedSched, Option<Vec<String>>, SchedMode)),
+ }
+ 
+ #[derive(Debug, PartialEq)]
+@@ -51,6 +53,8 @@ enum RunnerMessage {
+     Start((SupportedSched, Vec<String>)),
+     /// Stop the scheduler, if any
+     Stop,
++    /// Restart the currently running scheduler with same arguments
++    Restart((SupportedSched, Vec<String>)),
+ }
+ 
+ struct ScxLoader {
+@@ -189,6 +193,25 @@ impl ScxLoader {
+ 
+         Ok(())
+     }
++
++    async fn restart_scheduler(&mut self) -> zbus::fdo::Result<()> {
++        if let Some(current_scx) = &self.current_scx {
++            let scx_name: &str = current_scx.clone().into();
++
++            log::info!("restarting {scx_name:?}..");
++            let _ = self.channel.send(ScxMessage::RestartSched((
++                current_scx.clone(),
++                self.current_args.clone(),
++                self.current_mode.clone(),
++            )));
++
++            Ok(())
++        } else {
++            Err(zbus::fdo::Error::Failed(
++                "No scheduler is currently running to restart".to_string(),
++            ))
++        }
++    }
+ }
+ 
+ // Monitors CPU utilization and enables scx_lavd when utilization of any CPUs is > 90%
+@@ -398,6 +421,23 @@ async fn worker_loop(
+                     .send(RunnerMessage::Switch((scx_sched, sched_args)))
+                     .await?;
+             }
++            ScxMessage::RestartSched((scx_sched, current_args, current_mode)) => {
++                log::info!("Got event to restart scheduler!");
++
++                // Determine the arguments to use for restart
++                let args = if let Some(args) = current_args {
++                    // Use custom arguments if they were set
++                    args
++                } else {
++                    // Use mode-based arguments
++                    config::get_scx_flags_for_mode(&config, &scx_sched, current_mode)
++                };
++
++                // send restart message to the runner
++                runner_tx
++                    .send(RunnerMessage::Restart((scx_sched, args)))
++                    .await?;
++            }
+         }
+     }
+ }
+@@ -443,6 +483,23 @@ async fn handle_child_process(mut rx: tokio::sync::mpsc::Receiver<RunnerMessage>
+             RunnerMessage::Stop => {
+                 stop_scheduler(&mut task, &mut cancel_token).await;
+             }
++            RunnerMessage::Restart((scx_sched, sched_args)) => {
++                log::info!("Got event to restart scheduler!");
++
++                // stop the sched if its running
++                stop_scheduler(&mut task, &mut cancel_token).await;
++
++                // restart scheduler with the same configuration
++                match start_scheduler(scx_sched, sched_args, cancel_token.clone()).await {
++                    Ok(handle) => {
++                        task = Some(handle);
++                        log::debug!("Scheduler restarted");
++                    }
++                    Err(err) => {
++                        log::error!("Failed to restart scheduler: {err}");
++                    }
++                }
++            }
+         }
+     }
+ 
+-- 
+2.50.1
+

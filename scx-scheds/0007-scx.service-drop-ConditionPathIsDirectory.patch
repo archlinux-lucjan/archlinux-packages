@@ -1,7 +1,7 @@
-From b0bb04ceeeac79b03fac4d85b40ab4c0fcb96aa4 Mon Sep 17 00:00:00 2001
+From 7898f2a22d8d95111aac81f6328fdf72ce952bbb Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Tue, 29 Jul 2025 22:40:47 +0200
-Subject: [PATCH 7/9] scx.service: drop ConditionPathIsDirectory
+Subject: [PATCH 07/13] scx.service: drop ConditionPathIsDirectory
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---

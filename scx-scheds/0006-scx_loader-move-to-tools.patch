@@ -1,7 +1,7 @@
-From 500291862e7dc649a6ec68743a6cea39171c7f30 Mon Sep 17 00:00:00 2001
+From 7aa3472e87a9d8c2b48301de00ec9ae24b35c65b Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 25 Jul 2025 15:46:12 +0200
-Subject: [PATCH 6/9] scx_loader: move to tools
+Subject: [PATCH 06/13] scx_loader: move to tools
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
