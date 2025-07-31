@@ -211,8 +211,6 @@
 │   ├── PKGBUILD
 │   ├── rust.conf
 │   └── static_sqlite.patch
-├── pak-gui-git
-│   └── PKGBUILD
 ├── pkgbuild-introspection-lucjan-git
 │   └── PKGBUILD
 ├── pkgfile-git
@@ -269,4 +267,4 @@
 └── zstd-git
     └── PKGBUILD
 
-84 directories, 186 files
+83 directories, 185 files
