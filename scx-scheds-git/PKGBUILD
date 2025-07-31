@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.14.r411.gbcb8759b
+pkgver=1.0.14.r418.geeb76692
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -19,19 +19,17 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-bc25c1ab4f97f4de7d1cd670ca97a5eb4f3b5bbb # scx_loader: add Restart method
-2c820654585e63aed97093bbbafa0bdf1678eda6 # scxctl: Add restart command
-2be2ac5f19522ef74ce631f82c2b855eed758e98 # scxctl: cache DBUS results to eliminate redundant calls
-692283eb8554834cff89f96bc7ae0487165166a9 # scxctl: optimize scheduler list display with iterator patterns
-7aedd4815b19a3affcb91de9ea61c9bede48c40f # scxctl: use &str parameters for string utility functions
-f99a7de661f5044370d4208e3a2a691dddfd6382 # scxctl: replace unwrap() calls with proper error handling
-4a6a81ab61c39a8a8a56390b3db7fb894d49386f # scxctl: extract helper functions to reduce duplication
-5c21976a1eb7fc8c106e3367b7b0089d8ee65414 # scxctl: simplify string processing utility functions
-5986c91b1af03038d1ca8d02f1a88aa86aa91c9a # scxctl: some Rust formatting changes to satisfy the CI part 2
-0b40ca1338f6cfdb9c310ab84667b449de0916b0 # scx_loader: Add chaos scheduler
-00579497d67686e360d0ef75ad2a444466abf507 # meson: install scx_mitosis and scx_wd40
-9517ed18f50977b59e9c5f9197c0c9260dbbd487 # scx_loader: Add mitosis scheduler
-4963c6646485401125465b1828f32af80d370745 # scx_loader: Add wd40 scheduler
+3a193d9f44a6595ab578623d3414c1525c1f00eb # scxctl: cache DBUS results to eliminate redundant calls
+e4161badf9783c4fff5e518fa587dc9d7e80aba5 # scxctl: optimize scheduler list display with iterator patterns
+905078f62896584c533ff73001ec3adfbc614450 # scxctl: use &str parameters for string utility functions
+d5ce7e2958f8a44b2074ea5a3341bf94ba6b9a55 # scxctl: replace unwrap() calls with proper error handling
+b8a3b8cbb89957c8400ba641e53f362260b1dcb3 # scxctl: extract helper functions to reduce duplication
+d20984c33653c8f7b5ccbc30db6e7071386e2ab8 # scxctl: simplify string processing utility functions
+ce6da1d07fcfee1eaa48d25472b261a06734c363 # scxctl: some Rust formatting changes to satisfy the CI part 2
+72ca3beecd1cc8e93981c4998669f4293104da3e # scx_loader: Add chaos scheduler
+75c0c1c28cb0a079598d960fb4c86b47e4ac34a4 # meson: install scx_mitosis and scx_wd40
+7d5be1c38754b838b8b48765290f82da8fe018de # scx_loader: Add mitosis scheduler
+ad36bdf4766a1d974c92f7259a5a86bb552d1224 # scx_loader: Add wd40 scheduler
 )
 
 _reverts=(
