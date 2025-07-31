@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.14.r401.g19461a49
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,12 +19,20 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-3f9a389c368fda0c96ef473aab270163c1761a22 # scx_loader: Add chaos scheduler
-aaf493680a2bf3564ad7427f939543592b4c1df4 # meson: install scx_mitosis and scx_wd40
-7c8e1169ea07cb930acd245d2f0b82d767b3d4b9 # scx_loader: Add mitosis scheduler
-fc9810e1bd66a5765a66a8033423c5c0b18eeab3 # scx_loader: Add wd40 scheduler
-43a292b6ba4aa290d5b4aedbd52e4ce13793a52f # scxctl/scx_loader: Report current scheduler args
-08cb9c0f7a32f95b02fcf02393b905b18b73c209 # scxctl: Handle CurrentSchedulerArgs property
+5e04006d9ed8906e2c6ef86307fe6830a70326f2 # scx_loader: add CurrentSchedulerArgs property
+4a17843b5dee0ac264abfec575f8daa7fa1d9049 # scxctl: Handle CurrentSchedulerArgs property
+9199f7a402a2befa0632b436a7f3f1c66228dfc0 # scx_loader: add Restart method
+cece34d29f2fec4e56b0d8ee4cec86fe90c3170f # scxctl: Add restart command
+79cc22688d6515cc5658e158bce7a86046bcb3bc # scxctl: cache DBUS results to eliminate redundant calls
+f26e782c829ca0f6dce1b1b3422b4adb8c48d8c0 # scxctl: optimize scheduler list display with iterator patterns
+6f99124a3898adad06dd7541d1b572cf9b162100 # scxctl: use &str parameters for string utility functions
+4d26a3892f2b68f031417b22e54c318743d40c6e # scxctl: replace unwrap() calls with proper error handling
+470e79e165041e15e32469af80c1389bcdafb77e # scxctl: extract helper functions to reduce duplication
+000bee673ca2fd066958dc590ed7709142b3eecd # scxctl: simplify string processing utility functions
+7924cf5d8fa0fae72938ab40ec7f7c7122c7d5cb # scx_loader: Add chaos scheduler
+45c0a1a703e1be1640209e1b0d2b1b438a40a667 # meson: install scx_mitosis and scx_wd40
+9e45fa2729c15759c65369cc02d3c7ecfca63f70 # scx_loader: Add mitosis scheduler
+a42de0f5a6702ba1d22af2f314db8f034006f1cf # scx_loader: Add wd40 scheduler
 )
 
 _reverts=(
