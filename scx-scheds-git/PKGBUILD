@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.14.r405.gc15f76b0
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,10 +30,11 @@ b079b4dd44d50381ddf903109244f067d910e8dd # scxctl: replace unwrap() calls with p
 9052f25f42d4202c3a35078ed9658a89358bce1c # scxctl: extract helper functions to reduce duplication
 f0ebac1c692a36e58203cefe633405f006190371 # scxctl: simplify string processing utility functions
 17ab966550205e134954652602f34ab2c0bba7ee # scxctl: some Rust formatting changes to satisfy the CI
-3ba0cabbfb1f679c48e9a8ad4ff3f0a58e3ebbfb # scx_loader: Add chaos scheduler
-e7493df21a9c52caddee5f5dfd348c6c171b2671 # meson: install scx_mitosis and scx_wd40
-773ce43e3ca0386917908c53cf8318652edc0f4d # scx_loader: Add mitosis scheduler
-9450f0193025da420a570147ab473502c5c4ced9 # scx_loader: Add wd40 scheduler
+dd5d67dceef51a59d8902b2496cc4e9b3d901c42 # scxctl: some Rust formatting changes to satisfy the CI part 2
+5d4cae456cc6442d18c99164141fe1ff6bcb2255 # scx_loader: Add chaos scheduler
+e240658385b7317c82772fd4c671b28be55ed5d5 # meson: install scx_mitosis and scx_wd40
+52dce442536654b658254a062f588a64db7129fd # scx_loader: Add mitosis scheduler
+9b4ad6a7af5a03c00e0d8927c4d37d2cd53808df # scx_loader: Add wd40 scheduler
 )
 
 _reverts=(
