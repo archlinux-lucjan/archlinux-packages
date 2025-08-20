@@ -3,8 +3,8 @@
 # Contributor: SoulHarsh007 <admin@soulharsh007.dev>
 
 pkgname=dracut
-pkgver=107
-pkgrel=1.2
+pkgver=108
+pkgrel=1.1
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://github.com/dracut-ng/dracut-ng"
@@ -26,13 +26,14 @@ depends=(
   'util-linux'
 )
 makedepends=(
-  'asciidoc'
+  'asciidoctor'
   'bash-completion'
   'git'
   'rust'
 )
 optdepends=(
   'binutils: --uefi option support'
+  'biosdevname: BIOS network device renaming'
   'bluez: bluetooth (keyboard)'
   'btrfs-progs: scan for Btrfs on block devices'
   'busybox: allows use of busybox (on your own risk)'
@@ -41,19 +42,25 @@ optdepends=(
   'connman: support for connman networking'
   'cryptsetup: support for encrypted with LUKS filesystems'
   'dash: allows use of dash (on your own risk)'
+  'dbus: dbus-daemon dracut module'
+  'dbus-broker: dbus-broker dracut module'
   'dhclient: legacy networking support'
   'dmraid: dmraid dracut module support'
   'e2fsprogs: ext2/3/4 filesystem support'
   'elfutils: strip binaries to reduce initramfs size'
+  'erofs-utils: support for building an erofs initramfs'
   'f2fs-tools: fsfs filesystem support'
   'fuse3: live on NTFS (dmsquash-live-ntfs module)'
+  'gnupg: gpg for crypto operations and smartcards'
   'gzip: gzip compression'
   'iproute2: legacy networking support'
   'iputils: networking support'
+  'jq: NVMe-oF support (nvmf module)'
   'lvm2: support Logical Volume Manager'
   'lzop: lzop compression'
   'mdadm: support MD devices, also known as software RAID devices'
-  'multipath-tools: dmraid dracut module support'
+  'memstrack: memstrack module support'
+  'multipath-tools: multipath dracut module support'
   'nbd: support network block devices'
   'ndctl: NVDIMM support'
   'networkmanager: networkmanager support'
@@ -64,8 +71,11 @@ optdepends=(
   'openssh: install ssh and scp along with config files and specified keys (ssh-client module)'
   'pigz: faster gzip compression'
   'plymouth: plymouth boot splash'
+  'qrencode: systemd-bsod'
   'rng-tools: enable rngd service to help generating entropy early during boot'
+  'rsyslog: enable logging with rsyslog'
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
+  'systemd-ukify: Unified Kernel Image'
   'squashfs-tools: support for building a squashed initramfs'
   'tar: live tar image'
   'tpm2-tools: tpm2 support for e.g. LUKS'
@@ -83,11 +93,11 @@ source=("${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
   "snapshot-overlay.sh"
   "module-setup.sh")
 
-sha512sums=('fadc8aba143cec154372ae4709a0cb6db9999a4f143bdf79c7307680baf500922b3e5e5ba659e4346a032949bf5b6a00f891421fbc517573dd3d1c9b5a034d56'
+sha512sums=('c9ffe67819c704d225efca3617b0dec79359ab049f826f5545d5ed5548943633f67e5c57831ce4fde1a294139d3e40d7df8f6b5a616415a8293fede1faba88a1'
             '8a4c9ac056bee6e7e22057cbf7179a32759767694a955372f68d43b26be62e9e8381c6264fc4884c4b04e39ffd6c1a2cc0d7e947b5796b4d89278455f3843cb9'
             'f298693ee1a637329b1a38c746151c2ae8d2ae431f894c3001f55d812a2a20a68907ffa0b04ba748c18a2898cc30e0f49e75d0d13c7dd453129304f3cfd4621e'
             '13e3faab40ae0e13f7933fcf5e1b028b4af2010d91b5d6c4dcda164bc9ab62cdcdde21f4945f28f564546a8700bd285cca6a19f1575fcf1925dbde54fba9078a'
-            'ee40e4b0ac4f8569f4e48cc69496058e86e6b115a9bc930ed2ad1339422660da67cf6906b6cfd3b2035cf1ae266c99a7fffdce5051571aadd002aa3b00b5c3f8'
+            '6ae1ed9a79b8cde9e51add070f99785bc19003c9e85b4112535c65edd1fb39c14aeaaeca13076fd1848e96c9d1dc2b98b0150c5fd47646d37662f566daa0aff7'
             'b84677cc05865d1571723658f2661cb749acf9039133b95893c2cfddc30070f885e8cd047aaa5dbc04dd3d8f9f6a4aa6573ac916c70edfd1daab4ecc5c582980'
             '3fb23adbf462d655638a6a5a3083b464150b05b088e9139fceda500ba7560a29eb90d0e4dab896a257264fc6e72ec537a0519ad4e4e25e4c44b2dc3263cb5a52'
             'ee103a605f1378dd7077fa33b710ba41ff7bd72befc0e211d9ccfe8ca5db74173bbd0566ec2929cd6bbafa4c2c287bd88a7b544edf0bbeca56181ae4382def09'
@@ -136,13 +146,9 @@ build() {
 
   cd ${pkgname}-${pkgver}
 
-  ./configure \
-    --sysconfdir=${sysconfdir} \
-    --prefix=${prefix} \
-    --libdir=${prefix}/lib \
-    --systemdsystemunitdir=${prefix}/lib/systemd/system \
-    --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
-    --enable-dracut-cpio
+  ./configure  \
+    --sysconfdir=/etc
+
   make
 }
 
