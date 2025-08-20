@@ -231,19 +231,9 @@
 ├── scx-manager-git
 │   └── PKGBUILD
 ├── scx-scheds
-│   ├── 0001-etc-default-scx-set-scx_flash-as-default-scheduler.patch
-│   ├── 0002-scx_loader-add-bundled-configuration-like-for-scx.se.patch
-│   ├── 0003-scx_loader-add-config-search-path-for-distributions.patch
-│   ├── 0004-scx_loader-Support-build-time-configuration-of-vendo.patch
-│   ├── 0005-meson-drop-libalpm-support.patch
-│   ├── 0006-scx_loader-move-to-tools.patch
-│   ├── 0007-scx.service-drop-ConditionPathIsDirectory.patch
-│   ├── 0008-scx_loader-add-CurrentSchedulerArgs-property.patch
-│   ├── 0009-scxctl-Handle-CurrentSchedulerArgs-property.patch
-│   ├── 0010-scx_loader-add-Restart-method.patch
-│   ├── 0011-scxctl-Add-restart-command.patch
-│   ├── 0012-meson-install-scx_mitosis-and-scx_wd40.patch
-│   ├── 0013-scx_loader-Add-missing-schedulers.patch
+│   ├── 0001-services-show-options-instead-of-setting-any.patch
+│   ├── 0002-meson-install-scx_mitosis-and-scx_wd40.patch
+│   ├── 0003-scx_loader-Add-missing-schedulers.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -271,4 +261,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 189 files
+83 directories, 179 files
