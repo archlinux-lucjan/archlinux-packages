@@ -9,10 +9,6 @@
 │   ├── eu.betterbird.Betterbird.desktop
 │   ├── PKGBUILD
 │   └── vendor-prefs.js
-├── betterbird-dev-bin
-│   ├── eu.betterbird.Betterbird.desktop
-│   ├── PKGBUILD
-│   └── vendor-prefs.js
 ├── cachy-chroot-git
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
@@ -261,4 +257,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 179 files
+82 directories, 176 files
