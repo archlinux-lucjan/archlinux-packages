@@ -1,0 +1,30 @@
+From c89bac94f924fa0a276156ce0ff65e3d6f4983fb Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Wed, 20 Aug 2025 09:39:53 +0200
+Subject: [PATCH 2/3] meson: install scx_mitosis and scx_wd40
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ meson-scripts/install_rust_user_scheds | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/meson-scripts/install_rust_user_scheds b/meson-scripts/install_rust_user_scheds
+index 31591ad4..c5a07855 100755
+--- a/meson-scripts/install_rust_user_scheds
++++ b/meson-scripts/install_rust_user_scheds
+@@ -7,12 +7,6 @@ for manifest in "$MESON_SOURCE_ROOT"/scheds/rust/*/Cargo.toml; do
+     target_dir="${MESON_BUILD_ROOT}"
+     name="${source_dir##*/}"
+ 
+-    # Skip scx_mitosis and scx_wd40
+-    if [ "$name" = "scx_mitosis" ] || [ "$name" = "scx_wd40" ]; then
+-        echo "Skipping installation of $name"
+-        continue
+-    fi
+-
+     bins=($(ls -t "${target_dir}/"*"/${name}"))
+     if [ ${#bins[@]} -lt 1 ]; then
+         echo "Cannot find a binary for $name under $target_dir" 1>&2
+-- 
+2.50.1
+

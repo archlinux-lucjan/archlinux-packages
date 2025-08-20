@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds
 _gitname=scx
-pkgver=1.0.14
-pkgrel=1.12
+pkgver=1.0.15
+pkgrel=1.1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -17,33 +17,13 @@ options=(!lto)
 provides=("scxctl")
 conflicts=("scxctl")
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
-        '0001-etc-default-scx-set-scx_flash-as-default-scheduler.patch'
-        '0002-scx_loader-add-bundled-configuration-like-for-scx.se.patch'
-        '0003-scx_loader-add-config-search-path-for-distributions.patch'
-        '0004-scx_loader-Support-build-time-configuration-of-vendo.patch'
-        '0005-meson-drop-libalpm-support.patch'
-        '0006-scx_loader-move-to-tools.patch'
-        '0007-scx.service-drop-ConditionPathIsDirectory.patch'
-        '0008-scx_loader-add-CurrentSchedulerArgs-property.patch'
-        '0009-scxctl-Handle-CurrentSchedulerArgs-property.patch'
-        '0010-scx_loader-add-Restart-method.patch'
-        '0011-scxctl-Add-restart-command.patch'
-        '0012-meson-install-scx_mitosis-and-scx_wd40.patch'
-        '0013-scx_loader-Add-missing-schedulers.patch')
-sha256sums=('f469c6396455572832bff13a3ede140f42b3293f4239364947e5a785d3a00714'
-            '28535eaf0c08a84b50a1d2e4ef2ba188f0654406e86bf4d2c49cf91eadd3891d'
-            '53ed1a1413462082af349e0d96ce6b7f8c38a4b07ad17f7183a7c379a8112fa0'
-            '3d1bdce223316c29d691ca91a81570bcfa634c7a9861049e19c62c4c9a636009'
-            'de9dbb2ef5d3d74846d1d03edecfaaa6dc2d8efc35861505be3b8abad428dcf8'
-            '71e8ef0fbaa757af423f125553454904bccc53425a59dc7d94aa0e5b84e8f764'
-            '450811215a15e8eeb7b4fce179abf6c2c77ee04d5b4b17bea10bc366f22597f1'
-            '7ec8f0fa968d955b7cc90dda9941037cbbbc36e980b248624f4d4c5ff56d1174'
-            'a85e278ee39e66f1aa1ba0914c11e0ada4cce5d65a4dc5858ee86866344c3b15'
-            'cea405471af7553ffcb5a829d81e4c577dc4ba94472ea52123783a66cd22d418'
-            '4e4e7519ece69dac2b234f207d1447d145a58c23c26192ef67bf56fb3ed4d3e8'
-            '953af100b77e25c50af8e9f5c88c8732a121ebe806b0528947ff0e35fe2f223d'
-            '93fd398c4b98607b0fe3cabe319fffa8d9ca1b4828cf035c7d5936ccff3c4f52'
-            '620c1f2e0c21d4bf874a9dbebb15a9bbfc88a40bd313cce1143e38a2d710f08c')
+        '0001-services-show-options-instead-of-setting-any.patch'
+        '0002-meson-install-scx_mitosis-and-scx_wd40.patch'
+        '0003-scx_loader-Add-missing-schedulers.patch')
+sha256sums=('e2966b2915c9f8f09204bf23710cdb2089c66c0cf953916208a94d64c853fc43'
+            'c1153b6627b24d5eac0d320b2f098f834992fd578419a1f1356eed0b14d9ce19'
+            '79d7e43fd1dd499a1947ba98a461dcb476098b398ca79c6202ef599d1574f58a'
+            '4e7c5f732fbc6108fd2c06e14d497d0d63bf64d7f5ebc5625ad5eb9a39661bb0')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
