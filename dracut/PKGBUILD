@@ -4,7 +4,7 @@
 
 pkgname=dracut
 pkgver=108
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://github.com/dracut-ng/dracut-ng"
@@ -142,8 +142,6 @@ prepare() {
 }
 
 build() {
-  local prefix=/usr sysconfdir=/etc
-
   cd ${pkgname}-${pkgver}
 
   ./configure  \
