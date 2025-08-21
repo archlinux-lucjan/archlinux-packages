@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.15.r159.g596f3d37
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,10 +19,17 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-f93fd4bb9a781c2279099aee539690c6214546ff # scx_loader: Add chaos scheduler
-b59855001d2c2f86a3ad80ff4d0f9857d4b84eb0 # meson: install scx_mitosis and scx_wd40
-c2fe0c667582134f30d3160f69c83242e9dcea30 # scx_loader: Add mitosis scheduler
-1516779c5360bbd6fbdbff0fd570e575a0fbab98 # scx_loader: Add wd40 scheduler
+e5e72503530f9b1db759803b8712405388eae747 # scx_loader: Add chaos scheduler
+15bba2f58e2b1263af6b8fdca097ac11ea17ec39 # meson: install scx_mitosis and scx_wd40
+a1421cd6fe86087b1a7ffbbf2460bfe5202886b9 # scx_loader: Add mitosis scheduler
+e278e558d87206fc478aa817f49127c7475caa1e # scx_loader: Add wd40 scheduler
+40d9f20420cd7a04931e387a8b8941dedbfe9163 # scxctl: cache DBUS results to eliminate redundant calls
+1cb4233be0a72fd9cab923598a9e0b025887ea2a # scxctl: optimize scheduler list display with iterator patterns
+cd7a0c127dfb5cfb72ea1f33202b5f5f8035d8fa # scxctl: use &str parameters for string utility functions
+f92fb32b2afd98d8c64f528435ffb3983fc4b155 # scxctl: replace unwrap() calls with proper error handling
+9aabea10c30ff9af80acad39483e453c205b3148 # scxctl: extract helper functions to reduce duplication
+232ba48dc1fb1ef6c57c8ad236699cd944502d24 # scxctl: simplify string processing utility functions
+a814399b813132c943978f82d9da9800882bd24c # scxctl: some Rust formatting changes to satisfy the CI
 )
 
 _reverts=(
