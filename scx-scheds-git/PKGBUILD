@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.15.r223.g71cd0960
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -31,6 +31,7 @@ def9e296ef2f4459923b2d025693bd7a28823fdb # scx_loader: Add mitosis scheduler
 fd3116a96902fc32c94536dad4c817917be1655d # scxctl: simplify string processing utility functions
 5d8c5d3350eff9a9d877108c6c63987b52874bc5 # scxctl: some Rust formatting changes to satisfy the CI
 52b3cefc77f987d9e6b15bfb8cb2619602c1b3ef # mitosis: add version info
+c7400ffcc3735554079caa9620047d7890a508dd # scx_chaos: Log unregister on drop
 )
 
 _reverts=(
