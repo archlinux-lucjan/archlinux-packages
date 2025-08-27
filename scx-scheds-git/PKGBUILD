@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r220.g92d1811b
+pkgver=1.0.15.r223.g71cd0960
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -31,8 +31,6 @@ def9e296ef2f4459923b2d025693bd7a28823fdb # scx_loader: Add mitosis scheduler
 fd3116a96902fc32c94536dad4c817917be1655d # scxctl: simplify string processing utility functions
 5d8c5d3350eff9a9d877108c6c63987b52874bc5 # scxctl: some Rust formatting changes to satisfy the CI
 52b3cefc77f987d9e6b15bfb8cb2619602c1b3ef # mitosis: add version info
-85cb3735b13258d6a8a3c255ab8261f804d938eb # scx_mitosis: Add "Unregister" log message
-bfe408fd3e1a1e1b0fefd1c13d2f316f33da9528 # scheds/rust: Fix clippy lints
 )
 
 _reverts=(
