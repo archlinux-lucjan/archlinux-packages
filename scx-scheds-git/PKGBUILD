@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.15.r231.gab165d7a
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -31,6 +31,7 @@ b61d59566b3ed734adfc924ebfd723ac6ed743ae # scxctl: cache DBUS results to elimina
 8af7ef4e51fbb3001647e1e42c5ff79125b10121 # scxctl: simplify string processing utility functions
 06fdb467e35e94ae5feff62913e4cb507ce9c50d # scxctl: some Rust formatting changes to satisfy the CI
 c7400ffcc3735554079caa9620047d7890a508dd # scx_chaos: Log unregister on drop
+cb26d959298c8b60396a4b8d7ca57c8479d910eb # scx_cosmos: Consider wakeup frequency when determining task deadlines
 )
 
 _reverts=(
