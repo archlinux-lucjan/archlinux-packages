@@ -1,7 +1,7 @@
-From c89bac94f924fa0a276156ce0ff65e3d6f4983fb Mon Sep 17 00:00:00 2001
+From 675917a1e19da54b93b23469fe92b761b638b569 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 20 Aug 2025 09:39:53 +0200
-Subject: [PATCH 2/3] meson: install scx_mitosis and scx_wd40
+Subject: [PATCH 2/4] meson: install scx_mitosis and scx_wd40
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -26,5 +26,5 @@ index 31591ad4..c5a07855 100755
      if [ ${#bins[@]} -lt 1 ]; then
          echo "Cannot find a binary for $name under $target_dir" 1>&2
 -- 
-2.50.1
+2.51.0
 

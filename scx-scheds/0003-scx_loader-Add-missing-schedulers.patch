@@ -1,7 +1,7 @@
-From e7ac5fe689ff89dce868c94cb4c31e9f3ce0b7fd Mon Sep 17 00:00:00 2001
+From 24da08f9abc4031e4953be516ec823263aab6bdf Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 20 Aug 2025 09:44:04 +0200
-Subject: [PATCH 3/3] scx_loader: Add missing schedulers
+Subject: [PATCH 3/4] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -190,5 +190,5 @@ index 20d71acb..2459114a 100644
      }
      async fn start_scheduler(
 -- 
-2.50.1
+2.51.0
 
