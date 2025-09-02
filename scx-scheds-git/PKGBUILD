@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r280.g6f9304d0
-pkgrel=2
+pkgver=1.0.15.r284.gee768212
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -19,19 +19,18 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-f2a1fb46973fffe6cd6717fa2aa381cb0d8fd602 # scx_loader: Add chaos scheduler
-944f0d7b06a642a22e92006ea93b075711d0d222 # meson: install scx_mitosis and scx_wd40
-f13ad5bf6e8f74c4940f2f6cac8ab78cbc21808b # scx_loader: Add mitosis scheduler
-ae64fe9d066d4a22ce479457c25379582845a721 # scx_loader: Add wd40 scheduler
-05279c27f38d66179d4426ccade5fd2d53bd05a9 # scxctl: cache DBUS results to eliminate redundant calls
-64e9c3ff85bf3c4738219e401f31cd256dde75cd # scxctl: optimize scheduler list display with iterator patterns
-eba9fa75625aa076f790ecdff63fa6462849524d # scxctl: use &str parameters for string utility functions
-76a3eba205a69272714441a3f3883d813bf80eaf # scxctl: replace unwrap() calls with proper error handling
-933be22b884a0a08fd67d9c6939663cdc69567c5 # scxctl: extract helper functions to reduce duplication
-a0602581e505ff5a58c9dc05c2af372762d44c1d # scxctl: simplify string processing utility functions
-c1c6bd1a959f39167c91c771dab49eb8f91e7b92 # scxctl: some Rust formatting changes to satisfy the CI
+2cf71102c087d8568d63066961adf0862f8f65d4 # scx_loader: Add chaos scheduler
+7870befb8d314bc1cdea633690278003c26f3531 # meson: install scx_mitosis and scx_wd40
+8ab2d7e361ab845eabdf919dacf4491ff54fb4e2 # scx_loader: Add mitosis scheduler
+740eb9528f5cf75755765d47f6cb6c9be3444bf7 # scx_loader: Add wd40 scheduler
+f965c161b898f845523ef4df8cf50b456985ec77 # scxctl: cache DBUS results to eliminate redundant calls
+5d4de7fa72d0c29fdbece5d193cf2f2c9978ba2f # scxctl: optimize scheduler list display with iterator patterns
+e5904191236c5a9b00be4eb115205c501a050daf # scxctl: use &str parameters for string utility functions
+aaf9ad4ae5cf6c41de96b27fef04242268f72a4d # scxctl: replace unwrap() calls with proper error handling
+cb2c17ac354432bc67e8cdb4fb3b4ca52f94e4a2 # scxctl: extract helper functions to reduce duplication
+a5280ffea104c935376229bb7cad7e5aea623b80 # scxctl: simplify string processing utility functions
+69b61134d646ddfd73a5fc905a80c232ecd30b4b # scxctl: some Rust formatting changes to satisfy the CI
 8e25478b5d018de9a08eca039aef4ea10d17dd3f # scx_cargo: add specific crate for build time utilities
-73417e79d1fbc478835c5b49707eb4095fca1aa3 # scx_loader: Update args for p2dq
 )
 
 _reverts=(
