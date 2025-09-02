@@ -1,4 +1,6 @@
 .
+├── adiosctl
+│   └── PKGBUILD
 ├── ananicy-cpp-git
 │   └── PKGBUILD
 ├── bat-polaur-extras-git
@@ -258,4 +260,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 177 files
+83 directories, 178 files
