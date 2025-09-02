@@ -1,4 +1,4 @@
-From 5b98559bac65d3f3c73a647dbebd985669c0781e Mon Sep 17 00:00:00 2001
+From 71bef4045a6443ea73ca000845a42d649c330450 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 20 Aug 2025 09:39:53 +0200
 Subject: [PATCH 2/5] meson: install scx_mitosis and scx_wd40

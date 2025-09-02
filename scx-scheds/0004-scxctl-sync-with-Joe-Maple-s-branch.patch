@@ -1,4 +1,4 @@
-From f1cc07a1f97f4952b1fae77f8bb47c5eefb47174 Mon Sep 17 00:00:00 2001
+From 14b2d56b23df50b09774645b750e06a2954e6958 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Tue, 2 Sep 2025 09:01:55 +0200
 Subject: [PATCH 4/5] scxctl: sync with Joe Maple's branch

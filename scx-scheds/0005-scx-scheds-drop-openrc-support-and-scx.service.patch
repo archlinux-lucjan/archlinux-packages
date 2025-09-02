@@ -1,44 +1,62 @@
-From d15a19b7a658ea755c5b0f52f24736f3257719a5 Mon Sep 17 00:00:00 2001
+From aeea964905340fd3cc2f4ee9aa8403678a0549e9 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Tue, 2 Sep 2025 20:37:35 +0200
+Date: Tue, 2 Sep 2025 22:28:39 +0200
 Subject: [PATCH 5/5] scx-scheds: drop openrc support and scx.service
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
- meson.build                  |  6 ---
- meson.options                |  6 ---
- services/README.md           | 79 ------------------------------------
- services/openrc/meson.build  | 23 -----------
- services/openrc/scx.initrd   | 15 -------
- services/scx                 |  5 ---
- services/systemd/meson.build |  6 ---
- services/systemd/scx.service | 14 -------
- 8 files changed, 154 deletions(-)
+ meson.build                                   | 10 +--
+ meson.options                                 |  8 +-
+ services/README.md                            | 79 -------------------
+ services/{systemd => }/meson.build            |  8 +-
+ services/openrc/meson.build                   | 23 ------
+ services/openrc/scx.initrd                    | 15 ----
+ services/{systemd => }/org.scx.Loader.service |  0
+ services/scx                                  |  5 --
+ services/{systemd => }/scx_loader.service     |  0
+ services/systemd/scx.service                  | 14 ----
+ 10 files changed, 4 insertions(+), 158 deletions(-)
  delete mode 100644 services/README.md
+ rename services/{systemd => }/meson.build (60%)
  delete mode 100644 services/openrc/meson.build
  delete mode 100755 services/openrc/scx.initrd
+ rename services/{systemd => }/org.scx.Loader.service (100%)
  delete mode 100644 services/scx
+ rename services/{systemd => }/scx_loader.service (100%)
  delete mode 100644 services/systemd/scx.service
 
 diff --git a/meson.build b/meson.build
-index d33638e2..7c7bdff3 100644
+index d33638e2..1a634910 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -494,9 +494,3 @@ systemd = dependency('systemd', required: get_option('systemd'))
+@@ -489,14 +489,8 @@ thread_dep = dependency('threads')
+ 
+ subdir('scheds')
+ 
+-systemd = dependency('systemd', required: get_option('systemd'))
++systemd = dependency('systemd', required: get_option('services'))
+ 
  if systemd.found()
-   subdir('services/systemd')
- endif
+-  subdir('services/systemd')
+-endif
 -
 -openrc = dependency('openrc', required: get_option('openrc'))
 -
 -if openrc.found()
 -  subdir('services/openrc')
--endif
++  subdir('services')
+ endif
 diff --git a/meson.options b/meson.options
-index da27bbd8..b90534ec 100644
+index da27bbd8..da60f98c 100644
 --- a/meson.options
 +++ b/meson.options
-@@ -32,12 +32,6 @@ option(
+@@ -27,17 +27,11 @@ option('kernel_headers', type: 'string', value: '',
+ option('vendordir', type: 'string', value: '/usr/share',
+        description: 'Default location for package-managed config files')
+ option(
+-  'systemd',
++  'services',
+   type: 'feature',
    value: 'auto',
    description: 'sd-notify support via libsystemd and install systemd unit files'
  )
@@ -136,6 +154,32 @@ index 4e850d0d..00000000
 -journalctl -u scx.service -b 0
 -```
 -
+diff --git a/services/systemd/meson.build b/services/meson.build
+similarity index 60%
+rename from services/systemd/meson.build
+rename to services/meson.build
+index ac856b1e..133b06f8 100644
+--- a/services/systemd/meson.build
++++ b/services/meson.build
+@@ -1,9 +1,6 @@
+ # Get the directory for systemd system unit files
+ systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir')
+ 
+-# Install the 'scx.service' file to the systemd system unit directory
+-install_data('scx.service', install_dir: systemd_system_unit_dir)
+-
+ # Install the 'scx_loader.service' file to the systemd system unit directory
+ install_data('scx_loader.service', install_dir: systemd_system_unit_dir)
+ 
+@@ -11,7 +8,4 @@ install_data('scx_loader.service', install_dir: systemd_system_unit_dir)
+ install_data('org.scx.Loader.service', install_dir: '/usr/share/dbus-1/system-services')
+ 
+ # Install the default 'scx_loader' config file to the '$VENDORDIR/scx_loader' directory
+-install_data('../scx_loader.toml', rename: 'config.toml', install_dir: get_option('vendordir') + '/scx_loader')
+-
+-# Install the 'scx' file to the '/etc/default' directory
+-install_data('../scx', install_dir: '/etc/default')
++install_data('scx_loader.toml', rename: 'config.toml', install_dir: get_option('vendordir') + '/scx_loader')
 diff --git a/services/openrc/meson.build b/services/openrc/meson.build
 deleted file mode 100644
 index 45000e91..00000000
@@ -186,6 +230,10 @@ index 1b40a2cb..00000000
 -# stop_post() {
 -# 	rm -rf /var/cache/"${RC_SVCNAME}"
 -# }
+diff --git a/services/systemd/org.scx.Loader.service b/services/org.scx.Loader.service
+similarity index 100%
+rename from services/systemd/org.scx.Loader.service
+rename to services/org.scx.Loader.service
 diff --git a/services/scx b/services/scx
 deleted file mode 100644
 index ffac1756..00000000
@@ -197,27 +245,10 @@ index ffac1756..00000000
 -
 -# Set custom flags for each scheduler, below is an example of how to use
 -#SCX_FLAGS='-m performance -D -L'
-diff --git a/services/systemd/meson.build b/services/systemd/meson.build
-index ac856b1e..8716b967 100644
---- a/services/systemd/meson.build
-+++ b/services/systemd/meson.build
-@@ -1,9 +1,6 @@
- # Get the directory for systemd system unit files
- systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir')
- 
--# Install the 'scx.service' file to the systemd system unit directory
--install_data('scx.service', install_dir: systemd_system_unit_dir)
--
- # Install the 'scx_loader.service' file to the systemd system unit directory
- install_data('scx_loader.service', install_dir: systemd_system_unit_dir)
- 
-@@ -12,6 +9,3 @@ install_data('org.scx.Loader.service', install_dir: '/usr/share/dbus-1/system-se
- 
- # Install the default 'scx_loader' config file to the '$VENDORDIR/scx_loader' directory
- install_data('../scx_loader.toml', rename: 'config.toml', install_dir: get_option('vendordir') + '/scx_loader')
--
--# Install the 'scx' file to the '/etc/default' directory
--install_data('../scx', install_dir: '/etc/default')
+diff --git a/services/systemd/scx_loader.service b/services/scx_loader.service
+similarity index 100%
+rename from services/systemd/scx_loader.service
+rename to services/scx_loader.service
 diff --git a/services/systemd/scx.service b/services/systemd/scx.service
 deleted file mode 100644
 index 70be6975..00000000
