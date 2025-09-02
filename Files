@@ -230,6 +230,7 @@
 │   ├── 0001-services-show-options-instead-of-setting-any.patch
 │   ├── 0002-meson-install-scx_mitosis-and-scx_wd40.patch
 │   ├── 0003-scx_loader-Add-missing-schedulers.patch
+│   ├── 0004-scxctl-sync-with-Joe-Maple-s-branch.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -257,4 +258,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 176 files
+82 directories, 177 files
