@@ -233,6 +233,7 @@
 │   ├── 0002-meson-install-scx_mitosis-and-scx_wd40.patch
 │   ├── 0003-scx_loader-Add-missing-schedulers.patch
 │   ├── 0004-scxctl-sync-with-Joe-Maple-s-branch.patch
+│   ├── 0005-scx-scheds-drop-openrc-support-and-scx.service.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -260,4 +261,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 178 files
+83 directories, 179 files
