@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r272.g023cae7d
-pkgrel=1
+pkgver=1.0.15.r274.g00b39be5
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,6 +30,7 @@ eba9fa75625aa076f790ecdff63fa6462849524d # scxctl: use &str parameters for strin
 933be22b884a0a08fd67d9c6939663cdc69567c5 # scxctl: extract helper functions to reduce duplication
 a0602581e505ff5a58c9dc05c2af372762d44c1d # scxctl: simplify string processing utility functions
 c1c6bd1a959f39167c91c771dab49eb8f91e7b92 # scxctl: some Rust formatting changes to satisfy the CI
+60f6748e712b25a1587acb3e060e807cbc3fdb4c # scx_cargo: add specific crate for build time utilities
 )
 
 _reverts=(
