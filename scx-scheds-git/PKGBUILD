@@ -3,15 +3,14 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r284.gee768212
-pkgrel=1
+pkgver=1.0.15.r286.g63039a27
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
 license=('GPL-2.0-only')
 depends=('libelf' 'zlib' 'jq' 'protobuf' 'libseccomp' 'bpf' 'libbpf')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
-backup=('etc/default/scx')
 source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 options=(!lto)
@@ -30,6 +29,8 @@ aaf9ad4ae5cf6c41de96b27fef04242268f72a4d # scxctl: replace unwrap() calls with p
 cb2c17ac354432bc67e8cdb4fb3b4ca52f94e4a2 # scxctl: extract helper functions to reduce duplication
 a5280ffea104c935376229bb7cad7e5aea623b80 # scxctl: simplify string processing utility functions
 69b61134d646ddfd73a5fc905a80c232ecd30b4b # scxctl: some Rust formatting changes to satisfy the CI
+5f5f5945903c7fbbf63594558363e60c83999e34 # scx-scheds: drop scx.service
+ceb67dbbe09fb4eba2c62afcac1bb1feeceecf92 # scx-scheds: drop openrc support
 8e25478b5d018de9a08eca039aef4ea10d17dd3f # scx_cargo: add specific crate for build time utilities
 )
 
@@ -72,12 +73,11 @@ prepare() {
 
 build() {
   cd $_gitname
-  arch-meson . build -D openrc=disabled \
+  arch-meson . build -D cargo_home="$srcdir"/scx \
     -D libbpf_a=disabled \
     -D bpftool=disabled \
     -D b_lto=true \
-    -D b_lto_mode=thin \
-    -D cargo_home="$srcdir"/scx
+    -D b_lto_mode=thin
   meson compile -C build
 }
 
