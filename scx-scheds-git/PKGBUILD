@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r299.ga97b5dc5
-pkgrel=3
+pkgver=1.0.15.r301.g6033c76f
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -18,17 +18,16 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-f7ce8f9fb83d12dd078cf8238afc5497a99d883b # scx_loader: Add chaos scheduler
-4b9c312cbb972dcdd3a225e1049eee201628e967 # meson: install scx_mitosis and scx_wd40
-3032a809d85508a64424ef217aa83e5d8d8f2ee1 # scx_loader: Add mitosis scheduler
-dbdabb65417fdb6e4318dfb07ff8b77a52cfce50 # scx_loader: Add wd40 scheduler
-f557fc6dc36a956cda970c8e61fa38115127f77d # scxctl: cache DBUS results to eliminate redundant calls
-56b505f6d71e591789e69027248d713e5ca0225b # scxctl: optimize scheduler list display with iterator patterns
-0d320b1b368c93172ad4ca7403e8a30f7150345c # scxctl: use &str parameters for string utility functions
-f83495b91d5220a761a38ee027737f59af52bc3c # scxctl: replace unwrap() calls with proper error handling
-93efa2f666cd05bfb0fc25faa3b94afe695490c3 # scxctl: extract helper functions to reduce duplication
-5bba68dfd69f80791ffaaa384c3f191e30e38542 # scxctl: simplify string processing utility functions
-87f3448bffd31b6dfb0f4961f6dc80d50fe36456 # scxctl: some Rust formatting changes to satisfy the CI
+0ecddc6a07a700ac140139f7e8329a8c913e443a # scx_loader: Add chaos scheduler
+928da93e99a242e1f7ee924316c1badc11e3c330 # scx_loader: Add mitosis scheduler
+7a7a2c966fb74fab7896b7e1106832956574e27d # scx_loader: Add wd40 scheduler
+da75d7765e35a79e2e4871900a0b270f183d3fc2 # scxctl: cache DBUS results to eliminate redundant calls
+2b713cd771d01db37f47a30ccd7297ef1ecce6df # scxctl: optimize scheduler list display with iterator patterns
+48f2ccdc63856daf8e8b8d95bb5cbcd95762bb60 # scxctl: use &str parameters for string utility functions
+0e32b1e2ec03ca8331e8ee105358f56311064db9 # scxctl: replace unwrap() calls with proper error handling
+7e56f60e2ef16f12164afcc49dc39eeca1e4b9d0 # scxctl: extract helper functions to reduce duplication
+95b8bfbc95ca50e9f9fc1033ab695d75cd57b6b8 # scxctl: simplify string processing utility functions
+33ba52c6baf69592d7b9dc1ca969cbd31249069f # scxctl: some Rust formatting changes to satisfy the CI
 )
 
 _reverts=(
@@ -76,7 +75,7 @@ build() {
 package() {
   cd $_gitname
 
-  # binary
+  # binary files
   mkdir -p "$pkgdir/usr/bin"
   find target/release -maxdepth 1 -type f -executable ! -name '*.so' -exec install -Dm755 {} "$pkgdir/usr/bin/" \;
 
@@ -92,7 +91,7 @@ package() {
   install -Dm644 tools/scx_loader/org.scx.Loader.conf \
     "$pkgdir/usr/share/dbus-1/system.d/org.scx.Loader.conf"
 
-  # config
+  # scx_loader config
   install -Dm644 services/scx_loader.toml \
     "$pkgdir/usr/share/scx_loader/config.toml"
 }
