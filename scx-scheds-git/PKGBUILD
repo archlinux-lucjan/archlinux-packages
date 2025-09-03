@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.15.r299.ga97b5dc5
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -78,11 +78,7 @@ package() {
 
   # binary
   mkdir -p "$pkgdir/usr/bin"
-  for f in target/release/*; do
-        if [[ -f "$f" && -x "$f" && ! "$f" =~ \.so$ ]]; then
-            install -Dm755 "$f" "$pkgdir/usr/bin/"
-        fi
-  done
+  find target/release -maxdepth 1 -type f -executable ! -name '*.so' -exec install -Dm755 {} "$pkgdir/usr/bin/" \;
 
   # systemd service
   install -Dm644 services/systemd/scx_loader.service \
