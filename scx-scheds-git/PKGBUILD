@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r288.g47d33ff7
+pkgver=1.0.15.r294.g0ce2658b
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -18,21 +18,20 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-e169ee978ad327d0c9e547b4cceddb38de6a3cff # scx_loader: Add chaos scheduler
-d19cbe83c334eace042f632194ddf3f8ac2b0bd3 # meson: install scx_mitosis and scx_wd40
-3b2537cdfacd0637258ca243e9558e731c4bb581 # scx_loader: Add mitosis scheduler
-d38e514a6e3b62ad62516261887bfa951c6a3d10 # scx_loader: Add wd40 scheduler
-13f8b3b854ab0707b0e5a8c8c6d8abe8e9632049 # scxctl: cache DBUS results to eliminate redundant calls
-b43ab922ae13e72b05e97ff027be6ff60d7689c6 # scxctl: optimize scheduler list display with iterator patterns
-f584b2609ddd0afe4b813f191fb5747c28703fab # scxctl: use &str parameters for string utility functions
-0078ddb9772ec14a970511b6706a03e190f3f248 # scxctl: replace unwrap() calls with proper error handling
-c04af2c4ef0e875596977cfc50ae8309ec9f903e # scxctl: extract helper functions to reduce duplication
-fece4c1cb2a12aa19120716526282b394eb60218 # scxctl: simplify string processing utility functions
-9d3f97173b211272a5c70971143bcdedfa5e9f08 # scxctl: some Rust formatting changes to satisfy the CI
-5ee60e2f9dc0f9d85e31a18572d1f1052e34c863 # scx-scheds: drop scx.service
-6a351e59eca1a6efedbabd02783b4c4bdab4bcf2 # scx-scheds: drop openrc support
-6efefad97a94d3f3e0ef02d650dbe2e3b52d7e7c # scx-scheds: moving files to the services directory
-8e25478b5d018de9a08eca039aef4ea10d17dd3f # scx_cargo: add specific crate for build time utilities
+a53cd2d13fa6c159bc7183d3383c0f0544350bf3 # scx_loader: Add chaos scheduler
+dc93427d29db826a5dceeddc8cb21541b702e5d2 # meson: install scx_mitosis and scx_wd40
+1cde1064500db9743a6c604cbfaed80043b44a53 # scx_loader: Add mitosis scheduler
+9a9a3b1232de876c2c15008be9f0cf71dfee7fa8 # scx_loader: Add wd40 scheduler
+add3bfc388e2b6643d7d53ea5c4b3bc6c44545d5 # scxctl: cache DBUS results to eliminate redundant calls
+08a15e654d54878983c7beb8bc2a0f55479415a5 # scxctl: optimize scheduler list display with iterator patterns
+b5c93956f8dc6ac76d280b6bb5fd90e10729e4bd # scxctl: use &str parameters for string utility functions
+25cb11c6387fb1c985090b78ea11ae0f091baca2 # scxctl: replace unwrap() calls with proper error handling
+9c2a64455bfa22f68a2a21677c5a9d631b478069 # scxctl: extract helper functions to reduce duplication
+b9c58d63e9df7fca8e616579b246096b997ae6c2 # scxctl: simplify string processing utility functions
+18fa8ba81d1b87c3722730470ce252a7c457992a # scxctl: some Rust formatting changes to satisfy the CI
+406c58a19f9f28e4c29b60c7945eaec4bd416120 # scx-scheds: drop scx.service
+27b549630bfd79b8872cb6c7bb773c7352c44d78 # scx-scheds: drop openrc support
+0fad63bfb484e2bd7bcc7bb63051491311b0486c # scx-scheds: moving files to the services directory
 )
 
 _reverts=(
