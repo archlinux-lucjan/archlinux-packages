@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r297.g29790e85
-pkgrel=2
+pkgver=1.0.15.r299.ga97b5dc5
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -18,20 +18,17 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-a53cd2d13fa6c159bc7183d3383c0f0544350bf3 # scx_loader: Add chaos scheduler
-dc93427d29db826a5dceeddc8cb21541b702e5d2 # meson: install scx_mitosis and scx_wd40
-1cde1064500db9743a6c604cbfaed80043b44a53 # scx_loader: Add mitosis scheduler
-9a9a3b1232de876c2c15008be9f0cf71dfee7fa8 # scx_loader: Add wd40 scheduler
-add3bfc388e2b6643d7d53ea5c4b3bc6c44545d5 # scxctl: cache DBUS results to eliminate redundant calls
-08a15e654d54878983c7beb8bc2a0f55479415a5 # scxctl: optimize scheduler list display with iterator patterns
-b5c93956f8dc6ac76d280b6bb5fd90e10729e4bd # scxctl: use &str parameters for string utility functions
-25cb11c6387fb1c985090b78ea11ae0f091baca2 # scxctl: replace unwrap() calls with proper error handling
-9c2a64455bfa22f68a2a21677c5a9d631b478069 # scxctl: extract helper functions to reduce duplication
-b9c58d63e9df7fca8e616579b246096b997ae6c2 # scxctl: simplify string processing utility functions
-18fa8ba81d1b87c3722730470ce252a7c457992a # scxctl: some Rust formatting changes to satisfy the CI
-406c58a19f9f28e4c29b60c7945eaec4bd416120 # scx-scheds: drop scx.service
-27b549630bfd79b8872cb6c7bb773c7352c44d78 # scx-scheds: drop openrc support
-0fad63bfb484e2bd7bcc7bb63051491311b0486c # scx-scheds: moving files to the services directory
+f7ce8f9fb83d12dd078cf8238afc5497a99d883b # scx_loader: Add chaos scheduler
+4b9c312cbb972dcdd3a225e1049eee201628e967 # meson: install scx_mitosis and scx_wd40
+3032a809d85508a64424ef217aa83e5d8d8f2ee1 # scx_loader: Add mitosis scheduler
+dbdabb65417fdb6e4318dfb07ff8b77a52cfce50 # scx_loader: Add wd40 scheduler
+f557fc6dc36a956cda970c8e61fa38115127f77d # scxctl: cache DBUS results to eliminate redundant calls
+56b505f6d71e591789e69027248d713e5ca0225b # scxctl: optimize scheduler list display with iterator patterns
+0d320b1b368c93172ad4ca7403e8a30f7150345c # scxctl: use &str parameters for string utility functions
+f83495b91d5220a761a38ee027737f59af52bc3c # scxctl: replace unwrap() calls with proper error handling
+93efa2f666cd05bfb0fc25faa3b94afe695490c3 # scxctl: extract helper functions to reduce duplication
+5bba68dfd69f80791ffaaa384c3f191e30e38542 # scxctl: simplify string processing utility functions
+87f3448bffd31b6dfb0f4961f6dc80d50fe36456 # scxctl: some Rust formatting changes to satisfy the CI
 )
 
 _reverts=(
@@ -88,18 +85,18 @@ package() {
   done
 
   # systemd service
-  install -Dm644 services/scx_loader.service \
+  install -Dm644 services/systemd/scx_loader.service \
     "$pkgdir/usr/lib/systemd/system/scx_loader.service"
 
   # dbus services
-  install -Dm644 services/org.scx.Loader.service\
+  install -Dm644 services/systemd/org.scx.Loader.service\
     "$pkgdir/usr/share/dbus-1/system-services/org.scx.Loader.service"
-
-  # config
-  install -Dm644 services/scx_loader.toml \
-    "$pkgdir/usr/share/scx_loader/config.toml"
 
   # dbus config
   install -Dm644 tools/scx_loader/org.scx.Loader.conf \
     "$pkgdir/usr/share/dbus-1/system.d/org.scx.Loader.conf"
+
+  # config
+  install -Dm644 services/scx_loader.toml \
+    "$pkgdir/usr/share/scx_loader/config.toml"
 }
