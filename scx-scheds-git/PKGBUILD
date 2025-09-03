@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.15.r305.g7a1f079b
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -65,10 +65,13 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd $_gitname
+  export CARGO_TARGET_DIR=target
   cargo build \
      --release \
      --workspace \
