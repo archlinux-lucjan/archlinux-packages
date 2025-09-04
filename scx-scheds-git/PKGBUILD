@@ -89,6 +89,12 @@ build() {
      --exclude scx_lib_selftests
 }
 
+# Only for stable releases. Compilation time increases twice
+#check() {
+#  cd $_gitname
+#  cargo test --frozen --locked
+#}
+
 package() {
   cd $_gitname
 
