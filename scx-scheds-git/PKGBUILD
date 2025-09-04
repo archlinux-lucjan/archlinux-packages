@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.15.r312.g6b4fcd28
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -13,7 +13,6 @@ depends=(
   jq
   libseccomp
   libelf
-  protobuf
   zlib
 )
 makedepends=(
