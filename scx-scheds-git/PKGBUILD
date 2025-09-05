@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.15.r326.g186f6601
+pkgver=1.0.15.r328.g4223ff77
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -30,16 +30,16 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-9a6a2088f1853e555d22288ba5779b140a8dfd84 # scx_loader: Add chaos scheduler
-04a490a51a8b17007ce828c01d7653c7b1a967c5 # scx_loader: Add mitosis scheduler
-40f1106fdcadd85781c77c17e91d87fbf3bee411 # scx_loader: Add wd40 scheduler
-5e284d8129bd1457aab40cb4509d664433c46f3b # scxctl: cache DBUS results to eliminate redundant calls
-a7fdb39afa56abe25452ef1b89e90b2b7c2035e8 # scxctl: optimize scheduler list display with iterator patterns
-31de0b266eae6bda787d2b6803fff94bd24353e5 # scxctl: use &str parameters for string utility functions
-0de1bf56ff01a0faf7463dc0f95a5eb5b880bd85 # scxctl: replace unwrap() calls with proper error handling
-2357c4953029a610ff170689decfe27653ac3a3b # scxctl: extract helper functions to reduce duplication
-84901e633c2984695670990a2f34febb6f9c2267 # scxctl: simplify string processing utility functions
-54fbddf915ad08ac8bf718e986efbc7214357dfc # scxctl: some Rust formatting changes to satisfy the CI
+e4fd69a4e51a06b6bbd4d494f48f2c839d29728a # scx_loader: Add chaos scheduler
+1706bbc30517cfa33ff0361f72bdd9778c69ec6a # scx_loader: Add mitosis scheduler
+a9903354d68c0e6314ab981fbac5a99ebbb58241 # scx_loader: Add wd40 scheduler
+09a82e0f57c99399b7615a24a68fedfd974eb9f2 # scxctl: cache DBUS results to eliminate redundant calls
+a6d4a7d7a4951337041b8f11d6802719258fbce4 # scxctl: optimize scheduler list display with iterator patterns
+687d00fdfb979dcd02c5e0fb70d1d9ca5cbc5910 # scxctl: use &str parameters for string utility functions
+95469ba43916ea764e98f0742673db81389a5e26 # scxctl: replace unwrap() calls with proper error handling
+72133443704fd5754a269339d62b077247d3ac1f # scxctl: extract helper functions to reduce duplication
+85652874af13b9fc11ba068bde898b978fb21654 # scxctl: simplify string processing utility functions
+a186f40a816d423256cfadd8ab4bfa826eebe84e # scxctl: some Rust formatting changes to satisfy the CI
 )
 
 _reverts=(
