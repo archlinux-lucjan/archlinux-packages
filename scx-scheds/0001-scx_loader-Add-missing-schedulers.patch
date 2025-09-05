@@ -1,7 +1,7 @@
-From ae0bef1ddd8fc7a66101a8ce0ae26943e1bfdd0f Mon Sep 17 00:00:00 2001
+From 6995b138bcfe55062d8c8b77be18be73eff91558 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Wed, 20 Aug 2025 09:44:04 +0200
-Subject: [PATCH 2/3] scx_loader: Add missing schedulers
+Date: Sat, 6 Sep 2025 01:42:27 +0200
+Subject: [PATCH 1/2] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -12,7 +12,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  4 files changed, 78 insertions(+)
 
 diff --git a/tools/scx_loader/configuration.md b/tools/scx_loader/configuration.md
-index d7283f27..7283fdbd 100644
+index d0cd6ee1..435f2cf3 100644
 --- a/tools/scx_loader/configuration.md
 +++ b/tools/scx_loader/configuration.md
 @@ -76,6 +76,27 @@ gaming_mode = ["-c", "0", "-p", "0"]
@@ -43,7 +43,7 @@ index d7283f27..7283fdbd 100644
  ```
  
  **`default_sched`:**
-@@ -135,6 +156,13 @@ The example configuration above shows how to set custom flags for different sche
+@@ -137,6 +158,13 @@ The example configuration above shows how to set custom flags for different sche
      * Low Latency mode: `-m performance -c 0 -p 0 -w`
      * Power Save mode: `-m powersave -d -p 5000`
      * Server mode: `-a -s 20000`
@@ -58,7 +58,7 @@ index d7283f27..7283fdbd 100644
  ## Fallback Behavior
  
 diff --git a/tools/scx_loader/src/config.rs b/tools/scx_loader/src/config.rs
-index 31b5a871..67d36b98 100644
+index 84e010c9..f4565084 100644
 --- a/tools/scx_loader/src/config.rs
 +++ b/tools/scx_loader/src/config.rs
 @@ -87,6 +87,9 @@ pub fn get_default_config() -> Config {

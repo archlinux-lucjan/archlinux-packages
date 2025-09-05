@@ -1,7 +1,7 @@
-From ebb0f7a1f3fa42e7b7a9dc17b8bd0e29285567bb Mon Sep 17 00:00:00 2001
+From 6e3f34c22212928e54003a67c763253f75549d62 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
-Date: Tue, 2 Sep 2025 09:01:55 +0200
-Subject: [PATCH 3/3] scxctl: sync with Joe Maple's branch
+Date: Sat, 6 Sep 2025 01:42:45 +0200
+Subject: [PATCH 2/2] scxctl: sync with Joe Maple's branch
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -11,25 +11,25 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  3 files changed, 117 insertions(+), 65 deletions(-)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index 593caf16..c0635a9d 100644
+index 9c8ea158..06088474 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -3077,6 +3077,7 @@ dependencies = [
+@@ -3138,6 +3138,7 @@ dependencies = [
  name = "scxctl"
- version = "1.0.15"
+ version = "1.0.16"
  dependencies = [
 + "anyhow",
   "clap",
   "colored 3.0.0",
   "scx_loader",
 diff --git a/tools/scxctl/Cargo.toml b/tools/scxctl/Cargo.toml
-index 856775ca..ed3e0e7e 100644
+index 2db538b2..1d421fea 100644
 --- a/tools/scxctl/Cargo.toml
 +++ b/tools/scxctl/Cargo.toml
 @@ -18,3 +18,4 @@ clap = { version = "4.5.28", features = ["derive"] }
  colored = "3.0.0"
  zbus = "5.3.1"
- scx_loader = { path = "../../tools/scx_loader", version="1.0.15" }
+ scx_loader = { path = "../../tools/scx_loader", version="1.0.16" }
 +anyhow = "1.0"
 diff --git a/tools/scxctl/src/main.rs b/tools/scxctl/src/main.rs
 index a2c2b07b..f513dfff 100644

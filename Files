@@ -229,9 +229,8 @@
 ├── scx-manager-git
 │   └── PKGBUILD
 ├── scx-scheds
-│   ├── 0001-services-show-options-instead-of-setting-any.patch
-│   ├── 0002-scx_loader-Add-missing-schedulers.patch
-│   ├── 0003-scxctl-sync-with-Joe-Maple-s-branch.patch
+│   ├── 0001-scx_loader-Add-missing-schedulers.patch
+│   ├── 0002-scxctl-sync-with-Joe-Maple-s-branch.patch
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
@@ -259,4 +258,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 177 files
+83 directories, 176 files
