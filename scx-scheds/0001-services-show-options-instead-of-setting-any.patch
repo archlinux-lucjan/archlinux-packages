@@ -1,7 +1,7 @@
-From 0eb0faf1c5519a3a19740f9762bf6e8e161d8784 Mon Sep 17 00:00:00 2001
+From 2a26aa98f407536ee4c503489419d6fbcd556cf5 Mon Sep 17 00:00:00 2001
 From: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 Date: Sat, 16 Aug 2025 22:01:13 +0400
-Subject: [PATCH 1/5] services: show options instead of setting any
+Subject: [PATCH 1/3] services: show options instead of setting any
 
 don't set default scheduler and instead show possible options that user
 can set in the configuration file

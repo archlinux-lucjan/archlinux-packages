@@ -1,7 +1,7 @@
-From e901acf3ae9d19d998e79ac6f424dfc87d48a85d Mon Sep 17 00:00:00 2001
+From ae0bef1ddd8fc7a66101a8ce0ae26943e1bfdd0f Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 20 Aug 2025 09:44:04 +0200
-Subject: [PATCH 3/5] scx_loader: Add missing schedulers
+Subject: [PATCH 2/3] scx_loader: Add missing schedulers
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
