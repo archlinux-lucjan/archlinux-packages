@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r10.gabc5cff8
+pkgver=1.0.16.r23.g0a661175
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
@@ -30,16 +30,16 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-306b051121b97071712164423a18679d8baae310 # scx_loader: Add chaos scheduler
-03e6dac09523d0d7f5a390fe108b22fd459a3198 # scx_loader: Add mitosis scheduler
-76df7481eb64d3465de31bd689345023fdc86a63 # scx_loader: Add wd40 scheduler
-de3eb26f3bff60070b964b801ad9d2a4a14a63e6 # scxctl: cache DBUS results to eliminate redundant calls
-689cd779cb533a7ea7b0fd37c1ea1392cf5b7586 # scxctl: optimize scheduler list display with iterator patterns
-72986197622a3e73a89283be5d4fe736a40ef39c # scxctl: use &str parameters for string utility functions
-f189fb38287c095e03bf26e6f94a5ae6a2a71a83 # scxctl: replace unwrap() calls with proper error handling
-097b201a33d21c4d456387cb14d0546893b2c21b # scxctl: extract helper functions to reduce duplication
-5e2cb0d906307a4a24d9c940afd8979ab44fc277 # scxctl: simplify string processing utility functions
-ab273ac97a41d32dc3ae5827ffc2c39a249084cf # scxctl: some Rust formatting changes to satisfy the CI
+82de8e1050e3fd1553cb225eccef729f672e2f7d # scx_loader: Add chaos scheduler
+c7a520fd2380a440ae8ca918ffb80419203288f8 # scx_loader: Add mitosis scheduler
+bd07eae6cfb86a1b3aba21256a91856be3ba39d2 # scx_loader: Add wd40 scheduler
+72bd7427e7d5f9afd26e1a167880510af0ba35bb # scxctl: cache DBUS results to eliminate redundant calls
+8a113a2b8d07133d26a10e433d3fe1635eeac7ab # scxctl: optimize scheduler list display with iterator patterns
+f0321e42242faa50281c4a61dcf32ca4f8194bd0 # scxctl: use &str parameters for string utility functions
+e61a7738ee5342f6c789ea102dfd2a79fb400dc1 # scxctl: replace unwrap() calls with proper error handling
+a85630e02e686249ed5f9543ac4c4884afb9b24f # scxctl: extract helper functions to reduce duplication
+5463d81c05584f1521581e44d25cf63cbc61e55c # scxctl: simplify string processing utility functions
+b0b90e4cbbb84d55f5669a55e1c2b4e8dbab0366 # scxctl: some Rust formatting changes to satisfy the CI
 )
 
 _reverts=(
@@ -86,7 +86,7 @@ build() {
      --locked \
      --frozen \
      --exclude vmlinux_docify \
-     --exclude scx_lib_selftests
+     --exclude arenalib_selftests
 }
 
 # Only for stable releases. Compilation time increases twice
@@ -97,7 +97,7 @@ build() {
 #     --locked \
 #     --frozen \
 #     --exclude vmlinux_docify \
-#     --exclude scx_lib_selftests
+#     --exclude arenalib_selftests
 #}
 
 package() {
