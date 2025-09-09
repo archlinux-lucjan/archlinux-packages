@@ -4,7 +4,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.16.r23.g0a661175
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -85,6 +85,7 @@ build() {
      --workspace \
      --locked \
      --frozen \
+     --exclude scx_rlfifo \
      --exclude vmlinux_docify \
      --exclude arenalib_selftests
 }
@@ -96,6 +97,7 @@ build() {
 #     --workspace \
 #     --locked \
 #     --frozen \
+#     --exclude scx_rlfifo \
 #     --exclude vmlinux_docify \
 #     --exclude arenalib_selftests
 #}
