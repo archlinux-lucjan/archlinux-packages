@@ -108,7 +108,7 @@ package() {
   install -Dm644 services/systemd/scx_loader.service \
     "$pkgdir/usr/lib/systemd/system/scx_loader.service"
 
-  # dbus services
+  # dbus service
   install -Dm644 services/systemd/org.scx.Loader.service\
     "$pkgdir/usr/share/dbus-1/system-services/org.scx.Loader.service"
 
