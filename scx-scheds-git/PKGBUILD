@@ -3,8 +3,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r23.g0a661175
-pkgrel=2
+pkgver=1.0.16.r30.g982b7e2e
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 arch=('x86_64')
 url="https://github.com/sched-ext/scx"
@@ -30,16 +30,16 @@ provides=("scx-scheds" "scxctl")
 conflicts=("scx-scheds" "scxctl")
 
 _backports=(
-82de8e1050e3fd1553cb225eccef729f672e2f7d # scx_loader: Add chaos scheduler
-c7a520fd2380a440ae8ca918ffb80419203288f8 # scx_loader: Add mitosis scheduler
-bd07eae6cfb86a1b3aba21256a91856be3ba39d2 # scx_loader: Add wd40 scheduler
-72bd7427e7d5f9afd26e1a167880510af0ba35bb # scxctl: cache DBUS results to eliminate redundant calls
-8a113a2b8d07133d26a10e433d3fe1635eeac7ab # scxctl: optimize scheduler list display with iterator patterns
-f0321e42242faa50281c4a61dcf32ca4f8194bd0 # scxctl: use &str parameters for string utility functions
-e61a7738ee5342f6c789ea102dfd2a79fb400dc1 # scxctl: replace unwrap() calls with proper error handling
-a85630e02e686249ed5f9543ac4c4884afb9b24f # scxctl: extract helper functions to reduce duplication
-5463d81c05584f1521581e44d25cf63cbc61e55c # scxctl: simplify string processing utility functions
-b0b90e4cbbb84d55f5669a55e1c2b4e8dbab0366 # scxctl: some Rust formatting changes to satisfy the CI
+d3859ce623d7e03e999a4af8bc7f6c151b06be6c # scx_loader: Add chaos scheduler
+d024d35174240ebd1ff64a3b45119a6c01038821 # scx_loader: Add mitosis scheduler
+dd5c98cd24365b15cae60d579d5b0dba32c1f52e # scx_loader: Add wd40 scheduler
+cb4c77c055049ca66f52535aff759ddaa147d5f1 # scxctl: cache DBUS results to eliminate redundant calls
+1353fc0a903abbbaae506dba89e8304eb904d3c5 # scxctl: optimize scheduler list display with iterator patterns
+1ad270381683d40080d0ed0a1a7dc2dc206ba133 # scxctl: use &str parameters for string utility functions
+94108b8af962df7c61b35545c6b8492df342d7b0 # scxctl: replace unwrap() calls with proper error handling
+792fa2360a615faecda309650ba2106209be7f40 # scxctl: extract helper functions to reduce duplication
+6ea927e1c36a64592cc8f0d283085659bf3fa45c # scxctl: simplify string processing utility functions
+7d576dd66936cd863f1c1f40644c167300c50a03 # scxctl: some Rust formatting changes to satisfy the CI
 )
 
 _reverts=(
