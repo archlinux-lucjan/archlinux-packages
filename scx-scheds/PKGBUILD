@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.16
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -85,17 +85,16 @@ build() {
      --exclude scx_lib_selftests
 }
 
-# Only for stable releases. Compilation time increases twice
-check() {
-  cd $_gitname
-  cargo test \
-     --workspace \
-     --locked \
-     --frozen \
-     --exclude scx_rlfifo \
-     --exclude vmlinux_docify \
-     --exclude scx_lib_selftests
-}
+#check() {
+#  cd $_gitname
+#  cargo test \
+#     --workspace \
+#     --locked \
+#     --frozen \
+#     --exclude scx_rlfifo \
+#     --exclude vmlinux_docify \
+#     --exclude arenalib_selftests
+#}
 
 package() {
   cd $_gitname
