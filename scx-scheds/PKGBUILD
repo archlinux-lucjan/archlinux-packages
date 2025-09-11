@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.16
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -27,12 +27,8 @@ makedepends=(
 options=(!lto)
 provides=("scxctl")
 conflicts=("scxctl")
-source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver"
-        '0001-scx_loader-Add-missing-schedulers.patch'
-        '0002-scxctl-sync-with-Joe-Maple-s-branch.patch')
-sha256sums=('4b0355b523c0245f03340c90593c934f876cdfe33145e9c55c20c80bd13b346f'
-            '2997c0b82eceafc0a47bf2635091079d94059a4e2bf7faa9a3842ed12dd05db9'
-            'fb1f8b35ff14d50b250e93f5009e939b2d037feda0cbcfe46a77d551cf61a05c')
+source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
+sha256sums=('4b0355b523c0245f03340c90593c934f876cdfe33145e9c55c20c80bd13b346f')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
@@ -40,6 +36,16 @@ validpgpkeys=(
 )
 
 _backports=(
+d0051f2d4b9e67b0da5f7675355dca46731f1e94 # scx_loader: Add chaos scheduler
+79025fe0d8d5cf6ed0ffa1409c65ef61583e1429 # scx_loader: Add mitosis scheduler
+679f97b0761d6e2c0aba0f61fe429d415c32909a # scx_loader: Add wd40 scheduler
+76f961dae70c0246c8d8808d62219cab266062e1 # scxctl: cache DBUS results to eliminate redundant calls
+11d7d95be02840a3eebcc0f70259bfc3b99c8f07 # scxctl: optimize scheduler list display with iterator patterns
+928aaf2965320092cf035df1d86115762f92bcec # scxctl: use &str parameters for string utility functions
+47487ef0d0764da250c1b66db2dd32711409af59 # scxctl: replace unwrap() calls with proper error handling
+2d8f1156ac541f8624a6a01d3c6306fa6f2a7d1c # scxctl: extract helper functions to reduce duplication
+12db59cf4176f7107e049f790149ff1be9bb66b1 # scxctl: simplify string processing utility functions
+618bd2d2169dd0e687ceef175a94c722ceef3055 # scxctl: some Rust formatting changes to satisfy the CI
 )
 
 _reverts=(
