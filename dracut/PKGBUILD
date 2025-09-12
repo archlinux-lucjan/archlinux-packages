@@ -4,7 +4,7 @@
 
 pkgname=dracut
 pkgver=108
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="An event driven initramfs infrastructure"
 arch=('x86_64')
 url="https://github.com/dracut-ng/dracut-ng"
@@ -84,14 +84,14 @@ optdepends=(
 provides=('initramfs')
 backup=('etc/dracut.conf' 'etc/dracut-cachyos.conf')
 source=("${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
-  "dracut-rebuild"
-  "dracut-install"
-  "dracut-remove"
-  "90-dracut-install.hook"
-  "60-dracut-remove.hook"
-  "dracut-cachyos.conf"
-  "snapshot-overlay.sh"
-  "module-setup.sh")
+        "dracut-rebuild"
+        "dracut-install"
+        "dracut-remove"
+        "90-dracut-install.hook"
+        "60-dracut-remove.hook"
+        "dracut-cachyos.conf"
+        "snapshot-overlay.sh"
+        "module-setup.sh")
 
 sha512sums=('c9ffe67819c704d225efca3617b0dec79359ab049f826f5545d5ed5548943633f67e5c57831ce4fde1a294139d3e40d7df8f6b5a616415a8293fede1faba88a1'
             '8a4c9ac056bee6e7e22057cbf7179a32759767694a955372f68d43b26be62e9e8381c6264fc4884c4b04e39ffd6c1a2cc0d7e947b5796b4d89278455f3843cb9'
@@ -134,10 +134,10 @@ prepare() {
   done
 
   # remove dracut modules not meant for arch x86_64
-  for f in 45ifcfg 80cms 81cio_ignore 90ppcmac 91zipl \
-    95dasd 95dasd_mod 95dasd_rules 95dcssblk 95fcoe* \
-    95qeth_rules 95zfcp 95zfcp_rules 95znet; do
-    rm -rf modules.d/$f
+  for f in cms cio_ignore ppcmac zipl \
+    dasd dasd_mod dasd_rules dcssblk fcoe* \
+    qeth_rules zfcp zfcp_rules znet; do
+    rm -rf "modules.d/[0-9][0-9]$f"
   done
 }
 
