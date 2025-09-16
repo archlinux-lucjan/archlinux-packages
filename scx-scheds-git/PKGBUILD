@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r74.g504facd0
+pkgver=1.0.16.r80.g67d4a6c0
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -31,16 +31,16 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-3175ac73adb5e727f1fcb69f238d489e94077885 # scx_loader: Add chaos scheduler
-56030f0623e162814153cf0bde0eaea748ea6dfa # scx_loader: Add mitosis scheduler
-95210c51f5604cf8b689518e49fe39af4b0ae120 # scx_loader: Add wd40 scheduler
-8cd28ed3cda407fffef5a7387b71e22e669b015e # scxctl: cache DBUS results to eliminate redundant calls
-d8c28355592f8754e2948f4cbcb3d283b901ebe2 # scxctl: optimize scheduler list display with iterator patterns
-71fee4083e52fbff2c6d5ca5e19ffdbae19ce7f6 # scxctl: use &str parameters for string utility functions
-54b8c9aec9470a18b417564df1e015514a629dee # scxctl: replace unwrap() calls with proper error handling
-06318fdb406055dc56ed9536380c0d36f7ef0079 # scxctl: extract helper functions to reduce duplication
-013ca45b131f5be867634f611df13cbb4445be6f # scxctl: simplify string processing utility functions
-70aa475f0809670174e6436d9a499640b9e3c921 # scxctl: some Rust formatting changes to satisfy the CI
+6505bbdc8f0cbb5dffd44e0a6200d52931290e29 # scx_loader: Add chaos scheduler
+a0882b0bad88f3c2df3a1e877271bfc48ef680f8 # scx_loader: Add mitosis scheduler
+cf2ab828d3e0b7e3a06e954c291f9858e23c942e # scx_loader: Add wd40 scheduler
+57431fd7e93c540b4b314a382e8c3ca7eb68e13a # scxctl: cache DBUS results to eliminate redundant calls
+e584f7e02a3d6a881322e80cd5c2572e3fd9dce7 # scxctl: optimize scheduler list display with iterator patterns
+528c076dc22f1235bd70fc375459b72bdfb1db81 # scxctl: use &str parameters for string utility functions
+174c102187ce0a3065e71edc006ac5a1a7fdd048 # scxctl: replace unwrap() calls with proper error handling
+d8f7531baa04c74719ca492018aec3cb9711b504 # scxctl: extract helper functions to reduce duplication
+20fdea0e6362516b535602667243210c42a71dc3 # scxctl: simplify string processing utility functions
+4190a8e0a2c4a5deb236261554f411417c4da937 # scxctl: some Rust formatting changes to satisfy the CI
 )
 
 _reverts=(
