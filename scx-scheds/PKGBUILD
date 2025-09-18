@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.16
-pkgrel=1.7
+pkgrel=1.8
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,17 +36,12 @@ validpgpkeys=(
 )
 
 _backports=(
-72106c2e08a47f9c6c2ae3602f4c41b81fe038d4 # services: drop basic scx.service
-0ab8d2eb244e3575e14eb25d0bf5ba4085a0ca5f # scx_loader: Add chaos scheduler
-407e66759e4410206e4a7b9e185ee4f2331bbe40 # scx_loader: Add mitosis scheduler
-0b05f9ecdd6966420d45b0eb01034e8802b9f953 # scx_loader: Add wd40 scheduler
-3e7b89396bac984ac49551fc200d360cb1df794d # scxctl: cache DBUS results to eliminate redundant calls
-ca1784db910b06ca3b95feeb5189e2eab78f420e # scxctl: optimize scheduler list display with iterator patterns
-02f6c7ff2d1df20595539f4157b067eeb5d4b802 # scxctl: use &str parameters for string utility functions
-3c9bbb50593217826555fd8519ed4eebd1b925da # scxctl: replace unwrap() calls with proper error handling
-2adecf703c01060b06bc6c79c5837d7c897b01f2 # scxctl: extract helper functions to reduce duplication
-9279e864869da6ed3031192fdde1cc5b736d8462 # scxctl: simplify string processing utility functions
-9716066529a29c74633a77d6b9ae26a34eb89ab1 # scxctl: some Rust formatting changes to satisfy the CI
+314274d35240860c45260493da45ec219e41d557 # services: drop basic scx.service
+c8f17ed2b27365785488fd841a72c53cfc732fed # scx_loader: Add chaos scheduler
+8638a09500d48a4ceab1ec9eb4a64e55e9f895a0 # scx_loader: Add mitosis scheduler
+f5ba10e565eee09f79805e7ea32483a819e8c3fc # scx_loader: Add wd40 scheduler
+de8cb3b70d30a637a7a47a9423b3dacb6a007f7d # scx_loader: Error when non-auto modes do not have args
+cf21074dda57b2a10aec7e3bb6dd41669d9b0f80 # scxctl: Implement error handling
 )
 
 _reverts=(
