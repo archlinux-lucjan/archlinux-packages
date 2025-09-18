@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.16.r116.ga8a8ad90
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -31,14 +31,14 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-3bb0b9e27721ac2772ee415faea9764a3acf6bab # scheds: Introduce scx_beerland
-36ae44bcc7e362ac0c851bf5c76121f271812739 # scx_beerland: some Rust formatting changes to satisfy the CI
-aae0ab5848e7eb69d85dc5a59d547b5787536f00 # scx_loader: Add chaos scheduler
-56368c98f8364051d4a9be0ab30c33218a417282 # scx_loader: Add mitosis scheduler
-56c7702fd6558b8e3048f45a33f4d2d8738b3ac2 # scx_loader: Add wd40 scheduler
-063e702227f250bbc719d102c6406a5ecfb5c242 # scx_loader: Add beerland scheduler
-8f60b85896cced46557580cd7645b58b0e076738 # scx_loader: Error when non-auto modes do not have args
-06f94793b2bb8db3ec86c17ce581b37f0bed109f # scxctl: Implement error handling
+51b731f7122c6b31acf23b2e1c13599c04faeccb # scheds: Introduce scx_beerland
+33fe20b8d96f976d68f829c4fec83462728b5c72 # scx_beerland: some Rust formatting changes to satisfy the CI
+4ba1a48d5a8ffb900c03c38c1d3fb72d5fb9e838 # scx_loader: Add chaos scheduler
+6046d6e8482e0946fdd386ffc023fd13794bd03a # scx_loader: Add mitosis scheduler
+33b19b66e949366c4ff812962daabf01916d086e # scx_loader: Add wd40 scheduler
+a60408f5bc8cb936f4e27f63ab7254f16e88319c # scx_loader: Add beerland scheduler
+104da5f2d6f28d024c643e82c11f1480cb9fe667 # scx_loader: Error when non-auto modes do not have args
+f1abc1a119273cf2ee8d05c9f55e2bb291c9bbe3 # scxctl: Implement error handling
 )
 
 _reverts=(
