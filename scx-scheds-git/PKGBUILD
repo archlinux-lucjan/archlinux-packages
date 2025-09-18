@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r106.gf6ae964c
+pkgver=1.0.16.r108.gf22c803f
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -36,6 +36,7 @@ _backports=(
 2f9aa1985fd46434640f7e0f779901fd15b3cccd # scx_loader: Add wd40 scheduler
 0efe98f13d67b0b0ad5b11b6c6eec949253b7c07 # scx_loader: Error when non-auto modes do not have args
 41cf037dbbf6efd564ea542c95905085713f12d2 # scxctl: Implement error handling
+4269e0bc598ff52c106cbf0bfab22ea19de7fc86 # scheds: Introduce scx_beerland
 )
 
 _reverts=(
