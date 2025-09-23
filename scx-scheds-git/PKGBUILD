@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.16.r137.g2d9839cb
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -33,11 +33,11 @@ sha256sums=('SKIP')
 _backports=(
 e0a390086fc46372ff6d477f9df520d2c51b0510 # scheds: Introduce scx_beerland
 58c0c33e73218cb32e1b22d45b2baa3fae8a1997 # scx_loader: Add beerland scheduler
-c501a3988c9e9737c3512d8f902acf62581254c5 # scx_loader: Add chaos scheduler
-579cc099c37624e1926782adf9a3184133043937 # scx_loader: Add mitosis scheduler
-b913807143baf7703f684383cfe27540eeefb60c # scx_loader: Add wd40 scheduler
-0c18e91d536513088260006f84758755088c7181 # scx_loader: Error when non-auto modes do not have args
-4286c0942db3d1f83dd75e74968c3727d768e7e6 # scxctl: Implement error handling
+18ce763dc647b50029916d7caed87079f471d97b # scx_loader: Add chaos scheduler
+0dccb21e97b746138c4a7384c340b5995cb8c80e # scx_loader: Add mitosis scheduler
+401f0d38dd7f014a476d1dea3b6e127830fcd82b # scx_loader: Add wd40 scheduler
+988df00e70f6516ffbae101dc974e7eb8e0145a3 # scx_loader: Error when non-auto modes do not have args
+238cb5d5f339e69dfe16629051e726193de1779e # scxctl: Implement error handling
 )
 
 _reverts=(
