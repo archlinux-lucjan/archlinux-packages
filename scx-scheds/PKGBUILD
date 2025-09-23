@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.16
-pkgrel=1.9
+pkgrel=1.10
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,12 +36,10 @@ validpgpkeys=(
 )
 
 _backports=(
-314274d35240860c45260493da45ec219e41d557 # services: drop basic scx.service
-c8f17ed2b27365785488fd841a72c53cfc732fed # scx_loader: Add chaos scheduler
-8638a09500d48a4ceab1ec9eb4a64e55e9f895a0 # scx_loader: Add mitosis scheduler
-f5ba10e565eee09f79805e7ea32483a819e8c3fc # scx_loader: Add wd40 scheduler
-de8cb3b70d30a637a7a47a9423b3dacb6a007f7d # scx_loader: Error when non-auto modes do not have args
-cf21074dda57b2a10aec7e3bb6dd41669d9b0f80 # scxctl: Implement error handling
+0348a00f24b6e71112aabb99c36e1204094ddf22 # services: drop basic scx.service
+21f61602126ae2fcf798b2162f06d7af47c156ab # scx_loader: Add chaos scheduler
+ed523ac90d8e0ce939442b7715e55868ecfaa888 # scx_loader: Error when non-auto modes do not have args
+a779815feec172b8546ce2e9309abe57d2ce2188 # scxctl: Implement error handling
 )
 
 _reverts=(
@@ -73,6 +71,9 @@ build() {
      --workspace \
      --locked \
      --frozen \
+     --exclude scx_rlfifo \
+     --exclude scx_mitosis \
+     --exclude scx_wd40 \
      --exclude vmlinux_docify \
      --exclude scx_lib_selftests
 }
@@ -82,6 +83,10 @@ build() {
 #  cargo test \
 #     --workspace \
 #     --locked \
+#     --frozen \
+#     --exclude scx_rlfifo \
+#     --exclude scx_mitosis \
+#     --exclude scx_wd40 \
 #     --frozen \
 #     --exclude vmlinux_docify \
 #     --exclude scx_lib_selftests
