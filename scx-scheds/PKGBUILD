@@ -68,9 +68,9 @@ build() {
   export CARGO_TARGET_DIR=target
   cargo build \
      --release \
-     --workspace \
      --locked \
      --frozen \
+     --workspace \
      --exclude scx_rlfifo \
      --exclude scx_mitosis \
      --exclude scx_wd40 \
@@ -81,9 +81,9 @@ build() {
 #check() {
 #  cd $_gitname
 #  cargo test \
-#     --workspace \
 #     --locked \
 #     --frozen \
+#     --workspace \
 #     --exclude scx_rlfifo \
 #     --exclude scx_mitosis \
 #     --exclude scx_wd40 \
