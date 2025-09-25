@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r154.g6edce36e
+pkgver=1.0.16.r158.ga2c0f389
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -31,11 +31,11 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-bbec41ab4586f52ada75d63f963384c96061dadb # scheds: Introduce scx_beerland
-468083b53dea6f881057adad6deac53062a668ca # scx_loader: Add beerland scheduler
-97cc1eb71f28b1575012954ede76f57f39472db3 # scx_loader: Add chaos scheduler
-df95c212cd4591400ae808c154fe7f0550b9e3e2 # scx_loader: Error when non-auto modes do not have args
-f24035e0d6f0556049f86d60898688a0dc796ba0 # scxctl: Implement error handling
+9931246b9bf8f17c140dc63741b5f0d38e4417f2 # scheds: Introduce scx_beerland
+c2fce627f07d9d54383213d023d26447afab4ec5 # scx_loader: Add beerland scheduler
+c5d74f606f596d80b29b74147a95b38d176abcd0 # scx_loader: Add chaos scheduler
+02c1733c47e6e45ae5f62f678c23af83d3d57885 # scx_loader: Error when non-auto modes do not have args
+790baed040aaaa5ed314f535da9ab33c221d89b8 # scxctl: Implement error handling
 )
 
 _reverts=(
@@ -75,6 +75,7 @@ build() {
      --exclude scx_rlfifo \
      --exclude scx_mitosis \
      --exclude scx_wd40 \
+     --exclude xtask \
      --exclude vmlinux_docify \
      --exclude arenalib_selftests
 }
@@ -88,6 +89,7 @@ build() {
 #     --exclude scx_rlfifo \
 #     --exclude scx_mitosis \
 #     --exclude scx_wd40 \
+#     --exclude xtask \
 #     --exclude vmlinux_docify \
 #     --exclude arenalib_selftests
 #}
