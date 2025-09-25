@@ -170,7 +170,7 @@
 │   ├── native-clang
 │   └── PKGBUILD
 ├── mkinitcpio-git
-│   ├── 0001-mkinitcpio-drop-fallback-images.patch
+│   ├── disable-fallback.patch
 │   └── PKGBUILD
 ├── modprobed-db-git
 │   ├── PKGBUILD

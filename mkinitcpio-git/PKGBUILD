@@ -4,7 +4,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
 pkgname=mkinitcpio-git
-pkgver=39.1.r56.g815fb37
+pkgver=39.1.r92.g0f0e3f4
 pkgrel=1
 pkgdesc='Modular initramfs image creation utility - git checkout'
 arch=('any')
@@ -24,9 +24,9 @@ provides=('mkinitcpio' 'initramfs')
 conflicts=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
 source=('git+https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio'
-        '0001-mkinitcpio-drop-fallback-images.patch')
+        'disable-fallback.patch')
 sha256sums=('SKIP'
-            'd6e8538b077c4948b63913c25ab8227d756005e10d70c9098a024a0fec132128')
+            '5f6a28aaa7baad2bdc062ed8213914870c0831fd8e9174af2d8cde80f04e792d')
 
 _backports=(
 )
