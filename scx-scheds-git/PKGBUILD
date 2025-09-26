@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r158.ga2c0f389
+pkgver=1.0.16.r168.g95087879
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -31,11 +31,13 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-9931246b9bf8f17c140dc63741b5f0d38e4417f2 # scheds: Introduce scx_beerland
-c2fce627f07d9d54383213d023d26447afab4ec5 # scx_loader: Add beerland scheduler
-c5d74f606f596d80b29b74147a95b38d176abcd0 # scx_loader: Add chaos scheduler
-02c1733c47e6e45ae5f62f678c23af83d3d57885 # scx_loader: Error when non-auto modes do not have args
-790baed040aaaa5ed314f535da9ab33c221d89b8 # scxctl: Implement error handling
+5826c0aead5e811805af72012d647fe6d6082bf3 # scx_bpfland: Fix CPU utilization for tasks pinned outside primary domain
+1b59ca8ae4e7af0e080e9880cd03c4512b2be4f0 # scx_flash: Fix CPU utilization for tasks pinned outside primary domain
+4a4b78f167f6419550f0df5fed1b576e6f473487 # scheds: Introduce scx_beerland
+92676cc4c4507030c3f8236ee9bcf28007cda521 # scx_loader: Add beerland scheduler
+f0ac603a73711827b59bf3cd5def6139758dcaeb # scx_loader: Add chaos scheduler
+3873c1606742e43023df49141a8f72b257551fec # scx_loader: Error when non-auto modes do not have args
+7f245b0bac801bdc9204746c001b5a5eefb42757 # scxctl: Implement error handling
 )
 
 _reverts=(
