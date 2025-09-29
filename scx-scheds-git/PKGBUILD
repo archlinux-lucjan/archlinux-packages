@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r190.g8a536193
-pkgrel=4
+pkgver=1.0.16.r192.gf90c2aa1
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -31,7 +31,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-e18b2b54490cc15204c969d4488c4dabaf4e4b78 # percpu: Properly handle missing percpu symbols
 fdce3ead4219c4e4d4cf8b9f97220db0e4f3e898 # scheds: Introduce scx_beerland
 22e37361786436a0e9cd3448c4cb0f306aa0a9dc # scx_loader: Add beerland scheduler
 e5bd4d684e1769460fd5cea26de8865623310973 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
