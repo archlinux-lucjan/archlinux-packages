@@ -2,7 +2,7 @@
 # Contributor: nontlikeuname
 
 pkgname=meson-stable-git
-pkgver=1.8.4.0.g53d4f7dc2
+pkgver=1.9.1.0.g751b09390
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -89,7 +89,7 @@ checkdepends=(
 )
 provides=('meson')
 conflicts=('meson')
-source=('git+https://github.com/mesonbuild/meson#branch=1.8'
+source=('git+https://github.com/mesonbuild/meson#branch=1.9'
         'arch-meson'
         'cross-lib32'
         'native-clang'
