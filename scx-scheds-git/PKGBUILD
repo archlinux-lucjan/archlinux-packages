@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r192.gf90c2aa1
+pkgver=1.0.16.r205.g029238a3
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -31,14 +31,14 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-fdce3ead4219c4e4d4cf8b9f97220db0e4f3e898 # scheds: Introduce scx_beerland
-22e37361786436a0e9cd3448c4cb0f306aa0a9dc # scx_loader: Add beerland scheduler
-e5bd4d684e1769460fd5cea26de8865623310973 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-5384df4d281ee1ef1026038e0e530a8d332a057a # scx_beerland: Better SMT handling
-78f3a66082b99c218f06168dd55cf799b0c7143f # scx_beerland: Prevent migrations for non-overloaded CPUs
-fcd1720438fbb6729a3d3e3d1edbb760eede56bb # scx_loader: Add chaos scheduler
-4a8f1fc002997235afadc11de9ea5eef70bb83b2 # scx_loader: Error when non-auto modes do not have args
-49c95cee69d4cdcd0fd4d2e1cbf9560f1f7ad1e7 # scxctl: Implement error handling
+9269f42bb639546a6ab803676b20d3ee9eec4b48 # scheds: Introduce scx_beerland
+2c42edd5ef9e7d9ccbce5fba44cd4f4942dd6f03 # scx_loader: Add beerland scheduler
+c63172ce2ed51607c7f176a936ec4e9b8538bdbe # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+cf3a599de2ba58fc5df614fe4d2a0d277aaafd8d # scx_beerland: Better SMT handling
+1efc35e06725fff62a4b30bd76051960be6e677e # scx_beerland: Prevent migrations for non-overloaded CPUs
+41254f2711971cc624fc9e3a9972b7d6479483c6 # scx_loader: Add chaos scheduler
+51be470de84b125dcbd89b1bd1c948535bb08572 # scx_loader: Error when non-auto modes do not have args
+dbc205c5d5e42abeb957e28e206454d456f3ce9d # scxctl: Implement error handling
 )
 
 _reverts=(
