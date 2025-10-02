@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.16
-pkgrel=1.11
+pkgrel=1.12
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -17,12 +17,12 @@ depends=(
   zlib
 )
 makedepends=(
+  cargo
   clang
   git
   llvm
   llvm-libs
   python
-  rust
 )
 options=(!lto)
 provides=("scxctl")
