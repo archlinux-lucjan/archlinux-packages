@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.16.r212.ga09691c1
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -43,7 +43,7 @@ a3b77dae79ae256911d03907135246d428a53521 # scx_beerland: Prevent migrations for 
 2bfddd91c49e620c1613f9d3d066d27d20040aad # scx_loader: Add chaos scheduler
 b880ac245e0f8ebbbc55cf2f0e246a8e133e5c8c # scx_loader: Error when non-auto modes do not have args
 e0449e6fa83a71c01acdc0f211324a2759c21dd7 # scxctl: Implement error handling
-1f8e078a7f11d785328f4271a8bce241dd6cefbc # scx_bpfland: Rework idle CPU and scheduling policy
+544f297e7cbfeddfd7f747fa4a2b615a42c12da2 # scx_bpfland: Rework idle CPU and scheduling policy
 )
 
 _reverts=(
