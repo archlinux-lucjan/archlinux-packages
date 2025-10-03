@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.16.r212.ga09691c1
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -34,15 +34,16 @@ _backports=(
 1922f501ef7c018b6e8ab8580534d7b0d9669e2a # scx_cosmos: Improve SMT handling
 5d66ad08a753cc46b84161c1680a16fd794be03c # scx_cosmos: Prioritize faster CPUs
 5c739b96d96a48fe9bb0b22ea6134a33e9945473 # scx_cosmos: Drop flat/preferred idle scan
-ba3c2488bc49e668d34ed4eafd116ee883ce66a0 # scheds: Introduce scx_beerland
-c5ed21d5c09328e2c757f48832268a2080201a74 # scx_loader: Add beerland scheduler
-b896cc633ee391ea40544be1358d9bcda826e7f0 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-396a2b462782b4da469de94d66ebb42842707231 # scx_beerland: Better SMT handling
-a3b77dae79ae256911d03907135246d428a53521 # scx_beerland: Prevent migrations for non-overloaded CPUs
-4089bc829298c0e2774bf1f20f02dc72dcb3d110 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-2bfddd91c49e620c1613f9d3d066d27d20040aad # scx_loader: Add chaos scheduler
-b880ac245e0f8ebbbc55cf2f0e246a8e133e5c8c # scx_loader: Error when non-auto modes do not have args
-e0449e6fa83a71c01acdc0f211324a2759c21dd7 # scxctl: Implement error handling
+949af7956d7497490800df5bd052352e66115545 # scx_bpfland: Rework idle CPU and scheduling policy
+11c064c31fc7d87133d46bc11021b4a20562ff3c # scheds: Introduce scx_beerland
+07b8c34f5214f1cae50b5fffa1de559cc0c0290d # scx_loader: Add beerland scheduler
+3b9c6f69d0082c9b7f4dd6901939686d183ad478 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+53b0d0c69f0a85aa10942f4f325d6ffe4d08b0ab # scx_beerland: Better SMT handling
+4e077f54699af87edef1d478b940454f741a20dd # scx_beerland: Prevent migrations for non-overloaded CPUs
+ece4f5fc4836d68c771bf33196c83ff7b56e501d # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+f986e6715e467f22147d3b13ddeb68fb1533c250 # scx_loader: Add chaos scheduler
+ef001422f6531e8ebad3ae1a0f9176ef44fcee4b # scx_loader: Error when non-auto modes do not have args
+7d9112952940d0947373554aed1a423ca50ebe60 # scxctl: Implement error handling
 )
 
 _reverts=(
