@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.16.r212.ga09691c1
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -34,16 +34,16 @@ _backports=(
 10ae9c52fd50e945885369ea18c794890768dae0 # scx_cosmos: Improve SMT handling
 98fcaf1d755002803de2556db7913892c497b20f # scx_cosmos: Prioritize faster CPUs
 f09d72c3761c1657409544956d237cd32ce0cdc3 # scx_cosmos: Drop flat/preferred idle scan
-c842a108cba76d168abda74a246b1332eb863755 # scx_bpfland: Rework idle CPU and scheduling policy
-6b07038ee8b287736a4f33a7b2c5784616a9028d # scheds: Introduce scx_beerland
-966b53a65be802b7734f6a9e98bfdaad4e7190ae # scx_loader: Add beerland scheduler
-a7d5578ba254208742c459567e9715160132e530 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-e50ba939fe3a999405e4b2509145e67af1ef7175 # scx_beerland: Better SMT handling
-d4103367bb59381718b04f993802046408bdba72 # scx_beerland: Prevent migrations for non-overloaded CPUs
-64d19c2871d2dea657cda19627c9d8346bc03733 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-84042fa405dec50873d856ca717a635df9a25e66 # scx_loader: Add chaos scheduler
-92d383a0f67fe232300a383442cc28834d05e5fd # scx_loader: Error when non-auto modes do not have args
-3f2d4668f7a2cc53d19fd0b45bcff1c9d17031ad # scxctl: Implement error handling
+7185affb04fc37186667ae57c8892cfe0e814f73 # scx_bpfland: Rework idle CPU and scheduling policy
+9c69b4136687def8c6203a8298af7c7d5e5f196d # scheds: Introduce scx_beerland
+42f0c591b0724ccfd2f90792f5dd42bf4fa78393 # scx_loader: Add beerland scheduler
+dfdeee50b5de15875e8cb26c569c964817fc73e3 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+fcbd04d133df00d3add0359e654c8e80b256dbcf # scx_beerland: Better SMT handling
+9ca2d58e844599699e25885e2c87f3c9cf1bade4 # scx_beerland: Prevent migrations for non-overloaded CPUs
+9f118ff8259d32391d687fde6dfc63573e99c596 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+e9a09ee02819070bd6c92be8467149914c658225 # scx_loader: Add chaos scheduler
+0726534d8fe79a6168bcc7a256ae127b8df47cfc # scx_loader: Error when non-auto modes do not have args
+fbec0e63580fc840dce28919e8319322651ff6ca # scxctl: Implement error handling
 )
 
 _reverts=(
