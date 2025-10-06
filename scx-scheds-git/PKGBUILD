@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r212.ga09691c1
-pkgrel=7
+pkgver=1.0.16.r228.g2e5d50df
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -44,6 +44,7 @@ fcbd04d133df00d3add0359e654c8e80b256dbcf # scx_beerland: Better SMT handling
 e9a09ee02819070bd6c92be8467149914c658225 # scx_loader: Add chaos scheduler
 0726534d8fe79a6168bcc7a256ae127b8df47cfc # scx_loader: Error when non-auto modes do not have args
 fbec0e63580fc840dce28919e8319322651ff6ca # scxctl: Implement error handling
+ebd1986a6854bb6b8f20c3e65759b82afdd4f660 # scx_loader: set scx_cosmos as suggested scheduler
 )
 
 _reverts=(
