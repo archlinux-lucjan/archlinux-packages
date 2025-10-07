@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r1.g76e7eadc
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -45,7 +45,6 @@ f87ab638f1340351ce2e4d16f3f1deec5589eaa6 # EXPERIMENTAL: scx_beerland: Use lockl
 2cd0a2b7d3e4552bf12e34e5025f8f78b1df3dad # scx_loader: Add chaos scheduler
 4c4ef99d6c1c909664649cb883ef56dee52807e3 # scx_loader: Error when non-auto modes do not have args
 35aeefcdada0ce4691592644827a9917eb3a3094 # scxctl: Implement error handling
-7d0e0d989afd7d422bb6714d571664b4cc7c5fab # gitconfig: some formatting changes
 )
 
 _reverts=(
