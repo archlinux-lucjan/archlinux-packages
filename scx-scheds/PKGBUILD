@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds
 _gitname=scx
-pkgver=1.0.16
-pkgrel=1.14
+pkgver=1.0.17
+pkgrel=1.1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=(!lto)
 provides=("scxctl")
 conflicts=("scxctl")
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('4b0355b523c0245f03340c90593c934f876cdfe33145e9c55c20c80bd13b346f')
+sha256sums=('f5ee738afde8f4fc9bf32df10548ad622f1e0cc880ac23b6ee000ba50ff18be6')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet <void@manifault.com>
@@ -36,10 +36,9 @@ validpgpkeys=(
 )
 
 _backports=(
-0348a00f24b6e71112aabb99c36e1204094ddf22 # services: drop basic scx.service
-21f61602126ae2fcf798b2162f06d7af47c156ab # scx_loader: Add chaos scheduler
-ed523ac90d8e0ce939442b7715e55868ecfaa888 # scx_loader: Error when non-auto modes do not have args
-a779815feec172b8546ce2e9309abe57d2ce2188 # scxctl: Implement error handling
+9ff5e923f3edce2409f75db2f319ca4bd45e3cc6 # scx_loader: Add chaos scheduler
+1557ce1dfbbae05cc3aec281797adaabf3e78095 # scx_loader: Error when non-auto modes do not have args
+3eb3b205639c8eadc365e5df53b498085d95977f # scxctl: Implement error handling
 )
 
 _reverts=(
@@ -77,8 +76,9 @@ build() {
      --exclude scx_mitosis \
      --exclude scx_wd40 \
      --exclude scxcash \
+     --exclude xtask \
      --exclude vmlinux_docify \
-     --exclude scx_lib_selftests
+     --exclude scx_arena_selftests
 }
 
 #check() {
@@ -86,14 +86,15 @@ build() {
 #  export RUSTUP_TOOLCHAIN=stable
 #  cargo test \
 #     --frozen \
-#     --all-features
+#     --all-features \
 #     --workspace \
 #     --exclude scx_rlfifo \
 #     --exclude scx_mitosis \
 #     --exclude scx_wd40 \
 #     --exclude scxcash \
+#     --exclude xtask \
 #     --exclude vmlinux_docify \
-#     --exclude scx_lib_selftests
+#     --exclude scx_arena_selftests
 #}
 
 package() {
