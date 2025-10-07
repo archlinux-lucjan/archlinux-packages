@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r244.g7b065707
+pkgver=1.0.16.r246.gaf9d2062
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -31,21 +31,20 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-05870733132dfac6242633810acbb797768ad69f # scx_cosmos: Improve SMT handling
-873b8e434c4094ca8c2b3c13b729e32bc71f1073 # scx_cosmos: Prioritize faster CPUs
-83e3c9322a6ccd3f6eec209b858cc6e07a7d3522 # scx_cosmos: Drop flat/preferred idle scan
-b10073281719f9dfc1055a90f726df529003c2dc # scx_bpfland: Rework idle CPU selection and scheduling policy
-4286113f790abce971523ad7aa5eb372147c6db0 # scx_bpfland: Introduce --wake-affine
-fed47c1c70eff6c706f92379e9a29467b981d57e # scheds: Introduce scx_beerland
-1ccc3e078c1c13d8c5885f5d08fc74ebbb8a8652 # scx_loader: Add beerland scheduler
-03f442a595f9ef1e8f557b01075997e32aee0dc0 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-955ac08e5d7c4e9b8d00d7f9af94663eb54c9ed9 # scx_beerland: Better SMT handling
-38e02855ca363d5e029cb4d36a52dd1e19c1eae6 # scx_beerland: Prevent migrations for non-overloaded CPUs
-27754bc22bf4f5302c29d74577593945f9b00440 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-fedede518d6267713f671b3b79077159db9a513a # scx_loader: Add chaos scheduler
-dbb85c816ca8a766d1066a8e780488ee42619cd5 # scx_loader: Error when non-auto modes do not have args
-a66565742e50e757c2e4d6144dd5ee33f093d1a8 # scxctl: Implement error handling
-cb390e9bfa4eaffd44ac24106752a4024f20b675 # scx_bpfland: some Rust formatting changes to satisfy the CI
+b5a4976f6a4957fee947ef5907cca41147076730 # scx_cosmos: Improve SMT handling
+ab1018c7272cd708d67338c5fee614a4b20b0dd9 # scx_cosmos: Prioritize faster CPUs
+204a000049c98f487fd64ee310e04a78fd134146 # scx_cosmos: Drop flat/preferred idle scan
+ce5796d3bff53cb6ea207b038f8b9f76c812c1b5 # scx_bpfland: Rework idle CPU selection and scheduling policy
+c8eacda42e226089ae98961e5ebbce6d24837d5e # scx_loader: Update performance profiles for scx_bpfland
+ddf5bee291dfe7fdcb79e270e9052a37decf7022 # scheds: Introduce scx_beerland
+4d7b43e6cabe9621065ec1b25278c53282e29370 # scx_loader: Add beerland scheduler
+2e297532588c24efab7bb05aa582d5bd4a3459b8 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+cd3f1068be09551d5d2ef216623b95e7520e9fe2 # scx_beerland: Better SMT handling
+8ced4a03013da629e73506c4803da9e00f626b55 # scx_beerland: Prevent migrations for non-overloaded CPUs
+b97d047932f33d5ab3df3649b877b805f3944d9a # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+6ba47d683e452438666f76a7ac9a369329a5157b # scx_loader: Add chaos scheduler
+efc10410708a9f16e10b07bc557176193f922015 # scx_loader: Error when non-auto modes do not have args
+772c646e69905e38ece7bfbcec5cf2dafdb1d3a1 # scxctl: Implement error handling
 )
 
 _reverts=(
