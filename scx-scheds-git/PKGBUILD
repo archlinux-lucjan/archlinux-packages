@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r21.ge55fed64
+pkgver=1.0.17.r31.g8c65e8fc
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -31,18 +31,18 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-a2de17ca08ee26657ebf25fbf4d658c82aed1f31 # scx_cosmos: Improve SMT handling
-fd0d0c700ab07e9d167e100b24102cf3ccfd1af0 # scx_cosmos: Prioritize faster CPUs
-1c516ab87ccc6bb65ced274b6212c17477f31888 # scx_cosmos: Drop flat/preferred idle scan
-7713ae2e0f99a3ef726202f440595de1d5531122 # scheds: Introduce scx_beerland
-ef22273e454d69426054ae1a2c3da8e6c88895c7 # scx_loader: Add beerland scheduler
-7313033ea07bd198bdddbe909b287e2ac67c8976 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-a7360fab2cee50ab53e6d7f6e2e2100233ac0f13 # scx_beerland: Better SMT handling
-58da23db9726fd665ae233ce022dd0260fb4b4b6 # scx_beerland: Prevent migrations for non-overloaded CPUs
-51d77ab836a200d727334950fde4d047efee4d7c # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-1513d00a4568fe2412be25ad3d055634e6d07ba3 # scx_loader: Add chaos scheduler
-e011c481021a266572b3139e37e4ecc8646dcb2c # scx_loader: Error when non-auto modes do not have args
-037c1cba57d7def407cd8854d87831c840ea04df # scxctl: Implement error handling
+8e8e84d96ec86ac050965f61892a3e882fed92a0 # scx_cosmos: Improve SMT handling
+aad97d6c6ab8f6929774910a165b040287ff7a4d # scx_cosmos: Prioritize faster CPUs
+3f4c021367a7997e308973cf9f60edb9c129329e # scx_cosmos: Drop flat/preferred idle scan
+98a0c29a3d1fb18d8671d4c29b70dd60613066ad # scheds: Introduce scx_beerland
+0ebc2475899acb8c0621a2866e2508c15f0236bb # scx_loader: Add beerland scheduler
+c82fd2eb0c9ce60d1ce8ab530caab7e452f113b4 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+f516a7009a83ada1d8838a83eb75433d6b6067fa # scx_beerland: Better SMT handling
+c39554cbafc96255b4e0d6d1ed987bd10a4983a8 # scx_beerland: Prevent migrations for non-overloaded CPUs
+8c37013147d3cfa1e95a0d32ca4dc029faf72b84 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+d6b5ef9c6cb8f1afdca99dbd99989f7627e83597 # scx_loader: Add chaos scheduler
+874a880efa72ccb4baa28256c8ae6372d800f222 # scx_loader: Error when non-auto modes do not have args
+39a5810eac9abd7e29e1fe938c53c36e2bad84c5 # scxctl: Implement error handling
 )
 
 _reverts=(
