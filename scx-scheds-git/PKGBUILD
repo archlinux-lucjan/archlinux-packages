@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r39.gdbc9abc0
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -31,16 +31,16 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-6a6c05a6bf651ab77a39181a76df4563aacfe378 # scx_rustland_core: Fix built-in idle CPU selection on older kernels
-d4ad391321070ab45b0a2ddcb666f984c33f981b # scx_rustland_core: Keep task on the same CPU when target CPU is invalid
-adecd102b009307d61ab518b2b579172a4eb9efb # scx_rustland_core: Make select_cpu() optional
-70ea2e541b74968b7c332a48676ab3a6fc7b56d9 # scx_rustland_core: Improve user-space scheduler synchronization
-c0a4c213c50e62afb17d8248916f7938aac75f6f # scx_rustland_core: Detect dequeue events
-229a75116281a926611941aa45107612a4aad120 # scx_rustland_core: Always pick a valid idle CPU
-87a3f9bd4dd9eeb50d6093523adc379d69870a12 # scx_rustland_core: Do not enqueue migration-disabled tasks
-026355d770001fa5e3982c02af45e2a6268951ba # scx_rustland_core: Use a finite time slice for the user-space scheduler
-e42ed1a64fcb07f62665dee45a462e57e2623c95 # scx_rustland: Dispatch more tasks as backlog increases
-c02f247acf1af690f87aeb183692ce5ff6388176 # scx_rustland: Rework scheduling logic
+349ab61e455f9783b1477d9cd443681f8e85bb0e # scx_rustland_core: Fix built-in idle CPU selection on older kernels
+80bbb130e20a36e65a7d367bad2d109e2448c2ac # scx_rustland_core: Keep task on the same CPU when target CPU is invalid
+4d81a8cb95f84335804e1aa8ef7827bea6b0e9ae # scx_rustland_core: Make select_cpu() optional
+abd5bf5072be3d5c7a665d474590a03b94e4a5e5 # scx_rustland_core: Improve user-space scheduler synchronization
+c0b3b4ac8509bdce01ee5ed5fcb5b60739338771 # scx_rustland_core: Detect dequeue events
+41121f852862934f5173fabff2fd3ca515c1ef08 # scx_rustland_core: Always pick a valid idle CPU
+0ee00f568d0e470c14e20457e3480a8a17799b25 # scx_rustland_core: Do not enqueue migration-disabled tasks
+1c6d7ab2c46009e3b3085cee0fdac04579ceb3f6 # scx_rustland_core: Use a finite time slice for the user-space scheduler
+34f8e6127a06f2f0d15424c1d4db091a0b21edf4 # scx_rustland: Dispatch more tasks as backlog increases
+62e370dca734f3d2518e2dc2b92b8ff98f781b4b # scx_rustland: Rework scheduling logic
 9be253b93a7473a57f843eea14d48dba23b77e6e # scx_cosmos: Improve SMT handling
 1da349846a5fc79e5268cee7747fdd5bb885a5c9 # scx_cosmos: Prioritize faster CPUs
 cddeb9f9fb6b23b60d12467194d05f2781a89307 # scx_cosmos: Drop flat/preferred idle scan
