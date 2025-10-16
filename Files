@@ -106,6 +106,8 @@
 │   ├── git-git.install
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
+├── jujutsu-git
+│   └── PKGBUILD
 ├── kaidan-git
 │   └── PKGBUILD
 ├── kaidan-stable-git
@@ -256,4 +258,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 174 files
+84 directories, 175 files
