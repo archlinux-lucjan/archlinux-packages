@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r112.g60746866
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -43,7 +43,7 @@ f69dec59ed772aee0407096cf52947074e65e078 # scx_beerland: Prevent migrations for 
 97dbd53f8c105ead0573b85c6b83aaee9d948e8e # scx_loader: Add chaos scheduler
 6da5e902be160ec839d78f84c2bdca695e948e0c # scx_loader: Error when non-auto modes do not have args
 5261ccb4b38426e94b94a7f063ee283cf474f774 # scxctl: Implement error handling
-6b3ac721cdde1444e0aaf7e4d413b13544434313 # scx_rustland_core: Consider user-space scheduler's CPU as idle
+3e8e14690e3d50530cae9bf0c8be57a1ef3bcce3 # scx_rustland_core: Consider user-space scheduler's CPU as idle
 a50096b583fc61b676e254219218b708a3e105c7 # scx_rustland: Always dispatch one task at a time
 d5f2cf4f1ca6b160814c667fad4926ca04156c7c # scx_rustland: Avoid over-penalizing newly created tasks
 )
