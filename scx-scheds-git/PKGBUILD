@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r132.g6abdaf1d
+pkgver=1.0.17.r156.g593fb51a
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -31,18 +31,17 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-8573e3f3a8ad101987baad69bce692f2e62fbf3f # scx_cosmos: Improve SMT handling
-ac4672542e30204efe06fa0fb6a909a3c51f016e # scx_cosmos: Prioritize faster CPUs
-055f37f21e797f93f5a28a2298f54fb58e67f02a # scx_cosmos: Drop flat/preferred idle scan
-844a0af832fb277c6034089a1af1e92b0b826aa3 # scheds: Introduce scx_beerland
-961f013fded794ff62c4f62bbf05b279b7177b4c # scx_loader: Add beerland scheduler
-da1373683b540aa9f2f90a05b4d560fa2af1bab5 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-c408eee85d5387699f3136d2bd75d637b3b2a0f3 # scx_beerland: Better SMT handling
-f69dec59ed772aee0407096cf52947074e65e078 # scx_beerland: Prevent migrations for non-overloaded CPUs
-9463efb0d460fec0cbcf209a0ef6118c94da6390 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-97dbd53f8c105ead0573b85c6b83aaee9d948e8e # scx_loader: Add chaos scheduler
-6da5e902be160ec839d78f84c2bdca695e948e0c # scx_loader: Error when non-auto modes do not have args
-5261ccb4b38426e94b94a7f063ee283cf474f774 # scxctl: Implement error handling
+77000497e4bd1b5e213eee53e01245b733304849 # scheds: Introduce scx_beerland
+46b6b340ab05c7c4bb57898baad31e0339017bf1 # scx_loader: Add beerland scheduler
+b9e5217ffcb43020ad02d9d845284f2e1ec96541 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+aa4494616ba4829e18e98c5f913ef18c734daac5 # scx_beerland: Better SMT handling
+18b157c0255f7f94eed1f896702b0d602cf7c42d # scx_beerland: Prevent migrations for non-overloaded CPUs
+7f47b7fd9fee459f8892b899973ce1c7232b6f50 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+6a1ae286c6cca31a2695b6bfcc7f65955323efa2 # scx_loader: Add chaos scheduler
+fee866912c1f55aedb7f817ae0b050d6644388e2 # scx_loader: Error when non-auto modes do not have args
+930ddca8fc55ecce7ad16f2a574f7c7ae7a2d06b # scxctl: Implement error handling
+53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
+9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 )
 
 _reverts=(
