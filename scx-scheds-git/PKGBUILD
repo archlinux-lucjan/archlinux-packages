@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r156.g593fb51a
-pkgrel=3
+pkgver=1.0.17.r158.gee5f65b1
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -31,15 +31,15 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-a5a4e3eccd0d96bb7209811c4313e974d58f83d0 # scheds: Introduce scx_beerland
-868e813e2fa79aa0470ee62bf750ce2b1ccdd490 # scx_loader: Add beerland scheduler
-d23752b5901d00ac8fa1e495720b88c535fb27da # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-984b5e3d8548f9ba89433ea6cfde76fe0cbede93 # scx_beerland: Better SMT handling
-d921ffb391cf672b697a6741ba73e091cd24ddba # scx_beerland: Prevent migrations for non-overloaded CPUs
-68420d417eccfaf451e01062416e4490937033f2 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-d6a510571e6278ddebff1bfc77333b24ca3f6106 # scx_loader: Add chaos scheduler
-5be96bf15e0d93912212aa4b8b98b3c192d5790b # scx_loader: Error when non-auto modes do not have args
-2b0c064fd1af01c512d3673e46e48be10d6755bc # scxctl: Implement error handling
+9856a0e6d74d397edda9fc63563b0173300d3a34 # scheds: Introduce scx_beerland
+aad52f4ef4d6aa908de3e525489573307418360b # scx_loader: Add beerland scheduler
+abbe3d92cc1a90eea36c894e95e4dfcc4352557a # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+88add1bb7854aeda382ebda2b0163bca7ce184c2 # scx_beerland: Better SMT handling
+7cc549a7f49f4d6c6b41a7cad67372c03cefdd5a # scx_beerland: Prevent migrations for non-overloaded CPUs
+30b69b5ddf7d49a7f2afd57ab1c450fec05628dc # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+12669e74cc92657312d84154ffcecaf06fe76cb1 # scx_loader: Add chaos scheduler
+6ffc479152f41734e3e893af60e6f6c9a66e6c13 # scx_loader: Error when non-auto modes do not have args
+c45ed47f92265594ac7d78a1d9ef8c08fe321812 # scxctl: Implement error handling
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 edc99c7b1f60d05bd13d48d3b3d1848bfcd99f63 # scx_bpfland: Introduce --preferred-idle-scan
