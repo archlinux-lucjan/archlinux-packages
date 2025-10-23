@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r158.gee5f65b1
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -42,8 +42,8 @@ abbe3d92cc1a90eea36c894e95e4dfcc4352557a # EXPERIMENTAL: scx_beerland: Use lockl
 c45ed47f92265594ac7d78a1d9ef8c08fe321812 # scxctl: Implement error handling
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
-edc99c7b1f60d05bd13d48d3b3d1848bfcd99f63 # scx_bpfland: Introduce --preferred-idle-scan
-56cc1c295b1b80070d55d9fa02ba42ed9daca66c # scx_bpfland: Only trigger a CPU wakeup on queued wakeup
+1d06e4cd22005780b294509a6a87617dae689366 # scx_bpfland: Only trigger a CPU wakeup on queued wakeup
+56d488411bf5f4617463b95ac8c39243a3dc18ea # scx_bpfland: Introduce --preferred-idle-sca
 )
 
 _reverts=(
