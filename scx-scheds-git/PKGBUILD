@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r164.g733c7ed6
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -44,6 +44,7 @@ c45ed47f92265594ac7d78a1d9ef8c08fe321812 # scxctl: Implement error handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 0b063823d5461f401adc2ba19e0cda77ef79a32a # scx_bpfland: Introduce per-CPU DSQs
 24ee315f1f10c71b77418d99d3d4759f8a28a157 # scx_bpfland: Avoid starvation in per-node DSQs
+c373d0636ff381e954ee8896c1d8833ce46dea92 # scx_bpfland: Increase stall log size to 1M
 )
 
 _reverts=(
