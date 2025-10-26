@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r166.g00d4869a
+pkgver=1.0.17.r174.g9213989b
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -42,8 +42,6 @@ abbe3d92cc1a90eea36c894e95e4dfcc4352557a # EXPERIMENTAL: scx_beerland: Use lockl
 c45ed47f92265594ac7d78a1d9ef8c08fe321812 # scxctl: Implement error handling
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
-8b2bd19e2c8506055fc1d167a7a164e4d4c620ca # scx_bpfland: Avoid starvation in per-node DSQs
-c4908092feb42246a42caf68edf1d6e281321ec7 # scx_bpfland: Reduce max wakeup frequency
 )
 
 _reverts=(
