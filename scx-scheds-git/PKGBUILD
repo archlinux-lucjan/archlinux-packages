@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r174.g9213989b
-pkgrel=1
+pkgver=1.0.17.r178.g76e85641
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -65,6 +65,15 @@ prepare() {
      if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
      git log --oneline "${_l}" "${_c}"
      git revert --mainline 1 --no-commit "${_c}"
+   done
+
+   local src
+   for src in "${source[@]}"; do
+     src="${src%%::*}"
+     src="${src##*/}"
+     [[ $src = *.patch ]] || continue
+     echo "Applying patch $src..."
+     patch -Np1 < "../$src"
    done
 
    export RUSTUP_TOOLCHAIN=stable
