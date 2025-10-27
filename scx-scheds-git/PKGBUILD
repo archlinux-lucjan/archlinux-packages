@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r181.g3082e4cc
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -43,8 +43,8 @@ e24c1a65664a878a7f1bb811dd29228ee58b4003 # scx_loader: Add beerland scheduler
 10135290211969e9568579837c9df33523326909 # scxctl: Implement error handling
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
-50815034f3585a7e3e60a48b0c1b3db5d0357b0e # scx_bpfland: Scale vruntime credit based on queue depth
-fcb48395b993a02616f1c5ea425054ae65cd2e14 # scx_bpfland: Don't attempt migrations for sticky tasks
+fc93c0423a0639cc6bc517c52ee73d12bf0dada3 # scx_bpfland: Don't attempt migrations for sticky tasks
+cb61b54afa8a85008ceb513b331d876d280b06fd # scx_bpfland: Scale vruntime credit based on queue depth
 )
 
 _reverts=(
