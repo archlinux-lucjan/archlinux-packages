@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r181.g3082e4cc
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -31,16 +31,16 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-f44c524dbcaf6569296ecac96efa19d5ef1415b1 # scheds: Introduce scx_beerland
-213186b9d239068bdcf2d7a5691035e92c37d9af # scx_loader: Add beerland scheduler
-8c06f630353b31ef4d70037686869e49a488d06d # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-2beeef7cfcfd81392005b9bf6a01d12e94e3de89 # scx_beerland: Better SMT handling
-a21aec9499405677fdf2fa0d08e0836ed33f3907 # scx_beerland: Prevent migrations for non-overloaded CPUs
-18a40d34ffa0cb76150b98112c20db3e60f16362 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-13d56c68411eb3c35f00df6a2911b947afa97a59 # scx_beerland: Attempt to wakeup idle CPUs only when needed
-f816d619457a0075e1bb313c3c858c4ec813d0b1 # scx_loader: Add chaos scheduler
-2db2092aebed1e39162691e81ea6803f54d31a73 # scx_loader: Error when non-auto modes do not have args
-e9a2233fac11e870f8da575a7d76673d61fe32f6 # scxctl: Implement error handling
+db40aeafd128ba154bcf95b9176c32a6a3578b2a # scheds: Introduce scx_beerland
+e24c1a65664a878a7f1bb811dd29228ee58b4003 # scx_loader: Add beerland scheduler
+147b9e0b0144b649df890e46960a5e5bbd2c7dd9 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+45246e2e27d3d991d7b0fbb9af9af511e359b191 # scx_beerland: Better SMT handling
+2c4a3eae107f4f063fef26ea71fdf998fc63f63e # scx_beerland: Prevent migrations for non-overloaded CPUs
+98feb156d7f90a8045f0e1e53146f00a7605c76d # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+679351dea360621a27f520965b4e3cefe5346bf5 # scx_beerland: Attempt to wakeup idle CPUs only when needed
+8f6a5a9bb04a94f4cb0dab11ddcf8785b0e07680 # scx_loader: Add chaos scheduler
+3316766c75800d33538daac6a29ac4c252fe44d7 # scx_loader: Error when non-auto modes do not have args
+10135290211969e9568579837c9df33523326909 # scxctl: Implement error handling
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 50815034f3585a7e3e60a48b0c1b3db5d0357b0e # scx_bpfland: Scale vruntime credit based on queue depth
