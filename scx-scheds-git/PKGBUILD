@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r201.gbd6de22c
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -44,11 +44,11 @@ dabcb1d5b2f6d044d3003ba67cde5be6fcbdad1c # scx_beerland: Keep using the same CPU
 3b5adacce7cba52a04f5bceccbc91022d2669564 # scx_beerland: Use deadline-based scheduling
 695bb48fa697d422f2f34b1d1967c5cfc31201fd # scx_beerland: Try to keep I/O-bound task on the same CPU
 af908fd4acf3a1afc19c1406a794d9c7889ad50a # scx_loader: Add chaos scheduler
+927deefcbe4a6514d3aaacf48d3cdd538f536d86 # scx_loader: Error when non-auto modes do not have args
+d71be801eba08bd813856ef4dd98ca976f043622 # scxctl: Implement error handling
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
-e491e583e2d8e9fe199aed970c4fdb0e943ccd33 # scx_bpfland: Scale vruntime credit based on queue depth
-4c4f025edaca719da0acf3e60001bc9d6138ceca # scx_bpfland: Improve sticky tasks classification
-ca910cc7da5976f992b2235b1faf500d95d7f262 # feat(scx_loader): Implement security hardening with authorization, validation, and audit logging
+0a206228624e1962e4d8cb67f0bbd5681df6912d # scx_bpfland: Scale vruntime credit based on queue depth
 )
 
 _reverts=(
