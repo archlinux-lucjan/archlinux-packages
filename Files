@@ -234,6 +234,8 @@
 │   └── PKGBUILD
 ├── scx-scheds-git
 │   └── PKGBUILD
+├── scx-tools-git
+│   └── PKGBUILD
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
@@ -258,4 +260,4 @@
 └── zstd-git
     └── PKGBUILD
 
-84 directories, 175 files
+85 directories, 176 files
