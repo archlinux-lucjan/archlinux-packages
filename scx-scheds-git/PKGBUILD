@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r213.g5b5124ec
+pkgver=1.0.17.r224.gd645aad7
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -48,8 +48,8 @@ af908fd4acf3a1afc19c1406a794d9c7889ad50a # scx_loader: Add chaos scheduler
 d71be801eba08bd813856ef4dd98ca976f043622 # scxctl: Implement error handling
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
-79939657df1e7656c7e615677bf2333a53108cf1 # scx_bpfland: Improve sticky tasks classification
-b24cee777c4ea7527f7577c673b76ba17f44501a # scx_bpfland: Rethink per-CPU tasks prioritization
+c438583c69fa6035c1a6a2a7d9467216a31f7e9a # scx_bpfland: Classify sticky tasks in function of their average runtime
+e9e2b21a4eaa8e236410d491797cb001508abeaa # scx_bpfland: Rethink per-CPU tasks prioritization
 )
 
 _reverts=(
