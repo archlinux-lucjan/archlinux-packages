@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r224.gd645aad7
+pkgver=1.0.17.r226.ge5b2e480
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -24,28 +24,27 @@ makedepends=(
   llvm-libs
   python
 )
+optdepends=(
+'scx-tools-git: scx_loader and scxtl - A DBUS Interface for Managing sched_ext Schedulers '
+)
 options=(!lto)
-provides=("scx-scheds" "scxctl")
-conflicts=("scx-scheds" "scxctl")
+provides=("scx-scheds")
+conflicts=("scx-scheds")
 source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-b261873c28bd23de1bcf02b5151b3237afc3d60a # scheds: Introduce scx_beerland
-b35958465d72770231b752552c0be272a6df6115 # scx_loader: Add beerland scheduler
-e01eca56f799c18548c38de73af3950063bdf07b # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-298739a4852f7857045945cd511c069d5b3bc1da # scx_beerland: Better SMT handling
-7795d8da11a1e242bd69bc8ebf29bd1d5033a5b5 # scx_beerland: Prevent migrations for non-overloaded CPUs
-e1f1edba22587100676aa47961f75c8e5a848da1 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-b509db6b7b9da2f539f6b1e45695d47eed59dd0d # scx_beerland: Attempt to wakeup idle CPUs only when needed
-b6e359fefd6e1266e6712a52da1e15d649062085 # scx_beerland: Introduce --preferred-idle-scan / -P
-02b9b7fadfb222511a3fed6dc4a0363ff5c32630 # scx_beerland: Always dispatch from any CPU when system is busy
-dabcb1d5b2f6d044d3003ba67cde5be6fcbdad1c # scx_beerland: Keep using the same CPU if system is busy
-3b5adacce7cba52a04f5bceccbc91022d2669564 # scx_beerland: Use deadline-based scheduling
-695bb48fa697d422f2f34b1d1967c5cfc31201fd # scx_beerland: Try to keep I/O-bound task on the same CPU
-af908fd4acf3a1afc19c1406a794d9c7889ad50a # scx_loader: Add chaos scheduler
-927deefcbe4a6514d3aaacf48d3cdd538f536d86 # scx_loader: Error when non-auto modes do not have args
-d71be801eba08bd813856ef4dd98ca976f043622 # scxctl: Implement error handling
+2e32666f23586b49f084a03e36414c708af17f5c # scheds: Introduce scx_beerland
+6200a1eb43f980d72c5b277faaad9699075f770d # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+e6daa93a0668ef121cc473b57950f6be86894ef1 # scx_beerland: Better SMT handling
+29909d89c8e1bb7b1e7aa1d4cfb852f74c91cd43 # scx_beerland: Prevent migrations for non-overloaded CPUs
+f84500c8a7c97700f909985ffbf166fe46c4fe88 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+75d5021b53d8c6a86764fdb336ec4e144e343b57 # scx_beerland: Attempt to wakeup idle CPUs only when needed
+d4322e04768246cb9e31cc0956140457891c329e # scx_beerland: Introduce --preferred-idle-scan / -P
+35d79dffdb7067ab112a8af86378ec58b5e91203 # scx_beerland: Always dispatch from any CPU when system is busy
+dbd68e1da48be9ed9c2d268de94f2307173fb067 # scx_beerland: Keep using the same CPU if system is busy
+260be70f4523ab4d35a2ef9cd58400da0fd3a53e # scx_beerland: Use deadline-based scheduling
+ce8b7ca9a19ef8d4dd45f4bb05f0a3a393d15587 # scx_beerland: Try to keep I/O-bound task on the same CPU
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 c438583c69fa6035c1a6a2a7d9467216a31f7e9a # scx_bpfland: Classify sticky tasks in function of their average runtime
@@ -129,20 +128,4 @@ package() {
   find target/release \
     -maxdepth 1 -type f -executable ! -name '*.so' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
-
-  # systemd service
-  install -Dm644 services/systemd/scx_loader.service \
-    -t "$pkgdir/usr/lib/systemd/system/"
-
-  # D-Bus service
-  install -Dm644 services/systemd/org.scx.Loader.service \
-    -t "$pkgdir/usr/share/dbus-1/system-services/"
-
-  # D-Bus configuration
-  install -Dm644 tools/scx_loader/org.scx.Loader.conf \
-    -t "$pkgdir/usr/share/dbus-1/system.d/"
-
-  # scx_loader sample configuration (template)
-  install -Dm644 services/scx_loader.toml \
-    "$pkgdir/usr/share/scx_loader/config.toml"
 }
