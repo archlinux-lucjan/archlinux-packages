@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r228.g9a8fa722
+pkgver=1.0.17.r230.g26dfd214
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -34,7 +34,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-586a416ae6f46c04d6ebf9ad2c2034fe55547f7a # scx_bpfland: Classify sticky tasks based on their average runtime
 c021c53f25512b96a8cbf6b01d3b9a08044718fa # scx_bpfland: Rethink per-CPU tasks prioritization
 50554e108d8ebbbe985d093fbf7fea202088849d # scx_bpfland: Dynamic time slice
 0a0c7ed0ef12b1fbf3286f7d3c65d02a093a6982 # scheds: Introduce scx_beerland
