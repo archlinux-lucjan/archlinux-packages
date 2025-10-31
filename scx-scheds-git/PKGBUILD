@@ -5,7 +5,7 @@
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.17.r238.gd7ff41c7
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,18 +36,18 @@ sha256sums=('SKIP')
 _backports=(
 359c4146401e5bcfadaa742e1cd1069b591606d8 # scx_bpfland: Rethink per-CPU tasks prioritization
 caa033f2bdd0523e2598881ca8774c2b6d0f2b70 # scx_bpfland: Dynamic time slice
-c46ce4bb4b563d6350779a141347f5a6599d717e # scheds: Introduce scx_beerland
-6bcfbc79d5448bce9dc55c273418d9103cb9924e # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
-dcd2033dd3dc6bff3547f55055839e1950bd7dec # scx_beerland: Better SMT handling
-9cc30625ec3bd13b506925fae64e38a4922b804a # scx_beerland: Prevent migrations for non-overloaded CPUs
-17b435dde935f98d8774e69dadf48a33a0804ee2 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-cdf87e1e6b55f9dd735d0b64babe883803208d55 # scx_beerland: Attempt to wakeup idle CPUs only when needed
-0c511981efe3153e3796cab63a2393d9eccedd3f # scx_beerland: Introduce --preferred-idle-scan / -P
-f71d93f67f7a43c7a7b9e00bbaf7a17ecb6b32e0 # scx_beerland: Always dispatch from any CPU when system is busy
-5f92116edbb5a1d3cac4e1a3e81e10760c629879 # scx_beerland: Keep using the same CPU if system is busy
-c950c94359fc4641c99f1d967369c187ef6f54c9 # scx_beerland: Use deadline-based scheduling
-d3f5b0a871a60193faefaae92462cd6581e88985 # scx_beerland: Try to keep I/O-bound task on the same CPU
-9e79293d4f8a7b9d5642a3cc24d4c0c2a540498b # scx_beerland: Sticky task classification based on average runtime
+05dd67f7e6f2f424fa13a821aac84560d7efa071 # scheds: Introduce scx_beerland
+b92e770ec330eee787b8ffe176c60ed1cd8a6453 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
+f2509766f98de78150a0c60f9df7b330529bb249 # scx_beerland: Better SMT handling
+dd30ca12cb9dd593d214f6df837793f18193f406 # scx_beerland: Prevent migrations for non-overloaded CPUs
+94558041df37f9bf8fbf01d77396789e747b5657 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
+f19af0ee3547a6524cf95cb46fec2dd5b4c857bc # scx_beerland: Attempt to wakeup idle CPUs only when needed
+736ce473481874c639eedb89ff123dc31c42a660 # scx_beerland: Introduce --preferred-idle-scan / -P
+32feb8baccc980b20907ccf75d098197c25a979f # scx_beerland: Always dispatch from any CPU when system is busy
+9b6e8d03bb9942cd45803aeaadf900c59894c9fd # scx_beerland: Keep using the same CPU if system is busy
+51582bf9213c4f6bb301cf075fe728c0a98d21f1 # scx_beerland: Use deadline-based scheduling
+6058a52f4eaa57b9b6e2126214ec0cfec0f57d14 # scx_beerland: Try to keep I/O-bound task on the same CPU
+65cfb5d137e78ca7d3c69c2b9672d79c72a6d023 # scx_beerland: Sticky task classification based on average runtime
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 )
