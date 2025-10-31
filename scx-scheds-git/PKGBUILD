@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r240.g201892c7
+pkgver=1.0.17.r244.gd743abe7
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -34,7 +34,7 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-caa033f2bdd0523e2598881ca8774c2b6d0f2b70 # scx_bpfland: Dynamic time slice
+a2900cf279bbf968779273dd3cc921f3176576a1 # scx_bpfland: Dynamic time slice
 05dd67f7e6f2f424fa13a821aac84560d7efa071 # scheds: Introduce scx_beerland
 b92e770ec330eee787b8ffe176c60ed1cd8a6453 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
 f2509766f98de78150a0c60f9df7b330529bb249 # scx_beerland: Better SMT handling
@@ -44,9 +44,9 @@ f19af0ee3547a6524cf95cb46fec2dd5b4c857bc # scx_beerland: Attempt to wakeup idle 
 736ce473481874c639eedb89ff123dc31c42a660 # scx_beerland: Introduce --preferred-idle-scan / -P
 32feb8baccc980b20907ccf75d098197c25a979f # scx_beerland: Always dispatch from any CPU when system is busy
 9b6e8d03bb9942cd45803aeaadf900c59894c9fd # scx_beerland: Keep using the same CPU if system is busy
-51582bf9213c4f6bb301cf075fe728c0a98d21f1 # scx_beerland: Use deadline-based scheduling
-6058a52f4eaa57b9b6e2126214ec0cfec0f57d14 # scx_beerland: Try to keep I/O-bound task on the same CPU
-65cfb5d137e78ca7d3c69c2b9672d79c72a6d023 # scx_beerland: Sticky task classification based on average runtime
+71d5b15fc50424636d20aefad0e61e81b3a5f7a1 # scx_beerland: Use deadline-based scheduling
+b94653905a1d66b36cecb8892742e058e89f19f9 # scx_beerland: Try to keep I/O-bound task on the same CPU
+c64c410bb800cfe49a6d1340da118fb9b95229d0 # scx_beerland: Sticky task classification based on average runtime
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 )
