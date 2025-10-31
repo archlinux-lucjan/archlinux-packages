@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r244.gd743abe7
+pkgver=1.0.17.r248.gfb8166ef
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -34,7 +34,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-a2900cf279bbf968779273dd3cc921f3176576a1 # scx_bpfland: Dynamic time slice
 05dd67f7e6f2f424fa13a821aac84560d7efa071 # scheds: Introduce scx_beerland
 b92e770ec330eee787b8ffe176c60ed1cd8a6453 # EXPERIMENTAL: scx_beerland: Use lockless peek (requires kernel patch)
 f2509766f98de78150a0c60f9df7b330529bb249 # scx_beerland: Better SMT handling
