@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r253.g435582e2
+pkgver=1.0.17.r278.g6889f4a1
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -34,17 +34,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-99b0368f4d3b8b205ffff6b7f38bf4c5ba18c18d # scheds: Introduce scx_beerland
-ef436bf6e3e1a19325949f766f9cae5918fe5347 # scx_beerland: Better SMT handling
-faa2124db61b2e474fd17c1791b5d53e04b3bc1f # scx_beerland: Prevent migrations for non-overloaded CPUs
-8ad7ed262695c7fc868be35f1085ca94e0dab8c3 # scx_beerland: Re-enqueue tasks on CPU preempted by a higher sched class
-f3b7abb916970b6378a24beece158f8fa110acf5 # scx_beerland: Attempt to wakeup idle CPUs only when needed
-b856813363ff834957817b20eb5b2d274fe9fe6d # scx_beerland: Introduce --preferred-idle-scan / -P
-377a395bbb5ee49321d8744f89b1075a6ec36a6f # scx_beerland: Always dispatch from any CPU when system is busy
-926e1d9b62e5831388415866ecea10bdb63b5d17 # scx_beerland: Keep using the same CPU if system is busy
-df9cc9cb2136d3b741c2e91381010fd9fc6e0a64 # scx_beerland: Use deadline-based scheduling
-1527f2bc5e7f51eb1ddd2e9880c33fd4f0090020 # scx_beerland: Try to keep I/O-bound task on the same CPU
-3222dd7f143b15b545b7bee3008aef50485bda5a # scx_beerland: Sticky task classification based on average runtime
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 )
