@@ -4,7 +4,7 @@
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=20251102.r364.g75366b4
-pkgrel=3
+pkgrel=4
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
 arch=('x86_64')
@@ -35,6 +35,9 @@ a81b5bfc1e0ee785f37a11147fd2562c15171f36 # scx_loader: suppress clippy warnings
 8b47bcc05ebd8036213d8192b36fea7408a2dd74 # scx_loader: MESON_VENDORDIR->VENDORDIR
 720cfa00d692ddd89f6cc9288f2c4d02f09ccdeb # scxctl: make clippy happy
 3583ba33afdd19ecc198c65eed82117072010f58 # scx_loader: Add chaos scheduler
+1a64d5b9e23fba1b619ccbe36707c6f93b89609e # scx_loader: Add mitosis scheduler
+32d8d4297a72c85f16cb5aed888428ff6ddf5323 # scx_loader: Add wd40 scheduler
+a54fa4d2662f6de50ab7532897a008d91cb15b4b # scx_loader: some Rust formatting changes
 )
 
 _reverts=(
