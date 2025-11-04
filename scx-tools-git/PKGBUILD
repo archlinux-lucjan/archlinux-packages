@@ -3,8 +3,8 @@
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=20251102.r364.g75366b4
-pkgrel=4
+pkgver=20251105.r374.g91c2986
+pkgrel=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
 arch=('x86_64')
@@ -26,18 +26,10 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-3c46094a1dbf03a3a7d0a6803381f921e5732b0c # lint: run clippy
-1721913104bc3ad9e10d607773b247ef9fd4f7f9 # scx_loader: tokio spawn doesn't return result
-86f7c5132d0199d2e5256e853bc8236f767ce7ad # scx_loader: sync function marked async
-d4e16c698f18163d46bf756ede58e222e5c2d7c8 # scx_loader: make clippy happy
-a81b5bfc1e0ee785f37a11147fd2562c15171f36 # scx_loader: suppress clippy warnings
-319481927c54ffa633c6c047e5ea35f1eecd3b32 # scx_loader: add missing `# Errors` doc
-8b47bcc05ebd8036213d8192b36fea7408a2dd74 # scx_loader: MESON_VENDORDIR->VENDORDIR
-720cfa00d692ddd89f6cc9288f2c4d02f09ccdeb # scxctl: make clippy happy
-3583ba33afdd19ecc198c65eed82117072010f58 # scx_loader: Add chaos scheduler
-1a64d5b9e23fba1b619ccbe36707c6f93b89609e # scx_loader: Add mitosis scheduler
-32d8d4297a72c85f16cb5aed888428ff6ddf5323 # scx_loader: Add wd40 scheduler
-a54fa4d2662f6de50ab7532897a008d91cb15b4b # scx_loader: some Rust formatting changes
+ec58ced7dd97d4de73e11b526e29bf992740bc91 # scx_loader: Add chaos scheduler
+a6bd584adc206d48b5e71185e65facdc45fddae6 # scx_loader: Add mitosis scheduler
+e98a0b30dff0f35b4df388091fa56c7683a235d7 # scx_loader: Add wd40 scheduler
+07b9aaed2e960f9ae9b694614c6d0d9f0e1e3fbb # scx_loader: some Rust formatting changes
 )
 
 _reverts=(
