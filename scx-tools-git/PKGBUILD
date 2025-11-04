@@ -4,7 +4,7 @@
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=20251102.r364.g75366b4
-pkgrel=1
+pkgrel=3
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
 arch=('x86_64')
@@ -26,7 +26,15 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-6041543abfd24a6c8772873ae3d01c9377878bde # scx_loader: Add chaos scheduler
+3c46094a1dbf03a3a7d0a6803381f921e5732b0c # lint: run clippy
+1721913104bc3ad9e10d607773b247ef9fd4f7f9 # scx_loader: tokio spawn doesn't return result
+86f7c5132d0199d2e5256e853bc8236f767ce7ad # scx_loader: sync function marked async
+d4e16c698f18163d46bf756ede58e222e5c2d7c8 # scx_loader: make clippy happy
+a81b5bfc1e0ee785f37a11147fd2562c15171f36 # scx_loader: suppress clippy warnings
+319481927c54ffa633c6c047e5ea35f1eecd3b32 # scx_loader: add missing `# Errors` doc
+8b47bcc05ebd8036213d8192b36fea7408a2dd74 # scx_loader: MESON_VENDORDIR->VENDORDIR
+720cfa00d692ddd89f6cc9288f2c4d02f09ccdeb # scxctl: make clippy happy
+3583ba33afdd19ecc198c65eed82117072010f58 # scx_loader: Add chaos scheduler
 )
 
 _reverts=(
