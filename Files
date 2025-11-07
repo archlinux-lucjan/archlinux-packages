@@ -112,8 +112,6 @@
 │   └── PKGBUILD
 ├── kaidan-stable-git
 │   └── PKGBUILD
-├── kgtk-kf5-git
-│   └── PKGBUILD
 ├── krusader-git
 │   └── PKGBUILD
 ├── krusader-stable-git
@@ -259,4 +257,4 @@
 └── zstd-git
     └── PKGBUILD
 
-85 directories, 175 files
+84 directories, 174 files
