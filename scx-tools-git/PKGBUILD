@@ -3,8 +3,8 @@
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=20251106.r376.g474e3b7
-pkgrel=5
+pkgver=20251107.r377.g40c1198
+pkgrel=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
 arch=('x86_64')
@@ -26,11 +26,11 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-6e1c9db27315da8a03ff190a2f174f8f0a401d07 # scx_loader: Add chaos scheduler
-1c4289f67e312dc427ab2fd60c96a123351f8707 # scx_loader: Add mitosis scheduler
-09a01eb5c54b3ca0a3fa3bf6be5cfabc2f789f0d # scx_loader: Add wd40 scheduler
-2f3e80f6bc13b406ed65c1ef06e1ca685bb736ac # scx_loader: some Rust formatting changes
-05e9fe2098c4d70548a1a277934d258592f23169 # scx_loader: use systemd polkit auth integration
+40c119802d3ffce0d187661dd012ef0ed6a6f80f # scx_loader: use systemd polkit auth integration (#14)
+12d3e9ca21d9742dc2e9bf4d06711827f58d0834 # scx_loader: Add chaos scheduler
+26d0d13da369284279075cbb38f6c8e19e6d3c8c # scx_loader: Add mitosis scheduler
+15d86aba43a66ac18806f98377e502f044c94c6f # scx_loader: Add wd40 scheduler
+020eb6623f1c4342df5feda636c47e9dd52fc07d # scx_loader: some Rust formatting changes
 )
 
 _reverts=(
