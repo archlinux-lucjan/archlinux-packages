@@ -108,8 +108,6 @@
 │   └── PKGBUILD
 ├── jujutsu-git
 │   └── PKGBUILD
-├── kaidan-stable-git
-│   └── PKGBUILD
 ├── krusader-git
 │   └── PKGBUILD
 ├── krusader-stable-git
@@ -255,4 +253,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 173 files
+82 directories, 172 files
