@@ -182,16 +182,6 @@
 │   └── PKGBUILD
 ├── pacman-contrib-git
 │   └── PKGBUILD
-├── pacman-git
-│   ├── 78cd453.patch
-│   ├── alpm.sysusers
-│   ├── disable-always-stale.patch
-│   ├── fix-alpm-crate-for-aarch64.patch
-│   ├── makepkg.conf
-│   ├── pacman.conf
-│   ├── PKGBUILD
-│   ├── rust.conf
-│   └── static_sqlite.patch
 ├── pkgbuild-introspection-lucjan-git
 │   └── PKGBUILD
 ├── pkgfile-git
@@ -241,4 +231,4 @@
 └── zstd-git
     └── PKGBUILD
 
-80 directories, 162 files
+79 directories, 153 files
