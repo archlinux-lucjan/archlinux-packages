@@ -170,8 +170,6 @@
 ├── modprobed-db-git
 │   ├── PKGBUILD
 │   └── readme.install
-├── mupen64plus-qt-qit
-│   └── PKGBUILD
 ├── namcap-git
 │   └── PKGBUILD
 ├── netbsd-pkgsrc
@@ -253,4 +251,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 172 files
+81 directories, 171 files
