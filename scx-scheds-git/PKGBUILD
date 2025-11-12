@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.18.r1.g6ddcb07b
+pkgver=1.0.18.r7.gd7ba7965
 pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -36,6 +36,7 @@ sha256sums=('SKIP')
 _backports=(
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
+52810de7251655df38c254c172eed941f835e644 # scx_bpfland: Reduce migration attempts when sticky tasks are enabled
 )
 
 _reverts=(
