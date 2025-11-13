@@ -4,7 +4,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.18.r9.g1f12ffdb
+pkgver=1.0.18.r55.gb7f394c8
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -36,6 +36,8 @@ sha256sums=('SKIP')
 _backports=(
 53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
 9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
+5075ad84d6ec4c039d18b99fdf3e50e160052408 # scx_p2dq: update ATQ API to the more recent one
+a2da0973d57c4a62cc6f9ff8a3d408580a43cd17 # lib/atq, scx_p2dq: factor ATQ cancel method out of cgroup_bw.bpf.c, use it in p2dq during dequeue
 )
 
 _reverts=(
