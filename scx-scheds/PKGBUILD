@@ -5,7 +5,7 @@
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.18
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -25,11 +25,9 @@ makedepends=(
   python
 )
 optdepends=(
-'scx-tools: scx_loader and scxtl - A DBUS Interface for Managing sched_ext Schedulers '
+'scx-tools: scx_loader and scxctl - A DBUS Interface for Managing sched_ext Schedulers '
 )
 options=(!lto)
-provides=("scxctl")
-conflicts=("scxctl")
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
 sha256sums=('88af7ab79f457006f8cf40491df09d75eede71dae1e9feea2e21f3b7b8f25817')
 validpgpkeys=(
