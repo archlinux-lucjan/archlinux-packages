@@ -4,8 +4,9 @@
 
 pkgname=scx-scheds
 _gitname=scx
+_mode=release
 pkgver=1.0.18
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -75,7 +76,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build \
-     --release \
+     --profile=$_mode \
      --frozen \
      --all-features \
      --workspace \
@@ -104,7 +105,7 @@ package() {
   cd $_gitname
 
   # Install all built executables (skip .so and .d files)
-  find target/release \
+  find target/$_mode \
     -maxdepth 1 -type f -executable ! -name '*.so' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
 }
