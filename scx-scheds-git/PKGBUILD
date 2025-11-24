@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.18.r150.g8a014dcf
+pkgver=1.0.18.r160.g874e8f42
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,8 +38,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-53ea0abae3d9277e51b43e4e50fab359adddc25b # scx_cosmos: Improve SMT handling
-9692caaec3df8cceb4e2c0384b7f9386e2fa15d3 # scx_cosmos: CPU capacity awareness
 )
 
 _reverts=(
