@@ -7,7 +7,7 @@ _mode=release
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=1.0.18.r13.g8e20f57
+pkgver=1.0.18.r14.g97f335e
 pkgrel=1
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
@@ -32,10 +32,10 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-9634ec7cc484e624b6e4024f047f4d8d6403f68d # scx_loader: Add chaos scheduler
-a6acad2f8e2eb35bc06bf8be509cd8cd5bb1824d # scx_loader: Add mitosis scheduler
-dbf2cf7cf9300921b50ae276100f0aa48b3ec40b # scx_loader: Add wd40 scheduler
-6e61e691b9867d2f1f46edc1385160162842e169 # scx_loader: some Rust formatting changes
+cdc1e1d905979429367494af78fc2db8ca041990 # scx_loader: Add chaos scheduler
+3d4771fce02cfa9b32a000953454cbe1ce813643 # scx_loader: Add mitosis scheduler
+374692a5fd36c8392d8c43ddf8c27f2cbe1c9020 # scx_loader: Add wd40 scheduler
+602fd132b868179aac9dbef078e433b99efa8e55 # scx_loader: some Rust formatting changes
 1be6718812ab70e2bf4a9d7b3a9573a2da4bad28 # scx_loader: Lockdown systemd service
 )
 
