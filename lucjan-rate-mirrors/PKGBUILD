@@ -3,7 +3,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=lucjan-rate-mirrors
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 arch=('any')
 url="https://github.com/sirlucjan"
@@ -11,7 +11,7 @@ license=('GPL')
 pkgdesc='archlinuxcn + chaotic-aur Rate mirrors service'
 depends=('rate-mirrors')
 source=("$pkgname")
-sha256sums=('363ceb1470bce9cf06823d3662cb99019fef93b4c73330b94092468a87579771')
+sha256sums=('e627dc5e7ba1c40c1e7daaa366f4f331e46421673c24e524c326c29843ccba26')
 
 package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
