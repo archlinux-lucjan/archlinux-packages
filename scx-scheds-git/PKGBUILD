@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r164.g0a1c86a6
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -42,6 +42,7 @@ cb0c6afbf8bcf941123eebfc1c64308a5b0dbb4a # Add scx_cake scheduler to workspace
 54fd7387e695f2674d97ee576a43f3449a9f18ef # Add scx_cake scheduler to workspace
 9b2dfd58a668b7984e43742009406e7b1ff26cdf # scx_cake: Use local path dependencies instead of git
 4720d8d9f68c4604cde508a6db35633cd28e94e9 # Update Cargo.lock for scx_cake
+8d71ad90dfe1bcd6055be9f7ea32ba267c6aaed3 # scx_cake: Run cargo fmt
 )
 
 _reverts=(
