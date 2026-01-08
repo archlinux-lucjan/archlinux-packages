@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r157.g453f9c95
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-6802f8a6878cbbefd93044ed95fb3c3f58aadd7f # Cargo: update dependencies to latest versions
+5804ae221bd7ec20f56efc0205fc5257d8bce9aa # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
