@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.19.r168.g9a5a70fa
-pkgrel=1
+pkgver=1.0.19.r184.g6b195847
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,12 +38,16 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-cb0c6afbf8bcf941123eebfc1c64308a5b0dbb4a # Add scx_cake scheduler to workspace
-54fd7387e695f2674d97ee576a43f3449a9f18ef # Add scx_cake scheduler to workspace
-9b2dfd58a668b7984e43742009406e7b1ff26cdf # scx_cake: Use local path dependencies instead of git
-4720d8d9f68c4604cde508a6db35633cd28e94e9 # Update Cargo.lock for scx_cake
-8d71ad90dfe1bcd6055be9f7ea32ba267c6aaed3 # scx_cake: Run cargo fmt
-c6c8c636229b4d89fcb5d7845b424a97fd63f2bd # scx_cake: add kernel 6.16+ compatibility for scx_bpf_cpu_curr
+cbee8f4ef887ff79ec774af54d85384a4e93e5b1 # Add scx_cake scheduler to workspace
+9ca46d1c1b112f16c7403f6d1f60cd8da052ecac # Add scx_cake scheduler to workspace
+b6e82e6fa52e07b1c91d43baecdbe7b7c829f745 # scx_cake: Use local path dependencies instead of git
+1eacde1136c87213a6aba9dd5a0adf7afb48b2a7 # Update Cargo.lock for scx_cake
+bfcd14e98ebe93ecb5a3be637eb860a20b11616c # scx_cake: Run cargo fmt
+2d3943e9935fb58dee1a877b81b418b05cc3e8f4 # scx_cake: add kernel 6.16+ compatibility for scx_bpf_cpu_curr
+433dfc7ef6e35ebc3907c48804c226d62f988eae # scx_cake: Implement Check & Skip Optimizations and SMT Fix
+6863e419a6aa7412c6e0eee69515eec90fbff953 # perf sched map optimization
+b44e4faedc3c6ac575ecb5b9d014b4b14359b033 # feat(scx_cake): implement state-based per-cpu direct dispatch
+7e5012ee7e918c4bf301727f4c2d3d2739d41f16 # scx_cake: make clippy happy
 )
 
 _reverts=(
