@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.19.r226.gb6de58b5
+pkgver=1.0.19.r230.g3a4ad162
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -48,6 +48,8 @@ b4f31975fbeffc1a986cd475c6fdd4aa200179b9 # Add scx_cake scheduler to workspace
 7a355d8f93285a434784f0e6d2b136150399862a # perf sched map optimization
 355daad485634483936443a7da8c0d015cdd3085 # feat(scx_cake): implement state-based per-cpu direct dispatch
 b3878efeeaacaec7ece2d45cdea867b91485f73f # Ghost Scheduler Optimizations: Store coalescing and bit testing
+ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
+ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
 
 _reverts=(
