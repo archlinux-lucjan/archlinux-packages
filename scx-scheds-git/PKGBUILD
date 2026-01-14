@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r238.g460ed4d5
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -55,6 +55,7 @@ e54a5e06aa1744ab165c4f1d1a85815b26217aa9 # scx_cake: warning removed from build
 6a09b5ec22c065314f65fddd267cbeb5869ba9f8 # struct alignment 4 byte for clang 19+
 b66da5b2abf4eae964d8a7ff028a3d643978c121 # BPF compat: Use semantic macros for 32-bit atomics to fix Clang 19 crash
 df444a1559adeb87c938d6d7190293cec82221fd # BPF: Optimize MLP by migrating volatile loads to relaxed semantic macros
+ea10f68a75faa2e19376e3ad13672723ee1c2393 # BPF: Bulletproof compat layer with inline ASM for Clang < 21
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
