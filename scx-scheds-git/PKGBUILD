@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r238.g460ed4d5
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -51,6 +51,7 @@ f84de32ab26f0dec2820e4ead8354d297bfd084d # feat(scx_cake): implement state-based
 dc458e8af9359ec82283fe9518c6a9a482788b22 # bug fixes, floor for runtime, healthy IPC
 504b9ccf545c5456fa5c62490ac1c8a42e41ab76 # Great benchmarks - need to review jitter
 a12b722f61bcff79035ee380574a7de70aa62596 # scx_cake: Implement Zero-Math Locality Arbiter
+e54a5e06aa1744ab165c4f1d1a85815b26217aa9 # scx_cake: warning removed from build
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
