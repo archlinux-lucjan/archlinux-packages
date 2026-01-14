@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.19.r238.g460ed4d5
-pkgrel=5
+pkgver=1.0.19.r240.g3777b291
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -57,6 +57,7 @@ b66da5b2abf4eae964d8a7ff028a3d643978c121 # BPF compat: Use semantic macros for 3
 df444a1559adeb87c938d6d7190293cec82221fd # BPF: Optimize MLP by migrating volatile loads to relaxed semantic macros
 ea10f68a75faa2e19376e3ad13672723ee1c2393 # BPF: Bulletproof compat layer with inline ASM for Clang < 21
 20c3ca19488cbabc449ec17605ddd9433461e80d # Checkpoint: Immediate Consumption pattern - baseline 53 spills restored
+1b1b22c36ca8f5652c7e754ace3e7aa239bcfc5f # Absolute Zero Spill: Eliminate remaining BPF spills in cake_select_cpu (53 -> 0). Verified with llvm-objdump.
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
