@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r251.g2901e11f
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -62,6 +62,7 @@ f835ccca28f0535e9b7746255580b2a02c760a6f # Absolute Zero Spill: Eliminate remain
 b10f3d0911948748f46910890d2ee31e975d8b35 # perf(cake): remove volatile from 15 rodata declarations for JIT constant folding
 b00ba1359822a1eb491612ab261e3a2beee884e4 # feat(cake): v1.01 with clean ANSI startup splash
 e54b0811092487becbfbd9b808f57c3f9549a4ad # chore(cake): bump version to 1.0.1
+ada4d9514cd68630625327ca351d51e2e09cde84 # scx_cake: Remove LOCK prefixes from victim_mask ops (5 atomics → 2)
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
