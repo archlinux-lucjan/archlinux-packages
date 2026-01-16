@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.19.r248.g386472c8
-pkgrel=2
+pkgver=1.0.19.r251.g2901e11f
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -60,6 +60,7 @@ c390499d43c82f03010133cdb88fbe6f57ccb234 # scx_cake: Implement Zero-Math Localit
 f835ccca28f0535e9b7746255580b2a02c760a6f # Absolute Zero Spill: Eliminate remaining BPF spills in cake_select_cpu (53 -> 0). Verified with llvm-objdump.
 96a8ad40a93ad4f9f31d32900951f320f86a024e # Optimize: Implement more aggressive warmth seeking (Stubborn Warmth)
 b10f3d0911948748f46910890d2ee31e975d8b35 # perf(cake): remove volatile from 15 rodata declarations for JIT constant folding
+b00ba1359822a1eb491612ab261e3a2beee884e4 # feat(cake): v1.01 with clean ANSI startup splash
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
