@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r262.gff5377d6
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -79,6 +79,8 @@ e09faa9dec128a0dedb1c3a1cee785795239c654 # fuse optimization round 1 passed
 cfdc3b3cf0bfa10d2bf35957e0952ad7a6f4c26d # cache line separation for tiered_idle_mask to eliminate false sharing
 582764ab67e8c5a96d23cfb90e07ccc45dc86523 # branchless clamp in compute_sparse_score using nested ternary
 b5eab4ad0ed7bc630b97edcddbc2e8e426f337d4 # scx_cake: fix build errors in calibrate test and improve signal handling consistency
+27a9c32b0bb6d136a52382efd787b52edf501b05 # Refactor: Topology-Agnostic 'Physical-First' isolation and Zero-Math Arbiter implementation
+51b782815007ef3006db0e500a7081f5e668180c # scx_cake: make clippy happy
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
