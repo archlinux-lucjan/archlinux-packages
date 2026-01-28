@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r295.g42e6f153
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -99,6 +99,11 @@ ddfc1a9d0bce34b6e8f45fd06d35d706ebc3ae4c # checkpoint: BPF callback optimization
 6425ed46e2fb98e27772dc857445ac2dcba98c02 # feat: scx_cake - Absolute Zero v15.4 (Surgical Snatch, Rent's Rule, ALU-Shift)
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
+4cb970e63cbffcf5b3b6853ad97fdc6007577877 # scx_beerland: Drop deprecated ops.cpu_release()
+6bed46048d0455aa0b3f7708b34bb533e7d4c17d # scx_beerland: Remove unused argument from task_slice()
+6f6b130cc5db586a33bf9e61212ae9b58af64ac6 # scx_beerland: Allow migrations only on task wakeup
+2a0d891cd4a7b10e46151687b80ba8840783cbd9 # scx_beerland: Allow direct dispatch for earlier-deadline tasks
+93565b8f6b7aae903ae7d135faa10351f7d1f9a7 # scx_beerland: Optimize ops.select_cpu() with uncontended CPUs
 )
 
 _reverts=(
