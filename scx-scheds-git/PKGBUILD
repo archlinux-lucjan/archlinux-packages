@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r303.g2c9da4f0
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -99,6 +99,8 @@ ddfc1a9d0bce34b6e8f45fd06d35d706ebc3ae4c # checkpoint: BPF callback optimization
 6425ed46e2fb98e27772dc857445ac2dcba98c02 # feat: scx_cake - Absolute Zero v15.4 (Surgical Snatch, Rent's Rule, ALU-Shift)
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
+587a098e2e214b7e5fbec74694dc8cd71a5c1d04 # scx_beerland: Track user CPU utilization
+b859fab5ac11207012ab0df92cfbf5c660e8ec20 # scx_beerland: Increase direct dispatch to local DSQs
 )
 
 _reverts=(
