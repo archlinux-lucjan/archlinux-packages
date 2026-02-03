@@ -1,9 +1,13 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
+# Available profiles: “release”, “release-tiny”, “release-fast“
+# See: https://github.com/firelzrd/poc-selector/blob/main/benchmark/rust/Cargo.toml
+_mode=release
+
 pkgname=poc-selector-benchmark-git
 _gitname='poc-selector/benchmark/rust'
-pkgver=r11.gbd4cfbf
-pkgrel=2
+pkgver=r13.g76411ce
+pkgrel=1
 pkgdesc='Piece-Of-Cake (POC) CPU Selector benchmark'
 url='https://github.com/firelzrd/poc-selector'
 arch=('x86_64')
@@ -32,7 +36,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build \
-     --release \
+     --profile=$_mode \
      --frozen \
      --all-features \
      --workspace
@@ -48,7 +52,7 @@ package() {
   cd $_gitname
 
   # Install all built executables (skip .so and .d files)
-  find target/release \
+  find target/$_mode \
     -maxdepth 1 -type f -executable ! -name '*.so' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
 }
