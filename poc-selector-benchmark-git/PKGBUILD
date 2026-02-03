@@ -3,7 +3,7 @@
 pkgname=poc-selector-benchmark-git
 _gitname='poc-selector/benchmark/rust'
 pkgver=r11.gbd4cfbf
-pkgrel=1
+pkgrel=2
 pkgdesc='Piece-Of-Cake (POC) CPU Selector benchmark'
 url='https://github.com/firelzrd/poc-selector'
 arch=('x86_64')
@@ -36,6 +36,12 @@ build() {
      --frozen \
      --all-features \
      --workspace
+}
+
+check() {
+  cd $_gitname
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features --workspace
 }
 
 package() {
