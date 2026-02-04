@@ -6,8 +6,8 @@ _mode=release
 
 pkgname=poc-selector-benchmark-git
 _gitname='poc-selector/benchmark/rust'
-pkgver=r14.gd5acca2
-pkgrel=5
+pkgver=r17.g29ef135
+pkgrel=1
 pkgdesc='Piece-Of-Cake (POC) CPU Selector benchmark'
 url='https://github.com/firelzrd/poc-selector'
 arch=('x86_64')
@@ -21,8 +21,6 @@ source=("git+https://github.com/firelzrd/poc-selector")
 sha256sums=('SKIP')
 
 _backports=(
-5c76f5b4b02000509fa9b21c20534df47d6cc76f # poc-benchmark: fix cargo warning
-60816df8fdadac98d04abf6671726996b8bdcd99 # cargo: fix formatting
 )
 
 _reverts=(
