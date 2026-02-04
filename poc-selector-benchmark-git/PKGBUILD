@@ -7,7 +7,7 @@ _mode=release
 pkgname=poc-selector-benchmark-git
 _gitname='poc-selector/benchmark/rust'
 pkgver=r14.gd5acca2
-pkgrel=3
+pkgrel=4
 pkgdesc='Piece-Of-Cake (POC) CPU Selector benchmark'
 url='https://github.com/firelzrd/poc-selector'
 arch=('x86_64')
@@ -20,6 +20,13 @@ options=(!lto)
 source=("git+https://github.com/firelzrd/poc-selector")
 sha256sums=('SKIP')
 
+_backports=(
+5c76f5b4b02000509fa9b21c20534df47d6cc76f # poc-benchmark: fix cargo warning
+)
+
+_reverts=(
+)
+
 pkgver() {
   cd $_gitname
   printf "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
@@ -27,6 +34,28 @@ pkgver() {
 
 prepare() {
   cd $_gitname
+
+  local _c _l
+   for _c in "${_backports[@]}"; do
+     if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+     git log --oneline "${_l}" "${_c}"
+     git cherry-pick --mainline 1 --no-commit "${_c}"
+   done
+   for _c in "${_reverts[@]}"; do
+     if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+     git log --oneline "${_l}" "${_c}"
+     git revert --mainline 1 --no-commit "${_c}"
+   done
+
+  local src
+   for src in "${source[@]}"; do
+     src="${src%%::*}"
+     src="${src##*/}"
+     [[ $src = *.patch ]] || continue
+     echo "Applying patch $src..."
+     patch -Np1 < "../$src"
+   done
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
