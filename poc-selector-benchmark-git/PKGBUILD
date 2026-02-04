@@ -6,8 +6,8 @@ _mode=release
 
 pkgname=poc-selector-benchmark-git
 _gitname='poc-selector/benchmark/rust'
-pkgver=r13.g76411ce
-pkgrel=2
+pkgver=r14.gd5acca2
+pkgrel=3
 pkgdesc='Piece-Of-Cake (POC) CPU Selector benchmark'
 url='https://github.com/firelzrd/poc-selector'
 arch=('x86_64')
@@ -44,9 +44,6 @@ build() {
 
 package() {
   cd $_gitname
-
-  # Install all built executables (skip .so and .d files)
-  find target/$_mode \
-    -maxdepth 1 -type f -executable ! -name '*.so' \
-    -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
+  export RUSTUP_TOOLCHAIN=stable
+  cargo install --no-track --frozen --all-features --root "$pkgdir/usr/" --path .
 }
