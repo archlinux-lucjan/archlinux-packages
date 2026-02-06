@@ -109,10 +109,10 @@ adc56bf96d7d9bb42b2730e7e61334bd0f8af569 # checkpoint: before adaptive mailbox i
 b0ba8b86782971697d95df67d224fecd15809de0 # perf(cake): Add wakeup latency optimizations - cached masks, best_idle_cpu hint
 0cd1bd76dd0df88a7042ab704ec2a374290b93ad # perf(scx_cake): tiered short-circuit select_cpu + DB_MAGIC RODATA
 1fef159a006100748563e5c5d0afc9622158f160 # chore(scx_cake): remove trailing whitespace from cake.bpf.c
+93ff7828902caca2c08ff3c68d6725d5c6a5ffae # perf(scx_cake): reduce 99.9% max wakeup latency and jitter
 3321424ec08f2a89781c217206fdbaadded0d011 # scx_cake: fix cache coherency bugs under high-refresh gaming load
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
-93ff7828902caca2c08ff3c68d6725d5c6a5ffae # perf(scx_cake): reduce 99.9% max wakeup latency and jitter
 331c3dca5e8469f4088d5801f8c9e36a4f32b6c8 # Cargo: update dependencies to latest versions
 06b77f9da520f8e8fb11168bed6c4732f95ff690 # Cargo: update libbpf to latest versions
 )
