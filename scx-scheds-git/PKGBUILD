@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.19.r353.g30f3260e
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -113,6 +113,8 @@ b0ba8b86782971697d95df67d224fecd15809de0 # perf(cake): Add wakeup latency optimi
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 93ff7828902caca2c08ff3c68d6725d5c6a5ffae # perf(scx_cake): reduce 99.9% max wakeup latency and jitter
+331c3dca5e8469f4088d5801f8c9e36a4f32b6c8 # Cargo: update dependencies to latest versions
+06b77f9da520f8e8fb11168bed6c4732f95ff690 # Cargo: update libbpf to latest versions
 )
 
 _reverts=(
