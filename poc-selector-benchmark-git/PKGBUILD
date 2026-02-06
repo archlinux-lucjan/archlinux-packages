@@ -6,7 +6,7 @@ _mode=release
 
 pkgname=poc-selector-benchmark-git
 _gitname='poc-selector/benchmark/rust'
-pkgver=r17.g29ef135
+pkgver=r19.gd846576
 pkgrel=1
 pkgdesc='Piece-Of-Cake (POC) CPU Selector benchmark'
 url='https://github.com/firelzrd/poc-selector'
@@ -21,6 +21,7 @@ source=("git+https://github.com/firelzrd/poc-selector")
 sha256sums=('SKIP')
 
 _backports=(
+b6e3bba2c528c9027b318f693f797739dfe56582 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
