@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r1.ga931f9ca
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -115,8 +115,7 @@ fd6e741fbbb06c7680f51cad59ddc39e241ceb72 # scx_cake: fix cache coherency bugs un
 fc87f396c0b9875e5cd9dd857acdc44b07d64117 # cake_disable: remove redundant bpf_task_storage_delete
 78659454884ce3fedd2c116db07dc2e8da1d91f5 # select_cpu: remove redundant arbiter kick
 908f770cc6ae54bf709c5e182a88b0524206aed4 # select_cpu: remove redundant T0 victim kick
-782759bb7f993f3d9e43b2e487ed5dfe9714e206 # Cargo: update dependencies to latest versions
-eb3ffd270e00fc4f6d809a7fa303a68fc489f019 # Cargo: update libbpf to latest versions
+bd717079b72d4437a5b6b6ed58910e0bbd7869a5 # Cargo: update libbpf to latest versions
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
