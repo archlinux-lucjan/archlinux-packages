@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.20.r14.g0f379644
-pkgrel=3
+pkgver=1.0.20.r32.g28f1ebdd
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,6 +38,12 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
+90420aaf86b78e641648ff13738677c9ded8679a # scx_cake: dead code cleanup + p->scx.slice locality promotion
+36cbfa28993b353d3a4365a64c8fb03c3e3d7c7c # scx_cake: eliminate bpf_task_storage_get from enqueue via dsq_vtime staging
+f36fb24bed8a6225e978e07e84b48f232d1725e7 # scx_cake: eliminate bpf_task_storage_get from running and tick via mailbox staging
+8bcf5d45793ff215bc7a782cc9fbb97d25ae11f2 # scx_cake: confidence-gated stopping eliminates kfunc for stable tasks
+b8e421e856a91ecc60c2dc7eb119e47fb1157ac2 # scx_cake: benchmark-driven pattern optimizations for 9800X3D
+f905705c9ad3ee0dabd9350b262b03da5d5ead29 # cake: branchless arithmetic optimizations (M6+M8+R1)
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
