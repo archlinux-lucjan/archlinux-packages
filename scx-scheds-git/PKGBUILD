@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.20.r32.g28f1ebdd
+pkgver=1.0.20.r40.g1fc73cdb
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,12 +38,19 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-90420aaf86b78e641648ff13738677c9ded8679a # scx_cake: dead code cleanup + p->scx.slice locality promotion
-36cbfa28993b353d3a4365a64c8fb03c3e3d7c7c # scx_cake: eliminate bpf_task_storage_get from enqueue via dsq_vtime staging
-f36fb24bed8a6225e978e07e84b48f232d1725e7 # scx_cake: eliminate bpf_task_storage_get from running and tick via mailbox staging
-8bcf5d45793ff215bc7a782cc9fbb97d25ae11f2 # scx_cake: confidence-gated stopping eliminates kfunc for stable tasks
-b8e421e856a91ecc60c2dc7eb119e47fb1157ac2 # scx_cake: benchmark-driven pattern optimizations for 9800X3D
-f905705c9ad3ee0dabd9350b262b03da5d5ead29 # cake: branchless arithmetic optimizations (M6+M8+R1)
+860d78ef86337707ce6b23c8b3c17eb3e769ad6f # scx_cake: dead code cleanup + p->scx.slice locality promotion
+5829323dc21279c8dc417b83354ed80e1ae644ae # scx_cake: eliminate bpf_task_storage_get from enqueue via dsq_vtime staging
+37b428f32ec283b23bb4b543e83b66ca9f9adedf # scx_cake: eliminate bpf_task_storage_get from running and tick via mailbox staging
+029d2a2b0a2c42299b65c650b357c422ac56e3ce # scx_cake: confidence-gated stopping eliminates kfunc for stable tasks
+6c9cb878dd2505eeacf438c6ee9bc71e91acf138 # scx_cake: benchmark-driven pattern optimizations for 9800X3D
+49fadce2d1a4b2eaf2f5226c1de4c4e641709dee # cake: branchless arithmetic optimizations (M6+M8+R1)
+7202b5981313efdbac891d34623ef1b4cb882e8e # fix(cake): eliminate Elden Ring tier oscillation + core migration
+5b8e399e2b441ee46ec1fb9eb6a5be94e5f7cc25 # chore: add mangohud/ to gitignore
+eac79794597b8db9ec9c929047b0760786daae68 # cake: S2 CPU placement + A4 tick-assembled tier snapshot
+e479adc702005e59a013c2d9fd1b32195dcfec9c # cake: fix CPU affinity crash in Gate 2 + optimize check
+8d2275111d3fb9ae873d113988f87fb3c44dc4b9 # cake: upgrade to scx_bpf_locked_rq with __weak fallback
+09100f420dc59553783ccd36c52973c8d1b729e3 # cake: HFT microarch optimizations (write coalescing + cold-path deferral)
+b1accc79ba29232969edec2d471cd3cdb721e1d2 # scx_cake: MONSTER optimization + select_cpu affinity fix
 ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
 ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
 )
