@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r40.g1fc73cdb
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -51,8 +51,7 @@ e479adc702005e59a013c2d9fd1b32195dcfec9c # cake: fix CPU affinity crash in Gate 
 8d2275111d3fb9ae873d113988f87fb3c44dc4b9 # cake: upgrade to scx_bpf_locked_rq with __weak fallback
 09100f420dc59553783ccd36c52973c8d1b729e3 # cake: HFT microarch optimizations (write coalescing + cold-path deferral)
 b1accc79ba29232969edec2d471cd3cdb721e1d2 # scx_cake: MONSTER optimization + select_cpu affinity fix
-ae18b63e707b65a064ac30f2a015dc27ede66f8a # lib/pmu: make start/stop methods public
-ce170e81913c56031623a93d2e847dc990b68944 # scx_cosmos: use PMU library for perf event tracking
+023039fe19ce6d8d8ffc23bc1608fe27e7adf03e # scx_cosmos: Add CPU capacity awareness
 )
 
 _reverts=(
