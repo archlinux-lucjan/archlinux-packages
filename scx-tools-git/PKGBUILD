@@ -7,7 +7,7 @@ _mode=release
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=1.0.20.r1.g0a52e98
+pkgver=1.0.20.r2.g014b679
 pkgrel=1
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
@@ -32,9 +32,9 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-157fb7eb8273993b70ad2c3f9b22bd526444a95c # scx_loader: Add chaos scheduler
-2488d2fc89601648e052dd017f2264e80af9e943 # scx_loader: Add mitosis scheduler
-781a09d1d1602bfe7c992150cc2d17b037f84632 # scx_loader: Add wd40 scheduler
+a95c7d299675b95614e4f3873e3746c9d5857324 # scx_loader: Add chaos scheduler
+2ec6698c42e7e8926c6165f29a4dbe9df6d28cac # scx_loader: Add mitosis scheduler
+89f4a5c2a387b5f69012083840e175df8e3ca42e # scx_loader: Add wd40 scheduler
 )
 
 _reverts=(
