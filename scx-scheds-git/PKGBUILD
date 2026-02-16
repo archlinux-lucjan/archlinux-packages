@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r60.gb1f19b35
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -58,6 +58,8 @@ c9309805bd6b5a16fedd9594270a66201d4b6a30 # fix(cake): correct mega_mailbox struc
 ffddc9a20156125a7fc79ce5d309dd8736c4261c # cake: Gate 4 lazy preempt — T0/T1 dispatch to worst-tier CPU via LOCAL_ON
 762256cc1fa1e371bf879ad694be8fec84e732d4 # cake: R2 3-slot cache, R4 WSC hint, C1 interleaved u16, C2 deferred promotion
 5878f9813e3801881b7391925e568d6f80280f54 # cake: Gate 1c migration cooldown (NEAR_PREF) + DUAL_PHASE bimodal slice boost
+92aa0683f042c5f673e5149d5709b8623371d3b2 # lib/pmu: make start/stop methods public
+df21501c4bf98d26ad0497e5f74010351991e377 # scx_cosmos: use PMU library for perf event tracking
 )
 
 _reverts=(
