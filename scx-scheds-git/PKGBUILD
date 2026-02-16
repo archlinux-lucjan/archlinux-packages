@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.20.r60.gb1f19b35
-pkgrel=2
+pkgver=1.0.20.r62.gcc8605ba
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -60,6 +60,7 @@ ffddc9a20156125a7fc79ce5d309dd8736c4261c # cake: Gate 4 lazy preempt — T0/T1 d
 5878f9813e3801881b7391925e568d6f80280f54 # cake: Gate 1c migration cooldown (NEAR_PREF) + DUAL_PHASE bimodal slice boost
 92aa0683f042c5f673e5149d5709b8623371d3b2 # lib/pmu: make start/stop methods public
 df21501c4bf98d26ad0497e5f74010351991e377 # scx_cosmos: use PMU library for perf event tracking
+4845092ba60c753ea421160f506839740fbb8280 # Cargo.toml: update cargo profiles
 )
 
 _reverts=(
