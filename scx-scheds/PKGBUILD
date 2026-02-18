@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.0.20
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -42,6 +42,7 @@ validpgpkeys=(
 )
 
 _backports=(
+b1366f79f451b47ccbe3dc9cabdac2d5f206dada # Cargo.toml: update cargo profiles
 )
 
 _reverts=(
