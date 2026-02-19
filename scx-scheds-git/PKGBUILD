@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.20.r84.g65d2814a
+pkgver=1.0.20.r87.g81ddb563
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -69,8 +69,6 @@ b7cfc43636c5b35f5afcd6fdfb794a65cbc62e89 # arena: migrate mega_mailbox + global_
 44a623b057a8c59d4e4e41f1aef0833493eb66f0 # arena: optimize ARENA_ASSOC to inline asm (2 insns vs 3)
 2cd27448b242627072ff747f0bd3fff74eb76038 # scx_cake: arena audit — fix tier_occupied race, stale preempt scratch
 11f6ca8df9a1d4f9a915d83004339cdc6a501e52 # cake/bpf: C1 spatial consolidation — merge arena_mailbox + arena_scratch into unified per_cpu block
-92aa0683f042c5f673e5149d5709b8623371d3b2 # lib/pmu: make start/stop methods public
-df21501c4bf98d26ad0497e5f74010351991e377 # scx_cosmos: use PMU library for perf event tracking
 75e63d77f471e64d7ecba97fb9b0eeda68cca8f7 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 )
 
