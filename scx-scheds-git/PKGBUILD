@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.20.r87.g81ddb563
-pkgrel=5
+pkgver=1.0.20.r90.gb066f5d6
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,8 +38,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-628f394aa71554758f0e29f6357930704c2d4b42 # scx_cake: bump scx_cargo to 1.0.27
-cb43edbe40c9fd6b6b250537e0fc80c3d2300e4e # scx_cake: bump scx_utils to 1.0.26
 8e10060b7594e7c924e259c592a69195328b7c44 # scx_cake: dead code cleanup + p->scx.slice locality promotion
 bd875466c290b1eb689b357f70973bce18c1769f # scx_cake: eliminate bpf_task_storage_get from enqueue via dsq_vtime staging
 9f3d47bf983a1e10fe480474b25d40e1b57cb4d8 # scx_cake: eliminate bpf_task_storage_get from running and tick via mailbox staging
