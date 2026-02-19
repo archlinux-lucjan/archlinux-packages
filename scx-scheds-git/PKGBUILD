@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r87.g81ddb563
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -73,6 +73,11 @@ afb62bd0823e6bab3f76c820187d035f37189b25 # scx_cake: arena audit — fix tier_oc
 9d5243f11a84927bae364904192a6de0b519193e # cake/bpf: C1 spatial consolidation — merge arena_mailbox + arena_scratch into unified per_cpu block
 75e63d77f471e64d7ecba97fb9b0eeda68cca8f7 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 23cbbd6895bf27ac9706a14bcba6b5fc309434dd # scx_cosmos: Drop ops.cpu_release()
+9230b2ebc958850d09a98edbd4448440361932ce # lib/pmu: Support an additional PMU counter
+54f914e8f6fdc582c94be7347696652d00339b6d # scx_cosmos: Introduce sticky PMU event
+68b55b9738453301a5ae22605196bb603409a7e2 # scx_utils: Make GpuIndex publicly available
+a9acf735a064b4e7af3559d1c59936f7515f5608 # scx_cosmos: Provide per-node cpumasks
+0f1369d4d84b12349848886d198cda08400c93bc # scx_cosmos: Introduce automatic GPU / NUMA affinity
 )
 
 _reverts=(
