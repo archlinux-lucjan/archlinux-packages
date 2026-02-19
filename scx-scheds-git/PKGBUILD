@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r87.g81ddb563
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -70,6 +70,7 @@ f9d0de153b879ea3239bcd461cfccc9456006ec5 # arena: tier-occupancy bitmask for dis
 c8bba45dc320d44963f2124d2472f0205d13521e # scx_cake: arena audit — fix tier_occupied race, stale preempt scratch
 0bd18a906675055e8997f0a888b5bd651d27b279 # cake/bpf: C1 spatial consolidation — merge arena_mailbox + arena_scratch into unified per_cpu block
 75e63d77f471e64d7ecba97fb9b0eeda68cca8f7 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
+23cbbd6895bf27ac9706a14bcba6b5fc309434dd # scx_cosmos: Drop ops.cpu_release()
 )
 
 _reverts=(
