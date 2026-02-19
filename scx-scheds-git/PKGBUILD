@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.20.r92.gc61e9370
+pkgver=1.0.20.r94.g6ea7d63d
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -72,7 +72,6 @@ cf3c563afebc9d486ef732480998aecc4d508543 # perf(cake): revert spilled pre-loads 
 e4ca51ea9a42b51c8bad10b987d6cff3632adba5 # scx_cake: bump scx_arena version to 0.1.4
 661f572c2f954a83f07f553993700cdfc62e44fb # scx_cake: fix CI exit code 143, proper UEI shutdown, skip ETD headless, fix heatmap layout
 75e63d77f471e64d7ecba97fb9b0eeda68cca8f7 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
-23cbbd6895bf27ac9706a14bcba6b5fc309434dd # scx_cosmos: Drop ops.cpu_release()
 9230b2ebc958850d09a98edbd4448440361932ce # lib/pmu: Support an additional PMU counter
 54f914e8f6fdc582c94be7347696652d00339b6d # scx_cosmos: Introduce sticky PMU event
 68b55b9738453301a5ae22605196bb603409a7e2 # scx_utils: Make GpuIndex publicly available
