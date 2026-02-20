@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r100.g005e4d7f
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -72,12 +72,8 @@ d96498c1527d494de821a6ef27ebd84eb6f35f58 # cake/bpf: C1 spatial consolidation â€
 45e4718363bacfe1b781e9f928c7063b7eed9482 # scx_cake: bump scx_arena version to 0.1.4
 1036375f591609d575721dbdef6e32b85d500e6e # scx_cake: fix CI exit code 143, proper UEI shutdown, skip ETD headless, fix heatmap layout
 9ee8b511e3e18eb5b46a63aebadf797500b37ef7 # scx_cake: Final Jitter, Latency, and Topology Audit (Phase 3 & 4)
-75e63d77f471e64d7ecba97fb9b0eeda68cca8f7 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
-9230b2ebc958850d09a98edbd4448440361932ce # lib/pmu: Support an additional PMU counter
-54f914e8f6fdc582c94be7347696652d00339b6d # scx_cosmos: Introduce sticky PMU event
-68b55b9738453301a5ae22605196bb603409a7e2 # scx_utils: Make GpuIndex publicly available
-a9acf735a064b4e7af3559d1c59936f7515f5608 # scx_cosmos: Provide per-node cpumasks
-56ed8d3d971327ab30901ee0f8f6c173101f3007 # scx_cosmos: Introduce automatic GPU / NUMA affinity
+242d9287daedf2aef438ceaff7c57770eec2dc1b # scx_cake: add to integration-tests
+eb0c905d83bf57368553bc657f9f9c5c55b3cbc8 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 )
 
 _reverts=(
