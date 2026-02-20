@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r100.g005e4d7f
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -74,6 +74,9 @@ d96498c1527d494de821a6ef27ebd84eb6f35f58 # cake/bpf: C1 spatial consolidation â€
 9ee8b511e3e18eb5b46a63aebadf797500b37ef7 # scx_cake: Final Jitter, Latency, and Topology Audit (Phase 3 & 4)
 242d9287daedf2aef438ceaff7c57770eec2dc1b # scx_cake: add to integration-tests
 eb0c905d83bf57368553bc657f9f9c5c55b3cbc8 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
+74d0337f854f988c53e3901b2151895c23aaab1b # lib/pmu: Support an additional PMU counter
+c2429216f79310af7c875e39193cbb55bec10fcd # scx_cosmos: Introduce sticky PMU event
+16fdd589acfe39d65d07869d6640a4c40be4a2c0 # scx_cosmos: Dynamic perf thresholds
 )
 
 _reverts=(
