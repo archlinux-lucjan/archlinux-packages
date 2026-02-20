@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r102.g804a9857
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -81,7 +81,7 @@ c2429216f79310af7c875e39193cbb55bec10fcd # scx_cosmos: Introduce sticky PMU even
 3404113687efd9ef42fa2e4808d0106f30a9e31e # scx_cosmos: Provide per-node cpumasks
 bb5763a9e773898c8e858757523cbf41f2e3481a # scx_cosmos: Introduce automatic GPU / NUMA affinity
 bd9a6ea65bb6af7b369949715f5455639829521c # scx_cosmos: Deprecate deferred CPU wakeup
-9d703c6657d9b66c5fbaed31b5d1eafe3c94508e # scx_cosmos: Aggressively migrate tasks to the primary domain
+37ab9e4ec87ca5c84adb7c76351f8636d0e96638 # scx_cosmos: Aggressively migrate tasks to the primary domain
 )
 
 _reverts=(
