@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.20.r100.g005e4d7f
-pkgrel=3
+pkgver=1.0.20.r102.g804a9857
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -77,6 +77,11 @@ eb0c905d83bf57368553bc657f9f9c5c55b3cbc8 # Bump libbpf-rs to 80d730e8 and use re
 74d0337f854f988c53e3901b2151895c23aaab1b # lib/pmu: Support an additional PMU counter
 c2429216f79310af7c875e39193cbb55bec10fcd # scx_cosmos: Introduce sticky PMU event
 16fdd589acfe39d65d07869d6640a4c40be4a2c0 # scx_cosmos: Dynamic perf thresholds
+2199ca96e2766cf8a19c9ea10a92ed88b5ca345a # scx_utils: Make GpuIndex publicly available
+3404113687efd9ef42fa2e4808d0106f30a9e31e # scx_cosmos: Provide per-node cpumasks
+bb5763a9e773898c8e858757523cbf41f2e3481a # scx_cosmos: Introduce automatic GPU / NUMA affinity
+bd9a6ea65bb6af7b369949715f5455639829521c # scx_cosmos: Deprecate deferred CPU wakeup
+9d703c6657d9b66c5fbaed31b5d1eafe3c94508e # scx_cosmos: Aggressively migrate tasks to the primary domain
 )
 
 _reverts=(
