@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r102.g804a9857
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -82,6 +82,12 @@ c2429216f79310af7c875e39193cbb55bec10fcd # scx_cosmos: Introduce sticky PMU even
 bb5763a9e773898c8e858757523cbf41f2e3481a # scx_cosmos: Introduce automatic GPU / NUMA affinity
 bd9a6ea65bb6af7b369949715f5455639829521c # scx_cosmos: Deprecate deferred CPU wakeup
 37ab9e4ec87ca5c84adb7c76351f8636d0e96638 # scx_cosmos: Aggressively migrate tasks to the primary domain
+210f5496f9978f967c3d9ef0b92def01716067b3 # PANDEMONIUM: import
+7388f2ebaff62efa266182e25b2ffa1969ca701b # PANDEMONIUM: rename to scx_pandemonium
+9b3431ad1521af94620892a821cef48ea0753092 # PANDEMONIUM: cleanup
+294d5e6366e67c7626375815d5db9181e003444d # PANDEMONIUM: add to Cargo.toml
+32cec7a865a626ddc002012bed075cd2d59b5bfe # PANDEMONIUM: add to Cargo.lock
+0e6dca090c0804bf57a27c9dfec84669d5d957fb # PANDEMONIUM: add missing include
 )
 
 _reverts=(
