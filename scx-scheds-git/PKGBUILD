@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r102.g804a9857
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -88,6 +88,7 @@ bd9a6ea65bb6af7b369949715f5455639829521c # scx_cosmos: Deprecate deferred CPU wa
 294d5e6366e67c7626375815d5db9181e003444d # PANDEMONIUM: add to Cargo.toml
 32cec7a865a626ddc002012bed075cd2d59b5bfe # PANDEMONIUM: add to Cargo.lock
 0e6dca090c0804bf57a27c9dfec84669d5d957fb # PANDEMONIUM: add missing include
+10cf2d142caf6b805fcb8c59d9d5a7e2ac5c10a4 # cargo: fix formatting
 )
 
 _reverts=(
