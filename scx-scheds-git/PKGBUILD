@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r127.g59b9392c
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -77,14 +77,15 @@ dd91894360ab6fa74bdb54d76f59dfd18235abb2 # scx_cake: fix CI exit code 143, prope
 ea65bd33ce1638eb0b8c2a2ecb7a75b0ceb626d6 # BenchLab 19-entry + Disruptor handoff: psychic cache removed, zero-arena cake_stopping
 b091752ff4d14628c08a48c17e384f5ca9d295c8 # Cargo.lock: update crates for scx_cake
 b0cb6ea49c2353d8f49e3e91c101fc968ec92bf7 # scx_cake: try sysinfo 0.35.2
-74d0337f854f988c53e3901b2151895c23aaab1b # lib/pmu: Support an additional PMU counter
-c2429216f79310af7c875e39193cbb55bec10fcd # scx_cosmos: Introduce sticky PMU event
-16fdd589acfe39d65d07869d6640a4c40be4a2c0 # scx_cosmos: Dynamic perf thresholds
-2199ca96e2766cf8a19c9ea10a92ed88b5ca345a # scx_utils: Make GpuIndex publicly available
-3404113687efd9ef42fa2e4808d0106f30a9e31e # scx_cosmos: Provide per-node cpumasks
-bb5763a9e773898c8e858757523cbf41f2e3481a # scx_cosmos: Introduce automatic GPU / NUMA affinity
-bd9a6ea65bb6af7b369949715f5455639829521c # scx_cosmos: Deprecate deferred CPU wakeup
-37ab9e4ec87ca5c84adb7c76351f8636d0e96638 # scx_cosmos: Aggressively migrate tasks to the primary domain
+3141700c146cf2fca3b9241ebb1999b87abf7b4e # perf: execution order optimization + data flow audit
+b524d9b8295a830ece20eb5c270f22b7aa235ceb # lib/pmu: Support an additional PMU counter
+c0489c0b198a29997345856d9e8942f1cba35803 # scx_cosmos: Introduce sticky PMU event
+2e2e403a57de6245e2b65901be1001c6b0bc9bf5 # scx_cosmos: Dynamic perf thresholds
+b9d9a986c2c57226c1e9f4b912eddbf8da413bc4 # scx_utils: Make GpuIndex publicly available
+592be37f452438634332692a9ebc8ba67e61fffa # scx_cosmos: Provide per-node cpumasks
+ea529e512eb50d845d6d9af8237039bdfde83864 # scx_cosmos: Introduce automatic GPU / NUMA affinity
+b9afadd2ff89cbb7c90c4534d36dece51b684116 # scx_cosmos: Deprecate deferred CPU wakeup
+48e0b3941493585b18394e2dd52fabcce1734c5f # scx_cosmos: Aggressively migrate tasks to the primary domain
 c9becd9004025f4218ca1937103443eb834d82d4 # PANDEMONIUM: import
 461a26df10f4295b251481d99ab7997be4b3cad3 # PANDEMONIUM: bump to 5.3.0
 ea5accbd78b7b8897a3556013c2b816caf0c6ea4 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
