@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r127.g59b9392c
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -85,7 +85,8 @@ bb5763a9e773898c8e858757523cbf41f2e3481a # scx_cosmos: Introduce automatic GPU /
 bd9a6ea65bb6af7b369949715f5455639829521c # scx_cosmos: Deprecate deferred CPU wakeup
 37ab9e4ec87ca5c84adb7c76351f8636d0e96638 # scx_cosmos: Aggressively migrate tasks to the primary domain
 c9becd9004025f4218ca1937103443eb834d82d4 # PANDEMONIUM: import
-3b4bbdd25fcfbb4b4b9f146d9aaf50650c01869a # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
+461a26df10f4295b251481d99ab7997be4b3cad3 # PANDEMONIUM: bump to 5.3.0
+ea5accbd78b7b8897a3556013c2b816caf0c6ea4 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 )
 
 _reverts=(
