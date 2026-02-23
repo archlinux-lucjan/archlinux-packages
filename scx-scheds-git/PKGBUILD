@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.20.r102.g804a9857
-pkgrel=4
+pkgver=1.0.20.r127.g59b9392c
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -72,8 +72,6 @@ d96498c1527d494de821a6ef27ebd84eb6f35f58 # cake/bpf: C1 spatial consolidation â€
 45e4718363bacfe1b781e9f928c7063b7eed9482 # scx_cake: bump scx_arena version to 0.1.4
 1036375f591609d575721dbdef6e32b85d500e6e # scx_cake: fix CI exit code 143, proper UEI shutdown, skip ETD headless, fix heatmap layout
 9ee8b511e3e18eb5b46a63aebadf797500b37ef7 # scx_cake: Final Jitter, Latency, and Topology Audit (Phase 3 & 4)
-242d9287daedf2aef438ceaff7c57770eec2dc1b # scx_cake: add to integration-tests
-eb0c905d83bf57368553bc657f9f9c5c55b3cbc8 # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 74d0337f854f988c53e3901b2151895c23aaab1b # lib/pmu: Support an additional PMU counter
 c2429216f79310af7c875e39193cbb55bec10fcd # scx_cosmos: Introduce sticky PMU event
 16fdd589acfe39d65d07869d6640a4c40be4a2c0 # scx_cosmos: Dynamic perf thresholds
@@ -82,13 +80,8 @@ c2429216f79310af7c875e39193cbb55bec10fcd # scx_cosmos: Introduce sticky PMU even
 bb5763a9e773898c8e858757523cbf41f2e3481a # scx_cosmos: Introduce automatic GPU / NUMA affinity
 bd9a6ea65bb6af7b369949715f5455639829521c # scx_cosmos: Deprecate deferred CPU wakeup
 37ab9e4ec87ca5c84adb7c76351f8636d0e96638 # scx_cosmos: Aggressively migrate tasks to the primary domain
-210f5496f9978f967c3d9ef0b92def01716067b3 # PANDEMONIUM: import
-7388f2ebaff62efa266182e25b2ffa1969ca701b # PANDEMONIUM: rename to scx_pandemonium
-9b3431ad1521af94620892a821cef48ea0753092 # PANDEMONIUM: cleanup
-294d5e6366e67c7626375815d5db9181e003444d # PANDEMONIUM: add to Cargo.toml
-32cec7a865a626ddc002012bed075cd2d59b5bfe # PANDEMONIUM: add to Cargo.lock
-0e6dca090c0804bf57a27c9dfec84669d5d957fb # PANDEMONIUM: add missing include
-10cf2d142caf6b805fcb8c59d9d5a7e2ac5c10a4 # cargo: fix formatting
+c9becd9004025f4218ca1937103443eb834d82d4 # PANDEMONIUM: import
+3b4bbdd25fcfbb4b4b9f146d9aaf50650c01869a # Bump libbpf-rs to 80d730e8 and use reference_obj skeleton generation
 )
 
 _reverts=(
