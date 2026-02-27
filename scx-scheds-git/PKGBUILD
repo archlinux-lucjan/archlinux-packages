@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r158.g08ed41b6
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -92,15 +92,9 @@ f52c569db43e4c48d1cd11d6b70f4674ab97e34a # PANDEMONIUM: bump to 5.4.1 v2
 a92a54103283a024be1506bf7dd28dac139ef448 # PANDEMONIUM: bump to 5.4.1 v5
 64e232826451b4d25399e097cee3ceabe7978d90 # PANDEMONIUM: bump to 5.4.1 v6
 2ea55367969925be75ac35261d9ff5461154d03d # Cargo.toml: update libbpf version for scx_pandemonium
-09275c6b1ac3740cd60a8b46b3f07f5934aa0421 # lib/pmu: Support an additional PMU counter
-d59114bf08f6f363b0e87d64d3efc2f12f5a74be # lib/pmu: Unroll loops to prevent BPF verifier bug
-cf4de63f4f9eab16fb07c915f7183ba89fa3ab65 # scx_cosmos: Introduce sticky PMU event
-780e898fc2a0a548213f986e5a2aed9162c5ab2b # scx_cosmos: Dynamic perf thresholds
-3fee9d61d040606421a3ab2faed2e8a8289ed79d # scx_utils: Make GpuIndex publicly available
-19eed699572738a98c83efa1aaef4b267218cd40 # scx_cosmos: Provide per-node cpumasks
-a0628bd945ceaf43a7664a6948e991f07511a486 # scx_cosmos: Introduce automatic GPU / NUMA affinity
-965f02e301d4c70671341e8f2a79d1ca52c27e91 # scx_cosmos: Deprecate deferred CPU wakeup
-f2e5f7e9690ba1987159cd873bd8ee7c2c65a0f1 # scx_cosmos: Aggressively migrate tasks to the primary domain
+6bc75949c6875f4e41f70b0c49ed3d736ad8c5d8 # lib/pmu: Support an additional PMU counter
+9154b6326c5b3da4fdc9c9404b92d8fac6e02301 # scx_cosmos: Introduce sticky PMU event
+f89f2055306504cbf54cd0eefcfa4d0b747a3e6c # scx_cosmos: Dynamic perf thresholds
 )
 
 _reverts=(
