@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.0.20.r214.g74ce9813
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -102,19 +102,20 @@ a9bfd0c70e6b966d891d2bcd27bf5a85b8a0abe2 # PANDEMONIUM: update Cargo.toml
 c2c9409997698a473b4806306b6e41ccaf065599 # PANDEMONIUM: bump to 5.4.11
 27815230e069aead832870f830a53821fb5e1731 # PANDEMONIUM: update Cargo.toml
 3adaed82aed81aed68e829ddad452377670add42 # PANDEMONIUM: bump to 5.4.12
-6035400f016486f2190782e3b8a9fb9f54cdd708 # scx_utils: Make GpuIndex publicly available
-af644c099a3225280be8aabe83a77a8a7dde4990 # scx_cosmos: Provide per-node cpumasks
-5c446ce5f73d0a4678ca9249b5474dad522b4d2f # scx_cosmos: Introduce automatic GPU / NUMA affinity
-faf273028c2c2c4c40fc0c475864f852540835bd # scx_cosmos: Deprecate deferred CPU wakeup
-8434ae233f9b654449cc8152bd7782d0d926d94b # scx_cosmos: Bump up default time slice to 1ms
-8b3f1e64fc6d5a25e49d4bc6a1308f1912789186 # scx_cosmos: Aggressively migrate tasks to the primary domain
-fa8abbf72f042511c3c6e83a65a7e704c2d9ce20 # scx_cosmos: perf: Look for least event-heavy idle CPU in the same LLC
-8491065e2aec4af55a70f824858863624933d478 # scx_cosmos: Accept symbolic perf event names with -e and -y
-9c3d9daa9e69af8eeb8008feb43896f1bcf64c5c # scx_cosmos: Improve dynamic perf threshold logic with EMA and hysteresis
-7db3673aaae5ee2c282768ea38778904cc4a0eef # scx_cosmos: Track per-CPU utilization instead of global CPU utilization
-bd47be2fd73fbf63bedcaf4e2f6de0ea55fd570d # scx_cosmos: perf: Prevent starvation with sticky direct dispatch
-96df7fd38f1fa9c2f5ac3c30dfbbadcc4a53d636 # scx_cosmos: Avoid migrating per-CPU tasks
-9fc05647db94000fbc840fb6f226b5a37581c68a # scx_cosmos: Improve perf event idle CPU selection policy
+bcd50eb3a5195bdef6c59d87a564cb8e5579fb53 # scx_utils: Make GpuIndex publicly available
+b45f718266dd30ac70e500d9ea4237f10ee9729c # scx_cosmos: Provide per-node cpumasks
+df0c73f833aafc79c98543683b54ae593bc353de # scx_cosmos: Introduce automatic GPU / NUMA affinity
+cff6bd4b8f9ef83122467a5161103ba4567e1171 # scx_cosmos: Deprecate deferred CPU wakeup
+71a9a3dfc707b4a44b425c51b39902304b8778f7 # scx_cosmos: Bump up default time slice to 1ms
+b3388fd9a48f7e82c9443039f3b20efd0ebd594e # scx_cosmos: Aggressively migrate tasks to the primary domain
+1d83ea2528575861feadd4cf48b3967c18a041b0 # scx_cosmos: perf: Look for least event-heavy idle CPU in the same LLC
+2fb245248dd51108c863c01afa8472fff26def26 # scx_cosmos: Accept symbolic perf event names with -e and -y
+cb03f348ffb400b9ba471a42332e39d5a894d73d # scx_cosmos: Improve dynamic perf threshold logic with EMA and hysteresis
+eca82350821195c15ef8a5f3bbdd7f2ece6a35b5 # scx_cosmos: Track per-CPU utilization instead of global CPU utilization
+d572c17681e382a1123740649335f1ac5f1006ae # scx_cosmos: perf: Prevent starvation with sticky direct dispatch
+ebf004e2d1a86d07b19fb90daf959e70c5a598ef # scx_cosmos: Avoid migrating per-CPU tasks
+0acf21112e141146b80b0688854f017214a0f4b9 # scx_cosmos: Improve perf event idle CPU selection policy
+a18f850dff62ec36cb96090d2483509e89ca4486 # scx_cosmos: Scale task time slice by CPU capacity
 )
 
 _reverts=(
