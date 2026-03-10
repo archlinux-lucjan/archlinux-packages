@@ -122,10 +122,6 @@
 │   └── PKGBUILD
 ├── linux-firmware-git
 │   └── PKGBUILD
-├── linux-usermode-rc-git
-│   ├── 70-uml.hook
-│   ├── config
-│   └── PKGBUILD
 ├── lostfiles-git
 │   └── PKGBUILD
 ├── lucjan-keyring
@@ -223,4 +219,4 @@
 └── zstd-git
     └── PKGBUILD
 
-78 directories, 146 files
+77 directories, 143 files
