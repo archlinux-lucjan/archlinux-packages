@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r82.gf33d9a73
-pkgrel=3
+pkgver=1.1.0.r86.g20f87c14
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,7 +38,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-e6c769df600d8886758a5b2113256dd7c2830174 # scx_cosmos: Track per-CPU utilization instead of global CPU utilization
 53997f1ec325cde429be6be2f2e53b42656becd0 # scx_cosmos: Avoid migrating per-CPU tasks
 a986c8ba3f403168d791c10d007b81269ab50839 # scx_cosmos: Scale task time slice by CPU capacity
 307ad42e1150ea25e6f1d74ccba1a0b37e49568a # scx_cosmos: perf: Prevent starvation with perf event dispatches
