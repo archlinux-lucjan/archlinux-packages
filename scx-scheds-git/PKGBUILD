@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r74.g948c2bb6
+pkgver=1.1.0.r82.gf33d9a73
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,11 +38,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-af43a88321feb05bf713af050e3b4bcaf6ad8cb0 # scx_cosmos: perf: Look for least event-heavy idle CPU in the same LLC
-e1286bb4112fbacc047098109f835dfa24739e41 # scx_cosmos: perf: Accept symbolic perf event names with -e and -y
-17f6be9a354f345053b440c316379b34db66ac2f # scx_cosmos: perf: Improve dynamic perf threshold logic
-558b1a7d573ec3fc000e3e64194e942f8c930698 # scx_cosmos: perf: Prevent starvation with sticky direct dispatch
-518930f492e5e93de344128b460284b9bcb4421b # scx_cosmos: perf: Improve perf event idle CPU selection policy
 8b3cec43e0feff55547967c5bdd37a1d567338f3 # scx_cosmos: Track per-CPU utilization instead of global CPU utilization
 67560d9cec88dca87341f7d1009ff31b4997656a # scx_cosmos: Avoid migrating per-CPU tasks
 f3c442ef4f1786d2cbe3a45ea5a540cccec1ff0b # scx_cosmos: Scale task time slice by CPU capacity
