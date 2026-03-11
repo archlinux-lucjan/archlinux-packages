@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r82.gf33d9a73
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,11 +38,11 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-8b3cec43e0feff55547967c5bdd37a1d567338f3 # scx_cosmos: Track per-CPU utilization instead of global CPU utilization
-67560d9cec88dca87341f7d1009ff31b4997656a # scx_cosmos: Avoid migrating per-CPU tasks
-f3c442ef4f1786d2cbe3a45ea5a540cccec1ff0b # scx_cosmos: Scale task time slice by CPU capacity
-2177107dc3dc27dfbf89afc43a1d9df140d06324 # scx_cosmos: perf: Prevent starvation with perf event dispatches
-9a9d536737b64f1d17050f7bfa225ce3844a179f # scx_cosmos: perf: Limit migrations to one per time slice
+e6c769df600d8886758a5b2113256dd7c2830174 # scx_cosmos: Track per-CPU utilization instead of global CPU utilization
+53997f1ec325cde429be6be2f2e53b42656becd0 # scx_cosmos: Avoid migrating per-CPU tasks
+a986c8ba3f403168d791c10d007b81269ab50839 # scx_cosmos: Scale task time slice by CPU capacity
+307ad42e1150ea25e6f1d74ccba1a0b37e49568a # scx_cosmos: perf: Prevent starvation with perf event dispatches
+fbc45590bf6d949979d9fe91304c1b55a0311ae2 # scx_cosmos: perf: Limit migrations to one per time slice
 5758d284261fe4de2c3920fd8b7bf3d4c7df292a # Cargo: update dependencies to latest versions
 )
 
