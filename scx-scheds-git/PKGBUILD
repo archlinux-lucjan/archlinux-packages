@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r94.ga0c1d2cc
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -42,7 +42,7 @@ _backports=(
 ed36c18c8dd1ba29b852e5a5bd368ac5cd2e1cb4 # scx_cosmos: Scale task time slice by CPU capacity
 06f6b3eb68d150d214f3ad3fae6127841d5a6e52 # scx_cosmos: perf: Limit migrations to one per time slice
 1760e32de907f543966556a941b8d0b69fa48df8 # scx_cosmos: Aggressive SMT contention avoidance
-1f0df5460165ca2f0ee9a8db9dd70781c90e9228 # scx_cosmos: Tune default settings for latency
+3d4b1d52e035189047cc32e1af525bb131b1bb32 # scx_cosmos: Tune default settings for latency
 62e15578c23742dd5627ca280bcb7382c52f0936 # fix: correctness improvements and scx_loader compatibility
 73340c5ea864c882e381282d66deb72a661d8058 # cake_stopping: hot-path optimization — -25% insns, -40% spills, -100% divs
 c6ea5120a62a0d49932cc4b8a1835a8392a2853b # cake_stopping: zero-spill architectural decomposition (42→0 spills, 419→30 insns)
