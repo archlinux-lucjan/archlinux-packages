@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r143.gb7cb051e
+pkgver=1.1.0.r145.gf1944be9
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,6 +38,8 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
+9afe001ebc51b4f004d3e594c70beabb2f21ba67 # scx_cosmos: perf: Simplify migration for event-heavy tasks
+0e7d79bb2b457e2435dba0f3d872e6872a35eb1d # scx_cosmos: perf: Introduce a minimal value for the event threshold
 )
 
 _reverts=(
