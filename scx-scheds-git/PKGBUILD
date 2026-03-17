@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r127.g6ec60c06
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,10 +38,10 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-4a9f7d7cb2416d8ea6c644ad3c71dcd31dfbdc70 # scx_cosmos: Avoid migrating per-CPU tasks
-f86ed6ab172c2f6757c69e5777736b3bed3fa280 # scx_cosmos: Scale task time slice by CPU capacity
-5515b5a58a5ae787be077c556bdd4153101c9d39 # scx_cosmos: Aggressive SMT contention avoidance
-2d1f57d0a25c71865b9c4bffcc3c6b444d42038d # scx_cosmos: Tune default settings for latency
+271a4519294b19b35b0afc87bad024cabbdeefd6 # scx_cosmos: Avoid migrating per-CPU tasks
+f870745a8d578d5471567633f36f0bc6a87619ff # scx_cosmos: Scale task time slice by CPU capacity
+1aafdf5b82267e159741dc91d2d0777bd965cb68 # scx_cosmos: Aggressive SMT contention avoidance
+1e92b9de22ecc87a2f4b2dd8b4a5478591173ab3 # scx_cosmos: Tune default settings for latency
 6d122f672f938b400da21a8c19b5facf2d676f3e # scx_cosmos: perf: Simplify migration for event-heavy tasks
 253d76de5c8605dba8773aa71f0f4cc4644ff166 # scx_cosmos: perf: Introduce a minimal value for the event threshold
 3c868aaa9fa7269a7c8e18cf5c1b690cea43b422 # scx_cosmos: Introduce --preempt
