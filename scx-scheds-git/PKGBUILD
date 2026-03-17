@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r138.g2cd2214f
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,12 +38,10 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-271a4519294b19b35b0afc87bad024cabbdeefd6 # scx_cosmos: Avoid migrating per-CPU tasks
-f870745a8d578d5471567633f36f0bc6a87619ff # scx_cosmos: Scale task time slice by CPU capacity
-1aafdf5b82267e159741dc91d2d0777bd965cb68 # scx_cosmos: Aggressive SMT contention avoidance
-1e92b9de22ecc87a2f4b2dd8b4a5478591173ab3 # scx_cosmos: Tune default settings for latency
-69c821d831dedb24ddad128651e991d70dc452b7 # scx_cosmos: perf: Simplify migration for event-heavy tasks
-7506c136729a1630b85efeb1c148ebb3abca082d # scx_cosmos: perf: Introduce a minimal value for the event threshold
+356c5e25dfb8bef8756d3d2cffa871a1c6eb37ff # scx_cosmos: Avoid migrating per-CPU tasks
+b9c34cb564c658ebe0d992c8395eef09a10a43bb # scx_cosmos: Scale task time slice by CPU capacity
+4542b163cf1646309b57975ff221b43baed410a7 # scx_cosmos: Aggressive SMT contention avoidance
+3631a60635a5bd7cc1e78aac1bd88e4450d673a9 # scx_cosmos: Tune default settings for latency
 )
 
 _reverts=(
