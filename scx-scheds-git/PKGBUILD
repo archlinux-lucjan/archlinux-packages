@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r136.g9c78e12d
+pkgver=1.1.0.r138.g2cd2214f
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -44,7 +44,6 @@ f870745a8d578d5471567633f36f0bc6a87619ff # scx_cosmos: Scale task time slice by 
 1e92b9de22ecc87a2f4b2dd8b4a5478591173ab3 # scx_cosmos: Tune default settings for latency
 69c821d831dedb24ddad128651e991d70dc452b7 # scx_cosmos: perf: Simplify migration for event-heavy tasks
 7506c136729a1630b85efeb1c148ebb3abca082d # scx_cosmos: perf: Introduce a minimal value for the event threshold
-4d02d1a86d3bc6a6caa2a053ac2421df643ec569 # sync: bring nightly scheduler to scx_cake branch
 )
 
 _reverts=(
