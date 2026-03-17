@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r138.g2cd2214f
-pkgrel=2
+pkgver=1.1.0.r143.gb7cb051e
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,10 +38,6 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-356c5e25dfb8bef8756d3d2cffa871a1c6eb37ff # scx_cosmos: Avoid migrating per-CPU tasks
-b9c34cb564c658ebe0d992c8395eef09a10a43bb # scx_cosmos: Scale task time slice by CPU capacity
-4542b163cf1646309b57975ff221b43baed410a7 # scx_cosmos: Aggressive SMT contention avoidance
-3631a60635a5bd7cc1e78aac1bd88e4450d673a9 # scx_cosmos: Tune default settings for latency
 )
 
 _reverts=(
