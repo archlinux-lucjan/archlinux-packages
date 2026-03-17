@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r127.g6ec60c06
-pkgrel=3
+pkgver=1.1.0.r134.ge5dc327b
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -46,8 +46,6 @@ f870745a8d578d5471567633f36f0bc6a87619ff # scx_cosmos: Scale task time slice by 
 7506c136729a1630b85efeb1c148ebb3abca082d # scx_cosmos: perf: Introduce a minimal value for the event threshold
 1ef8d6df40e5090110bb6d09dd98e698f0f7be72 # sync: bring nightly scheduler to scx_cake branch
 76ba84670eb482634c8083de2f697a8d08db25f3 # scx_pandemonium: update to v5.5.0
-e73af0fca0fc69adc96fe691fe0b666fa4792333 # Cargo: introduce workspace.dependencies
-b99c8344bebca04cbbec59221909b21ca93ef027 # Cargo: use workspace.dependencies for some crates
 )
 
 _reverts=(
