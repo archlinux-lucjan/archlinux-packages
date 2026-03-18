@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r166.g7e41c1e8
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -40,8 +40,9 @@ sha256sums=('SKIP')
 _backports=(
 ea3ee1d79f374eed6d741a5893532e5db0431780 # feat(scaling): compile-time hardware detection and gate system
 c7005cc5b51004978a5e3a0af08bbcd3884f8716 # fix: sentinel collision at 256 CPUs, gate2 fallthrough, libbpf logging
-abb38f91fa4fc8e5e0c472e801aad68a50f14020 # Cargo: update dependencies to latest versions
-1e5e7322833000fbad8a3b51f1c91977574e3934 # Cargo.toml: update libbpf versions
+886a24c39ff9c2fb647206e51fcca733bcd9d5b8 # cake/bpf: assembly-guided instruction reduction (-35 BPF insns, -3.6%)
+05fa514fb7c866aee5574f1356209dfdeee2e1b5 # Cargo: update dependencies to latest versions
+dc52b1997de52b67a364426315221f0c6e27b716 # Cargo.toml: update libbpf versions
 )
 
 _reverts=(
