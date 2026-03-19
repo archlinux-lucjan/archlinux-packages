@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r168.g0ce45f15
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -51,6 +51,8 @@ af495119d9016757df8a52d9ab342b3357d6cded # Cargo: update libbpf to latest versio
 0c56aab9b6153cb20e397c856d791e553029fcf4 # docs: refine scx_cognis README
 99219b91a6b39d2732118d639d39ba914e7cd6c2 # sched: address scx_cognis review feedback
 b53059f4c3f993d948716ce2f0ea3e832e19d564 # sched: log scx_cognis startup details
+e8694b8a93a22880ed8baaa27a241f75e5a65e1a # sched: sync scx_cognis version to 2.0.7
+a0b873f0b384bf6fe92d8916f265af02d7b0dd5c # sched: update scx_cognis lockfile version
 )
 
 _reverts=(
