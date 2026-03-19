@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r168.g0ce45f15
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -42,8 +42,9 @@ _backports=(
 f447562ad8777d66aec5e49e54a7c407be3b459d # fix: sentinel collision at 256 CPUs, gate2 fallthrough, libbpf logging
 366f8b5f5b532c607cfb64da3f2664e5fdbb33b5 # cake/bpf: assembly-guided instruction reduction (-35 BPF insns, -3.6%)
 38acd04c80b07da05215e495e0e8b2ca4e527474 # cake/bpf: frontier hot-path optimization (-9 BPF insns unconditional core)
-3c3338d75cdaf392bdfc2426648f4dfb9d56f90b # Cargo: update dependencies to latest versions
-4d36bdc1ff5c898988d935998590cff8762c7edc # Cargo.toml: update libbpf versions
+b59157c025f6cf991068e780b64f0e43a3d08294 # scx_cake: comprehensive comment cleanup + README coverage expansion
+aeb49c778a91cda8eb38fb3b51c34a9bd2232ea1 # Cargo: update dependencies to latest versions
+0129018532a5909f0027b819fda275fc35ab4bb4 # Cargo.toml: update libbpf versions
 2192b29d19feee712392f3e7662a8438aa660d2f # sched: add scx_cognis scheduler
 0c56aab9b6153cb20e397c856d791e553029fcf4 # docs: refine scx_cognis README
 99219b91a6b39d2732118d639d39ba914e7cd6c2 # sched: address scx_cognis review feedback
