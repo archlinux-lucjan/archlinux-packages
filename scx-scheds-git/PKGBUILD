@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r166.g7e41c1e8
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -44,6 +44,9 @@ c7005cc5b51004978a5e3a0af08bbcd3884f8716 # fix: sentinel collision at 256 CPUs, 
 f44b6d957c0d687f24edc620557de17a24f72cdf # cake/bpf: frontier hot-path optimization (-9 BPF insns unconditional core)
 6fdef822750ce38a144035a51a3bdd2763a2ec62 # Cargo: update dependencies to latest versions
 e28277383ce3da27ef1a9e0692cdb464e7f8c774 # Cargo.toml: update libbpf versions
+2192b29d19feee712392f3e7662a8438aa660d2f # sched: add scx_cognis scheduler
+0c56aab9b6153cb20e397c856d791e553029fcf4 # docs: refine scx_cognis README
+99219b91a6b39d2732118d639d39ba914e7cd6c2 # sched: address scx_cognis review feedback
 )
 
 _reverts=(
