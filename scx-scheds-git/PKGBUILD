@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r168.g0ce45f15
-pkgrel=7
+pkgrel=8
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -54,6 +54,8 @@ f0f7e2377efe49e4b3f79e7566c7f9e47b7dfb82 # bpf: execution path flattening — ho
 b53059f4c3f993d948716ce2f0ea3e832e19d564 # sched: log scx_cognis startup details
 e8694b8a93a22880ed8baaa27a241f75e5a65e1a # sched: sync scx_cognis version to 2.0.7
 a0b873f0b384bf6fe92d8916f265af02d7b0dd5c # sched: update scx_cognis lockfile version
+d95a9f880fc3f171887fe0a9c613106ddcaa983d # scx_cosmos: Force migration on CPU contention
+3e7e7a7912444edc53c2963161caf53c859ca7dd # scx_cosmos: Add --no-early-clear
 )
 
 _reverts=(
