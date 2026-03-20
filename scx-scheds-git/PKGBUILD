@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r168.g0ce45f15
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -44,9 +44,10 @@ f447562ad8777d66aec5e49e54a7c407be3b459d # fix: sentinel collision at 256 CPUs, 
 38acd04c80b07da05215e495e0e8b2ca4e527474 # cake/bpf: frontier hot-path optimization (-9 BPF insns unconditional core)
 b59157c025f6cf991068e780b64f0e43a3d08294 # scx_cake: comprehensive comment cleanup + README coverage expansion
 4ecc2b0b65c783d5b147ba171ad49c4cd2d27966 # testing performance classification changes
-7783e30ce65e522f5a896ba2c686862834fed67f # cargo: fix formatting
-4f69c3fef887e9cbf8717e686da42e22083f2358 # Cargo: update dependencies to latest versions
-af495119d9016757df8a52d9ab342b3357d6cded # Cargo: update libbpf to latest versions
+f0f7e2377efe49e4b3f79e7566c7f9e47b7dfb82 # bpf: execution path flattening — hot path 504→409 insns (−18.8%)
+7d02bb473b46628ceb203fef3c288ee89cd27eca # cargo: fix formatting
+53d121bb8c7c7c9934e30a487e2a74a3ca7db685 # Cargo: update dependencies to latest versions
+53fbf3d6b0773c741f3feab3ca61a385233e6fe1 # Cargo: update libbpf to latest versions
 2192b29d19feee712392f3e7662a8438aa660d2f # sched: add scx_cognis scheduler
 0c56aab9b6153cb20e397c856d791e553029fcf4 # docs: refine scx_cognis README
 99219b91a6b39d2732118d639d39ba914e7cd6c2 # sched: address scx_cognis review feedback
