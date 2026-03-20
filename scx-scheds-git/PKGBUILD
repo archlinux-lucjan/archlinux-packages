@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r171.g9d115659
-pkgrel=5
+pkgrel=6
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -60,6 +60,7 @@ f32e82d84161a48b6d4034ce44971c28b9a519a7 # cleanup: satisfy clippy and simplify 
 3e073c317cd794989f73a0910982870cae08ed62 # sched: sync scx_cognis to v2.0.8
 74823f99d650b8009e80acd5e012982fd66a491a # sched: verify scx_cognis detach before logging
 9e39307fa049d06c52aa7e88e5f87611b7f1b104 # sched: fail open on sched_ext watchdog exits
+1c6e04ae910e5ebdf90c32ccff8e90cd73637517 # sched: quiet idle userspace path
 )
 
 _reverts=(
