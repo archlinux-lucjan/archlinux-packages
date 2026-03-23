@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r186.g6e622e5c
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -54,6 +54,7 @@ b54e02050eeaf6d86d20afe8eda6ad4a20d1aa59 # cargo: fix formatting
 76208a4e7b15cca5eaa3ae91602ebb4b5527d2d0 # Cargo: update dependencies to latest versions
 455fed56ba634da676d2362d9590def6eb863531 # Cargo: update libbpf to latest versions
 295254e8f9ee0788cb21172e754d6cabe4e73f1b # sched: add scx_timely scheduler
+cacb10c61968c429bcbadf3c5d4466b887b05c84 # sched: fix scx_timely signed EWMA for BPF
 1886c2e173edeba6b9790cdb540f1c49e6fcbcb4 # scx_utils: Handle ops.sub_cgroup_id in older kernels
 51619164aef77def3ebf69d018fe1180f27ab66e # scheds: Introduce scx_maestro
 e9cc3a7017c14dc3adcf2d98687f8d2ffaadcf11 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
