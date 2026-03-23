@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r189.gbe055c5a
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,23 +38,9 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-6896c59086a172d0e5c6a1c8a87d299ae4f4801e # feat(scaling): compile-time hardware detection and gate system
-5ce56ca2e4593f86ab511dac4f97b104c728a7d8 # fix: sentinel collision at 256 CPUs, gate2 fallthrough, libbpf logging
-960866df1b1fcdd420ea48259df4911caf109419 # cake/bpf: assembly-guided instruction reduction (-35 BPF insns, -3.6%)
-e1c8d78bdf9498228b4ee2b816d6a6161db8f298 # cake/bpf: frontier hot-path optimization (-9 BPF insns unconditional core)
-772c7f4d1b869b29b538454f2d32dbca048e9bfa # scx_cake: comprehensive comment cleanup + README coverage expansion
-fc9d469433d7ff18618f7149c5d1894ae52f6656 # testing performance classification changes
-40bc49ade0176798c55610aaef51fe3f65b9bd44 # bpf: execution path flattening — hot path 504→409 insns (−18.8%)
-ecda3bfafa2db9dbc615d7e464c5f7876032c61d # scx_cake: Implement Phase 10-13 Hot Path Vectorization Sweeps
-0575ea37f419a13755c48c47af84df08dbdde5d4 # scx_cake: Implement ALPHADEV Phase 14 O(1) Kfunc Kick Bypass
-1df634b267d70de9f8869f2b3221d61a9d2c22e4 # feat: game detection ACF manifest overhaul, stable-logging, and origin-aware kick guard
-6c8097458e78c23f979d1139a6c8c8b90b3ba653 # fix: stage missing bpf_compat.h header for atomic macros
-50d7254f42a6c7ce2741c41c15107ac87d57e28c # fix: remove child_count threshold for Steam games to enable native linux multithreaded detection
-9ff900fd0aa7cb721cdafdb9c47810fb04b22a50 # scx_cake: Frontier Optimization Phases 1-3 (SIMD Offloading, Branchless, Oracle)
-e8236e6c70d69f1ce0bf587871ada79a0321f853 # scx_cake: Frontier Phase 8 & 9 - Asymmetric Vectorization & Branchless BPF
-c0711e77bdcddf3211d6fc9b3abaada791e65f23 # scx_cake: Rust Formatting & TUI Dead-State Sync
-08c01ec22359072ef6b0d6ec536e85bc562292ff # Cargo: update dependencies to latest versions
-08f09e33e52c6b051bc338f77e9ef13ebb018c31 # Cargo: update libbpf to latest versions
+551b7ccc15522fbaec1da75fd5c0d6009d2934d6 # scx_cake: Sync Frontier optimizations onto latest upstream main
+e6b4d81707a23fec16b307c884f3d8fd81f73d97 # Cargo: update dependencies to latest versions
+86456d6bb66525e005390ba300f9470ba851bd7e # Cargo: update libbpf to latest versions
 1886c2e173edeba6b9790cdb540f1c49e6fcbcb4 # scx_utils: Handle ops.sub_cgroup_id in older kernels
 51619164aef77def3ebf69d018fe1180f27ab66e # scheds: Introduce scx_maestro
 e9cc3a7017c14dc3adcf2d98687f8d2ffaadcf11 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
