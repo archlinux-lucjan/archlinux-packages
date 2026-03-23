@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r171.g9d115659
-pkgrel=6
+pkgver=1.1.0.r183.g610db46d
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,29 +38,23 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-18767b2e97aaa730f20f26db7a8dac6556ca1f9b # feat(scaling): compile-time hardware detection and gate system
-007cf967a75488f09de02f5827aa817f07c0a8e1 # fix: sentinel collision at 256 CPUs, gate2 fallthrough, libbpf logging
-d2c090f50c2c87d11c77afedcb7ea8f4c6b66ecc # cake/bpf: assembly-guided instruction reduction (-35 BPF insns, -3.6%)
-1c1405712d436ac76279a8fc1f358e86f90160c4 # cake/bpf: frontier hot-path optimization (-9 BPF insns unconditional core)
-e48f95345a934bea1d018cf09cd682c329494144 # scx_cake: comprehensive comment cleanup + README coverage expansion
-74847cef00cd203084fa16bbf9be4e237684e14d # testing performance classification changes
-5b77b396a92e5e57dd6b9f2ec23b464fb8bc61a8 # bpf: execution path flattening — hot path 504→409 insns (−18.8%)
-283d93117387cfe9a7e45476e3de2b8d0c5b17c5 # cargo: fix formatting
-301ee3cdb84bc403657f1015d32707634864d118 # Cargo: update dependencies to latest versions
-55b3ef0364eff2c8c5b103c1e08c029aa24b74e6 # Cargo: update libbpf to latest versions
-2192b29d19feee712392f3e7662a8438aa660d2f # sched: add scx_cognis scheduler
-0c56aab9b6153cb20e397c856d791e553029fcf4 # docs: refine scx_cognis README
-99219b91a6b39d2732118d639d39ba914e7cd6c2 # sched: address scx_cognis review feedback
-b53059f4c3f993d948716ce2f0ea3e832e19d564 # sched: log scx_cognis startup details
-e8694b8a93a22880ed8baaa27a241f75e5a65e1a # sched: sync scx_cognis version to 2.0.7
-a0b873f0b384bf6fe92d8916f265af02d7b0dd5c # sched: update scx_cognis lockfile version
-e1def90b1c59365fe80e2aeec999cf32e16b468f # docs: link upstream README note to standalone repo
-39f5167f6e5559595f35f8ed417da8541cfe18ef # docs: tighten cognis references
-f32e82d84161a48b6d4034ce44971c28b9a519a7 # cleanup: satisfy clippy and simplify references
-3e073c317cd794989f73a0910982870cae08ed62 # sched: sync scx_cognis to v2.0.8
-74823f99d650b8009e80acd5e012982fd66a491a # sched: verify scx_cognis detach before logging
-9e39307fa049d06c52aa7e88e5f87611b7f1b104 # sched: fail open on sched_ext watchdog exits
-1c6e04ae910e5ebdf90c32ccff8e90cd73637517 # sched: quiet idle userspace path
+01a9751bf7e9e91787768239f50c36c9ed6cac37 # feat(scaling): compile-time hardware detection and gate system
+5749069cd22d58b87986a532740d92e6d89b831b # fix: sentinel collision at 256 CPUs, gate2 fallthrough, libbpf logging
+6921834a08e8b129fdd7057edac85d475525d921 # cake/bpf: assembly-guided instruction reduction (-35 BPF insns, -3.6%)
+f8624e94e9b313df108d05407a8bdcc286748440 # cake/bpf: frontier hot-path optimization (-9 BPF insns unconditional core)
+25fbe8fc82e94e8d413af8685ab97a7d4f0df289 # scx_cake: comprehensive comment cleanup + README coverage expansion
+a2b1b83f0edef4e2042117f399157034b0bc2538 # testing performance classification changes
+91daffdb72148df29a106b03afddfae8aceb81c6 # bpf: execution path flattening — hot path 504→409 insns (−18.8%)
+baf40975f876a86ceb3d9e92f8e7e72d3dd4fe4f # scx_cake: Implement Phase 10-13 Hot Path Vectorization Sweeps
+94173e3b9df81a7f5adf70ce8188057c9135ed89 # scx_cake: Implement ALPHADEV Phase 14 O(1) Kfunc Kick Bypass
+ead9c458a1145c917b6f1304feabbd42b23c3135 # feat: game detection ACF manifest overhaul, stable-logging, and origin-aware kick guard
+7036ab4481c7d271f1a2307c6a4fb96ab14505cf # fix: stage missing bpf_compat.h header for atomic macros
+0dab5aa92547bd00c19d319af49ec2776a948448 # fix: remove child_count threshold for Steam games to enable native linux multithreaded detection
+b54e02050eeaf6d86d20afe8eda6ad4a20d1aa59 # cargo: fix formatting
+76208a4e7b15cca5eaa3ae91602ebb4b5527d2d0 # Cargo: update dependencies to latest versions
+455fed56ba634da676d2362d9590def6eb863531 # Cargo: update libbpf to latest versions
+0903828a52d5fdc1c45010813a66f30d1a034531 # sched: add scx_timely scheduler
+6be6dc7240afeb71ea771bceede3fad0afdac918 # sched: add scx_timely license link
 )
 
 _reverts=(
