@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r183.g610db46d
-pkgrel=3
+pkgver=1.1.0.r186.g6e622e5c
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -53,8 +53,7 @@ ead9c458a1145c917b6f1304feabbd42b23c3135 # feat: game detection ACF manifest ove
 b54e02050eeaf6d86d20afe8eda6ad4a20d1aa59 # cargo: fix formatting
 76208a4e7b15cca5eaa3ae91602ebb4b5527d2d0 # Cargo: update dependencies to latest versions
 455fed56ba634da676d2362d9590def6eb863531 # Cargo: update libbpf to latest versions
-0903828a52d5fdc1c45010813a66f30d1a034531 # sched: add scx_timely scheduler
-6be6dc7240afeb71ea771bceede3fad0afdac918 # sched: add scx_timely license link
+295254e8f9ee0788cb21172e754d6cabe4e73f1b # sched: add scx_timely scheduler
 1886c2e173edeba6b9790cdb540f1c49e6fcbcb4 # scx_utils: Handle ops.sub_cgroup_id in older kernels
 51619164aef77def3ebf69d018fe1180f27ab66e # scheds: Introduce scx_maestro
 e9cc3a7017c14dc3adcf2d98687f8d2ffaadcf11 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
