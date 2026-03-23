@@ -2,7 +2,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-manager-git
-pkgver=1.15.10.r2.g64f9259
+pkgver=1.15.10.r7.g1798081
 pkgrel=1
 epoch=1
 pkgdesc="Simple GUI for managing sched-ext schedulers via scx_loader"
@@ -10,7 +10,7 @@ arch=(aarch64 x86_64)
 url="https://github.com/sirlucjan/scx-manager"
 license=(GPL-3.0-or-later)
 depends=('qt6-base' 'polkit' 'scx-scheds')
-makedepends=('cmake' 'ninja' 'git' 'qt6-tools' 'cargo' 'lld' 'clang' 'llvm')
+makedepends=('cmake' 'ninja' 'git' 'qt6-tools' 'rustup' 'lld' 'clang' 'llvm')
 source=("${pkgname}::git+$url.git#branch=scx-loader-git")
 sha256sums=('SKIP')
 provides=('scx-manager')
@@ -63,6 +63,7 @@ build() {
   export RANLIB=llvm-ranlib
 
   export RUSTFLAGS="-Cembed-bitcode -C opt-level=3 -Ccodegen-units=1 -Clinker=clang -C link-arg=-flto -Clink-arg=-fuse-ld=/usr/bin/ld.lld"
+  rustup override set nightly
 
   cmake -S . -Bbuild \
         -GNinja \
