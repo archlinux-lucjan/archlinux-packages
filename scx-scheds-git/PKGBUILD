@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r183.g610db46d
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -58,7 +58,7 @@ b54e02050eeaf6d86d20afe8eda6ad4a20d1aa59 # cargo: fix formatting
 1886c2e173edeba6b9790cdb540f1c49e6fcbcb4 # scx_utils: Handle ops.sub_cgroup_id in older kernels
 51619164aef77def3ebf69d018fe1180f27ab66e # scheds: Introduce scx_maestro
 e9cc3a7017c14dc3adcf2d98687f8d2ffaadcf11 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-5585a9edeba541464c36ea73a8b012507fee96d9 # scx_maestro: Add better NUMA support
+96ac97eef3b31d2c66b7815265cb13223f8263f1 # scx_maestro: Add better NUMA support
 )
 
 _reverts=(
