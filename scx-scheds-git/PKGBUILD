@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r206.g25925896
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -41,9 +41,11 @@ _backports=(
 5b4e37dd5fdcaaa28e61257f5567793117a56348 # scx_cake: Sync Frontier optimizations onto latest upstream main
 9ceb79d6158d2274ae232d00e1537742ad23ab4b # Cargo: update dependencies to latest versions
 228264e676fed5b2696ac2c860319e41378bb88d # Cargo: update libbpf to latest versions
-51619164aef77def3ebf69d018fe1180f27ab66e # scheds: Introduce scx_maestro
-e9cc3a7017c14dc3adcf2d98687f8d2ffaadcf11 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-96ac97eef3b31d2c66b7815265cb13223f8263f1 # scx_maestro: Add better NUMA support
+815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
+de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in case of re-enqueue
+f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
 )
 
 _reverts=(
