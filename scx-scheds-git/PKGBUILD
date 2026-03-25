@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r206.g25925896
-pkgrel=3
+pkgver=1.1.0.r209.gaee2474a
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -46,8 +46,6 @@ de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight 
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
 ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in case of re-enqueue
 f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
-8a93d22aba07b457962f5f6ea572c7f3b8781bb3 # scxcash: Include <scx/common.bpf.h>
-3ad483dde55a88d18f77325eb50ad6cd485e9bd8 # common.bpf.h: Add clang diagnostic pragma
 )
 
 _reverts=(
