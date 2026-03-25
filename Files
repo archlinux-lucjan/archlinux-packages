@@ -185,6 +185,12 @@
 ├── rate-mirrors-git
 │   └── PKGBUILD
 ├── README.md
+├── rustup-git
+│   ├── list-proxy-names.rs
+│   ├── PKGBUILD
+│   ├── post.install
+│   ├── rustup-git-profile.fish
+│   └── rustup-git-profile.sh
 ├── scx-manager-git
 │   └── PKGBUILD
 ├── scx-scheds
@@ -219,4 +225,4 @@
 └── zstd-git
     └── PKGBUILD
 
-77 directories, 143 files
+78 directories, 148 files
