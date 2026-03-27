@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r221.gafe97d42
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -41,8 +41,9 @@ _backports=(
 1c2a2c0f7dff9bbcb76c0a52e829eb8a50ba34e0 # scx_cake: Sync Frontier optimizations onto latest upstream main
 b9667ca5f0b64091ec716bb93579453fa617697a # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
 f72cec067c43d80f59e21e275b6c1a62ee583036 # Revert out-of-scope Cargo.toml change
-a73c5113104ad7b668dfd010dfed592dc28968dc # Cargo: update dependencies to latest versions
-ec4505237d1d3b30545198b278e67b498a0c4255 # Cargo: update libbpf to latest versions
+c9c5ce71efcc8c2ce58834cf253eaeef3b167f78 # bpf: scx_cake: Implement BPF-native clock cache
+07cddbba2acad1bd7872e016e16b5619ef74f48a # Cargo: update dependencies to latest versions
+812acedfc9e1206f5380128f6746750c7db75782 # Cargo: update libbpf to latest versions
 815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
 de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
