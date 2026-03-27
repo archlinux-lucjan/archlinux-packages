@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r218.ga27e8edf
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -52,6 +52,7 @@ eb3c984fd4bb046e8316d0629b3111ab76102616 # scx_timely v2: Pressure-aware load-ba
 11dcf001979fe0457cfeba4296bdb505d468872d # Restore original Cargo.lock from upstream scx_timely merge
 6118f78349867f2a4b2a73c79879e9a443026e90 # scx_timely: Use local workspace paths for dependencies
 4bfe8690a0db5614ca78e87efd47becc56fdc64a # scx_timely v2: Pressure-aware load-balancing with expand/contract mode
+ffff82274021829de1571bfd5d718fa33e150839 # scx_bpfland: Aggressively avoid SMT contention
 )
 
 _reverts=(
