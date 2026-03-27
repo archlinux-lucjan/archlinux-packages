@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r218.ga27e8edf
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -49,6 +49,8 @@ de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight 
 ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in case of re-enqueue
 f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
 ffff82274021829de1571bfd5d718fa33e150839 # scx_bpfland: Aggressively avoid SMT contention
+8c514ee5752902f39cb00a8737dfb3c601e68b53 # Revert "sched: fix scx_timely signed EWMA for BPF"
+f21c66d2da2a69b5ebd4bea9ca0ecd0f169ecc1c # Revert "sched: add scx_timely scheduler"
 )
 
 _reverts=(
