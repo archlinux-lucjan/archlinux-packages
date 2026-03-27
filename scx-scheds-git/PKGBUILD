@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r218.ga27e8edf
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -48,10 +48,6 @@ de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight 
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
 ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in case of re-enqueue
 f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
-eb3c984fd4bb046e8316d0629b3111ab76102616 # scx_timely v2: Pressure-aware load-balancing with expand/contract mode
-11dcf001979fe0457cfeba4296bdb505d468872d # Restore original Cargo.lock from upstream scx_timely merge
-6118f78349867f2a4b2a73c79879e9a443026e90 # scx_timely: Use local workspace paths for dependencies
-4bfe8690a0db5614ca78e87efd47becc56fdc64a # scx_timely v2: Pressure-aware load-balancing with expand/contract mode
 ffff82274021829de1571bfd5d718fa33e150839 # scx_bpfland: Aggressively avoid SMT contention
 )
 
