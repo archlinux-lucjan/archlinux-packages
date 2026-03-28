@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r223.gc41aa465
+pkgver=1.1.0.r227.gd9da4ca0
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,12 +38,13 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-1c2a2c0f7dff9bbcb76c0a52e829eb8a50ba34e0 # scx_cake: Sync Frontier optimizations onto latest upstream main
-b9667ca5f0b64091ec716bb93579453fa617697a # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
-f72cec067c43d80f59e21e275b6c1a62ee583036 # Revert out-of-scope Cargo.toml change
-c9c5ce71efcc8c2ce58834cf253eaeef3b167f78 # bpf: scx_cake: Implement BPF-native clock cache
-07cddbba2acad1bd7872e016e16b5619ef74f48a # Cargo: update dependencies to latest versions
-812acedfc9e1206f5380128f6746750c7db75782 # Cargo: update libbpf to latest versions
+d875d8e194edf0f46e6da3a806ef9192b75e14e9 # scx_cake: Sync Frontier optimizations onto latest upstream main
+32d0b516304e56d6e94829d0c6a774a47c413840 # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
+fcb0d02e7e16dd09ec0dfa35bb0ae48fa339f5fb # Revert out-of-scope Cargo.toml change
+f5d385fdc69f5c508f079c19763d0e5f9d30f7bd # bpf: scx_cake: Implement BPF-native clock cache
+dd579ec8de24b6f7b23dfc71a3f3f7242a2892b2 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
+5499455ba92f259980720e8469cefe57106e233f # Cargo: update dependencies to latest versions
+67c31871f2e1257e02d861dfa52a551b8f8e73d4 # Cargo: update libbpf to latest versions
 815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
 de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
