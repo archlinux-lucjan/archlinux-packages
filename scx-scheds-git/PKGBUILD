@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r246.g5dcc57d9
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -55,6 +55,11 @@ f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fai
 74d949a022e743e1b7b12d5dfa6b5c9e6502cd99 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
 90f627861909cf3d0f91f725015a8fd944311ed4 # scx_pandemonium: add veristat baseline, use scx_utils build_id
 d751cf346897befb92a8b7853c072cd2c55703be # scx_pandemonium: add veristat baseline, scx_utils build_id, ops version suffix
+4e8d8b1b329ad88314515aba4b4f63a00de98973 # Add scx_flow scheduler
+24dbb30035e7cb328822131991bc2d9b23599942 # scx_flow: suppress generated vmlinux.h warning noise
+16f900dd9e593206783c70023acf10454d29041c # scx_flow: report full build version
+fb216d8c5404c28680acf30f941a8666a0558bb2 # scx_flow: use relative LICENSE symlink
+c7f3c23df5945893a8ff9cc477875b5eaecd5cf7 # scx_flow: simplify normal exit logging
 )
 
 _reverts=(
