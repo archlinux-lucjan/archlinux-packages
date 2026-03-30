@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r243.g4bb2322d
+pkgver=1.1.0.r246.g5dcc57d9
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -52,8 +52,6 @@ de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight 
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
 ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in case of re-enqueue
 f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
-8c514ee5752902f39cb00a8737dfb3c601e68b53 # Revert "sched: fix scx_timely signed EWMA for BPF"
-f21c66d2da2a69b5ebd4bea9ca0ecd0f169ecc1c # Revert "sched: add scx_timely scheduler"
 74d949a022e743e1b7b12d5dfa6b5c9e6502cd99 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
 90f627861909cf3d0f91f725015a8fd944311ed4 # scx_pandemonium: add veristat baseline, use scx_utils build_id
 d751cf346897befb92a8b7853c072cd2c55703be # scx_pandemonium: add veristat baseline, scx_utils build_id, ops version suffix
