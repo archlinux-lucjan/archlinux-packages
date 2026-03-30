@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r227.gd9da4ca0
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -71,6 +71,7 @@ ac6b265f2781790ec01a3527221d393b81377587 # scx_flash: Handle sleep/wakeup stress
 695c9cb8a694b32faa69f02a695ac2902cf8c524 # scx_flash: Drop aggressive primary domain migrations
 74d949a022e743e1b7b12d5dfa6b5c9e6502cd99 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
 90f627861909cf3d0f91f725015a8fd944311ed4 # scx_pandemonium: add veristat baseline, use scx_utils build_id
+d751cf346897befb92a8b7853c072cd2c55703be # scx_pandemonium: add veristat baseline, scx_utils build_id, ops version suffix
 )
 
 _reverts=(
