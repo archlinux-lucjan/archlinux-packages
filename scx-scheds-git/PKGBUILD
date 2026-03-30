@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r227.gd9da4ca0
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -43,8 +43,10 @@ d875d8e194edf0f46e6da3a806ef9192b75e14e9 # scx_cake: Sync Frontier optimizations
 fcb0d02e7e16dd09ec0dfa35bb0ae48fa339f5fb # Revert out-of-scope Cargo.toml change
 f5d385fdc69f5c508f079c19763d0e5f9d30f7bd # bpf: scx_cake: Implement BPF-native clock cache
 dd579ec8de24b6f7b23dfc71a3f3f7242a2892b2 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
-5499455ba92f259980720e8469cefe57106e233f # Cargo: update dependencies to latest versions
-67c31871f2e1257e02d861dfa52a551b8f8e73d4 # Cargo: update libbpf to latest versions
+c9906de978d54101c92f7ecb54bdd9823f498696 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
+49abf63aa426e0eee5706e06280aa48740245d0b # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
+a764cfab77a418d30f86e20cb4fb1c2cecbd8a4d # Cargo: update dependencies to latest versions
+f4df1bbb47021691d81980eb86cf668868aa8bf6 # Cargo: update libbpf to latest versions
 815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
 de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
@@ -52,6 +54,20 @@ ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in
 f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
 8c514ee5752902f39cb00a8737dfb3c601e68b53 # Revert "sched: fix scx_timely signed EWMA for BPF"
 f21c66d2da2a69b5ebd4bea9ca0ecd0f169ecc1c # Revert "sched: add scx_timely scheduler"
+1859722de9e5877ee157af041eb9adbe2fb06b65 # scx_flash: Re-modernize scheduler
+7b202bf19ade8588a16692c7ad678297d0c33ef1 # scx_flash: Introduce completely fair scheduling
+ee69e9806ef6a8625dc275c40a18c26a8b5e87b0 # scx_flash: Support cgroup cpu.weight
+8b9cef453d7eab06706433a9943307dfe8c23eb2 # scx_flash: Drop unused nvcsw metric
+1464d5577963da493f2cf2211ee9221801e4d206 # scx_flash: Keep running tasks on the same CPU
+b409884c844da0be0af7741dc087b856c72e22a8 # scx_flash: Ignore sync wakeup
+9fc83dd99ddd712931de07c86433da77073ac451 # scx_flash: Compatibility with kernel < v6.14
+4f8334337b6b97f385bc8810fc3f15cd4323f0bd # scx_flash: Drop unused option --slice-min
+466ab69f0e575ee7ebf68dd115b535d7b61ac615 # scx_flash: Drop --direct-dispatch
+926e3d1826e0341bd8313f907b81e9de4f5a8848 # scx_flash: Adjust default time slice
+d12bdf7265c06145514e2cc08e2b635ce34810dd # scx_flash: Add accumulated runtime to task vtime
+45e468df8e0d88d454b1ed4c15ad7fc53d324c81 # scx_flash: Scale time budget based on wakeup frequency
+ac6b265f2781790ec01a3527221d393b81377587 # scx_flash: Handle sleep/wakeup stressor
+74d949a022e743e1b7b12d5dfa6b5c9e6502cd99 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
 )
 
 _reverts=(
