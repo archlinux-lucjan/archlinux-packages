@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r227.gd9da4ca0
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -67,6 +67,8 @@ b409884c844da0be0af7741dc087b856c72e22a8 # scx_flash: Ignore sync wakeup
 d12bdf7265c06145514e2cc08e2b635ce34810dd # scx_flash: Add accumulated runtime to task vtime
 45e468df8e0d88d454b1ed4c15ad7fc53d324c81 # scx_flash: Scale time budget based on wakeup frequency
 ac6b265f2781790ec01a3527221d393b81377587 # scx_flash: Handle sleep/wakeup stressor
+75fa58807c7182d62975abdaea238e6f18d24aeb # scx_flash: Drop aggressive SMT contention avoidance
+695c9cb8a694b32faa69f02a695ac2902cf8c524 # scx_flash: Drop aggressive primary domain migrations
 74d949a022e743e1b7b12d5dfa6b5c9e6502cd99 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
 )
 
