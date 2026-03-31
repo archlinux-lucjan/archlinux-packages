@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r246.g5dcc57d9
-pkgrel=2
+pkgver=1.1.0.r258.g2ad3f585
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-bf107057127c2de74a2fafe85e908fe86ce7855f # scx_cake: Sync Frontier optimizations onto latest upstream main
-cec434b5f0be22b5397a6339519634a9571cb1cc # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
-2b2b67be3e91b68321fb5cb46e030d4e9520984a # Revert out-of-scope Cargo.toml change
-766cb3989b5664d9e67d9b09096a61bb1a6c904a # bpf: scx_cake: Implement BPF-native clock cache
-0a8672fa2d591377504f77463e2f0f335612c74c # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
-c533fc62c6e487a702fae580e0bac593c9336bcc # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
-241331ce2c04aedb14a6e9bbb754f968a22ba5e3 # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-c4e00c24ebee41f504f3eb3d6de2d2da0325f9fc # Cargo: update dependencies to latest versions
-0635f024ef81ed6735c67a0908e23eb7cde6052e # Cargo: update libbpf to latest versions
+c40b62c1d51eeb62a5c3f303dc3bab9852872f6c # scx_cake: Sync Frontier optimizations onto latest upstream main
+c5a427078d614552aafb29faf71157ee23131811 # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
+5f83f289a713436e5b15c258e448cb39cad8a7d0 # Revert out-of-scope Cargo.toml change
+6c66ca92462ea8a77857f38b0ae0cd4c80daeb27 # bpf: scx_cake: Implement BPF-native clock cache
+d0b9ce18f40a4f65c70448b0a38feb1a5bf46bf9 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
+259b66d3e422d95ee92ae06d44cdcdfc40131916 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
+a43cb739277acd2bd5b7471e3007ca8fe81e5b03 # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
+a0b8a843296a02dd2388cb6a161ad13c520a526b # Cargo: update dependencies to latest versions
+814485bc35d8c1977cc5aea6318fd0c3b38b8c74 # Cargo: update libbpf to latest versions
 815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
 de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
@@ -60,6 +60,7 @@ d751cf346897befb92a8b7853c072cd2c55703be # scx_pandemonium: add veristat baselin
 16f900dd9e593206783c70023acf10454d29041c # scx_flow: report full build version
 fb216d8c5404c28680acf30f941a8666a0558bb2 # scx_flow: use relative LICENSE symlink
 c7f3c23df5945893a8ff9cc477875b5eaecd5cf7 # scx_flow: simplify normal exit logging
+657f8e04979209181c15708226efa2afb3e38610 # scx_flash: Re-introduce SMT contention avoidance
 )
 
 _reverts=(
