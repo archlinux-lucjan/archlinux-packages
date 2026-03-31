@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r258.g2ad3f585
+pkgver=1.1.0.r260.g71607cec
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -60,7 +60,6 @@ d751cf346897befb92a8b7853c072cd2c55703be # scx_pandemonium: add veristat baselin
 16f900dd9e593206783c70023acf10454d29041c # scx_flow: report full build version
 fb216d8c5404c28680acf30f941a8666a0558bb2 # scx_flow: use relative LICENSE symlink
 c7f3c23df5945893a8ff9cc477875b5eaecd5cf7 # scx_flow: simplify normal exit logging
-657f8e04979209181c15708226efa2afb3e38610 # scx_flash: Re-introduce SMT contention avoidance
 )
 
 _reverts=(
