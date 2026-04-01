@@ -1,0 +1,49 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+
+pkgname=rustup-toolchain-install-master-git
+pkgver=1.10.0.r12.g52ee9bd
+pkgrel=1
+pkgdesc="Install a rustc master toolchain usable from rustup"
+arch=('x86_64' 'i686')
+url="https://github.com/sirlucjan/rustup-toolchain-install-master"
+license=('MIT')
+depends=('rustup')
+makedepends=('cargo' 'git')
+options=(!lto)
+provides=('rustup-toolchain-install-master')
+conflicts=('rustup-toolchain-install-master')
+source=($pkgname::git+https://github.com/sirlucjan/rustup-toolchain-install-master)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+
+  local src
+   for src in "${source[@]}"; do
+     src="${src%%::*}"
+     src="${src##*/}"
+     [[ $src = *.patch ]] || continue
+     echo "Applying patch $src..."
+     patch -Np1 < "../$src"
+   done
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd $pkgname
+  export CARGO_TARGET_DIR=target
+  export RUSTUP_TOOLCHAIN=stable
+  cargo build --release --frozen
+}
+
+package() {
+  cd $pkgname
+  install -D -m755 "$srcdir/$pkgname/target/release/rustup-toolchain-install-master" "$pkgdir/usr/bin/rustup-toolchain-install-master"
+}
