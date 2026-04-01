@@ -1,18 +1,18 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=rustup-toolchain-install-master-git
-pkgver=1.10.0.r13.g05b0627
+pkgver=1.12.0.r0.g66444c6
 pkgrel=1
 pkgdesc="Install a rustc master toolchain usable from rustup"
 arch=('x86_64' 'i686')
-url="https://github.com/sirlucjan/rustup-toolchain-install-master"
+url="https://github.com/kennytm/rustup-toolchain-install-master"
 license=('MIT')
 depends=('rustup')
 makedepends=('cargo' 'git')
 options=(!lto)
 provides=('rustup-toolchain-install-master')
 conflicts=('rustup-toolchain-install-master')
-source=($pkgname::git+https://github.com/sirlucjan/rustup-toolchain-install-master)
+source=($pkgname::git+https://github.com/kennytm/rustup-toolchain-install-master)
 sha256sums=('SKIP')
 
 pkgver() {
