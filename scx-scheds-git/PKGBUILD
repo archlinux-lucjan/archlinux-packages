@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r271.gd4dee55a
+pkgver=1.1.0.r274.g7c09a883
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,14 +38,14 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-d092d319866da53eaac2316fce05e552d5867859 # scx_cake: Sync Frontier optimizations onto latest upstream main
-c09c41e5a8dce9838aa536280785e32a3eaf6fea # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
-8ee253cf711e726ae94dd4d25e5954c317d84c5d # Revert out-of-scope Cargo.toml change
-d18971ff3c33fef391752e64ce6074f7b6a09125 # bpf: scx_cake: Implement BPF-native clock cache
-e725dffbbd3c281c20d11957e4f98c1d0520031a # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
-5da2bde152a1cb9a78da17e1f1e92672c332f901 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
-5c63c255d550ea0290913b2c99c12a9ce67d122d # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-e5048a009d7c5e178ce18c934685e8fe9b518c91 # Cargo: update dependencies to latest versions
+4c00f7abec6d07037135051f636874f3d5b5d9a0 # scx_cake: Sync Frontier optimizations onto latest upstream main
+266d406c6623d47f0c61e362e4f07cbc85e01005 # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
+188ca054da358c5c32d196195ae494bc42e85f10 # Revert out-of-scope Cargo.toml change
+6b19641cb3efa396cc451d055138224a310a2df8 # bpf: scx_cake: Implement BPF-native clock cache
+31b3629efcced3622bccb35f480cf020fe4ef656 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
+e9a177b784fa4d83e5bfda9ce5e69be2d82c2f1e # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
+f45ff315f5a177fa916cc5e0465a98f423c4123e # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
+14679e352f59a9ccd52596bba3276c8b55dc0a6b # Cargo: update dependencies to latest versions
 815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
 de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
