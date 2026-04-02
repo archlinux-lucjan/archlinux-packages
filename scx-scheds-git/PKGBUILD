@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r274.g7c09a883
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -45,15 +45,6 @@ _backports=(
 31b3629efcced3622bccb35f480cf020fe4ef656 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
 e9a177b784fa4d83e5bfda9ce5e69be2d82c2f1e # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
 f45ff315f5a177fa916cc5e0465a98f423c4123e # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-14679e352f59a9ccd52596bba3276c8b55dc0a6b # Cargo: update dependencies to latest versions
-815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
-de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in case of re-enqueue
-f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
-74d949a022e743e1b7b12d5dfa6b5c9e6502cd99 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
-90f627861909cf3d0f91f725015a8fd944311ed4 # scx_pandemonium: add veristat baseline, use scx_utils build_id
-d751cf346897befb92a8b7853c072cd2c55703be # scx_pandemonium: add veristat baseline, scx_utils build_id, ops version suffix
 43441f3b6df7a4a1f36266103c11753cf01115a1 # Add scx_flow scheduler
 97e882cf6bc8f68ebac5af7a18b65d359f04853a # scx_flow: suppress generated vmlinux.h warning noise
 d2a2f82c2f771d9619eb715587573a553401049f # scx_flow: report full build version
@@ -68,6 +59,15 @@ a14f6e3d533cc39bea27260ff56ddb4eacd5ded4 # scx_flow: widen v2 latency-lane admis
 f95826a91ae3395dc8e35e65df480f012e854a9b # scx_flow: freeze v2 lane baseline
 d673a9b05fbecce39a2c115a9ec57431dd5772e8 # scx_flow: checkpoint v2 repeat-validated baseline
 ecc211ca0e29f85927c2cde03f2b5a32766b33c0 # scx_flow: polish v2 release and make policy state per-cpu
+b232005ff75eadae5b3cbb382ebea35442bb56b7 # Cargo: update dependencies to latest versions
+815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
+de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in case of re-enqueue
+f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
+74d949a022e743e1b7b12d5dfa6b5c9e6502cd99 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
+90f627861909cf3d0f91f725015a8fd944311ed4 # scx_pandemonium: add veristat baseline, use scx_utils build_id
+d751cf346897befb92a8b7853c072cd2c55703be # scx_pandemonium: add veristat baseline, scx_utils build_id, ops version suffix
 )
 
 _reverts=(
