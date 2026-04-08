@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r301.g46328035
+pkgver=1.1.0.r305.g19d4b348
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -71,7 +71,6 @@ ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in
 f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
 02dfde01d13bdea356c3a60eb1274b63c3f18a46 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
 af4f411117ab9f0b201e0cda741165855987195f # scx_pandemonium: fix verifier bounds for older kernels, restore veristat baseline
-968218570433e3336c9a02fe47a4b927132e0ded # scx_flash: Avoid penalizing per-CPU kthreads
 )
 
 _reverts=(
