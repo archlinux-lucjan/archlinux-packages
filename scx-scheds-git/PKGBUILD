@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r305.g19d4b348
+pkgver=1.1.0.r314.g9504a829
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -45,24 +45,6 @@ d86997666111b03d1e50a529dce9a15522f965f0 # bpf: scx_cake: Implement BPF-native c
 a051aa5724c2b0a1aa14d28bb0c2db6cb74b9dbd # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
 f9d5f34088e9266a942fd9c3c59de8266378fc80 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
 2e919cb536f43c18b1bc62f5ed72358947768b2f # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-d7d59c165fdf859217485bdc8a858290e42cd3aa # Add scx_flow scheduler
-29dd8ff43363b1e0c2a23b434f273a438b161826 # scx_flow: suppress generated vmlinux.h warning noise
-ffbbbe50af896f107a5d587819ba645fa187d992 # scx_flow: report full build version
-7d25856ab0663ab5a8baf7a220f641cd0d2e69f7 # scx_flow: use relative LICENSE symlink
-8d23027851f798312ed29edf2cbc3e235cb16730 # scx_flow: simplify normal exit logging
-dee15a4ff73b576bc6566121b1ab1bf2e870ad90 # scx_flow: add v2 cpu-stability bias groundwork
-28f828d43b7bb5c1b5ce602d9e29284b3406406c # scx_flow: add v2 latency lane and bounded hog containment
-7b868987411705c1b2e0cf72b8bbea1a06113d18 # scx_flow: tighten v2 hog containment thresholds
-3284ef4ec4cd506cf6d57c4aed8c319b6372be87 # scx_flow: widen v2 latency-lane admission
-07769c88f88710058cc8327ee8589becc3c6a0ed # scx_flow: add v2 latency routing diagnostics
-607c62c7bc4829f68f979f3e0a06853f0058c2dd # scx_flow: keep contained hogs off idle local fast path
-f4e448cd6439c0a5891617f15a072f6eb228d703 # scx_flow: freeze v2 lane baseline
-0c4a34700b506a728ad1a10a736ad51673104d9c # scx_flow: checkpoint v2 repeat-validated baseline
-2394f012a25cba13ac086c7df2b782b4fbe1c4b0 # scx_flow: polish v2 release and make policy state per-cpu
-d6d58235354c124b986831447a730806ffb174bd # scx_flow: release v2.0.1 safety baseline
-69cc159544697fbad73806034b7bd8f8dd4ef5bc # scx_flow: release v2.0.2 direct-local baseline
-954ef7a6dd1fa58724721fdd304e5935abcc9375 # scx_flow: release v2.0.3 confidence cleanup and IPC continuity refinement
-7370eac42d85d60b4b17520c2ea49f5ff6e0aeb0 # scx_flow: release v2.1.0 hot-path cleanup and live-gaming polish
 a58711ab1e4fab44aaf8612ec81e9487f4d09a0b # Cargo: update dependencies to latest versions
 815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
 de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
