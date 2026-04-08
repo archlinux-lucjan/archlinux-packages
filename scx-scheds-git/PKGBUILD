@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r274.g7c09a883
-pkgrel=3
+pkgver=1.1.0.r299.g2495e02c
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,36 +38,39 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-4c00f7abec6d07037135051f636874f3d5b5d9a0 # scx_cake: Sync Frontier optimizations onto latest upstream main
-266d406c6623d47f0c61e362e4f07cbc85e01005 # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
-188ca054da358c5c32d196195ae494bc42e85f10 # Revert out-of-scope Cargo.toml change
-6b19641cb3efa396cc451d055138224a310a2df8 # bpf: scx_cake: Implement BPF-native clock cache
-31b3629efcced3622bccb35f480cf020fe4ef656 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
-e9a177b784fa4d83e5bfda9ce5e69be2d82c2f1e # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
-f45ff315f5a177fa916cc5e0465a98f423c4123e # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-43441f3b6df7a4a1f36266103c11753cf01115a1 # Add scx_flow scheduler
-97e882cf6bc8f68ebac5af7a18b65d359f04853a # scx_flow: suppress generated vmlinux.h warning noise
-d2a2f82c2f771d9619eb715587573a553401049f # scx_flow: report full build version
-3a39a60c15f7667bbfd57be118e767f6d7b5d987 # scx_flow: use relative LICENSE symlink
-210ae2e5d5e91705b0ab9d07e49ef6ee68ff430a # scx_flow: simplify normal exit logging
-afaeca8b7c485d3a5b304883efc21ff75d57d12c # scx_flow: add v2 cpu-stability bias groundwork
-d8ca1988f535b4b34ab6962d7a47f055f3cd5ddb # scx_flow: add v2 latency lane and bounded hog containment
-a8d9c1c433d7474ebdd4ce38d4c3ee22a5ae5347 # scx_flow: tighten v2 hog containment thresholds
-a14f6e3d533cc39bea27260ff56ddb4eacd5ded4 # scx_flow: widen v2 latency-lane admission
-171eb69a1fcb4e7ccb64fd1aca6c99c541851f13 # scx_flow: add v2 latency routing diagnostics
-72c1704e3d347eec488ea2c44a4ed05980ed57bc # scx_flow: keep contained hogs off idle local fast path
-f95826a91ae3395dc8e35e65df480f012e854a9b # scx_flow: freeze v2 lane baseline
-d673a9b05fbecce39a2c115a9ec57431dd5772e8 # scx_flow: checkpoint v2 repeat-validated baseline
-ecc211ca0e29f85927c2cde03f2b5a32766b33c0 # scx_flow: polish v2 release and make policy state per-cpu
-b232005ff75eadae5b3cbb382ebea35442bb56b7 # Cargo: update dependencies to latest versions
+24e850f40e5efb400f50125c076f93f27fff7ea5 # scx_cake: Sync Frontier optimizations onto latest upstream main
+980b2bbb95678da6c4a66aedcd792ffa44cddd4b # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
+9a6de77c8d2456ef9842232477df64a8239daf0e # Revert out-of-scope Cargo.toml change
+d86997666111b03d1e50a529dce9a15522f965f0 # bpf: scx_cake: Implement BPF-native clock cache
+a051aa5724c2b0a1aa14d28bb0c2db6cb74b9dbd # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
+f9d5f34088e9266a942fd9c3c59de8266378fc80 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
+2e919cb536f43c18b1bc62f5ed72358947768b2f # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
+d7d59c165fdf859217485bdc8a858290e42cd3aa # Add scx_flow scheduler
+29dd8ff43363b1e0c2a23b434f273a438b161826 # scx_flow: suppress generated vmlinux.h warning noise
+ffbbbe50af896f107a5d587819ba645fa187d992 # scx_flow: report full build version
+7d25856ab0663ab5a8baf7a220f641cd0d2e69f7 # scx_flow: use relative LICENSE symlink
+8d23027851f798312ed29edf2cbc3e235cb16730 # scx_flow: simplify normal exit logging
+dee15a4ff73b576bc6566121b1ab1bf2e870ad90 # scx_flow: add v2 cpu-stability bias groundwork
+28f828d43b7bb5c1b5ce602d9e29284b3406406c # scx_flow: add v2 latency lane and bounded hog containment
+7b868987411705c1b2e0cf72b8bbea1a06113d18 # scx_flow: tighten v2 hog containment thresholds
+3284ef4ec4cd506cf6d57c4aed8c319b6372be87 # scx_flow: widen v2 latency-lane admission
+07769c88f88710058cc8327ee8589becc3c6a0ed # scx_flow: add v2 latency routing diagnostics
+607c62c7bc4829f68f979f3e0a06853f0058c2dd # scx_flow: keep contained hogs off idle local fast path
+f4e448cd6439c0a5891617f15a072f6eb228d703 # scx_flow: freeze v2 lane baseline
+0c4a34700b506a728ad1a10a736ad51673104d9c # scx_flow: checkpoint v2 repeat-validated baseline
+2394f012a25cba13ac086c7df2b782b4fbe1c4b0 # scx_flow: polish v2 release and make policy state per-cpu
+d6d58235354c124b986831447a730806ffb174bd # scx_flow: release v2.0.1 safety baseline
+69cc159544697fbad73806034b7bd8f8dd4ef5bc # scx_flow: release v2.0.2 direct-local baseline
+954ef7a6dd1fa58724721fdd304e5935abcc9375 # scx_flow: release v2.0.3 confidence cleanup and IPC continuity refinement
+7370eac42d85d60b4b17520c2ea49f5ff6e0aeb0 # scx_flow: release v2.1.0 hot-path cleanup and live-gaming polish
+a58711ab1e4fab44aaf8612ec81e9487f4d09a0b # Cargo: update dependencies to latest versions
 815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
 de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
 ffee15eba9e18c6bf1df2045616e8abb26844ad1 # scx_maestro: Don't update deadline in case of re-enqueue
 f3a448c95edf8454a95c5fd59f9374cf368f3ad6 # scx_maestro: Introduce completely fair scheduling
-74d949a022e743e1b7b12d5dfa6b5c9e6502cd99 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
-90f627861909cf3d0f91f725015a8fd944311ed4 # scx_pandemonium: add veristat baseline, use scx_utils build_id
-d751cf346897befb92a8b7853c072cd2c55703be # scx_pandemonium: add veristat baseline, scx_utils build_id, ops version suffix
+02dfde01d13bdea356c3a60eb1274b63c3f18a46 # scx_pandemonium: add PANDEMONIUM scheduler v5.6.0
+af4f411117ab9f0b201e0cda741165855987195f # scx_pandemonium: fix verifier bounds for older kernels, restore veristat baseline
 )
 
 _reverts=(
