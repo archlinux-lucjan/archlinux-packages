@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r314.g9504a829
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -45,7 +45,7 @@ d86997666111b03d1e50a529dce9a15522f965f0 # bpf: scx_cake: Implement BPF-native c
 a051aa5724c2b0a1aa14d28bb0c2db6cb74b9dbd # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
 f9d5f34088e9266a942fd9c3c59de8266378fc80 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
 2e919cb536f43c18b1bc62f5ed72358947768b2f # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-a58711ab1e4fab44aaf8612ec81e9487f4d09a0b # Cargo: update dependencies to latest versions
+cbd4bb2b61770e7bd4bb015b663254dc326eae27 # Cargo: update dependencies to latest versions
 815d24f5de68884f24a05c33c77013ba8143dfdb # scheds: Introduce scx_maestro
 de58110ae07cad46c3d3117e490d15afcb69be86 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
 58715960a91e0704d24ebb92ef7ddbbc9d42257a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
