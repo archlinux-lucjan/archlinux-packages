@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r320.g14dda766
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -47,12 +47,13 @@ f4bef492b5107a0ef3ad03f8cca3f9e8a3bbe07c # ALPHADEV Phase 16: EEVDF vtime correc
 d0ef8dac5b2b2338266342020f3cefef48eccf62 # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
 ad6f8258de5d46f2a408d4499c01624e31a82ba5 # scx_pandemonium: update to v5.6.0
 09dfe026c91af0459e286b57962f17340b95506d # scx_pandemonium: fix verifier bounds for older kernels, restore veristat baseline
-9b741d3dab4b1bcb526c90d1b6e4838b3b7dc5ac # scheds: Introduce scx_maestro
-1ebc7c0a0cd86a668695d269d89da9025ed25eae # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-5e3a718d4409a42162aadc09796d41986e9a4596 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-0a4bec0a5e6a1f79f4a27acb6aa8be1546b7bfd8 # scx_maestro: Don't update deadline in case of re-enqueue
-4d8148629b9751686c213cb3c38b1e2f0d891ae9 # scx_maestro: Introduce completely fair scheduling
-f7642fe0d24447c21f10dcdecac17901ad893644 # Cargo: update libbpf to latest versions
+81f2fc543155df09f601289ff12b90d803b9a64b # scheds/experimental: add scx_flow v2.2.0 scheduler
+d170e3b4532855de047fc49ed08048602421c74a # scheds: Introduce scx_maestro
+5567d94b02897a82b48bcca1c2377d59d18c5977 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+1944b89dbfedc6141f49bc2b0251600bb9c0f385 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+3221e76e9a65e808e9e8046cf18870e24a9ef5b6 # scx_maestro: Don't update deadline in case of re-enqueue
+8ff40fbca303be837353ce8791eb1a4b3ce3f21f # scx_maestro: Introduce completely fair scheduling
+b09c1f9091ee6b9ad734e5440855d98b61643595 # Cargo: update libbpf to latest versions
 )
 
 _reverts=(
