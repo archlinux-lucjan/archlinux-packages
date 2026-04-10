@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r336.ge3c87b1b
+pkgver=1.1.0.r338.g37bf708c
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,23 +38,23 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-ced099d92c1d1aa88d2cebd0c521decfbb309231 # scx_cake: Sync Frontier optimizations onto latest upstream main
-dec98c1f99f4a4da9acf3f834cdf0eb66491f420 # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
-a9e7c481271b5fa0dfee54202c76f86e5be01dca # Revert out-of-scope Cargo.toml change
-ab820c0235f13096b9825be8c6227fac02a2459f # bpf: scx_cake: Implement BPF-native clock cache
-90dec3163199f6cc7293a167a411e4e394dec5e9 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
-1543acc52b21fdc32b42faee180c5a5847f951e7 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
-f0588df0417e65d12cf71d3f6207b1be6cce8a29 # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-57df47ae586600002fb697844ff1ad0302caf83c # scx_cake: ALPHADEV Phase 4 & Phase 9 Architectural Flattening
-11dccdd47eba79b0edc1190bd63ca4019bdf445f # scx_pandemonium: update to v5.6.0
-47b1aa7e29a9fce8a712a3edf9f9c32b845ce154 # scx_pandemonium: fix verifier bounds for older kernels, restore veristat baseline
-74659da73df17ffe00353249432d5d6f69e8888b # scheds/experimental: add scx_flow v2.2.0 scheduler
-39fbdd9a99d45bbf481ffd795c436729cb515de8 # scheds: Introduce scx_maestro
-d7d4b649f988d3537f4b769c2ba8e0c115a254a8 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-8a656965114d79c6261de01aeb0a902bfc7cc6a2 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-15e40d79400957487db0399eec3250513f18a67e # scx_maestro: Don't update deadline in case of re-enqueue
-02de897875c20633a28a8b240aa52f4137885f4f # scx_maestro: Introduce completely fair scheduling
-6efe81a9b7149fe522ed6880f152244238b7dd04 # Cargo: update libbpf to latest versions
+f5b14d8dc773f698fc2565ab5e73b293d99ca4a9 # scx_cake: Sync Frontier optimizations onto latest upstream main
+3b0c7df89e299b141a6f0d49012c2d20a33d9e44 # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
+fa105bc482a643d3b70802da9814dd798275a420 # Revert out-of-scope Cargo.toml change
+cdcd97ad5af3c9fa77a952c2f08b5a9c9b0db2fc # bpf: scx_cake: Implement BPF-native clock cache
+0fd9eb090f9abffe2135cff8f7719f41cb8f49d5 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
+9aa458d62f04c3d314606e1dab85a2b00342235a # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
+f8ac5261ae1f61fc5c908214f05824b53b8e028a # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
+9c85c6efca0fedb8a4fbf898a698ba4424c0aa74 # scx_cake: ALPHADEV Phase 4 & Phase 9 Architectural Flattening
+fde6e4645e5453d65e92016a1bd0e880f2aedb91 # scx_pandemonium: update to v5.6.0
+97c21238a9887fb2ccb1cddef895d7fa6ae25db0 # scx_pandemonium: fix verifier bounds for older kernels, restore veristat baseline
+16220b9227caa0f91975f4d699210082622da507 # scheds/experimental: add scx_flow v2.2.0 scheduler
+9eec22fc9099a3ee1cd2496389ec9193a3843007 # scheds: Introduce scx_maestro
+c0cc2c71e94c42ea02a4f92e4308979aa0458435 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+39851c4cbca677939bf3bfd6d37f0c3d924bb477 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+1e0ba0d0e04eb401a5df8f10305621bd86e51b04 # scx_maestro: Don't update deadline in case of re-enqueue
+737b2c1cad1d05e7263b9cb32ad1dfbfda7fcd5d # scx_maestro: Introduce completely fair scheduling
+7550799479548117fd58fdaf0735b17b6edc6798 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
