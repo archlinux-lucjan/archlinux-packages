@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r340.g36cadac5
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -57,8 +57,9 @@ e706290726d2cf3eee59f9f48e706c357394c5a4 # scx_maestro: Allow to enable/disable 
 65d45cb65bc8312f491d5fa4bb2706d722202372 # scx_maestro: Don't update deadline in case of re-enqueue
 c022938a875ce423761124edf85a74d52d909cf0 # scx_maestro: Introduce completely fair scheduling
 76f3c8aefb59ea2b62bf48f510065dfe5b0db878 # scx_maestro: Make enqueue + CPU kick more reliable
-3b4f5b26c3e79127bbce1a6bf4fa692f5bde47fb # scx_maestro: add --completions flag for shell completion generation
-4b497d51a09a15f2772a0d9cc419380552945fc5 # Cargo: update dependencies to latest versions
+40994f497689b2c7fe294dde11d18e014d128ac8 # Cargo: fix formatting
+afdea7736daf781abe612f6555f7c006dc04fee2 # scx_maestro: add --completions flag for shell completion generation
+87e2898100be4a88b3ce6649802483547eb203db # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
