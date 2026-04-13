@@ -3,13 +3,13 @@
 
 pkgname='clean-chroot-manager-git'
 _pkgname='clean-chroot-manager'
-pkgver=2.239.3.g93fe176
+pkgver=3.01.0.g1fb8e90
 pkgrel=1
 pkgdesc='Wrapper scripts for managing clean chroots.'
 arch=('any')
 url='https://github.com/graysky2/clean-chroot-manager'
 license=('MIT')
-depends=('devtools>=1:1.0.0-1' 'rsync' 'libarchive>=3.3.3' 'pacman>=6.0.2-7')
+depends=(devtools rsync libarchive pacman bc)
 makedepends=('git')
 conflicts=('clean-chroot-manager')
 replaces=('clean-chroot-manager')
