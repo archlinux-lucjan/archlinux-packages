@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r340.g36cadac5
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -46,20 +46,25 @@ a5edc5ca748f7d9ffb43e2a2db9ea10088eba8ba # ALPHADEV Phase 16: EEVDF vtime correc
 8aaad6bbb117d089d6f8c62feed37d4bae7cfde0 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
 0cf87bcae63ff3f2e68208d004f02e629578e1b0 # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
 6817b34458ebbc9f8726949fbefc65aba72a1421 # scx_cake: ALPHADEV Phase 4 & Phase 9 Architectural Flattening
-ccdda1cbcfedcd813f0dc40f5c31853eb4433233 # scx_pandemonium: update to v5.6.0
-3dc242b140e8d338a709398f2e8e112ade825013 # scx_pandemonium: fix verifier bounds for older kernels, restore veristat baseline
-bfbe74a66ecab2a75779615db1a4b4e28678fc8b # scx_pandemonium: fix interactive starvation rescue, verifier bounds
-36047fa774496df4a8ea4f07a3dc94626733ca2f # scheds/experimental: add scx_flow v2.2.0 scheduler
-318aec1355cfccbfbfb004a830cb27f85a40621f # fix: update Cargo.lock for scx_flow v2.2.0
-d3365a38cef39c0a905267572ee9a8e86f82075b # scheds: Introduce scx_maestro
-1c6b57a7a2fcbb9b7b5313db75be31db313efe50 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-e706290726d2cf3eee59f9f48e706c357394c5a4 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-65d45cb65bc8312f491d5fa4bb2706d722202372 # scx_maestro: Don't update deadline in case of re-enqueue
-c022938a875ce423761124edf85a74d52d909cf0 # scx_maestro: Introduce completely fair scheduling
-76f3c8aefb59ea2b62bf48f510065dfe5b0db878 # scx_maestro: Make enqueue + CPU kick more reliable
-40994f497689b2c7fe294dde11d18e014d128ac8 # Cargo: fix formatting
-afdea7736daf781abe612f6555f7c006dc04fee2 # scx_maestro: add --completions flag for shell completion generation
-87e2898100be4a88b3ce6649802483547eb203db # Cargo: update dependencies to latest versions
+dd6332da2aba560be4e2b1a2a2ff0426986445da # Additive Fairness Model & Holistic Efficiency Overhaul
+cb72b5f9c56ca789e841d04c64b96e4a7af1701c # chore: replace memory init division with explicit bitshift
+5274dbe1f860f8e637f39a20ce4f1f3b2e3ff3cc # chore: Update .gitignore for telemetry logs and streamline scheduler build
+efb591b5a8ed77d393545e2d37d508192000cc5a # chore: exclude .codex from tracking
+d5f15913d9e662e0040b525db63023f7975cf3fe # chore: exclude perf.data from tracking
+5d2759221174d3857270d7198799239633cd1c63 # scx_pandemonium: update to v5.6.0
+34172c0c3e123eb5c9cdfa0eb2937f3172d7594a # scx_pandemonium: fix verifier bounds for older kernels, restore veristat baseline
+9aa82f903aeb143a741c600d14d8c7dacb1766cf # scx_pandemonium: fix interactive starvation rescue, verifier bounds
+0169fa13277c316cbc54964327f35a7d2df5dac2 # scheds/experimental: add scx_flow v2.2.0 scheduler
+6e7d6810fcba180d625a6019ff6772251e1c2541 # fix: update Cargo.lock for scx_flow v2.2.0
+395c02e153155e2287634d8ca87fa500c52f9328 # scheds: Introduce scx_maestro
+857d990f7a31db72fdb816980536cb70cb7593de # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+a23b66eac716f69662195b140c34abe4d9cf27ce # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+8f7310d10abbd29969b5ff5f965b200260770040 # scx_maestro: Don't update deadline in case of re-enqueue
+ca54c84325511353604ab71950a1bad50393e11d # scx_maestro: Introduce completely fair scheduling
+bd636ff54841cc6d6372653f86e4451007eccb50 # scx_maestro: Make enqueue + CPU kick more reliable
+f3e94640f4e4a5363a00006b49b98b6f8b5a5019 # Cargo: fix formatting
+9165fabe2d0f742457b801334d0126c8ffe26bae # scx_maestro: add --completions flag for shell completion generation
+e70d1916deb58aaf57418f14415e5f1f0240832e # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
