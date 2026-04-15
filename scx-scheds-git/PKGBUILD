@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r342.g28ecba74
+pkgver=1.1.0.r349.g8e1cc4bd
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,33 +38,28 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-bbee38874eb827ab43c8fa04308a31f9725fb6ca # scx_cake: Sync Frontier optimizations onto latest upstream main
-30d5d043da2f51646da3e785759137404704c50b # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
-01d34210e6fb7048d8c572e2ccea4bc9546aef31 # Revert out-of-scope Cargo.toml change
-70e7a6486382eb35105483631fefc90d43dd29c3 # bpf: scx_cake: Implement BPF-native clock cache
-b8c7f280fef0d52a1749391303aa74db008ffb52 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
-73329ed20695c0e37f3713d05ebe34beba5245c1 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
-95b329fade266d341e9c7ba2358d6d99664c8ec9 # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-c904935c584cdc12a8d9c6e0088d7be3b9be3613 # scx_cake: ALPHADEV Phase 4 & Phase 9 Architectural Flattening
-821d5dbbd73a16233df024a49f7930df46b93216 # Additive Fairness Model & Holistic Efficiency Overhaul
-7dea28a7c43f2e9f01d0e657f55a481c8b1b330e # chore: replace memory init division with explicit bitshift
-076bd975bf61fa7feab76f75f5c2ae5752675bb9 # chore: Update .gitignore for telemetry logs and streamline scheduler build
-89540ebe45cc8512f67350eb1d2304dd1c251aa1 # chore: exclude .codex from tracking
-c76ceb97b4a8bccd129bc99d770a6732e87d1bb4 # chore: exclude perf.data from tracking
-9a1cd3e0fa2dbeb5745f18de8e939b28422d3268 # scx_pandemonium: update to v5.6.0
-53efb5e0928d3de559c49e00a09b92882af3348c # scx_pandemonium: fix verifier bounds for older kernels, restore veristat baseline
-7e4c39d01d5ff1aad805dfbebb19a309e183db3d # scx_pandemonium: fix interactive starvation rescue, verifier bounds
-daa787a78f98bc8f9dae5c4b9e033a2c55beb9b9 # scheds/experimental: add scx_flow v2.2.0 scheduler
-99b457da476aa90b8485092570f9fff6084e57a1 # fix: update Cargo.lock for scx_flow v2.2.0
-4cf97fd6bf38d781250dad311a59a8fcfc566fae # scheds: Introduce scx_maestro
-23fa9abe18c679a748c9e68a73930880975b0bb9 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-9a4ba063e3ac757c8fdda39dfda9e65ad0cc5539 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-57b67c83e5597883ddb562d7251805e9f94496be # scx_maestro: Don't update deadline in case of re-enqueue
-b00d7b7596c5b7e41da9b667559ebf8fc11ab81f # scx_maestro: Introduce completely fair scheduling
-c078ed285812b919c503bebffb9b62665a923514 # scx_maestro: Make enqueue + CPU kick more reliable
-58489674cc4d8e7bf4befe05d36d8ad0ed34da79 # Cargo: fix formatting
-31974980f3a2cb6b26650145a80ca047dcd49077 # scx_maestro: add --completions flag for shell completion generation
-8baec8b05b7990e71b84bdefe3cd0cc67c24354a # Cargo: update dependencies to latest versions
+e258bfb2dc9518e1cffcd7e87d8c5daa2fe7d943 # scx_cake: Sync Frontier optimizations onto latest upstream main
+b3b2344c82a8062e201c2bc1537764d52be83e33 # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
+c440efe1c36d1bb5be66e391e091b0b0eb3b4c72 # Revert out-of-scope Cargo.toml change
+35ad0cb8faeaea1fb7c6c67d9c22162881013408 # bpf: scx_cake: Implement BPF-native clock cache
+b51774f62e940ffadbeef7b03bb9a91b429c0f45 # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
+1a809924419b3304232a006b89f535ae7c0971d0 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
+bcc780efd03a5497adace6c438eb5674900027a1 # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
+41b00382b0f31b780ea686876acd104795a9e6eb # scx_cake: ALPHADEV Phase 4 & Phase 9 Architectural Flattening
+dab79c37697dd62a1c9efe4f9b2a3fbb020c0c33 # Additive Fairness Model & Holistic Efficiency Overhaul
+201276db8f6342717cddaa5ee978536adf70a9ab # chore: replace memory init division with explicit bitshift
+8c7a7f18e156cd082d56688ee109aa3f4456d679 # chore: Update .gitignore for telemetry logs and streamline scheduler build
+eacc57e28ec6fb6c5442e4eafff4fef23b203118 # chore: exclude .codex from tracking
+6af151f19b3eefaa95c2716ab568c9b7580fe73b # chore: exclude perf.data from tracking
+0e5a008a67fd6c2ac29141af4b0a313b6e71b208 # scheds: Introduce scx_maestro
+a87f86a95a8fad70aa04d0055b3aa14e538b15f9 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+a91e365e0e1e5323befa7943015dbb2523bcdffd # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+bcc78c37884393a0444ef274d1e50fe924b2ddbd # scx_maestro: Don't update deadline in case of re-enqueue
+16d5a656fe4bb386ac0d3f4f7669011a28725f46 # scx_maestro: Introduce completely fair scheduling
+4e161d87fcdf59bee947420814440f99b5c24fe3 # scx_maestro: Make enqueue + CPU kick more reliable
+2264c69944f8a641d2e817257396df46cf267bd9 # Cargo: fix formatting
+ac6087deca3fc9c42a856b6a2c97bc819aed1a83 # scx_maestro: add --completions flag for shell completion generation
+3f052feb98f0d0583391b2ef81f628abbd862ca9 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
