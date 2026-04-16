@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r349.g8e1cc4bd
-pkgrel=1
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -51,15 +51,17 @@ dab79c37697dd62a1c9efe4f9b2a3fbb020c0c33 # Additive Fairness Model & Holistic Ef
 8c7a7f18e156cd082d56688ee109aa3f4456d679 # chore: Update .gitignore for telemetry logs and streamline scheduler build
 eacc57e28ec6fb6c5442e4eafff4fef23b203118 # chore: exclude .codex from tracking
 6af151f19b3eefaa95c2716ab568c9b7580fe73b # chore: exclude perf.data from tracking
-0e5a008a67fd6c2ac29141af4b0a313b6e71b208 # scheds: Introduce scx_maestro
-a87f86a95a8fad70aa04d0055b3aa14e538b15f9 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-a91e365e0e1e5323befa7943015dbb2523bcdffd # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-bcc78c37884393a0444ef274d1e50fe924b2ddbd # scx_maestro: Don't update deadline in case of re-enqueue
-16d5a656fe4bb386ac0d3f4f7669011a28725f46 # scx_maestro: Introduce completely fair scheduling
-4e161d87fcdf59bee947420814440f99b5c24fe3 # scx_maestro: Make enqueue + CPU kick more reliable
-2264c69944f8a641d2e817257396df46cf267bd9 # Cargo: fix formatting
-ac6087deca3fc9c42a856b6a2c97bc819aed1a83 # scx_maestro: add --completions flag for shell completion generation
-3f052feb98f0d0583391b2ef81f628abbd862ca9 # Cargo: update dependencies to latest versions
+e1e2d8e13c9b70d3437fe7c770b574c2dff93b43 # scx_cake: prepare 1.1.1 nightly
+a2739295ae427fc7698e44d1ae184d5025f85510 # scx_cake: implement deadline-gated wakeup preemption and update documentation
+1f5630a924ff0b7cf7d62d46dc23eb2b56998b36 # scheds: Introduce scx_maestro
+0a775bed89dfd38baf9ae645d1beb5998054db57 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+1b4e4462eee83424b77c44167c9aa121b20a9d04 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+55a1177e77b9cdb76bc281e289af30a676a04202 # scx_maestro: Don't update deadline in case of re-enqueue
+188c48b4ad392a9b0cd3fe9117d827c47b9907c3 # scx_maestro: Introduce completely fair scheduling
+446caa69875a0f5b1f12ba4dabf84889d963c093 # scx_maestro: Make enqueue + CPU kick more reliable
+9aeee6a9a762af4c5b31f08646c3b202b936103f # Cargo: fix formatting
+35064dc18fce85fcc2fadbf25d816f3cae15be72 # scx_maestro: add --completions flag for shell completion generation
+5d502de9f293d0b048ba41c236db684a747fb436 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
