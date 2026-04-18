@@ -68,8 +68,6 @@
 ├── fetchmirrors-git
 │   └── PKGBUILD
 ├── Files
-├── freebsd-manpages
-│   └── PKGBUILD
 ├── git-delta-git
 │   └── PKGBUILD
 ├── git-dev-git
@@ -231,4 +229,4 @@
 └── zstd-git
     └── PKGBUILD
 
-80 directories, 152 files
+79 directories, 151 files
