@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r357.gd639b45a
-pkgrel=4
+pkgver=1.1.0.r361.g1cec329f
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,16 +38,16 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-01a82b930f378014bcf8292bd05077c8dd69f122 # scheds: Introduce scx_maestro
-552982d53ceae0c0b94214d120e692b84f86a3a3 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-15c5c2023d5f13f5200f82c04cdd19ab3383ca3e # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-2f7d9bba9a4a70bda6c048d2823d311a89c44f1f # scx_maestro: Don't update deadline in case of re-enqueue
-9065d0cb8a5fd61fa3b01740296a91da679a0301 # scx_maestro: Introduce completely fair scheduling
-520f71e0b12055aac6c7463b16d702c4cdbad210 # scx_maestro: Make enqueue + CPU kick more reliable
-653d75ddd3ebd2eb2262b28ba9c6b7e0b7b8011f # Cargo: fix formatting
-73fcc7c2b48171a2a1342c51e25f1a28f2b3f6a6 # scx_maestro: add --completions flag for shell completion generation
-62fe27dc4116c2b4866dc4bd85f73a50836c3981 # scheds: add --completions flag for shell completion generation
-0bd8f25e89f53c1b84cfe958bef4943a661ebf6c # Cargo: update dependencies to latest versions
+c96fc2605f5c730d2a8d794bdbe7c23dd08f812b # scheds: Introduce scx_maestro
+addbfe772f5b0738b0211d2b2b0085a4115875bd # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+f983255d2b3862af1bcfe6a9305a025c09d5d10f # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+04dcaab053ff08124c44d64ada428ce08846c2dc # scx_maestro: Don't update deadline in case of re-enqueue
+851866dd11fb4579a5cc1c5fba6f21a172fc0a67 # scx_maestro: Introduce completely fair scheduling
+a5c62e01cd47357f5fe08e87c0ff2a0bb5f8fbda # scx_maestro: Make enqueue + CPU kick more reliable
+bda3d947e68d814fade2bdd84286c453fc9c0449 # Cargo: fix formatting
+d7ef0c8811d5a03ae57fa1564da8fdd6dafd9f9c # scx_maestro: add --completions flag for shell completion generation
+1e8865926a8c5c2e5064198ca9a956ab18dae9f8 # scheds: add --completions flag for shell completion generation
+3698412842113e506e38f120a47ef096bb07ef44 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
