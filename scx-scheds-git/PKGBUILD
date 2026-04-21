@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r361.g1cec329f
-pkgrel=4
+pkgver=1.1.0.r363.g4a295f3c
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,17 +38,17 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-c32be274ff7c320c1561efc80a4ec4e29f40d76d # scheds: add --completions flag for shell completion generation
-a59b1fd1561467c3ee5c7bbcf88cd48d2594b49b # scheds: Introduce scx_maestro
-c43c44d5f335871736a54237bdbe3f209f0a8e5e # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-5e8e4acf0180a5079608a4250ddf8dc7b6123f80 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-8c43e90a900fc80bd106c80620c7bed8f1cd2bd3 # scx_maestro: Don't update deadline in case of re-enqueue
-95e9eb55eabd3d6ab08773a732740a111d621900 # scx_maestro: Introduce completely fair scheduling
-e470b877f70d2ec6a0e1d628566ec34126b3dfbf # scx_maestro: Make enqueue + CPU kick more reliable
-72058a3c6a5b5b7d19655f0d4a3fbe6db601284a # scx_flash: Use SCX_DSQ_LOCAL to direct dispatch per-CPU tasks
-9ac8c37288d420e0fba5392896be5efe76463a1b # Cargo: fix formatting
-6f3c5bd8ce17420e3900a2463a9efff232960797 # scx_maestro: add --completions flag for shell completion generation
-c552d26b2a4973ae44e285d1daa46118bde7c4b1 # Cargo: update dependencies to latest versions
+be1fed135f4425953033d4fe5c71db758a12ab26 # scheds: add --completions flag for shell completion generation
+554cc1f69097f048df98ba5e427e36e4ea36bbc5 # scheds: Introduce scx_maestro
+5364e901dbdbab0e57ec5fc377b5cadc2ebe86ad # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+2505455de355b5598297c83bc5b2b517f3c2503c # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+820b7728815deae20f0c31b2e6d82c452558f228 # scx_maestro: Don't update deadline in case of re-enqueue
+6f8cd43d947214f45a4d477f0ae0aa352f4ead51 # scx_maestro: Introduce completely fair scheduling
+3eed85103b974f3c8a1b5226d8155e2d5fc28650 # scx_maestro: Make enqueue + CPU kick more reliable
+cc0a98ed258137034da96f303cae82a1544493f4 # scx_flash: Use SCX_DSQ_LOCAL to direct dispatch per-CPU tasks
+f2441a16a58cf676ec1d7bad99a98092e92501a1 # Cargo: fix formatting
+28e8a0f2a46d26600e23fe63c51c91a85625a077 # scx_maestro: add --completions flag for shell completion generation
+cae035cd972efd5775b13238f65d788236364821 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
