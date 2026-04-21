@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r361.g1cec329f
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -48,7 +48,7 @@ b85f6d331d8fe3da65743c8558961706d2da2784 # scx_maestro: Introduce completely fai
 0162720211823a9c831b1058aadb11e21370bc1b # Cargo: fix formatting
 f5f2ef76660a92e6abf9c619c0ecb7327cce81e6 # scx_maestro: add --completions flag for shell completion generation
 f19ed6d41ee3903f68e575fd3af7cc48dbe998c2 # scheds: add --completions flag for shell completion generation
-9b44fe43816f66bfb054eeb3266b03a0475a5724 # Cargo: update dependencies to latest versions
+818338ec2401bddf0f448d184493041435d3566b # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
