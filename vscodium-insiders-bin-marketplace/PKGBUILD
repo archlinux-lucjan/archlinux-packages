@@ -1,0 +1,26 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: SlamZDank <slamndank2 at topG(gmail) dot com>
+# Contributor: Carson Rueter <roachh at proton mail dot com>
+# Contributor: Icelk <main at icelk.dev>
+# Contributor: Marcus Behrendt <marcus dot behrendt dot 86 at bigbrother(gmail) dot com>
+# Original Maintainer: dr460nf1r3 <root at dr460nf1r3 dot org>
+
+pkgname=vscodium-insiders-bin-marketplace
+pkgver=1.73.9
+pkgrel=1
+pkgdesc='Enable VsCode marketplace in vscodium-insiders-bin.'
+arch=('any')
+url='https://marketplace.visualstudio.com/vscode'
+license=('unknown')
+install="${pkgname}.install"
+source=('vscodium-insiders-bin-marketplace.hook'
+        'patch.py')
+sha512sums=('52bf94c79b164c48df3f2a47a27a6600ac19fcad6b5699f30feb727747c8ab7578838e9a4d92da3b24976f8c27a1f43ca5a5976063b6c33fd4e77d1bdfeb880c'
+            'efb3a28fd7a438591bc5f14fde921f786033dbf68405ff4daeae58058c8d876ab0450b32bc3a4cd8ecc22a5307cd18b2c7f9879066588c107a0d172f22148752')
+package() {
+  depends=('vscodium-insiders-bin' 'python')
+
+  install -Dm 644 "${srcdir}"/vscodium-insiders-bin-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/vscodium-insiders-bin-marketplace.hook
+  install -Dm 755 "${srcdir}"/patch.py "${pkgdir}"/opt/vscodium-insiders-bin/resources/app/patch.py
+}
+
