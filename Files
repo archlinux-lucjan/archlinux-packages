@@ -10,6 +10,7 @@
 ├── betterbird-bin
 │   ├── eu.betterbird.Betterbird.desktop
 │   ├── PKGBUILD
+│   ├── scx-scheds-git-1.1.0.r361.g1cec329f-3.src.tar.gz
 │   └── vendor-prefs.js
 ├── cachy-chroot-git
 │   └── PKGBUILD
@@ -208,6 +209,13 @@
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
+├── vscodium-insiders-bin
+│   ├── LICENSE
+│   ├── PKGBUILD
+│   ├── vscodium-insiders-bin.desktop
+│   ├── vscodium-insiders-bin.install
+│   ├── vscodium-insiders-bin.sh
+│   └── vscodium-insiders-bin-url-handler.desktop
 ├── zlib-ng-git
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
@@ -229,4 +237,4 @@
 └── zstd-git
     └── PKGBUILD
 
-79 directories, 151 files
+80 directories, 158 files
