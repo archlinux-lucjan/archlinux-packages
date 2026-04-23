@@ -1,0 +1,91 @@
+# Maintainer: Baptiste Augrain <daiyam@zokugun.org>.
+# Inspired from the PKGBUILD for vscodium.
+
+pkgname=vscodium-insiders-bin
+_pkgname=VSCodium
+pkgver=1.116.02706
+pkgrel=1
+pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (binary release)"
+arch=('x86_64' 'aarch64')
+url='https://github.com/VSCodium/vscodium.git'
+license=('MIT')
+
+depends=(
+    'fontconfig'
+    'libxtst'
+    'gtk3'
+    'python'
+    'cairo'
+    'alsa-lib'
+    'nss'
+    'gcc-libs'
+    'libnotify'
+    'libxss'
+    'glibc>=2.28-4'
+    'bash'
+    'libxkbfile'
+)
+optdepends=(
+    'gvfs: For move to trash functionality'
+    'libdbusmenu-glib: For KDE global menu'
+)
+options=('!emptydirs' '!strip' '!debug')
+provides=('codium-insiders')
+conflicts=(
+    'vscodium-insiders'
+    'vscodium-insiders-git'
+)
+
+source=(
+    "${pkgname}.desktop"
+    "${pkgname}-uri-handler.desktop"
+)
+source_x86_64=(
+    "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-linux-x64-${pkgver}-insider.tar.gz"
+)
+source_aarch64=(
+    "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-linux-arm64-${pkgver}-insider.tar.gz"
+)
+
+sha256sums=('04f365c0086594ad11cc3cc0b6b8e0f1dfdb63134845eb02433811d8ef21bc9f'
+            '21677ad972b2a2d3d6c8dab7c14877798d91f73957179ac19468625d658de129')
+sha256sums_x86_64=('87ebd14cdd164db40a453607e9a60c51907e0cf8ee459dbf90d87bdb7fe055de')
+sha256sums_aarch64=('946d3aa0110534b010dcc0a69543cfd2b760711fa2bfc49486d29def99f3e8d7')
+
+shopt -s extglob
+
+package() {
+    install -d -m755 "${pkgdir}/opt/${pkgname}"
+    install -d -m755 "${pkgdir}/usr/bin"
+    install -d -m755 "${pkgdir}/usr/share/"{applications,pixmaps}
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    cp -r * "${pkgdir}/opt/${pkgname}"
+
+    # remove source file links if any
+    find "${pkgdir}/opt/${pkgname}" -maxdepth 1 -type l -delete
+
+    cp -r "${srcdir}/resources/app/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    ln -s "/opt/${pkgname}/bin/codium-insiders" \
+        "${pkgdir}/usr/bin/codium-insiders"
+
+    install -D -m644 "${pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -D -m644 "${pkgname}-uri-handler.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname}-uri-handler.desktop"
+    install -D -m644 "${srcdir}/resources/app/resources/linux/code.png" \
+        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+    install -Dm4755 "${srcdir}/chrome-sandbox" \
+        "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+
+    # Symlink shell completions
+    install -d -m755 "${pkgdir}/usr/share/zsh/site-functions"
+    install -d -m755 "${pkgdir}/usr/share/bash-completion/completions"
+    ln -s "/opt/${pkgname}/resources/completions/zsh/_codium-insiders" \
+        "${pkgdir}/usr/share/zsh/site-functions/_codium-insiders"
+    ln -s "/opt/${pkgname}/resources/completions/bash/codium-insiders" \
+        "${pkgdir}/usr/share/bash-completion/completions/codium-insiders"
+}
