@@ -4,7 +4,7 @@ XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 # Allow users to override command-line options
 if [[ -f $XDG_CONFIG_HOME/codium-insiders-flags.conf ]]; then
-    readarray lines <"$XDG_CONFIG_HOME/codium-flags.conf"
+    readarray lines <"$XDG_CONFIG_HOME/codium-insiders-flags.conf"
     for line in "${lines[@]}"; do
         if ! [[ "$line" =~ ^[[:space:]]*# ]]; then
            CODE_USER_FLAGS+=($line)
