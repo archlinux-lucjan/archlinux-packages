@@ -8,8 +8,8 @@
 
 pkgname=vscodium-insiders-bin
 _pkgname=VSCodium
-pkgver=1.116.02706
-pkgrel=2
+pkgver=1.116.02799
+pkgrel=1
 pkgdesc="Binary releases of VS Code Insiders without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64')
 url="https://github.com/VSCodium/vscodium"
@@ -33,8 +33,8 @@ sha256sums=('04f365c0086594ad11cc3cc0b6b8e0f1dfdb63134845eb02433811d8ef21bc9f'
             '865cf3e30c72575f09ebb01e004685da2c7b04b17529abc06ae1fd0d171a32a5'
             '2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e'
             'ed7c05df676522c7a1922bcff2185bedb9364801b78072b325014b0a26865c53')
-sha256sums_x86_64=('87ebd14cdd164db40a453607e9a60c51907e0cf8ee459dbf90d87bdb7fe055de')
-sha256sums_aarch64=('946d3aa0110534b010dcc0a69543cfd2b760711fa2bfc49486d29def99f3e8d7')
+sha256sums_x86_64=('9afb80391efc515297aba3afee82735821473fed4e004c01f3f199f79dd62888')
+sha256sums_aarch64=('71a0d03dced791ea4d8fcae8684c3fdfb6e7df21d333ef87acebd56c2548cf28')
 
 source=('vscodium-insiders-bin.desktop'
         'vscodium-insiders-bin-url-handler.desktop'
