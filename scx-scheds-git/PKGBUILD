@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r374.gb7d93529
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -52,7 +52,7 @@ cd9acd313af5c50741c2e3f965ff990e977e1d66 # scx_maestro: Introduce completely fai
 543d21d689d8522b8aac419e64603731fcd9ac92 # scx_flash: Use SCX_DSQ_LOCAL to direct dispatch per-CPU tasks
 3dd21753f4742a7cf23d9ed445bba393929750be # Cargo: fix formatting
 49a1711de52f0e6d1f43ba3cc70f144b5ad5cb51 # scx_maestro: add --completions flag for shell completion generation
-ec4d343046def4927c9ba92fa275e5091fad09c9 # Cargo: update dependencies to latest versions
+ec863bb117e3b2d5f4cbe8e4ecf0789c000a47bc # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
