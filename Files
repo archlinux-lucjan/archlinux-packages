@@ -216,6 +216,11 @@
 │   ├── vscodium-bin.install
 │   ├── vscodium-bin.sh
 │   └── vscodium-bin-url-handler.desktop
+├── vscodium-bin-marketplace
+│   ├── patch.py
+│   ├── PKGBUILD
+│   ├── vscodium-bin-marketplace.hook
+│   └── vscodium-bin-marketplace.install
 ├── vscodium-insiders-bin
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -249,4 +254,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 168 files
+83 directories, 172 files
