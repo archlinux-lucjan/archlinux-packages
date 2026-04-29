@@ -9,9 +9,9 @@
 pkgname=vscodium-insiders-bin
 _pkgname=VSCodium
 pkgver=1.116.02799
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code Insiders without MS branding/telemetry/licensing."
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
 license=('MIT')
 depends=(
@@ -23,27 +23,23 @@ optdepends=(
         'libdbusmenu-glib: For KDE global menu'
 )
 options=('!emptydirs' '!strip' '!debug')
-provides=('codium-insiders')
+provides=('codium-insiders' 'vscodium-insiders')
 conflicts=('vscodium-insiders' 'vscodium-insiders-git')
 install=$pkgname.install
-
-sha256sums=('04f365c0086594ad11cc3cc0b6b8e0f1dfdb63134845eb02433811d8ef21bc9f'
-            '21677ad972b2a2d3d6c8dab7c14877798d91f73957179ac19468625d658de129'
-            'bedd8ae8f2078f7cf1dcbf8fc1d1ef602871481eb962b215d5b76f3d0b3d70e0'
-            '865cf3e30c72575f09ebb01e004685da2c7b04b17529abc06ae1fd0d171a32a5'
-            '2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e'
-            'ed7c05df676522c7a1922bcff2185bedb9364801b78072b325014b0a26865c53')
-sha256sums_x86_64=('9afb80391efc515297aba3afee82735821473fed4e004c01f3f199f79dd62888')
-sha256sums_aarch64=('71a0d03dced791ea4d8fcae8684c3fdfb6e7df21d333ef87acebd56c2548cf28')
-
-source=('vscodium-insiders-bin.desktop'
+source=("https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/${_pkgname}-linux-x64-${pkgver}-insider.tar.gz"
+        "https://raw.githubusercontent.com/VSCodium/vscodium/refs/heads/master/src/insider/resources/linux/code.svg"
+        'vscodium-insiders-bin.desktop'
         'vscodium-insiders-bin-url-handler.desktop'
         'vscodium-insiders-bin.install'
         'vscodium-insiders-bin.sh'
         'LICENSE')
-source+=("https://raw.githubusercontent.com/VSCodium/vscodium/refs/heads/master/src/insider/resources/linux/code.svg")
-source_x86_64=("https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/${_pkgname}-linux-x64-${pkgver}-insider.tar.gz")
-source_aarch64=("https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/${_pkgname}-linux-arm64-${pkgver}-insider.tar.gz")
+sha256sums=('9afb80391efc515297aba3afee82735821473fed4e004c01f3f199f79dd62888'
+            'ed7c05df676522c7a1922bcff2185bedb9364801b78072b325014b0a26865c53'
+            '4c581c267e19ef522cbb67f83b1013722fd1531a1f754095bdc19255b0d8117e'
+            '2213e04254061ebdc4d56d12f58ed1f8ee2f40068d30f2657b93cb0b4714a880'
+            'bedd8ae8f2078f7cf1dcbf8fc1d1ef602871481eb962b215d5b76f3d0b3d70e0'
+            '865cf3e30c72575f09ebb01e004685da2c7b04b17529abc06ae1fd0d171a32a5'
+            '2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e')
 
 shopt -s extglob
 
