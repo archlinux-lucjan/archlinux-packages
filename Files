@@ -209,6 +209,13 @@
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
+├── vscodium-bin
+│   ├── LICENSE
+│   ├── PKGBUILD
+│   ├── vscodium-bin.desktop
+│   ├── vscodium-bin.install
+│   ├── vscodium-bin.sh
+│   └── vscodium-bin-url-handler.desktop
 ├── vscodium-insiders-bin
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -242,4 +249,4 @@
 └── zstd-git
     └── PKGBUILD
 
-81 directories, 162 files
+82 directories, 168 files

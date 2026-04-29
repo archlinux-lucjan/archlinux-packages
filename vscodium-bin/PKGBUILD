@@ -1,0 +1,71 @@
+# Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
+# Contributor: Carson Rueter <swurl at swurl dot x y z>
+# Contributor: Icelk <main at icelk.dev>
+# Contributor: Cameron Katri <katri.cameron@gmail.com>
+# Contributor: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
+# Contributor: me at oguzkaganeren dot com dot tr
+# Contributor: Rowisi < nomail <at> private <dot> com >
+
+pkgname=vscodium-bin
+_pkgname=VSCodium
+pkgver=1.116.02821
+pkgrel=2
+pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
+arch=('x86_64')
+url="https://github.com/VSCodium/vscodium"
+license=('MIT')
+depends=(
+        fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify libxss
+        'glibc>=2.28-4' bash
+        )
+optdepends=(
+        'gvfs: For move to trash functionality'
+        'libdbusmenu-glib: For KDE global menu'
+)
+options=('!emptydirs' '!strip' '!debug')
+provides=('codium' 'vscodium')
+conflicts=('vscodium' 'vscodium-git')
+install=$pkgname.install
+source=("https://github.com/VSCodium/vscodium/releases/download/${pkgver}/${_pkgname}-linux-x64-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/VSCodium/vscodium/refs/heads/master/src/stable/resources/linux/code.svg"
+        'vscodium-bin.desktop'
+        'vscodium-bin-url-handler.desktop'
+        'vscodium-bin.install'
+        'vscodium-bin.sh'
+        'LICENSE')
+sha256sums=('82c7173d6aa7415f6777d5d66cbe58902772c719c30c46385a9140831e46edad'
+            'e622e6bdb70b0cfec57ad9df8717ea023b87e5e215003119b5a1a4d059fcd347'
+            '596364c6a5bb9a243e75698500f786a32a10217d8b60a047fc82aedfdc7a9954'
+            '3ad1e6bbd7cdc8833eff9afaa9f6ae39350d738678cafbe3437106f0cfe3d985'
+            '01ba3d33e76804e2346d08f4eda256a29610c9eb59432e4b016d05ad93d901ba'
+            '63b9f3e07dcfe92f59e851fdeeaed6ee986950672f75cc950489bce67e85d884'
+            '2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e')
+
+shopt -s extglob
+
+package() {
+  install -d -m755 "${pkgdir}/opt/${pkgname}"
+  install -d -m755 "${pkgdir}/usr/bin"
+  install -d -m755 "${pkgdir}/usr/share/"{applications,pixmaps}
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp -r * "${pkgdir}/opt/${pkgname}"
+  # remove source file links
+  find "${pkgdir}/opt/${pkgname}" -maxdepth 1 -type l -delete
+  ln -s "/opt/${pkgname}/bin/codium" "${pkgdir}/usr/bin/codium"
+  ln -s "/opt/${pkgname}/bin/codium" "${pkgdir}/usr/bin/vscodium"
+  install -D -m644 "vscodium-bin.desktop" "${pkgdir}/usr/share/applications/codium.desktop"
+  install -D -m644 "vscodium-bin-url-handler.desktop" "${pkgdir}/usr/share/applications/codium-url-handler.desktop"
+  install -D -m644 "resources/app/resources/linux/code.png" \
+          "${pkgdir}/usr/share/pixmaps/vscodium.png"
+  install -D -m644 "code.svg" \
+          "${pkgdir}/usr/share/icons/hicolor/scalable/apps/vscodium.svg"
+  install -m755 "${pkgname}.sh" "${pkgdir}/usr/bin/codium"
+
+  install -Dm4755 chrome-sandbox "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+
+  # Symlink shell completions
+  install -d -m755 "${pkgdir}/usr/share/zsh/site-functions"
+  install -d -m755 "${pkgdir}/usr/share/bash-completion/completions"
+  ln -s "/opt/${pkgname}/resources/completions/zsh/_codium" "${pkgdir}/usr/share/zsh/site-functions"
+  ln -s "/opt/${pkgname}/resources/completions/bash/codium" "${pkgdir}/usr/share/bash-completion/completions"
+}
