@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r388.g80a752ff
+pkgver=1.1.0.r389.gce8aa3d0
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,21 +38,22 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-83314aacf715fdc153aec43073375da99caa4dac # scx_cake: Sync Frontier optimizations onto latest upstream main
-53d740dfac7ad0f74367d7de25f9f859142bda68 # scx_cake: merge nightly updates after upstream rebase
-c0ffa99b0d63a5259cc674df569aaa4d0b489bd5 # scx_pandemonium: bump to 5.7.0
-cd09fae19daa569e199ba489c7c6c790445e28a9 # scx_pandemonium: bump to 5.8.0
-18d4ef0e0497e988b383875a3d0f71541a52ab48 # scheds: add --completions flag for shell completion generation
-b732b9fd0f03412c57073feec441beffaa1bb724 # scheds: Introduce scx_maestro
-5c76936d5db20b8f567c046a3a339f35109b3a75 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-f26d61e780469fe6ba106c2206e643ae9adb0d26 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-d9783d53aaa41cf3c50379d843fb9af8a5357606 # scx_maestro: Don't update deadline in case of re-enqueue
-53e3b8e2208ef5c1a4d1800df0596c662587be05 # scx_maestro: Introduce completely fair scheduling
-d301590fe7fb4afc308c19243560ece442dbbebf # scx_maestro: Make enqueue + CPU kick more reliable
-a391c391d7c1d282d465bbb553db09c447387bf4 # scx_flash: Use SCX_DSQ_LOCAL to direct dispatch per-CPU tasks
-2d1dd3c9c496257c2c5ee1076832f6fe70b50633 # Cargo: fix formatting
-c04eccbe00e19e66373743a89d3ecae0ceeaf945 # scx_maestro: add --completions flag for shell completion generation
-fc34c5cdc163ff38667f56bdae2c633986edbac3 # Cargo: update dependencies to latest versions
+9692c92bf3018028d41f216dbdddbd6d92a177ec # scx_cake: Sync Frontier optimizations onto latest upstream main
+d7ad9b79662eb97b67fc9e6ab2a938e6ef47a2c2 # scx_cake: merge nightly updates after upstream rebase
+f0f18932b6c550c1f8009bd0afc3f2d8e6c8d121 # scx_pandemonium: bump to 5.7.0
+d6105664c6f86a19c2c2afe336bca0f97e9bb5a9 # scx_pandemonium: bump to 5.8.0
+eb032f6cef1743f86de8c8d11788ad8be0370e42 # scx_pandemonium: bump to 5.9.0
+ecb43d0b93e294c1953b107cfbf0950409c95b71 # scheds: add --completions flag for shell completion generation
+1d4cbcb99b0aacbaf8e2522720304876a6daa36b # scheds: Introduce scx_maestro
+91b425addd4fce10930677bcd5d47008044dfcba # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+92e16fa0cdb5d1418d422ad75ef732b82f93d798 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+847d5acf18070f62adee88b23d12cb5af16d897d # scx_maestro: Don't update deadline in case of re-enqueue
+b910362fb810abb004e47213e4f1d796eaa46236 # scx_maestro: Introduce completely fair scheduling
+c8760145043afc8f1dbbb3034707271b7d466caf # scx_maestro: Make enqueue + CPU kick more reliable
+7512f3742270a74a8d86631cf4b8d3c637978aef # scx_flash: Use SCX_DSQ_LOCAL to direct dispatch per-CPU tasks
+c5d331e04f6a253c88e3758b97f040035b23e484 # Cargo: fix formatting
+316256fa2dbbecae2d458c129a5630c8eb160e94 # scx_maestro: add --completions flag for shell completion generation
+435e757e5226c281122cd00a4a56dc545823ee15 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
