@@ -10,7 +10,6 @@
 ├── betterbird-bin
 │   ├── eu.betterbird.Betterbird.desktop
 │   ├── PKGBUILD
-│   ├── scx-scheds-git-1.1.0.r361.g1cec329f-3.src.tar.gz
 │   └── vendor-prefs.js
 ├── cachy-chroot-git
 │   └── PKGBUILD
@@ -216,11 +215,6 @@
 │   ├── vscodium-bin.install
 │   ├── vscodium-bin.sh
 │   └── vscodium-bin-url-handler.desktop
-├── vscodium-bin-marketplace
-│   ├── patch.py
-│   ├── PKGBUILD
-│   ├── vscodium-bin-marketplace.hook
-│   └── vscodium-bin-marketplace.install
 ├── vscodium-insiders-bin
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -254,4 +248,4 @@
 └── zstd-git
     └── PKGBUILD
 
-83 directories, 172 files
+82 directories, 167 files
