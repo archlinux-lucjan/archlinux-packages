@@ -222,11 +222,6 @@
 │   ├── vscodium-insiders-bin.install
 │   ├── vscodium-insiders-bin.sh
 │   └── vscodium-insiders-bin-url-handler.desktop
-├── vscodium-insiders-bin-marketplace
-│   ├── patch.py
-│   ├── PKGBUILD
-│   ├── vscodium-insiders-bin-marketplace.hook
-│   └── vscodium-insiders-bin-marketplace.install
 ├── zlib-ng-git
 │   └── PKGBUILD
 ├── zsh-fast-syntax-highlighting-git
@@ -248,4 +243,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 167 files
+81 directories, 163 files
