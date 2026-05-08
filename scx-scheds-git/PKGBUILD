@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.0.r410.gb1b36982
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -38,22 +38,25 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-28ae6e14684cec987386e437efb3f649cea65513 # scx_flow: v2.2.2 — relaxed preempt_ready refill check for hard-RT wakeups
-a66eab2653619e3e6535995347383c8bc0df649d # scx_flow: v2.2.2 — short-sleep wakeup fast path for hard-RT
-d1c85f077d73936acd8b82175d24ca297ad22999 # scx_flow: v2.2.3 — priority-aware rt_sensitive with relaxed refill threshold
-ac3497cb1ab94ac5cd0d014b3c837f46dd1fbe30 # scx_flow: update README v2.2.2 -> v2.2.3
-b67420f42e1b3c0b195caf8fdf93c0dcb7508e6d # scx_cake: squash rebased nightly update
-ff36d7ecb2c8b4c6d4c382195c78546be5a7fa3f # scheds: add --completions flag for shell completion generation
-2b9036ce6f120f89d16df14459623a988d734be5 # scheds: Introduce scx_maestro
-e28258510a799bd78459449d3e048a8c379a73f8 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-830c06e1bdc86977acafac1a35fca01a9a2c8b6e # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-acfba1ba8992b117472e2fd409406add74ccc834 # scx_maestro: Don't update deadline in case of re-enqueue
-95b572f8f05994c71d023d0952dfd5a0c1587f07 # scx_maestro: Introduce completely fair scheduling
-b2c181c00c1bd4230c563fe0015cc3f631d50589 # scx_maestro: Make enqueue + CPU kick more reliable
-547721f05defaf3d67312c73836af10a04b9c526 # scx_flash: Use SCX_DSQ_LOCAL to direct dispatch per-CPU tasks
-59dd699a9e584926784189fbabbb19a6b3560aa8 # Cargo: fix formatting
-010afae61666eecc05b7523547b4259b9b922551 # scx_maestro: add --completions flag for shell completion generation
-151a9855bd1a8e2d71020a93cd9e45c080871a6a # Cargo: update dependencies to latest versions
+b4270ae28b0bc38c676d0af496218a93e4246517 # scx_flow: v2.2.2 — relaxed preempt_ready refill check for hard-RT wakeups
+a6dc1b1b005dbdd57504257468d57a1cd6c84c65 # scx_flow: v2.2.2 — short-sleep wakeup fast path for hard-RT
+56a9fe536d85c41641fb3f23a7553a6c03343ef3 # scx_flow: v2.2.3 — priority-aware rt_sensitive with relaxed refill threshold
+237c04b6bd05258e4abae279a47c92456d83332b # scx_flow: update README v2.2.2 -> v2.2.3
+12a37058f7c65d16d8c3f3bea6615409e6586bb9 # scx_flow: v2.2.4 — fix rt_sensitive_ready predicate regression
+9ee6b6f2e6dfe359b8476c030888026b06a5bedf # scx_flow: drop changelog from README, bump version reference
+94d6086e4dd7f96d85f11c3917d63a8f1b365061 # scx_flow: revert idle-CPU local-reserved path, restore latency lane access
+ed3dd307ebb2dabf78d4ebd94eb87725ffb1d4e2 # scx_cake: squash rebased nightly update
+b4d3d2170aecc4828a0c22fe53ca7e1fffecdc32 # scheds: add --completions flag for shell completion generation
+251821ff7d0829f81b8236260a8e9840ddbc586e # scheds: Introduce scx_maestro
+c39ccef7a284c0b132c0aca4a03c3ae017818868 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+aaeba9294704e28d85433b24721a3cc9ef1ae151 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+1d58773e5570ba0f5f36878d527e0aedab992b52 # scx_maestro: Don't update deadline in case of re-enqueue
+13c5f9e96d79ece87926577b184abab4f8d0bd42 # scx_maestro: Introduce completely fair scheduling
+f3a7be0c4b73924091854b8e3a28221ac1974424 # scx_maestro: Make enqueue + CPU kick more reliable
+42d38bf966c8111c02c0e9ef5d8f8462a0f5246d # scx_flash: Use SCX_DSQ_LOCAL to direct dispatch per-CPU tasks
+c357548e08913d9929c6e4d2f6583f4fe2972964 # Cargo: fix formatting
+995fc4cd23c3731bd711e9f91071d294e153bf22 # scx_maestro: add --completions flag for shell completion generation
+9cca30f66af91446fcb66e454b2c5297abb5b3a0 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
