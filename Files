@@ -160,6 +160,8 @@
 │   └── PKGBUILD
 ├── netctl-git
 │   └── PKGBUILD
+├── netspeed-cli
+│   └── PKGBUILD
 ├── ninja-git
 │   └── PKGBUILD
 ├── pacman-contrib-git
@@ -243,4 +245,4 @@
 └── zstd-git
     └── PKGBUILD
 
-81 directories, 163 files
+82 directories, 164 files
