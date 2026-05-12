@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.0.r440.gcf3aeeaf
+pkgver=1.1.0.r445.gae839bc2
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -38,59 +38,59 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-91d239c7daa63a1a2c4ef001e6ec13e866387117 # scx_cake: Sync Frontier optimizations onto latest upstream main
-801ae47b1d83dd4cf11e238a0705241171bee1b1 # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
-9bf784a51367b21fa9a0c5d2b2668088b637a47b # Revert out-of-scope Cargo.toml change
-9d93963aaad4d8b41a56d2fb2edef6c6946f7da3 # bpf: scx_cake: Implement BPF-native clock cache
-504e565ad6a9f728cf10ba2c49e0ff0e4515cdfb # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
-1b5a55e36fd8f5b49585a34fa6e219446eb51f0b # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
-70b78b1301fb6a1050a69f7f2ba332de54bfb525 # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
-a37d721ffd89b05efaf11ffa7d733ce33abdee72 # scx_cake: ALPHADEV Phase 4 & Phase 9 Architectural Flattening
-b237c0b965b023ad3b21af6773042b44c602e3f4 # Additive Fairness Model & Holistic Efficiency Overhaul
-0f06e39f9240fdb3f978e420f8b5b173f7ff6446 # chore: replace memory init division with explicit bitshift
-6bf3dfd39cfba0aeb0b204f36ee63abc483fb72a # scx_cake: tune nightly scheduler and add perf tooling
-3f2d7ecfe1f343934ff1f1a4c0b09e24e80fd41e # scx_cake: switch to per-cpu local-first scheduling
-05a62340ef1967cb6b5e0e7e2f6cb7bd45c3cb16 # scx_cake: expand verbose TUI and telemetry
-05eea6f7a3d44b36007942a04b2361a66734238b # scx_cake: add local queue debug telemetry
-9767c0766537feeaf65f065d8bdd522579456da3 # backup scx_cake nightly work
-24b1f14e8b019e2288f8352e892da9b826607572 # nightly: sync from scx_cake 78aef86fa
-aacd682d2644f98c94e25536bab6fb1fe3ce871b # docs: design scx_cake latency shielding telemetry
-1b6966b4b825bde0efbd0afc5db3b2d55b1cb9c9 # docs: plan scx_cake wake policy telemetry
-eb074927e069f5da87ad75e7b60b0d997b4268e0 # scx_cake: add wake policy telemetry interface
-4bd491388ecf80c601400a4ce2a5ebf6419eda29 # scx_cake: dry-run wake policy classifier in BPF
-0e42a08556943dd3062b6ba14419e5fb4c3a54bb # scx_cake: refresh wake policy owner class on rerun
-ac3491158d212e941c0f681bb6a02427e5e9e28c # scx_cake: show wake policy shadow telemetry
-9ca17b5a47b8a7153e1e894b9fad2eea4ac423c8 # scx_cake: complete wake policy dump accounting
-64ee3196923b2e7f713ab85f7cab94ae8263390e # scx_cake: add dump comparison command
-57245a2cf46cb7af47bd33764ae8596df58692a6 # scx_cake: compare dump scopes separately
-d0ff241361d8bdc146a2ac6cc60d2923b8132902 # docs: describe scx_cake wake policy telemetry
-85525c8a097d217fd926a54fd51f215ee62f3869 # scx_cake: align wake telemetry with design
-27ba12f062c34350675c86a6671217b463272275 # docs: design wake-chain locality for scx_cake
-12c79ddbab915641565744d8dfceceeb38cab7ae # scx_cake: checkpoint llc-vtime nightly baseline
-ff0b7cdc6e34bea7665211bbb83d2b7b4e98233f # scx_cake: trim release scheduler hot path
-79f4a6475ecd182530e54511e19a03e895e0e855 # scx_cake: add hot path frequency counters
-7806e11205d883213dcd38a5c246544d43974f02 # scx_cake: keep debug path counters zero-stack
-9a99f98b4fc8a8f98e00c3f5c9d386a49681349d # scx_cake: fix zero-stack debug telemetry foundations
-501ff84a09589d30897e41dbff4d551e4c1a0cf2 # scx_cake: wire release scoreboard accelerators
-fdecd93ab2f4fc0ab931166b26ac53c752536736 # scx_cake: harden verbose jitter display
-6d3bab43472b0c9952db588bf018dc6aac90470f # scx_cake: publish nightly diagnostics checkpoint
-84753684f894ccad6653bc36c6a352a91f71af2b # scx_cake: add claim health skip telemetry
-245ce7f3bd63ffc8f4ae25a54ee835f3cff0705a # scx_cake: fix Sashiko accelerator findings
-d72b66df1cb8b15046626b6cf308cfa3d0a04243 # scx_cake: save adaptive throughput checkpoint
-0c3c56380b9e9a6b7e8df1870731b64dd27f2dfe # scx_cake: shrink release dispatch hot paths
-4d8ddcfbf068fb253b2fcdcaa8be22137b93bd9a # scx_cake: restore perf sched release defaults
-4cad054bcc20c961be593f1ea88d6b50f8bc0390 # scx_cake: decay owner stats across rotation and defer SAT pulls
-fcf5d5e9b8f41f2ddcd63f2a3112e86a38176918 # scheds: add --completions flag for shell completion generation
-253ff5e52cd2c19fce592ad68a0f7e16b49b1f1d # scheds: Introduce scx_maestro
-6af00053292f8665acb96d350cd0d6025f93a8da # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-0ef2fb5e4d1a209f33caf2d37c18308060cf0f0e # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-da3c65edbc5688faca2bc4869edd7977bc0aafcf # scx_maestro: Don't update deadline in case of re-enqueue
-1205bdcf21ae60d03e36d25d01b4d4573da21c1c # scx_maestro: Introduce completely fair scheduling
-6d703c45134541c65c51086a5b98dbeaaac01461 # scx_maestro: Make enqueue + CPU kick more reliable
-7c97b12d888fac75a85473450ca38dec0b7a577f # Cargo: fix formatting
-ea137ee7c3d9396e0a3c1a95bade1585398b421a # scx_maestro: add --completions flag for shell completion generation
-3559b6ccf7840bf6ac2992252785bbec4cbf0cdd # Cargo: fix formatting part 2
-d5fe4347b69612e18aa5e0d506b1271342a9cf8f # Cargo: update dependencies to latest versions
+d96aea8d4ba4a9fd222a0bf1e11cf43616f21a34 # scx_cake: Sync Frontier optimizations onto latest upstream main
+c3957022ce8c6735f61420d37002a5ec5389a26c # Refactor: ALPHADEV Performance Audit and EEVDF Correctness
+70a94ca64ed87f6b2a498914b68d322ebc105b60 # Revert out-of-scope Cargo.toml change
+2e63d378cf60b0612c2544348af0ca28c21baf40 # bpf: scx_cake: Implement BPF-native clock cache
+1f8058a05cc0b5631984d9707af2309c9cd005ae # ALPHADEV Phase 16: EEVDF vtime correctness & kthread domain alignment
+62ebed3bb62134e98e693a32e81bb23d7f887637 # refactor(scx_cake): mechanical sympathy overhaul for Multi-CCD false sharing and latency
+627ec6758f172f95a0400936a36776dd8b9bffce # scx_cake: Iron Curtain tier isolation + sleeper floor relocation
+c5934aad5f7548dea1fa04a4b2b41a9e6d08651e # scx_cake: ALPHADEV Phase 4 & Phase 9 Architectural Flattening
+55fce5aef1fd9864a2f31eb8c1b137feae374beb # Additive Fairness Model & Holistic Efficiency Overhaul
+6b4541f81497655e740835ed37a107b3521f45c7 # chore: replace memory init division with explicit bitshift
+6136180d31a5a7f88a2f688036fc8d50aab0e547 # scx_cake: tune nightly scheduler and add perf tooling
+57f23fa80b4ea382f359920e3318df720c0d873d # scx_cake: switch to per-cpu local-first scheduling
+1a1b61aa27dd39181e5322f36daf602cdbeee635 # scx_cake: expand verbose TUI and telemetry
+2f2fb0371cb417de8ce4645e0d4c9058e5737cac # scx_cake: add local queue debug telemetry
+dc650be5bf9c06e866cf8a69ec0e9365ed99202b # backup scx_cake nightly work
+cf76b28b962553a36c5f660b92a0b39416bada39 # nightly: sync from scx_cake 78aef86fa
+4265a05be2e8345f002d699edfec04a1d1d414ab # docs: design scx_cake latency shielding telemetry
+6334a2501f14849abf9510238af23134db0b70bc # docs: plan scx_cake wake policy telemetry
+55ac65bb0f97fbe1e912501f256bdb2b572d3480 # scx_cake: add wake policy telemetry interface
+619137b8044ea350eb56e8d32fbdef3ef1542e70 # scx_cake: dry-run wake policy classifier in BPF
+0c623fd0eef15f8ac8c1cb505622eae70bab1c4e # scx_cake: refresh wake policy owner class on rerun
+3971a2807dd33ab1295854d92032c235390ca9bd # scx_cake: show wake policy shadow telemetry
+ab9947a7d3e5041620744d0a82fdad4b26508a9b # scx_cake: complete wake policy dump accounting
+8efe6c0f2f2a94177744acf203f77df0e48b5952 # scx_cake: add dump comparison command
+15c3a7b200945b2e529910304f22d3b72a708c97 # scx_cake: compare dump scopes separately
+d731c54395805e639c93b573a5d06ac6b4e2605d # docs: describe scx_cake wake policy telemetry
+5aebbe0954b56f2274de839b41ac2cef8b5a2046 # scx_cake: align wake telemetry with design
+53e7584739c5091bcfbe51c3d24187e50d681f08 # docs: design wake-chain locality for scx_cake
+13fb8f60ba1680cb1b0e2dc259e2985e769f982c # scx_cake: checkpoint llc-vtime nightly baseline
+df926070c70f05ca326d526238dafd4e50e118c1 # scx_cake: trim release scheduler hot path
+157f487a3f4f59477e9ecf0ea202853f25da62ee # scx_cake: add hot path frequency counters
+ec566a905cea9cbe9045c4683f93c7317f916297 # scx_cake: keep debug path counters zero-stack
+f56d7921e0f0cb06cbd20edeaffa6c447ff20718 # scx_cake: fix zero-stack debug telemetry foundations
+57f737fa0cdeeec890984167563295a91d214807 # scx_cake: wire release scoreboard accelerators
+44c230c370f4c28c86754b90dc8d0afaab6c58d9 # scx_cake: harden verbose jitter display
+07e8121e1dfa5930f43b72bcb8c99cc4548d5426 # scx_cake: publish nightly diagnostics checkpoint
+e18e17fad22b92c250915781e3867af0f3c098da # scx_cake: add claim health skip telemetry
+6b4f1bd09d530ef39bebdca246be67d4a633b330 # scx_cake: fix Sashiko accelerator findings
+bb19afa5ec842a4b2cc3a66ef008f55da84f8a75 # scx_cake: save adaptive throughput checkpoint
+10ad3a791077b7841a4a6aff561fadfc16ee71e0 # scx_cake: shrink release dispatch hot paths
+5452ac40b8e38559f838fbc0b2f70da12f896a56 # scx_cake: restore perf sched release defaults
+3ee1a53d884708dc3603e4e7b5fa35b14bef5066 # scx_cake: decay owner stats across rotation and defer SAT pulls
+438f70ce356872e2d64488f3e2755354c189c767 # scheds: add --completions flag for shell completion generation
+972341443797ea1194faeeb1d88b747a2383ebac # scheds: Introduce scx_maestro
+2df7e5a5d3180633489c90d9936f68bcb9f25c91 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+4002d4aa823bd127d1668b7dee70e9e311b7e46f # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+3b71227551144385eefdd843aa1683a07ec3f3c0 # scx_maestro: Don't update deadline in case of re-enqueue
+de9ced423d17d6325812629c5457307ac30f2602 # scx_maestro: Introduce completely fair scheduling
+11571fe6e840249707a06bf5eef9acf17129ed92 # scx_maestro: Make enqueue + CPU kick more reliable
+7fcba98bb8a3b9b6af90c4e8cbe458c0ff71e65a # scx_maestro: move get_primary_cpus and Powermode enum to scx_utils
+cc20f7cf781eed362c0d765c1c1a82f05e96c638 # scx_maestro: add --completions flag for shell completion generation
+2e704c412e2c50e394b42d4f36a5bd8c2acb16ac # Cargo: fix formatting
+65338e45e5036df5478734091bb95c3157487e8a # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
