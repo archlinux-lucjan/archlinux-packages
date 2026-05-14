@@ -2,7 +2,7 @@
 # Contributor: nontlikeuname
 
 pkgname=meson-git
-pkgver=1.9.0.4.g79f17fa86
+pkgver=1.11.0.248.gaaab1802e
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -30,10 +30,13 @@ makedepends=(
 )
 checkdepends=(
   boost
+  boost-libs
+  byacc
   clang
   cmake
   cuda
   cython
+  dmd
   doxygen
   gcc-fortran
   gcc-objc
@@ -46,11 +49,11 @@ checkdepends=(
   graphviz
   gtest
   gtk-doc
-  gtk-sharp-2
+  gtk-sharp-3
   gtk3
   gtkmm3
-  hdf5
   hotdoc
+  intel-oneapi-mkl
   itstool
   java-environment=8
   libelf
@@ -86,6 +89,7 @@ checkdepends=(
   wayland
   wayland-protocols
   wxwidgets-gtk3
+  zlib-static
 )
 provides=('meson')
 conflicts=('meson')
@@ -96,7 +100,7 @@ source=('git+https://github.com/mesonbuild/meson'
 )
 md5sums=('SKIP'
          '92cac4ebaa57de9656f48efc688b18b7'
-         '8e1d245db195d0d221a5ff083d12f6aa'
+         'd64f74859a52a5e55161bee2ac77bee2'
          'c941b0388c5d01e26147480a04317871')
 
 pkgver() {
