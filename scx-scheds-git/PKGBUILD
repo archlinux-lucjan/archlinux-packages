@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.1.r144.gd6c43bf4
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -103,6 +103,7 @@ eb704b4aa43dcb711ed51759cced461761ad39c6 # scx_cake: comprehensive README — co
 ba87f4abf8fd92eeba74dd8c34cb0e7337cbdb35 # scx_cake: README — add World of Warcraft vs EEVDF measurements
 2fd5beba391689cc8e6e97e9bc6345a0fa680507 # scx_cake: hybrid gate — anchor must be the process main thread (pid==tgid)
 4ab8cac61d762354ed558aecc43fd80dc8e524e7 # scheds: add --completions flag for shell completion generation
+33e9b1d1dc6a872bafd1822b74b887114d269e74 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
