@@ -176,8 +176,6 @@
 │   ├── plasmalogin
 │   ├── plasmalogin-autologin
 │   └── plasmalogin-greeter
-├── poc-selector-benchmark-git
-│   └── PKGBUILD
 ├── pyalpm-git
 │   └── PKGBUILD
 ├── python-pygit2-git
@@ -245,4 +243,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 164 files
+81 directories, 163 files
