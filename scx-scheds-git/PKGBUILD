@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.1.r174.gf5e46f7f
-pkgrel=7
+pkgrel=8
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,15 +36,8 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-ecd08a32af2d8160fb62466ad42e4e1a5f37481d # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
-7abce4d55e94fd966574e700f711982f3a720d40 # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
-405e38a4c7307112cbe62159bc3258d27b1717bb # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
-ddee93304c7d34277a4e59562116d8220b2874a5 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
-64be0d12b50bc04e7e83812eb8ed096b57d49a98 # scx_cake: silence debug-build -Wunused-function on config-gated helpers
-715c6bf063039284c1a9a5ff787dc7341820083e # scx_pandemonium: bump to 5.14.0 v1
-6ddacb704679390b4c63e79ca51007b3eec60e9c # scx_pandemonium: bump to 5.14.0 v2
-2ad77056f8ad18a1eab3a742c3d9674a0e2b819c # scheds: add --completions flag for shell completion generation
-a89f34844b5fe7a6d04eaa287fd538ded27d32a5 # Cargo: update dependencies to latest versions
+6fec0b8ac8fb0f03ed0380e927a83a4e69540dc6 # PANDEMONIUMv5.14.0:
+10dd83b51651cf67bb80e4d9c73b457920ce05d7 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
