@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.1.r176.gdd06cd27
-pkgrel=2
+pkgver=1.1.1.r196.g2088c10c
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,23 +36,14 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-0557234bf04d4552351a974bed04e05c13cf9065 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
-0ac77858521293f66c140c60ecf472305ab8fd70 # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
-25cdef915465d6f826ee72277fd9708d7e642286 # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
-2c2ace5fa5883a11b6c3d0bfedd344f43cb11876 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
-b58ae8f00339cf910fc9c00fdb1fbd75ba8f5df9 # scx_cake: silence debug-build -Wunused-function on config-gated helpers
-8b2ea7368695e8d50f524de8e69d55c0b38cbb58 # scx_cake: promote vtime-local nightly candidate
-b8e065bfb090554343ef0727c8c32968e10741c9 # PANDEMONIUMv5.14.0:
-1d790243d2f05e46305727879491089c9a548cd0 # scx_flow: 3.1.0 — Waiting Room with per-CPU DSQs
-1b3d168234fce510c9aa9ab98c461d582aae1d67 # scx_flow: SMT detection + per_cpu_sibling_count + SMT-aware dispatch
-b28b1a7316513dbae9582c68fcd09eb058499777 # scx_flow: fair-share bandwidth model + shared vtime DSQ (no CPU scan)
-9acce8c26cc060d631690f22a62d3990592c6777 # scx_flow: per-CPU fair-share DSQs + work stealing
-335c7b23d21e4b7d6b6df358ac043ac4f524a790 # scx_flow: fmt fixes for CI lint
-72005d040a1eeca7c409d41a3d7d001c070f8575 # scx_flow: fix review comments — void ops, CPU bounds, runnable tracking, docs
-36d6fdf59e2eaa783d7de56972c4f0633591da58 # scx_flow: fix per_cpu_runnable double-decrement in flow_stopping
-1caf7695e55cae9d3eae1dd896cfb7bc5bea983e # scx_flow: use compat macros for dsq_move_to_local and dsq_insert
-a98a3dec53d9f44d29c5fc87d3f7bb45eab20dc5 # Cargo: update dependencies to latest versions
-954246ec8e94cb4dbd7e7ffe6dcb8d83612fcc31 # Cargo: fix formatting
+7080e5a0ebaacd26226e954f10ade50ec3daead9 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
+f655b49ac8673524314b0cc936f71b337ce65174 # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
+26af569eab8946c99ce7bd7c8e8aee903a4abf95 # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
+c9f829eec27018b7493f6a39e16a10f63750abb3 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
+e908e62bc0c99f966bc6a3b2d32837243588a26a # scx_cake: silence debug-build -Wunused-function on config-gated helpers
+f9e017471a5b163c7b4c50e3c23727a99bc2ce58 # scx_cake: promote vtime-local nightly candidate
+85632b6a1d8bb3504e096a2ca82861161088824d # Cargo: update dependencies to latest versions
+b5dcb51858e613300e215b26be14cc8daa669b80 # Cargo: fix formatting
 )
 
 _reverts=(
