@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.1.r174.gf5e46f7f
-pkgrel=8
+pkgver=1.1.1.r176.gdd06cd27
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,8 +36,23 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-6fec0b8ac8fb0f03ed0380e927a83a4e69540dc6 # PANDEMONIUMv5.14.0:
-10dd83b51651cf67bb80e4d9c73b457920ce05d7 # Cargo: update dependencies to latest versions
+57e7bb2e7b6b1163f1f72eb7c3449c62ed416797 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
+015befe47e3eafcd628ff7aded4dbddf29407630 # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
+432e44b4b91681699e802e6c01193dc4ebb9957b # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
+d4eac72878156e3fcccdbc485b729edf0c881703 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
+1df9ec3d301a5101af09e6b86517383cf43a4160 # scx_cake: silence debug-build -Wunused-function on config-gated helpers
+92a556edbf25505a90973a58a797951d1d4de272 # scx_cake: promote vtime-local nightly candidate
+94d32d56df8be2aecffa9ed5c79e7b7292f51abc # PANDEMONIUMv5.14.0:
+20bafaed834fa7765932a2f81991589ad42ce3e1 # scx_flow: 3.1.0 — Waiting Room with per-CPU DSQs
+a59a8a3b296ad3313302366f5662f0c4fc6e2642 # scx_flow: SMT detection + per_cpu_sibling_count + SMT-aware dispatch
+20cf3ff489a54d4390db28b7c82948c54bfc4244 # scx_flow: fair-share bandwidth model + shared vtime DSQ (no CPU scan)
+25835d9f5276577f516ff7dc6140c60001c1c4dd # scx_flow: per-CPU fair-share DSQs + work stealing
+bea0ea4df36d8578d03ae0f490f6d217860cf23b # scx_flow: fmt fixes for CI lint
+4531e48f982e07a3166e8cd5885753a4185f0d97 # scx_flow: fix review comments — void ops, CPU bounds, runnable tracking, docs
+0787b0620b2f61482addb5994e6c097a205afa48 # scx_flow: fix per_cpu_runnable double-decrement in flow_stopping
+94dffe9cd5c13a268c274674fd3e880d401f73cf # scx_soft_domain: ‌through topology-aware scheduling to improve performance
+cdc4edcbebcf2b7956e2fabeed61967d9ac519b5 # Cargo: update dependencies to latest versions
+d8da6fffa0509f77adfb783f84fd30e20356290b # Cargo: fix formatting
 )
 
 _reverts=(
