@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.1.r196.g2088c10c
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,14 +36,22 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-7080e5a0ebaacd26226e954f10ade50ec3daead9 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
-f655b49ac8673524314b0cc936f71b337ce65174 # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
-26af569eab8946c99ce7bd7c8e8aee903a4abf95 # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
-c9f829eec27018b7493f6a39e16a10f63750abb3 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
-e908e62bc0c99f966bc6a3b2d32837243588a26a # scx_cake: silence debug-build -Wunused-function on config-gated helpers
-f9e017471a5b163c7b4c50e3c23727a99bc2ce58 # scx_cake: promote vtime-local nightly candidate
-85632b6a1d8bb3504e096a2ca82861161088824d # Cargo: update dependencies to latest versions
-b5dcb51858e613300e215b26be14cc8daa669b80 # Cargo: fix formatting
+68e406144941c337d66f2a8eed3e7a44cc76fbf1 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
+548cce4b0407ed127989d5ed7675fccd92b0ff3b # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
+ad1d00f97bfc2183c903773585052b2751f033a3 # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
+392739fce8f1c91c57a7cfd18b10649c25542de0 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
+b54b506ca5f63e699dc7578914eacf42d5c55193 # scx_cake: silence debug-build -Wunused-function on config-gated helpers
+24a84636e74570ae7cb75719e42868a5578b7cc0 # scx_cake: promote vtime-local nightly candidate
+7283c451b204421df23061ee15262f3b8992c888 # scheds: Introduce scx_maestro
+1618539682389e961bd5539a8ffaae39bc1eaded # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+9175a576cce6c857b450e7168f25c298c5524b12 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+f4f289a2b92146ccbc60745c7c1b7c4d2654fa51 # scx_maestro: Don't update deadline in case of re-enqueue
+92ce3260c8bdc7826bcd5e682be1645f85b4daf3 # scx_maestro: Introduce completely fair scheduling
+976d00da13fcbd020d82aee32110d5bae49b0a82 # scx_maestro: Make enqueue + CPU kick more reliable
+de0ff9e7fcbe7211e8ad836c4469335d6ea3b0ff # scx_maestro: Enforce preemption each tick on CPU contention
+5cdb1fc35bb346b0f3f683608ac27d3b62cfe0cf # scx_maestro: Temporarily drop sub-sched support
+87d8c858bda0b39884d13534c5128b1682056835 # Cargo: fix formatting
+d76f403014523ac7b789937d5ce43b8a4104bbe7 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
