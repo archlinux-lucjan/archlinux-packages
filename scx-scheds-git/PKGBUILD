@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.1.r199.g7632c961
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,24 +36,26 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-83a79dfbe76b0a194dd7a53eb19780bc62798ee4 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
-0c150ea9839d04988df45488564a19ea61286419 # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
-77db1b7ccb5650a7560407c4028854cc977e689b # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
-b1934b77280574d35d6a828124e93099acdd3d22 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
-a045c4cde7bd639c8cbc750d486c0ae9372d2686 # scx_cake: silence debug-build -Wunused-function on config-gated helpers
-8a5802c644e4107751778b552b8b6d416c96e9b1 # scx_cake: promote vtime-local nightly candidate
-5df3a83fb755f3b5bc82d1f55cab2f837f4c9365 # scx_cake: fix formatting
-53089bbdad31d892ab2b4c512b2fd721def52af6 # scheds: Introduce scx_maestro
-e54ac0fdfdbc019326de40da64d15431ba9f8d50 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-dc73aee76755b2728f4bb8cec7c814ff1795da3b # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-f7610adbe38820803b014119c1bb383c72d10a7a # scx_maestro: Don't update deadline in case of re-enqueue
-4e751cf1cae86ec3b9875fef4d55fea99f3095a5 # scx_maestro: Introduce completely fair scheduling
-8ce8e8ce62a06410490f248818268b5cb508ed43 # scx_maestro: Make enqueue + CPU kick more reliable
-087abd6b1da41280d17bfaacd8fc0043e2653538 # scx_maestro: Enforce preemption each tick on CPU contention
-382993907095c980811257336f5d7059f288f463 # scx_maestro: Temporarily drop sub-sched support
-c777686a4200ff3b07a22a73c06e1d7530e10e45 # scx_maestro: bump to 1.1.1
-06a1c75dea0c9f94f32bbe69e8ba146547ea5a69 # scx_maestro: fix formatting
-9eb3547b52b71a48e397cdcebea5d5e3f0ae3b46 # Cargo: update dependencies to latest versions
+f8d372ae3e28b76d94d4b978c4e974e6dec5ef24 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
+edda388a292ae40ce5ce703d7f57a14b7101108d # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
+b836b96a7d394be869fadb4442ec832e33b6a0ed # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
+f987204a8b95cf356afb4d6909d6f52c7d007ab8 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
+f204eb75ce4d813ff88074d680896ed9ecee3c6b # scx_cake: silence debug-build -Wunused-function on config-gated helpers
+b35b9f0becbe1cf34fa8e323542bd1dcf6eacfb5 # scx_cake: promote vtime-local nightly candidate
+3384e00242465a5f85d64c6df1ff9cd3c808b68e # scx_cake: unify local-waiter wake (preempt-kick) + free memcpy slice; gated service-readiness instrument
+c8e91e3608d2d08ad81f1046e2d30b4bd58f1cd6 # scx_cake: dedup shared-escape twins (unification, behavior-preserving)
+42f5d31479965b32d124e13c05330d8ca5bf0775 # scx_cake: EEVDF-like wake balancing for throughput class in vtime-local select_cpu
+da85f8c30dd46c4e8f14795c81106d29d3c6858c # scheds: Introduce scx_maestro
+aae68dd616a212ee3b8ed70f3da08d8fde99849e # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+de4dbda11f58b47e14faea6c0dfff42ea5ad78a7 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+dff77e24eb930115e36d8c021f9f75c871a1f6b6 # scx_maestro: Don't update deadline in case of re-enqueue
+4ac5f0504bbbd8836a033f1e593771842ccb9c9b # scx_maestro: Introduce completely fair scheduling
+cbfa16043fb998ec510b9a469b1230fc018361d1 # scx_maestro: Make enqueue + CPU kick more reliable
+799012c5c1da263f513cec3fe1a6efb3ca8f2771 # scx_maestro: Enforce preemption each tick on CPU contention
+2145cf36cb81a6b0724a1cb54fd5f2abd8f37ed3 # scx_maestro: Temporarily drop sub-sched support
+3b36141322550cd87f7ff5b5ecf1aa5c3194dcce # scx_maestro: bump to 1.1.1
+3f35bc783081ffad67e837eb65b32fc91ad06ddf # scx_maestro: fix formatting
+7e17e500819e4ec6ea7fc50184f87ee4e0374070 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
