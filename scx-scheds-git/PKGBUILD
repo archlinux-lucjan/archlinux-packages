@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.1.r196.g2088c10c
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,22 +36,24 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-68e406144941c337d66f2a8eed3e7a44cc76fbf1 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
-548cce4b0407ed127989d5ed7675fccd92b0ff3b # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
-ad1d00f97bfc2183c903773585052b2751f033a3 # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
-392739fce8f1c91c57a7cfd18b10649c25542de0 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
-b54b506ca5f63e699dc7578914eacf42d5c55193 # scx_cake: silence debug-build -Wunused-function on config-gated helpers
-24a84636e74570ae7cb75719e42868a5578b7cc0 # scx_cake: promote vtime-local nightly candidate
-7283c451b204421df23061ee15262f3b8992c888 # scheds: Introduce scx_maestro
-1618539682389e961bd5539a8ffaae39bc1eaded # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-9175a576cce6c857b450e7168f25c298c5524b12 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-f4f289a2b92146ccbc60745c7c1b7c4d2654fa51 # scx_maestro: Don't update deadline in case of re-enqueue
-92ce3260c8bdc7826bcd5e682be1645f85b4daf3 # scx_maestro: Introduce completely fair scheduling
-976d00da13fcbd020d82aee32110d5bae49b0a82 # scx_maestro: Make enqueue + CPU kick more reliable
-de0ff9e7fcbe7211e8ad836c4469335d6ea3b0ff # scx_maestro: Enforce preemption each tick on CPU contention
-5cdb1fc35bb346b0f3f683608ac27d3b62cfe0cf # scx_maestro: Temporarily drop sub-sched support
-87d8c858bda0b39884d13534c5128b1682056835 # Cargo: fix formatting
-d76f403014523ac7b789937d5ce43b8a4104bbe7 # Cargo: update dependencies to latest versions
+77ac2f587f458e620e23fda08daf83b3d54cbd51 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
+d82888d9e51305e660b5f7b0a6e42f812f0b5a4f # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
+c17b8166e94025108eed3ddabbaf0de0c46387e0 # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
+0113d6add97e2d255abed1e3118d7ae79415bc98 # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
+8d4c7198bae3f81f62eaed5ae714bb80d165ca6d # scx_cake: silence debug-build -Wunused-function on config-gated helpers
+fb76ed02364e2993a9b3fa2a1854b5b3c364aa40 # scx_cake: promote vtime-local nightly candidate
+b45bf4425e098e64552c1cce8f24b83df72c43a4 # scx_cake: fix formatting
+ca84d8e1ebd9faa505d75231fbfd06bc7ab2cc15 # scheds: Introduce scx_maestro
+74d49e401cbf53f6f94bd2d2a04465cc31b91b80 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+0116b0eb45ae856ab741ef6ecfeadf9a1c77b019 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+340b1a0db8f8ac3e58fae3e4d6d198b6f73979e3 # scx_maestro: Don't update deadline in case of re-enqueue
+786c2aff6981d0434f8d053a2134b7dbe83589e8 # scx_maestro: Introduce completely fair scheduling
+e6205c5268c7f14f55144835a13fb7d584eb6a6e # scx_maestro: Make enqueue + CPU kick more reliable
+56258efb766a5a80d9129cb1711813e3301148a4 # scx_maestro: Enforce preemption each tick on CPU contention
+9a194d944cc5c04afeb09009173ad0f73196b6f5 # scx_maestro: Temporarily drop sub-sched support
+31f084bcd88db6821c7b807a705e3f414909c1c5 # scx_maestro: bump to 1.1.1
+e86c52204bd4bef38ff9ecda1096b9bd02d08cb2 # scx_maestro: fix formatting
+b7975ea1fa2f2f367b00e435733e4809b8a44767 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
