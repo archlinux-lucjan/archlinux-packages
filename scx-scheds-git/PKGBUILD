@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.1.r201.g19ed8749
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -59,6 +59,7 @@ e3f0850cb0e69618cb88079052d92fee97483481 # scx_maestro: Allow to enable/disable 
 f41c50da40b13b317af49536b37861b38dd7dee7 # scx_maestro: Temporarily drop sub-sched support
 8cff41c676f37f9ab3b067009a620fdf835fa5ad # scx_maestro: bump to 1.1.1
 c5a6104c13a7727d2c8cd6886431daf682403631 # scx_maestro: fix formatting
+65026a50dd9b586535921cbe2b826f33ac1c826b # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
