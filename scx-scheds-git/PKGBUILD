@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.1.r201.g19ed8749
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
 )
 makedepends=(
   cargo
+  cmake
   clang
   git
   llvm
@@ -61,7 +62,6 @@ c5a6104c13a7727d2c8cd6886431daf682403631 # scx_maestro: fix formatting
 )
 
 _reverts=(
-76b0393ce59df67ca7e618de46375eda730d02a2 # scx_mitosis: add ktstr cell-isolation smoke test
 )
 
 pkgver() {
