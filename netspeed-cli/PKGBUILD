@@ -2,7 +2,7 @@
 
 pkgname=netspeed-cli
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line interface for testing internet bandwidth using speedtest.net'
 url='https://github.com/mapleDevJS/netspeed-cli'
 arch=('x86_64')
@@ -25,11 +25,11 @@ build() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --frozen --all-features
+  cargo build --release --frozen
 }
 
 package() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
-  cargo install --no-track --frozen --all-features --root "$pkgdir/usr/" --path .
+  cargo install --no-track --frozen --root "$pkgdir/usr/" --path .
 }
