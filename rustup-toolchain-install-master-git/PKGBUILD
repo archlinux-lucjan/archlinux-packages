@@ -1,7 +1,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=rustup-toolchain-install-master-git
-pkgver=1.12.0.r0.g66444c6
+pkgver=1.12.0.r6.g5d35fc4
 pkgrel=1
 pkgdesc="Install a rustc master toolchain usable from rustup"
 arch=('x86_64' 'i686')
@@ -40,11 +40,11 @@ build() {
   cd $pkgname
   export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release --frozen --all-features
+  cargo build --release --frozen
 }
 
 package() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
-  cargo install --no-track --frozen --all-features --root "$pkgdir/usr/" --path .
+  cargo install --no-track --frozen --root "$pkgdir/usr/" --path .
 }
