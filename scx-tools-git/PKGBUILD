@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r0.gcb98827
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -37,8 +37,7 @@ e68aad2e4552e35bb82aaeb2a427816d562177ae # scx_loader: Add chaos scheduler
 1c85769b430be33477214bed19d1586fc7e055bf # scx_loader: Add maestro scheduler
 ad81da12a72de8d295afff8dc6c53bf45c16b664 # scx_cake: update profiles flags
 7967ab910ee532f041d7d8e4326db38966cc5cd5 # clippy: suppress too_many_lines warning
-d8737ab224883c61d3d66b7584f14aa365bb70d4 # scx_loader: Add soft_domain scheduler
-8bd26200c0d7b6345f28a9c2a1787ee1b5419e5d # scx_loader: move config
+383344dee08b08527b66010a35a57dbe24c15180 # scx_loader: move default config test fixture to a TOML file
 )
 
 _reverts=(
