@@ -7,8 +7,8 @@ _mode=release
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=1.1.1.r4.g583c671
-pkgrel=2
+pkgver=1.1.2.r0.gcb98827
+pkgrel=1
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -32,13 +32,13 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-773316911bf9aedd3e29d32fa2a060b60d4d3f73 # scx_loader: Add chaos scheduler
-0a5bd911b394c1bb310a4a026ce345b3e5a871f1 # scx_loader: Add mitosis scheduler
-d66ceea150f2f51d86b0e5b98d51f14e8e36ff00 # scx_loader: Add maestro scheduler
-b69d265d7d7795e4187b9eac12b0e900bd601431 # scx_cake: update profiles flags
-e1a6aa69a3477272a32aa7a92c2ccbad0dac17b2 # clippy: suppress too_many_lines warning
-d3c63bd85abb76da19365177e0cfc6d72582b8f2 # scx_loader: Add soft_domain scheduler
-76a0e3ee7b4791bc2751ac8852d91a8ff4199ef6 # scx_loader: move config
+e68aad2e4552e35bb82aaeb2a427816d562177ae # scx_loader: Add chaos scheduler
+7106684b43a4ef73afbe1eb6aafed1b7b69b6b83 # scx_loader: Add mitosis scheduler
+1c85769b430be33477214bed19d1586fc7e055bf # scx_loader: Add maestro scheduler
+98b77f9e0d550fea3a2a67ea80d3cf96b97384d7 # scx_cake: update profiles flags
+a8fa889a350232749d336d0a5499da8bbe7eacc4 # clippy: suppress too_many_lines warning
+610e3272f7a24535157331938722f7b82f8dde69 # scx_loader: Add soft_domain scheduler
+4ccfbe5b94e83dc7f918ffae2cb7c55574ec0447 # scx_loader: move config
 )
 
 _reverts=(
