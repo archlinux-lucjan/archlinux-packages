@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.2.r1.gd624f332
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -50,7 +50,6 @@ e7cee3552c4d2abc90b928d23e09e65863c9372a # scx_maestro: bump to 1.1.1
 065349eed4c35af0c24b8a409706ef670fe84922 # scx_maestro: bump to 1.1.2
 26732d79aeac73d50ee25e7919d9ffde12cd0c22 # Cargo: update dependencies to latest versions
 54fb1880cc329caa2a8bfaa977b8262eb6c15a54 # scx_pandemonium: bump to 5.16.0
-b1914829b8a92b368b1f857533c7a06f3d4dd7ca # scx_soft_domain: ‌through topology-aware scheduling to improve performance
 )
 
 _reverts=(
