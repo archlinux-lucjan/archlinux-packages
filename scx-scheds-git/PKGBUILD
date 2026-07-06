@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.2.r1.gd624f3322
-pkgrel=2
+pkgver=1.1.2.r1.gd624f332
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,34 +36,21 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-dad1151a53de05c61bb781e298eac043de9436d7 # scx_cake 1.2.0: hybrid-queue champion (LLC-vtime + hybrid4 game-tuned defaults)
-7576385fe7f6b2a4d9c9da643c1a40d4a97931b6 # scx_cake: fix watchdog stall at source — drop llc_pending bitmap (Option A), remove rescue bucket
-6c4bdb45df4c4e5ce3585074597a7a3d7e8129c0 # scx_cake: silence build warnings + cargo fmt/clippy (no functional change)
-00c635de56a39a6bc4113048cf78e801696beaab # scx_cake: remove global core_steal_pending_mask bucket (per-CPU truth)
-88a1f7724ebe90261cf07c78a93198bf034f6101 # scx_cake: silence debug-build -Wunused-function on config-gated helpers
-452f17e341ef17e41ccc0611185e0efd80afaad8 # scx_cake: promote vtime-local nightly candidate
-75bd55efdb1bc62e608a97da55338b9519ae40d2 # scx_cake: unify local-waiter wake (preempt-kick) + free memcpy slice; gated service-readiness instrument
-ea10ef03418072ee5a4f2668dacb3258c3de02c8 # scx_cake: dedup shared-escape twins (unification, behavior-preserving)
-2749a00e6877fe99b6f725639f54536818c03f01 # scx_cake: EEVDF-like wake balancing for throughput class in vtime-local select_cpu
-b161697fa662f10425bc340c6dda464073534a8a # scx_cake: drop redundant self-kick on local non-preempt wake
-faf6aa0702a09638ef8814b04f34ae7b8911ef50 # scx_cake: rebalance throughput class off congested prev (EEVDF wake_affine)
-7fa4917b0f74bd503f8de38515d9295ecf9a06ee # scx_cake: integrate SMT-aligned zero-cache-miss migrations and Arena-free hotpath
-497a32affadde0a1ff483429791189614431a8d0 # scx_cake: fix build warnings and gate telemetry functions in release
-7d3cee8f037a71487f9becd5048ba45e9a95df5c # scx_cake: fix Cargo.lock
-2116d944638fc7e2fccd633609468084f694072f # scheds: Introduce scx_maestro
-a39c84d049a3d8045ce67020c2a4128f7cb726f0 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-bbb85393b29b2fa56e81b38376be17913d87210f # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-06c8dc90de2f7d887bfbf5ea0865ce34407f0616 # scx_maestro: Don't update deadline in case of re-enqueue
-c0f57d878b5d3d74051c3a56cb09cbcf35c3b185 # scx_maestro: Introduce completely fair scheduling
-e1c1fe3ab8d0b8f126d1d74ea0d55375fc646396 # scx_maestro: Make enqueue + CPU kick more reliable
-b9e07924a426ed61f2afad2f268d1859cfd03637 # scx_maestro: Enforce preemption each tick on CPU contention
-0af51927f58922ee5f3f7f9d24e3523ae5f5f1f9 # scx_maestro: Temporarily drop sub-sched support
-cc8aa1d83b91b490564c37d50a0cb66a77338dc3 # scx_maestro: bump to 1.1.1
-1999164f276aea6223dd8c87b59da8367d54069d # scx_maestro: fix formatting
-c62f31372f7d43c8d781adaf0f7c7a2222d94380 # scx_maestro: bump to 1.1.2
-23835229cc84d8e0fe8158195bf18f2296f2c989 # Cargo: update dependencies to latest versions
-43529ab9eb17be2c855a9c1d78a5e679a469c5ce # scx_pandemonium: bump to 5.16.0
-280ca3784871c733fd6ff9047e5f38da4dcbfdf3 # scx_soft_domain: ‌through topology-aware scheduling to improve performance
+cca7814940d008301df4d8e0fce178b0047da056 # scx_cake: 1.2.0 — clean-slate EEVDF-parity rewrite
+06c2bacfbf33aebe3a4e51709503ff12448d636e # scheds: Introduce scx_maestro
+73cac1389d5985ec446038f026d047fe3fcf8407 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+7bc92ca4cce698c221b364c0f9efd62e3680223a # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+df95c7ef7012bfb26c8b6f4eb8bddbc2474babfe # scx_maestro: Don't update deadline in case of re-enqueue
+270e750ce48e97560a848adf358f3c10a82ef539 # scx_maestro: Introduce completely fair scheduling
+47c5e013dea773a54149ff41462df3660ad8d396 # scx_maestro: Make enqueue + CPU kick more reliable
+562688299dc397be6de8fe2d7f79e715ee1e3c43 # scx_maestro: Enforce preemption each tick on CPU contention
+83295132d766b102c051e98548f3a08527cc8592 # scx_maestro: Temporarily drop sub-sched support
+e7cee3552c4d2abc90b928d23e09e65863c9372a # scx_maestro: bump to 1.1.1
+0395ca127bb9462958222599a24a1a697bf5f6c0 # scx_maestro: fix formatting
+065349eed4c35af0c24b8a409706ef670fe84922 # scx_maestro: bump to 1.1.2
+26732d79aeac73d50ee25e7919d9ffde12cd0c22 # Cargo: update dependencies to latest versions
+54fb1880cc329caa2a8bfaa977b8262eb6c15a54 # scx_pandemonium: bump to 5.16.0
+b1914829b8a92b368b1f857533c7a06f3d4dd7ca # scx_soft_domain: ‌through topology-aware scheduling to improve performance
 )
 
 _reverts=(
