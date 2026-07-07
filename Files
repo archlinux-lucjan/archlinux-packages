@@ -197,8 +197,6 @@
 │   └── PKGBUILD
 ├── scx-manager-git
 │   └── PKGBUILD
-├── scx-manager-trunk-git
-│   └── PKGBUILD
 ├── scx-scheds
 │   └── PKGBUILD
 ├── scx-scheds-git
@@ -245,4 +243,4 @@
 └── zstd-git
     └── PKGBUILD
 
-82 directories, 164 files
+81 directories, 163 files
