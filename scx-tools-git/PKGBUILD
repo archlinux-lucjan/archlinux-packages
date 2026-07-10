@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r1.g685344b
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -40,6 +40,8 @@ _backports=(
 9e4eb0511d82501d83a8605a31994faa0a6efbc3 # scxctl: discover configured modes
 381c0da97b668021a5871bfb20464919214a8219 # scxctl: warn client-side when selected mode has no configured args
 4abd6ddfc650dcad802ee1c6dbe9506a369be2fb # scxctl: more user-friendly information about the scheduler mode
+8d9522922d93b2c50a15220e949936f7bcffed60 # scxctl: update README
+3e86ccbe9fdace406d9f58c0230f516abf210d62 # scxctl: don't inherit mode from previous scheduler when switching
 )
 
 _reverts=(
