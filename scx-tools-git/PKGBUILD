@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r2.gd11444e
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -36,9 +36,10 @@ _backports=(
 93a2f7c1122b5c0de7cdf6970f44eccc6c442fbd # scx_loader: Add mitosis scheduler
 da6c0201d32a76217a72303bd4285bbce8d81d4c # scx_loader: Add maestro scheduler
 ccb12c268a4494f19c632d424bb24fcdd9b1872f # scx_cake: update profiles flags
-b6b35cd6bf6df0f96e370e6168e5b175cd843079 # scxctl: add 'modes --show' to print resolved arguments per mode
-706ec31bb042c1ca1bdf5bb0cb0df8546c8c4f5a # scxctl: more user-friendly information about the scheduler profiles
-1a5b764fbcf289c09e0317d53d963a69472f95b6 # scxctl: use --show-args instead of --show
+a28c0896081f828d38b65b91a96695382de1df33 # scx_loader: add 'modes --show' to print resolved arguments per mode
+9a40ad2ee5432498551aadb55b18870f0dc7a7e3 # scxctl: add 'modes --show' to print resolved arguments per mode
+07bb57dce473f64a9c6dd99dd84623c90a9723de # scxctl: more user-friendly information about the scheduler profiles
+0ee898227a5653b702dbfe9e796bce171873b922 # scxctl: use --show-args instead of --show
 )
 
 _reverts=(
