@@ -39,7 +39,7 @@ fd6740cba7c1ea2322468ea9e52255705d72b83f # scx_loader: Add chaos scheduler
 1a721618c7371988a6db40442e2b41eb0c132bc9 # scxctl: fix formatting
 a65c80807f361e4aa27fab319c483073933addb2 # scx_loader: refactor comments
 feaf7cf862f7a20414ede195ca304664a17ccd83 # scxctl: update README.md
-17aafe72f269c353f0e6d48eed47cff36699fc2c # scxctl: scxctl: improve mode/error handling and clarify output
+dd82b5197ff3514f19a4d4dfefc4a47fb01c912d # scxctl: improve mode/error handling and clarify output
 )
 
 _reverts=(
