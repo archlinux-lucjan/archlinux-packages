@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r4.gd343b37
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -36,12 +36,12 @@ fd6740cba7c1ea2322468ea9e52255705d72b83f # scx_loader: Add chaos scheduler
 5f40468d299be4652c6f0bf60b3de8d11095093d # scx_loader: Add mitosis scheduler
 019dd89a3d2dc6b12a8bdb961132fd6ae67a2a45 # scx_loader: Add maestro scheduler
 2f5d9c35ec5877dd35bfe4a50adb86eef170b830 # scx_cake: update profiles flags
-1a721618c7371988a6db40442e2b41eb0c132bc9 # scxctl: fix formatting
-a65c80807f361e4aa27fab319c483073933addb2 # scx_loader: refactor comments
-feaf7cf862f7a20414ede195ca304664a17ccd83 # scxctl: update README.md
-dd82b5197ff3514f19a4d4dfefc4a47fb01c912d # scxctl: improve mode/error handling and clarify output
-35eb4c9d915b85c7b971da98fa089259ad2a6215 # scxctl: simplify mode reporting and lazy mode fetch
-d6a474c249129a93a49fd6e0fde4a81e2585f418 # scxctl: fix formatting
+2ce969c46049734046679cda71416c73d45c1c5a # scxctl: fix formatting
+7ade109bc5abd8b667546eb67942b13078d154f2 # scx_loader: refactor comments
+b0e5bff23f9240408c3f08e1036b831fcd7a6af1 # scxctl: update README.md
+bd9905305c3c5f2e9942de464237877e3d57fd38 # scxctl: improve mode/error handling and clarify output
+85ec64a45cefaffcf5b130ac2d2a67f00208cf0f # scxctl: simplify mode reporting and lazy mode fetch
+4ed997b2a8c709d4a1065a853e675942cc4c9748 # scxctl: fix formatting
 )
 
 _reverts=(
