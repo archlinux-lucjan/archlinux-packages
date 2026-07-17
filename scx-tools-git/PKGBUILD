@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r4.gd343b37
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -43,6 +43,8 @@ bd9905305c3c5f2e9942de464237877e3d57fd38 # scxctl: improve mode/error handling a
 85ec64a45cefaffcf5b130ac2d2a67f00208cf0f # scxctl: simplify mode reporting and lazy mode fetch
 4ed997b2a8c709d4a1065a853e675942cc4c9748 # scxctl: fix formatting
 450eaef5100f52bffb4b329673b8f7c840247b98 # scxctl: avoid cloning scheduler arguments
+3d4325921dcf3fa1d51a5eded35237b9a470d8b6 # scxctl: avoid cloning current scheduler in cmd_switch
+b7abd714e86e679853c331b94107485acea5a21f # scxctl: propagate error instead of unwrapping in cmd_start
 )
 
 _reverts=(
