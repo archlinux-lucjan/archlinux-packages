@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r5.gd7acb09
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -46,6 +46,8 @@ f2ec06416dc01ad5b31903c58c50f3c6c8c80174 # scxtui: add scxtop monitor integratio
 b5765726895ae0b2ecbe416d8b67e9c9d9628e9b # scxtui: support the scx.service backend
 7d8b1ececfdbbd41ebb5556f5abf016029f3fb4c # scxtui: update README.md and bump version
 f28c9a1fc62f3f59604ebf3b28e53cd53bdb10d6 # scxtui: make clippy happy
+39c1cc868ce364a7bae403418fc7b923a0e284cd # scxtui: address first review feedback
+911237541ab594e734af8c6687827f9ad89cb7ca # scxtui: make clippy happy
 )
 
 _reverts=(
