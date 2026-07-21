@@ -7,8 +7,8 @@ _mode=release
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=1.1.2.r4.gd343b37
-pkgrel=9
+pkgver=1.1.2.r5.gd7acb09
+pkgrel=1
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -32,23 +32,13 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-fd6740cba7c1ea2322468ea9e52255705d72b83f # scx_loader: Add chaos scheduler
-5f40468d299be4652c6f0bf60b3de8d11095093d # scx_loader: Add mitosis scheduler
-019dd89a3d2dc6b12a8bdb961132fd6ae67a2a45 # scx_loader: Add maestro scheduler
-2f5d9c35ec5877dd35bfe4a50adb86eef170b830 # scx_cake: update profiles flags
-c4ad682abc0a86460e3576812c5b6567c1751fc8 # scxctl: fix formatting
-90150c308e0420f3b3436e6267f96ed382b2f9c4 # scx_loader: refactor comments
-8ce831301b09bf62314952b021c7d5c4dbb753dd # scxctl: update README.md
-058ea98f4c328ad826f377e8c7e75c9fbcab6765 # scxctl: improve mode/error handling and clarify output
-c92bfc236086ecd6ecce26827b2d4b1bb4585b83 # scxctl: simplify mode reporting and lazy mode fetch
-91e7b53ba508040d543fbc24d4ee660f1d500f4a # scxctl: fix formatting
-1a9518664a6d9568768b3b07520aa0189437b2eb # scxctl: avoid cloning scheduler arguments
-14e1125e8ea81d52a9cf579f088f342acc14efc6 # scxctl: avoid cloning current scheduler in cmd_switch
-eb2623e66e0dd9fbf08012421dccfa6ba963dc68 # scxctl: propagate error instead of unwrapping in cmd_start
-a7e9b899035413a545527a5b9e141cad7ac2c960 # scxctl: report unconfigured modes truthfully in get and restore
-d44392c89bbf4ac24ded76a7b925478652798a8c # scxctl: send error messages to stderr
-43c3700e7ddafdbf21a4b9cfe0d9a8d4249773f7 # scxctl: propagate D-Bus errors from cmd_list
-ec841e43d98671314fd04dd61b488bf4c507a499 # scxctl: stop unwrapping in validate_sched, resolve names via a pure helper
+30fc2ca780ffbd397a7bed62eb8d9fee7141eeb3 # scx_loader: Add chaos scheduler
+ed8481db25424ecedf1de9a72ddcc331a6b7b822 # scx_loader: Add mitosis scheduler
+9690c50a8f27a1310ad2c4b692f7acc5fe4b9b7c # scx_loader: Add maestro scheduler
+00c08970b69dc1432888cb92d331fdbe4f6628c8 # scx_cake: update profiles flags
+72e5989277058a5777be91470113addcf432819f # scxctl: send error messages to stderr
+b5d26302c5fafb5ec13cb6888a39c2ad7581b2b7 # scxctl: propagate D-Bus errors from cmd_list
+e093a44ea761ee7c3d4b13a6446b4a6709ab3c65 # scxctl: stop unwrapping in validate_sched, resolve names via a pure helper
 )
 
 _reverts=(
