@@ -7,8 +7,8 @@ _mode=release
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=1.1.2.r5.gd7acb09
-pkgrel=6
+pkgver=1.1.2.r6.ga6c8b7c
+pkgrel=1
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -32,26 +32,23 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-30fc2ca780ffbd397a7bed62eb8d9fee7141eeb3 # scx_loader: Add chaos scheduler
-ed8481db25424ecedf1de9a72ddcc331a6b7b822 # scx_loader: Add mitosis scheduler
-9690c50a8f27a1310ad2c4b692f7acc5fe4b9b7c # scx_loader: Add maestro scheduler
-00c08970b69dc1432888cb92d331fdbe4f6628c8 # scx_cake: update profiles flags
-72e5989277058a5777be91470113addcf432819f # scxctl: send error messages to stderr
-b5d26302c5fafb5ec13cb6888a39c2ad7581b2b7 # scxctl: propagate D-Bus errors from cmd_list
-e093a44ea761ee7c3d4b13a6446b4a6709ab3c65 # scxctl: stop unwrapping in validate_sched, resolve names via a pure helper
-dd52be43640b022d8ca00145a1039c63383e6efd # scxtui: add D-Bus scheduler management TUI
-a59e2d963744ddc671730d4d568bd016a19b4605 # scxtui: add journal log viewer
-f2ec06416dc01ad5b31903c58c50f3c6c8c80174 # scxtui: add scxtop monitor integration
-6f3b03f0e4188b453e91fce17a568f90f1447e19 # scxtui: report kernel sched_ext state
-b5765726895ae0b2ecbe416d8b67e9c9d9628e9b # scxtui: support the scx.service backend
-7d8b1ececfdbbd41ebb5556f5abf016029f3fb4c # scxtui: update README.md and bump version
-f28c9a1fc62f3f59604ebf3b28e53cd53bdb10d6 # scxtui: make clippy happy
-39c1cc868ce364a7bae403418fc7b923a0e284cd # scxtui: address first review feedback
-911237541ab594e734af8c6687827f9ad89cb7ca # scxtui: make clippy happy
-27cd6d66b260793019af0f7c208eafc0ab96fb5a # scxtui: fix broken README.md
-e95c1f74ac54f78fb51452153819cd6d0acb42bc # scxtui: clarify backend switch failure message
-c85040e45555bf261691b694f1d92d9089319217 # scxtui: address external review findings
-1cb829171d7140eacdd3d94566d370c09dc13153 # scxtui: fail closed when config permissions cannot be read
+326d623c14b63eb382bd125bd92ca56f0cc794da # scx_loader: Add chaos scheduler
+4637d7416ccc1331b29fea6fb50c653b28897ed2 # scx_loader: Add mitosis scheduler
+166c41d5694fc135799ce11189f35916155d349d # scx_loader: Add maestro scheduler
+f978e7b50c8587d022614637d16b2150b712caa1 # scx_cake: update profiles flags
+3b4faccbd7fa69e9adc35cbe817655758fc220bc # scxtui: add D-Bus scheduler management TUI
+e7cb2a05c79b72133fc240587a13ee9fe00a163e # scxtui: add journal log viewer
+3cca31aea425d553f4f8e07532615e79225ca34e # scxtui: add scxtop monitor integration
+d4f5f687045988b808265c9f0a1b32341209411f # scxtui: report kernel sched_ext state
+59f06a191d388aa71517fe94ad278c17c577aae0 # scxtui: support the scx.service backend
+eb5e99a898661ccfeef73fb287e2c81f650be8b7 # scxtui: update README.md and bump version
+97a127547ac53fc856c993934e4a885516068185 # scxtui: make clippy happy
+1d628c4f35440ab1352a0b43d7cf27de90ab9152 # scxtui: address first review feedback
+835a1de0488d617ca4d1565cb3527d58e6619281 # scxtui: make clippy happy
+fd58589b01e16a221d4d9defa225086985a15cb4 # scxtui: fix broken README.md
+075159643b9207089fcb9b66be6904eed1c31c68 # scxtui: clarify backend switch failure message
+8c82de100d0e39d3cfdd1e0e31f72a45682d6e29 # scxtui: address external review findings
+8c1e1b08b75de63901313e51a3c74437ec4728b3 # scxtui: fail closed when config permissions cannot be read
 )
 
 _reverts=(
