@@ -7,8 +7,8 @@ _mode=release
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=1.1.2.r7.ge4e453c
-pkgrel=3
+pkgver=1.1.2.r8.gcda5deb
+pkgrel=1
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -32,17 +32,14 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-b403337b43a48f7de5a148ef9bb1b5ed7d09843c # scx_loader: Add chaos scheduler
-3c1ae901d4aabd9966d628a733ce3f41045d2831 # scx_loader: Add mitosis scheduler
-127a1677c0cf0e400c9d3bbf2b84b500d2d1ca2f # scx_loader: Add maestro scheduler
-c364b869c8056d6a73b0f18be8ec5ac98db9dd00 # scx_cake: update profiles flags
-a19ffdb95aa827e65d25b4723764a083ff08847c # scxtui: reduce loader startup and refresh latency
-d72f8e914aa8f16c730c0301ea299df352ee35c4 # scxtui: improve runtime state synchronization and feedback
-37f77f9bf69af7fb9287e39d500aa078a83abb02 # scxtui: avoid partial selection sync for unknown schedulers
-2ea48b259cb44d66940bdc2689ae5cdbf54f2bce # scxctl: parse scheduler arguments as shell words
-8baf6c4e6b454d694761a9833610e1c5c525089f # scxctl: support shell-style scheduler arguments
-2ee4457baae277dd5594f43081c7dceeb205fa6d # scxctl: correct overclaims in argument-handling documentation
-e28cd2e982bcec3f99aafc713a12452d19c7f1ba # scxctl: make clippy happy
+eab5b64bd0f95e016126789e7088346d523f4dce # scx_loader: Add chaos scheduler
+b52acf8a001bc4fa50570970a06173d549aa9b2f # scx_loader: Add mitosis scheduler
+0f60a65fcfaa549d00cf726517f7f9d6cd9b7dc1 # scx_loader: Add maestro scheduler
+ca06e3d8bd544c47db9b86660dd1c9352c88c314 # scx_cake: update profiles flags
+32393c9af385ff50ac4c97c182595fdec6391a66 # scxctl: parse scheduler arguments as shell words
+7be3fe4930396923c1cb38cb2b2bdf7290c54a23 # scxctl: support shell-style scheduler arguments
+9ed8b0cd11296e9c6d509d2b29e26fb285b729fd # scxctl: correct overclaims in argument-handling documentation
+fed2769cbcb57a49279bf38664a85505d0945b26 # scxctl: make clippy happy
 )
 
 _reverts=(
