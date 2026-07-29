@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.2.r66.g520160148
-pkgrel=2
+pkgver=1.1.2.r68.g926d12c2a
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,22 +36,22 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-7c8c228aad0506718cbb24a269accf8eb008828b # scx_cake: 1.2.0 — clean-slate EEVDF-parity rewrite
-9ba1320708c10af017d7f74fda1c273ff8e235a2 # scx_cake: identity-gated preempt fast paths + RT-owned CPU avoidance
-4f79fa1cf9dc2b066de78506430c93330e9ce653 # scx_cake 1.2.0: K+L+M+S1d checkpoint — game gate passed, sealed benchmark wins
-f03f0e0518f3792e44e3b57065dff33145fa8ca4 # scheds: Introduce scx_maestro
-2add5d3da7eaaa0fc4452e9a7ee28f5a2f52c8f3 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-c96167a37a1f2ef69d370aa662d39dacbf8c8fcb # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-c391082b1e287d732b698789054c95203e624e11 # scx_maestro: Don't update deadline in case of re-enqueue
-7a287f7c64f0d365729809bc73e79a3c3c60f6e4 # scx_maestro: Introduce completely fair scheduling
-a95cc8fe5abd4104334d2a25e1ef1f47da0d62d9 # scx_maestro: Make enqueue + CPU kick more reliable
-57e78a6dcb3fcedc187567db6dbb9ba076760d0d # scx_maestro: Enforce preemption each tick on CPU contention
-af9af6ba7a922469a61d3f560e1b7e588f378380 # scx_maestro: Temporarily drop sub-sched support
-c55c110493fdbd4a022a5a48eed8538fc3bb1df1 # scx_maestro: bump to 1.1.1
-244aee58713ec78873eb35dd8e637625243bad5c # scx_maestro: fix formatting
-1298a8176a2239fff3c8d071e671fd84dd027e75 # scx_maestro: bump to 1.1.2
-9a0adf8372e88dadacecd033ad3e7fb7e3c6f3df # scx_maestro: Use scx_bpf_task_set_slice() setter
-38a485fca190d278b19d52a56f724e903409f164 # Cargo: update dependencies to latest versions
+971f6a9d2661c6fa516aa31d345b5092eb9f278c # scx_cake: 1.2.0 — clean-slate EEVDF-parity rewrite
+a72a4a10a9f5cfcf689bbfce252f72de6d58cbc9 # scx_cake: identity-gated preempt fast paths + RT-owned CPU avoidance
+d879628953f8d6555759a261c006a803b5655265 # scx_cake 1.2.0: K+L+M+S1d checkpoint — game gate passed, sealed benchmark wins
+5098d03b080129f3baafaff9019aa41aad819e39 # scheds: Introduce scx_maestro
+f9efbd6bf20cfcadf098480d203ccfe2d80b8015 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+752df6ffc77d6e83c91d35e00b0ce5dfc6705d6e # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+cf845c190bcdf0ba32a85a6bf02129a46da1b767 # scx_maestro: Don't update deadline in case of re-enqueue
+41f9a8ca91cf75a3edf11fe311ee7c692e243904 # scx_maestro: Introduce completely fair scheduling
+5f69861809fb8a7423acf209690d683dc1f3b2c7 # scx_maestro: Make enqueue + CPU kick more reliable
+dc78806767018b4319dd303c4ca4d21006c73e80 # scx_maestro: Enforce preemption each tick on CPU contention
+c42051e59b9c67f53a68e79a99f0b32e4cb685a9 # scx_maestro: Temporarily drop sub-sched support
+2def7d09d6403f0fb936bf0227a74ddf9d5b5eaf # scx_maestro: bump to 1.1.1
+d283abe99da3b82453b00554f0ef3a0cb5d98558 # scx_maestro: fix formatting
+155ce9e0cf4e3a314eeba27d1dd31bbbd0c4e7ec # scx_maestro: bump to 1.1.2
+725b5526222a6b3df59325b1d0bd7e082e1fc6c0 # scx_maestro: Use scx_bpf_task_set_slice() setter
+093adaf2b7962af70618e839519e12c2654ffde3 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
