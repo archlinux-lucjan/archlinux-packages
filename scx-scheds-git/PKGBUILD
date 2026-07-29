@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.2.r70.g736e9b2df
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -51,7 +51,8 @@ f406675c72a4ebecc2715519a9c285fef09cd3aa # scx_maestro: Make enqueue + CPU kick 
 af624265e37700827d0f14278b0248fca8ec3baf # scx_maestro: fix formatting
 0ad68092f4e97d026d2bc14864bc24d827312734 # scx_maestro: bump to 1.1.2
 88f7093bde86a5a88bba9815582bef89589c5dd0 # scx_maestro: Use scx_bpf_task_set_slice() setter
-01944073a24c94756fa246325952d32c945c64b9 # Cargo: update dependencies to latest versions
+7cefda7de3b0441546647f1047cb3c1f33742cd8 # scx_pandemonium: bump to 5.17.0
+b8578c1d065db68a82cb347ebdbcab59aaeb67b1 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
