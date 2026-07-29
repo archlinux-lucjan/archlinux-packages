@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r8.gcda5deb
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -40,6 +40,12 @@ ca06e3d8bd544c47db9b86660dd1c9352c88c314 # scx_cake: update profiles flags
 7be3fe4930396923c1cb38cb2b2bdf7290c54a23 # scxctl: support shell-style scheduler arguments
 9ed8b0cd11296e9c6d509d2b29e26fb285b729fd # scxctl: correct overclaims in argument-handling documentation
 fed2769cbcb57a49279bf38664a85505d0945b26 # scxctl: make clippy happy
+534cc5ec93a12cf506bc13e7c2d661b4d4e2c5cb # scxtui: query per-mode arguments instead of the configured-mode list
+3a2a41225c6636dd857ecad8cdd2558b5c27b608 # scxtui: cache mode arguments, invalidate on daemon restart
+81c2aef79ee9a417e622cffc85122512c40b92a9 # scxtui: preview configured mode arguments in the status panel
+e10a6ed5216a2ebe08c58d80a5e35f79e87168e5 # scxtui: render running scheduler arguments as shell words
+2c11de732a4893178c3b7a02423e0364115492ce # scxtui: document the mode-argument preview
+3e26035dad1fa6dfa2fe8264e2a331dd3cc6e5eb # scxtui: add a session-only custom-arguments field
 )
 
 _reverts=(
