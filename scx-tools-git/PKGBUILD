@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r8.gcda5deb
-pkgrel=11
+pkgrel=12
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -46,17 +46,19 @@ fed2769cbcb57a49279bf38664a85505d0945b26 # scxctl: make clippy happy
 0fb90c75cb50882166207b4fc2134a9c383fc8a0 # scxtui: render running scheduler arguments as shell words
 5daa71a20939a3ec94bf2a1942296cd63cdead79 # scxtui: document the mode-argument preview
 3555fc46890cb28aca12d6494017e4820f35c1f2 # scxtui: add a session-only custom-arguments field
-2911e80d5ef52ea3c97a2360a847b0bd289bbed9 # scx_loader: consolidate scheduler state into SchedState
-3bd2f351405ea0f20512f9935e9789eb8225f5c5 # scx_loader: emit PropertiesChanged when scheduler state changes
-4e2c117c84eab14894c10945a10bd719802735d5 # scx_loader: reset SchedulerMode to Auto when the scheduler stops
-09016f3d93e867802b0f15b6bbd55a2fb144ef91 # scx_loader: document the property change-signal contract
-17e2a4fcf10285dc0e588c7afeb41f955b8206d3 # scx_loader: compare CurrentSchedulerArgs by its observable value
-1ac73dd62c407f3b9ab9f70c92b8b1b62e414f8a # scx_loader: emit one atomic PropertiesChanged per transition
-56bc547b53beda382aff3757f591768a162afaaa # scx_loader: declare const properties in the runtime introspection
-1153eebcaf845e255d7bcd4c60da071cd74acd5d # scxtui: follow scheduler state live via PropertiesChanged
-b763e7e9f633b3d31a4a0e4720920d0a274f4f97 # scxtui: re-ask the daemon when the kernel disputes its story
-cce691d3f48eeceb7b8643ee19ce94fb786eb91a # scxtui: carry only runtime state on the push channel
-e712be412e2d40eeb844b2a21cd9dcb5d6d13f90 # scxtui: recompute the dispute edge from post-refresh truth
+d61f2ce114ce10acb9312e5651dd5b3e6f08cc7f # scx_loader: consolidate scheduler state into SchedState
+25614f1cd7637913a77c521032858569c282e44e # scx_loader: emit PropertiesChanged when scheduler state changes
+053912d5034f45a26cace6f57a6a5038aabdaacf # scx_loader: reset SchedulerMode to Auto when the scheduler stops
+fdd1f9e16384f56e38c8d80715dc26ae1c5a28d6 # scx_loader: document the property change-signal contract
+c6ada226e61aa37a6bec55a4b8fe9dc5be8a390f # scx_loader: compare CurrentSchedulerArgs by its observable value
+4764e1633d330a5673ffc6cbbb9a5a63b307757d # scx_loader: emit one atomic PropertiesChanged per transition
+71fc100f1c301fb3d46fb2ac369bfedcd444e803 # scx_loader: declare const properties in the runtime introspection
+bd44da3478be421a0e589a24479b73400206eb5e # scx_loader: announce the full state when the daemon starts
+385626a5e1ee44e88726e14ec8da41781bbdec1e # scxtui: follow scheduler state live via PropertiesChanged
+9b6b43c56e4596d02e3d8b2a34ccdea7fc037fe4 # scxtui: re-ask the daemon when the kernel disputes its story
+785df212f70fa1d83d30997baa81da7ecdef1adc # scxtui: carry only runtime state on the push channel
+ef6e97b51d67463eb3a7c270a89e1633d6f0504d # scxtui: recompute the dispute edge from post-refresh truth
+a0b8979e694cd6e0bc01e0438dac9a764b094d98 # scxtui: never apply a snapshot read across an owner change
 )
 
 _reverts=(
