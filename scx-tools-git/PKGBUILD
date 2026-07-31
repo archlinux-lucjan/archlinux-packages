@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r8.gcda5deb
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -51,7 +51,7 @@ fed2769cbcb57a49279bf38664a85505d0945b26 # scxctl: make clippy happy
 ff0e6715c1a42401ac53058dd67072d1ec370c9d # scx_loader: reset SchedulerMode to Auto when the scheduler stops
 ff82e0385b056f09f8c0c46b161d8ab2f3ee03b0 # scx_loader: document the property change-signal contract
 96df33ec0e6f3159036d6dec5a3af7cc43897842 # scxtui: follow scheduler state live via PropertiesChanged
-31b26bedec321d465b9c50c9d4e545c7922a5cf4 # scxtui: re-ask the daemon when the kernel disputes its story
+33345d176eb8665fbaafdc986471fc2034d58d57 # scxtui: re-ask the daemon when the kernel disputes its story
 )
 
 _reverts=(
