@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r8.gcda5deb
-pkgrel=17
+pkgrel=18
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -53,6 +53,7 @@ b64379de2b959d7ed4e956dd4b6759ed28249c08 # scx_loader: reset SchedulerMode to Au
 15f59e9142a15794dd27d32440023dc3f5f1c619 # scx_loader: announce the instance when the daemon starts
 9d9700c4a280e2d86a4e75ba289c99f25d6c4801 # scxtui: follow scheduler state live via PropertiesChanged
 d8fbc6f4d88d26d26b569f1cc4bc9895e0770283 # scxtui: re-ask the daemon when the kernel disputes its story
+36b9081cc5959eba7df67e840cfc1c3359db072d # scxtui: match versioned ops names that keep the scx_ prefix
 )
 
 _reverts=(
