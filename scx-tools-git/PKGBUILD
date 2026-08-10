@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r8.gcda5deb
-pkgrel=16
+pkgrel=17
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -46,26 +46,13 @@ fed2769cbcb57a49279bf38664a85505d0945b26 # scxctl: make clippy happy
 0fb90c75cb50882166207b4fc2134a9c383fc8a0 # scxtui: render running scheduler arguments as shell words
 5daa71a20939a3ec94bf2a1942296cd63cdead79 # scxtui: document the mode-argument preview
 3555fc46890cb28aca12d6494017e4820f35c1f2 # scxtui: add a session-only custom-arguments field
-5e16e3a8e07b454b0dc5fd6266bffb4b839e1b34 # scx_loader: consolidate scheduler state into SchedState
-7e84b0e94d251458cb47f06f6deb7d5130355351 # scx_loader: emit PropertiesChanged when scheduler state changes
-81972c2a9523e01f5b82fc5f068b7e90175130b0 # scx_loader: reset SchedulerMode to Auto when the scheduler stops
-ac640c492ecb4b95944ee56c0865b5f479f98ef9 # scx_loader: document the property change-signal contract
-1d419186ec7f2d2dd38fb28c411048453be36447 # scx_loader: compare CurrentSchedulerArgs by its observable value
-ceb7815e4d73a616b816c261289a80bebfaf3ccc # scx_loader: emit one atomic PropertiesChanged per transition
-243dbfeaf16884a30826f0a19bbbbfa940b6a003 # scx_loader: declare const properties in the runtime introspection
-c282160320ebab554eb25dbb0b2cd245aaed133e # scx_loader: announce the full state when the daemon starts
-24b98bdfdb50a44887889858d25de202498371db # scx_loader: announce the live state under the interface lock
-6932562e9a722b5db464f139e88bf4c33b9e3523 # scx_loader: expose a DaemonGeneration for value-blind replacements
-98184fcf5e098dd8db060f4462529714cca2a227 # scx_loader: derive the generation from the connection's unique name
-a08972b1802d779892daf08017be1dde4a57b370 # scxtui: follow scheduler state live via PropertiesChanged
-51aa79f0af0caaa795aaddec54d580f444cb3e89 # scxtui: re-ask the daemon when the kernel disputes its story
-552a06c90a284c3282bbb730c6760ad2697503bd # scxtui: carry only runtime state on the push channel
-1972db252836c2721d8a7433fc1ded8db302f0e4 # scxtui: recompute the dispute edge from post-refresh truth
-2bb7d6e90c171bcf49e54a295369b153f6d2a86b # scxtui: never apply a snapshot read across an owner change
-8910e89481691b4fca8f1b869dfe253c6b17a760 # scxtui: treat the push cache as a doorbell, never as a payload
-7604cadae14fd4915751cc7953cda38071356e9d # scxtui: require a successful fetch before trusting the push
-a2eaecdded768b617fe62a7e2f74a7e3166611f7 # scxtui: hear value-blind replacements through the generation
-0689e11dcca9a69c21520c593d1f7665673d4dd3 # scxtui: carry the generation as the daemon's unique bus name
+fb452fbc19b3e43c8b63da1fd106c31bc5f0577d # scx_loader: consolidate scheduler state into SchedState
+ba542809a97eb3ae73889a3474aa594d7833449b # scx_loader: emit one atomic PropertiesChanged per transition
+b64379de2b959d7ed4e956dd4b6759ed28249c08 # scx_loader: reset SchedulerMode to Auto when the scheduler stops
+236448f7bd27b9742aae00f451801b8c6082bb5f # scx_loader: document the property change-signal contract
+15f59e9142a15794dd27d32440023dc3f5f1c619 # scx_loader: announce the instance when the daemon starts
+9d9700c4a280e2d86a4e75ba289c99f25d6c4801 # scxtui: follow scheduler state live via PropertiesChanged
+d8fbc6f4d88d26d26b569f1cc4bc9895e0770283 # scxtui: re-ask the daemon when the kernel disputes its story
 )
 
 _reverts=(
