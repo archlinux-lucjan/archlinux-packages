@@ -7,8 +7,8 @@ _mode=release
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=1.1.2.r8.gcda5deb
-pkgrel=19
+pkgver=1.1.2.r9.g06afab9
+pkgrel=1
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -32,27 +32,23 @@ source=("git+https://github.com/sched-ext/scx-loader")
 sha256sums=('SKIP')
 
 _backports=(
-c64c9d456807e035556a166a04f0b96acdaee935 # scx_loader: Add chaos scheduler
-0f7e20cc40f8bda1db7bcccca91508cebfc9ce15 # scx_loader: Add maestro scheduler
-7eb5c30afffc4220b7acf7ab39e3a62747e14176 # scx_cake: update profiles flags
-32af2d6b570ddf63c56e24f0d1c8b21c6234c8c3 # scxctl: parse scheduler arguments as shell words
-cebb738ecb1ac4d50f632d77b2bd51f045752548 # scxctl: support shell-style scheduler arguments
-7e9edd00919697171c6254cb00f060aa25200c79 # scxctl: correct overclaims in argument-handling documentation
-cf09b976ed3a7d37357590ae61f70ca003d52402 # scxctl: make clippy happy
-12b5e502114a3d37e87630f6c99aeee16b5b097d # scxtui: query per-mode arguments instead of the configured-mode list
-6acef00201eee405e119fd38323e95a11a1481c5 # scxtui: cache mode arguments, invalidate on daemon restart
-ae2fd3893b1eb884a0e3cf6309b6a4949a21e189 # scxtui: preview configured mode arguments in the status panel
-b3cbc23a3c0d26b2df7f3426416a3ed9ebaf292f # scxtui: render running scheduler arguments as shell words
-75133f6ff83de9ff9e7d02b970f9f14fffd7ff49 # scxtui: document the mode-argument preview
-d1d7a74e48c322dc5e4cbab3dca0bd2cb90f125b # scxtui: add a session-only custom-arguments field
-e98ddb3d9828f9451e24ea8db76435f07eee7e57 # scx_loader: consolidate scheduler state into SchedState
-a820570c2a92cca1c90a0fbb20f248eb5be25373 # scx_loader: emit one atomic PropertiesChanged per transition
-1dc2a08607b37c55d58050b865d6e598f5e6231d # scx_loader: reset SchedulerMode to Auto when the scheduler stops
-34c4989ae2f05b9ad1b0a1d3f7a5f22de5af475f # scx_loader: document the property change-signal contract
-37c398bf948507c574b9881db7a13f5dc14d9b8a # scx_loader: announce the instance when the daemon starts
-b68d7a94454e22e1a856e23b9f501614908f486a # scxtui: follow scheduler state live via PropertiesChanged
-3807e792d3f225b5df5fbdb3d803f7da915f594b # scxtui: re-ask the daemon when the kernel disputes its story
-d65ea00603e05a699afadc04afeaa5204700470d # scxtui: match versioned ops names that keep the scx_ prefix
+3b4ea77c0d15b70006cf50bd4550d2edf485382d # scx_loader: Add chaos scheduler
+50aa81a3fed261daeb9decce6a3af8aed3d7ebd3 # scx_loader: Add maestro scheduler
+b874e88d31381aeac63a15a6d06373beefa60bd3 # scx_cake: update profiles flags
+0ca04e6d551a0e3bf709a49e9779b46a14566aa0 # scxtui: query per-mode arguments instead of the configured-mode list
+52227c765943de2325e9cd0c21354abd5f64585e # scxtui: cache mode arguments, invalidate on daemon restart
+df3a82cd243d6241cb4146c6720b7c5187bc55c9 # scxtui: preview configured mode arguments in the status panel
+eccd7931913705d896f7826c8d808f2b549ed400 # scxtui: render running scheduler arguments as shell words
+011879ea2973494836cf6e39b4b50b2189bba6af # scxtui: document the mode-argument preview
+1fab8fce36982c2a6325c99311e93eedcd740333 # scxtui: add a session-only custom-arguments field
+65e51c6daf5ef90d34ed18eefdad88eade91fa48 # scx_loader: consolidate scheduler state into SchedState
+1d870e9209eb6ff414619eaf96115b315bda1bb2 # scx_loader: emit one atomic PropertiesChanged per transition
+0da229574e7edfd0adb6b5f1ab8c1300961077cf # scx_loader: reset SchedulerMode to Auto when the scheduler stops
+83766fbffbd2be11f21b366b6159da383455452f # scx_loader: document the property change-signal contract
+c5eb3c74a356d7bea55b8deb1deb8e45b5c1be41 # scx_loader: announce the instance when the daemon starts
+32029233fdf3ac186e6fd3aa87eff32731f75058 # scxtui: follow scheduler state live via PropertiesChanged
+cb7e2aabdb0f2cc8608aa3605b19cdec72f06438 # scxtui: re-ask the daemon when the kernel disputes its story
+91919d885280ad1f939b2f166ec2fe6d63cc2a4f # scxtui: match versioned ops names that keep the scx_ prefix
 )
 
 _reverts=(
