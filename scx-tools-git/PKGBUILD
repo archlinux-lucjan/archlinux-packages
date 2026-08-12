@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r10.gd598921
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -52,6 +52,7 @@ e88ba03ba3f73c0695f092b5b8f6ab67f477b66d # scx_loader: clarify PPD monitor handl
 222baf618c24050de4e167a7285719fcbcdd0ed0 # scxctl: report a coherent loader snapshot after start and switch
 837f6efafbbad33f9a7ecf65ef93aacf794e5f98 # scxctl: drop the causal success path from post-operation reporting
 17a959938085b8b9cde4004864cbf1195bc77610 # scx_loader: log the selected configuration source
+400b69fc3a0a3c9688d9080c627386071e41041d # scxctl: restore the unconfigured-mode truth in the observation line
 )
 
 _reverts=(
