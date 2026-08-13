@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.2.r10.gd598921
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -35,24 +35,24 @@ _backports=(
 d3ab7ac783ebe48e299d6488017ca6960b168768 # scx_loader: Add chaos scheduler
 c96848ee2d0e09f663bc75850980dbca05c83a62 # scx_loader: Add maestro scheduler
 d80c9c8850c135fc998f52b28324caf7d926c847 # scx_cake: update profiles flags
-02ed1904d7071368f68739e1c131d72666a5728e # scx_loader: consolidate scheduler state into SchedState
-0f4724282147cb2573df907d5dcdffa6ecbf58f9 # scx_loader: emit one atomic PropertiesChanged per transition
-36fc5ed4d554a3b540e9e9acd1a55d3af123a429 # scx_loader: reset SchedulerMode to Auto when the scheduler stops
-d3d5064f2d6910acf42dbfe96bfe657817986f02 # scx_loader: document the property change-signal contract
-9fa349fce8429af88fe6ffa14c3a461f92fcc780 # scx_loader: announce the instance when the daemon starts
-6740d919eff8f83bac3253a1274ffb1347cf99f7 # scxtui: follow scheduler state live via PropertiesChanged
-42af7255bb5e6b8c3c64dfe47ddf4a6fe696c3df # scxtui: re-ask the daemon when the kernel disputes its story
-e3e6e00e484a3f500e5d787a6c6f9beed72f72a8 # scx_loader: add power-profile configuration model
-384f33c1614b1c41038292f5242e3ef6c805770d # scx_loader: add pure power-profile resolution and apply-decision policy
-c1d2a41f33331bbc190818707663019d83e9aec7 # scx_loader: monitor power-profiles-daemon and apply mapped modes
-691548e52685497f2cc2ccf9296f4af638a32e99 # scx_loader: cap PPD retry backoff at the full 30s duration
-0f06adf04e480cab9ee2eeb458df40946f08a1a1 # scx_loader: clarify PPD monitor handle intent and reconnect logging
-079de7dff1bdea2a2f1b43bf63365099651cf4cc # Document power-profiles-daemon integration
-3d4b6c76cdddf20fbe6a234395860fbd6555c5c9 # scx_loader: enforce the PPD mapping at the moment a scheduler appears
-592efe3cccc24dd510fa48f2944bcdec4b246b35 # scxctl: report a coherent loader snapshot after start and switch
-7ce8afab7f7e6fb108661163859887091c9cc73c # scxctl: drop the causal success path from post-operation reporting
-4c362bf60acb6795799b3c5829960bc3550dc268 # scxctl: restore the unconfigured-mode truth in the observation line
-fc980504b627766282bd5b846b7ed3d0e93830fc # scx_loader: log the selected configuration source
+5bf42fe56fd103d3f975fd12b4f1b673db4ed209 # scx_loader: consolidate scheduler state into SchedState
+eee106c3415141435978356d3c74ea4013f4ef03 # scx_loader: emit one atomic PropertiesChanged per transition
+3c8d357c0b870c8a39de77931108e8001ab45227 # scx_loader: reset SchedulerMode to Auto when the scheduler stops
+81925a7595044b14b2c036cff59148d51b0cae9a # scx_loader: document the property change-signal contract
+967b224a4c98be07e45f64caf8f402386fe1b693 # scx_loader: announce the instance when the daemon starts
+7616ef212330eef79e6149a29d7d385de3c47c0e # scxtui: follow scheduler state live via PropertiesChanged
+adb42247e2f92d01dbbc8634bcbff9afe33379ef # scxtui: re-ask the daemon when the kernel disputes its story
+3b119b12c7a5ac5c6332fdaa2e974f1bd319caa2 # scx_loader: add power-profile configuration model
+551e325c9f9164da973af69d112ff940de1b6c81 # scx_loader: add pure power-profile resolution and apply-decision policy
+cd5982160471da65dbe4f701ae419d186caf9d87 # scx_loader: monitor power-profiles-daemon and apply mapped modes
+b317919bc56fc088c064e0f424eda8ec895073aa # scx_loader: cap PPD retry backoff at the full 30s duration
+086b0416072574f93f95e70c87b595a37d338bc0 # scx_loader: clarify PPD monitor handle intent and reconnect logging
+3445f02807b4020e1c3ac02778a4700f326861e4 # Document power-profiles-daemon integration
+e5502ccae5da5129505c4364771f6b4e53a4a175 # scx_loader: enforce the PPD mapping at the moment a scheduler appears
+fd5190e6753d85ff4f80ea00c04ca3ad9bf719f5 # scxctl: report a coherent loader snapshot after start and switch
+2e042a65dc72517f9ffa2dab2166f2eeaab86c8a # scxctl: drop the causal success path from post-operation reporting
+2ea115614d6227d1d982063b6ea03c9ba3457143 # scxctl: restore the unconfigured-mode truth in the observation line
+13c9795dc5a092ac1c2cf21da0db4acf7eb10376 # scx_loader: log the selected configuration source
 )
 
 _reverts=(
