@@ -11,6 +11,10 @@
 │   ├── eu.betterbird.Betterbird.desktop
 │   ├── PKGBUILD
 │   └── vendor-prefs.js
+├── betterbird-dev-bin
+│   ├── eu.betterbird.Betterbird.desktop
+│   ├── PKGBUILD
+│   └── vendor-prefs.js
 ├── cachy-chroot-git
 │   └── PKGBUILD
 ├── cachyos-ananicy-rules-git
@@ -199,6 +203,8 @@
 │   └── PKGBUILD
 ├── scx-manager-git
 │   └── PKGBUILD
+├── scx-manager-trunk-git
+│   └── PKGBUILD
 ├── scx-scheds
 │   └── PKGBUILD
 ├── scx-scheds-git
@@ -209,6 +215,8 @@
 │   └── PKGBUILD
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
+│   └── PKGBUILD
+├── shelly-cli-git
 │   └── PKGBUILD
 ├── vscodium-bin
 │   ├── LICENSE
@@ -243,6 +251,7 @@
 ├── zsh-z-git
 │   └── PKGBUILD
 └── zstd-git
+    ├── Files
     └── PKGBUILD
 
-82 directories, 164 files
+85 directories, 170 files
