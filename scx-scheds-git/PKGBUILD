@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r14.g1537b3ba6
+pkgver=1.1.3.r31.gac1006877
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -36,22 +36,54 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-0ca8ea745d861e537c3bd9ef466df328d4f1a743 # scheds: Introduce scx_maestro
-ada08b0b7f9e7f35a04c5c35c1cb88c40375e312 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-c8ecbfab7891fad6e48a10bc603769cfea43bbd7 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-4f61070791793442cdb45b79fd585b688571b60f # scx_maestro: Don't update deadline in case of re-enqueue
-26a45cb7f8aa1e8e763f123108edd0790c1914bc # scx_maestro: Introduce completely fair scheduling
-43128aea73a328a23b73dc9429c8b22b29f23c51 # scx_maestro: Make enqueue + CPU kick more reliable
-b1d1789b68b64e124aff3a2b1525a0df5a282593 # scx_maestro: Enforce preemption each tick on CPU contention
-39cf072785eb454c9c0adb5a99ed42d57dc16524 # scx_maestro: Temporarily drop sub-sched support
-46f1c7ac6e1458b7a32a398a0686100d41eb3822 # scx_maestro: bump to 1.1.1
-be03a370093420591ad000885e5f9ea6ce3a6ea5 # scx_maestro: fix formatting
-733b2fd2c425373ef5106340cbdfe47d9b8a06e4 # scx_maestro: bump to 1.1.2
-2fa6642faad01d40924789c40266e39441f1a43e # scx_maestro: Use scx_bpf_task_set_slice() setter
-f56127b3f7b445ae54200623cbf74bb0a3f71d84 # scx_maestro: bump to 1.1.3
-1b6523ff8b97942440a216fcf93d347397e42c59 # PANDEMONIUMv5.19.0:
-915faa9a58f71d5dd77caa74d1930ad2ff0d7ff1 # Cargo: update dependencies to latest versions
-88e5cf20d8601e3d00a4172627da3cba669cedc2 # Cargo: update libbpf to latest versions
+ea2db6d71d3f34b2a3e67663e3135a514ba5781d # scheds: Introduce scx_maestro
+40114ba1e1f7664ef6182840e21fb28cc957750d # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+3680c4b9d19302b5cd93eab0599401f7bd68088e # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+6ae523e0a45f0e478bf0e3b644feec49e57c0a5b # scx_maestro: Don't update deadline in case of re-enqueue
+b472c6f1a626f13d2eda59afca4b78dd94a40f58 # scx_maestro: Introduce completely fair scheduling
+0c5b70c8a9a2e7682e67c426d8b181b9b3e9651f # scx_maestro: Make enqueue + CPU kick more reliable
+c9b02028a4f394f48c76eeee6cf5d06e46723f75 # scx_maestro: Enforce preemption each tick on CPU contention
+e2d21b45d8cfc99a861e22265a387bb4abb94c6b # scx_maestro: Temporarily drop sub-sched support
+0e68484ac10f0293c6a2ebfa329ac2adbe90f627 # scx_maestro: bump to 1.1.1
+40ceb4ec0a0a03a53ce1a9a6455e42e669e75ea0 # scx_maestro: fix formatting
+28903415392f240bfc2811bd8d3d6bb0adf81275 # scx_maestro: bump to 1.1.2
+30d3de75cf31d53e995e26726569c6cf29803a8b # scx_maestro: Use scx_bpf_task_set_slice() setter
+2c3aabf23eb39770b119df9f00bc3a20e5678dc8 # scx_maestro: bump to 1.1.3
+e4a5b261547a934652fd059e10e27e38284322ed # scx_cake: register §G37 — adaptive switch-cost floor for cake_handoff_max_ns
+67403513d668526e2d491da6d8dd620120ebba10 # scx_cake: score KovaaKs wake+IRQ A/B — sink handling wins, task-graph tail loses
+1a7bcc8faa1ac5d94ea0f9c3fa3309830be167d7 # scx_cake: split the starvation predicate — relocation asks for a full turn
+443bd00a865ccbdf3e4ff1781375c2ba6f7d03de # scx_cake: §G38 — rank a fully idle core above a cache-warm thread
+dc8720f95a3cbb13332288496635a17cd363d045 # scx_cake: §G38.1 — core preference at the raw-pick sites + serial arm
+3bbb2da9614385e4c8fc95a3d33020342c93c649 # scx_cake: §G39 — WAKE_SYNC joins the serial-handoff arm
+abd003469f273217405c9c3f8391eea53f153827 # scx_cake: §G40 — kick the idle home
+41d25c9f2fbe0b03cf317159f12e0a0851565532 # scx_cake: §G38.1 amendment — the serial arm sheds its core veto
+a6c93f483c9250005fd6651fb964450f83052c16 # scx_cake: §G39-B ABORTED — pipe pays the §R.6 weld, SYNC leaves the serial arm
+10f3a736631af341c32f30d74e940a7c0f173c63 # scx_cake: STATE.md — G38 scored, domain audit, G38.1 fire+repair, G39 abort, G40; ledger + registry current
+fcc34893bb29feeec661466d56103bbbc1e5c604 # scx_cake: STATE.md — G39 revert confirmed (pipe weld removed), mutex residual is regime not build
+ace087ee287d3cc49b46f5d4a743046b0910f32d # scx_cake: STATE.md — EOD pickup block; cause-B front-end signature confirmed (chain3, preliminary)
+0d90b50df5b6331c36c3d1662df33b7eb021c756 # scx_cake: §G41 wake-queue occupancy mark — dispatch's global peek gated behind one word
+51b53c12fbc0f81cdc97d879415ceca371e50a91 # scx_cake: STATE.md — §G41 screen PASSED (+48.2 vs baseline +41.3, diagnostic); §G42 filed (vtime mis-charge stall, attributed away from G41)
+a7eaa6e14e3c217ed010ecd68e2af7e282ca0150 # scx_cake: §G42 fix — run-slot indexing by the task's CPU, never the callback's
+8061ec40ab673f43471be0e77b098d94df958555 # scx_cake: capture_preflight — assets root moved to scx_cake_bench
+d7f63fc880fb0e49a6f5971ef396f858eb64ae5f # scx_cake: STATE.md — §G43 registered (going-idle hint claim); predict-verify audit
+ab061238bec792db66c2c329dee09d070ad6eadd # scx_cake: §G43 going-idle hint — dispatch publishes, wake path claims before the scan
+db93dcd47387867e84006a267021dc0bd9bfa5d0 # scx_cake: toggle campaign infra — rodata on/off arms; §G43 gains its gate
+9d7e3a1eaac19f9e02eaabdddf4311090df5814d # scx_cake: §G44 — qmask answers wake-routing emptiness behind --toggle g44
+78cd01ed7b7d887f982f825f22cb9629bf448942 # scx_cake: §G45 — event-complete idle census behind --toggle g45
+9422a3ef648e065729ae415ad3119e0494fd6afc # scx_cake: §G46 — departing-slice cache behind --toggle g46
+6c719bc3f0b34a049c6828b4ebdc0cb5590fcb86 # scx_cake: STATE.md — toggle campaign screened; §G46 the one separated result
+90cded040361b4561772fb5d507c56baa0342435 # scx_cake: STATE.md — stack2 isolation: §G45 contributes inside the stack
+becc65e523a3c5f33cda18ec472cb2ec71f6a037 # scx_cake: STATE.md — HD2 game screen (wake tier): stack non-regressing, leans better
+5b4824f1192144d46ba673c4beadd69d370023ce # scx_cake: STATE.md — HD2 IRQ-origin service: input 2.4x tighter, stack best on GPU-origin game wakes
+0f837d316a5229a56ef757707a6eac21e4ea4760 # scx_cake: STATE.md — LOTR light-regime screen: stack best IPC, migration premium gone
+6cb99096c841701b180f9533073d77f2519c605a # scx_cake: STATE.md — IRQ jitter: handler durations arm-identical; stack tightest nvidia cadence (LOTR)
+172f661fc80e710bf165c274cebca158457bcf3a # scx_cake: STATE.md — LOTR n=8: migration finding near-separated, stack cadence lead holds, IPC tip-vs-stack demoted to tie
+507c4d1efbe51b18938cc083144feec78ecd34d3 # scx_cake: STATE.md — KovaaKs frame read: g43 trade mapped (menu regime favors hint on; gameplay favors off)
+92036741f6f1cec693fb62b2faad3f1f833737e0 # scx_cake: §G47 — ISR-successor kthread keeps the IRQ CPU, behind --toggle g47
+c148998ff99478cd073350e320d099e1314ece22 # scx_cake: component cost audit vs EEVDF — §G48/§G49 registered, §G47 marked built
+bdb22f557416a3212c94692698a9db9b3b090d90 # scx_cake: select_cpu redesign — self-park mailboxes become default (2026-08-23)
+00748fd5d88a3fe5b081b6ef47b20b92171c706d # Cargo: update dependencies to latest versions
+2d877a2b24b1b9f88e069a302607bfbb1e775928 # Cargo: update libbpf to latest versions
 )
 
 _reverts=(
