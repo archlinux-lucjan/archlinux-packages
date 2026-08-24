@@ -9,7 +9,7 @@
 pkgname=vscodium-insiders-bin
 _pkgname=VSCodium
 pkgver=1.126.04518
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code Insiders without MS branding/telemetry/licensing."
 arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
@@ -38,7 +38,7 @@ sha256sums=('ffef9903b148c4c1c7a3a67ccf98e95cd2b0d39f89b6345e3fb374c9e1f6a8b0'
             '4c581c267e19ef522cbb67f83b1013722fd1531a1f754095bdc19255b0d8117e'
             '2213e04254061ebdc4d56d12f58ed1f8ee2f40068d30f2657b93cb0b4714a880'
             'bedd8ae8f2078f7cf1dcbf8fc1d1ef602871481eb962b215d5b76f3d0b3d70e0'
-            '865cf3e30c72575f09ebb01e004685da2c7b04b17529abc06ae1fd0d171a32a5'
+            '91fcc92745ac8c80e5909c1a273cc7b31478e43ae0a465412b7bd87e71559164'
             '2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e')
 
 shopt -s extglob

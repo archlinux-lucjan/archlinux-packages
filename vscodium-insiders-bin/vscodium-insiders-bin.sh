@@ -13,4 +13,4 @@ if [[ -f $XDG_CONFIG_HOME/codium-insiders-flags.conf ]]; then
 fi
 
 # Launch
-exec /opt/vscodium-insiders-bin/bin/codium-insiders "$@" "${CODE_USER_FLAGS[@]}"
+exec /opt/vscodium-insiders-bin/bin/codium-insiders "${CODE_USER_FLAGS[@]}" "$@"
