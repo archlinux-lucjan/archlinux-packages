@@ -9,7 +9,7 @@
 pkgname=vscodium-bin
 _pkgname=VSCodium
 pkgver=1.126.04524
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
@@ -38,7 +38,7 @@ sha256sums=('adf3548df055d18e476cdee887488ba7486b879ad99a31a546c6b5c5ff296c24'
             '596364c6a5bb9a243e75698500f786a32a10217d8b60a047fc82aedfdc7a9954'
             '3ad1e6bbd7cdc8833eff9afaa9f6ae39350d738678cafbe3437106f0cfe3d985'
             '01ba3d33e76804e2346d08f4eda256a29610c9eb59432e4b016d05ad93d901ba'
-            '63b9f3e07dcfe92f59e851fdeeaed6ee986950672f75cc950489bce67e85d884'
+            '73d4cfae90bc64e37c6471e60c3c5c881c78ae7126ebac83eb9d5bb9d721a1d8'
             '2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e')
 
 shopt -s extglob
