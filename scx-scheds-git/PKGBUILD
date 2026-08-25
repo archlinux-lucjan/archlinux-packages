@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r38.g17f76ac6d
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -83,8 +83,9 @@ c8d4157fc6468a1d006c0968093ede0d22f693a9 # scx_cake: STATE.md — LOTR n=8: migr
 bcc41657b876715efe9cfb6cff8c3f645d118e42 # scx_cake: component cost audit vs EEVDF — §G48/§G49 registered, §G47 marked built
 d478f8e185c5e03ee32dd9db28c4d2f1fa313fa4 # scx_cake: select_cpu redesign — self-park mailboxes become default (2026-08-23)
 e2296de91596793604c550875fe7301886b71400 # scx_mlfq: bump to 1.3.5
-865464aaee212439ca29aed08fdae6d21bdf2a06 # Cargo: update dependencies to latest versions
-a73969a8750ddc14f7b7d1789bc6553f7f4c0707 # Cargo: update libbpf to latest versions
+28cce007467f95dc8f21c3beaad9d1458060210f # scx_mlfq: bump to 1.3.7
+8c8c0d7423c1566eac581222bad04ee8c2523c99 # Cargo: update dependencies to latest versions
+945eb6fa833457b36e9413523d6f5b0ea85defa0 # Cargo: update libbpf to latest versions
 )
 
 _reverts=(
