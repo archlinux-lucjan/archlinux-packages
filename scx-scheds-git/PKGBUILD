@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r38.g17f76ac6d
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -82,8 +82,9 @@ c8d4157fc6468a1d006c0968093ede0d22f693a9 # scx_cake: STATE.md — LOTR n=8: migr
 223ec41e8796f782d1b8f4d4c1ca270384d968ba # scx_cake: §G47 — ISR-successor kthread keeps the IRQ CPU, behind --toggle g47
 bcc41657b876715efe9cfb6cff8c3f645d118e42 # scx_cake: component cost audit vs EEVDF — §G48/§G49 registered, §G47 marked built
 d478f8e185c5e03ee32dd9db28c4d2f1fa313fa4 # scx_cake: select_cpu redesign — self-park mailboxes become default (2026-08-23)
-3517475c1dfcfc44973b906babf992dde4e86d05 # Cargo: update dependencies to latest versions
-55a2f3b103a0c77f34b743c278ad6f0b068c986d # Cargo: update libbpf to latest versions
+e2296de91596793604c550875fe7301886b71400 # scx_mlfq: bump to 1.3.5
+865464aaee212439ca29aed08fdae6d21bdf2a06 # Cargo: update dependencies to latest versions
+a73969a8750ddc14f7b7d1789bc6553f7f4c0707 # Cargo: update libbpf to latest versions
 )
 
 _reverts=(
