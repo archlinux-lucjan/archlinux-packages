@@ -2,7 +2,7 @@
 
 pkgname=cargo-lbin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Thin cargo-install wrapper targeting /usr/local/bin, crates.io only'
 url='https://github.com/sirlucjan/cargo-lbin'
 arch=('x86_64')
@@ -25,7 +25,7 @@ build() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release
+  cargo build --release --frozen
 }
 
 package() {
