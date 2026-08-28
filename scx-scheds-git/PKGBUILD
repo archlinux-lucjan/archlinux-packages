@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r53.gb8e3349c6
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -51,10 +51,9 @@ d9d74fba154f6f6634961c453ccef1d59413d12e # scx_maestro: bump to 1.1.1
 b2cf93e3c72eb18fd6f1386615712bfbe5fbcac7 # scx_maestro: bump to 1.1.3
 f23a055c04746b154eed525d6fc7f865599ce397 # scx_mlfq: bump to 1.3.5
 371089420267bbd2cd305965ebc28e3e512257af # scx_mlfq: bump to 1.3.10
-46bc9d205485bbd915d262390c563ce6b3b27ca5 # scx_mlfq: bump to 1.3.11
-8df7879e67207a760db90f505633438d087d5ea6 # scx_mlfq: bump to 1.3.12
-f9f84aafbe452b610f52a35866e1a2b822a4228e # Cargo: update dependencies to latest versions
-d288cdc9b0572ee9cfde746a7681fdab1dfe2deb # Cargo: update libbpf to latest versions
+dcfb582279be51edb29b18b7ec418d0f39a7190b # scx_mlfq: bump to 1.3.11
+8df2dc8b2ba9e01f55ae23398cc2f531c77ddec9 # Cargo: update dependencies to latest versions
+7fbc51c67ff8d067269b97d456699acc77aeeda8 # Cargo: update libbpf to latest versions
 )
 
 _reverts=(
