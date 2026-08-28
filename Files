@@ -31,6 +31,8 @@
 │   └── PKGBUILD
 ├── cachyos-sysctl-manager-git
 │   └── PKGBUILD
+├── cargo-lbin
+│   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
 │   └── PKGBUILD
@@ -254,4 +256,4 @@
     ├── Files
     └── PKGBUILD
 
-85 directories, 170 files
+86 directories, 171 files
