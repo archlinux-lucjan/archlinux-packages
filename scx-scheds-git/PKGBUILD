@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r57.g8bd309a17
+pkgver=1.1.3.r65.g3a0169475
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -36,24 +36,24 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-bcddb52e4da8f133d083760d0fa6f4d702794267 # scheds: Introduce scx_maestro
-3f2b5f44bd465c3902f064c7e06c32c027e0f3be # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-7106f6cf9470675e8fb1a77481dd28078afc8804 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-cf3167f1340f17721d20d8c3e9a49d0f84099ee1 # scx_maestro: Don't update deadline in case of re-enqueue
-9a881641ee0aab00b36ec50a37849b04aae2ab7b # scx_maestro: Introduce completely fair scheduling
-552f46de791f048f932bbc236d3ff9653ec840b6 # scx_maestro: Make enqueue + CPU kick more reliable
-b3bb687455f7d43f7b67517ceda27890485d061c # scx_maestro: Enforce preemption each tick on CPU contention
-575efc4a44d8a238ce4531edf9a33c8f23aa6f10 # scx_maestro: Temporarily drop sub-sched support
-990335a4a60aafb86b7089f375ed4344818ef18f # scx_maestro: bump to 1.1.1
-2c26e4a562ea292d5790174b1f7c6bd885d02496 # scx_maestro: fix formatting
-cf1ee4c5c11db4b3a061e6b69d1c1bf55e69a4d6 # scx_maestro: bump to 1.1.2
-deb77cabba40db83a53da9c9d0c671eb4ae33e58 # scx_maestro: Use scx_bpf_task_set_slice() setter
-cdeec4b0544aea7574f12bc993f30671c669c8a9 # scx_maestro: bump to 1.1.3
-0825e0460d747adccf102d025bd9f5fc0dd11017 # scx_mlfq: bump to 1.3.5
-584823e9dac86f434c7dc3c9d43ecd7fdb28af80 # scx_mlfq: bump to 1.3.10
-bb3261def65edd55570264d4aded92fb55db45bc # scx_mlfq: bump to 1.3.11
-e1d279a61a8d78c52ed3e7af45dafe0a8fafeb62 # Cargo: update dependencies to latest versions
-b795c1ea61f28acd6ba30361957ff1ae5cf52549 # Cargo: update libbpf to latest versions
+481c14d07e3e2692e31eecf41fcda80fbf6c4380 # scheds: Introduce scx_maestro
+138616ed4fd7e8ac7942135b1e390c7a5701d011 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+249cc08b37252ed9152bacb317c59101d4250b24 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+3decdb6fa5ac42f6bf94a8eda1a3d6aa75c419f3 # scx_maestro: Don't update deadline in case of re-enqueue
+a2b5eda75798567b1be0ae15a39ae1d29801e49d # scx_maestro: Introduce completely fair scheduling
+c3deb75cd66b5425c1eef19c3e26e3e473dc1000 # scx_maestro: Make enqueue + CPU kick more reliable
+f7adecbc8a6d950202aa818cd6e34e1f1e0e4c12 # scx_maestro: Enforce preemption each tick on CPU contention
+e0f194f5d07c118c6f519f6baa6afdd4a88e5aae # scx_maestro: Temporarily drop sub-sched support
+1f50d8cdb2767c5086508675abe36a35091c2adf # scx_maestro: bump to 1.1.1
+c4921c74598333880fb6f2ffd6a0ffc8f3922993 # scx_maestro: fix formatting
+0cfa68d20bbbe346bc1459036cee0f5756ed6a7f # scx_maestro: bump to 1.1.2
+75ea8c07a85059682d7f4b113949a7ec5ac539a2 # scx_maestro: Use scx_bpf_task_set_slice() setter
+f5c744b215972fd79281be556c6bec638df7fe9f # scx_maestro: bump to 1.1.3
+60d374b09af21baf0e09b7af49df3ccf4d9c4e63 # scx_mlfq: bump to 1.3.5
+51810d97c09f41059b667f2e4dfadb4027c83570 # scx_mlfq: bump to 1.3.10
+1432cb6380d8b85324966ccf43b7f393a3694057 # scx_mlfq: bump to 1.3.11
+61edd27e7d6ab889a54671087f485aaa76017b88 # Cargo: update dependencies to latest versions
+e012af544497b65407fb2349f191994e6e2e2c33 # Cargo: update libbpf to latest versions
 )
 
 _reverts=(
