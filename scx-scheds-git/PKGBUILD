@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r97.gfb606eaa0
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -53,20 +53,14 @@ ae5ddf10426e36724e86df388a4d126884ddf3ee # scx_maestro: Temporarily drop sub-sch
 a88da705e18d9e3de3a71ba9c422b0a48ed2b0dc # scx_mlfq: bump to 1.3.5
 a0469c4dbb115bb07c2922daf60ea891eb889a98 # scx_mlfq: bump to 1.3.10
 fb38c85b8a886480ac25f7514a34a15cee2095be # scx_mlfq: bump to 1.3.11
-21ea304535ddd03da553fe4cdd9501dab1d9c580 # scx_pandemonium: bump to 5.20.0
-b29856b97c2e0824cfbb51a9bac5061d4df26d33 # scx_cake: STATE.md — nightly reset onto upstream/main after PR #3767 merge
-9406d4bfb805f7f8a5754e3f0447d22bc7d63c5a # scx_cake: census walk — affinity by word, no kfunc in the walk
-e2d8d76a4d2729cce8f9c1e9ecf5153e92ddad91 # PROBE: per-arm placement census for select_cpu (revert before scoring)
-e676f0bf0c883cf63e9b127a46f549594b0a3af8 # PROBE: cake_wake_preempt reject-gate census (revert before scoring)
-ce4ce954d65689599351c1f2008861b9b2305376 # scx_cake: §G39-B' home-notify preempt behind --toggle g39b
-baa7eb71c277b22ccccc09969985b18d1d59439b # scx_cake: §G39-B' it2 — continuation-arm preempt (census: starved_turn false)
-e0a7ceda561aed4273859fc31591d2d94ec60291 # scx_cake: STATE.md — FFXI §G39-B' pickup, census + menu A/B
-5818202a3cf6c8ae2e17b7ff289460f41f737b59 # scx_cake: §G56 FOLD — banded steal behind --toggle g56
-7db0faa1400028b5e0e451c697fd588c14c430bc # scx_cake: §G57/§G58/§G59 — published-state constructs behind toggles
-884d728451c71aa36877a57f0e6fce56681fa66f # scx_cake: STATE.md — §G57/§G58/§G59 wallclock fast ABBA (g57 messaging −8.7%, g58 inconclusive, g59 null)
-443a1371132fa42f7dbc913af1bb577a386cbe75 # scx_cake: velocity session 2026-09-02 — §G60-§G82; the winning stack (g65 g69 g71 g75 g77 g79 g81 + unconditional g76 g80) is the default and beats crate 1.1.3 on the tail at the KovaaKs menu; experiments stay behind --toggle
-f0227dd43b4ee14e0078fddf509271bcc584c258 # scheds/include: Introduce compat cid kfuncs
-200c86a2100df3446f3b85861dacebcc5b9f02c8 # scheds/experimental: Introduce scx_cidland
+264100b674ab83841099c1a15055c84b609c45eb # PANDEMONIUMv5.20.0:
+762e5ea059ea61b46c7c31b81297d6b8c9334693 # scx_cake: the tail repair — claimed placement, published choice words, grooves, seat hold, lean paths (1.2.1 → 1.2.2)
+f0f1f6c31bcc80eaf8a117bc705d41d18da2f7e5 # scheds/include: Introduce compat cid kfuncs
+d6c659335b5f7d474a7abf01814f9a8b94ef1b74 # scheds/experimental: Introduce scx_cidland
+4d9aca734bacc727332e72833424067fc99d79e1 # scx_cidland: Move per-cid topology table to arena
+6a4c812abed230d4468d4ee92b462a674e8a8ad0 # scx_cidland: Link the arena task context allocator
+1d7196dd1e1e017891d48872dabed5c4d4685d9f # scx_cidland: Move the cid bitmaps and task contexts to arena
+805d3a4e5bdc44e8eb00e69b3971b62eda88d0d1 # scx_cidland: Size the cid keyed state at run time and drop MAX_CIDS
 )
 
 _reverts=(
