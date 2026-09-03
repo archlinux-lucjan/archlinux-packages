@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r97.gfb606eaa0
-pkgrel=5
+pkgver=1.1.3.r99.g7c96c6cd6
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,31 +36,34 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-3b5b60c9312079556f085bc39995f99c5ca5ef94 # scheds: Introduce scx_maestro
-d077b4fe8a9a0846cf2adbf24684fb82fccda71b # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-c7c039df146fcd1d306bcdc795dcd208edf1dcc8 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-be2a791fc7e1a2fcbf3d3dab0edadb2db1f19daa # scx_maestro: Don't update deadline in case of re-enqueue
-7b39ac544f90495b4f05b9853ae5df2ae0dd8ebd # scx_maestro: Introduce completely fair scheduling
-7cd12073256eaaff458c4f0748847c1b81ae208c # scx_maestro: Make enqueue + CPU kick more reliable
-1e63ab024f5df5e0b311f2edf39cf478f720e258 # scx_maestro: Enforce preemption each tick on CPU contention
-ae5ddf10426e36724e86df388a4d126884ddf3ee # scx_maestro: Temporarily drop sub-sched support
-068ed6b98d5de21dcf0d72f26483f868f1c36c18 # scx_maestro: bump to 1.1.1
-002b4e69eeaf9e05673cd282ccac636b5175d87c # scx_maestro: fix formatting
-93b88d16f0efc0e8799a8f523cb1758ca7c8d301 # scx_maestro: bump to 1.1.2
-3eaacafab29c43817ce61403f40fee27ebba69f7 # scx_maestro: Use scx_bpf_task_set_slice() setter
-0f6b5b8e3067b4c7e741d7ff1ff7665a79938d0e # scx_maestro: bump to 1.1.3
-7183c627750a6685e1bf04d5884a21e99cd29ed4 # scx_maestro: bump libbpf to 0.27.0
-a88da705e18d9e3de3a71ba9c422b0a48ed2b0dc # scx_mlfq: bump to 1.3.5
-a0469c4dbb115bb07c2922daf60ea891eb889a98 # scx_mlfq: bump to 1.3.10
-fb38c85b8a886480ac25f7514a34a15cee2095be # scx_mlfq: bump to 1.3.11
-264100b674ab83841099c1a15055c84b609c45eb # PANDEMONIUMv5.20.0:
-762e5ea059ea61b46c7c31b81297d6b8c9334693 # scx_cake: the tail repair — claimed placement, published choice words, grooves, seat hold, lean paths (1.2.1 → 1.2.2)
-f0f1f6c31bcc80eaf8a117bc705d41d18da2f7e5 # scheds/include: Introduce compat cid kfuncs
-d6c659335b5f7d474a7abf01814f9a8b94ef1b74 # scheds/experimental: Introduce scx_cidland
-4d9aca734bacc727332e72833424067fc99d79e1 # scx_cidland: Move per-cid topology table to arena
-70b7a311989459bf5f2faa88257a93bc93ce79ce # scx_cidland: Link the arena task context allocator
-6a3798f02a3ca0ecb44841ac8919a76c45c0e303 # scx_cidland: Move the cid bitmaps and task contexts to arena
-2194ae29e5bb02f59ecfa0699c7ef0fca24fccbd # scx_cidland: Size the cid keyed state at run time and drop MAX_CIDS
+42c983bc7f33366f0f5161d0574a8662bbc57241 # scheds: Introduce scx_maestro
+f1e53f3e6b46022e40ed281b474219b0349a408c # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+93f6536b572a312be772dcfb29e9ce28b389a3c2 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+8e4e70760b13d04fc982d41aa2b32cbad5a30934 # scx_maestro: Don't update deadline in case of re-enqueue
+aa57aa322643fd598f58e23b94723c5d32600209 # scx_maestro: Introduce completely fair scheduling
+2a6b096d18baabf3b5939470bfba23a9664d33db # scx_maestro: Make enqueue + CPU kick more reliable
+986ef7b3f5f948c799b4c63544a277548f265164 # scx_maestro: Enforce preemption each tick on CPU contention
+486e381d8f11d90c3c1927215f46aea71999d488 # scx_maestro: Temporarily drop sub-sched support
+d1c8cdb2be85b7d1cd2a54e1da1ff10e539d3221 # scx_maestro: bump to 1.1.1
+0a71babd92971efb28f35a1eea6494ed473de914 # scx_maestro: fix formatting
+a0851a1ea4e27abdca79e98520e6e693a041913b # scx_maestro: bump to 1.1.2
+d8d9522cc7c34452c176b168d8196b85c4fe2a7b # scx_maestro: Use scx_bpf_task_set_slice() setter
+8141b36e08436eb1bee1660c67b29fdd1bcd9728 # scx_maestro: bump to 1.1.3
+b460220c1f746ce778662fb3dea72496a6e805ef # scx_maestro: bump libbpf to 0.27.0
+af10c155e5d4f40bcc6d9e94b3e452ca45be4ba8 # PANDEMONIUMv5.20.0:
+2c65ea2009bd1274fb10a3d2eb4970a39c6176af # scx_cake: the tail repair — claimed placement, published choice words, grooves, seat hold, lean paths (1.2.1 → 1.2.2)
+2f9dffdd68fec17121669a90210af4f90f787993 # scx_cake: §G82 — one idle census word; update_idle 5 atomics -> 1-2 per transition
+247d41d82fe859772f6a9782ebbf14911287d476 # scx_mlfq: sync to standalone 1.3.11-zero (zero-alloc + Typical Use Cases)
+1d27afc2e17a9228c3430836d4a63bcf8bdab8c5 # scx_mlfq: fix veristat on 6.13 for dispatch
+2e127835a7f8cfa74a7b2b43dbc06bd8193a7b66 # ci: disable veristat for scx_mlfq on 6.13.y
+9fb7e8de3bacde57ca023fd6e5390d116b6de519 # scx_arena: Separate userspace services from arena setup
+2c4ec9c71a839e457950349ef7ffb7f01da3f188 # scheds/include: Introduce compat cid kfuncs
+0c61fcf13640e09d9288aa71d3fcb576704a718c # scheds/include: Add arena-backed cid bitmap helpers
+001c5525b6378ae4ac93a25a7dbd0fcb41453336 # scheds/experimental: Introduce scx_cidland
+f2a195a2d93b95d22bb2aac6067a89a0ac6fd645 # scx_cidland: Move per-cid topology table to arena
+75bcdfa70bac77421bdc7cc731c80af3d3f50245 # scx_cidland: Link the arena task context allocator
+0e61bb28271d5af7833cd84a4832196f27b35da4 # scx_cidland: Move the cid bitmaps and task contexts to arena
+786cb1155bb3f23e4ee2613769b49fffeaa022d7 # scx_cidland: Size the cid keyed state at run time and drop MAX_CIDS
 )
 
 _reverts=(
