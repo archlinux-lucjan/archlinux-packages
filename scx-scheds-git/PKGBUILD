@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r99.g7c96c6cd6
+pkgver=1.1.3.r104.gd6a90c82e
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -36,26 +36,23 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-42c983bc7f33366f0f5161d0574a8662bbc57241 # scheds: Introduce scx_maestro
-f1e53f3e6b46022e40ed281b474219b0349a408c # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-93f6536b572a312be772dcfb29e9ce28b389a3c2 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-8e4e70760b13d04fc982d41aa2b32cbad5a30934 # scx_maestro: Don't update deadline in case of re-enqueue
-aa57aa322643fd598f58e23b94723c5d32600209 # scx_maestro: Introduce completely fair scheduling
-2a6b096d18baabf3b5939470bfba23a9664d33db # scx_maestro: Make enqueue + CPU kick more reliable
-986ef7b3f5f948c799b4c63544a277548f265164 # scx_maestro: Enforce preemption each tick on CPU contention
-486e381d8f11d90c3c1927215f46aea71999d488 # scx_maestro: Temporarily drop sub-sched support
-d1c8cdb2be85b7d1cd2a54e1da1ff10e539d3221 # scx_maestro: bump to 1.1.1
-0a71babd92971efb28f35a1eea6494ed473de914 # scx_maestro: fix formatting
-a0851a1ea4e27abdca79e98520e6e693a041913b # scx_maestro: bump to 1.1.2
-d8d9522cc7c34452c176b168d8196b85c4fe2a7b # scx_maestro: Use scx_bpf_task_set_slice() setter
-8141b36e08436eb1bee1660c67b29fdd1bcd9728 # scx_maestro: bump to 1.1.3
-b460220c1f746ce778662fb3dea72496a6e805ef # scx_maestro: bump libbpf to 0.27.0
-af10c155e5d4f40bcc6d9e94b3e452ca45be4ba8 # PANDEMONIUMv5.20.0:
-2c65ea2009bd1274fb10a3d2eb4970a39c6176af # scx_cake: the tail repair — claimed placement, published choice words, grooves, seat hold, lean paths (1.2.1 → 1.2.2)
-2f9dffdd68fec17121669a90210af4f90f787993 # scx_cake: §G82 — one idle census word; update_idle 5 atomics -> 1-2 per transition
-247d41d82fe859772f6a9782ebbf14911287d476 # scx_mlfq: sync to standalone 1.3.11-zero (zero-alloc + Typical Use Cases)
-1d27afc2e17a9228c3430836d4a63bcf8bdab8c5 # scx_mlfq: fix veristat on 6.13 for dispatch
-2e127835a7f8cfa74a7b2b43dbc06bd8193a7b66 # ci: disable veristat for scx_mlfq on 6.13.y
+0e609413d8f6dc3ecc88d2b7be072e347acdffb2 # scheds: Introduce scx_maestro
+05f55beee9bd4e73d5f22bbf24ab8e0ee03781e1 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+b9d527f6086fb525d1ee42dd2f691467ac556da0 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+17b8e5de89e9b1fd4e26d3950692b2e9fbd4b96c # scx_maestro: Don't update deadline in case of re-enqueue
+47b0569dddc2a51fcdb1cbf9be0bb3a218be763a # scx_maestro: Introduce completely fair scheduling
+08367691b98ff94e24b9478dc4409e6d668530c1 # scx_maestro: Make enqueue + CPU kick more reliable
+f827f64ce8e62702f0c657d682ebac6bd0d52f8c # scx_maestro: Enforce preemption each tick on CPU contention
+17c48d903bae22e804ea90d95181bf5b5469acc3 # scx_maestro: Temporarily drop sub-sched support
+e378d0c62b146028b97a7af31caa158c17b82391 # scx_maestro: bump to 1.1.1
+be4f47f3bb630a249de0261ffddc3edb912430d5 # scx_maestro: fix formatting
+30ae06da3dec861831e79fb04e0c81b4f5afe1e9 # scx_maestro: bump to 1.1.2
+967137bfbda39d2b9a22e8829c56e3217ef333ba # scx_maestro: Use scx_bpf_task_set_slice() setter
+a26c8704147fc7af55d3eb1155df0f35e364202f # scx_maestro: bump to 1.1.3
+968b25b43c46f384eadfdd70c27fbebbf328f4fd # scx_maestro: bump libbpf to 0.27.0
+71dac544317caf53901a69126201ce777e9d692d # scx_mlfq: sync to standalone 1.3.11-zero (zero-alloc + Typical Use Cases)
+11fc9755247d36cd29a7b20f4636633feb8c2e8b # scx_mlfq: fix veristat on 6.13 for dispatch
+302bf6bd4f55628745a8c1152aa46543cc18556c # ci: disable veristat for scx_mlfq on 6.13.y
 9fb7e8de3bacde57ca023fd6e5390d116b6de519 # scx_arena: Separate userspace services from arena setup
 2c4ec9c71a839e457950349ef7ffb7f01da3f188 # scheds/include: Introduce compat cid kfuncs
 0c61fcf13640e09d9288aa71d3fcb576704a718c # scheds/include: Add arena-backed cid bitmap helpers
