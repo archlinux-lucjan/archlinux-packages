@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.3.r0.geab0ea0
-pkgrel=2
+pkgrel=4
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -54,6 +54,12 @@ a5a63f5ce6617dfae04cb2e0dfbd41793da2e02c # scx_loader: add pure power-profile re
 936d9eec4fe4c40152bfd4efdc5c023f387231a9 # scxctl: drop the causal success path from post-operation reporting
 57340b7748c79a69b7428f876e9ebde42be87b8e # scxctl: restore the unconfigured-mode truth in the observation line
 b5ad6a3250bcc8d0924aed97516e0b59aa1c5221 # scxtui: annotate an unconfigured running mode in the status panel
+f29bcf4da23de56b3cf5ce271c1c7fb6d21a1dbc # scx_loader: watch the child task to completion in the runner
+84b5c15cde987f5b2e16de7cd5693a3efa8a5826 # scx_loader: give every scheduler spawn an identity
+c272a891ca9c8f424c0376592c6af1f419fb4fc8 # scx_loader: reset state and signal when the scheduler is gone for good
+d4d5bd79ed5bc9d6585014a626b33d2a784fc909 # scx_loader: back off between respawn attempts and renew the budget
+f0bd36351ff2b122d83081ec0bfb1c9df7ec7028 # scx_loader: document the exit-path contract
+9be3ccc8d1d0e6f296f8e7ea02c806e150656e37 # scx_loader: refuse StartScheduler while a scheduler is running
 )
 
 _reverts=(
