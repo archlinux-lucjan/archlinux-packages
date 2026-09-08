@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r125.g7cec98c51
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -51,6 +51,24 @@ c81d504519ddab154adc9d250ad99b900527952e # scx_maestro: bump to 1.1.2
 6145f4ac00b9a8d68de7d00c2a073b40b08f1011 # scx_maestro: bump to 1.1.3
 c2f8673b0751e626ad1c2fe1e7581b28f9c2406c # scx_maestro: bump libbpf to 0.27.0
 5dfef444244acef02d9dac456ff8718d320162e3 # scx_pandemonium: bump to 5.20.1
+2f4abb727f07008b8053d9d3072211171ddfa62e # scx_mlfq: bump to 1.3.15
+ee6e0a862b076d5e9d5bfbbe4de6a8d225869c30 # scx_cake: §G83/§G84 behind toggles; probe site census
+30baf13e0d3d8a112ee83ce643f210290cbb5bd6 # scx_cake: STATE.md — §G83/§G84 rejected at the KovaaKs menu (4-arm rotations, 4/arm); atomics census pointer
+3ac1ac887c8ea3d611c653a2489f86724ffe2037 # scx_cake: remove §G83/§G84 (rejected 2026-09-03)
+d765ba5c2cbecafca1434aa7eae4d80826b7772a # scx_cake: plain and simple -- the shipped stack is unconditional, every default-off construct removed
+a8cc2dfa8a72f75295299ed86be366bd3763d094 # scx_cake: §G85 exclusive seat, under test behind --toggle g85=1
+41ec02d147a3eeedfce49771cdd0d0efdf7e93e0 # scx_cake: §G85 seat rules and §G86 claim retry, shipped unconditional
+0a4cbccf1e18224bf246b26d04c01ba51f315e84 # scx_cake: §G88 LLC-confined census walks; §G85/§G86 off-switches restored, default on
+fe2cbe63b945420e120d6cc3c4ed48b7a232bbe9 # scx_cake: §G89 die-local pool and picks; §G87 default on; llcsplit scaffold
+17312d082075448d993ee729dd8ce59ff6b31cdd # scx_cake: STATE.md — §G89 field result (DOOM 9950X3D: 1% low 110.94 -> 117.34, level with lavd)
+bff9ca277a16f7c71cd8e6d4d9e7626280c9cd8d # scx_cake: loader drops unknown options and bad toggles with a warning instead of refusing to start
+5bcec7a4e010130ab23bc2ce6b893dcbc5cce53f # scx_cake: §G90-§G92 saturation constructs under test behind --toggle g90/g91/g92 (default off)
+fd58c50631ca038660b3353044a37126a637fd22 # scx_cake: cleanup after the 2026-09-04 campaigns -- compute once, one pool insert, probe counts out of hot frames
+504ad61c7c2fd094e915e27314d6fff67864a777 # scx_cake: §G93-§G97 placement constructs under test behind toggles (default off)
+daf510a2d5f960c715dc1c5d85273272bce44e51 # scx_cake: STATE.md — placement toggles benchmarked on appsim: stack g93+g94+g95+g97 cuts queued-while-idle 73%, g96 loses
+0b57e3b72897fa58ba335055954f41f45a9a8dc8 # scx_cake: §G96 removed, startup trimmed, toggles in --help, appsim every-toggle read
+16d4642dd9fa695739aef4021cc3beab8468f7b6 # scx_cake: reduce wakeup queueing with direct idle admission
+5c67bd30baa62071ab3f2563e6fe55272b61c0a6 # scx_cake: fix dual-LLC and wide-CPU verifier failures
 )
 
 _reverts=(
