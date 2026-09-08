@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.3.r0.geab0ea0
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -35,35 +35,36 @@ _backports=(
 a3deac00f679804122796cddf2529c2d51b2700d # scx_loader: Add cidland scheduler
 dc2b63e2292f80349def53f182ced2a887c8ba86 # scx_loader: Add chaos scheduler
 1b473daead759c236eeec662365f6127a3326ab2 # scx_loader: Add maestro scheduler
-91cae686ce1c80c784081371ff1569cc00fb8c86 # scx_loader: consolidate scheduler state into SchedState
-818d84369b7eaa883ed824847951fc7aa654e44e # scx_loader: emit one atomic PropertiesChanged per transition
-1d06188f3fe5152a2cf7cc9a25bd209312f00c78 # scx_loader: reset SchedulerMode to Auto when the scheduler stops
-03d84311bcbc5c365694922f206d256f66f6c0d3 # scx_loader: document the property change-signal contract
-1d75735aa6524a78403951666759ee024512d43b # scx_loader: announce the instance when the daemon starts
-d34a15ea641164cf629ba47ec90a085af52e1be4 # scxtui: follow scheduler state live via PropertiesChanged
-d0ba7ea4ec5f10d24cc2fae625adf4dfb3f0fbf9 # scxtui: re-ask the daemon when the kernel disputes its story
-05f75dcb987ae87bfff18e75bd7e38d16deb9db7 # scx_loader: log the selected configuration source
-b8d8d1bb45fef07501710b4d5b64e04258653057 # scx_loader: add power-profile configuration model
-a5a63f5ce6617dfae04cb2e0dfbd41793da2e02c # scx_loader: add pure power-profile resolution and apply-decision policy
-704e3558a9535b7fc93fe7b65319458bcdac4a85 # scx_loader: monitor power-profiles-daemon and apply mapped modes
-566eb24e9a6e485e4a5007ac861c4ee063827199 # scx_loader: cap PPD retry backoff at the full 30s duration
-484a1b6e959c7fd711563831005d668f3f2b478a # scx_loader: clarify PPD monitor handle intent and reconnect logging
-2a8e127362dd91430f4c5d0aac87406d7af77975 # Document power-profiles-daemon integration
-29420ada73fd83b3efc8557931b281750fc532ce # scx_loader: enforce the PPD mapping at the moment a scheduler appears
-31db5afb180316fe870970412d583f5a939334a9 # scxctl: report a coherent loader snapshot after start and switch
-936d9eec4fe4c40152bfd4efdc5c023f387231a9 # scxctl: drop the causal success path from post-operation reporting
-57340b7748c79a69b7428f876e9ebde42be87b8e # scxctl: restore the unconfigured-mode truth in the observation line
-b5ad6a3250bcc8d0924aed97516e0b59aa1c5221 # scxtui: annotate an unconfigured running mode in the status panel
-f29bcf4da23de56b3cf5ce271c1c7fb6d21a1dbc # scx_loader: watch the child task to completion in the runner
-84b5c15cde987f5b2e16de7cd5693a3efa8a5826 # scx_loader: give every scheduler spawn an identity
-c272a891ca9c8f424c0376592c6af1f419fb4fc8 # scx_loader: reset state and signal when the scheduler is gone for good
-d4d5bd79ed5bc9d6585014a626b33d2a784fc909 # scx_loader: back off between respawn attempts and renew the budget
-f0bd36351ff2b122d83081ec0bfb1c9df7ec7028 # scx_loader: document the exit-path contract
-9be3ccc8d1d0e6f296f8e7ea02c806e150656e37 # scx_loader: refuse StartScheduler while a scheduler is running
-f4ee3e5b59415beb28e574054e7931e98e0953dc # scx_loader: group the mutable scheduler state under one owner
-255817e6acaee545888bd4351c862308a8fafd30 # scx_loader: move the mutable state behind its own lock
-9f99acd848e372e3f0dc013051c1d59833fb4167 # scx_loader: authorize before taking the state lock
-4986ea66583897bfb6cb5a26c70bb8fcd76d7959 # scxctl/scxtui: read snapshots until two consecutive answers agree
+a6951b577cc5871e79a6fd34d3eb696a7f01e8e0 # scxtui: annotate an unconfigured running mode in the status panel
+9a42af0dbbe886ccb5d0ebd0f672ff2a3d4f127d # scx_loader: consolidate scheduler state into SchedState
+cdf590daebd381c9f388026045835c642852e46f # scx_loader: emit one atomic PropertiesChanged per transition
+ec4db20bdb61a3eda2f1265583b88e362cc1911c # scx_loader: reset SchedulerMode to Auto when the scheduler stops
+79fe88cdabe71ad15fea689e0b35a243a6ba6c01 # scx_loader: document the property change-signal contract
+35b3dc5f4f6945db49e04b829584ac01fc1dda86 # scx_loader: announce the instance when the daemon starts
+d52fa44566fb414a721596fb51662f5bb0231ac6 # scxtui: follow scheduler state live via PropertiesChanged
+9271265d47d102f5907616caee174715cccf17bf # scxtui: re-ask the daemon when the kernel disputes its story
+981c0a9ce603ed8df7197c4819c583c22fb4b36b # scxtui: pin that a pushed movement feeds the annotation
+376d5ba9e2f164934b29766ebb46f2383eb1cc71 # scx_loader: add power-profile configuration model
+85377ca43e6f69b269bd7c31fbc4fdfa257b4cf8 # scx_loader: add pure power-profile resolution and apply-decision policy
+e6611bab5b3516fa3e94c1056c959aa965fdc18a # scx_loader: monitor power-profiles-daemon and apply mapped modes
+f29365ba43096df900b45fec9b44d8ecfbad2006 # scx_loader: cap PPD retry backoff at the full 30s duration
+5d1c5813c9803051a809e2a1b4d01d5ad1ef8994 # scx_loader: clarify PPD monitor handle intent and reconnect logging
+1922e2779b7283cf77f8335a501ef5f31fb0d4d7 # Document power-profiles-daemon integration
+84a53fbf4fb05d3db3548b90e16504c2f6812408 # scx_loader: enforce the PPD mapping at the moment a scheduler appears
+abba670db3855d709d9761024438f416557aa166 # scxctl: report a coherent loader snapshot after start and switch
+b23db2ef7287d1a36df7f15d7d7435ec262be9b9 # scxctl: drop the causal success path from post-operation reporting
+405166b47e4b233d931974e616ffbcaa1b5e0870 # scxctl: restore the unconfigured-mode truth in the observation line
+d71614379f7018397b58acb838b6d77211ea9cf4 # scx_loader: watch the child task to completion in the runner
+75eb3b21245a4b0688f1a3b53d051668a697c5b4 # scx_loader: give every scheduler spawn an identity
+eb0add2644b7108eaa8491766d7f1fd4048662ac # scx_loader: reset state and signal when the scheduler is gone for good
+de89e059312f01150c8f300c5ddfd83b31bdd0fc # scx_loader: back off between respawn attempts and renew the budget
+84f139994127d136c5f4b02c406c7d51035ddc9c # scx_loader: document the exit-path contract
+9711656d994a19e03e8cb0d41194698f4efa872b # scx_loader: refuse StartScheduler while a scheduler is running
+621c3872a2ddd05d7b3f013b2f46ca6c2d41e0b8 # scx_loader: group the mutable scheduler state under one owner
+199386622d8c72e50b4beebbd3927a1c8b4fc0e0 # scx_loader: move the mutable state behind its own lock
+f75fd5b92d1a5bbab79ad9c884090bb960f118d5 # scx_loader: authorize before taking the state lock
+e4e3f265452b5be1d50588ae893969abd88265f1 # scxctl/scxtui: read snapshots until two consecutive answers agree
+b808962d6078299c1508cd326ae589c8b81da17c # scx_loader: log the selected configuration source
 )
 
 _reverts=(
