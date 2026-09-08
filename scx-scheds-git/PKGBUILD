@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r125.g7cec98c51
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -69,6 +69,9 @@ daf510a2d5f960c715dc1c5d85273272bce44e51 # scx_cake: STATE.md — placement togg
 0b57e3b72897fa58ba335055954f41f45a9a8dc8 # scx_cake: §G96 removed, startup trimmed, toggles in --help, appsim every-toggle read
 16d4642dd9fa695739aef4021cc3beab8468f7b6 # scx_cake: reduce wakeup queueing with direct idle admission
 5c67bd30baa62071ab3f2563e6fe55272b61c0a6 # scx_cake: fix dual-LLC and wide-CPU verifier failures
+f32b366ca5471f5576fcf8d005b5049ebd27d73c # scx_cake: keep runtime helpers private
+590620dab90110ddab37992c9049ba03969fe2e3 # scx_cake: preserve defaults and valid flags with obsolete profiles
+370d3e565c6c7668ebcb2ff5eff379eeb10c7abb # scx_cake: document current flags, scheduling paths and fixed thresholds
 )
 
 _reverts=(
