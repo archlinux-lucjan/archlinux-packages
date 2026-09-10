@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r170.g4c8662859
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -70,52 +70,54 @@ b289347d25155f4b4bbcd57c64e7295a89acbc5c # scx_cidland: Scan again after losing 
 1c2787fe80231a5af6a502a1b3689bf4f91f73fd # scx_cidland: Say no idle cid without walking the tiers
 703605bbe9b8834ef2624bc767c3bf29d9eb6eac # scx_cidland: Scan the idle bitmap a word at a time
 cb900dd937e7689a0aecdc6ba362fc981e1dbb5f # scx_cidland: Keep a bitmap of the cids with a queued task
-8d7a0a270d94108805cfef5fb81f5078783169cb # scx_cidland: Take the scx_cosmos implementation of the shared parts
-a2c72a18d05cd440e59c0570f7c163924a20a330 # scx_cidland: Add --uniform-capacity
-6daabbe1a912a0bb7eb500b48646357e23973fa8 # scx_cidland: Fall back to the closest allowed cid
-65b79798a42cccd5d60827e2335ba64a5e7eb79e # scx_cidland: Drop the idle clear from ops.running()
-c7c4335bb6c45188cb9f55e5afab1ef45494d592 # scx_cidland: Read prev_cid's idle state from the bitmap
-dbb4333e0c1a0a322a0aa354ac720af9bbf3a113 # scx_cidland: Leave a bounced task on the cid it bounced off
-2a2a6665d718e2086faeedb74a1a3cd83a0898f2 # scx_cidland: Read the re-enqueue reason instead of inferring it
-7995df841520f748bc414b76bdf394b996e51bf2 # scx_cidland: Fold keep_running() into its caller
-d7d264e4d608d3126afc2062b348b6437b1d49d5 # scx_cidland: Name the pick_idle_cid_ranked() flags
-9852c3d327ef359df8cfe7ae2c728457262d863c # scx_cidland: Make the migration cost and the balance sampling tunable
-a1e3fd4087719c602c365c7b8e5f993ac2c9ae52 # scx_cidland: Add short options for --disable-smt and --uniform-capacity
-e4739d1e4dfc353495c33efdf38bfbfc4d05c652 # scx_cidland: Describe the current design in the README
-5a9807eb9c31ddcce4db8f1ed3e091afc0663421 # scx_cidland: Charge the vruntime against the kernel's weight
-1f2a36b5f69bf5854a962363b9d571806e1baec0 # scx_cidland: Give each cid a reference of its own to fall back on
-b61544d0c22c988c7f401bb273528a860e3586e0 # scx_cidland: Don't apply the lag when placing onto an empty cid
-31f1a3d739beb5e4a4ea409d558cb37a171c4a2f # scx_cidland: Keep the per-cid reference itself, not the sums under it
-89eb4facfa8a2bf3ba6324749921745086cb552f # scx_cidland: Drop the system-wide virtual clock
-f3cf7ab0ee2551c89e9154cf83e1605cc5afb225 # scx_cidland: Only wake a faster CPU the task can actually use
-5d616730902555ec508af0abd4561d6094c34f3e # scx_cidland: Keep the deadline until its request is consumed
-82f81f109314cc7427795ee3b0b1cb618fa77a7c # scx_cidland: Interrupt a running task for a woken one that outranks it
-9b1ad2d0fd7306f48c5c9a1de80e30b713eaf83b # scx_cidland: Protect a running task for as long as it is owed service
-2a6d6b5975d0bcff340c216d2994c8312e1e3436 # scx_cidland: Bring the pack reference up to date before reading it
-21bc3b4de38fb840f4749b0439d891f47e68d5f4 # scx_cidland: Give a newly forked task half a request to ease in with
-facebcfaa60249c58210235c74e15f1c21a9fc29 # scx_cidland: Wake an idle CPU for a queue it would never read
-5b448a750280976e0e458ebeae9c38c59ccd2b2e # scx_cidland: Never call a task hot across the threads of one core
-38b98daba9b61cedbef8278c32438278897d642c # scx_cidland: Stop honouring cache hotness once a CPU keeps coming back empty
-fea3756720a5a474d4fda14fd87cc35b4ee95b4b # scx_cidland: Put CPUs of nearly equal capacity in one tier
-bd6ce5b4dc3daed090eaff22ce085bb5ed7dcd12 # scx_cidland: Let a waking task stay on an idle previous CPU it fits
-573c6f127d20dd5a232599565aadf5b873e0d0bd # scx_cidland: Leave a hot task alone when pulling it up a tier
-aced8bdb454b6fdb90ac208a4adacc97142a3dea # scx_cidland: Honor a task's own request size
-c2a72963ab2bc0a25dc95a9fec1cbe2c21c538db # scx_cidland: Drive cpufreq from the measured utilization
-266bc9dd9f57bb032698e1bc2314cb680a542fb2 # scx_cidland: Let the governor shape the frequency request
-2ec4bb7d2f1f0c73abe2c46d019eba63c2f8fc64 # scx_cidland: Do not balance for a CPU that still has its task
-df4fb011446049b4282f9c1f598a6ee7dc48ac3f # scx_cidland: Tell an idle CPU about the waiter a dispatch just made
-fca41cda09adc0722ac8ea91b8763fa022820afc # scx_cidland: Keep the default slice under a tick
-67ce565964a326ef4d094cb97e4f4bc6fc3bc786 # scx_cidland: Honor cpu.weight
-7575c640bc03f2ad4609387f723611a987f99d7c # scx_cidland: Ask a task for its CPU at the end of a slice
-847974d9f794cfcab5eb3eeabd83e2982518cf26 # scx_cidland: Add --no-run-to-parity
-5594c9befcf2b3b63b7c0aaac0d36f52554d25e9 # scx_cidland: Bound the carried lag the way entity_lag() does
-a425d10964e801113c40b41cf1f10a5292349288 # scx_cidland: Implement ops.yield
-af974591e0d24a0fb53f7a15d12264c3f6b10e6e # scx_cidland: Ask whether a yield has anyone to forfeit to before ending the slice
-4da5d26d55b9d204734348a16982fa2fdfc07ef6 # scx_cidland: Drop a curr that has had its share from the wakeup pick
-512c5405d3cc790b898e13eba971772d7da0d825 # scx_cidland: Stack a synchronous wakee on its waker before scanning for an idle cid
-bebfe1140e661e8baeb0c28d3e62204842f3f14f # scx_cidland: Place a wakeup the way select_task_rq_fair() does
-49992564ea3101cca654148ef18a6fe78d6bfe0a # scx_cidland: Carry a relative deadline across a placement that is not a wakeup
-1ba4de744baafe558060a146aef0bef9a1f112e8 # scx_cidland: Update README.md
+490c371b872aef308cc3f4c12f27010ef9b15a48 # scx_cidland: Take the scx_cosmos implementation of the shared parts
+a9105132eeffa374708d15b002951c14aa90484e # scx_cidland: Add --uniform-capacity
+90a2941340b54a056a680da823fe9e65a6543c19 # scx_cidland: Fall back to the closest allowed cid
+f3ff72bc75ab9da0b9660f55961eaa96288d26a8 # scx_cidland: Drop the idle clear from ops.running()
+dc744af7e4b87920ffb9507a8d115ebe1828e7c6 # scx_cidland: Read prev_cid's idle state from the bitmap
+5551929ddd4fef381c8ac5f9eb354f6b3ddb6b53 # scx_cidland: Leave a bounced task on the cid it bounced off
+9e664e3276f69504c36f327ef855f5a69fcd6e29 # scx_cidland: Read the re-enqueue reason instead of inferring it
+64e21710ca1a980e9a51a7a931ba5a2c0c36f1f9 # scx_cidland: Fold keep_running() into its caller
+d9f08bda2cb54283aedd12d2b53265c26e21211f # scx_cidland: Name the pick_idle_cid_ranked() flags
+ab34e6071d62937aaf39bbe7637118490ae912b4 # scx_cidland: Make the migration cost and the balance sampling tunable
+2c780c23bd263c5483174cfe950a1811978a9107 # scx_cidland: Add short options for --disable-smt and --uniform-capacity
+c0765ec717b182ad592737a584b8e820ad68789f # scx_cidland: Describe the current design in the README
+bb2fd36b5faf43d043195b7f5b8f7f8663433eb9 # scx_cidland: Charge the vruntime against the kernel's weight
+a38cbd1a90f8bc582ddf11d4a0437b57f842c5ac # scx_cidland: Give each cid a reference of its own to fall back on
+c92d94f576eb825615d0c7980b06d7676bdcc858 # scx_cidland: Don't apply the lag when placing onto an empty cid
+2fa82099a75aacff4568a905b66748da612fa38a # scx_cidland: Keep the per-cid reference itself, not the sums under it
+6c2e1ce32d6cd3f15aa2325879ab1ca6897ba068 # scx_cidland: Drop the system-wide virtual clock
+aafb5e42e8b359e640351e1d7b726663ebedae1e # scx_cidland: Only wake a faster CPU the task can actually use
+2e6abcf7e9ee30434e8f50a4255e32730eccbc3a # scx_cidland: Keep the deadline until its request is consumed
+f98fb62b7884cb1f309a2b40839f8f5913b82c83 # scx_cidland: Interrupt a running task for a woken one that outranks it
+3385ce3f7c4a20e68d78d46927ebb98cd04f3b35 # scx_cidland: Protect a running task for as long as it is owed service
+dd59594e92b2aeb1f5709269c8a1c1b9e0e1d473 # scx_cidland: Bring the pack reference up to date before reading it
+7fcef8d2133a3fa1a7d66777eb5ecb416cde69ac # scx_cidland: Give a newly forked task half a request to ease in with
+0459bcf1278897ede59588d887346a4686a48c78 # scx_cidland: Wake an idle CPU for a queue it would never read
+f5e96119af6d23496074d3353c3e41cadaf51b41 # scx_cidland: Never call a task hot across the threads of one core
+942cd81fd289e324735658ede273d5ba42f0f1d9 # scx_cidland: Stop honouring cache hotness once a CPU keeps coming back empty
+536b67bb9839630629e5026f1040e882e073baba # scx_cidland: Put CPUs of nearly equal capacity in one tier
+4a65cef1669dda2833d205e5dd3275648f6cfd33 # scx_cidland: Let a waking task stay on an idle previous CPU it fits
+b4942a01b5ee30743b7231eee724aac688c0e3f6 # scx_cidland: Leave a hot task alone when pulling it up a tier
+7ff4a189ecedba4ed111111751f280e492c259e8 # scx_cidland: Honor a task's own request size
+fab42cbf38d6227677aae50b925165615bff67e8 # scx_cidland: Drive cpufreq from the measured utilization
+f5d05ab3459b9ab33996a2ae3ebae81fa4aa0966 # scx_cidland: Let the governor shape the frequency request
+3b10055caee52d640e2241638ce5d8aeb87bd2b7 # scx_cidland: Do not balance for a CPU that still has its task
+56a12a99d5080dfd08d6fac7fb540b97373b6729 # scx_cidland: Tell an idle CPU about the waiter a dispatch just made
+bbb70236f6386f4b23db09fa080c2f55da468351 # scx_cidland: Keep the default slice under a tick
+b802742c0797c0f0e5c5f1a1411ad5f073ccfb8e # scx_cidland: Honor cpu.weight
+2c22fe3e51a3373008bf72040c506a52956dc3c6 # scx_cidland: Ask a task for its CPU at the end of a slice
+e770705d60863734e966fe3451183b17b8a13764 # scx_cidland: Add --no-run-to-parity
+7897b9b783602c2b29276acac9d9f284827d15bf # scx_cidland: Bound the carried lag the way entity_lag() does
+8f03a9792aef2944635e50f57b194dce67982bf3 # scx_cidland: Implement ops.yield
+5da9ae7da4dd2f40a0a79c9ed2619dc49deddd68 # scx_cidland: Ask whether a yield has anyone to forfeit to before ending the slice
+910f9dd08194fef699d455684e469a609ab585b3 # scx_cidland: Drop a curr that has had its share from the wakeup pick
+2043a8c19917751e940f9e8567d365e5133ba75f # scx_cidland: Stack a synchronous wakee on its waker before scanning for an idle cid
+ff9e8179e894c91ac13193f2aacc6a973cfebe2c # scx_cidland: Place a wakeup the way select_task_rq_fair() does
+d9a5cf4884a5c093f931517b8430032c44b537e3 # scx_cidland: Carry a relative deadline across a placement that is not a wakeup
+300fdf6254b4e83332664bba1f0c5dba80565ef4 # scx_cidland: Settle the policies before the deadlines in wakeup preemption
+49012b9f7bc3214c8295931e34722202e5578b86 # scx_cidland: Rescale the lag and the deadline when a task's weight changes
+1caedd73035c4dea816430d709fabe3bdad76d35 # scx_cidland: Update README.md
 )
 
 _reverts=(
