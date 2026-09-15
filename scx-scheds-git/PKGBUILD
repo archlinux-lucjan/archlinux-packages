@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r268.g767417932
+pkgver=1.1.3.r273.g1fdb0092e
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -55,6 +55,7 @@ b27c67a65202adafc52a5d67eaf081e4660f0956 # scx_maestro: migrate to Rust edition 
 52f207b01ece80f2d0336bd520d07a76b2137959 # scx_cake: consolidate nightly scheduler updates for Rust 2024
 2a022f4781466b3d68690d642e66a2cefe3ac2cd # scx_pandemonium: bump to 5.21.0
 cc5b4b545ceba09b3e8ed4c6a01c240c77ea270f # scx_pandemonium: bump to 5.22.0
+28e1d4f8a2b5f118a7c53cef0c354b5e4f521831 # scx_flow: bump to 4.2.41-o1
 )
 
 _reverts=(
