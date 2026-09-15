@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r248.g6c54f4f66
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,25 +36,25 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-68b963de03cd594e7b1f4489d946862e1879e5b0 # scheds: Introduce scx_maestro
-08645c6fae57acdfa64c02e9ebc62569b9d887ce # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-4093a5c09966bb9b56d5235ec4144114d3ac300c # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-9e3c402c69a5a8abf460382d012dd6565c836afa # scx_maestro: Don't update deadline in case of re-enqueue
-835b4f0b9950ea327d10a7448e0ca82952f46abc # scx_maestro: Introduce completely fair scheduling
-df2b7cf3c78966a5304e73cd5b39f7af39b70ce2 # scx_maestro: Make enqueue + CPU kick more reliable
-6962f03496dc7426770c8912e104e19e88d9dbb9 # scx_maestro: Enforce preemption each tick on CPU contention
-e8f212095cb7c3f8588264571455f42db9cac47f # scx_maestro: Temporarily drop sub-sched support
-1650edc3f7676dbf8738b5f25c0469978c3af0de # scx_maestro: bump to 1.1.1
-00a9bb3299ee6b6b75a80afda2e0b4a429cdbabc # scx_maestro: fix formatting
-76fca3fcd86ef30fa0814ed515a4e78ee4bbbdad # scx_maestro: bump to 1.1.2
-374fe4664b0ccae55ae53a3036f8e1502aeca50e # scx_maestro: Use scx_bpf_task_set_slice() setter
-ea239ecd2111b4d12118b05673084679a76a2d67 # scx_maestro: bump to 1.1.3
-7a9e88eba2335bf87384025283c8ef0f40a371d1 # scx_maestro: bump libbpf to 0.27.0
-5e75349e56d8e47f6005bcd342209bc779af437d # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
-8e4f7cb2386fe4b9d256424572e07584ff90b135 # scx_maestro: fix formatting
-9b95dc5b6a49e795385eb192bf25405dacacd3e3 # scx_pandemonium: bump to 5.21.0
-86bf1dfc5fcad0b80480370ada7853531c2775cd # scx_pandemonium: bump to 5.22.0
-d6526e7c06933230e20e8ccf8a673ab85ea582ef # scx_cake: consolidate nightly scheduler updates for Rust 2024
+a41e339299b2bbdd932c100192cecf0f15913e84 # scheds: Introduce scx_maestro
+e35e86d5ad469608fc1892f9df22a4235981055c # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+a770e7fd3d3deeaeb2502e09f51645cb645d461b # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+cdf99e39144ce0cd80e16899b1ab1539ff2ea543 # scx_maestro: Don't update deadline in case of re-enqueue
+019db3e02cfabf7a5bceeb64f9322604501a780e # scx_maestro: Introduce completely fair scheduling
+028680b8b61ec9710a7f8046197e2476632cf3be # scx_maestro: Make enqueue + CPU kick more reliable
+18b2e5d54bafc52572ded8e575ca2002deb4be1a # scx_maestro: Enforce preemption each tick on CPU contention
+0570a2fa208b16f54a0dabde198a1c79d95bbee9 # scx_maestro: Temporarily drop sub-sched support
+da576e2e5927bcf6005f6c6d9b68e0584920ab58 # scx_maestro: bump to 1.1.1
+cafe158c04daabd9f818094c63c41d7bc82635d5 # scx_maestro: fix formatting
+d5f50586f231be6444f073451b35d238481183f9 # scx_maestro: bump to 1.1.2
+8a22aca21afc8d623912309f9fdc94722b697f44 # scx_maestro: Use scx_bpf_task_set_slice() setter
+951ad7624c2fad3d5d19cac39a4f97478bf682f0 # scx_maestro: bump to 1.1.3
+6f89bdac7c105dc5d6e7aad620246b74733061b9 # scx_maestro: bump libbpf to 0.27.0
+3bb68a407bb0a08024bf23bd425f847f6a5360af # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
+40c43a76158ec3896d30f0688368b0fa9bb216e0 # scx_maestro: fix formatting
+d50fab1a0ae548ced050ac5e043d7660b26a5091 # scx_cake: consolidate nightly scheduler updates for Rust 2024
+bd249f0149c621862b5874e10870b671cce4465a # scx_pandemonium: bump to 5.21.0
+65d6fe873f943d6956ad1008aceff954d835c6e5 # scx_pandemonium: bump to 5.22.0
 )
 
 _reverts=(
