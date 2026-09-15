@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r273.g1fdb0092e
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -56,6 +56,8 @@ b27c67a65202adafc52a5d67eaf081e4660f0956 # scx_maestro: migrate to Rust edition 
 2a022f4781466b3d68690d642e66a2cefe3ac2cd # scx_pandemonium: bump to 5.21.0
 cc5b4b545ceba09b3e8ed4c6a01c240c77ea270f # scx_pandemonium: bump to 5.22.0
 28e1d4f8a2b5f118a7c53cef0c354b5e4f521831 # scx_flow: bump to 4.2.41-o1
+938577ab9329cbb1746647016515eb1a06043f50 # Cargo: update dependencies to latest versions
+4ae8c3b4febdb18d144db2febee4634b2aae2df7 # Cargo: update libbpf to latest versions
 )
 
 _reverts=(
