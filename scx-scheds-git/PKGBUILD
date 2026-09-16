@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r273.g1fdb0092e
-pkgrel=2
+pkgver=1.1.3.r306.gd3da5d147
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,28 +36,41 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-81b6928c7e691f9981e9142e5f2511fe260adc18 # scheds: Introduce scx_maestro
-ad7783279521d3e4f4fc25f147354d901c3474d8 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-fdb25aa7f7468a0a6b8be02e0287572e6090b8eb # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-9663483c1e0ce7ee2d3bfc65142b80e1417a5081 # scx_maestro: Don't update deadline in case of re-enqueue
-673c9e15609752de69d5fa20af0cd3225c7647c6 # scx_maestro: Introduce completely fair scheduling
-c51f78cd9fff47bcc1b6cc60e302b7dbd97a70c5 # scx_maestro: Make enqueue + CPU kick more reliable
-a705a03db96b867564bd7fd0c01fee719cae8f35 # scx_maestro: Enforce preemption each tick on CPU contention
-d2a46dfa75063875787d397435bd969933ad68e5 # scx_maestro: Temporarily drop sub-sched support
-5a3c0f48a988b13d947b446146662dd0a9f50e1b # scx_maestro: bump to 1.1.1
-186d2b01c9466fb7e0f984641be58ad26a64a5e5 # scx_maestro: fix formatting
-05b6fdd91fc7ae0c362c72c9dd29f06c83888901 # scx_maestro: bump to 1.1.2
-423e508c0d66e7aeddc86329ae732e095e889eb7 # scx_maestro: Use scx_bpf_task_set_slice() setter
-da657cdd89ad4a72c61992c50c4c7aad91b0da9b # scx_maestro: bump to 1.1.3
-3a689ce7bfb433a2871bcb7cc34755fc548cb7f6 # scx_maestro: bump libbpf to 0.27.0
-b27c67a65202adafc52a5d67eaf081e4660f0956 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
-235236cb9e738e55fb185ab773947e2284876fd8 # scx_maestro: fix formatting
-52f207b01ece80f2d0336bd520d07a76b2137959 # scx_cake: consolidate nightly scheduler updates for Rust 2024
-2a022f4781466b3d68690d642e66a2cefe3ac2cd # scx_pandemonium: bump to 5.21.0
-cc5b4b545ceba09b3e8ed4c6a01c240c77ea270f # scx_pandemonium: bump to 5.22.0
-28e1d4f8a2b5f118a7c53cef0c354b5e4f521831 # scx_flow: bump to 4.2.41-o1
-938577ab9329cbb1746647016515eb1a06043f50 # Cargo: update dependencies to latest versions
-4ae8c3b4febdb18d144db2febee4634b2aae2df7 # Cargo: update libbpf to latest versions
+208ae5b0c78c58d6b90b419ecf1caa8b89e26d21 # scheds: Introduce scx_maestro
+f9b16fc91b109264fe99002243dda9f0833cce63 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+c5aad26fef1f238d6a12895010b4fe310258520f # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+106bc10ae44fafc589ed18f9d095627eea86ec04 # scx_maestro: Don't update deadline in case of re-enqueue
+1ab37120a61fe614510db9db34ab159757ef7a6b # scx_maestro: Introduce completely fair scheduling
+ecf8c93d2d3ec42b128213b7fce5c3491ec87143 # scx_maestro: Make enqueue + CPU kick more reliable
+66bd2496b9e766da435bd0aaa408ca72b051bdb4 # scx_maestro: Enforce preemption each tick on CPU contention
+bfbd16d2fe62fe184ba5e5c28fac4f10d5fae546 # scx_maestro: Temporarily drop sub-sched support
+681b1365141b36a92dfb31b5951969e70b1c4466 # scx_maestro: bump to 1.1.1
+235d3595c391b36e0e1d8b35e6a70034243a193d # scx_maestro: fix formatting
+300d3e605542825df14a56bd234b2a01e9c2589c # scx_maestro: bump to 1.1.2
+1c5b85c48887aaee3ebf941ae9d082b3c8a2b6a3 # scx_maestro: Use scx_bpf_task_set_slice() setter
+fe33c875adbe1df590f467ac2dbcc09cefd7eaf8 # scx_maestro: bump to 1.1.3
+d7c96a30c7d6ed82624e9028234344f235c5f7a0 # scx_maestro: bump libbpf to 0.27.0
+0336b01e3271391d446bfeb6a6a6fb08ffaa9700 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
+48373287722ed131907676cf732620dbb012fdd4 # scx_maestro: fix formatting
+37424d3a09cfb0708f79b4be91b9cba8ff1363e7 # scx_maestro: bump libbpf to 0.27.1
+b8cdb4f1ad86d8385666ef1fbecbf32ca281a7f2 # scx_cake: consolidate nightly scheduler updates for Rust 2024
+e77c5788135415afce04dc08de943e772df2cbf6 # scx_pandemonium: bump to 5.21.0
+73d10936f7974ac31865044f432845a045dce562 # scx_pandemonium: bump to 5.22.0
+e75b6695f9a90375cadc4a5f7840a34dc3dd083b # scx_flow: bump to 4.2.41-o1
+35633b17c3a660f34696df628ca02effbd383e78 # lib/edq: Introduce Eligible Deadline Queue (EDQ)
+33053e77f8c741dfcd2bcf4c9aa342a4a1b02197 # scx_cidland: Replace DSQs with EDQs
+2fac9cc66b1e94819da0cd20bf8fa17b146d0823 # scx_cidland: Charge the running task before taking its lag at sleep
+0e796a341eb2a102f11e18cd0536b4ef6b2cec33 # scx_cidland: Walk cids with bpf_arena_for() everywhere
+b822472e2277601107669269325f218006556b29 # scx_cidland: Drop the bounded-spin bit helpers
+d73e3bd1f540dd956cd171ee3c98865fc4db3042 # scx_cidland: Keep the wall clock on the rq clock
+09d58390591459b891388b879e9e435574e699bc # scx_cidland: Leave the queued bit set across a requeue
+11b887b29fc9b7678d86230ab31154102d7258bc # scx_cidland: Spread tasks across idle SMT cores
+c001fcd2247d2b8526841cd6d3397f01bf38ec89 # scx_cidland: Add asymmetric SMT packing option
+81963bf5398a8d111b8d5f0fb42e9ab77aba111d # scx_cidland: Add --smt-whole-core
+25910123cb9ce95d54692b7d13dfe73ebce03738 # scx_cidland: Move the task context into the arena
+cf1ec47303261d2761e2c81dac251146de43654e # scx_cidland: Look up the task context through dsq_vtime
+0d53cd05682e7c4a0d8e902e6d1f2ed793347a54 # scx_cidland: Drop busy queue sampling
+9589bf4cc2450fcba3b925326c9e78b3f80a3cee # scx_cidland: Reject steal candidates before resolving the task
 )
 
 _reverts=(
