@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r306.gd3da5d147
+pkgver=1.1.3.r321.gdd2116847
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -57,20 +57,6 @@ b8cdb4f1ad86d8385666ef1fbecbf32ca281a7f2 # scx_cake: consolidate nightly schedul
 e77c5788135415afce04dc08de943e772df2cbf6 # scx_pandemonium: bump to 5.21.0
 73d10936f7974ac31865044f432845a045dce562 # scx_pandemonium: bump to 5.22.0
 e75b6695f9a90375cadc4a5f7840a34dc3dd083b # scx_flow: bump to 4.2.41-o1
-35633b17c3a660f34696df628ca02effbd383e78 # lib/edq: Introduce Eligible Deadline Queue (EDQ)
-33053e77f8c741dfcd2bcf4c9aa342a4a1b02197 # scx_cidland: Replace DSQs with EDQs
-2fac9cc66b1e94819da0cd20bf8fa17b146d0823 # scx_cidland: Charge the running task before taking its lag at sleep
-0e796a341eb2a102f11e18cd0536b4ef6b2cec33 # scx_cidland: Walk cids with bpf_arena_for() everywhere
-b822472e2277601107669269325f218006556b29 # scx_cidland: Drop the bounded-spin bit helpers
-d73e3bd1f540dd956cd171ee3c98865fc4db3042 # scx_cidland: Keep the wall clock on the rq clock
-09d58390591459b891388b879e9e435574e699bc # scx_cidland: Leave the queued bit set across a requeue
-11b887b29fc9b7678d86230ab31154102d7258bc # scx_cidland: Spread tasks across idle SMT cores
-c001fcd2247d2b8526841cd6d3397f01bf38ec89 # scx_cidland: Add asymmetric SMT packing option
-81963bf5398a8d111b8d5f0fb42e9ab77aba111d # scx_cidland: Add --smt-whole-core
-25910123cb9ce95d54692b7d13dfe73ebce03738 # scx_cidland: Move the task context into the arena
-cf1ec47303261d2761e2c81dac251146de43654e # scx_cidland: Look up the task context through dsq_vtime
-0d53cd05682e7c4a0d8e902e6d1f2ed793347a54 # scx_cidland: Drop busy queue sampling
-9589bf4cc2450fcba3b925326c9e78b3f80a3cee # scx_cidland: Reject steal candidates before resolving the task
 )
 
 _reverts=(
