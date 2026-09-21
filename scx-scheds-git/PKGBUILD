@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r399.g92785ef7f
+pkgver=1.1.3.r407.g58fd66246
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -36,38 +36,40 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-e5a0a78d74fde458ea26efe5cf1771bb1a0aabd1 # scheds: Introduce scx_maestro
-b6c55b195d38d01f5207c08e880fff950bba90ec # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-237c7b0c6ad532f70f345e4d74ff18428284ffbd # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-7d3ee5cd6ebe2f35b41f761786253d0a84755fff # scx_maestro: Don't update deadline in case of re-enqueue
-fca9f882f6f5e035617c1a49d7e852bbb32b3678 # scx_maestro: Introduce completely fair scheduling
-6f1a464d3289a89e5769a45a3a529bec4dec00ef # scx_maestro: Make enqueue + CPU kick more reliable
-6fcf690058585fb9981783af5fe6626bf4f2b0eb # scx_maestro: Enforce preemption each tick on CPU contention
-e0b9dab3a1d03cde8e84fd39296fd8d02cb712e1 # scx_maestro: Temporarily drop sub-sched support
-7c85857f42e0f544ab4126ab3d652c1664426770 # scx_maestro: bump to 1.1.1
-b7cf0bf74ad89e32571d5ad7d359ceb5100a58a9 # scx_maestro: fix formatting
-adbdecabf477a9db2fc22dac7ea2699ecb1fdd34 # scx_maestro: bump to 1.1.2
-9e60b3c12ddfe8d87a77ae7fe73b95fcd600b116 # scx_maestro: Use scx_bpf_task_set_slice() setter
-9bebc6f8be102c78a0b760ecb026df94b018bf87 # scx_maestro: bump to 1.1.3
-49d67b7164c2ed63c9a81c06603350b88ff125a6 # scx_maestro: bump libbpf to 0.27.0
-6c08bed0b7bc9665f92b7a55837770627e2e7d37 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
-e53c62b23d463814c301e4c357187e352e03692d # scx_maestro: fix formatting
-77f0ee648b76560e15d499f719b33c3b0f37e3b0 # scx_maestro: bump libbpf to 0.27.1
-6ce1f53d5b08b6db632693fa5fd71687dc7b9977 # scx_cake: consolidate nightly scheduler updates for Rust 2024
-95972939e5772cc33e94a58342adfd0c4f55126e # scx_cake: publish IRQ sink words with a Relaxed atomic store; is_multiple_of in the hop probe
-05fc8ad14edb3af44f5bdd96b80ee8bd250997ee # scx_cake: dispatch peeks a head only when it competes with another; one DSQ hash lookup fewer per own-only and pool-only dispatch
-251a00686260b9811eab61622accaf6dc9411afe # scx_cake: rq clock for the stamp family (run start, occupant, handoff, pool served, probe); ktime stays for start_time and tick deltas (§G34 H1)
-33d6e69442a712b6240e1674f7e1e9f5308c31c2 # scx_cake: running reads task storage only while some seat is held; one lookup fewer per switch with no sleeping stage holder
-0378201e68aeadac9c397559a1255acf20e963c6 # scx_cake: a lone continuation kicks no idle CPU; kick_alone census; census name table catches up (pool_direct)
-a83ffb1bc12af780230f92bdc151309ff4ef7a5d # scx_cake docs: operation cost ladder + site map audit (2026-09-15); completed reviews to archive/; TOOLING tracked; index reflects the vault as found
-8bcdee19c5472e22344f3b1979244e953cefa01c # scx_cake: hot-path efficiency: select_cpu 118-130 -> 87-90 ns per wake on live WoW, scheduling unchanged
-f80cbf281c2d87a5b70a569b64f3868f734f92cd # scx_cake: notify always searches for an idle CPU; the empty-word return uses the un-masked word when g89 is off (review 2026-09-17)
-a2d1ab5e83bcbfd5f59a8fc78b81f39fe201c03b # scx_cake: 2026-09-18/19 nightly: time-gap audit and council rounds squashed (22 commits)
-3dbd71ad44124d13c81d21c8d45c7fc230923109 # scx_cake: 2026-09-19 nightly: self-sizing, event-complete handoffs, pool-token proof and the instruction rounds squashed (18 commits)
-fb6f6eadde21cfbd28dd23cdc985bd156f94ce93 # scx_pandemonium: bump to 5.21.0
-d0461f50f76eb08e00cfc55520acad576046ca24 # scx_pandemonium: bump to 5.22.0
-3567d2656738822c8a6216bd56845e645e907972 # scx_flow: bump to 4.2.41-o1
-3f2e0c41a0b8bfb9ff31105e6e544b90a5b64da8 # scx_flow: bump to 4.2.46-o1
+ef41b9135c3ff80bf69335ced1fd0ba62b01b1f6 # scheds: Introduce scx_maestro
+80aca9b63c6f7b8119c4d65604e66102f192876d # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+662d9facc1b83a2ae158390eea20acc8766c0675 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+831049c77c77b74420dbaaa08df61ec63f77a6bc # scx_maestro: Don't update deadline in case of re-enqueue
+a887b98c41a11d3d0f676eed5962b28976afe05c # scx_maestro: Introduce completely fair scheduling
+7773e3534f153acee09c515d734649fc01eefdfc # scx_maestro: Make enqueue + CPU kick more reliable
+e567884fd4291b5198f357b0304a5470efa62b1a # scx_maestro: Enforce preemption each tick on CPU contention
+40d68bc24d8329a2a3e248c557d22adf8186eca5 # scx_maestro: Temporarily drop sub-sched support
+d253e459727fc58298cd0b217671bb867d41d12f # scx_maestro: bump to 1.1.1
+b17ceb2500d47584feacae5880b9ca33914cd0a0 # scx_maestro: fix formatting
+942baaeea1f5704dca9cc749da3bd16cdb1cb113 # scx_maestro: bump to 1.1.2
+cf9c626ed75f68cfef0756b3f986a29c72c02f85 # scx_maestro: Use scx_bpf_task_set_slice() setter
+f57179f05aa1bbeee2d1f2e00b25f4fbc3a6b535 # scx_maestro: bump to 1.1.3
+5d33b34e15ac6d343e4249b4476acd730fe06e6b # scx_maestro: bump libbpf to 0.27.0
+89368cf6d467aec6c8962e559ca02ab8a9f537f1 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
+1930a1b520869bbd75f939570eae5dcc178046fc # scx_maestro: fix formatting
+e65e7d7de2db6db4fc4004635c03693bce59fbd4 # scx_maestro: bump libbpf to 0.27.1
+f6bc2a9fe8789319121cd025911d0185cdcb7ecf # scx_cake: consolidate nightly scheduler updates for Rust 2024
+48fcbd9a6d0653d7d34ac8fe99c7c6d4e0ec6b95 # scx_cake: publish IRQ sink words with a Relaxed atomic store; is_multiple_of in the hop probe
+6d1cc6b87b2ab6ac89dd881cb098568c9f5f0910 # scx_cake: dispatch peeks a head only when it competes with another; one DSQ hash lookup fewer per own-only and pool-only dispatch
+1c989faec7fa30f0c7859989be9a5c77ac6dc1b4 # scx_cake: rq clock for the stamp family (run start, occupant, handoff, pool served, probe); ktime stays for start_time and tick deltas (§G34 H1)
+6158640bf2b87881d97ecf4876e23415d51619cd # scx_cake: running reads task storage only while some seat is held; one lookup fewer per switch with no sleeping stage holder
+56d42911ce84554ba797e5856cfc740abc3d0963 # scx_cake: a lone continuation kicks no idle CPU; kick_alone census; census name table catches up (pool_direct)
+46aa45b19f146c84bebe6a893f383026d2d707a8 # scx_cake docs: operation cost ladder + site map audit (2026-09-15); completed reviews to archive/; TOOLING tracked; index reflects the vault as found
+852eceec85d4b9b8e7e91c06c6b20fd7675ba6c9 # scx_cake: hot-path efficiency: select_cpu 118-130 -> 87-90 ns per wake on live WoW, scheduling unchanged
+73c182e7854f69d93e919e5b2340a36e6441abff # scx_cake: notify always searches for an idle CPU; the empty-word return uses the un-masked word when g89 is off (review 2026-09-17)
+fb59901287c0cf0d67d73369724d44f64bae3eba # scx_cake: 2026-09-18/19 nightly: time-gap audit and council rounds squashed (22 commits)
+aa897b3ed8c3f7c54a163d85a7e1b8977054c60f # scx_cake: 2026-09-19 nightly: self-sizing, event-complete handoffs, pool-token proof and the instruction rounds squashed (18 commits)
+06f9509361df2c34f9b8a0e2c05c00ab94b9e780 # scx_pandemonium: bump to 5.21.0
+aee07316c8a0f6b36b72efae206e8dfbc8edcdff # scx_pandemonium: bump to 5.22.0
+e9db9533d71ba4f417d8c23c38a36495815411df # scx_flow: bump to 4.2.41-o1
+685dc307a16b8363b4421b634e455fc91b8bc731 # scx_flow: bump to 4.2.46-o1
+50a744b7278b0a23adfed9a14f0cf58893faf4a0 # scx_mavd: Fork lavd for an arena-native cid conversion
+cf9e03fd8b8c5f501c2632102f3aab6990d7378c # scx_mavd: Move scheduler state into the arena
 )
 
 _reverts=(
