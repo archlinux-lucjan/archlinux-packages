@@ -41,7 +41,6 @@
 ├── cppdap-git
 │   └── PKGBUILD
 ├── devtools-git
-│   ├── 0001-makechrootpkg-add-paccache-flag.patch
 │   └── PKGBUILD
 ├── distrobox-git
 │   └── PKGBUILD
@@ -252,4 +251,4 @@
     ├── Files
     └── PKGBUILD
 
-85 directories, 168 files
+85 directories, 167 files
