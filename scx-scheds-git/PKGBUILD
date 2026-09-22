@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.3.r410.g5f5823e2f
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -59,6 +59,11 @@ c955b7c6d2798173766cccffbe7eb2e13fb11845 # scx_pandemonium: bump to 5.22.0
 73f2854781f356debbd11f85b4ad0ab4b4f3532a # scx_flow: bump to 4.2.46-o1
 cd5e432147f6ec923663c5bf47886a01ca8dea8a # scx_mavd: Fork lavd for an arena-native cid conversion
 01552cc12ab21bec596043feb9ca74655c5ab8f5 # scx_mavd: Move scheduler state into the arena
+4634d0803f9c48b11c447fe1122f43b3af331b57 # scheds/include: Add TRAILING_OVERLAP() for embedding flex-array structs
+64f16b9dcbcfb806bcc197e9bf8f0852dda22fe7 # scx_mavd: Convert to the cid form with arena CPU masks and contexts
+b753b1b5f24cb14fe164b112eb559166ae6494a9 # scx_mavd: Simplify arena scans and reuse validated CPU contexts
+bdf79f78025e0a6218ffd60bae7e4b7cca489ed1 # scx_mavd: Name cid-valued fields and cmask globals for what they hold
+22f4a69732a31d82454355667dc75a524cdc8b62 # scx_mavd: Document the verifier limits behind the noinline boundaries
 )
 
 _reverts=(
