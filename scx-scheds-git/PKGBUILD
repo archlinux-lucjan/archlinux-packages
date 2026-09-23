@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r410.g5f5823e2f
-pkgrel=2
+pkgver=1.1.3.r426.g3b7a3bf3a
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -36,34 +36,33 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-42f57299925b29c2728db1170548b1ee7cfb50a3 # scheds: Introduce scx_maestro
-a0e284896b6b77b3c1f4446cf764c5c03720e400 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-6e8b1a2d828708e9224363b6a788a59909062e41 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-f245a7125f7f5edf8f4da41d65b7951581eb163e # scx_maestro: Don't update deadline in case of re-enqueue
-08eac40ce4d99780292d0e3ea68cec368a644cf8 # scx_maestro: Introduce completely fair scheduling
-ffe24fabc71df97cb384a9644b4b45339bb0c5c3 # scx_maestro: Make enqueue + CPU kick more reliable
-b9560d1f3e56e53770e9d36ff613147d23007c01 # scx_maestro: Enforce preemption each tick on CPU contention
-c2463f7db5306d7f0a8653c42f64ae3e2003e39a # scx_maestro: Temporarily drop sub-sched support
-752fe3088458c4316a2483edc302c640021b4d81 # scx_maestro: bump to 1.1.1
-d0468dbf6b6e65ac7b0bdab74cce931773030762 # scx_maestro: fix formatting
-a54369c6cce364e2ef97cda978b106e6c0551f5d # scx_maestro: bump to 1.1.2
-5b57fb5cd05b417b37a0c94796f3bd29c25259fa # scx_maestro: Use scx_bpf_task_set_slice() setter
-c039a6206eb5daaeb14999aae39b1d8e3ea07001 # scx_maestro: bump to 1.1.3
-7c1b59eb04116aba33f23f3f54d56be0f010010c # scx_maestro: bump libbpf to 0.27.0
-517509894298e27d0ae389c35bc374ceff63c0a4 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
-36a050243833ea4543b64a343b82c4229b3f8426 # scx_maestro: fix formatting
-698d4858357639f9c8a576ef576025b0f3e33ebe # scx_maestro: bump libbpf to 0.27.1
-9e819238f11209f3e7d071af78d7b9b96a97874c # scx_pandemonium: bump to 5.21.0
-c955b7c6d2798173766cccffbe7eb2e13fb11845 # scx_pandemonium: bump to 5.22.0
-71c82347cd8d510619f9bc7ce2b3c65f40a22ddf # scx_flow: bump to 4.2.41-o1
-73f2854781f356debbd11f85b4ad0ab4b4f3532a # scx_flow: bump to 4.2.46-o1
-cd5e432147f6ec923663c5bf47886a01ca8dea8a # scx_mavd: Fork lavd for an arena-native cid conversion
-01552cc12ab21bec596043feb9ca74655c5ab8f5 # scx_mavd: Move scheduler state into the arena
-4634d0803f9c48b11c447fe1122f43b3af331b57 # scheds/include: Add TRAILING_OVERLAP() for embedding flex-array structs
-64f16b9dcbcfb806bcc197e9bf8f0852dda22fe7 # scx_mavd: Convert to the cid form with arena CPU masks and contexts
-b753b1b5f24cb14fe164b112eb559166ae6494a9 # scx_mavd: Simplify arena scans and reuse validated CPU contexts
-bdf79f78025e0a6218ffd60bae7e4b7cca489ed1 # scx_mavd: Name cid-valued fields and cmask globals for what they hold
-22f4a69732a31d82454355667dc75a524cdc8b62 # scx_mavd: Document the verifier limits behind the noinline boundaries
+7138e24e410b31f21e560af0dd9112b3bf6a2332 # scheds: Introduce scx_maestro
+e93adb2a27bc825ae7a81c7538ba0dc36f345c67 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+0cfba83ccc020ba57b2576abdcb2ad0987f613c8 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+ba1d6b7d8c0bfb07217bb5572cac832e50ead5e6 # scx_maestro: Don't update deadline in case of re-enqueue
+7397f354f9a76d776446275beff4f1a15e43bb4d # scx_maestro: Introduce completely fair scheduling
+0764d6687de764fe52f49979ce1c511b722707df # scx_maestro: Make enqueue + CPU kick more reliable
+594196a4d11389c08d9080da21714ae71ee3a0cb # scx_maestro: Enforce preemption each tick on CPU contention
+67c51e88531a96cd359b42b2604125d565d15425 # scx_maestro: Temporarily drop sub-sched support
+40d42eca1682875f724bc6a80076d45b0498b380 # scx_maestro: bump to 1.1.1
+9d65cf98df8a0726e9b5d768f8cb4c6444b4466e # scx_maestro: fix formatting
+15c9351ce3c369c7d4b0c38b6e46d3f69e9e6ab9 # scx_maestro: bump to 1.1.2
+e8aeae52683ef9a39fbd20e6129f7b07199363d1 # scx_maestro: Use scx_bpf_task_set_slice() setter
+139b437b371b03effb1c4debe28d56d947dfca0d # scx_maestro: bump to 1.1.3
+3026835bda30e6afc1b30cdaa7de678f0be92d53 # scx_maestro: bump libbpf to 0.27.0
+ca75077669d365c6453592f0ff0e4fa6fe375abb # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
+9c15bc731c253fdc628053a84091c03b1affe45d # scx_maestro: fix formatting
+f355a6830b6119e12084b851d06b3a2fa2f4d3e5 # scx_maestro: bump libbpf to 0.27.1
+a7791c2fca55ff27cdbedcfe58a8ee65a6698e77 # scx_pandemonium: bump to 5.21.0
+16fb40fcf3e23434c0f68dd7f502764c77eb1c34 # scx_pandemonium: bump to 5.22.0
+92a70f7abb21440bf5bd71909372c96267a75ac3 # scx_flow: bump to 4.2.41-o1
+cdc4069fcaba43b9e2be5ab80bb631ac43428c27 # scx_flow: bump to 4.2.46-o1
+e00b26131e5674e14a46c23deb442aa28712591c # scx_mavd: Fork lavd for an arena-native cid conversion
+2fa72f17a8f6666b0c96af90bf7d85728f371d4f # scx_mavd: Move scheduler state into the arena
+0efd0c7fec7f747fb45674aa896cc2cb9dafb056 # scx_mavd: Convert to the cid form with arena CPU masks and contexts
+e90189e8b78fd0fa000ce4b29acab7ee4f531e13 # scx_mavd: Simplify arena scans and reuse validated CPU contexts
+336365ddbaf182800a6dd93fa0e9019f03be3533 # scx_mavd: Name cid-valued fields and cmask globals for what they hold
+a0d129545e9b1a8dbb4ff718eb4120aae854a35b # scx_mavd: Document the verifier limits behind the noinline boundaries
 )
 
 _reverts=(
