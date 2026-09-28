@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.1.3
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
   llvm-libs
 )
 optdepends=(
-'scx-tools: scx_loader and scxctl - A DBUS Interface for Managing sched_ext Schedulers '
+'scx-tools: scx_loader, scxctl and scxtui - A DBUS Interface for Managing sched_ext Schedulers '
 )
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
