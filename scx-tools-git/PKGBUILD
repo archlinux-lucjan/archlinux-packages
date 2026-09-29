@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.3.r2.g247fd05
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -66,6 +66,7 @@ efb1550ea1c71036ff45da5ef6b8d7c6270aa089 # scx_loader: back off between respawn 
 8e451c13f095589ec26f8836b9cc1f4231d2abb1 # scx_loader: authorize before taking the state lock
 6ae8716150477fe46231b3abc3aafdd98b3b89c6 # scxctl/scxtui: read snapshots until two consecutive answers agree
 24875d62ea3a736869c665bc102d9fca025bf1ca # scx_loader: log the selected configuration source
+80e0524f02c8f210163a29a7245aa15c94ef2217 # scx_loader: Set scx_eevdf as a default scheduler
 )
 
 _reverts=(
