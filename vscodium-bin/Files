@@ -1,0 +1,10 @@
+.
+├── Files
+├── LICENSE
+├── PKGBUILD
+├── vscodium-bin.desktop
+├── vscodium-bin.install
+├── vscodium-bin.sh
+└── vscodium-bin-url-handler.desktop
+
+1 directory, 7 files
