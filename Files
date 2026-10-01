@@ -213,6 +213,10 @@
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
+├── shelly
+│   └── PKGBUILD
+├── shelly-git
+│   └── PKGBUILD
 ├── vscodium-bin
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -249,4 +253,4 @@
     ├── Files
     └── PKGBUILD
 
-84 directories, 166 files
+86 directories, 168 files
