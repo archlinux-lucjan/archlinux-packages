@@ -10,7 +10,7 @@ pkgname=(
   'shelly-notify-git'
   'shelly-notify-none-git'
 )
-pkgver=3.1.6.r78.g6ba449ae
+pkgver=3.1.6.r82.g92db3438
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -73,6 +73,12 @@ _zig_build() {
     "$@"
 }
 
+_backports=(
+)
+
+_reverts=(
+)
+
 pkgver() {
   cd "${_srcdir}"
   git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -86,6 +92,27 @@ prepare() {
   for dir in "${_components[@]}"; do
     (cd "${dir}" && _zig_build --fetch)
   done
+
+  local _c _l
+   for _c in "${_backports[@]}"; do
+     if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+     git log --oneline "${_l}" "${_c}"
+     git cherry-pick --mainline 1 --no-commit "${_c}"
+   done
+   for _c in "${_reverts[@]}"; do
+     if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+     git log --oneline "${_l}" "${_c}"
+     git revert --mainline 1 --no-commit "${_c}"
+   done
+
+  local src
+   for src in "${source[@]}"; do
+     src="${src%%::*}"
+     src="${src##*/}"
+     [[ $src = *.patch ]] || continue
+     echo "Applying patch $src..."
+     patch -Np1 < "../$src"
+   done
 }
 
 build() {
