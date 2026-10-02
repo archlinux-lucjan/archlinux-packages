@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.3.r507.gdf0fdfc46
+pkgver=1.1.3.r522.gb5762c5ee
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -63,20 +63,6 @@ c781d6405ea0137da7a1285b17e1f13b632995ac # scx_flow: bump to 4.5.1
 dfa41a6997b7946887502c2ba37e10dfe15042f1 # scx_cake: STATE: restore the full round history after the revert
 7c1775acf817090b55ce1776e3ca7c82ad7cb606 # scx_cake: bound the vtime lead a task holds over the frontier
 25879d8b15ed2d5ee1893bf68e3c1ec90279ac11 # scx_cake: update pool serving and document game testing
-ad0176178017192f615e0a22fd9c3418d41b4577 # scx_eevdf: Honor WF_CURRENT_CPU
-7f1e66acda79595eb44a9ff32f738ab1b72c02e1 # scx_eevdf: Keep the placement a queued wakeup already has
-76b92cb0af22033db2ec0e34d4533037ceb2db78 # scx_eevdf: Arm the hrtick when a task queues as displaced
-2750631eb08e43587a094f2fa8a180868b0dedc7 # scx_eevdf: Return from asymmetric idle selection
-9205de4be3427b8941ebc4dd17efe95a95ba5e5a # scx_eevdf: Use the asymmetric domain's scan budget and idle-core hint
-c5dbea0509b6f656dc97d8512b43605030014a09 # scx_eevdf: Honor cpus_share_resources() in idle selection
-607282957f3aba3115e1f98ede68cac3e4afeb12 # scx_eevdf: Walk an unbounded LLC idle scan from the target
-7a66f683a9bf4eff96e9d427c35bc212f9b3d2f7 # scx_eevdf: Enforce a cpu.max set before the scheduler loads
-865305f8a92f959df6d5f08a4a53773b08fe893a # scx_eevdf: Admit cpu.max tasks only to CIDs holding runtime
-f3cd2f9a84bb8e80e4059b9be93781d8c04193d6 # scx_eevdf: Place wakeups on SCHED_IDLE CIDs found by the idle scan
-1ba0f7c617c28fc2306466253290a77c45f7c3d7 # scx_eevdf: Treat SCHED_IDLE CIDs as idle ones in the idle scans
-4d36fde52370434cedff787091ce931d52acc544 # scx_eevdf: Stop the idle-core scans on a zero SIS_UTIL budget
-8013d73a8b7b3a9d8e0b598db3ce93620bfb780b # scx_eevdf: Use bpf_arena_for() in scan_idle_window()
-e1d2f0af8687047484aefcce6148e229fc5e53ee # scx_eevdf: Clarify idle topology scans
 )
 
 _reverts=(
