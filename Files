@@ -208,8 +208,6 @@
 │   └── PKGBUILD
 ├── scx-tools
 │   └── PKGBUILD
-├── scx-tools-git
-│   └── PKGBUILD
 ├── sddm-git
 │   ├── 0001-Revert-cmake-remove-the-final-Arch-PAM-modules.patch
 │   └── PKGBUILD
@@ -253,4 +251,4 @@
     ├── Files
     └── PKGBUILD
 
-86 directories, 168 files
+85 directories, 167 files
