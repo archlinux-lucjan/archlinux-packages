@@ -196,8 +196,6 @@
 │   └── rustup-profile.sh
 ├── rustup-toolchain-install-master-git
 │   └── PKGBUILD
-├── scx-manager-git
-│   └── PKGBUILD
 ├── scx-manager-trunk-git
 │   └── PKGBUILD
 ├── scx-scheds
@@ -249,4 +247,4 @@
     ├── Files
     └── PKGBUILD
 
-84 directories, 166 files
+83 directories, 165 files
