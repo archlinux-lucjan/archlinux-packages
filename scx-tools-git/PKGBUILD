@@ -8,7 +8,7 @@ _mode=release
 pkgname=scx-tools-git
 _gitname=scx-loader
 pkgver=1.1.3.r2.g247fd05
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -69,6 +69,10 @@ efb1550ea1c71036ff45da5ef6b8d7c6270aa089 # scx_loader: back off between respawn 
 80e0524f02c8f210163a29a7245aa15c94ef2217 # scx_loader: Set scx_eevdf as a default scheduler
 35c23fd8ad2dd303f037412a839e3433cb2e23ad # scxctl: factor out the uncached loader properties proxy
 980e963013f29dfb13096608164cbab798c58ca4 # scxctl: add a config command to dump the resolved configuration
+1697651ea9791040e0a1f54d049329dd7b4cc530 # scx_loader: Add rvtime scheduler
+11e6bf5b319415cccf15a3d68262ab67c876f7e1 # scx_loader: Add rlocal scheduler
+1ac25d0c256ad0b0e845037d4bfd756a21c8a861 # scx_loader: Add rburst scheduler
+33e8d6101fc994cb877ded8e744d1570d6b3e3ae # scxtui: make clippy happy
 )
 
 _reverts=(
