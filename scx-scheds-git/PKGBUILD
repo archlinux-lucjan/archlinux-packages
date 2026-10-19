@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r18.ge9cd670d9
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -26,9 +26,6 @@ makedepends=(
   git
   llvm
   llvm-libs
-)
-optdepends=(
-'scx-tools: scx_loader, scxctl and scxtui - A DBUS Interface for Managing sched_ext Schedulers '
 )
 options=(!lto)
 backup=('etc/default/scx')
