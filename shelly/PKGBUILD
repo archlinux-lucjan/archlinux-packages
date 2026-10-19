@@ -10,8 +10,8 @@ pkgname=(
   'shelly-notify'
   'shelly-notify-none'
 )
-pkgver=3.1.7
-pkgrel=2
+pkgver=3.1.8
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
 license=('GPL-3.0-only')
@@ -39,7 +39,7 @@ makedepends=(
 )
 checkdepends=('ripgrep')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c69be6dbfb391100c28f327ac4a4ead4d35681bd4e6a3f348be0109c4156e36b')
+sha256sums=('6d00d0570b3b142a5c8eca9c2dfd7ca1275e2e482a3b09b9896863ddec8374c1')
 
 # GitHub replaces "+" with "-" in archive top-level directory names.
 _srcdir="Shelly-ALPM-${pkgver//+/-}"
@@ -220,6 +220,10 @@ package_shelly-cli() {
   # The package metadata must match the compiled native backend variant.
   local dynamic
   dynamic=$(LC_ALL=C readelf -d "${pkgdir}/usr/bin/shelly") || return 1
+  if [[ $dynamic != *'Shared library: [libsqlite3.so.0]'* ]]; then
+    printf 'Shelly CLI must directly depend on libsqlite3.so.0 (#2059)\n' >&2
+    return 1
+  fi
   if [[ ${_shelly_libalpm} == true && ${dynamic} != *libalpm.so* ]] ||
      [[ ${_shelly_libalpm} == false && ${dynamic} == *libalpm.so* ]]; then
     printf 'shelly does not match SHELLY_LIBALPM=%s\n' "${_shelly_libalpm}" >&2
