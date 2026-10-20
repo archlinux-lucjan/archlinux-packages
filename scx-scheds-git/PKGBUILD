@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.4.r63.gbb0fe4131
+pkgver=1.1.4.r65.ga1f2e3b15
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -84,6 +84,7 @@ beeeb22b64c3e5ffa199d7403470bb7041f15808 # scx_cake: STATE: KovaaK's tail spikes
 c847e9b3480b6e9ebf1a64bde3458c5c8bb4f1ab # scx_cake: STATE: cosmos tail edge is run-to-run noise
 2b25b58b69a53527be355e3794ea5d0a28c6b52f # scx_cake: research: sibwake rejected (idle cores: lows -43 %)
 44e1a3400e54490c4721b1d6a9fdf160c3995892 # scx_cake: docs: kernel patch research moves to experimental-patches
+cce0fb2798b192036c1017840fed405be0f689d6 # scxtui: Do not count unconfigured modes as matching a process
 )
 
 _reverts=(
