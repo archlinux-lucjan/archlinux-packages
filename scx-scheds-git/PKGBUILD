@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r92.g0fb326421
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -88,6 +88,8 @@ ab4a668707e0c1ffe939f086e9ca3caedb6558c2 # scx_cake: research: sibwake rejected 
 2dec26168361c63f28c6eb69ce7a6bfcdfcb83df # scxtui: add profiles for scx_chaos
 fd189d55fd6876c93c8b60102e682c8f95d25d4d # scxtui: add profiles for scx_mavd
 450ce12770aee528ef9eca0c8465743b54dbe65e # scxtui: Share the profile rows between a scheduler and its fork
+daa4f6f02176e4280287a0c22603c56ff75709b0 # scx_rustsched: Declare bpf_task_acquire() and bpf_task_release()
+aa45a292912151e2a97209d311414efeeb22c56e # scx_reevdf: Add a fair/EEVDF scheduler completely written in Rust
 )
 
 _reverts=(
