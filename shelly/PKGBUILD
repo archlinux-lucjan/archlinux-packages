@@ -10,7 +10,7 @@ pkgname=(
   'shelly-notify'
   'shelly-notify-none'
 )
-pkgver=3.1.8
+pkgver=3.1.9
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -34,12 +34,12 @@ makedepends=(
   'libarchive'
   'pkgconf'
   'sqlite'
-  'zig>=0.16.0'
+  'zig0.16'
   "${_shelly_native_depends[@]}"
 )
 checkdepends=('ripgrep')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6d00d0570b3b142a5c8eca9c2dfd7ca1275e2e482a3b09b9896863ddec8374c1')
+sha256sums=('6ee7b2ff8ea57dd6481696787b260f56a31eff4cbcd408d6bcf06c0c49a707d5')
 
 # GitHub replaces "+" with "-" in archive top-level directory names.
 _srcdir="Shelly-ALPM-${pkgver//+/-}"
@@ -56,11 +56,17 @@ _components=(
 )
 
 _zig_build() {
-  zig build \
+  zig-0.16 build \
     --cache-dir "${srcdir}/zig-cache" \
     --global-cache-dir "${srcdir}/zig-global-cache" \
     -Dcpu=baseline \
     "$@"
+}
+
+_use_zig016() {
+  mkdir -p "${srcdir}/zigbin"
+  ln -sf /usr/bin/zig-0.16 "${srcdir}/zigbin/zig"
+  export PATH="${srcdir}/zigbin:${PATH}"
 }
 
 prepare() {
@@ -74,6 +80,7 @@ prepare() {
 }
 
 build() {
+  _use_zig016
   cd "${_srcdir}"
 
   (cd Shelly.Flatpak.Backend && _zig_build \
@@ -130,6 +137,7 @@ build() {
 }
 
 check() {
+  _use_zig016
   cd "${_srcdir}"
 
   # Test the same native backend and path profile as the shipped CLI.
