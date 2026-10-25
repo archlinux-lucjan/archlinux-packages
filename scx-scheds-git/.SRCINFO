@@ -1,6 +1,6 @@
 pkgbase = scx-scheds-git
 	pkgdesc = sched_ext schedulers and tools
-	pkgver = 1.1.4.r103.g8ed8e8822
+	pkgver = 1.1.4.r109.g45e654685
 	pkgrel = 1
 	url = https://github.com/sched-ext/scx
 	arch = x86_64
