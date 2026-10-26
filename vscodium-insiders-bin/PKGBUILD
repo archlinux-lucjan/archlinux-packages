@@ -8,7 +8,7 @@
 
 pkgname=vscodium-insiders-bin
 _pkgname=VSCodium
-pkgver=1.140.06829
+pkgver=1.143.17171
 pkgrel=1
 pkgdesc="Binary releases of VS Code Insiders without MS branding/telemetry/licensing."
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=("https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgve
         'vscodium-insiders-bin.install'
         'vscodium-insiders-bin.sh'
         'LICENSE')
-sha256sums=('7d8779cb07f5dd66810a94a45855d0ffbe5c286ffddbb88f8ecdca6b63a6813f'
+sha256sums=('ae1dce7defdbcc89194fc8e201735c6dc426697cab3bef7d387dffd1b127d46e'
             'ed7c05df676522c7a1922bcff2185bedb9364801b78072b325014b0a26865c53'
             '4c581c267e19ef522cbb67f83b1013722fd1531a1f754095bdc19255b0d8117e'
             '2213e04254061ebdc4d56d12f58ed1f8ee2f40068d30f2657b93cb0b4714a880'
