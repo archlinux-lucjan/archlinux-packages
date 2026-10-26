@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r109.g45e654685
-pkgrel=4
+pkgrel=5
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -93,6 +93,7 @@ cd100d4bb6296145a6cba63fb85a8e4d6fddf266 # scx_profiles: Stop before cleaning up
 25ed98cdcb247ffe212f9c5411f8a237d8a407e4 # scx_profiles: Read fixture sysfs through kernel::read_at, soften the cleanup error
 1d39defd3f465738a09c3d9381967b4b3491e37e # scxcli: Add stop, start and list scheds
 c88557d500aa86513681d7064ccf0a41b0da9fc4 # scxtui: Say what `a` does in the advanced view
+e5b1dfb18272496db9966331d471862074869bb5 # xtask: Add install
 )
 
 _reverts=(
@@ -141,7 +142,6 @@ build() {
      --workspace \
      --exclude scx_rlfifo \
      --exclude scx_characterize \
-     --exclude xtask \
      --exclude vmlinux_docify \
      --exclude scx_arena_selftests \
      --exclude scx_arena_libarena_selftests
@@ -152,18 +152,11 @@ package() {
 
   # Install all built executables (skip .so and .d files)
   find target/$_mode \
-    -maxdepth 1 -type f -executable ! -name '*.so' \
+    -maxdepth 1 -type f -executable ! -name '*.so' ! -name 'xtask' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
 
-  # systemd service and its default configuration
-  install -Dm644 services/scx.service "$pkgdir/usr/lib/systemd/system/scx.service"
-  install -Dm644 services/scx "$pkgdir/etc/default/scx"
-
-  # Scheduling profiles: the shipped list and the polkit policy for
-  # scxcli, which the find above already installed to /usr/bin, the
-  # path the policy names. /etc/scx/profiles.json is the administrator's
-  # override, created by `scxcli profiles save`, and is not shipped.
-  install -Dm644 services/profiles.json "$pkgdir/usr/share/scx/profiles.json"
-  install -Dm644 tools/scxcli/org.sched_ext.scxcli.policy \
-    "$pkgdir/usr/share/polkit-1/actions/org.sched_ext.scxcli.policy"
+  # Runtime data via xtask: scx.service, /etc/default/scx,
+  # /usr/share/scx/profiles.json, the scxcli polkit policy.
+  # --source-dir keeps cargo out of package().
+  ./target/$_mode/xtask install --source-dir . --destdir "$pkgdir"
 }
