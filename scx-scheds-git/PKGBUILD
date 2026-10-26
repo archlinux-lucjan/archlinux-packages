@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r109.g45e654685
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -84,9 +84,13 @@ ae6e8b4eaf97473ce56688676ddc24cdf08cd071 # scx_cake: research: burstkey rejected
 81dab3513fc2ab36f6fb83a4b67fd17ec3ffae2a # scx_cake: STATE: cosmos tail edge is run-to-run noise
 bdd0fb10e76a10beb7c96d5e4e9bbdf6d583ff3a # scx_cake: research: sibwake rejected (idle cores: lows -43 %)
 78ee566ef881a32c5c6bb93af231ceac3e644d14 # scx_cake: docs: kernel patch research moves to experimental-patches
-00c7dae4d2410f2a51c7a69ec05cef41b3e14939 # scxtui: add profiles for scx_chaos
-9cc074c4d246995f51564e55b8361fd214838e6b # scxtui: add profiles for scx_mavd
-8c6748e2a163ca2398b1ace818b325fb60601539 # scxtui: Share the profile rows between a scheduler and its fork
+723b231749c85ab986040824c312c22dc1bd636b # services: Add the scheduling profiles contract and shipped list
+aba9af44ea9f1abc123dc4f19e51adc9316c9cd1 # rust/scx_profiles: Add the profiles library
+6959fd418abb7767fb12e9dc2902533f695868eb # tools/scxcli: Add scxcli
+58485b716f22937227fc82aeca39e4032b455b9f # scxtui: Become a client of scxcli
+cd100d4bb6296145a6cba63fb85a8e4d6fddf266 # scx_profiles: Stop before cleaning up on Default, treat a deleted marker as Custom
+0a273285403afc6a0fa66df3ce83fe6c6bac5a52 # scx_profiles: Keep one JSON file per detection fixture
+25ed98cdcb247ffe212f9c5411f8a237d8a407e4 # scx_profiles: Read fixture sysfs through kernel::read_at, soften the cleanup error
 )
 
 _reverts=(
@@ -152,4 +156,12 @@ package() {
   # systemd service and its default configuration
   install -Dm644 services/scx.service "$pkgdir/usr/lib/systemd/system/scx.service"
   install -Dm644 services/scx "$pkgdir/etc/default/scx"
+
+  # Scheduling profiles: the shipped list and the polkit policy for
+  # scxcli, which the find above already installed to /usr/bin, the
+  # path the policy names. /etc/scx/profiles.json is the administrator's
+  # override, created by `scxcli profiles save`, and is not shipped.
+  install -Dm644 services/profiles.json "$pkgdir/usr/share/scx/profiles.json"
+  install -Dm644 tools/scxcli/org.sched_ext.scxcli.policy \
+    "$pkgdir/usr/share/polkit-1/actions/org.sched_ext.scxcli.policy"
 }
