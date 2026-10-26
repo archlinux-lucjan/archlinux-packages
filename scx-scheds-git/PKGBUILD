@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r109.g45e654685
-pkgrel=6
+pkgrel=7
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -94,7 +94,7 @@ cd100d4bb6296145a6cba63fb85a8e4d6fddf266 # scx_profiles: Stop before cleaning up
 1d39defd3f465738a09c3d9381967b4b3491e37e # scxcli: Add stop, start and list scheds
 c88557d500aa86513681d7064ccf0a41b0da9fc4 # scxtui: Say what `a` does in the advanced view
 e5b1dfb18272496db9966331d471862074869bb5 # xtask: Add install
-55f5ea27f5615495e8fdf7e67bbf304c2ec069fa # scx_flow: bump to 4.8.16
+61d380cf426a7263864ee6e8b0fbdaef3e3d100c # scx_flow: bump to 4.8.16
 )
 
 _reverts=(
