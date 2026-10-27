@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r133.gabcc603de
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -90,6 +90,7 @@ f28789d75146cc160874dc88b4b32170101da586 # scx_cake: docs: kernel patch research
 db559da5d25c5c4a16c6162f98aadd30f87c3f3f # scxtui: Become a client of scxcli
 ec21b757a8baf310d9004ddb4182649dcb94c62d # xtask: Add install
 40d57481027143c86121fd2e97acae840a9aafb7 # scx_flow: bump to 4.8.16
+7c65e90d6cde06b5d6706e3857bfa0ed0e3dec48 # scx_catalog: Put the recommended schedulers first in the full list
 )
 
 _reverts=(
