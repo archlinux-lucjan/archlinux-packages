@@ -10,7 +10,7 @@ pkgname=(
   'shelly-notify-git'
   'shelly-notify-none-git'
 )
-pkgver=3.1.9.r15.g27a69951
+pkgver=3.1.9.r49.g52a678c1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -35,7 +35,7 @@ makedepends=(
   'libarchive'
   'pkgconf'
   'sqlite'
-  'zig0.16'
+  'zig>=0.17.0'
   "${_shelly_native_depends[@]}"
 )
 checkdepends=('ripgrep')
@@ -55,17 +55,10 @@ _components=(
 )
 
 _zig_build() {
-  zig-0.16 build \
+  ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache" zig build \
     --cache-dir "${srcdir}/zig-cache" \
-    --global-cache-dir "${srcdir}/zig-global-cache" \
     -Dcpu=baseline \
     "$@"
-}
-
-_use_zig016() {
-  mkdir -p "${srcdir}/zigbin"
-  ln -sf /usr/bin/zig-0.16 "${srcdir}/zigbin/zig"
-  export PATH="${srcdir}/zigbin:${PATH}"
 }
 
 _backports=(
@@ -112,32 +105,31 @@ prepare() {
 }
 
 build() {
-  _use_zig016
   cd "${_srcdir}"
 
   (cd Shelly.Flatpak.Backend && _zig_build \
     --prefix "${srcdir}/out-flatpak-backend" \
-    -Doptimize=ReleaseSafe)
+    -Doptimize=safe)
 
   (cd Shelly.Cli.Zig && _zig_build \
     --prefix "${srcdir}/out-cli" \
     -Dlibalpm="${_shelly_libalpm}" \
     -Dpath-profile="${_shelly_path_profile}" \
-    -Doptimize=ReleaseSmall)
+    -Doptimize=small)
 
   (cd Shelly.Key && _zig_build \
     --prefix "${srcdir}/out-key" \
     -Dpath-profile="${_shelly_path_profile}" \
-    -Doptimize=ReleaseSmall)
+    -Doptimize=small)
 
   (cd Shelly.Notifications.Zig && _zig_build \
     --prefix "${srcdir}/out-notify" \
-    -Doptimize=ReleaseSmall)
+    -Doptimize=small)
 
   (cd Shelly.Ui.Gtk && _zig_build \
     --prefix "${srcdir}/out-ui" \
     -Dflatpak-backend-package=shelly-flatpak-backend-git \
-    -Doptimize=ReleaseSafe)
+    -Doptimize=safe)
 
   # Generate documentation with a fresh configuration, independent of the
   # builder's own Shelly settings.
@@ -169,7 +161,6 @@ build() {
 }
 
 check() {
-  _use_zig016
   cd "${_srcdir}"
 
   # Test the same native backend and path profile as the shipped CLI.
