@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r150.g5b0795a4d
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -85,6 +85,7 @@ f6fb8cf838ce56dd3fa23d9de00759faca2e0e17 # Revert "scx_cake: burstkey toggle (un
 0e52363ee412ac1ef779dc10a8d5cab382d32506 # scx_cake: research: sibwake rejected (idle cores: lows -43 %)
 968293a825d61393f4504946285749f0efca6a2d # scx_cake: docs: kernel patch research moves to experimental-patches
 d36ff9b11433b003f04242d60c0dbd1605bbc087 # scx_flow: bump to 4.8.16
+9e7452c90dbcca66b73cb481be145023076735fa # scx_catalog: Tell stable and experimental schedulers apart in the full list
 )
 
 _reverts=(
