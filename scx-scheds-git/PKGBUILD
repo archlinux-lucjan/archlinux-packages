@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r158.gba5f4dc84
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -85,6 +85,8 @@ c1f3023bd2c1b0d9b3f828fe25b55e6dc22f4445 # scx_cake: STATE: cosmos tail edge is 
 3e5c840f51040a9dde4f9da3fd47d3198957ab06 # scx_cake: research: sibwake rejected (idle cores: lows -43 %)
 4d4646f76722aa752518f0821088c875b14a0aee # scx_cake: docs: kernel patch research moves to experimental-patches
 4246b37cfd90ecdcd6a465aea0c0303e7d6f6b9f # scx_flow: bump to 4.8.16
+7c9701a7c7c07dcb9288687b7ed80f33c5d358dc # scxtui: Say what the status panel means
+38ffe67e1fa0e581f2de93e3b809d951664f5958 # scxtui: Drop the --cli pointer
 )
 
 _reverts=(
