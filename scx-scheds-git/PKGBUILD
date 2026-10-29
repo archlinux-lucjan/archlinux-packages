@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.4.r169.g7660211d9
+pkgver=1.1.4.r172.g0dfff4ef0
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -37,54 +37,59 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-7d1f95724bd26bb97cada65d8f319ec3dc7d406c # scheds: Introduce scx_maestro
-a3aa7cada0d8d697b6f284cbe330a9005d454191 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-0ab95856d335e07e4bf207a076b55d8d9ce1fb16 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-d2eed662cb5eddbdf5efc8e4a19eab2bb94df2a6 # scx_maestro: Don't update deadline in case of re-enqueue
-f1aa97a07fd846d1c6fbdbb7b42cb9e716f1ebd7 # scx_maestro: Introduce completely fair scheduling
-916107fd231e766cf0f8d3d2583680d5d3522828 # scx_maestro: Make enqueue + CPU kick more reliable
-537d31a54c9c9fe31917703f4efd08945c379d80 # scx_maestro: Enforce preemption each tick on CPU contention
-8e31cf155b1773cba0b468d7b48e0d045151b9e9 # scx_maestro: Temporarily drop sub-sched support
-46cffa8649ac12171b4ca8787b963f002f4519a1 # scx_maestro: bump to 1.1.1
-e216128a9ba0e5c019daa6cd360610692149a260 # scx_maestro: fix formatting
-900947af49ca02dc498a942f213379d588d3f79c # scx_maestro: bump to 1.1.2
-9163b0adfa1dea75babea2e70ef1119be2b4511b # scx_maestro: Use scx_bpf_task_set_slice() setter
-b91b9e98d38bbb2433691ba7bf068ab3d06217e3 # scx_maestro: bump to 1.1.3
-f0ff6497a7776d6a31cc9d3e928e3d5edb0a10a6 # scx_maestro: bump libbpf to 0.27.0
-42d4a58e2ba045256ff34ba6db3595688e70de7e # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
-40fdc0c8683d76723ece155ff190e988311681be # scx_maestro: fix formatting
-cf086cf2c929f3f81dd2930363787e1a9c83f8ab # scx_maestro: bump libbpf to 0.27.1
-5cbdb6ce9ea25f52a0af0e90ecc1396c6cd0a1a4 # scx_maestro: bump libbpf to 0.27.2
-21212cd0bfdecad2bace498acede038d4aaa0ede # scx_maestro: bump to 1.1.4
-f2d2fefb00aa87de0a4bdda62dfb1f21aad9291c # scx_cake: STATE: record the 2026-09-26 revert to 9db04489e and its findings
-9e795209fe839db2fd2ca98cfd7fb3a501f2da8f # scx_cake: STATE: restore the full round history after the revert
-c255c39778489d34c783e51d4160b3f0c25cd68c # scx_cake: bound the vtime lead a task holds over the frontier
-17f207ff588443badd5f353578ad21016577c249 # scx_cake: update pool serving and document game testing
-aa0b6b756ab5fdaa022d7b32f4da7f1716a947ae # scx_cake: read the cached rq clock in ops.running; drop losing flags
-f0222c263c5ed4b8bc4a812cd8e02242e01253d3 # scx_cake: docs: cut STATE, README, DESIGN and maps to the current state
-c234d99809ed5bc07038aec0914836940bdecd90 # wip: snapshot uncommitted work (2026-10-11)
-bba3839956d7539ebdfd6e0b75b02e0a598dc692 # scx_cake: STATE: lean idle kernel now boots; A/B still owed
-bf66916361d688793bd69914a7dadfc7ec820c33 # scx_cake: STATE: lean idle KovaaK's A/B, lazy leads
-d6955169da27c7de7b2e29a55f0ea538fa2f64d1 # scx_cake: default --lean-idle to lazy
-b6a88e5213382ff4e228448f7cb91728cb4a1391 # scx_cake: STATE: cache-line contention evidence and follow-ups
-02e3142b27d270ef02f9ba717805a86f77d79174 # scx_cake: STATE: nvcsw is one behind at ops.stopping
-b43b0bd8ff7cfa2e027b6e3d634d421b5f416f3c # scx_cake: STATE: cache-line causes at source-line level
-22b5c1158290a8df1d8d377f17ea7458ecc05a60 # scx_cake: research: block stash rejected (no frame effect)
-9c1c183d7336f4d2c6042caaf54cfae43247c531 # scx_cake: STATE: flag A/Bs (portable bitops candidate, native ring rejected)
-34790660fba02aa86d407f43a46572cce3b67dcc # scx_cake: STATE: portable bitops did not replicate; native stays default
-59b7b707f99e322e64e4f9b07db0a0e92acb25b4 # scx_cake: STATE: why lean lazy wins (home placement, not claim cost)
-21eb4ac3b7875cb8a988a6130e6deb5bc7913fb5 # scx_cake: research: claimhome (lazy placement without the patch) not shipped
-3eb688affe534b3332b52a599c009289719b0c08 # scx_cake: docs: tables, status symbols, flows and containers instead of prose
-741bac6f7d65338819f783c6d6bda1bc8c37f18e # scx_cake: STATE: KovaaK's runs are CPU-limited game evidence; GPU-limited check owed
-0e931a71fa117ea0c9fb545962f119d788cd8339 # scx_cake: burstkey toggle (under test): requeue key + runtime since wake
-f3af4bc1a3d90c251d21d2e470b86562b9e8e2a9 # Revert "scx_cake: burstkey toggle (under test): requeue key + runtime since wake"
-f40478b3ded1081117d3b4b3c36e3bceebf27042 # scx_cake: research: burstkey rejected; cosmos loses to cake lazy in KovaaK's
-964d6216811b9368938b0805b505427b3d3e78e7 # scx_cake: STATE: KovaaK's tail spikes are not scheduling delay
-88e1d069cbaa8624566194a60a41fe07e88ce428 # scx_cake: STATE: cake beats cosmos on wake latency and sleep depth
-05b56d38ded65c6962ec9f00cdecf144e4774bc5 # scx_cake: STATE: cosmos tail edge is run-to-run noise
-6118d258effddf7dd5e42e90aae327047cdb5c76 # scx_cake: research: sibwake rejected (idle cores: lows -43 %)
-c6a6d2e20e285f5b053756da51370b32f12afe9f # scx_cake: docs: kernel patch research moves to experimental-patches
-258eeea8eb16107b4a8efb0502c0a286db123bd7 # scx_flow: bump to 4.8.16
+9c78813266b9a093338716b9e6ef37ed247ade06 # scheds: Introduce scx_maestro
+0088563fed3ed8d73aadf6d0af752fa692257d31 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+e7c0c1cb46cf4799311c8c6e45ce1ea345c116a6 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+cb9dd46c124b91bd23aad107a9b6db646aca3bf0 # scx_maestro: Don't update deadline in case of re-enqueue
+75b7906e30d4e50373289d9e0b0c71ab336b07e0 # scx_maestro: Introduce completely fair scheduling
+f0afd52df3afca81e5f85cd6b5bba9f73e915be7 # scx_maestro: Make enqueue + CPU kick more reliable
+55706fe785fb2e51e9b8baf3f5c046101967ccbb # scx_maestro: Enforce preemption each tick on CPU contention
+20de8f3a02ae87f287866b6f8584ffd4050054ba # scx_maestro: Temporarily drop sub-sched support
+bf999952efb0173d74b4730ad9382ffc42893ec2 # scx_maestro: bump to 1.1.1
+9e5346c15b8e93d6f73b8e6cbcba16f59146260e # scx_maestro: fix formatting
+bce4b79d8f3e47395a368f522d39ff0cf0fd4c3c # scx_maestro: bump to 1.1.2
+f32922c60f59d1d1229995834a0d45b21e1be0c3 # scx_maestro: Use scx_bpf_task_set_slice() setter
+f468d1ab154312bca299e88dacdd46d937cfb3f2 # scx_maestro: bump to 1.1.3
+e4a6424de8fd974a01ba313d47adcd17879583a0 # scx_maestro: bump libbpf to 0.27.0
+9d4e454b7e484afe702c59101c499206bc5dc080 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
+5f56d1501d3f0a4a7bdcabf60921df8ea3c9ffc5 # scx_maestro: fix formatting
+f718a6982f12d9709c992b0c6492421f5ba3c874 # scx_maestro: bump libbpf to 0.27.1
+8cd67b106fa39b053b26bcf9c9d5da0844872a3c # scx_maestro: bump libbpf to 0.27.2
+c0af28dc8709ce845cdeb7ec381d0e0b81a48dde # scx_maestro: bump to 1.1.4
+48d375a40670486eed776842b66928ae9d7dad6f # scx_cake: STATE: record the 2026-09-26 revert to 9db04489e and its findings
+90d0a2c00526896b1a73b70275bdd8d9d2511a37 # scx_cake: STATE: restore the full round history after the revert
+ea9e957683b4c34fa7ceb35c64ccdc70d97ad4ce # scx_cake: bound the vtime lead a task holds over the frontier
+1b573ba0c68d5659e4c9c039c02915933f91a1b6 # scx_cake: update pool serving and document game testing
+77f60d16ab973035fe52347ef0e45db7fcc2e388 # scx_cake: read the cached rq clock in ops.running; drop losing flags
+2e10c5d0ee056a361835e862fa81156e5801af09 # scx_cake: docs: cut STATE, README, DESIGN and maps to the current state
+cdde647af43a8cfe986b8df00c8bee3cffaa5df2 # wip: snapshot uncommitted work (2026-10-11)
+9af07f77c54c6f37a9aff852de22659f9aa4add7 # scx_cake: STATE: lean idle kernel now boots; A/B still owed
+c14a195e5d0268e87d90a267fff09e6a9fed242b # scx_cake: STATE: lean idle KovaaK's A/B, lazy leads
+77919d3da7e422d7a72803a91dcb754c43ccaf4e # scx_cake: default --lean-idle to lazy
+7cff828b6647c18423be4a234af9a8620b98de2a # scx_cake: STATE: cache-line contention evidence and follow-ups
+37498d0c42c019f1678024219aeb789ddbb4605c # scx_cake: STATE: nvcsw is one behind at ops.stopping
+7d6b7ccda91edf499e9aee67e7eceb1b340fef0e # scx_cake: STATE: cache-line causes at source-line level
+64fd90ff8d8d18026ecea54418c5f7d0052858e7 # scx_cake: research: block stash rejected (no frame effect)
+def895660258fecea4335eb85cb6abc0ffd2beac # scx_cake: STATE: flag A/Bs (portable bitops candidate, native ring rejected)
+427887b894e664bc7f9ec0968870e261fa929c6a # scx_cake: STATE: portable bitops did not replicate; native stays default
+d1002194ed7351b1c67d30bbc8c6183b7afeab4d # scx_cake: STATE: why lean lazy wins (home placement, not claim cost)
+59b50ce2ccc149c94b04abd8a2ab92fd554171b2 # scx_cake: research: claimhome (lazy placement without the patch) not shipped
+501a0684e000644422e5918d276918a9aacb2619 # scx_cake: docs: tables, status symbols, flows and containers instead of prose
+56a022413f37cefe0dbae9a518c999b831c57852 # scx_cake: STATE: KovaaK's runs are CPU-limited game evidence; GPU-limited check owed
+c6c73b601f7884e0ad11760e188cd3520bf04f54 # scx_cake: burstkey toggle (under test): requeue key + runtime since wake
+f8300b018f7e19edf67825f986645e9d02695ddf # Revert "scx_cake: burstkey toggle (under test): requeue key + runtime since wake"
+25a721093f81524c39470974982da1f5b46c9590 # scx_cake: research: burstkey rejected; cosmos loses to cake lazy in KovaaK's
+49b8b4729b6ad1875b9c4ff948a932a903a3ae08 # scx_cake: STATE: KovaaK's tail spikes are not scheduling delay
+db7445f6f6aebe4cebaf9550071a5443b7f18b32 # scx_cake: STATE: cake beats cosmos on wake latency and sleep depth
+ba20e490a28c78137585595c09a33b647e1f5e68 # scx_cake: STATE: cosmos tail edge is run-to-run noise
+cd249ebb49db5993bd0c022d46973051e11cf5be # scx_cake: research: sibwake rejected (idle cores: lows -43 %)
+3fbabac858bfe1ce5357ece8e37ee426ade1c8d8 # scx_cake: docs: kernel patch research moves to experimental-patches
+b69e2472dd73e7b339e7cf4edec3293686b03804 # scx_flow: bump to 4.8.16
+af27b3548366806f00ea7787948b1fed14a0d577 # scx_catalog: Add custom profiles and featured schedulers to the format
+b61d95c4942b5974c35e82b368ab77a99d6d3e2f # scx_catalog: Start custom profiles by id and resume their commands
+2f5a6cd68651c6107bb5733a6c265d4669769faf # scx_catalog: List a profile's command and the featured mark
+cf525c4a125ecd4ac5d766e38a4cfd2f83c1cee9 # scxtui: Show profiles by their command and keep previews to looking
+a892b87ad079700bfcbc004803bb211f17f98f15 # scxcli: Add catalog show, save and reset for the override
 )
 
 _reverts=(
