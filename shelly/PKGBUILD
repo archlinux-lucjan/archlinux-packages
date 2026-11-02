@@ -10,7 +10,7 @@ pkgname=(
   'shelly-notify'
   'shelly-notify-none'
 )
-pkgver=3.1.9
+pkgver=3.1.10
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -34,12 +34,12 @@ makedepends=(
   'libarchive'
   'pkgconf'
   'sqlite'
-  'zig0.16'
+  'zig>=0.17.0'
   "${_shelly_native_depends[@]}"
 )
 checkdepends=('ripgrep')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6ee7b2ff8ea57dd6481696787b260f56a31eff4cbcd408d6bcf06c0c49a707d5')
+sha256sums=('6ac44dff19a40069d35d7f5c7c86ae3ef1409b910f525c9fa464534706f43166')
 
 # GitHub replaces "+" with "-" in archive top-level directory names.
 _srcdir="Shelly-ALPM-${pkgver//+/-}"
@@ -56,17 +56,10 @@ _components=(
 )
 
 _zig_build() {
-  zig-0.16 build \
+  ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache" zig build \
     --cache-dir "${srcdir}/zig-cache" \
-    --global-cache-dir "${srcdir}/zig-global-cache" \
     -Dcpu=baseline \
     "$@"
-}
-
-_use_zig016() {
-  mkdir -p "${srcdir}/zigbin"
-  ln -sf /usr/bin/zig-0.16 "${srcdir}/zigbin/zig"
-  export PATH="${srcdir}/zigbin:${PATH}"
 }
 
 prepare() {
@@ -80,32 +73,31 @@ prepare() {
 }
 
 build() {
-  _use_zig016
   cd "${_srcdir}"
 
   (cd Shelly.Flatpak.Backend && _zig_build \
     --prefix "${srcdir}/out-flatpak-backend" \
-    -Doptimize=ReleaseSafe)
+    -Doptimize=safe)
 
   (cd Shelly.Cli.Zig && _zig_build \
     --prefix "${srcdir}/out-cli" \
     -Dlibalpm="${_shelly_libalpm}" \
     -Dpath-profile="${_shelly_path_profile}" \
-    -Doptimize=ReleaseSmall)
+    -Doptimize=safe)
 
   (cd Shelly.Key && _zig_build \
     --prefix "${srcdir}/out-key" \
     -Dpath-profile="${_shelly_path_profile}" \
-    -Doptimize=ReleaseSmall)
+    -Doptimize=safe)
 
   (cd Shelly.Notifications.Zig && _zig_build \
     --prefix "${srcdir}/out-notify" \
-    -Doptimize=ReleaseSmall)
+    -Doptimize=safe)
 
   (cd Shelly.Ui.Gtk && _zig_build \
     --prefix "${srcdir}/out-ui" \
     -Dflatpak-backend-package=shelly-flatpak-backend \
-    -Doptimize=ReleaseSafe)
+    -Doptimize=safe)
 
   # Generate documentation with a fresh configuration, independent of the
   # builder's own Shelly settings.
@@ -137,7 +129,6 @@ build() {
 }
 
 check() {
-  _use_zig016
   cd "${_srcdir}"
 
   # Test the same native backend and path profile as the shipped CLI.
