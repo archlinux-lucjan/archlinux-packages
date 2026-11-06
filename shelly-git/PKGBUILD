@@ -7,10 +7,11 @@ pkgname=(
   'shelly-git'
   'shelly-cli-git'
   'shelly-flatpak-backend-git'
+  'shelly-tui-git'
   'shelly-notify-git'
   'shelly-notify-none-git'
 )
-pkgver=3.1.9.r49.g52a678c1
+pkgver=3.2.0.r5.g55b2fcc9
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -40,8 +41,10 @@ makedepends=(
 )
 checkdepends=('ripgrep')
 _srcdir=Shelly-ALPM
-source=("${_srcdir}::git+${url}.git#branch=development")
-sha256sums=('SKIP')
+source=("${_srcdir}::git+${url}.git#branch=development"
+        "0001-Shelly.Tui-squash-of-PR-2136-shelly-tui-development.patch")
+sha256sums=('SKIP'
+            '058939fc7e533008af92d720002efe090bb13f6812a08e3e50fd4b9b33f2d5dc')
 
 # Components with their own build.zig, in build order.
 _components=(
@@ -50,6 +53,7 @@ _components=(
   Shelly.PackageManager
   Shelly.Cli.Zig
   Shelly.Key
+  Shelly.Tui
   Shelly.Notifications.Zig
   Shelly.Ui.Gtk
 )
@@ -122,6 +126,12 @@ build() {
     -Dpath-profile="${_shelly_path_profile}" \
     -Doptimize=small)
 
+  # Release builds look up the CLI on PATH; pin it to the packaged binary.
+  (cd Shelly.Tui && _zig_build \
+    --prefix "${srcdir}/out-tui" \
+    -Dshelly-bin=/usr/bin/shelly \
+    -Doptimize=safe)
+
   (cd Shelly.Notifications.Zig && _zig_build \
     --prefix "${srcdir}/out-notify" \
     -Doptimize=small)
@@ -172,6 +182,7 @@ check() {
   (cd Shelly.Key && _zig_build test -Dpath-profile="${_shelly_path_profile}")
   (cd Shelly.Cli.Zig && _zig_build test -Dlibalpm="${_shelly_libalpm}" \
     -Dpath-profile="${_shelly_path_profile}")
+  (cd Shelly.Tui && _zig_build test -Dshelly-bin=/usr/bin/shelly)
 
   scripts/check-flatpak-separation.sh \
     "${srcdir}/out-cli/bin/shelly" \
@@ -310,6 +321,18 @@ package_shelly-flatpak-backend-git() {
     -t "${pkgdir}/usr/lib/shelly"
   ln -s libshelly-flatpak-backend.so.1.0.0 \
     "${pkgdir}/usr/lib/shelly/libshelly-flatpak-backend.so.1"
+}
+
+package_shelly-tui-git() {
+  pkgdesc='Terminal interface for Shelly (Arch RLPM git version)'
+  # The TUI drives the CLI from the same build and runs privileged
+  # operations through its own sudo PTY.
+  depends=("shelly-cli-git=${pkgver}-${pkgrel}" 'glibc' 'sudo')
+  optdepends=('shelly-flatpak-backend-git: Flatpak tab')
+  provides=("shelly-tui=${pkgver}")
+  conflicts=('shelly-tui')
+
+  install -Dm755 "${srcdir}/out-tui/bin/Shelly_Tui" "${pkgdir}/usr/bin/shelly-tui"
 }
 
 package_shelly-notify-git() {
