@@ -19,11 +19,9 @@
 │   └── PKGBUILD
 ├── cachyos-hooks-git
 │   └── PKGBUILD
-├── cachyos-kernel-manager-git
-│   ├── fix-installed-db.patch
-│   └── PKGBUILD
 ├── cachyos-settings-git
 │   ├── cachyos-settings-git.install
+│   ├── Files
 │   └── PKGBUILD
 ├── cachyos-sysctl-manager-git
 │   └── PKGBUILD
@@ -208,6 +206,7 @@
 ├── shelly
 │   └── PKGBUILD
 ├── shelly-git
+│   ├── 0001-Shelly.Tui-squash-of-PR-2136-shelly-tui-development.patch
 │   └── PKGBUILD
 ├── vscodium-bin
 │   ├── LICENSE
@@ -245,4 +244,4 @@
     ├── Files
     └── PKGBUILD
 
-82 directories, 164 files
+81 directories, 164 files
