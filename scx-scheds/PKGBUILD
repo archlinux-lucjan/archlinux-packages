@@ -9,7 +9,8 @@ _mode=release
 pkgname=scx-scheds
 _gitname=scx
 pkgver=1.1.4
-pkgrel=1.1
+_tagver=1.1.5-devario
+pkgrel=1.2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -20,25 +21,22 @@ depends=(
   zlib
 )
 makedepends=(
+  bpf-linker
   cargo
   clang
   git
   llvm
   llvm-libs
+  rust-src
 )
-optdepends=(
-'scx-tools: scx_loader, scxctl and scxtui - A DBUS Interface for Managing sched_ext Schedulers '
-)
+conflicts=('scx-tools')
+replaces=('scx-tools')
 options=(!lto)
-source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('86b19d7667e5d8e6da6bbda6d609db0a1624fb13ad8c845e50684c7efb44f1ba')
-validpgpkeys=(
-  697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
-  F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet <void@manifault.com>
-  A8775C60262EEF2AA34A864F5DAD005C4BFEA770  # Jake Hilton <jake@hillion.co.uk>
-  EE2B8DAB1F6D1AA9DD1A4475AD851C1B71DF8FBF  # Andrea Righi <andrea.righi@linux.dev>
-  49F2D1CB86447DFD1F14B27A8B61A0894BDB3A92  # Ryan Rhodes Newton <rrnewton@gmail.com>
-)
+backup=('etc/default/scx')
+#source=("git+https://github.com/sched-ext/scx#tag=v$pkgver")
+source=("git+https://github.com/Seafoam-Labs/scx#tag=v$_tagver")
+sha256sums=('9398783a1ced482858892dd321349713662f17fab96e10030adfd118e4062b19')
+
 
 _backports=(
 )
@@ -97,4 +95,8 @@ package() {
   find target/$_mode \
     -maxdepth 1 -type f -executable ! -name '*.so' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
+
+  # systemd service and its default configuration
+  install -Dm644 services/scx.service "$pkgdir/usr/lib/systemd/system/scx.service"
+  install -Dm644 services/scx "$pkgdir/etc/default/scx"
 }
