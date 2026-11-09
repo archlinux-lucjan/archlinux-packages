@@ -205,8 +205,6 @@
 │   └── PKGBUILD
 ├── shelly-git
 │   └── PKGBUILD
-├── shelly-tui
-│   └── PKGBUILD
 ├── vscodium-bin
 │   ├── LICENSE
 │   ├── PKGBUILD
@@ -243,4 +241,4 @@
     ├── Files
     └── PKGBUILD
 
-81 directories, 163 files
+80 directories, 162 files
