@@ -11,7 +11,7 @@ pkgname=(
   'shelly-notify-git'
   'shelly-notify-none-git'
 )
-pkgver=3.2.0.r104.ga3d9075b
+pkgver=3.2.0.r139.g3e0b77c2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -36,7 +36,7 @@ makedepends=(
   'libarchive'
   'pkgconf'
   'sqlite'
-  'zig>=0.17.0'
+  'zig>=0.17.1'
   "${_shelly_native_depends[@]}"
 )
 checkdepends=('ripgrep')
