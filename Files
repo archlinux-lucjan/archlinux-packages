@@ -204,7 +204,6 @@
 ├── shelly
 │   └── PKGBUILD
 ├── shelly-git
-│   ├── 0001-Shelly.Tui-squash-of-PR-2136-shelly-tui-development.patch
 │   └── PKGBUILD
 ├── shelly-tui
 │   └── PKGBUILD
@@ -244,4 +243,4 @@
     ├── Files
     └── PKGBUILD
 
-81 directories, 164 files
+81 directories, 163 files
