@@ -155,10 +155,6 @@
 │   └── readme.install
 ├── namcap-git
 │   └── PKGBUILD
-├── netbsd-pkgsrc
-│   ├── bootstrap.install
-│   ├── LICENSE
-│   └── PKGBUILD
 ├── netctl-git
 │   └── PKGBUILD
 ├── netspeed-cli
@@ -241,4 +237,4 @@
     ├── Files
     └── PKGBUILD
 
-80 directories, 162 files
+79 directories, 159 files
