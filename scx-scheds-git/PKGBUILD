@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r224.g9344d2633
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -64,6 +64,7 @@ e9c8a662a78b42b532147f90c224f3c26454978b # scx_panda: bump to 0.2.7
 3dc8f3004456a82cc4fbac855ee6837b6c0b5cc3 # scx_panda: bump to 0.2.8
 294a07257fb3b64ffd724076d9ee865cbbe13d89 # scxtui: Say on the Configured line whether the unit starts at boot
 b0fb03e7289835cf66459210c372bc421d48768b # scx_flow: bump to 5.2.14
+96bdc3db5e3cef7838a3c777107434c397c50f5c # fixup! scxtui: Say on the Configured line whether the unit starts at boot
 )
 
 _reverts=(
