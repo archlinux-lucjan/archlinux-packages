@@ -1,0 +1,91 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+
+pkgname=mailcraft-git
+_pkgname=mailcraft
+pkgver=0.11.1.r179.g3ca46fa
+pkgrel=1
+_appid=io.github.billsecond.mailcraft
+pkgdesc='Native mail, calendar, contacts and tasks program written in Rust (git version)'
+arch=('x86_64' 'aarch64')
+url='https://github.com/UCS-Care-Group/mailcraft'
+license=('MIT OR Apache-2.0')
+# Windowing and GPU libraries are dlopen()ed at runtime, so namcap won't see them.
+depends=(
+  'gcc-libs'
+  'glibc'
+  'hicolor-icon-theme'
+  'libx11'
+  'libxcursor'
+  'libxi'
+  'libxkbcommon'
+  'libxkbcommon-x11'
+  'libxrandr'
+  'vulkan-icd-loader'
+  'wayland'
+)
+makedepends=('cargo' 'git')
+# ring's C parts would be built as GCC LTO bytecode, which rust-lld can't read
+# (undefined ring_core_* symbols). Cargo's own LTO for the Rust code is unaffected.
+options=('!lto')
+# gpg-agent (found through gpgconf) and PKCS#11 modules are also reached at runtime only.
+optdepends=(
+  'gnupg: OpenPGP signatures through gpg-agent'
+  'opensc: S/MIME keys on smartcards'
+  'p11-kit: S/MIME keys on other PKCS#11 tokens'
+  'xdg-desktop-portal: native file dialogs'
+  'xdg-utils: opening attachments with xdg-open'
+  'gnome-keyring: Secret Service for remembered sign-ins (or any other provider)'
+)
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=beta
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
+}
+
+build() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=beta
+  export CARGO_TARGET_DIR=target
+  # Shown in Help › About (otherwise "dev").
+  export MAILCRAFT_BUILD_SHA="$(git rev-parse HEAD)"
+  cargo build --frozen --release -p mailcraft -p mailcraft-cli
+}
+
+check() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=beta
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen --release -p mailcraft-cli
+}
+
+package() {
+  cd "$_pkgname"
+  local _date
+  _date="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%F)"
+
+  install -Dm755 -t "$pkgdir/usr/bin" target/release/mailcraft target/release/mailcraft-cli
+
+  install -Dm644 "packaging/linux/$_appid.desktop" \
+    "$pkgdir/usr/share/applications/$_appid.desktop"
+  install -Dm644 "packaging/linux/$_appid.mime.xml" \
+    "$pkgdir/usr/share/mime/packages/$_appid.xml"
+  sed -e "s/@VERSION@/${pkgver%%.r*}/g" -e "s/@DATE@/$_date/g" \
+    "packaging/linux/$_appid.metainfo.xml.in" |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/metainfo/$_appid.metainfo.xml"
+
+  install -dm755 "$pkgdir/usr/share/icons"
+  cp -r --no-preserve=ownership assets/app-icon/hicolor "$pkgdir/usr/share/icons/"
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-MIT LICENSE-APACHE NOTICE
+}
