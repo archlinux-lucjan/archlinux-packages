@@ -8,8 +8,8 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.4.r231.gb5a884154
-pkgrel=2
+pkgver=1.1.4.r233.ge7ec88095
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -37,33 +37,33 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-d7f4c029b66c9146a6804f05e4b3fc25908e55dc # scheds: Introduce scx_maestro
-cc1be2ca39fe86633abcc1311abe267ab3d4d62b # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-d7bd6fd81c06ca8d709544549637fc698ad53a60 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-717ca571c726ca78de8dfa1ba82b407c51c47e8f # scx_maestro: Don't update deadline in case of re-enqueue
-31feb3b08df38e5223b65e7a44de62e31ad49319 # scx_maestro: Introduce completely fair scheduling
-8dab869cca7d0b5e36dbd0f3dc28da9fb6bf99c8 # scx_maestro: Make enqueue + CPU kick more reliable
-50c412be70e17650c74d275653a8d2b9129a8bc7 # scx_maestro: Enforce preemption each tick on CPU contention
-263828f43749033147992971458231b8e29220e5 # scx_maestro: Temporarily drop sub-sched support
-58ba1f9d456b6e55637d426ce530ae0408abb71d # scx_maestro: bump to 1.1.1
-7bc6d6aa5179bcbe0ffbd29442962b1fdb67bced # scx_maestro: fix formatting
-688b477c7703ba0919e465d1d495baec7acc9c16 # scx_maestro: bump to 1.1.2
-981d4f609b24700ed9800d9897aecd2188418aac # scx_maestro: Use scx_bpf_task_set_slice() setter
-24f1d06ec82153c7b10c693f406627bd64103eff # scx_maestro: bump to 1.1.3
-e667241ac13ecbb7efcc1eac9b8ce8f8ba799c95 # scx_maestro: bump libbpf to 0.27.0
-61fac22be134e2060c430e6892da6193d4efe502 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
-24192c29f099ceb55bcbedeb1050722271054343 # scx_maestro: fix formatting
-9499ebf0257366ff205aee5f0d231042861d9f36 # scx_maestro: bump libbpf to 0.27.1
-efe26ddcf70361c431b0cdfda00c01ef8115f08e # scx_maestro: bump libbpf to 0.27.2
-1fee5cee8689896c60503cc5801d2a80f57c3a4d # scx_maestro: bump to 1.1.4
-8c19a357003080b6528971041abb7b2e0e9f40a4 # scx_maestro: move to experimental
-8591046b626f0cd83760212ccd62bbbd61c0c7b6 # scx_maestro: add to scx_catalog
-e5c29b013d004ed81c59542bb2191273c8dc55bf # scx_pandemonium: bump to 5.24.0
-aa2757bb0b6401e427b000569bc78a32c5e591da # scx_panda: add to scx tree
-45e89eeba385a11e5d956496c58dff81cb1e72e8 # scx_panda: bump to 0.2.7
-0474672dc1c1d2f4bb601a8d359b15e7403d6d25 # scx_panda: bump to 0.2.8
-7bef4755546cda0033103d1d0fa59b9d56a733c8 # scx_cake: keep a private idle word; fix load limits and exiting tasks
-51080a97bc783250b5ed3930045618914a64fd0b # scx_panda: bump to 0.2.9
+5795052c980eff09b7059bf37c8a729249198c8a # scheds: Introduce scx_maestro
+3ca0c6ed3b9e48a8b6a89e4823bf764644c3e4c9 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+7e13789d77836cd22b1859c8059ae798a86c9061 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+d1bc338cfc46e0671b7f496f0a98a39fe3f87e4f # scx_maestro: Don't update deadline in case of re-enqueue
+a6560a0dbdac02c035de090a656595fc92445a07 # scx_maestro: Introduce completely fair scheduling
+e3f551f6e92aa5c6320de978f4e6e63fff3a29c0 # scx_maestro: Make enqueue + CPU kick more reliable
+e0504b4d87f1e341335abb0df797c76e27385b3b # scx_maestro: Enforce preemption each tick on CPU contention
+58940ff7f9d88e4ea5eea4f4ccf1cb5712992577 # scx_maestro: Temporarily drop sub-sched support
+1546b9bd4ad092587a66151c6f2c66ae2d98d307 # scx_maestro: bump to 1.1.1
+16f89610fd0f93d2ca884b8be292f67b9cc9c4e1 # scx_maestro: fix formatting
+235348b58944a1f65a0d3b825e5ee650083564cb # scx_maestro: bump to 1.1.2
+ce2bc82f6934541471ac84193d54d29930cd7337 # scx_maestro: Use scx_bpf_task_set_slice() setter
+f2b918cee01955cc6cef87f5b9766917d2e0fbf8 # scx_maestro: bump to 1.1.3
+c062ea5c1c50d4df05f2139ad60edc76248cc6df # scx_maestro: bump libbpf to 0.27.0
+ac89aee6e7a7f5a6791f1b8a766da42dd58b9e23 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
+2624427df9f777a1e030596f5dca127ac9dc7f4a # scx_maestro: fix formatting
+7f2d1612afe8a77247262d3dfb9fb92019f533bd # scx_maestro: bump libbpf to 0.27.1
+7276f680601143da172a9380a52fa1005fa9b8ea # scx_maestro: bump libbpf to 0.27.2
+60cd5a40a243e70c950e8f2e0f226a06a74f0315 # scx_maestro: bump to 1.1.4
+f21be7ee0380e97f03422fb680d1d7fe4fa8bae4 # scx_maestro: move to experimental
+8ba59b59169b62d61dc028e6659aef41f56788a4 # scx_maestro: add to scx_catalog
+46cf6947c02b7d34aa55e9f8091d367fb30acf6c # scx_pandemonium: bump to 5.24.0
+baeb55d1aae27d960c5f5651a7bb46e5e1b0f13d # scx_panda: add to scx tree
+0266164c04ee6debaf76e57f6612f25504c5ae00 # scx_panda: bump to 0.2.7
+06f2a2e78d1b1327e55888a5e1d7f021078cf452 # scx_panda: bump to 0.2.8
+64816bd4ad41f65e8903cfeedd6e6fc133f809d9 # scx_cake: keep a private idle word; fix load limits and exiting tasks
+4d3f4ff766e60c59a09ae10db28d99b2a500bbca # scx_panda: bump to 0.2.9
 )
 
 _reverts=(
