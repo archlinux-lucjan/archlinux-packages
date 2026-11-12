@@ -2,7 +2,7 @@
 
 pkgname=mailcraft-git
 _pkgname=mailcraft
-pkgver=0.11.1.r179.g3ca46fa
+pkgver=0.12.0.r43.g63d50d5
 pkgrel=1
 _appid=io.github.billsecond.mailcraft
 pkgdesc='Native mail, calendar, contacts and tasks program written in Rust (git version)'
@@ -48,13 +48,13 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  export RUSTUP_TOOLCHAIN=beta
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
   cd "$_pkgname"
-  export RUSTUP_TOOLCHAIN=beta
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   # Shown in Help › About (otherwise "dev").
   export MAILCRAFT_BUILD_SHA="$(git rev-parse HEAD)"
@@ -63,7 +63,7 @@ build() {
 
 check() {
   cd "$_pkgname"
-  export RUSTUP_TOOLCHAIN=beta
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo test --frozen --release -p mailcraft-cli
 }
