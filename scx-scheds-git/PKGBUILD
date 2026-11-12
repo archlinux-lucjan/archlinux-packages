@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.4.r233.ge7ec88095
-pkgrel=1
+pkgrel=2
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -64,6 +64,7 @@ baeb55d1aae27d960c5f5651a7bb46e5e1b0f13d # scx_panda: add to scx tree
 06f2a2e78d1b1327e55888a5e1d7f021078cf452 # scx_panda: bump to 0.2.8
 64816bd4ad41f65e8903cfeedd6e6fc133f809d9 # scx_cake: keep a private idle word; fix load limits and exiting tasks
 4d3f4ff766e60c59a09ae10db28d99b2a500bbca # scx_panda: bump to 0.2.9
+892fbb22f921bcff4aad02e397f2ba366032c4bf # scx_panda: bump to 0.2.10
 )
 
 _reverts=(
