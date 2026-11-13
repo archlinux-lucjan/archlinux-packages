@@ -1,0 +1,58 @@
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+
+pkgname=helicoprion-git
+_pkgname=helicoprion
+pkgver=0.1.0.r16.g5651eb9
+pkgrel=1
+pkgdesc="Scheduler-focused CPU benchmark: detects EEVDF vs sched-ext, runs workloads, charts the difference"
+arch=('x86_64' 'aarch64')
+url="https://github.com/Seafoam-Labs/helicoprion"
+license=('MIT OR Apache-2.0')
+depends=('glibc' 'gcc-libs')
+makedepends=('git' 'cargo')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  # Tagged releases: v1.2.3-4-gabcdef0 -> 1.2.3.r4.gabcdef0
+  if git describe --long --tags --abbrev=7 >/dev/null 2>&1; then
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    # No tags yet: crate version from the workspace + commit count + hash
+    local _ver
+    _ver=$(sed -n '/^\[workspace.package\]/,/^\[/ s/^version = "\(.*\)"/\1/p' Cargo.toml)
+    printf '%s.r%s.g%s' "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  fi
+}
+
+prepare() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release -p helicoprion
+}
+
+check() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  # Fault-injection tests intentionally panic worker threads; the panic
+  # messages on stderr are expected.
+  cargo test --frozen --release --workspace
+}
+
+package() {
+  cd "$_pkgname"
+  install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+}

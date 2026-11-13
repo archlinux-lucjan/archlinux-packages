@@ -105,6 +105,8 @@
 │   ├── git-git.install
 │   ├── git-sysusers.conf
 │   └── PKGBUILD
+├── helicoprion-git
+│   └── PKGBUILD
 ├── jujutsu-git
 │   └── PKGBUILD
 ├── krusader-git
@@ -131,6 +133,8 @@
 │   └── PKGBUILD
 ├── lucjan-rate-mirrors
 │   ├── lucjan-rate-mirrors
+│   └── PKGBUILD
+├── mailcraft-git
 │   └── PKGBUILD
 ├── mercurial-hg
 │   ├── mercurial.profile
@@ -237,4 +241,4 @@
     ├── Files
     └── PKGBUILD
 
-79 directories, 159 files
+81 directories, 161 files
