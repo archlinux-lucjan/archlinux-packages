@@ -2,7 +2,7 @@
 
 pkgname=helicoprion-git
 _pkgname=helicoprion
-pkgver=0.1.0.r16.g5651eb9
+pkgver=0.5.0.r1.g22063e5
 pkgrel=1
 pkgdesc="Scheduler-focused CPU benchmark: detects EEVDF vs sched-ext, runs workloads, charts the difference"
 arch=('x86_64' 'aarch64')
@@ -54,5 +54,6 @@ package() {
   cd "$_pkgname"
   install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  # README.md, and METHODOLOGY.md from 0.5.0 on: whatever the release has.
+  install -Dm644 ./*.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
