@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.4.r263.g3d853e8fc
+pkgver=1.1.4.r276.g9866bd19b
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -37,54 +37,67 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-32b4557f63171dc1bdada49d3115acc5b31bb6e8 # scx_utils: Drop three more dependencies that nothing uses
-d6ad03910218da256d04da62315426bfb1cc87fe # scheds: Drop dependencies that no scheduler source refers to
-1fee8eef06feb9e2836c3c8b161b523ff57b5840 # scx_utils: Drop build-dependencies the build script does not use
-91d8b733ee160fda20b313cce81f0bc8bcbd7095 # scheds: Introduce scx_maestro
-64af9e25f773bdb4045b599cdd0dd4a4e8ac7960 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-f1ff8f3cb899fc8a40323ca21dccaf3b0c6d17a3 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-6ce9f5b4d96f5125a429329eaa3b6554f6feb0e7 # scx_maestro: Don't update deadline in case of re-enqueue
-3dfbf80b880c20f0c96e00314064086a520d10d9 # scx_maestro: Introduce completely fair scheduling
-97221a948e1a213c3e9935c76b21ae93397f69e9 # scx_maestro: Make enqueue + CPU kick more reliable
-0383f516b582afffd33b56d73870f47962aabd6f # scx_maestro: Enforce preemption each tick on CPU contention
-9100819c230ff051a927d5fac46c54d672cae603 # scx_maestro: Temporarily drop sub-sched support
-a08f6ed2a3dd0bd9c38450c802d7b19d1104c58a # scx_maestro: bump to 1.1.1
-b04e9ddce70fa1a610989df8d4066e04420597a1 # scx_maestro: fix formatting
-c49bb35fc5abd4a3c7be97d19fe6bceba30dbca8 # scx_maestro: bump to 1.1.2
-691020340ac82dd8cff20abf956e1d0c5d0a9fe6 # scx_maestro: Use scx_bpf_task_set_slice() setter
-8e7b3999469a37dfbae1b26ee6a5394bf766399d # scx_maestro: bump to 1.1.3
-42f9d57b97151d8e8d911e65e902d54ad839cb3a # scx_maestro: bump libbpf to 0.27.0
-f54b14f2a0abdcfffc77da85b95e19470e215e4f # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
-6a390ff21e2c0f5c4c2381f5438b5666abcd3191 # scx_maestro: fix formatting
-dc696f039b6e3b8a600a31991f458b64dade9bd1 # scx_maestro: bump libbpf to 0.27.1
-5108c88812b4747ae5ec50cca3a274bb7b4ac124 # scx_maestro: bump libbpf to 0.27.2
-07618edb0c72a6630b67dbb8f411125c514013ce # scx_maestro: bump to 1.1.4
-70070e621cd80767c8bd4fb6819b4a8ca58c4e0b # scx_maestro: move to experimental
-16613ed5ea463bbf7bf552effc83d372457b707d # scx_maestro: add to scx_catalog
-e45d9066d9ba8ddcac871000822819b2ccec4636 # scx_cake: keep a private idle word; fix load limits and exiting tasks
-311adc9da6535cf11fa041dcb8b28341cfd4fd7b # scx_cake: bench: stop pairing stale wakes with the next switch-in
-f610adced072e6494bf53fd610199b47e197b471 # scx_cake: pass the input wake tag down the wake chain
-bc521bb026db147cfed61e5af0d07565c4f89a29 # scx_cake: keep the starved tests exact past 64 bits
-4262dcf116e101acc371708675e0f095009bacbc # scx_cake: remove the rejected --native-ring steal scan
-70a57dcdfb2ff2419a459f736949cbe44d48f3ba # scx_cake: remove --native-hist and the scalar experiments header
-9486e3ad52a0b1480ffc08a071f7cd2c19ba654b # scx_cake: drop the one-value CCD steal policy setting
-41144de4a1e7a2c614b71df31913b30bea18b4e7 # scx_cake: remove dead constants, returns and a duplicate probe field
-cac10ac2d506a6418fa55c5deea4d0ec111b8152 # scx_cake: parse the probe toggle directly
-d5bfffdf4945dc5ec4f5610b1397071b9d5bcf07 # scx_cake: name the vtime clamp and the seat owner test
-ed81cf1edd5408f76ad29d11aaf496c918f7a512 # scx_cake: share the pool-served epilogue and the ranked claim loop
-c4c039cfde1ab2e0cc1be774672993c51057a62d # scx_cake: name the probe kinds, signal counters and CPU word size
-e20976b37b031220d514bd6ecae83f93a04bd0a2 # scx_cake: move the exit reports out of Scheduler::run
-a67e1283b33a9840de6249240187f5644a8e53c0 # scx_cake: bind each census name to its counter
-69fc27f49277fe03d99a1b439ed7f76cdfcadaa0 # scx_cake: split Scheduler::init and share the host publication
-2ee234c93adb3f985bb402eb38b253aa36bdecc5 # scx_cake: read the hardirq count where v7.3.3 keeps it
-e4c382de97cb261620f3f5798357cf9b0014e093 # scx_cake: give each busy thread a fixed home core
-8031d8adde439ba4cdcbde501aaf3391fa668858 # scx_cake: fixed homes claim the best-ranked free core
-f4f7dc33f222e721d25f8cf5098d746f53d3088a # scx_cake: bump version to 1.4.0
-f610341216dee338d0f11d1135546ea8f4741f2b # scx_cake: short default startup, detail under --verbose
-5e560e03c6d6f4c4c5d4fb3844ed34cb22bbc0ad # scx_pandemonium: bump to 5.24.0
-119f30f9f4ae3aae0fad354d583992ca37459925 # scx_pandemonium: bump to 5.25.0
-0d1ad90aeebbce86a9bc1436002f764e206b4c6a # scx_panda: add to scx tree
-4b97a1fd147a081061d279e491cd57486d037b7a # scx_panda: bump to 0.2.11
+6d8bf89ff35db645dedca4b43248d8cef6d044eb # scx_utils: Drop three more dependencies that nothing uses
+1d47c675ad6ee512921fba8e425e64453d5d4919 # scheds: Drop dependencies that no scheduler source refers to
+72884a8a30fde55dd22365d667398f5116a72597 # scx_utils: Drop build-dependencies the build script does not use
+a2325e7799ee565c05227fb112ff1618297b3065 # scheds: Introduce scx_maestro
+4ded41c62cc34aec29121ca17e2a15782295f652 # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
+4c38c1b50c5d779ed2185f638e6144e3cf2a7386 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
+db593d89eef7da897102a4e2e26c67200c1123c0 # scx_maestro: Don't update deadline in case of re-enqueue
+b473105da18e34ff8c9b9dabcc9e03fd81afa263 # scx_maestro: Introduce completely fair scheduling
+c0d704c66e41249c480ec295e4e0f527f697d75f # scx_maestro: Make enqueue + CPU kick more reliable
+e7cc6532c0e580b065160716747917e02d80a0e5 # scx_maestro: Enforce preemption each tick on CPU contention
+49e62ee700eeedce2353d9a72a78989edba22b10 # scx_maestro: Temporarily drop sub-sched support
+0d2c9b6e833df915aa5dfd5750c0b6efa0c27fec # scx_maestro: bump to 1.1.1
+a4a79691afab834434d362ddce2da8b484f7e859 # scx_maestro: fix formatting
+e505acb596f9fa22ff833a3849c52468e4351bef # scx_maestro: bump to 1.1.2
+1d30e393912ab1d316bab36c8b65b15d0ad3cfbb # scx_maestro: Use scx_bpf_task_set_slice() setter
+1ec5cff9875229b4d838baf35169a506da210284 # scx_maestro: bump to 1.1.3
+fbb097c956fe40330619891f61d2cc6c2ac615f5 # scx_maestro: bump libbpf to 0.27.0
+90cd3ae3f32cbdad47b09024d686f64b12d65e34 # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
+f8c3329e9d5060ff3f70374ec732dc1541a53296 # scx_maestro: fix formatting
+06d3bd5a77b0b478148c60d39ea3e842340232df # scx_maestro: bump libbpf to 0.27.1
+0f6146aed9397e122c0f2410d282d83e662779e4 # scx_maestro: bump libbpf to 0.27.2
+89efac428e0b91ad25ec97ef73be345304a3d33c # scx_maestro: bump to 1.1.4
+513ea82912c5329cf5da0673afd510a4a4641634 # scx_maestro: move to experimental
+c59baa7f6f830f6b9f83b36f1f35750a8bcb2935 # scx_maestro: add to scx_catalog
+87da9ada34394687108104e5b2461a068b974bf7 # scx_cake: docs: keep the nightly research and state records
+0e1146a3c8573057f455c9bf8d320335eea6ead8 # scx_cake: keep a private idle word; fix load limits and exiting tasks
+46f497676c42e036f5266ea2cc23cf386f48100b # scx_cake: docs: record the CID topology and idle word research
+56d579ddc331b62341e8f48924294b5a48c64c56 # scx_cake: bench: stop pairing stale wakes with the next switch-in
+dd6cfa5028c193e467734dc0c0dff4efa7679b14 # scx_cake: pass the input wake tag down the wake chain
+a5d3ad671508005fb6dad0ae1b00cedb255aa4c3 # scx_cake: keep the starved tests exact past 64 bits
+76bda8a2444768fb57e6acd1a7b30e42f5d9695d # scx_cake: remove the rejected --native-ring steal scan
+eaec5c65eec6b15756f5f2199ce50cae6466aa5f # scx_cake: remove --native-hist and the scalar experiments header
+bd04e7cbfe0db0afd4a42ebdedac06969173eba4 # scx_cake: drop the one-value CCD steal policy setting
+3f4d732827f41bb83b3a37473d6ac8d35c2ab0d4 # scx_cake: remove dead constants, returns and a duplicate probe field
+e987574604cabe530d0d5a33dbbcefe8bb37afd2 # scx_cake: parse the probe toggle directly
+985982a5cd5594968e20f19884e8d8ab332472db # scx_cake: name the vtime clamp and the seat owner test
+de8ae2d6b47ea46dc296500a5cc2d34dfd86f70a # scx_cake: share the pool-served epilogue and the ranked claim loop
+ca64aeb88c4629075557c0642998e532947d67eb # scx_cake: name the probe kinds, signal counters and CPU word size
+c53b6f842c4bde9ec982b82b9ef4edcca72849f9 # scx_cake: move the exit reports out of Scheduler::run
+848f5291330f1a546ff16bbc6046fe6b965e3ea4 # scx_cake: bind each census name to its counter
+af59d2191e4f7d42433aa3b3f04778705ca399f4 # scx_cake: split Scheduler::init and share the host publication
+c6c0ba24e561e9810ffa999329362e372e0a9a50 # scx_cake: docs: record the complexity cleanup and the shadow census
+b1c2adad8c013bfe51c7447d7bc5bffbb61b123f # scx_cake: read the hardirq count where v7.3.3 keeps it
+0758e149155ae327f0596316c7f8e05c36a77825 # scx_cake: docs: record the placement, pinned-layout and fixed-home screens
+e66d10b809d2823001fecf39b02ec89165efe5c4 # scx_cake: give each busy thread a fixed home core
+caea14420582af74f7d354003c5a25c92a7622a5 # scx_cake: fixed homes claim the best-ranked free core
+7a3ed96416bb8ce1eefa3e51671208884805eede # scx_cake: bump version to 1.4.0
+bdb16889b2a73660ce6526bee189f9caa215e68e # scx_cake: short default startup, detail under --verbose
+24b9101cd6c92fed317c0d12eb1deb67975bcf22 # scx_cake: docs: record the loaded-host ladder for 1.4.0
+5997c1b1480f91e917a654cfbaac79b7b1c6ff25 # scx_cake: docs: record the home fixes tried under hogs
+84243071b19264b9148b2414c1b7c64dcce0f845 # scx_cake: docs: record the starve arm and the 4-hog traces
+09356c57c3ab9bd107bd4ec78b505ee2b153e5a2 # scx_cake: docs: record the eviction, grant cap and probe rounds under hogs
+5d84f8cf7da9f89baef8b1688ef452dfe5c8822a # scx_cake: docs: record the head-to-head hog ladder
+9f4c7342cde574e419710bd062bd5c6fd717524c # scx_cake: docs: record the 32-hog home traces
+11d8e9f50334a5a0b6516d82a6c238db11e5725b # scx_cake: docs: record the rule-fix arms under hogs
+d84bb80374267625a6f2f1c858150e890da3d9b8 # scx_cake: docs: record the gated spare arms and the 0-hog cost
+c0d1244f877d42ff125b103ddb057c003989a235 # scx_cake: halve the grant cap for compute tasks
+befe9ddcd66daffa6b5685e0314367e3516e1e0e # scx_cake: bump version to 1.5.0
+c9658d44922113cbf68d1ede54ef349a93863a32 # scx_cake: set version to 1.4.1
+dd0e35a79ae79c0c3730394dde194f4058625c5e # scx_cake: docs: name the landed grant change 1.4.1
+608a841810c0c16f5505d0abb9782b9730b640ac # scx_cake: docs: show the compute grant cap in the slice formula
 )
 
 _reverts=(
