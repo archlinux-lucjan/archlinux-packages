@@ -1,7 +1,7 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
 
 pkgname=helicoprion
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Scheduler-focused CPU benchmark: detects EEVDF vs sched-ext, runs workloads, charts the difference"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT OR Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1c2b31cf5084df7cb601cf9105c481a8155fa5fc3346fec9286c81b4b4f572df')
+sha256sums=('dbf779572e8077e2addd586e2332a894074a32e9945474904bdda306edc5b3eb')
 
 prepare() {
   cd "$pkgname-$pkgver"
