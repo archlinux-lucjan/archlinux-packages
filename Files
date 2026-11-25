@@ -27,6 +27,8 @@
 │   └── PKGBUILD
 ├── cargo-lbin
 │   └── PKGBUILD
+├── cargo-lbin-git
+│   └── PKGBUILD
 ├── clean-chroot-manager-git
 │   ├── ccm.install
 │   └── PKGBUILD
@@ -243,4 +245,4 @@
     ├── Files
     └── PKGBUILD
 
-82 directories, 162 files
+83 directories, 163 files
