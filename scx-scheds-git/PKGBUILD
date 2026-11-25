@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.5.r3.g5c7528729
-pkgrel=3
+pkgrel=4
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -63,6 +63,8 @@ ca1091a889e1d11c8fc6daebf91564c770870bb3 # scx_maestro: move to experimental
 034339e413cf2356bc42b579c48f87181d98a358 # scx_maestro: add to scx_catalog
 e75be01e1c2f46099da10596e0cc91180519fea9 # scx_maestro: bump to 1.1.5
 bee47358e602bdf2393f3c30b90f99a320daa48a # scx_flow: bump to 5.3.5
+0045baca451fdc2571f8dd0f2226d5c025b6ce0a # scxtui: Close the logs back to the list they were opened from
+10be5484124db477b388a1757cb5de53d2cbe6a1 # scxtui: Read the journal through a reader the tests can replace
 )
 
 _reverts=(
