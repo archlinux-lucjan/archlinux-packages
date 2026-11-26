@@ -10,14 +10,14 @@ pkgname=scx-scheds
 _gitname=scx
 pkgver=1.1.5
 _tagver=1.1.5-devario8
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
 license=('GPL-2.0-only')
 depends=(
-  libseccomp
   libelf
+  polkit
   zlib
 )
 makedepends=(
@@ -26,11 +26,8 @@ makedepends=(
   clang
   git
   llvm
-  llvm-libs
   rust-src
 )
-conflicts=('scx-tools')
-replaces=('scx-tools')
 options=(!lto)
 backup=('etc/default/scx')
 #source=("git+https://github.com/sched-ext/scx#tag=v$pkgver")
