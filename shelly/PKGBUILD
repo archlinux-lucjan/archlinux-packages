@@ -11,7 +11,7 @@ pkgname=(
   'shelly-notify'
   'shelly-notify-none'
 )
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -40,7 +40,7 @@ makedepends=(
 )
 checkdepends=('ripgrep')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9f0041713d366610efb66d16fc2717dd5a655c1fc688617731187425f904be01')
+sha256sums=('824e923a96e0d78a245bbe7df35bb5c4fc96329384aafa084285f7cfd214b94c')
 
 # GitHub replaces "+" with "-" in archive top-level directory names.
 _srcdir="Shelly-ALPM-${pkgver//+/-}"
@@ -110,16 +110,17 @@ build() {
   # Generate documentation with a fresh configuration, independent of the
   # builder's own Shelly settings.
   (
+    set -o pipefail
     export XDG_CONFIG_HOME="${srcdir}/doc-config"
     export XDG_CACHE_HOME="${srcdir}/doc-cache"
     export XDG_DATA_HOME="${srcdir}/doc-data"
     export XDG_STATE_HOME="${srcdir}/doc-state"
     local shelly="${srcdir}/out-cli/bin/shelly" shell
     for shell in bash fish zsh; do
-      "${shelly}" utility --completions "${shell}" > "${srcdir}/shelly.${shell}"
+      "${shelly}" utility --completions "${shell}" > "${srcdir}/shelly.${shell}" || return 1
     done
     "${shelly}" utility --docs | go-md2man > "${srcdir}/shelly.1"
-  )
+  ) || return 1
   sed -i "s|^\\.TH .*|.TH \"SHELLY\" \"1\" \"\" \"Shelly ${pkgver}\" \"Shelly CLI Manual\"|" \
     "${srcdir}/shelly.1"
   printf '\n.SH AUTHORS\nSeafoam Labs.\n' >> "${srcdir}/shelly.1"
@@ -143,7 +144,8 @@ check() {
   (cd Shelly.Flatpak.Backend && _zig_build test abi-test integration-test)
   (cd Shelly.PackageManager && _zig_build -Dlibalpm="${_shelly_libalpm}" \
     -Dpath-profile="${_shelly_path_profile}" \
-    flatpak-test native-backend-test rlpm-adapter-test bootstrap-test)
+    flatpak-test native-backend-test rlpm-adapter-test bootstrap-test \
+    pacfile-test path-profile-test buildinfo-test sandbox-policy-test)
   (cd Shelly.Rlpm && _zig_build test -Dpath-profile="${_shelly_path_profile}")
   (cd Shelly.Key && _zig_build test -Dpath-profile="${_shelly_path_profile}")
   (cd Shelly.Cli.Zig && _zig_build test -Dlibalpm="${_shelly_libalpm}" \
@@ -167,9 +169,12 @@ package_shelly() {
     'glibc'
     'gtk4'
     'hicolor-icon-theme'
+    # The UI runs privileged CLI operations through pkexec.
+    'polkit'
   )
   optdepends=(
     'fuse2: run AppImages that require FUSE 2'
+    'fwupd: Firmware page for device firmware updates'
     'libstarfish: dependency viewer for arch packages'
   )
   conflicts=('shelly-git' 'shelly-bin')
@@ -247,32 +252,19 @@ package_shelly-cli() {
   install -Dm644 "${srcdir}/shelly.1" -t "${pkgdir}/usr/share/man/man1"
 
   # Polkit policy for privileged Shelly CLI execution via pkexec
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/polkit-1/actions/com.shellyorg.shelly.policy" <<'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
- "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
-<policyconfig>
-  <vendor>Shelly</vendor>
-  <vendor_url>https://github.com/Seafoam-Labs/Shelly-ALPM</vendor_url>
-  <action id="com.shellyorg.shelly.pkexec.cli">
-    <description>Run Shelly CLI as administrator</description>
-    <message>Run Shelly CLI with administrator privileges.</message>
-    <icon_name>shelly</icon_name>
-    <defaults>
-      <allow_any>auth_admin</allow_any>
-      <allow_inactive>auth_admin</allow_inactive>
-      <allow_active>auth_admin_keep</allow_active>
-    </defaults>
-    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/shelly</annotate>
-  </action>
-</policyconfig>
-EOF
+  install -Dm644 com.shellyorg.shelly.policy -t "${pkgdir}/usr/share/polkit-1/actions"
 }
 
 package_shelly-flatpak-backend() {
   pkgdesc='Optional native Flatpak backend for Shelly'
   depends=("shelly-cli=${pkgver}-${pkgrel}" 'flatpak' 'glib2' 'glibc')
-  conflicts=('shelly-flatpak-backend-git' 'shelly-flatpak-backend-bin')
+  conflicts=(
+    'shelly-flatpak-backend-git'
+    'shelly-flatpak-backend-bin'
+    'shelly-cli-flatpak-backend-git'
+  )
+  # Name used by the CLI-only shelly-cli-git packages before the split.
+  replaces=('shelly-cli-flatpak-backend-git')
 
   install -Dm755 "${srcdir}/out-flatpak-backend/lib/libshelly-flatpak-backend.so.1.0.0" \
     -t "${pkgdir}/usr/lib/shelly"
