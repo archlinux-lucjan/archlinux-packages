@@ -8,7 +8,7 @@ _mode=release
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.1.5.r6.ge32e4fc5a
+pkgver=1.1.5.r15.g0df97416e
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -37,32 +37,10 @@ source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 
 _backports=(
-3cefcb8f8f17fabc6eb344fc19841c1567198d9c # scx_utils: Drop three more dependencies that nothing uses
-e1c84b46469b145e1d706a76633389de54195190 # scheds: Drop dependencies that no scheduler source refers to
-3428c56868d5a54f3e5999a2127d2c2cecfaaeb7 # scx_utils: Drop build-dependencies the build script does not use
-47947d506cf72e96b34cffc8fc4c2cf525eb74ee # scheds: Introduce scx_maestro
-e205c971b45397ad250b181034db4a0473a2068f # scx_maestro: Honor cgroup cpu.weight for tasks and sub-schedulers
-86004e38c504c029220fd3141a9ba88ea9b34c75 # scx_maestro: Allow to enable/disable NUMA and SMT optimizations
-681924304ab6827767fa649607f3ca0b15bf28d7 # scx_maestro: Don't update deadline in case of re-enqueue
-5a792b532d7d8cb4493834ba8b4468082ba4b31d # scx_maestro: Introduce completely fair scheduling
-d0aadb9a12a773ff92a2ddcdba0c0086f27c376b # scx_maestro: Make enqueue + CPU kick more reliable
-5dc5cd9470a9fc61b6e3b283524c1324bf32a0cf # scx_maestro: Enforce preemption each tick on CPU contention
-c91f4924e0da4da47b803786c8e926bbfb0b6f37 # scx_maestro: Temporarily drop sub-sched support
-9fe724aa3a480cb7b427657f09df27d646aefaa8 # scx_maestro: bump to 1.1.1
-78279230e5f8c8452479d062d7c4e596745435e4 # scx_maestro: fix formatting
-42c0fd297aec01a9da796bc354bb2748dde52d96 # scx_maestro: bump to 1.1.2
-20a46da2780858bf5121653ddf2c385cf977da5b # scx_maestro: Use scx_bpf_task_set_slice() setter
-e8ee6ecef04d5f7409fb817c0275255fc29336c2 # scx_maestro: bump to 1.1.3
-95bb53c80ffc281b167329333c75950c16dae0e5 # scx_maestro: bump libbpf to 0.27.0
-1f92ed971507aea1e2271e61074a4b224015e0fa # scx_maestro: migrate to Rust edition 2024 and rust-version 1.91
-161e5b9c0f45292a2f59217b0f05a7fd9631b691 # scx_maestro: fix formatting
-49988eb0f15b7102780fbd836fb9556552e64fb9 # scx_maestro: bump libbpf to 0.27.1
-25ab1eab652b12ba765c4712ceb9ee57030d3fa3 # scx_maestro: bump libbpf to 0.27.2
-ce686abe1f3b72339ccfc142b4487abf4a82358e # scx_maestro: bump to 1.1.4
-9bfb96e98e9dc2ca13088c8ce6164cf8d730f6da # scx_maestro: move to experimental
-2b19724e79aaea8c22cb2e272113192a264d3187 # scx_maestro: add to scx_catalog
-3b2a8cc8cec14c0f557717a0eacd45bb34f465fa # scx_maestro: bump to 1.1.5
-cee59ac632ea63d93982bef59f19b1aef4fd733e # scx_flow: bump to 5.3.5
+7bbbd1a7ea4ae41f7f6cc2b41681345a2ac76975 # scx_utils: Drop three more dependencies that nothing uses
+74e305ac556ee8bd5ad8fe14c924db8b5fc4b37e # scheds: Drop dependencies that no scheduler source refers to
+45b69ad6a33aab67095b8e84d6ef8795e29cb59a # scx_utils: Drop build-dependencies the build script does not use
+1f599da365a0c3f4a456ebda7f73f62e8da9d136 # scx_flow: bump to 5.3.5
 )
 
 _reverts=(
