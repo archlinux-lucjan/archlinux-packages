@@ -11,7 +11,7 @@ pkgname=(
   'shelly-notify-git'
   'shelly-notify-none-git'
 )
-pkgver=3.4.2.r0.gc2792486
+pkgver=3.4.2.r3.g5613506a
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -64,6 +64,29 @@ _zig_build() {
 }
 
 _backports=(
+0cf0a56a0363f8cf2902be803f45fc6c3c561f95 # Move TUI view helpers into views/components
+74886bcf5978d90fa60dc2312f7d8b47560e530d # Add read-only baseline implementation for utilities page
+8c0e1583e7700bead048cdb48e9d647be8729b9b # Finish baseline visual identity for utility page
+62562085e00c2b263a8f420006571f3217c04e4e # Add standard and Flatpak cleanup to TUI Utilities
+326fa20ffa916c7c3b2995f0f4d0320ee9146330 # Add read-only pacfile diffs to TUI Utilities
+250bf3f2913d087ca7caa648d663f81c4c6ba7d0 # Add pacfile contents preview and rebindable diff shortcut
+4da658eee1b489dd735b6a84e00b58a674783662 # Preload pacfiles and align Utilities styling with Settings
+25cfa8353b598d953709489c8d998b212fbbf2ee # Add Shelly directory permission repair to TUI Utilities
+416c1ac4d85edc2ba954c1dbf8d3f2dd26eb5471 # Add repository management to shelly utility tab
+09c2ca7bb3dd2a9c2c1c7386c736085f908d53e3 # Add db.lck removal functionality to the utility tab
+9ee6e0ff9ffabfb7b7b1b64eb1b111d7d3f0e3ca # Allow skipping database refresh after repository changes
+964e9a3ee99fbea9fb32a2d91d92c9d8769608f7 # Add mouse navigation and cleanup cancellation to Utilities
+fa0cac090c8d63b893aa3bef045739f6fa69153f # Adjust mouse navigation on narrow terminal layouts
+c1277d69ef3f35d7ecfe617403d94316a6691731 # Show pacfile preview retry status
+4f616a30ef4773c395a74b2745c13d7b43a43dc5 # Add mouse retry for failed pacfile scans
+ea03b3687ca03510280fd0cc65d840122fddceb5 # Make utility page resizeable
+950cd7decb3b83735f490799667f903834dd880f # Prevent database lock repair while TUI checks are running
+f2a7ccad80620dedfcb2f18b99d49151c5282c14 # Allow the CLI to decide when database lock repair needs elevation
+30ca95a5013b9cb9cc3ab5385eb0bdd7245ee4bb # Prevent pacfile compare and panel resize from sharing a shortcut
+157e928bc9df831948497c69ba2b3adfa2127049 # Add optional signing-key setup when adding repositories
+620c13540b1cf19c952196937657aa785f49bb9c # Reorder utility and settings pages
+280d6b0afba188518793a9e04ddd720e9631e5b0 # Fix tests post reorder
+
 )
 
 _reverts=(
