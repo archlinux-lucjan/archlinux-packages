@@ -9,7 +9,7 @@ _mode=release
 pkgname=scx-scheds-git
 _gitname=scx
 pkgver=1.1.5.r15.g0df97416e
-pkgrel=2
+pkgrel=3
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64')
@@ -40,6 +40,7 @@ _backports=(
 74e305ac556ee8bd5ad8fe14c924db8b5fc4b37e # scheds: Drop dependencies that no scheduler source refers to
 45b69ad6a33aab67095b8e84d6ef8795e29cb59a # scx_utils: Drop build-dependencies the build script does not use
 1f599da365a0c3f4a456ebda7f73f62e8da9d136 # scx_flow: bump to 5.3.5
+25e93e937a85a19ef688bf07c6d271ed105328f0 # Cargo: update dependencies to latest versions
 )
 
 _reverts=(
